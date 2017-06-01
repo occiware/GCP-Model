@@ -1,0 +1,691 @@
+Kind;Name;Description
+appengine.v1.version;create;Deploys code and resource files to a new version.
+appengine.v1.version;delete;Deletes an existing Version resource.
+appengine.v1.version;get;Gets the specified Version resource.
+appengine.v1.version;list;Lists the versions of a service.
+appengine.v1.version;patch;Updates the specified Version resource.
+appengine.v1beta4.version;create;Deploys code and resource files to a new version.
+appengine.v1beta4.version;delete;Deletes an existing version.
+appengine.v1beta4.version;get;Gets the specified Version resource.
+appengine.v1beta4.version;list;Lists the versions of a module.
+appengine.v1beta4.version;patch;Updates the specified Version resource.
+appengine.v1beta5.version;create;Deploys new code and resource files to a new version.
+appengine.v1beta5.version;delete;Deletes an existing version.
+appengine.v1beta5.version;get;Gets the specified Version resource.
+appengine.v1beta5.version;list;Lists the versions of a service.
+appengine.v1beta5.version;patch;Updates the specified Version resource.
+bigquery.v2.dataset;delete;Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must delete all its tables, either manually or by specifying deleteContents. Immediately after deletion, you can create another dataset with the same name.
+bigquery.v2.dataset;get;Returns the dataset specified by datasetID.
+bigquery.v2.dataset;insert;Creates a new empty dataset.
+bigquery.v2.dataset;list;Lists all datasets in the specified project to which you have been granted the READER dataset role.
+bigquery.v2.dataset;patch;Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource. This method supports patch semantics.
+bigquery.v2.dataset;update;Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource.
+bigquery.v2.table;delete;Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be deleted.
+bigquery.v2.table;get;Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
+bigquery.v2.table;insert;Creates a new, empty table in the dataset.
+bigquery.v2.table;list;Lists all tables in the specified dataset. Requires the READER dataset role.
+bigquery.v2.table;patch;Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are provided in the submitted table resource. This method supports patch semantics.
+bigquery.v2.table;update;Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are provided in the submitted table resource.
+cloudfunctions.v1beta2.function;call;Invokes synchronously deployed function.
+cloudfunctions.v1beta2.function;create;Creates a new function.
+cloudfunctions.v1beta2.function;delete;Deletes a function with the given name from the specified project.
+cloudfunctions.v1beta2.function;get;Returns a function with the given name from the requested project.
+cloudfunctions.v1beta2.function;list;Returns a list of functions that belong to the requested project.
+cloudfunctions.v1beta2.function;update;Updates existing function.
+clouduseraccounts.beta.group;addMember;Adds users to the specified group.
+clouduseraccounts.beta.group;delete;Deletes the specified Group resource.
+clouduseraccounts.beta.group;get;Returns the specified Group resource.
+clouduseraccounts.beta.group;insert;Creates a Group resource in the specified project using the data included in the request.
+clouduseraccounts.beta.group;list;Retrieves the list of groups contained within the specified project.
+clouduseraccounts.beta.group;removeMember;Removes users from the specified group.
+clouduseraccounts.beta.user;addPublicKey;Adds a public key to the specified User resource with the data included in the request.
+clouduseraccounts.beta.user;delete;Deletes the specified User resource.
+clouduseraccounts.beta.user;get;Returns the specified User resource.
+clouduseraccounts.beta.user;insert;Creates a User resource in the specified project using the data included in the request.
+clouduseraccounts.beta.user;list;Retrieves a list of users contained within the specified project.
+clouduseraccounts.beta.user;removePublicKey;Removes the specified public key from the user.
+compute.beta.address;aggregatedList;Retrieves an aggregated list of addresses.
+compute.beta.address;delete;Deletes the specified address resource.
+compute.beta.address;get;Returns the specified address resource.
+compute.beta.address;insert;Creates an address resource in the specified project using the data included in the request.
+compute.beta.address;list;Retrieves a list of addresses contained within the specified region.
+compute.beta.address;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.autoscaler;aggregatedList;Retrieves an aggregated list of autoscalers.
+compute.beta.autoscaler;delete;Deletes the specified autoscaler.
+compute.beta.autoscaler;get;Returns the specified autoscaler resource. Get a list of available autoscalers by making a list() request.
+compute.beta.autoscaler;insert;Creates an autoscaler in the specified project using the data included in the request.
+compute.beta.autoscaler;list;Retrieves a list of autoscalers contained within the specified zone.
+compute.beta.autoscaler;patch;Updates an autoscaler in the specified project using the data included in the request. This method supports patch semantics.
+compute.beta.autoscaler;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.autoscaler;update;Updates an autoscaler in the specified project using the data included in the request.
+compute.beta.backendBucket;delete;Deletes the specified BackendBucket resource.
+compute.beta.backendBucket;get;Returns the specified BackendBucket resource. Get a list of available backend buckets by making a list() request.
+compute.beta.backendBucket;insert;Creates a BackendBucket resource in the specified project using the data included in the request.
+compute.beta.backendBucket;list;Retrieves the list of BackendBucket resources available to the specified project.
+compute.beta.backendBucket;patch;Updates the specified BackendBucket resource with the data included in the request. This method supports patch semantics.
+compute.beta.backendBucket;update;Updates the specified BackendBucket resource with the data included in the request.
+compute.beta.backendService;delete;Deletes the specified BackendService resource.
+compute.beta.backendService;get;Returns the specified BackendService resource. Get a list of available backend services by making a list() request.
+compute.beta.backendService;getHealth;Gets the most recent health check results for this BackendService.
+compute.beta.backendService;insert;Creates a BackendService resource in the specified project using the data included in the request. There are several restrictions and guidelines to keep in mind when creating a backend service. Read Restrictions and Guidelines for more information.
+compute.beta.backendService;list;Retrieves the list of BackendService resources available to the specified project.
+compute.beta.backendService;patch;Patches the specified BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read Restrictions and Guidelines for more information. This method supports patch semantics.
+compute.beta.backendService;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.backendService;update;Updates the specified BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read Restrictions and Guidelines for more information.
+compute.beta.disk;aggregatedList;Retrieves an aggregated list of persistent disks.
+compute.beta.disk;createSnapshot;Creates a snapshot of a specified persistent disk.
+compute.beta.disk;delete;Deletes the specified persistent disk. Deleting a disk removes its data permanently and is irreversible. However, deleting a disk does not delete any snapshots previously made from the disk. You must separately delete snapshots.
+compute.beta.disk;get;Returns a specified persistent disk. Get a list of available persistent disks by making a list() request.
+compute.beta.disk;insert;Creates a persistent disk in the specified project using the data in the request. You can create a disk with a sourceImage, a sourceSnapshot, or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
+compute.beta.disk;list;Retrieves a list of persistent disks contained within the specified zone.
+compute.beta.disk;resize;Resizes the specified persistent disk.
+compute.beta.disk;setLabels;Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources documentation.
+compute.beta.disk;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.firewall;delete;Deletes the specified firewall.
+compute.beta.firewall;get;Returns the specified firewall.
+compute.beta.firewall;insert;Creates a firewall rule in the specified project using the data included in the request.
+compute.beta.firewall;list;Retrieves the list of firewall rules available to the specified project.
+compute.beta.firewall;patch;Updates the specified firewall rule with the data included in the request. This method supports patch semantics.
+compute.beta.firewall;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.firewall;update;Updates the specified firewall rule with the data included in the request.
+compute.beta.forwardingRule;aggregatedList;Retrieves an aggregated list of forwarding rules.
+compute.beta.forwardingRule;delete;Deletes the specified ForwardingRule resource.
+compute.beta.forwardingRule;get;Returns the specified ForwardingRule resource.
+compute.beta.forwardingRule;insert;Creates a ForwardingRule resource in the specified project and region using the data included in the request.
+compute.beta.forwardingRule;list;Retrieves a list of ForwardingRule resources available to the specified project and region.
+compute.beta.forwardingRule;setTarget;Changes target URL for forwarding rule. The new target should be of the same type as the old target.
+compute.beta.forwardingRule;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.globalAddress;delete;Deletes the specified address resource.
+compute.beta.globalAddress;get;Returns the specified address resource. Get a list of available addresses by making a list() request.
+compute.beta.globalAddress;insert;Creates an address resource in the specified project using the data included in the request.
+compute.beta.globalAddress;list;Retrieves a list of global addresses.
+compute.beta.globalAddress;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.globalForwardingRule;delete;Deletes the specified GlobalForwardingRule resource.
+compute.beta.globalForwardingRule;get;Returns the specified ForwardingRule resource. Get a list of available forwarding rules by making a list() request.
+compute.beta.globalForwardingRule;insert;Creates a GlobalForwardingRule resource in the specified project and region using the data included in the request.
+compute.beta.globalForwardingRule;list;Retrieves a list of ForwardingRule resources available to the specified project.
+compute.beta.globalForwardingRule;setTarget;Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type as the old target.
+compute.beta.globalForwardingRule;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.healthCheck;delete;Deletes the specified HealthCheck resource.
+compute.beta.healthCheck;get;Returns the specified HealthCheck resource. Get a list of available health checks by making a list() request.
+compute.beta.healthCheck;insert;Creates a HealthCheck resource in the specified project using the data included in the request.
+compute.beta.healthCheck;list;Retrieves the list of HealthCheck resources available to the specified project.
+compute.beta.healthCheck;patch;Updates a HealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.
+compute.beta.healthCheck;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.healthCheck;update;Updates a HealthCheck resource in the specified project using the data included in the request.
+compute.beta.httpHealthCheck;delete;Deletes the specified HttpHealthCheck resource.
+compute.beta.httpHealthCheck;get;Returns the specified HttpHealthCheck resource. Get a list of available HTTP health checks by making a list() request.
+compute.beta.httpHealthCheck;insert;Creates a HttpHealthCheck resource in the specified project using the data included in the request.
+compute.beta.httpHealthCheck;list;Retrieves the list of HttpHealthCheck resources available to the specified project.
+compute.beta.httpHealthCheck;patch;Updates a HttpHealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.
+compute.beta.httpHealthCheck;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.httpHealthCheck;update;Updates a HttpHealthCheck resource in the specified project using the data included in the request.
+compute.beta.httpsHealthCheck;delete;Deletes the specified HttpsHealthCheck resource.
+compute.beta.httpsHealthCheck;get;Returns the specified HttpsHealthCheck resource. Get a list of available HTTPS health checks by making a list() request.
+compute.beta.httpsHealthCheck;insert;Creates a HttpsHealthCheck resource in the specified project using the data included in the request.
+compute.beta.httpsHealthCheck;list;Retrieves the list of HttpsHealthCheck resources available to the specified project.
+compute.beta.httpsHealthCheck;patch;Updates a HttpsHealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.
+compute.beta.httpsHealthCheck;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.httpsHealthCheck;update;Updates a HttpsHealthCheck resource in the specified project using the data included in the request.
+compute.beta.image;delete;Deletes the specified image.
+compute.beta.image;deprecate;Sets the deprecation status of an image. If an empty request body is given, clears the deprecation status instead.
+compute.beta.image;get;Returns the specified image. Get a list of available images by making a list() request.
+compute.beta.image;getFromFamily;Returns the latest image that is part of an image family and is not deprecated.
+compute.beta.image;insert;Creates an image in the specified project using the data included in the request.
+compute.beta.image;list;Retrieves the list of private images available to the specified project. Private images are images you create that belong to your project. This method does not get any images that belong to other projects, including publicly-available images, like Debian 8. If you want to get a list of publicly-available images, use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
+compute.beta.image;setLabels;Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources documentation.
+compute.beta.image;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.instance;addAccessConfig;Adds an access config to an instance's network interface.
+compute.beta.instance;aggregatedList;Retrieves aggregated list of instances.
+compute.beta.instance;attachDisk;Attaches an existing Disk resource to an instance. You must first create the disk before you can attach it. It is not possible to create and attach a disk at the same time. For more information, read Adding a persistent disk to your instance.
+compute.beta.instance;delete;Deletes the specified Instance resource. For more information, see Stopping or Deleting an Instance.
+compute.beta.instance;deleteAccessConfig;Deletes an access config from an instance's network interface.
+compute.beta.instance;detachDisk;Detaches a disk from an instance.
+compute.beta.instance;get;Returns the specified Instance resource. Get a list of available instances by making a list() request.
+compute.beta.instance;getSerialPortOutput;Returns the specified instance's serial port output.
+compute.beta.instance;insert;Creates an instance resource in the specified project using the data included in the request.
+compute.beta.instance;list;Retrieves the list of instances contained within the specified zone.
+compute.beta.instance;listReferrers;Retrieves the list of referrers to instances contained within the specified zone.
+compute.beta.instance;reset;Performs a reset on the instance. For more information, see Resetting an instance.
+compute.beta.instance;setDiskAutoDelete;Sets the auto-delete flag for a disk attached to an instance.
+compute.beta.instance;setLabels;Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources documentation.
+compute.beta.instance;setMachineResources;Changes the number and/or type of accelerator for a stopped instance to the values specified in the request.
+compute.beta.instance;setMachineType;Changes the machine type for a stopped instance to the machine type specified in the request.
+compute.beta.instance;setMetadata;Sets metadata for the specified instance to the data included in the request.
+compute.beta.instance;setScheduling;Sets an instance's scheduling options.
+compute.beta.instance;setServiceAccount;Sets the service account on the instance. For more information, read Changing the service account and access scopes for an instance.
+compute.beta.instance;setTags;Sets tags for the specified instance to the data included in the request.
+compute.beta.instance;start;Starts an instance that was stopped using the using the instances().stop method. For more information, see Restart an instance.
+compute.beta.instance;startWithEncryptionKey;Starts an instance that was stopped using the using the instances().stop method. For more information, see Restart an instance.
+compute.beta.instance;stop;Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a later time. Stopped instances do not incur per-minute, virtual machine usage charges while they are stopped, but any resources that the virtual machine is using, such as persistent disks and static IP addresses, will continue to be charged until they are deleted. For more information, see Stopping an instance.
+compute.beta.instance;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.instanceGroup;addInstances;Adds a list of instances to the specified instance group. All of the instances in the instance group must be in the same network/subnetwork. Read Adding instances for more information.
+compute.beta.instanceGroup;aggregatedList;Retrieves the list of instance groups and sorts them by zone.
+compute.beta.instanceGroup;delete;Deletes the specified instance group. The instances in the group are not deleted. Note that instance group must not belong to a backend service. Read Deleting an instance group for more information.
+compute.beta.instanceGroup;get;Returns the specified instance group. Get a list of available instance groups by making a list() request.
+compute.beta.instanceGroup;insert;Creates an instance group in the specified project using the parameters that are included in the request.
+compute.beta.instanceGroup;list;Retrieves the list of instance groups that are located in the specified project and zone.
+compute.beta.instanceGroup;listInstances;Lists the instances in the specified instance group.
+compute.beta.instanceGroup;removeInstances;Removes one or more instances from the specified instance group, but does not delete those instances. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted.
+compute.beta.instanceGroup;setNamedPorts;Sets the named ports for the specified instance group.
+compute.beta.instanceGroup;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.instanceGroupManager;abandonInstances;Schedules a group action to remove the specified instances from the managed instance group. Abandoning an instance does not delete the instance, but it does remove the instance from any target pools that are applied by the managed instance group. This method reduces the targetSize of the managed instance group by the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even if the instances have not yet been removed from the group. You must separately verify the status of the abandoning action with the listmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request.
+compute.beta.instanceGroupManager;aggregatedList;Retrieves the list of managed instance groups and groups them by zone.
+compute.beta.instanceGroupManager;delete;Deletes the specified managed instance group and all of the instances in that group. Note that the instance group must not belong to a backend service. Read Deleting an instance group for more information.
+compute.beta.instanceGroupManager;deleteInstances;Schedules a group action to delete the specified instances in the managed instance group. The instances are also removed from any target pools of which they were a member. This method reduces the targetSize of the managed instance group by the number of instances that you delete. This operation is marked as DONE when the action is scheduled even if the instances are still being deleted. You must separately verify the status of the deleting action with the listmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request.
+compute.beta.instanceGroupManager;get;Returns all of the details about the specified managed instance group. Get a list of available managed instance groups by making a list() request.
+compute.beta.instanceGroupManager;insert;Creates a managed instance group using the information that you specify in the request. After the group is created, it schedules an action to create instances in the group using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A managed instance group can have up to 1000 VM instances per group.
+compute.beta.instanceGroupManager;list;Retrieves a list of managed instance groups that are contained within the specified project and zone.
+compute.beta.instanceGroupManager;listManagedInstances;Lists all of the instances in the managed instance group. Each instance in the list has a currentAction, which indicates the action that the managed instance group is performing on the instance. For example, if the group is still creating an instance, the currentAction is CREATING. If a previous action failed, the list displays the errors for that failed action.
+compute.beta.instanceGroupManager;recreateInstances;Schedules a group action to recreate the specified instances in the managed instance group. The instances are deleted and recreated using the current instance template for the managed instance group. This operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated. You must separately verify the status of the recreating action with the listmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request.
+compute.beta.instanceGroupManager;resize;Resizes the managed instance group. If you increase the size, the group creates new instances using the current instance template. If you decrease the size, the group deletes instances. The resize operation is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any instances. You must separately verify the status of the creating or deleting actions with the listmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted.
+compute.beta.instanceGroupManager;resizeAdvanced;Resizes the managed instance group with advanced configuration options like disabling creation retries. This is an extended version of the resize method. If you increase the size of the instance group, the group creates new instances using the current instance template. If you decrease the size, the group deletes instances. The resize operation is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any instances. You must separately verify the status of the creating, creatingWithoutRetries, or deleting actions with the get or listmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted.
+compute.beta.instanceGroupManager;setAutoHealingPolicies;Modifies the autohealing policies.
+compute.beta.instanceGroupManager;setInstanceTemplate;Specifies the instance template to use when creating new instances in this group. The templates for existing instances in the group do not change unless you recreate them.
+compute.beta.instanceGroupManager;setTargetPools;Modifies the target pools to which all instances in this managed instance group are assigned. The target pools automatically apply to all of the instances in the managed instance group. This operation is marked DONE when you make the request even if the instances have not yet been added to their target pools. The change might take some time to apply to all of the instances in the group depending on the size of the group.
+compute.beta.instanceGroupManager;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.instanceTemplate;delete;Deletes the specified instance template. If you delete an instance template that is being referenced from another instance group, the instance group will not be able to create or recreate virtual machine instances. Deleting an instance template is permanent and cannot be undone.
+compute.beta.instanceTemplate;get;Returns the specified instance template. Get a list of available instance templates by making a list() request.
+compute.beta.instanceTemplate;insert;Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an existing instance group, your new instance template must use the same network or, if applicable, the same subnetwork as the original template.
+compute.beta.instanceTemplate;list;Retrieves a list of instance templates that are contained within the specified project and zone.
+compute.beta.instanceTemplate;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.network;addPeering;Adds a peering to the specified network.
+compute.beta.network;delete;Deletes the specified network.
+compute.beta.network;get;Returns the specified network. Get a list of available networks by making a list() request.
+compute.beta.network;insert;Creates a network in the specified project using the data included in the request.
+compute.beta.network;list;Retrieves the list of networks available to the specified project.
+compute.beta.network;removePeering;Removes a peering from the specified network.
+compute.beta.network;switchToCustomMode;Switches the network mode from auto subnet mode to custom subnet mode.
+compute.beta.network;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.regionAutoscaler;delete;Deletes the specified autoscaler.
+compute.beta.regionAutoscaler;get;Returns the specified autoscaler.
+compute.beta.regionAutoscaler;insert;Creates an autoscaler in the specified project using the data included in the request.
+compute.beta.regionAutoscaler;list;Retrieves a list of autoscalers contained within the specified region.
+compute.beta.regionAutoscaler;patch;Updates an autoscaler in the specified project using the data included in the request. This method supports patch semantics.
+compute.beta.regionAutoscaler;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.regionAutoscaler;update;Updates an autoscaler in the specified project using the data included in the request.
+compute.beta.regionBackendService;delete;Deletes the specified regional BackendService resource.
+compute.beta.regionBackendService;get;Returns the specified regional BackendService resource.
+compute.beta.regionBackendService;getHealth;Gets the most recent health check results for this regional BackendService.
+compute.beta.regionBackendService;insert;Creates a regional BackendService resource in the specified project using the data included in the request. There are several restrictions and guidelines to keep in mind when creating a regional backend service. Read Restrictions and Guidelines for more information.
+compute.beta.regionBackendService;list;Retrieves the list of regional BackendService resources available to the specified project in the given region.
+compute.beta.regionBackendService;patch;Updates the specified regional BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read Restrictions and Guidelines for more information. This method supports patch semantics.
+compute.beta.regionBackendService;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.regionBackendService;update;Updates the specified regional BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read Restrictions and Guidelines for more information.
+compute.beta.regionInstanceGroup;get;Returns the specified instance group resource.
+compute.beta.regionInstanceGroup;list;Retrieves the list of instance group resources contained within the specified region.
+compute.beta.regionInstanceGroup;listInstances;Lists the instances in the specified instance group and displays information about the named ports. Depending on the specified options, this method can list all instances or only the instances that are running.
+compute.beta.regionInstanceGroup;setNamedPorts;Sets the named ports for the specified regional instance group.
+compute.beta.regionInstanceGroup;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.regionInstanceGroupManager;abandonInstances;Schedules a group action to remove the specified instances from the managed instance group. Abandoning an instance does not delete the instance, but it does remove the instance from any target pools that are applied by the managed instance group. This method reduces the targetSize of the managed instance group by the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even if the instances have not yet been removed from the group. You must separately verify the status of the abandoning action with the listmanagedinstances method. You can specify a maximum of 1000 instances with this method per request.
+compute.beta.regionInstanceGroupManager;delete;Deletes the specified managed instance group and all of the instances in that group.
+compute.beta.regionInstanceGroupManager;deleteInstances;Schedules a group action to delete the specified instances in the managed instance group. The instances are also removed from any target pools of which they were a member. This method reduces the targetSize of the managed instance group by the number of instances that you delete. This operation is marked as DONE when the action is scheduled even if the instances are still being deleted. You must separately verify the status of the deleting action with the listmanagedinstances method. You can specify a maximum of 1000 instances with this method per request.
+compute.beta.regionInstanceGroupManager;get;Returns all of the details about the specified managed instance group.
+compute.beta.regionInstanceGroupManager;insert;Creates a managed instance group using the information that you specify in the request. After the group is created, it schedules an action to create instances in the group using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
+compute.beta.regionInstanceGroupManager;list;Retrieves the list of managed instance groups that are contained within the specified region.
+compute.beta.regionInstanceGroupManager;listManagedInstances;Lists the instances in the managed instance group and instances that are scheduled to be created. The list includes any current actions that the group has scheduled for its instances.
+compute.beta.regionInstanceGroupManager;recreateInstances;Schedules a group action to recreate the specified instances in the managed instance group. The instances are deleted and recreated using the current instance template for the managed instance group. This operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated. You must separately verify the status of the recreating action with the listmanagedinstances method. You can specify a maximum of 1000 instances with this method per request.
+compute.beta.regionInstanceGroupManager;resize;Changes the intended size for the managed instance group. If you increase the size, the group schedules actions to create new instances using the current instance template. If you decrease the size, the group schedules delete actions on one or more instances. The resize operation is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any instances. You must separately verify the status of the creating or deleting actions with the listmanagedinstances method.
+compute.beta.regionInstanceGroupManager;setAutoHealingPolicies;Modifies the autohealing policy for the instances in this managed instance group.
+compute.beta.regionInstanceGroupManager;setInstanceTemplate;Sets the instance template to use when creating new instances or recreating instances in this group. Existing instances are not affected.
+compute.beta.regionInstanceGroupManager;setTargetPools;Modifies the target pools to which all new instances in this group are assigned. Existing instances in the group are not affected.
+compute.beta.regionInstanceGroupManager;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.route;delete;Deletes the specified Route resource.
+compute.beta.route;get;Returns the specified Route resource. Get a list of available routes by making a list() request.
+compute.beta.route;insert;Creates a Route resource in the specified project using the data included in the request.
+compute.beta.route;list;Retrieves the list of Route resources available to the specified project.
+compute.beta.route;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.router;aggregatedList;Retrieves an aggregated list of routers.
+compute.beta.router;delete;Deletes the specified Router resource.
+compute.beta.router;get;Returns the specified Router resource. Get a list of available routers by making a list() request.
+compute.beta.router;getRouterStatus;Retrieves runtime information of the specified router.
+compute.beta.router;insert;Creates a Router resource in the specified project and region using the data included in the request.
+compute.beta.router;list;Retrieves a list of Router resources available to the specified project.
+compute.beta.router;patch;Updates the specified Router resource with the data included in the request. This method supports patch semantics.
+compute.beta.router;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.router;update;Updates the specified Router resource with the data included in the request.
+compute.beta.sslCertificate;delete;Deletes the specified SslCertificate resource.
+compute.beta.sslCertificate;get;Returns the specified SslCertificate resource. Get a list of available SSL certificates by making a list() request.
+compute.beta.sslCertificate;insert;Creates a SslCertificate resource in the specified project using the data included in the request.
+compute.beta.sslCertificate;list;Retrieves the list of SslCertificate resources available to the specified project.
+compute.beta.sslCertificate;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.subnetwork;aggregatedList;Retrieves an aggregated list of subnetworks.
+compute.beta.subnetwork;delete;Deletes the specified subnetwork.
+compute.beta.subnetwork;expandIpCidrRange;Expands the IP CIDR range of the subnetwork to a specified value.
+compute.beta.subnetwork;get;Returns the specified subnetwork. Get a list of available subnetworks list() request.
+compute.beta.subnetwork;getIamPolicy;Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+compute.beta.subnetwork;insert;Creates a subnetwork in the specified project using the data included in the request.
+compute.beta.subnetwork;list;Retrieves a list of subnetworks available to the specified project.
+compute.beta.subnetwork;setIamPolicy;Sets the access control policy on the specified resource. Replaces any existing policy.
+compute.beta.subnetwork;setPrivateIpGoogleAccess;Set whether VMs in this subnet can access Google services without assigning external IP addresses through Cloudpath.
+compute.beta.subnetwork;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.targetHttpProxy;delete;Deletes the specified TargetHttpProxy resource.
+compute.beta.targetHttpProxy;get;Returns the specified TargetHttpProxy resource. Get a list of available target HTTP proxies by making a list() request.
+compute.beta.targetHttpProxy;insert;Creates a TargetHttpProxy resource in the specified project using the data included in the request.
+compute.beta.targetHttpProxy;list;Retrieves the list of TargetHttpProxy resources available to the specified project.
+compute.beta.targetHttpProxy;setUrlMap;Changes the URL map for TargetHttpProxy.
+compute.beta.targetHttpProxy;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.targetHttpsProxy;delete;Deletes the specified TargetHttpsProxy resource.
+compute.beta.targetHttpsProxy;get;Returns the specified TargetHttpsProxy resource. Get a list of available target HTTPS proxies by making a list() request.
+compute.beta.targetHttpsProxy;insert;Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
+compute.beta.targetHttpsProxy;list;Retrieves the list of TargetHttpsProxy resources available to the specified project.
+compute.beta.targetHttpsProxy;setSslCertificates;Replaces SslCertificates for TargetHttpsProxy.
+compute.beta.targetHttpsProxy;setUrlMap;Changes the URL map for TargetHttpsProxy.
+compute.beta.targetHttpsProxy;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.targetInstance;aggregatedList;Retrieves an aggregated list of target instances.
+compute.beta.targetInstance;delete;Deletes the specified TargetInstance resource.
+compute.beta.targetInstance;get;Returns the specified TargetInstance resource. Get a list of available target instances by making a list() request.
+compute.beta.targetInstance;insert;Creates a TargetInstance resource in the specified project and zone using the data included in the request.
+compute.beta.targetInstance;list;Retrieves a list of TargetInstance resources available to the specified project and zone.
+compute.beta.targetInstance;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.targetPool;addHealthCheck;Adds health check URLs to a target pool.
+compute.beta.targetPool;addInstance;Adds an instance to a target pool.
+compute.beta.targetPool;aggregatedList;Retrieves an aggregated list of target pools.
+compute.beta.targetPool;delete;Deletes the specified target pool.
+compute.beta.targetPool;get;Returns the specified target pool. Get a list of available target pools by making a list() request.
+compute.beta.targetPool;getHealth;Gets the most recent health check results for each IP for the instance that is referenced by the given target pool.
+compute.beta.targetPool;insert;Creates a target pool in the specified project and region using the data included in the request.
+compute.beta.targetPool;list;Retrieves a list of target pools available to the specified project and region.
+compute.beta.targetPool;removeHealthCheck;Removes health check URL from a target pool.
+compute.beta.targetPool;removeInstance;Removes instance URL from a target pool.
+compute.beta.targetPool;setBackup;Changes a backup target pool's configurations.
+compute.beta.targetPool;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.targetSslProxy;delete;Deletes the specified TargetSslProxy resource.
+compute.beta.targetSslProxy;get;Returns the specified TargetSslProxy resource. Get a list of available target SSL proxies by making a list() request.
+compute.beta.targetSslProxy;insert;Creates a TargetSslProxy resource in the specified project using the data included in the request.
+compute.beta.targetSslProxy;list;Retrieves the list of TargetSslProxy resources available to the specified project.
+compute.beta.targetSslProxy;setBackendService;Changes the BackendService for TargetSslProxy.
+compute.beta.targetSslProxy;setProxyHeader;Changes the ProxyHeaderType for TargetSslProxy.
+compute.beta.targetSslProxy;setSslCertificates;Changes SslCertificates for TargetSslProxy.
+compute.beta.targetSslProxy;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.targetVpnGateway;aggregatedList;Retrieves an aggregated list of target VPN gateways.
+compute.beta.targetVpnGateway;delete;Deletes the specified target VPN gateway.
+compute.beta.targetVpnGateway;get;Returns the specified target VPN gateway. Get a list of available target VPN gateways by making a list() request.
+compute.beta.targetVpnGateway;insert;Creates a target VPN gateway in the specified project and region using the data included in the request.
+compute.beta.targetVpnGateway;list;Retrieves a list of target VPN gateways available to the specified project and region.
+compute.beta.targetVpnGateway;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.urlMap;delete;Deletes the specified UrlMap resource.
+compute.beta.urlMap;get;Returns the specified UrlMap resource. Get a list of available URL maps by making a list() request.
+compute.beta.urlMap;insert;Creates a UrlMap resource in the specified project using the data included in the request.
+compute.beta.urlMap;invalidateCache;Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified UrlMap.
+compute.beta.urlMap;list;Retrieves the list of UrlMap resources available to the specified project.
+compute.beta.urlMap;patch;Updates the specified UrlMap resource with the data included in the request. This method supports patch semantics.
+compute.beta.urlMap;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.beta.urlMap;update;Updates the specified UrlMap resource with the data included in the request.
+compute.beta.urlMap;validate;Runs static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run. Calling this method does NOT create the UrlMap.
+compute.beta.vpnTunnel;aggregatedList;Retrieves an aggregated list of VPN tunnels.
+compute.beta.vpnTunnel;delete;Deletes the specified VpnTunnel resource.
+compute.beta.vpnTunnel;get;Returns the specified VpnTunnel resource. Get a list of available VPN tunnels by making a list() request.
+compute.beta.vpnTunnel;insert;Creates a VpnTunnel resource in the specified project and region using the data included in the request.
+compute.beta.vpnTunnel;list;Retrieves a list of VpnTunnel resources contained in the specified project and region.
+compute.beta.vpnTunnel;testIamPermissions;Returns permissions that a caller has on the specified resource.
+compute.v1.address;aggregatedList;Retrieves an aggregated list of addresses.
+compute.v1.address;delete;Deletes the specified address resource.
+compute.v1.address;get;Returns the specified address resource.
+compute.v1.address;insert;Creates an address resource in the specified project using the data included in the request.
+compute.v1.address;list;Retrieves a list of addresses contained within the specified region.
+compute.v1.autoscaler;aggregatedList;Retrieves an aggregated list of autoscalers.
+compute.v1.autoscaler;delete;Deletes the specified autoscaler.
+compute.v1.autoscaler;get;Returns the specified autoscaler resource. Get a list of available autoscalers by making a list() request.
+compute.v1.autoscaler;insert;Creates an autoscaler in the specified project using the data included in the request.
+compute.v1.autoscaler;list;Retrieves a list of autoscalers contained within the specified zone.
+compute.v1.autoscaler;patch;Updates an autoscaler in the specified project using the data included in the request. This method supports patch semantics.
+compute.v1.autoscaler;update;Updates an autoscaler in the specified project using the data included in the request.
+compute.v1.backendService;aggregatedList;Retrieves the list of all BackendService resources, regional and global, available to the specified project.
+compute.v1.backendService;delete;Deletes the specified BackendService resource.
+compute.v1.backendService;get;Returns the specified BackendService resource. Get a list of available backend services by making a list() request.
+compute.v1.backendService;getHealth;Gets the most recent health check results for this BackendService.
+compute.v1.backendService;insert;Creates a BackendService resource in the specified project using the data included in the request. There are several restrictions and guidelines to keep in mind when creating a backend service. Read Restrictions and Guidelines for more information.
+compute.v1.backendService;list;Retrieves the list of BackendService resources available to the specified project.
+compute.v1.backendService;patch;Patches the specified BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read Restrictions and Guidelines for more information. This method supports patch semantics.
+compute.v1.backendService;update;Updates the specified BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read Restrictions and Guidelines for more information.
+compute.v1.disk;aggregatedList;Retrieves an aggregated list of persistent disks.
+compute.v1.disk;createSnapshot;Creates a snapshot of a specified persistent disk.
+compute.v1.disk;delete;Deletes the specified persistent disk. Deleting a disk removes its data permanently and is irreversible. However, deleting a disk does not delete any snapshots previously made from the disk. You must separately delete snapshots.
+compute.v1.disk;get;Returns a specified persistent disk. Get a list of available persistent disks by making a list() request.
+compute.v1.disk;insert;Creates a persistent disk in the specified project using the data in the request. You can create a disk with a sourceImage, a sourceSnapshot, or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
+compute.v1.disk;list;Retrieves a list of persistent disks contained within the specified zone.
+compute.v1.disk;resize;Resizes the specified persistent disk.
+compute.v1.firewall;delete;Deletes the specified firewall.
+compute.v1.firewall;get;Returns the specified firewall.
+compute.v1.firewall;insert;Creates a firewall rule in the specified project using the data included in the request.
+compute.v1.firewall;list;Retrieves the list of firewall rules available to the specified project.
+compute.v1.firewall;patch;Updates the specified firewall rule with the data included in the request. This method supports patch semantics.
+compute.v1.firewall;update;Updates the specified firewall rule with the data included in the request.
+compute.v1.forwardingRule;aggregatedList;Retrieves an aggregated list of forwarding rules.
+compute.v1.forwardingRule;delete;Deletes the specified ForwardingRule resource.
+compute.v1.forwardingRule;get;Returns the specified ForwardingRule resource.
+compute.v1.forwardingRule;insert;Creates a ForwardingRule resource in the specified project and region using the data included in the request.
+compute.v1.forwardingRule;list;Retrieves a list of ForwardingRule resources available to the specified project and region.
+compute.v1.forwardingRule;setTarget;Changes target URL for forwarding rule. The new target should be of the same type as the old target.
+compute.v1.globalAddress;delete;Deletes the specified address resource.
+compute.v1.globalAddress;get;Returns the specified address resource. Get a list of available addresses by making a list() request.
+compute.v1.globalAddress;insert;Creates an address resource in the specified project using the data included in the request.
+compute.v1.globalAddress;list;Retrieves a list of global addresses.
+compute.v1.globalForwardingRule;delete;Deletes the specified GlobalForwardingRule resource.
+compute.v1.globalForwardingRule;get;Returns the specified GlobalForwardingRule resource. Get a list of available forwarding rules by making a list() request.
+compute.v1.globalForwardingRule;insert;Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
+compute.v1.globalForwardingRule;list;Retrieves a list of GlobalForwardingRule resources available to the specified project.
+compute.v1.globalForwardingRule;setTarget;Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type as the old target.
+compute.v1.healthCheck;delete;Deletes the specified HealthCheck resource.
+compute.v1.healthCheck;get;Returns the specified HealthCheck resource. Get a list of available health checks by making a list() request.
+compute.v1.healthCheck;insert;Creates a HealthCheck resource in the specified project using the data included in the request.
+compute.v1.healthCheck;list;Retrieves the list of HealthCheck resources available to the specified project.
+compute.v1.healthCheck;patch;Updates a HealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.
+compute.v1.healthCheck;update;Updates a HealthCheck resource in the specified project using the data included in the request.
+compute.v1.httpHealthCheck;delete;Deletes the specified HttpHealthCheck resource.
+compute.v1.httpHealthCheck;get;Returns the specified HttpHealthCheck resource. Get a list of available HTTP health checks by making a list() request.
+compute.v1.httpHealthCheck;insert;Creates a HttpHealthCheck resource in the specified project using the data included in the request.
+compute.v1.httpHealthCheck;list;Retrieves the list of HttpHealthCheck resources available to the specified project.
+compute.v1.httpHealthCheck;patch;Updates a HttpHealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.
+compute.v1.httpHealthCheck;update;Updates a HttpHealthCheck resource in the specified project using the data included in the request.
+compute.v1.httpsHealthCheck;delete;Deletes the specified HttpsHealthCheck resource.
+compute.v1.httpsHealthCheck;get;Returns the specified HttpsHealthCheck resource. Get a list of available HTTPS health checks by making a list() request.
+compute.v1.httpsHealthCheck;insert;Creates a HttpsHealthCheck resource in the specified project using the data included in the request.
+compute.v1.httpsHealthCheck;list;Retrieves the list of HttpsHealthCheck resources available to the specified project.
+compute.v1.httpsHealthCheck;patch;Updates a HttpsHealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.
+compute.v1.httpsHealthCheck;update;Updates a HttpsHealthCheck resource in the specified project using the data included in the request.
+compute.v1.image;delete;Deletes the specified image.
+compute.v1.image;deprecate;Sets the deprecation status of an image. If an empty request body is given, clears the deprecation status instead.
+compute.v1.image;get;Returns the specified image. Get a list of available images by making a list() request.
+compute.v1.image;getFromFamily;Returns the latest image that is part of an image family and is not deprecated.
+compute.v1.image;insert;Creates an image in the specified project using the data included in the request.
+compute.v1.image;list;Retrieves the list of private images available to the specified project. Private images are images you create that belong to your project. This method does not get any images that belong to other projects, including publicly-available images, like Debian 8. If you want to get a list of publicly-available images, use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
+compute.v1.instance;addAccessConfig;Adds an access config to an instance's network interface.
+compute.v1.instance;aggregatedList;Retrieves aggregated list of instances.
+compute.v1.instance;attachDisk;Attaches an existing Disk resource to an instance. You must first create the disk before you can attach it. It is not possible to create and attach a disk at the same time. For more information, read Adding a persistent disk to your instance.
+compute.v1.instance;delete;Deletes the specified Instance resource. For more information, see Stopping or Deleting an Instance.
+compute.v1.instance;deleteAccessConfig;Deletes an access config from an instance's network interface.
+compute.v1.instance;detachDisk;Detaches a disk from an instance.
+compute.v1.instance;get;Returns the specified Instance resource. Get a list of available instances by making a list() request.
+compute.v1.instance;getSerialPortOutput;Returns the specified instance's serial port output.
+compute.v1.instance;insert;Creates an instance resource in the specified project using the data included in the request.
+compute.v1.instance;list;Retrieves the list of instances contained within the specified zone.
+compute.v1.instance;reset;Performs a reset on the instance. For more information, see Resetting an instance.
+compute.v1.instance;setDiskAutoDelete;Sets the auto-delete flag for a disk attached to an instance.
+compute.v1.instance;setMachineType;Changes the machine type for a stopped instance to the machine type specified in the request.
+compute.v1.instance;setMetadata;Sets metadata for the specified instance to the data included in the request.
+compute.v1.instance;setScheduling;Sets an instance's scheduling options.
+compute.v1.instance;setTags;Sets tags for the specified instance to the data included in the request.
+compute.v1.instance;start;Starts an instance that was stopped using the using the instances().stop method. For more information, see Restart an instance.
+compute.v1.instance;startWithEncryptionKey;Starts an instance that was stopped using the using the instances().stop method. For more information, see Restart an instance.
+compute.v1.instance;stop;Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a later time. Stopped instances do not incur per-minute, virtual machine usage charges while they are stopped, but any resources that the virtual machine is using, such as persistent disks and static IP addresses, will continue to be charged until they are deleted. For more information, see Stopping an instance.
+compute.v1.instanceGroup;addInstances;Adds a list of instances to the specified instance group. All of the instances in the instance group must be in the same network/subnetwork. Read Adding instances for more information.
+compute.v1.instanceGroup;aggregatedList;Retrieves the list of instance groups and sorts them by zone.
+compute.v1.instanceGroup;delete;Deletes the specified instance group. The instances in the group are not deleted. Note that instance group must not belong to a backend service. Read Deleting an instance group for more information.
+compute.v1.instanceGroup;get;Returns the specified instance group. Get a list of available instance groups by making a list() request.
+compute.v1.instanceGroup;insert;Creates an instance group in the specified project using the parameters that are included in the request.
+compute.v1.instanceGroup;list;Retrieves the list of instance groups that are located in the specified project and zone.
+compute.v1.instanceGroup;listInstances;Lists the instances in the specified instance group.
+compute.v1.instanceGroup;removeInstances;Removes one or more instances from the specified instance group, but does not delete those instances. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration before the VM instance is removed or deleted.
+compute.v1.instanceGroup;setNamedPorts;Sets the named ports for the specified instance group.
+compute.v1.instanceGroupManager;abandonInstances;Schedules a group action to remove the specified instances from the managed instance group. Abandoning an instance does not delete the instance, but it does remove the instance from any target pools that are applied by the managed instance group. This method reduces the targetSize of the managed instance group by the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even if the instances have not yet been removed from the group. You must separately verify the status of the abandoning action with the listmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request.
+compute.v1.instanceGroupManager;aggregatedList;Retrieves the list of managed instance groups and groups them by zone.
+compute.v1.instanceGroupManager;delete;Deletes the specified managed instance group and all of the instances in that group. Note that the instance group must not belong to a backend service. Read Deleting an instance group for more information.
+compute.v1.instanceGroupManager;deleteInstances;Schedules a group action to delete the specified instances in the managed instance group. The instances are also removed from any target pools of which they were a member. This method reduces the targetSize of the managed instance group by the number of instances that you delete. This operation is marked as DONE when the action is scheduled even if the instances are still being deleted. You must separately verify the status of the deleting action with the listmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request.
+compute.v1.instanceGroupManager;get;Returns all of the details about the specified managed instance group. Get a list of available managed instance groups by making a list() request.
+compute.v1.instanceGroupManager;insert;Creates a managed instance group using the information that you specify in the request. After the group is created, it schedules an action to create instances in the group using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A managed instance group can have up to 1000 VM instances per group.
+compute.v1.instanceGroupManager;list;Retrieves a list of managed instance groups that are contained within the specified project and zone.
+compute.v1.instanceGroupManager;listManagedInstances;Lists all of the instances in the managed instance group. Each instance in the list has a currentAction, which indicates the action that the managed instance group is performing on the instance. For example, if the group is still creating an instance, the currentAction is CREATING. If a previous action failed, the list displays the errors for that failed action.
+compute.v1.instanceGroupManager;recreateInstances;Schedules a group action to recreate the specified instances in the managed instance group. The instances are deleted and recreated using the current instance template for the managed instance group. This operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated. You must separately verify the status of the recreating action with the listmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request.
+compute.v1.instanceGroupManager;resize;Resizes the managed instance group. If you increase the size, the group creates new instances using the current instance template. If you decrease the size, the group deletes instances. The resize operation is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any instances. You must separately verify the status of the creating or deleting actions with the listmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration before the VM instance is removed or deleted.
+compute.v1.instanceGroupManager;setInstanceTemplate;Specifies the instance template to use when creating new instances in this group. The templates for existing instances in the group do not change unless you recreate them.
+compute.v1.instanceGroupManager;setTargetPools;Modifies the target pools to which all instances in this managed instance group are assigned. The target pools automatically apply to all of the instances in the managed instance group. This operation is marked DONE when you make the request even if the instances have not yet been added to their target pools. The change might take some time to apply to all of the instances in the group depending on the size of the group.
+compute.v1.instanceTemplate;delete;Deletes the specified instance template. If you delete an instance template that is being referenced from another instance group, the instance group will not be able to create or recreate virtual machine instances. Deleting an instance template is permanent and cannot be undone.
+compute.v1.instanceTemplate;get;Returns the specified instance template. Get a list of available instance templates by making a list() request.
+compute.v1.instanceTemplate;insert;Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an existing instance group, your new instance template must use the same network or, if applicable, the same subnetwork as the original template.
+compute.v1.instanceTemplate;list;Retrieves a list of instance templates that are contained within the specified project and zone.
+compute.v1.network;delete;Deletes the specified network.
+compute.v1.network;get;Returns the specified network. Get a list of available networks by making a list() request.
+compute.v1.network;insert;Creates a network in the specified project using the data included in the request.
+compute.v1.network;list;Retrieves the list of networks available to the specified project.
+compute.v1.network;switchToCustomMode;Switches the network mode from auto subnet mode to custom subnet mode.
+compute.v1.regionAutoscaler;delete;Deletes the specified autoscaler.
+compute.v1.regionAutoscaler;get;Returns the specified autoscaler.
+compute.v1.regionAutoscaler;insert;Creates an autoscaler in the specified project using the data included in the request.
+compute.v1.regionAutoscaler;list;Retrieves a list of autoscalers contained within the specified region.
+compute.v1.regionAutoscaler;patch;Updates an autoscaler in the specified project using the data included in the request. This method supports patch semantics.
+compute.v1.regionAutoscaler;update;Updates an autoscaler in the specified project using the data included in the request.
+compute.v1.regionBackendService;delete;Deletes the specified regional BackendService resource.
+compute.v1.regionBackendService;get;Returns the specified regional BackendService resource.
+compute.v1.regionBackendService;getHealth;Gets the most recent health check results for this regional BackendService.
+compute.v1.regionBackendService;insert;Creates a regional BackendService resource in the specified project using the data included in the request. There are several restrictions and guidelines to keep in mind when creating a regional backend service. Read Restrictions and Guidelines for more information.
+compute.v1.regionBackendService;list;Retrieves the list of regional BackendService resources available to the specified project in the given region.
+compute.v1.regionBackendService;patch;Updates the specified regional BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read Restrictions and Guidelines for more information. This method supports patch semantics.
+compute.v1.regionBackendService;update;Updates the specified regional BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read Restrictions and Guidelines for more information.
+compute.v1.regionInstanceGroup;get;Returns the specified instance group resource.
+compute.v1.regionInstanceGroup;list;Retrieves the list of instance group resources contained within the specified region.
+compute.v1.regionInstanceGroup;listInstances;Lists the instances in the specified instance group and displays information about the named ports. Depending on the specified options, this method can list all instances or only the instances that are running.
+compute.v1.regionInstanceGroup;setNamedPorts;Sets the named ports for the specified regional instance group.
+compute.v1.regionInstanceGroupManager;abandonInstances;Schedules a group action to remove the specified instances from the managed instance group. Abandoning an instance does not delete the instance, but it does remove the instance from any target pools that are applied by the managed instance group. This method reduces the targetSize of the managed instance group by the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even if the instances have not yet been removed from the group. You must separately verify the status of the abandoning action with the listmanagedinstances method. You can specify a maximum of 1000 instances with this method per request.
+compute.v1.regionInstanceGroupManager;delete;Deletes the specified managed instance group and all of the instances in that group.
+compute.v1.regionInstanceGroupManager;deleteInstances;Schedules a group action to delete the specified instances in the managed instance group. The instances are also removed from any target pools of which they were a member. This method reduces the targetSize of the managed instance group by the number of instances that you delete. This operation is marked as DONE when the action is scheduled even if the instances are still being deleted. You must separately verify the status of the deleting action with the listmanagedinstances method. You can specify a maximum of 1000 instances with this method per request.
+compute.v1.regionInstanceGroupManager;get;Returns all of the details about the specified managed instance group.
+compute.v1.regionInstanceGroupManager;insert;Creates a managed instance group using the information that you specify in the request. After the group is created, it schedules an action to create instances in the group using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
+compute.v1.regionInstanceGroupManager;list;Retrieves the list of managed instance groups that are contained within the specified region.
+compute.v1.regionInstanceGroupManager;listManagedInstances;Lists the instances in the managed instance group and instances that are scheduled to be created. The list includes any current actions that the group has scheduled for its instances.
+compute.v1.regionInstanceGroupManager;recreateInstances;Schedules a group action to recreate the specified instances in the managed instance group. The instances are deleted and recreated using the current instance template for the managed instance group. This operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated. You must separately verify the status of the recreating action with the listmanagedinstances method. You can specify a maximum of 1000 instances with this method per request.
+compute.v1.regionInstanceGroupManager;resize;Changes the intended size for the managed instance group. If you increase the size, the group schedules actions to create new instances using the current instance template. If you decrease the size, the group schedules delete actions on one or more instances. The resize operation is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any instances. You must separately verify the status of the creating or deleting actions with the listmanagedinstances method.
+compute.v1.regionInstanceGroupManager;setInstanceTemplate;Sets the instance template to use when creating new instances or recreating instances in this group. Existing instances are not affected.
+compute.v1.regionInstanceGroupManager;setTargetPools;Modifies the target pools to which all new instances in this group are assigned. Existing instances in the group are not affected.
+compute.v1.route;delete;Deletes the specified Route resource.
+compute.v1.route;get;Returns the specified Route resource. Get a list of available routes by making a list() request.
+compute.v1.route;insert;Creates a Route resource in the specified project using the data included in the request.
+compute.v1.route;list;Retrieves the list of Route resources available to the specified project.
+compute.v1.router;aggregatedList;Retrieves an aggregated list of routers.
+compute.v1.router;delete;Deletes the specified Router resource.
+compute.v1.router;get;Returns the specified Router resource. Get a list of available routers by making a list() request.
+compute.v1.router;getRouterStatus;Retrieves runtime information of the specified router.
+compute.v1.router;insert;Creates a Router resource in the specified project and region using the data included in the request.
+compute.v1.router;list;Retrieves a list of Router resources available to the specified project.
+compute.v1.router;patch;Updates the specified Router resource with the data included in the request. This method supports patch semantics.
+compute.v1.router;update;Updates the specified Router resource with the data included in the request.
+compute.v1.sslCertificate;delete;Deletes the specified SslCertificate resource.
+compute.v1.sslCertificate;get;Returns the specified SslCertificate resource. Get a list of available SSL certificates by making a list() request.
+compute.v1.sslCertificate;insert;Creates a SslCertificate resource in the specified project using the data included in the request.
+compute.v1.sslCertificate;list;Retrieves the list of SslCertificate resources available to the specified project.
+compute.v1.subnetwork;aggregatedList;Retrieves an aggregated list of subnetworks.
+compute.v1.subnetwork;delete;Deletes the specified subnetwork.
+compute.v1.subnetwork;expandIpCidrRange;Expands the IP CIDR range of the subnetwork to a specified value.
+compute.v1.subnetwork;get;Returns the specified subnetwork. Get a list of available subnetworks list() request.
+compute.v1.subnetwork;insert;Creates a subnetwork in the specified project using the data included in the request.
+compute.v1.subnetwork;list;Retrieves a list of subnetworks available to the specified project.
+compute.v1.subnetwork;setPrivateIpGoogleAccess;Set whether VMs in this subnet can access Google services without assigning external IP addresses through Private Google Access.
+compute.v1.targetHttpProxy;delete;Deletes the specified TargetHttpProxy resource.
+compute.v1.targetHttpProxy;get;Returns the specified TargetHttpProxy resource. Get a list of available target HTTP proxies by making a list() request.
+compute.v1.targetHttpProxy;insert;Creates a TargetHttpProxy resource in the specified project using the data included in the request.
+compute.v1.targetHttpProxy;list;Retrieves the list of TargetHttpProxy resources available to the specified project.
+compute.v1.targetHttpProxy;setUrlMap;Changes the URL map for TargetHttpProxy.
+compute.v1.targetHttpsProxy;delete;Deletes the specified TargetHttpsProxy resource.
+compute.v1.targetHttpsProxy;get;Returns the specified TargetHttpsProxy resource. Get a list of available target HTTPS proxies by making a list() request.
+compute.v1.targetHttpsProxy;insert;Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
+compute.v1.targetHttpsProxy;list;Retrieves the list of TargetHttpsProxy resources available to the specified project.
+compute.v1.targetHttpsProxy;setSslCertificates;Replaces SslCertificates for TargetHttpsProxy.
+compute.v1.targetHttpsProxy;setUrlMap;Changes the URL map for TargetHttpsProxy.
+compute.v1.targetInstance;aggregatedList;Retrieves an aggregated list of target instances.
+compute.v1.targetInstance;delete;Deletes the specified TargetInstance resource.
+compute.v1.targetInstance;get;Returns the specified TargetInstance resource. Get a list of available target instances by making a list() request.
+compute.v1.targetInstance;insert;Creates a TargetInstance resource in the specified project and zone using the data included in the request.
+compute.v1.targetInstance;list;Retrieves a list of TargetInstance resources available to the specified project and zone.
+compute.v1.targetPool;addHealthCheck;Adds health check URLs to a target pool.
+compute.v1.targetPool;addInstance;Adds an instance to a target pool.
+compute.v1.targetPool;aggregatedList;Retrieves an aggregated list of target pools.
+compute.v1.targetPool;delete;Deletes the specified target pool.
+compute.v1.targetPool;get;Returns the specified target pool. Get a list of available target pools by making a list() request.
+compute.v1.targetPool;getHealth;Gets the most recent health check results for each IP for the instance that is referenced by the given target pool.
+compute.v1.targetPool;insert;Creates a target pool in the specified project and region using the data included in the request.
+compute.v1.targetPool;list;Retrieves a list of target pools available to the specified project and region.
+compute.v1.targetPool;removeHealthCheck;Removes health check URL from a target pool.
+compute.v1.targetPool;removeInstance;Removes instance URL from a target pool.
+compute.v1.targetPool;setBackup;Changes a backup target pool's configurations.
+compute.v1.targetSslProxy;delete;Deletes the specified TargetSslProxy resource.
+compute.v1.targetSslProxy;get;Returns the specified TargetSslProxy resource. Get a list of available target SSL proxies by making a list() request.
+compute.v1.targetSslProxy;insert;Creates a TargetSslProxy resource in the specified project using the data included in the request.
+compute.v1.targetSslProxy;list;Retrieves the list of TargetSslProxy resources available to the specified project.
+compute.v1.targetSslProxy;setBackendService;Changes the BackendService for TargetSslProxy.
+compute.v1.targetSslProxy;setProxyHeader;Changes the ProxyHeaderType for TargetSslProxy.
+compute.v1.targetSslProxy;setSslCertificates;Changes SslCertificates for TargetSslProxy.
+compute.v1.targetVpnGateway;aggregatedList;Retrieves an aggregated list of target VPN gateways.
+compute.v1.targetVpnGateway;delete;Deletes the specified target VPN gateway.
+compute.v1.targetVpnGateway;get;Returns the specified target VPN gateway. Get a list of available target VPN gateways by making a list() request.
+compute.v1.targetVpnGateway;insert;Creates a target VPN gateway in the specified project and region using the data included in the request.
+compute.v1.targetVpnGateway;list;Retrieves a list of target VPN gateways available to the specified project and region.
+compute.v1.urlMap;delete;Deletes the specified UrlMap resource.
+compute.v1.urlMap;get;Returns the specified UrlMap resource. Get a list of available URL maps by making a list() request.
+compute.v1.urlMap;insert;Creates a UrlMap resource in the specified project using the data included in the request.
+compute.v1.urlMap;invalidateCache;Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified UrlMap.
+compute.v1.urlMap;list;Retrieves the list of UrlMap resources available to the specified project.
+compute.v1.urlMap;patch;Updates the specified UrlMap resource with the data included in the request. This method supports patch semantics.
+compute.v1.urlMap;update;Updates the specified UrlMap resource with the data included in the request.
+compute.v1.urlMap;validate;Runs static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run. Calling this method does NOT create the UrlMap.
+compute.v1.vpnTunnel;aggregatedList;Retrieves an aggregated list of VPN tunnels.
+compute.v1.vpnTunnel;delete;Deletes the specified VpnTunnel resource.
+compute.v1.vpnTunnel;get;Returns the specified VpnTunnel resource. Get a list of available VPN tunnels by making a list() request.
+compute.v1.vpnTunnel;insert;Creates a VpnTunnel resource in the specified project and region using the data included in the request.
+compute.v1.vpnTunnel;list;Retrieves a list of VpnTunnel resources contained in the specified project and region.
+container.v1.cluster;completeIpRotation;Completes master IP rotation.
+container.v1.cluster;create;Creates a cluster, consisting of the specified number and type of Google Compute Engine instances.
+container.v1.cluster;delete;Deletes the cluster, including the Kubernetes endpoint and all worker nodes.
+container.v1.cluster;get;Gets the details of a specific cluster.
+container.v1.cluster;legacyAbac;Enables or disables the ABAC authorization mechanism on a cluster.
+container.v1.cluster;list;Lists all clusters owned by a project in either the specified zone or all zones.
+container.v1.cluster;resourceLabels;Sets labels on a cluster.
+container.v1.cluster;setMasterAuth;Used to set master auth materials.
+container.v1.cluster;startIpRotation;Start master IP rotation.
+container.v1.cluster;update;Updates the settings of a specific cluster.
+dataproc.v1.cluster;create;Creates a cluster in a project.
+dataproc.v1.cluster;delete;Deletes a cluster in a project.
+dataproc.v1.cluster;diagnose;Gets cluster diagnostic information.
+dataproc.v1.cluster;get;Gets the resource representation for a cluster in a project.
+dataproc.v1.cluster;list;Lists all regions/{region}/clusters in a project.
+dataproc.v1.cluster;patch;Updates a cluster in a project.
+dns.v1.managedZone;create;Create a new ManagedZone.
+dns.v1.managedZone;delete;Delete a previously created ManagedZone.
+dns.v1.managedZone;get;Fetch the representation of an existing ManagedZone.
+dns.v1.managedZone;list;Enumerate ManagedZones that have been created but not yet deleted.
+iam.v1.serviceAccount;create;Creates a ServiceAccount and returns it.
+iam.v1.serviceAccount;delete;Deletes a ServiceAccount.
+iam.v1.serviceAccount;get;Gets a ServiceAccount.
+iam.v1.serviceAccount;getIamPolicy;Returns the IAM access control policy for a ServiceAccount.
+iam.v1.serviceAccount;list;Lists ServiceAccounts for a project.
+iam.v1.serviceAccount;setIamPolicy;Sets the IAM access control policy for a ServiceAccount.
+iam.v1.serviceAccount;signBlob;Signs a blob using a service account's system-managed private key.
+iam.v1.serviceAccount;signJwt;Signs a JWT using a service account's system-managed private key.
+iam.v1.serviceAccount;testIamPermissions;Tests the specified permissions against the IAM access control policy for a ServiceAccount.
+iam.v1.serviceAccount;update;Updates a ServiceAccount.
+iam.v1.serviceAccounts.key;create;Creates a ServiceAccountKey and returns it.
+iam.v1.serviceAccounts.key;delete;Deletes a ServiceAccountKey.
+iam.v1.serviceAccounts.key;get;Gets the ServiceAccountKey by key id.
+iam.v1.serviceAccounts.key;list;Lists ServiceAccountKeys.
+logging.v2.metric;create;Creates a logs-based metric.
+logging.v2.metric;delete;Deletes a logs-based metric.
+logging.v2.metric;get;Gets a logs-based metric.
+logging.v2.metric;list;Lists logs-based metrics.
+logging.v2.metric;update;Creates or updates a logs-based metric.
+logging.v2.sink;create;Creates a sink that exports specified log entries to a destination.
+logging.v2.sink;delete;Deletes a sink.
+logging.v2.sink;get;Gets a sink.
+logging.v2.sink;list;Lists sinks.
+logging.v2.sink;update;Updates a sink.
+pubsub.v1.subscription;acknowledge;Acknowledges the messages associated with the ack_ids in the AcknowledgeRequest.
+pubsub.v1.subscription;create;Creates a subscription to a given topic.
+pubsub.v1.subscription;delete;Deletes an existing subscription.
+pubsub.v1.subscription;get;Gets the configuration details of a subscription.
+pubsub.v1.subscription;getIamPolicy;Gets the access control policy for a resource.
+pubsub.v1.subscription;list;Lists matching subscriptions.
+pubsub.v1.subscription;modifyAckDeadline;Modifies the ack deadline for a specific message.
+pubsub.v1.subscription;modifyPushConfig;Modifies the PushConfig for a specified subscription.
+pubsub.v1.subscription;pull;Pulls messages from the server.
+pubsub.v1.subscription;setIamPolicy;Sets the access control policy on the specified resource.
+pubsub.v1.subscription;testIamPermissions;Returns permissions that a caller has on the specified resource.
+pubsub.v1.topic;create;Creates the given topic with the given name.
+pubsub.v1.topic;delete;Deletes the topic with the given name.
+pubsub.v1.topic;get;Gets the configuration of a topic.
+pubsub.v1.topic;getIamPolicy;Gets the access control policy for a resource.
+pubsub.v1.topic;list;Lists matching topics.
+pubsub.v1.topic;publish;Adds one or more messages to the topic.
+pubsub.v1.topic;setIamPolicy;Sets the access control policy on the specified resource.
+pubsub.v1.topic;testIamPermissions;Returns permissions that a caller has on the specified resource.
+runtimeconfig.v1beta1.config;create;Creates a new RuntimeConfig resource.
+runtimeconfig.v1beta1.config;delete;Deletes a RuntimeConfig resource.
+runtimeconfig.v1beta1.config;get;Gets information about a RuntimeConfig resource.
+runtimeconfig.v1beta1.config;getIamPolicy;Gets the access control policy for a resource.
+runtimeconfig.v1beta1.config;list;Lists all the RuntimeConfig resources within project.
+runtimeconfig.v1beta1.config;setIamPolicy;Sets the access control policy on the specified resource.
+runtimeconfig.v1beta1.config;testIamPermissions;Returns permissions that a caller has on the specified resource.
+runtimeconfig.v1beta1.config;update;Updates a RuntimeConfig resource.
+runtimeconfig.v1beta1.variable;create;Creates a variable within the given configuration.
+runtimeconfig.v1beta1.variable;delete;Deletes a variable or multiple variables.
+runtimeconfig.v1beta1.variable;get;Gets information about a single variable.
+runtimeconfig.v1beta1.variable;list;Lists variables within given a configuration, matching any provided filters.
+runtimeconfig.v1beta1.variable;testIamPermissions;Returns permissions that a caller has on the specified resource.
+runtimeconfig.v1beta1.variable;update;Updates an existing variable with a new value.
+runtimeconfig.v1beta1.variable;watch;Watches a specific variable and waits for a change in the variable's value.
+runtimeconfig.v1beta1.waiter;create;Creates a Waiter resource.
+runtimeconfig.v1beta1.waiter;delete;Deletes the waiter with the specified name.
+runtimeconfig.v1beta1.waiter;get;Gets information about a single waiter.
+runtimeconfig.v1beta1.waiter;list;List waiters within the given configuration.
+runtimeconfig.v1beta1.waiter;testIamPermissions;Returns permissions that a caller has on the specified resource.
+sqladmin.v1beta4.database;delete;Deletes a database from a Cloud SQL instance.
+sqladmin.v1beta4.database;get;Retrieves a resource containing information about a database inside a Cloud SQL instance.
+sqladmin.v1beta4.database;insert;Creates a new database inside a Cloud SQL instance.
+sqladmin.v1beta4.database;list;Lists databases in the specified Cloud SQL instance.
+sqladmin.v1beta4.database;patch;Updates a resource containing information about a database inside a Cloud SQL instance using patch semantics.
+sqladmin.v1beta4.database;update;Updates a resource containing information about a database inside a Cloud SQL instance.
+sqladmin.v1beta4.instance;clone;Creates a Cloud SQL instance as a clone of the source instance.
+sqladmin.v1beta4.instance;delete;Deletes a Cloud SQL instance.
+sqladmin.v1beta4.instance;export;Exports data from a Cloud SQL instance to a Google Cloud Storage bucket as a MySQL dump or CSV file.
+sqladmin.v1beta4.instance;failover;Failover the instance to its failover replica instance.
+sqladmin.v1beta4.instance;get;Retrieves a resource containing information about a Cloud SQL instance.
+sqladmin.v1beta4.instance;import;Imports data into a Cloud SQL instance from a MySQL dump or CSV file in a Google Cloud Storage bucket.
+sqladmin.v1beta4.instance;insert;Creates a new Cloud SQL instance.
+sqladmin.v1beta4.instance;list;Lists instances under a given project in alphabetical order by instance name.
+sqladmin.v1beta4.instance;patch;Updates settings of a Cloud SQL instance using patch semantics.
+sqladmin.v1beta4.instance;promoteReplica;Promotes the read replica instance to be a stand-alone Cloud SQL instance.
+sqladmin.v1beta4.instance;resetSslConfig;Deletes all client certificates and generates a new server SSL certificate for the instance.
+sqladmin.v1beta4.instance;restart;Restarts a Cloud SQL instance.
+sqladmin.v1beta4.instance;restoreBackup;Restores a backup of a Cloud SQL instance.
+sqladmin.v1beta4.instance;startReplica;Starts the replication in the read replica instance.
+sqladmin.v1beta4.instance;stopReplica;Stops the replication in the read replica instance.
+sqladmin.v1beta4.instance;truncateLog;Truncate MySQL general and slow query log tables
+sqladmin.v1beta4.instance;update;Updates settings of a Cloud SQL instance.
+storage.v1.bucket;delete;Permanently deletes an empty bucket.
+storage.v1.bucket;get;Returns metadata for the specified bucket.
+storage.v1.bucket;getIamPolicy;Returns an IAM policy for the specified bucket.
+storage.v1.bucket;insert;Creates a new bucket.
+storage.v1.bucket;list;Retrieves a list of buckets for a given project.
+storage.v1.bucket;patch;Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate. This method supports patch semantics.
+storage.v1.bucket;setIamPolicy;Updates an IAM policy for the specified bucket.
+storage.v1.bucket;testIamPermissions;Tests a set of permissions on the given bucket to see which, if any, are held by the caller.
+storage.v1.bucket;update;Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate. This method supports patch semantics.
+storage.v1.bucketAccessControl;delete;Permanently deletes the ACL entry for the specified entity on the specified bucket.
+storage.v1.bucketAccessControl;get;Returns the ACL entry for the specified entity on the specified bucket.
+storage.v1.bucketAccessControl;insert;Creates a new ACL entry on the specified bucket.
+storage.v1.bucketAccessControl;list;Retrieves ACL entries on a specified bucket.
+storage.v1.bucketAccessControl;patch;Updates an ACL entry on the specified bucket. This method supports patch semantics.
+storage.v1.bucketAccessControl;update;Updates an ACL entry on the specified bucket.
+storage.v1.defaultObjectAccessControl;delete;Permanently deletes the default object ACL entry for the specified entity on the specified bucket.
+storage.v1.defaultObjectAccessControl;get;Returns the default object ACL entry for the specified entity on the specified bucket.
+storage.v1.defaultObjectAccessControl;insert;Creates a new default object ACL entry on the specified bucket.
+storage.v1.defaultObjectAccessControl;list;Retrieves default object ACL entries on the specified bucket.
+storage.v1.defaultObjectAccessControl;patch;Updates a default object ACL entry on the specified bucket. This method supports patch semantics.
+storage.v1.defaultObjectAccessControl;update;Updates a default object ACL entry on the specified bucket.
+storage.v1.object;compose;Concatenates a list of existing objects into a new object in the same bucket.
+storage.v1.object;copy;Copies a source object to a destination object. Optionally overrides metadata.
+storage.v1.object;delete;Deletes an object and its metadata. Deletions are permanent if versioning is not enabled for the bucket, or if the generation parameter is used.
+storage.v1.object;get;Retrieves an object or its metadata.
+storage.v1.object;getIamPolicy;Returns an IAM policy for the specified object.
+storage.v1.object;insert;Stores a new object and metadata. For tips on uploading to Google Cloud Storage, see best practices.
+storage.v1.object;list;Retrieves a list of objects matching the criteria.
+storage.v1.object;patch;Updates a data blob's associated metadata. This method supports patch semantics.
+storage.v1.object;rewrite;Rewrites a source object to a destination object. Optionally overrides metadata.
+storage.v1.object;setIamPolicy;Updates an IAM policy for the specified object.
+storage.v1.object;testIamPermissions;Tests a set of permissions on the given object to see which, if any, are held by the caller.
+storage.v1.object;update;Updates an object's metadata.
+storage.v1.object;watchAll;Watch for changes on all objects in a bucket.
+storage.v1.objectAccessControl;delete;Permanently deletes the ACL entry for the specified entity on the specified object.
+storage.v1.objectAccessControl;get;Returns the ACL entry for the specified entity on the specified object.
+storage.v1.objectAccessControl;insert;Creates a new ACL entry on the specified object.
+storage.v1.objectAccessControl;list;Retrieves ACL entries on the specified object.
+storage.v1.objectAccessControl;patch;Updates an ACL entry on the specified object. This method supports patch semantics.
+storage.v1.objectAccessControl;update;Updates an ACL entry on the specified object.
