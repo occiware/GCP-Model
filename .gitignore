@@ -7,3 +7,4 @@ build.acceleo
 .metadata/
 .project
 .classpath
+.settings/
