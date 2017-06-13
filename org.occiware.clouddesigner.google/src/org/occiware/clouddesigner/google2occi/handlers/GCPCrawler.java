@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.cmf.occi.core.Action;
 import org.eclipse.cmf.occi.core.Annotation;
+import org.eclipse.cmf.occi.core.ArrayType;
 import org.eclipse.cmf.occi.core.Attribute;
 import org.eclipse.cmf.occi.core.BooleanType;
 import org.eclipse.cmf.occi.core.Configuration;
@@ -38,6 +39,7 @@ import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.NumericType;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.core.RecordField;
 import org.eclipse.cmf.occi.core.RecordType;
 import org.eclipse.cmf.occi.core.StringType;
 import org.eclipse.cmf.occi.core.util.OcciHelper;
@@ -66,9 +68,11 @@ public class GCPCrawler {
 	public final static EObjectType typeModelDatetime = OCCIFactory.eINSTANCE.createEObjectType();
 	public final static EObjectType typeModelMap = OCCIFactory.eINSTANCE.createEObjectType();
 	public final static EObjectType typeModelUrl = OCCIFactory.eINSTANCE.createEObjectType();
+	public final static EObjectType typeModelEtag = OCCIFactory.eINSTANCE.createEObjectType();
 	public final static BooleanType typeModelBoolean = OCCIFactory.eINSTANCE.createBooleanType();
 	public final static NumericType typeModelByte = OCCIFactory.eINSTANCE.createNumericType();
 	public final static NumericType typeModelInteger = OCCIFactory.eINSTANCE.createNumericType();
+	public final static NumericType typeModelUnsignedInteger = OCCIFactory.eINSTANCE.createNumericType();
 	public final static NumericType typeModelDouble = OCCIFactory.eINSTANCE.createNumericType();
 	public final static NumericType typeModelFloat = OCCIFactory.eINSTANCE.createNumericType();
 	public final static NumericType typeModelLong = OCCIFactory.eINSTANCE.createNumericType();
@@ -79,9 +83,11 @@ public class GCPCrawler {
 		typeModelDatetime.setName("DateTime");
 
 		typeModelMap.setName("Map");
-		typeModelUrl.setName("URL");
+		typeModelUrl.setName("ObjectURL");
+		typeModelEtag.setName("etag");
 
 		typeModelInteger.setType(NumericTypeEnum.INTEGER);
+		typeModelUnsignedInteger.setType(NumericTypeEnum.INTEGER);
 		typeModelDouble.setType(NumericTypeEnum.DOUBLE);
 		typeModelFloat.setType(NumericTypeEnum.FLOAT);
 		typeModelLong.setType(NumericTypeEnum.LONG);
@@ -147,18 +153,134 @@ public class GCPCrawler {
 		System.out.println("Title:" + title);
 
 		// To get the list of all resources
-		Elements divBodies1 = doc.getElementsByAttributeValue("itemprop", "articleBody");
-		Element divBody1;
-		divBody1 = divBodies1.get(0);
+		Elements divBodies1 = doc.getElementsByTag("table");
+		Element divBody1 = divBodies1.get(0);
 		Elements resources = divBody1.getElementsByTag("a");
 		Elements resourcesNames = divBody1.select("code");
 
-		for (int indexOfResource = 0; indexOfResource < resources.size() - 2; indexOfResource++) {
+		for (int indexOfResource = 0; indexOfResource <  resources.size() ; indexOfResource++) {
 			Element resource = resources.get(indexOfResource);
 			String kind = resourcesNames.get(indexOfResource).text();
 			readResource(kind, resource, doc);
 		}
+		
 		buildAbstractClasses();
+		buildMetrics();
+	}
+
+	private static final String nl = System.getProperty("line.separator");
+
+	private static void buildMetrics() {
+		buildSummaryGCPModelDataset();
+		buildRedundantAttributeTable();
+	}
+
+	private static void buildRedundantAttributeTable() {
+		Map<String, Integer> cptPerConceptInCommon = new HashMap<>();
+		cptPerConceptInCommon.put("id", 0);
+		cptPerConceptInCommon.put("kind", 0);
+		cptPerConceptInCommon.put("selfLink", 0);
+		cptPerConceptInCommon.put("name", 0);
+		cptPerConceptInCommon.put("description", 0);
+		cptPerConceptInCommon.put("creationTimestamp", 0);
+
+		cptPerConceptInCommon.put("get", 0);
+		cptPerConceptInCommon.put("list", 0);
+		cptPerConceptInCommon.put("delete", 0);
+		cptPerConceptInCommon.put("insert", 0);
+		cptPerConceptInCommon.put("update", 0);
+		cptPerConceptInCommon.put("patch", 0);
+		cptPerConceptInCommon.put("create", 0);
+
+		for (Kind kind : extension.getKinds()) {
+			for (Action action : kind.getActions()) {
+				if (cptPerConceptInCommon.containsKey(action.getName())) {
+					cptPerConceptInCommon.put(action.getName(), cptPerConceptInCommon.get(action.getName()) + 1);
+				}
+			}
+			for (Attribute attribute : kind.getAttributes()) {
+				if (cptPerConceptInCommon.containsKey(attribute.getName())) {
+					cptPerConceptInCommon.put(attribute.getName(), cptPerConceptInCommon.get(attribute.getName()) + 1);
+				}
+			}
+		}
+
+		StringBuilder builder = new StringBuilder();
+		appendLineCommonConcept(builder, "id", "get", cptPerConceptInCommon);
+		appendLineCommonConcept(builder, "kind", "list", cptPerConceptInCommon);
+		appendLineCommonConcept(builder, "selfLink", "delete", cptPerConceptInCommon);
+		appendLineCommonConcept(builder, "name", "insert", cptPerConceptInCommon);
+		appendLineCommonConcept(builder, "description", "update", cptPerConceptInCommon);
+		appendLineCommonConcept(builder, "creationTimestamp", "patch", cptPerConceptInCommon);
+		builder.append("&&").append("create").append("&").append(cptPerConceptInCommon.get("create")).append("\\\\")
+				.append(nl);
+
+		System.out.println(builder.toString());
+	}
+
+	private static void appendLineCommonConcept(StringBuilder builder, String col1, String col2,
+			Map<String, Integer> cptPerConceptInCommon) {
+		builder.append(col1).append("&").append(cptPerConceptInCommon.get(col1)).append("&").append(col2).append("&")
+				.append(cptPerConceptInCommon.get(col2)).append("\\\\").append(nl).append("\\hline").append(nl);
+	}
+
+	private static void buildSummaryGCPModelDataset() {
+		int nbKind = 0, nbAbstractKind = 0;
+		int nbAttribute = 0, nbAction = 0, nbAnnotation = 0;
+		int nbStringType = 0, nbNumericType = 0, nbBooleanType = 0, nbArrayType = 0;
+		int nbEnumType = 0, nbEnuLiteral = 0;
+		int nbRecordType = 0, nbRecordField = 0;
+		for (Kind kind : extension.getKinds()) {
+			if (kind.getName().startsWith("AbstractKind")) {
+				nbAbstractKind++;
+			} else {
+				nbKind++;
+				nbAction += kind.getActions().size();
+				nbAnnotation += kind.getAnnotations().size();
+				nbAttribute += kind.getAttributes().size();
+			}
+			for (Attribute attribute : kind.getAttributes()) {
+				DataType type = attribute.getType();
+				if (type instanceof StringType) {
+					nbStringType++;
+				} else if (type instanceof NumericType) {
+					nbNumericType++;
+				} else if (type instanceof BooleanType) {
+					nbBooleanType++;
+				} else if (type instanceof EnumerationType) {
+					nbEnumType++;
+					nbEnuLiteral += ((EnumerationType) type).getLiterals().size();
+				} else if (type instanceof ArrayType) {
+					nbArrayType++;
+				} else if (type instanceof RecordType) {
+					nbRecordType++;
+					nbRecordField += ((RecordType) type).getRecordFields().size();
+				}
+			}
+		}
+		StringBuilder builder = new StringBuilder();
+		appendLineToStringBuilder(builder, "KIND", nbKind);
+		appendLineToStringBuilder(builder, "ATTRIBUTE", nbAttribute);
+		appendLineToStringBuilder(builder, "ACTION", nbAction);
+		appendLineToStringBuilder(builder, "ABSTRACTKIND", nbAbstractKind);
+		appendLineToStringBuilder(builder, "ANNOTATION", nbAnnotation);
+		appendLineToStringBuilder(builder, "BOOLEANTYPE", nbBooleanType);
+		appendLineToStringBuilder(builder, "NUMERICTYPE", nbNumericType);
+		appendLineToStringBuilder(builder, "STRINGTYPE", nbStringType);
+		appendLineToStringBuilder(builder, "ARRAYTYPE", nbArrayType);
+		appendLineToStringBuilder(builder, "ENUMERATIONTYPE", nbEnumType);
+		appendLineToStringBuilder(builder, "ENUMERATIONLITERAL", nbEnuLiteral);
+		appendLineToStringBuilder(builder, "RECORDTYPE", nbRecordType);
+		appendLineToStringBuilder(builder, "RECORDFIELD", nbRecordField);
+		appendLineToStringBuilder(builder, "TOTAL", extension.getKinds().size() + nbAttribute + nbAction + nbAnnotation
+				+ nbStringType + nbNumericType + nbBooleanType + nbEnumType + nbEnuLiteral + nbArrayType);
+
+		System.out.println(builder.toString());
+	}
+
+	private static void appendLineToStringBuilder(StringBuilder builder, String label, int number) {
+		builder.append("\\textsc{").append(label).append("} & ").append(number).append("\\\\").append(nl)
+				.append("\\hline").append(nl);
 	}
 
 	private static void buildAbstractClasses() {
@@ -180,7 +302,7 @@ public class GCPCrawler {
 		});
 		int k = 0;
 		List<List<Integer>> indicesAddedToAbstraction = new ArrayList<List<Integer>>();
-		for (int i = 0; i < keys.size() - 1; i++) {
+		for (int i = 0; i < keys.size() - 1; i++) {	
 			Attribute key = keys.get(i);
 			List<Integer> currentList = get(indexOfKindPerAttribute, key);
 			if (currentList.size() < 2) {
@@ -199,18 +321,31 @@ public class GCPCrawler {
 					Kind abstractKind = OCCIFactory.eINSTANCE.createKind();
 					abstractKind.setName("AbstractKind" + k++);
 					for (Attribute commonAttribute : commonAttributes) {
-						abstractKind.getAttributes().add(commonAttribute);
+						abstractKind.getAttributes().add(copyAttribute(commonAttribute));
 					}
+					
 					String descr = "";
 					for (Integer index : get(indexOfKindPerAttribute, commonAttributes.get(0))) {
 						descr += extension.getKinds().get(index).getName() + " ";
 					}
 					abstractKind.setTitle(descr);
 					extension.getKinds().add(abstractKind);
+					
+					if (!nbAttributePerKind.containsKey(abstractKind)) {
+						nbAttributePerKind.put(abstractKind, commonAttributes.size());
+					}
 				}
 				indicesAddedToAbstraction.add(get(indexOfKindPerAttribute, commonAttributes.get(0)));
 			}
 		}
+	}
+	
+	private static Attribute copyAttribute(Attribute attribute) {
+		Attribute copy = OCCIFactory.eINSTANCE.createAttribute();
+		copy.setName(attribute.getName());
+		copy.setDescription(attribute.getDescription());
+		copy.setType(attribute.getType());
+		return copy;
 	}
 
 	private static List<Integer> get(Map<Attribute, List<Integer>> indexOfKindPerAttribute, Attribute a) {
@@ -233,9 +368,9 @@ public class GCPCrawler {
 
 	// TODO getType return null, complete attribute types
 	private static boolean isSameAttribute(Attribute a1, Attribute a2) {
-		return a1.getName().equals(a2.getName())
-				&& ((a1.getType() == null && a2.getType() == null) || (a1.getType() != null && a2.getType() != null
-						&& a1.getType().getName().equals(a2.getType().getName())));
+		return a1.getName().equals(a2.getName()) && ((a1.getType() == null && a2.getType() == null)
+				|| (a1.getType() != null && a2.getType() != null && a1.getType().getName() != null
+						&& a2.getType() != null && a1.getType().getName().equals(a2.getType().getName())));
 	}
 
 	/**
@@ -271,14 +406,17 @@ public class GCPCrawler {
 				kindDoc = null;
 			}
 		}
-		if (!kindDoc.select("table*[id=Version.FIELDS-table]").isEmpty())
-			return readResourcePage(kindDoc, kind, esb, res, "table*[id=Version.FIELDS-table]");
-		else
+		if (!kindDoc.select("table*[id=properties]").isEmpty())
 			return readResourcePage(kindDoc, kind, esb, res, "table*[id=properties]");
+		else {
+			String filter = "table*[id=" + kindDoc.getElementsByTag("h2").get(0).text().substring("Resource:".length())
+					+ ".FIELDS-table]";
+			return readResourcePage(kindDoc, kind, esb, res, filter);
+		}
 	}
 
 	public static StringBuilder readResourcePage(Document kindDoc, String kind, StringBuilder esb, String res,
-			String filter) throws IOException {
+			String filter) {
 		// To get the list of all attributes from a resource
 		List<Attribute> attributesModel = new LinkedList<Attribute>();
 		List<Action> actionsModel = new LinkedList<Action>();
@@ -432,13 +570,25 @@ public class GCPCrawler {
 			k.getAnnotations().add(annotation2);
 
 			// k.setTitle(attributeFormat + "," + actionFormat);
-			k.getActions().addAll(actions);
-			k.getAttributes().addAll(attributes);
+			for (Attribute attribute : attributes) {
+				k.getAttributes().add(attribute);
+			}
+			for (Action action : actions) {
+				k.getActions().add(action);
+			}
+			
+			if (!nbAttributePerKind.containsKey(k)) {
+				nbAttributePerKind.put(k, attributes.size());
+			}
+			// k.getActions().addAll(actions);
+			// k.getAttributes().addAll(attributes);
 
 			return resourcecsv(kind, attributeFormat + "_" + actionFormat);
 		}
 		return new StringBuilder();
 	}
+	
+	private static Map<Kind, Integer> nbAttributePerKind = new HashMap<>();
 
 	public static StringBuilder attributecsv(String res, String currentconcept, String currenttype,
 			String currentdescription) {

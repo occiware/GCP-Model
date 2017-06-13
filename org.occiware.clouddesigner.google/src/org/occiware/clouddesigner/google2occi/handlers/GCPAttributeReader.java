@@ -4,12 +4,10 @@ import static org.occiware.clouddesigner.google2occi.handlers.GCPCrawler.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.SocketTimeoutException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 import org.eclipse.cmf.occi.core.ArrayType;
 import org.eclipse.cmf.occi.core.Attribute;
@@ -17,7 +15,6 @@ import org.eclipse.cmf.occi.core.DataType;
 import org.eclipse.cmf.occi.core.EnumerationLiteral;
 import org.eclipse.cmf.occi.core.EnumerationType;
 import org.eclipse.cmf.occi.core.Kind;
-import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.NumericTypeEnum;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.RecordField;
@@ -30,8 +27,7 @@ import org.jsoup.select.Elements;
 public class GCPAttributeReader {
 
 	public static StringBuilder readAttributes(final Document kindDoc, final String kind, final String filter,
-			StringBuilder enumStr, List<Attribute> attributesModel, List<EnumerationType> enumsModel)
-			throws IOException {
+			StringBuilder enumStr, List<Attribute> attributesModel, List<EnumerationType> enumsModel) {
 		StringBuilder attribute = new StringBuilder();
 		Elements attributesFilters = kindDoc.select(filter);
 		for (Element attributeElt : attributesFilters) {
@@ -69,7 +65,7 @@ public class GCPAttributeReader {
 						if (nextName.startsWith(currentAttributeName)) {
 							RecordType recordType = OCCIFactory.eINSTANCE.createRecordType();
 							recordType.setName(currentAttributeName + "Record");
-							((ArrayType) typeModel).setType(typeModelInteger);
+							((ArrayType) typeModel).setType(recordType);
 						}
 					}
 
@@ -80,23 +76,31 @@ public class GCPAttributeReader {
 					switchOnModifiers(at, currentAttributeDescription);
 					switchOnAccess(at, currentAttributeDescription);
 
+					if (currentAttributeType.contains("#")) {
+						at.setDefault(currentAttributeType);
+					}
+
 					if (typeModel != null && currentAttributeName.endsWith("[]")) {
 						DataType typeOfArray = complexDatatypes.get(currentAttributeName + "Array");
 						if (typeOfArray == null) {
 							typeOfArray = OCCIFactory.eINSTANCE.createArrayType();
 							typeOfArray.setName(currentAttributeName.replace("[]", "") + "Array");
 							typeOfArray.setDocumentation(currentAttributeDescription);
-							((org.eclipse.cmf.occi.core.ArrayType) typeOfArray).setType(typeModelDatetime);
+							((org.eclipse.cmf.occi.core.ArrayType) typeOfArray).setType(typeModel);
 							complexDatatypes.put(currentAttributeName.replace("[]", "") + "Array", typeOfArray);
 							extension.getTypes().add(typeOfArray);
 							at.setType(typeOfArray);
 						}
 					} else if (typeModel != null) {
-						extension.getTypes().add(typeModel);
+						if (!extension.getTypes().contains(typeModel))
+							extension.getTypes().add(typeModel);
 						at.setType(typeModel);
 					}
 					// add to the main list of attributes kind.
-					if (!(typeModel instanceof RecordField))
+					if (typeModel == null) {
+						throw new RuntimeException("typeModel == null " + currentAttributeType + " " + kind);
+					}
+					//if (!"RecordField".equals(typeModel.getDocumentation()))
 						attributesModel.add(at);
 				}
 			}
@@ -111,8 +115,11 @@ public class GCPAttributeReader {
 		int i = 0;
 		// To parse the description in case of only 2 <tds> and a
 		// sequence of <p>
-		if (attributeInfos.size() == 2) {
+		if (attributeInfos.size() >= 2) {
 			Elements attributeDescriptions = attributeInfos.get(1).select("p");
+			if (attributeDescriptions.isEmpty()) {
+				return getAttributeDescription2(attributeInfos);
+			}
 			attributeDescriptions.addAll(attributeInfos.get(1).select("li"));
 			for (Element attributeDescriptionTmp : attributeDescriptions) {
 				if (i != 0) {
@@ -129,9 +136,18 @@ public class GCPAttributeReader {
 		}
 		return currentAttributeDescription;
 	}
+	
+	private static String getAttributeDescription2(Elements attributeInfos) {
+		Elements tds = attributeInfos.select("td");
+		String description = "";
+		for (Element td : tds) {
+			description += td.text() + ":";
+		}
+		return description;
+	}
 
 	private static DataType buildType(String url, String currentAttributeName, String currentAttributeDescription,
-			String currentAttributeType, StringBuilder enumString) throws IOException {
+			String currentAttributeType, StringBuilder enumString) {
 		RecordType recordType = null;
 		int sizeInCommon = Integer.MIN_VALUE;
 		String selectionnedNameRecordType = "";
@@ -151,38 +167,39 @@ public class GCPAttributeReader {
 			DataType type;
 			if (currentAttributeName.endsWith("[]")) {
 				type = OCCIFactory.eINSTANCE.createArrayType();
-				recordField.setType(type);
 			} else {
 				type = getType(url, currentAttributeName, currentAttributeDescription, currentAttributeType,
 						enumString);
-				recordField.setType(type);
 			}
 			switchOnModifiers(recordField, currentAttributeDescription);
 			switchOnAccess(recordField, currentAttributeDescription);
 			recordType.getRecordFields().add(recordField);
+			if (type == null) {
+				type = OCCIFactory.eINSTANCE.createEObjectType();
+				type.setName(currentAttributeName);
+			}
+			recordField.setType(type);
+			type.setDocumentation("RecordField");
 			return type;
 		}
 		return getType(url, currentAttributeName, currentAttributeDescription, currentAttributeType, enumString);
 	}
 
-	private static final List<String> basicType = Arrays.asList(new String[] { "string", "boolean", "integer", "float",
-			"long", "unsigned long", "double", "bytes", "datetime" });
-
 	private static DataType getType(String baseUrl, String currentAttributeName, String currentAttributeDescription,
-			String currentAttributeType, StringBuilder enumString) throws IOException {
-		if (basicType.contains(currentAttributeType)) {
-			return switchOnBasic(currentAttributeType);
+			String currentAttributeType, StringBuilder enumString) {
+		DataType typeModel = switchOnBasic(currentAttributeType);
+		if (typeModel != null) {
+			return typeModel;
 		} else {
 			return switchOnComplex(baseUrl, currentAttributeType, currentAttributeName, currentAttributeDescription,
 					enumString);
 		}
 	}
-	
+
 	private static void buildObject(String baseUrl, String currentAttributeType, String currentAttributeName,
 			String currentAttributeDescription, StringBuilder enumString) {
 		boolean alreadyRegistered = false;
-		currentAttributeType = currentAttributeType.substring("object(".length(),
-				currentAttributeType.length() - 1);
+		currentAttributeType = currentAttributeType.substring("object(".length(), currentAttributeType.length() - 1);
 		for (Kind registerKind : extension.getKinds()) {
 			if (currentAttributeType.equals(registerKind.getName())) {
 				alreadyRegistered = true;
@@ -201,22 +218,18 @@ public class GCPAttributeReader {
 			while (RegisteredKindDocument == null) {
 				try {
 					RegisteredKindDocument = Jsoup.connect(url).get();
-				} catch (Exception e) {
+				} catch (IOException e) {
 					RegisteredKindDocument = null;
 				}
 			}
-			try {
-				GCPCrawler.readResourcePage(RegisteredKindDocument, currentAttributeType, enumString, url, filter);
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}	
+			GCPCrawler.readResourcePage(RegisteredKindDocument, currentAttributeType, enumString, url, filter);
 		}
 	}
 
 	private static DataType switchOnComplex(String baseUrl, String currentAttributeType, String currentAttributeName,
-			String currentAttributeDescription, StringBuilder enumString) throws IOException {
+			String currentAttributeDescription, StringBuilder enumString) {
 		DataType typeModel = null;
-		String[] typeCases = { "object(", "enum", "nested object", "list" };
+		String[] typeCases = { "object(", "enum", "nested object", "object", "list", "etag", "map" };
 		int l;
 		for (l = 0; l < typeCases.length; l++) {
 			if (currentAttributeType.startsWith(typeCases[l])) {
@@ -225,8 +238,10 @@ public class GCPAttributeReader {
 		}
 		switch (l) {
 		case 0: // object;
-			buildObject(baseUrl, currentAttributeType, currentAttributeName,
-					currentAttributeDescription, enumString);
+			buildObject(baseUrl, currentAttributeType, currentAttributeName, currentAttributeDescription, enumString);
+			typeModel = OCCIFactory.eINSTANCE.createEObjectType();
+			typeModel.setName(currentAttributeType);
+			typeModel.setDocumentation(currentAttributeDescription);
 			break;
 		case 1: // enum
 			String enumstr = enumString.toString();
@@ -238,18 +253,22 @@ public class GCPAttributeReader {
 				typeModel.setName(enumAsArray[1] + "Enum");
 				typeModel.setDocumentation(currentAttributeDescription);
 				for (String enumLiteral : enumsLiterals) {
-					String[] currentEnumLiteral = enumLiteral.split("" + separator);  
+					String[] currentEnumLiteral = enumLiteral.split("" + separator);
 					EnumerationLiteral el = OCCIFactory.eINSTANCE.createEnumerationLiteral();
 					el.setEnumerationType((EnumerationType) typeModel);
 					el.setName(currentEnumLiteral[2]);
-					el.setDocumentation(currentEnumLiteral[3]);
-					((EnumerationType)typeModel).getLiterals().add(el);
+					if (currentEnumLiteral.length >= 4)
+						el.setDocumentation(currentEnumLiteral[3]);
+					((EnumerationType) typeModel).getLiterals().add(el);
 				}
 				complexDatatypes.put(enumAsArray[1] + "Enum", typeModel);
 			}
 			break;
-
-		case 3: // list
+		case 2: // nested object
+		case 3: // object
+			typeModel = readRecordType(currentAttributeName, currentAttributeDescription);
+			break;
+		case 4: // list
 			typeModel = complexDatatypes.get(currentAttributeName + "Array");
 			if (typeModel == null) {
 				typeModel = OCCIFactory.eINSTANCE.createArrayType();
@@ -257,16 +276,21 @@ public class GCPAttributeReader {
 				typeModel.setDocumentation(currentAttributeDescription);
 				((ArrayType) typeModel).setType(typeModelFloat);
 				complexDatatypes.put(currentAttributeName.replace("[]", "") + "Array", typeModel);
+				// TODO: Read description to set type of the array
 			}
 			break;
-		case 2: // nested object
-			typeModel = readRecordType(currentAttributeName, currentAttributeDescription);
+		case 5: // etag
+			typeModel = typeModelEtag;
+			typeModel.setName(currentAttributeName);
+			break;
+		case 6: // map
+			typeModel = typeModelMap;
+			typeModel.setName(currentAttributeName);
 			break;
 		}
-
 		return typeModel;
 	}
-	
+
 	/**
 	 * Read the enum types of an attribute
 	 * 
@@ -277,7 +301,7 @@ public class GCPAttributeReader {
 	 * @return
 	 */
 	private static StringBuilder readEnums(final String currentAttributeType, final Element attributeType,
-			final String kind) throws IOException {
+			final String kind) {
 		StringBuilder enumTypes = new StringBuilder();
 		if (currentAttributeType.contains("enum")) {
 			String enumType = attributeType.select("a").get(0).attr("href");
@@ -292,17 +316,24 @@ public class GCPAttributeReader {
 				while (doc3 == null) {
 					try {
 						doc3 = Jsoup.connect(enumType).get();
-					} catch (SocketTimeoutException e) {
+					} catch (IOException e) {
 						doc3 = null;
 					}
 				}
 				// To get the list of all literals from enumType
 				String selectedAttributeType = currentAttributeType.substring("enum(".length(),
 						currentAttributeType.length() - 1);
-				
+
 				Element table = doc3.getElementById(selectedAttributeType + ".ENUM_VALUES-table");
+				if (table == null) {
+					for (Element element : doc3.getAllElements()) {
+						if (element.id().endsWith(selectedAttributeType + ".ENUM_VALUES-table")) {
+							table = element;
+						}
+					}
+				}
 				Elements rows = table.select("tr");
-				rows.remove(0);//removing the header of the table
+				rows.remove(0);// removing the header of the table
 				for (Element row : rows) {
 					String enumLiteral = row.select("td").get(0).text();
 					String enumLiteralDescription = row.select("td").get(1).text();
@@ -315,51 +346,74 @@ public class GCPAttributeReader {
 
 	private static DataType switchOnBasic(String currentAttributeType) {
 		DataType typeModel = null;
-		switch (currentAttributeType) {
-		case "string":
+
+		String[] basicType = new String[] { "string", "boolean", "integer", "unsigned integer", "number", "float",
+				"long", "unsigned long", "double", "bytes", "datetime" };
+
+		int j;
+		for (j = 0; j < basicType.length; j++)
+			if (currentAttributeType.startsWith(basicType[j]))
+				break;
+
+		switch (j) {
+		case 0: // "string":
 			typeModel = typeModelString;
 			typeModel.setName("String");
 			break;
-		case "boolean":
+		case 1: // "boolean":
 			typeModel = typeModelBoolean;
 			typeModel.setName("Boolean");
 			break;
-		case "integer":
+		case 2: // "integer":
+		case 3: // "number":
 			typeModel = typeModelInteger;
 			typeModel.setName("Integer");
 			((org.eclipse.cmf.occi.core.NumericType) typeModel).setType(NumericTypeEnum.INTEGER);
 			break;
-		case "float":
+		case 4: // "unsigned integer":
+			typeModel = typeModelUnsignedInteger;
+			typeModel.setName("UnsignedInteger");
+			((org.eclipse.cmf.occi.core.NumericType) typeModel).setType(NumericTypeEnum.INTEGER);
+			((org.eclipse.cmf.occi.core.NumericType) typeModel).setMinInclusive("0");
+			break;
+		case 5: // "float":
 			typeModel = typeModelFloat;
 			typeModel.setName("Float");
 			((org.eclipse.cmf.occi.core.NumericType) typeModel).setType(NumericTypeEnum.FLOAT);
 			break;
-		case "long":
+		case 6: // "long":
 			typeModel = typeModelLong;
 			typeModel.setName("Long");
 			((org.eclipse.cmf.occi.core.NumericType) typeModel).setType(NumericTypeEnum.LONG);
 			break;
-		case "unsigned long":
+		case 7: // "unsigned long":
 			typeModel = typeModelUnsignedLong;
 			typeModel.setName("UnsignedLong");
 			((org.eclipse.cmf.occi.core.NumericType) typeModel).setType(NumericTypeEnum.LONG);
 			((org.eclipse.cmf.occi.core.NumericType) typeModel).setMinInclusive("0");
 			break;
-		case "double":
+		case 8: // "double":
 			typeModel = typeModelDouble;
 			typeModel.setName("Double");
 			((org.eclipse.cmf.occi.core.NumericType) typeModel).setType(NumericTypeEnum.DOUBLE);
 			break;
-		case "bytes":
+		case 9: // "bytes":
 			typeModel = typeModelByte;
 			typeModel.setName("Bytes");
 			((org.eclipse.cmf.occi.core.NumericType) typeModel).setType(NumericTypeEnum.BYTE);
 			break;
-		case "datetime":
+		case 10: // "datetime":
 			typeModel = typeModelDatetime;
 			typeModel.setName("Datetime");
-			//((org.eclipse.cmf.occi.core.EObjectType) typeModel).setInstanceClassName("org.joda.time.DateTime");
+			// ((org.eclipse.cmf.occi.core.EObjectType)
+			// typeModel).setInstanceClassName("org.joda.time.DateTime");
 			break;
+		}
+		// kind bigquery#table The type of resource ID. in
+		// https://cloud.google.com/bigquery/docs/reference/rest/v2/tables
+		if (currentAttributeType.contains("#")) {
+			typeModel = typeModelString;
+			typeModel.setName("String");
 		}
 		return typeModel;
 	}
