@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en" class="chekov">
+ <head>
+  <script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script>
+  <meta charset="utf-8" />
+  <meta name="xsrf_token" content="Pl49BFslQIRqzXvPgIPoYRcVSw8O0440qisTMtyZdLY6MTUwMTE2ODY2Nzg0NDU0MA" />
+  <link rel="canonical" href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks" />
+  <link rel="alternate" href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks" hreflang="en" />
+  <link rel="alternate" href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks" hreflang="x-default" />
+  <link rel="shortcut icon" href="https://cloud.google.com/_static/19991010dc/images/cloud/icons/favicons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://cloud.google.com/_static/19991010dc/images/cloud/icons/favicons/apple-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons" />
+  <link rel="stylesheet" href="https://cloud.google.com/_static/19991010dc/css/devsite-cloud-white.css" />
+  <link rel="stylesheet" href="https://cloud.google.com/_static/19991010dc/css/cloud/cloud-site.css" />
+  <link rel="search" type="application/opensearchdescription+xml" title="Google Cloud Platform" href="https://cloud.google.com/s/opensearch.xml" />
+  <script src="https://cloud.google.com/_static/19991010dc/js/jquery-bundle.js"></script>
+  <meta property="og:site_name" content="Google Cloud Platform" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks" />
+  <meta property="og:locale" content="en" />
+  <script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script>
+  <title>Collection: projects.sinks &nbsp;|&nbsp; Stackdriver Logging
+      &nbsp;|&nbsp; Google Cloud Platform</title>
+  <meta property="og:title" content="Collection: projects.sinks &nbsp;|&nbsp; Stackdriver Logging
+      &nbsp;|&nbsp; Google Cloud Platform" />
+ </head>
+ <body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-lower-tabs
+               devsite-uhura" id="top_of_page">
+  <div class="devsite-wrapper">
+   <div class="devsite-top-section-wrapper
+            ">
+    <header class="devsite-top-section nocontent">
+     <div class="devsite-top-logo-row-wrapper-wrapper">
+      <div class="devsite-top-logo-row-wrapper">
+       <div class="devsite-top-logo-row devsite-full-site-width">
+        <button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button>
+        <div class="devsite-product-name-wrapper">
+         <a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/19991010dc/images/cloud/gcp-logo.svg" class="devsite-site-logo" alt="Google Cloud Platform" /><span class="devsite-site-name devsite-product-name">Google Cloud Platform</span></a>
+        </div>
+        <div class="devsite-header-upper-tabs">
+         <nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper">
+          <ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll">
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/why-google/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Why Google" track-type="globalNav" track-name="whyGoogle"> Why Google </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/products/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Products" track-type="globalNav" track-name="products"> Products </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/solutions/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Solutions" track-type="globalNav" track-name="solutions"> Solutions </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/launcher/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Launcher" track-type="globalNav" track-name="launcher"> Launcher </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/pricing/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Pricing" track-type="globalNav" track-name="pricing"> Pricing </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/customers/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Customers" track-type="globalNav" track-name="customers"> Customers </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/docs/" class="devsite-doc-set-nav-active
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Documentation"> Documentation </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/support/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Support" track-type="globalNav" track-name="support"> Support </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/partners/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Partners" track-type="globalNav" track-name="partners"> Partners </a></li>
+          </ul>
+         </nav>
+        </div>
+        <form class="devsite-search-form" action="https://cloud.google.com/s/results/" method="GET" id="top-search" search-placeholder="Search">
+         <div id="searchbox" class="devsite-searchbox">
+          <input placeholder="Search" type="text" class="devsite-search-field devsite-search-query" name="q" value="" autocomplete="off" />
+          <div class="devsite-search-image material-icons"></div>
+         </div>
+         <input type="hidden" name="p" id="search_project" value="/logging/" data-project-name="Stackdriver Logging" data-project-path="/logging/" data-query-match="" />
+         <input type="hidden" class="suggest-project" value="Stackdriver Logging" />
+        </form>
+        <a class="devsite-header-link devsite-top-button button gc-analytics-event" href="//console.cloud.google.com/" data-category="Site-Wide Custom Events" data-label="Site header link">
+         <div class="devsite-header-link-label">
+          Console
+         </div></a>
+        <button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button>
+        <a href="https://www.google.com/accounts/ServiceLogin?passive=true&amp;continue=https%3A%2F%2Fcloud.google.com%2Flogging%2Fdocs%2Freference%2Fv2%2Frest%2Fv2%2Fprojects.sinks%3Frefresh%3D1&amp;service=cloudconsole" class="devsite-user-signin devsite-top-button button gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Sign in button"> Sign in </a>
+       </div>
+      </div>
+     </div>
+     <div class="devsite-collapsible-section">
+      <div class="devsite-header-background devsite-full-site-width">
+       <div class="devsite-product-id-row devsite-full-site-width">
+        <div class="devsite-product-description-row">
+         <ul class="devsite-breadcrumb-list">
+          <li class="devsite-breadcrumb-item"> Documentation </li>
+         </ul>
+        </div>
+        <div class="devsite-product-button-row
+            cloud-free-trial-eligible">
+         <button type="button" id="devsite-feedback-project" class="devsite-feedback-button devsite-top-button gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Send Feedback Button" track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header"> Send feedback </button>
+         <a href="https://console.cloud.google.com/freetrial" class="cloud-free-trial-button button-primary button" track-type="freeTrial" track-name="try" track-metadata-position="nav"> Try It Free </a>
+         <a href="https://cloud.google.com/contact/" class="cloud-contact-sales-button button" track-type="sales" track-name="contact" track-metadata-position="nav"> Contact Sales </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script>
+   </div>
+   <div id="gc-wrapper" itemscope="" itemtype="http://schema.org/APIReference">
+    <input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG" />
+    <script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "FR", "language": {"requested": "en", "served": "en"}, "projectName": "Stackdriver Logging", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script> 
+    <div class="devsite-site-mask"></div> 
+    <nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0"> 
+     <div class="devsite-nav-responsive-tabs-panel"> 
+      <nav class="devsite-nav-responsive-tabs devsite-nav"> 
+       <ul class="devsite-nav-list"> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/why-google/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google"> Why Google </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/products/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products"> Products </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/solutions/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions"> Solutions </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/launcher/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher"> Launcher </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/pricing/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing"> Pricing </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/customers/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers"> Customers </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation" tabindex="0"> Documentation </span> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/support/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support"> Support </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/partners/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners"> Partners </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="//console.cloud.google.com/" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Responsive Tab: console"> Console </a> </li> 
+       </ul> 
+      </nav> 
+     </div> 
+     <div class="devsite-nav-responsive-sidebar-panel"> 
+      <div class="devsite-nav-responsive-back" tabindex="0"></div> 
+      <nav class="devsite-nav-responsive-sidebar"> 
+       <ul class="devsite-nav-list devsite-nav-expandable">
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Stackdriver Logging</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/quickstart-sdk" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Setting Up the Logging Agent</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/agent/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">About the Agent</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/agent/installation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Installing the Agent</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/agent/authorization" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authorizing the Agent</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Using Logging Libraries</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/setup/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/integrate/dotnet" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">C#: Using Log4Net with .NET</a></li>
+          <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/logging/docs/setup/nodejs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Node.js: Using Winston and Bunyan</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/integrate/python" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Python: Using standard logging</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/logs_viewer_v2" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Viewing Logs</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Exporting Logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/export/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/export/configure_export_v2" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting with the Logs Viewer</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/api/tasks/exporting-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting with the API</a></li>
+          <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/logging/docs/export/aggregated_exports" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Aggregated Export</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/export/using_exported_logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using Exported Logs</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/logs_based_metrics" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using Logs-based Metrics</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Libraries</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">REST Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-expanded">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+          <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Collections</span></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">billingAccounts.logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.logs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.logs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">billingAccounts.sinks</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">entries</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/write" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">write</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">folders.logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.logs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.logs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">folders.sinks</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">monitoredResourceDescriptors</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/monitoredResourceDescriptors" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/monitoredResourceDescriptors/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">organizations.logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.logs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.logs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">organizations.sinks</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">projects.logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.logs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.logs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">projects.metrics</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">projects.sinks</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-expanded">
+            <li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Other Types</span></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/ListLogsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListLogsResponse</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/ListSinksResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListSinksResponse</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">LogEntry</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/MonitoredResource" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">MonitoredResource</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Audit Logs Datatypes</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/audit/api/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Summary</a></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">AuditLog</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Other Types</span></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditData</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditLog</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">App Engine AuditData</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Other Types</span></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/ApiConfigHandler" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ApiConfigHandler</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/ApiEndpointHandler" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ApiEndpointHandler</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditData</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/AuthFailAction" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuthFailAction</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/ErrorCode" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ErrorCode</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/FileInfo" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">FileInfo</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/InboundServiceType" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">InboundServiceType</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/LoginRequirement" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">LoginRequirement</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/RedirectHttpResponseCode" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">RedirectHttpResponseCode</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/SecurityLevel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">SecurityLevel</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/ServingStatus" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ServingStatus</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/ShardBy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ShardBy</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">App Engine AuditData (Legacy)</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Other Types</span></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/ae_legacy/rest/Shared.Types/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditData</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">BigQuery AuditData</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Other Types</span></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/bigquery/rest/Shared.Types/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditData</a></li>
+           </ul></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">IAM AuditData</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/migration-v2" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Migration to the v2 API</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/api/v2/resource-list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Monitored Resource List</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/tools/gcloud-logging" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Command Line Interface</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/basic-concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Basic Concepts</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Access Control</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Audit Logging</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/audit/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/audit/configure-data-access" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring Data Access Logs</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Available Logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/logs_index" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/service/appengine-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">App Engine</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/service/compute-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Compute Engine</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/service/agent-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver Logging Agent</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/advanced_filters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Logging Filters</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/stackdriver-accounts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver Accounts</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Samples</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/samples" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Samples</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/api/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the API</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Writing and Managing Logs</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/api/tasks/creating-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Listing and Writing Logs</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/api/tasks/exporting-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting Logs</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Pricing and Quotas</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/quota-policy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quotas</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release Notes</a></li>
+       </ul> 
+      </nav> 
+     </div> 
+    </nav> 
+    <div class="devsite-main-content clearfix"> 
+     <nav class="devsite-section-nav devsite-nav nocontent"> 
+      <ul class="devsite-nav-list devsite-nav-expandable">
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Stackdriver Logging</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/quickstart-sdk" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Setting Up the Logging Agent</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/agent/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">About the Agent</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/agent/installation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Installing the Agent</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/agent/authorization" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authorizing the Agent</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Using Logging Libraries</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/setup/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/integrate/dotnet" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">C#: Using Log4Net with .NET</a></li>
+         <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/logging/docs/setup/nodejs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Node.js: Using Winston and Bunyan</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/integrate/python" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Python: Using standard logging</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/logs_viewer_v2" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Viewing Logs</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Exporting Logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/export/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/export/configure_export_v2" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting with the Logs Viewer</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/api/tasks/exporting-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting with the API</a></li>
+         <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/logging/docs/export/aggregated_exports" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Aggregated Export</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/export/using_exported_logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using Exported Logs</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/logs_based_metrics" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using Logs-based Metrics</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Libraries</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">REST Reference</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-expanded">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+         <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Collections</span></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">billingAccounts.logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.logs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.logs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">billingAccounts.sinks</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">entries</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/write" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">write</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">folders.logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.logs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.logs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">folders.sinks</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">monitoredResourceDescriptors</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/monitoredResourceDescriptors" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/monitoredResourceDescriptors/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">organizations.logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.logs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.logs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">organizations.sinks</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">projects.logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.logs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.logs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">projects.metrics</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">projects.sinks</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-expanded">
+           <li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Other Types</span></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/ListLogsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListLogsResponse</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/ListSinksResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListSinksResponse</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">LogEntry</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/MonitoredResource" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">MonitoredResource</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Audit Logs Datatypes</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/audit/api/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Summary</a></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">AuditLog</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Other Types</span></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditData</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditLog</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">App Engine AuditData</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Other Types</span></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/ApiConfigHandler" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ApiConfigHandler</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/ApiEndpointHandler" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ApiEndpointHandler</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditData</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/AuthFailAction" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuthFailAction</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/ErrorCode" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ErrorCode</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/FileInfo" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">FileInfo</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/InboundServiceType" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">InboundServiceType</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/LoginRequirement" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">LoginRequirement</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/RedirectHttpResponseCode" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">RedirectHttpResponseCode</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/SecurityLevel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">SecurityLevel</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/ServingStatus" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ServingStatus</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/appengine/rest/Shared.Types/ShardBy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ShardBy</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">App Engine AuditData (Legacy)</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Other Types</span></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/ae_legacy/rest/Shared.Types/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditData</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">BigQuery AuditData</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Other Types</span></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/audit/bigquery/rest/Shared.Types/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">AuditData</a></li>
+          </ul></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/iam/reference/rest/v1/AuditData" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">IAM AuditData</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/migration-v2" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Migration to the v2 API</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/api/v2/resource-list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Monitored Resource List</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/reference/tools/gcloud-logging" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Command Line Interface</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/basic-concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Basic Concepts</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Access Control</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Audit Logging</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/audit/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/audit/configure-data-access" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring Data Access Logs</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Available Logs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/logs_index" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/service/appengine-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">App Engine</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/service/compute-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Compute Engine</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/service/agent-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver Logging Agent</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/view/advanced_filters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Logging Filters</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/stackdriver-accounts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver Accounts</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Samples</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/samples" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Samples</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/api/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the API</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Writing and Managing Logs</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/api/tasks/creating-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Listing and Writing Logs</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/api/tasks/exporting-logs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting Logs</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Pricing and Quotas</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/quota-policy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quotas</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/logging/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release Notes</a></li>
+      </ul> 
+     </nav> 
+     <nav class="devsite-page-nav devsite-nav"></nav> 
+     <article class="devsite-article"> 
+      <article class="devsite-article-inner"> 
+       <nav class="devsite-breadcrumb-nav devsite-nav"> 
+        <ul class="devsite-breadcrumb-list"> 
+         <li class="devsite-breadcrumb-item"> <a href="https://cloud.google.com/stackdriver/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="1"> Stackdriver </a> </li> 
+         <li class="devsite-breadcrumb-item"> 
+          <div class="devsite-breadcrumb-guillemet material-icons"></div> <a href="https://cloud.google.com/stackdriver/docs/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="2"> Documentation </a> </li> 
+         <li class="devsite-breadcrumb-item"> 
+          <div class="devsite-breadcrumb-guillemet material-icons"></div> <a href="https://cloud.google.com/logging/docs/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="3"> Logging </a> </li> 
+         <li class="devsite-breadcrumb-item"> 
+          <div class="devsite-breadcrumb-guillemet material-icons"></div> <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="4"> Documentation </a> </li> 
+        </ul> 
+       </nav> 
+       <h1 itemprop="name" class="devsite-page-title"> Collection: projects.sinks </h1> 
+       <nav class="devsite-page-nav-embedded devsite-nav"></nav> 
+       <div class="devsite-article-body clearfix
+            " itemprop="articleBody"> 
+        <meta itemprop="name" content="projects.sinks" /> 
+        <meta itemprop="path" content="/logging/docs/reference/v2/rest/v2/projects.sinks" /> 
+        <section id="/logging/docs/reference/v2/rest/v2/projects.sinks"> 
+         <ul class="toc"> 
+          <li><a href="#LogSink">Resource: LogSink</a> 
+           <ul> 
+            <li><a href="#LogSink.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#METHODS_SUMMARY">Methods</a></li> 
+         </ul> 
+         <section id="LogSink"> 
+          <h2>Resource: LogSink</h2> 
+          <section id="LogSink.description"> 
+           <p>Describes a sink used to export log entries to one of the following destinations in any project: a Cloud Storage bucket, a BigQuery dataset, or a Cloud Pub/Sub topic. A logs filter controls which log entries are exported. The sink must be created within a project, organization, billing account, or folder.</p> 
+          </section> 
+          <section id="LogSink.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;name&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
+  <span class="str">&quot;destination&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;filter&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;outputVersionFormat&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks#LogSink.VersionFormat">VersionFormat</a></code>)</span><span class="pun">,</span> <span class="str">&quot;writerIdentity&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;includeChildren&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;startTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;endTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="LogSink.FIELDS"> 
+           <table class="properties responsive" id="LogSink.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="LogSink.FIELDS.name"> 
+              <td><code>name</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Required. The client-assigned sink identifier, unique within the project. Example: <code>&quot;my-syslog-errors-to-pubsub&quot;</code>. Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. </p> </td> 
+             </tr> 
+             <tr id="LogSink.FIELDS.destination"> 
+              <td><code>destination</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> </p><p>Required. The export destination:</p> <pre><code>&quot;storage.googleapis.com/[GCS_BUCKET]&quot;
+&quot;bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]&quot;
+&quot;pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]&quot;
+</code></pre> <p>The sink's <code>writerIdentity</code>, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see <a href="https://cloud.google.com/logging/docs/api/tasks/exporting-logs">Exporting Logs With Sinks</a>.</p> <p></p> </td> 
+             </tr> 
+             <tr id="LogSink.FIELDS.filter"> 
+              <td><code>filter</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> </p><p>Optional. An <a href="https://cloud.google.com/logging/docs/view/advanced_filters">advanced logs filter</a>. The only exported log entries are those that are in the resource owning the sink and that match the filter. The filter must use the log entry format specified by the <code>outputVersionFormat</code> parameter. For example, in the v2 format:</p> <pre><code>logName=&quot;projects/[PROJECT_ID]/logs/[LOG_ID]&quot; AND severity&gt;=ERROR
+</code></pre> <p></p> </td> 
+             </tr> 
+             <tr id="LogSink.FIELDS.output_version_format"> 
+              <td><code>outputVersionFormat</code></td> 
+              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks#LogSink.VersionFormat">VersionFormat</a></code>)</code></p> <p> Optional. The log entry format to use for this sink's exported log entries. The v2 format is used by default. <strong>The v1 format is deprecated</strong> and should be used only as part of a migration effort to v2. See <a href="https://cloud.google.com/logging/docs/api/v2/migration-to-v2">Migration to the v2 API</a>. </p> </td> 
+             </tr> 
+             <tr id="LogSink.FIELDS.writer_identity"> 
+              <td><code>writerIdentity</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> </p><p>Output only. An IAM identity—a service account or group—under which Stackdriver Logging writes the exported log entries to the sink's destination. This field is set by <a href="https://cloud.google.com/logging/docs/api/reference/rest/v2/projects.sinks/create">sinks.create</a> and <a href="https://cloud.google.com/logging/docs/api/reference/rest/v2/projects.sinks/update">sinks.update</a>, based on the setting of <code>uniqueWriterIdentity</code> in those methods.</p><p>Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see <a href="https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource">Granting access for a resource</a>. Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.</p> <p></p> </td> 
+             </tr> 
+             <tr id="LogSink.FIELDS.include_children"> 
+              <td><code>includeChildren</code></td> 
+              <td> <p><code class="apitype">boolean</code></p> <p> </p><p>Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter <code>resource.type=gce_instance</code> would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name:</p> <pre><code>logName:(&quot;projects/test-project1/&quot; OR &quot;projects/test-project2/&quot;) AND
+resource.type=gce_instance
+</code></pre> <p></p> </td> 
+             </tr> 
+             <tr id="LogSink.FIELDS.start_time"> 
+              <td><code>startTime</code></td> 
+              <td> <p><code class="apitype">string (<code><a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Timestamp">Timestamp</a></code> format)</code></p> <p> </p><p>Optional. The time at which this sink will begin exporting log entries. Log entries are exported only if their timestamp is not earlier than the start time. The default value of this field is the time the sink is created or updated.</p><p>A timestamp in RFC3339 UTC &quot;Zulu&quot; format, accurate to nanoseconds. Example: <code>&quot;2014-10-02T15:01:23.045123456Z&quot;</code>.</p> <p></p> </td> 
+             </tr> 
+             <tr id="LogSink.FIELDS.end_time"> 
+              <td><code>endTime</code></td> 
+              <td> <p><code class="apitype">string (<code><a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Timestamp">Timestamp</a></code> format)</code></p> <p> </p><p>Optional. The time at which this sink will stop exporting log entries. Log entries are exported only if their timestamp is earlier than the end time. If this field is not supplied, there is no end time. If both a start time and an end time are provided, then the end time must be later than the start time.</p><p>A timestamp in RFC3339 UTC &quot;Zulu&quot; format, accurate to nanoseconds. Example: <code>&quot;2014-10-02T15:01:23.045123456Z&quot;</code>.</p> <p></p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="METHODS_SUMMARY"> 
+          <table class="methods responsive" id="METHODS_SUMMARY-table"> 
+           <thead> 
+            <tr> 
+             <th colspan="2"><h2>Methods</h2></th> 
+            </tr> 
+           </thead> 
+           <tbody> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create">create</a></code></h3></td> 
+             <td> Creates a sink that exports specified log entries to a destination.</td> 
+            </tr> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/delete">delete</a></code></h3></td> 
+             <td> Deletes a sink.</td> 
+            </tr> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/get">get</a></code></h3></td> 
+             <td> Gets a sink.</td> 
+            </tr> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/list">list</a></code></h3></td> 
+             <td> Lists sinks.</td> 
+            </tr> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/update">update</a></code></h3></td> 
+             <td> Updates a sink.</td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </section> 
+        </section> 
+       </div> 
+       <div class="devsite-content-footer nocontent"> 
+        <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p> 
+        <p class="devsite-content-footer-date" itemprop="datePublished" content="2017-05-05T19:53:23.210950"> Last updated May 5, 2017. </p> 
+       </div> 
+      </article> 
+     </article> 
+    </div> 
+    <footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites">
+     <nav class="devsite-full-site-width">
+      <ul class="devsite-footer-linkboxes-list">
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Compute"> Compute </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Storage"> Storage </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Networking"> Networking </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Big Data"> Big Data </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Machine Learning"> Machine Learning </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Management Tools"> Management Tools </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Developer Tools"> Developer Tools </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Identity and Security"> Identity &amp; Security </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer System Status"> System Status </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Why Google"> Why Google </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Pricing"> Pricing </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Documentation"> Documentation </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Tutorials"> Tutorials </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Training"> Training </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Solutions"> Solutions </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Security &amp; Compliance"> Security &amp; Compliance </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Partners"> Partners </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Customers"> Customers </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Support"> Support </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.google.com/about/careers/jobs#t=sq&amp;q=j&amp;li=20&amp;l=false&amp;jcoid=7c8c6665-81cf-4e11-8fc9-ec1d6a69120c&amp;j=Google+Cloud+Platform&amp;" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Careers"> Careers </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Free Trial Sign Up"> Free Trial Sign Up </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Blog"> Blog </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Community"> Community </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Google+"> Google+ </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//twitter.com/googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Twitter"> Twitter </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/company/3648281" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer LinkedIn"> LinkedIn </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="http://stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Stack Overflow"> Stack Overflow </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/c/googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer YouTube"> YouTube </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Podcast"> Podcast </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Newsletter Signup"> Newsletter Signup </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer UX Research"> UX Research </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/" class="gc-analytics-event devsite-footer-linkbox-logo-link" data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo" src="https://cloud.google.com/_static/19991010dc/images/redesign-14/lockup-color-knockout.png" /></a>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Android Link"> Android </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Chrome Link"> Chrome </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Firebase Link"> Firebase </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Cloud Link"> Google Cloud Platform </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Products Link"> All Products </a></li>
+        </ul></li>
+      </ul>
+     </nav>
+    </footer>
+    <footer class="devsite-utility-footer">
+     <nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width">
+      <div class="devsite-utility-footer-nav-left">
+       <form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post">
+        <input type="hidden" name="xsrf_token" value="Pl49BFslQIRqzXvPgIPoYRcVSw8O0440qisTMtyZdLY6MTUwMTE2ODY2Nzg0NDU0MA" />
+        <input type="hidden" name="next" value="/logging/docs/reference/v2/rest/v2/projects.sinks" />
+        <select class="devsite-utility-footer-language-select kd-select" name="language" track-type="languageSelector" track-name="click"><option value="en" selected="selected" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="en"> English </option><option value="es" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="es"> espa&ntilde;ol </option><option value="pt-br" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="pt-br"> Portugu&ecirc;s Brasileiro </option><option value="ja" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="ja"> ??? </option><option value="zh-tw" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="zh-tw"> ???? </option></select>
+       </form>
+       <span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event" href="https://cloud.google.com/terms/site-terms" data-category="Site-Wide Custom Events" data-label="Footer terms link">Terms </a><a class="devsite-utility-footer-link gc-analytics-event" href="https://www.google.com/policies/privacy/" data-category="Site-Wide Custom Events" data-label="Footer privacy link">Privacy </a></span>
+      </div>
+     </nav>
+    </footer>
+    <div class="devsite-feedback-dialog devsite-dialog">
+     <div class="devsite-dialog-contents">
+      <h3>Send feedback about...</h3>
+      <div class="devsite-feedback-item">
+       <a data-type="documentation" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Docs Feedback Image" track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header">
+        <div class="devsite-feedback-item-icon-container">
+         <div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div>
+        </div></a>
+       <div class="devsite-feedback-item-name">
+         This page 
+       </div>
+       <div class="devsite-feedback-item-description">
+        <a data-type="documentation" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Docs Feedback Text" track-type="feedback" track-name="feedbackDocText" track-metadata-position="header"> Documentation feedback </a>
+       </div>
+      </div>
+      <div class="devsite-feedback-item">
+       <a data-type="product" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Product Feedback Image" track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"><img class="devsite-feedback-item-icon" src="https://cloud.google.com/_static/19991010dc/images/feedback/google_56px.svg" /></a>
+       <div class="devsite-feedback-item-name">
+         Stackdriver Logging 
+       </div>
+       <div class="devsite-feedback-item-description">
+        <a data-type="product" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Product Feedback Text" track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"> Product feedback </a>
+       </div>
+      </div>
+     </div>
+     <div class="devsite-dialog-buttons">
+      <button type="button" class="devsite-feedback-cancel button-white gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button" track-type="feedback" track-name="cancelFeedbackButton" track-metadata-position="header"> Cancel </button>
+     </div>
+    </div>
+    <script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '714033',
+        'bucket': '',
+        'context': 'Logging docs feedback link',
+        'version': 'devsite-20170726-r00-rc01.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script>
+   </div>
+   <script async="" defer="" src="//www.gstatic.com/feedback/api.js"></script>
+   <script src="https://cloud.google.com/_static/19991010dc/js/jquery_ui-bundle.js"></script>
+   <script src="https://cloud.google.com/_static2/19991010dc/jsi18n/"></script>
+   <script src="https://cloud.google.com/_static/19991010dc/js/script_foot_closure.js"></script>
+   <script src="https://cloud.google.com/_static/19991010dc/js/script_foot.js"></script>
+   <script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'VERSION_HASH': '19991010dc', 'SITE_NAME': 'cloud', 'HISTORY_ENABLED': 1, 'SUBPATH': '', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.api.ai', '.apigee.com', '.appspot.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0, 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com'},
+                               '[]','en',
+                               true, '',
+                               {"039e5d84b87fd75807ffb37b7f1bbf2c": true, "098dafe57affddc137df300142652cfd": false, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "752953480de00a336d911a46966cc16d": false, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/logging/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script>
+   <script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script>
+  </div>
+  <span id="devsite-request-elapsed" data-request-elapsed="283.370018005"></span> 
+ </body>
+</html>

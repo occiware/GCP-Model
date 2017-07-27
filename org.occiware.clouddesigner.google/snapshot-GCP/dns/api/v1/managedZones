@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" class="chekov">
+ <head>
+  <script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script>
+  <meta charset="utf-8" />
+  <meta name="xsrf_token" content="D2I-0z1ORkIX-yw2Xuwhu5lyifLWZQIkN0LjS7weecE6MTQ5NzU5NTAxNTA0NTkxMA" />
+  <link rel="canonical" href="https://cloud.google.com/dns/api/v1/managedZones" />
+  <link rel="alternate" href="https://cloud.google.com/dns/api/v1/managedZones" hreflang="en" />
+  <link rel="alternate" href="https://cloud.google.com/dns/api/v1/managedZones" hreflang="x-default" />
+  <link rel="shortcut icon" href="https://cloud.google.com/_static/a365d50fb9/images/cloud/icons/favicons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://cloud.google.com/_static/a365d50fb9/images/cloud/icons/favicons/apple-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons" />
+  <link rel="stylesheet" href="https://cloud.google.com/_static/a365d50fb9/css/devsite-cloud-white.css" />
+  <link rel="stylesheet" href="https://cloud.google.com/_static/a365d50fb9/css/cloud/cloud-site.css" />
+  <link rel="search" type="application/opensearchdescription+xml" title="Google Cloud Platform" href="https://cloud.google.com/s/opensearch.xml" />
+  <script src="https://cloud.google.com/_static/a365d50fb9/js/jquery-bundle.js"></script>
+  <meta property="og:site_name" content="Google Cloud Platform" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cloud.google.com/dns/api/v1/managedZones" />
+  <meta property="og:locale" content="en" />
+  <script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script>
+  <title>ManagedZones &nbsp;|&nbsp; Cloud DNS Documentation
+      &nbsp;|&nbsp; Google Cloud Platform</title>
+  <meta property="og:title" content="ManagedZones &nbsp;|&nbsp; Cloud DNS Documentation
+      &nbsp;|&nbsp; Google Cloud Platform" />
+ </head>
+ <body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-lower-tabs
+               devsite-uhura" id="top_of_page">
+  <div class="devsite-wrapper">
+   <div class="devsite-top-section-wrapper
+            ">
+    <header class="devsite-top-section nocontent">
+     <div class="devsite-top-logo-row-wrapper-wrapper">
+      <div class="devsite-top-logo-row-wrapper">
+       <div class="devsite-top-logo-row
+                    
+                    devsite-full-site-width">
+        <button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button>
+        <div class="devsite-product-name-wrapper">
+         <a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/a365d50fb9/images/cloud/gcp-logo.svg" class="devsite-site-logo" alt="Google Cloud Platform" /><span class="devsite-site-name devsite-product-name">Google Cloud Platform</span></a>
+        </div>
+        <div class="devsite-header-upper-tabs">
+         <nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper">
+          <ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll">
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/why-google/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Why Google"> Why Google </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/products/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Products"> Products </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/solutions/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Solutions"> Solutions </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/launcher/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Launcher"> Launcher </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/pricing/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Pricing"> Pricing </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/customers/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Customers"> Customers </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/docs/" class="devsite-doc-set-nav-active
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Documentation"> Documentation </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/support/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Support"> Support </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/partners/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Partners"> Partners </a></li>
+          </ul>
+         </nav>
+        </div>
+        <form class="devsite-search-form
+                       " action="https://cloud.google.com/s/results/" method="GET" id="top-search" search-placeholder="Search">
+         <div id="searchbox" class="devsite-searchbox">
+          <input placeholder="Search" type="text" class="devsite-search-field devsite-search-query" name="q" value="" autocomplete="off" />
+          <div class="devsite-search-image material-icons"></div>
+         </div>
+         <input type="hidden" name="p" id="search_project" value="/dns/docs/" data-project-name="Cloud DNS Documentation" data-project-path="/dns/docs/" data-query-match="" />
+         <input type="hidden" class="suggest-project" value="Cloud DNS Documentation" />
+        </form>
+        <a class="devsite-header-link devsite-top-button button gc-analytics-event" href="//console.cloud.google.com/" data-category="Site-Wide Custom Events" data-label="Site header link">
+         <div class="devsite-header-link-label">
+          Console
+         </div></a>
+        <button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button>
+        <a href="https://www.google.com/accounts/ServiceLogin?passive=true&amp;continue=https%3A%2F%2Fcloud.google.com%2Fdns%2Fapi%2Fv1%2FmanagedZones%3Frefresh%3D1&amp;service=cloudconsole" class="devsite-user-signin devsite-top-button button gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Sign in button"> Sign in </a>
+       </div>
+      </div>
+     </div>
+     <div class="devsite-collapsible-section">
+      <div class="devsite-header-background devsite-full-site-width">
+       <div class="devsite-product-id-row devsite-full-site-width">
+        <div class="devsite-product-description-row">
+         <ul class="devsite-breadcrumb-list">
+          <li class="devsite-breadcrumb-item"> Documentation </li>
+         </ul>
+        </div>
+        <div class="devsite-product-button-row
+            cloud-free-trial-eligible">
+         <button type="button" id="devsite-feedback-project" class="devsite-feedback-button devsite-top-button gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Send Feedback Button" track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header"> Send feedback </button>
+         <a href="https://console.cloud.google.com/freetrial" class="cloud-free-trial-button button-primary button" track-type="freeTrial" track-name="try" track-metadata-position="nav"> Try It Free </a>
+         <a href="https://cloud.google.com/contact/" class="cloud-contact-sales-button button" track-type="sales" track-name="contact" track-metadata-position="nav"> Contact Sales </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script>
+   </div>
+   <div id="gc-wrapper" itemscope="" itemtype="http://schema.org/APIReference">
+    <input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG" />
+    <script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "FR", "language": {"requested": "en", "served": "en"}, "projectName": "Cloud DNS Documentation", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script> 
+    <div class="devsite-site-mask"></div> 
+    <nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0"> 
+     <div class="devsite-nav-responsive-tabs-panel"> 
+      <nav class="devsite-nav-responsive-tabs devsite-nav"> 
+       <ul class="devsite-nav-list"> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/why-google/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google"> Why Google </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/products/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products"> Products </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/solutions/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions"> Solutions </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/launcher/" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher"> Launcher </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/pricing/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing"> Pricing </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/customers/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers"> Customers </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation" tabindex="0"> Documentation </span> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/support/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support"> Support </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/partners/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners"> Partners </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="//console.cloud.google.com/" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Responsive Tab: console"> Console </a> </li> 
+       </ul> 
+      </nav> 
+     </div> 
+     <div class="devsite-nav-responsive-sidebar-panel"> 
+      <div class="devsite-nav-responsive-back" tabindex="0"></div> 
+      <nav class="devsite-nav-responsive-sidebar"> 
+       <ul class="devsite-nav-list devsite-nav-expandable">
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud DNS</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/quickstart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/docs/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/zones/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing zones</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/records/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing records</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/migrating" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Migrating to Cloud DNS</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/monitoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Monitoring changes</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/update-name-servers" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Updating domain name servers</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/troubleshooting" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Troubleshooting</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/docs/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">DNS v1 API</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-expanded">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Changes</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/changes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/changes/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/changes/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/changes/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">ManagedZones</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-expanded">
+            <li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/dns/api/v1/managedZones" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/managedZones/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/managedZones/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/managedZones/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/managedZones/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/projects/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">ResourceRecordSets</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/resourceRecordSets" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/resourceRecordSets/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/authorization" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authorizing requests</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/standard_params" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Standard Parameters</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/performance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Performance</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/batch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Batch Requests</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Samples and Libraries</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/records/json-record" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Records Format (JSON)</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sdk/gcloud/reference/dns/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Command-line tool (gcloud)</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of Cloud DNS</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Access Control</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/quota" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quota</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/community" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Community</a></li>
+       </ul> 
+      </nav> 
+     </div> 
+    </nav> 
+    <div class="devsite-main-content clearfix"> 
+     <nav class="devsite-section-nav devsite-nav nocontent"> 
+      <ul class="devsite-nav-list devsite-nav-expandable">
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud DNS</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/quickstart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/docs/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/zones/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing zones</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/records/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing records</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/migrating" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Migrating to Cloud DNS</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/monitoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Monitoring changes</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/update-name-servers" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Updating domain name servers</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/troubleshooting" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Troubleshooting</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/docs/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">DNS v1 API</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-expanded">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Changes</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/changes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/changes/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/changes/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/changes/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">ManagedZones</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-expanded">
+           <li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/dns/api/v1/managedZones" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/managedZones/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/managedZones/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/managedZones/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/managedZones/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Projects</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/projects" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/projects/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">ResourceRecordSets</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/resourceRecordSets" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/v1/resourceRecordSets/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/authorization" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authorizing requests</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/standard_params" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Standard Parameters</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/performance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Performance</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/api/batch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Batch Requests</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Samples and Libraries</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/records/json-record" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Records Format (JSON)</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sdk/gcloud/reference/dns/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Command-line tool (gcloud)</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of Cloud DNS</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Access Control</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/quota" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quota</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dns/community" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Community</a></li>
+      </ul> 
+     </nav> 
+     <nav class="devsite-page-nav devsite-nav"></nav> 
+     <article class="devsite-article"> 
+      <article class="devsite-article-inner"> 
+       <nav class="devsite-breadcrumb-nav devsite-nav"> 
+        <ul class="devsite-breadcrumb-list"> 
+         <li class="devsite-breadcrumb-item"> <a href="https://cloud.google.com/dns/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="1"> Cloud DNS </a> </li> 
+         <li class="devsite-breadcrumb-item"> 
+          <div class="devsite-breadcrumb-guillemet material-icons"></div> <a href="https://cloud.google.com/dns/docs/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="2"> Documentation </a> </li> 
+         <li class="devsite-breadcrumb-item"> 
+          <div class="devsite-breadcrumb-guillemet material-icons"></div> <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="3"> Documentation </a> </li> 
+        </ul> 
+       </nav> 
+       <h1 itemprop="name" class="devsite-page-title"> ManagedZones </h1> 
+       <nav class="devsite-page-nav-embedded devsite-nav"></nav> 
+       <div class="devsite-article-body clearfix
+            " itemprop="articleBody"> 
+        <div itemscope="" itemtype="http://developers.google.com/ReferenceObject"> 
+         <meta itemprop="path" content="ManagedZones" /> 
+         <section id="overview"> 
+          <p></p> 
+          <p>For a list of <a href="#methods">methods</a> for this resource, see the end of this page.</p> 
+         </section> 
+         <section id="resource"> 
+          <h2>Resource representations</h2> 
+          <p>A zone is a subtree of the DNS namespace under one administrative responsibility. A ManagedZone is a resource that represents a DNS zone hosted by the Cloud DNS service.</p> 
+          <section> 
+           <pre id="alt-json" class="prettyprint" style="max-height: 500px; overflow: auto">{
+  &quot;kind&quot;: &quot;dns#managedZone&quot;,
+  &quot;name&quot;: <var class="apiparam">string</var>,
+  &quot;dnsName&quot;: <var class="apiparam">string</var>,
+  &quot;description&quot;: <var class="apiparam">string</var>,
+  &quot;id&quot;: <var class="apiparam">unsigned long</var>,
+  &quot;nameServers&quot;: [
+    <var class="apiparam">string</var>
+  ],
+  &quot;creationTime&quot;: <var class="apiparam">string</var>,
+  &quot;nameServerSet&quot;: <var class="apiparam">string</var>
+}</pre> 
+           <table class="matchpre" id="properties"> 
+            <thead> 
+             <tr> 
+              <th>Property name</th> 
+              <th>Value</th> 
+              <th>Description</th> 
+              <th>Notes</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="creationTime"> 
+              <td><code>creationTime</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The time that this resource was created on the server. This is in RFC3339 text format. Output only.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="description"> 
+              <td><code>description</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="dnsName"> 
+              <td><code>dnsName</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The DNS name of this managed zone, for instance &quot;example.com.&quot;.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="id"> 
+              <td><code>id</code></td> 
+              <td><code class="apitype">unsigned long</code></td> 
+              <td>Unique identifier for the resource; defined by the server (output only)</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="kind"> 
+              <td><code>kind</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>Identifies what kind of resource this is. Value: the fixed string <code>&quot;dns#managedZone&quot;</code>.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="name"> 
+              <td><code>name</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>User assigned name for this resource. Must be unique within the project. The name must be 1-32 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="nameServerSet"> 
+              <td><code>nameServerSet</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="nameServers"> 
+              <td><code>nameServers[]</code></td> 
+              <td><code class="apitype">list</code></td> 
+              <td>Delegate your managed_zone to these virtual name servers; defined by the server (output only)</td> 
+              <td> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="methods"> 
+          <h2>Methods</h2> 
+          <dl> 
+           <dt>
+            <a href="https://cloud.google.com/dns/api/v1/managedZones/create">create</a>
+           </dt> 
+           <dd>
+            Create a new ManagedZone.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/dns/api/v1/managedZones/delete">delete</a>
+           </dt> 
+           <dd>
+            Delete a previously created ManagedZone.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/dns/api/v1/managedZones/get">get</a>
+           </dt> 
+           <dd>
+            Fetch the representation of an existing ManagedZone.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/dns/api/v1/managedZones/list">list</a>
+           </dt> 
+           <dd>
+            Enumerate ManagedZones that have been created but not yet deleted.
+           </dd> 
+          </dl> 
+         </section> 
+        </div> 
+       </div> 
+       <div class="devsite-content-footer nocontent"> 
+        <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p> 
+        <p class="devsite-content-footer-date" itemprop="datePublished" content="2016-10-04T19:41:20.579580"> Last updated October 4, 2016. </p> 
+       </div> 
+      </article> 
+     </article> 
+    </div> 
+    <footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup">
+     <nav class="devsite-full-site-width">
+      <ul class="devsite-footer-linkboxes-list">
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Compute"> Compute </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Storage"> Storage </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Networking"> Networking </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Big Data"> Big Data </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Machine Learning"> Machine Learning </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Management Tools"> Management Tools </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Developer Tools"> Developer Tools </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Identity and Security"> Identity &amp; Security </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer System Status"> System Status </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Why Google"> Why Google </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Pricing"> Pricing </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Documentation"> Documentation </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Tutorials"> Tutorials </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Training"> Training </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Solutions"> Solutions </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Security &amp; Compliance"> Security &amp; Compliance </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Partners"> Partners </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Customers"> Customers </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Support"> Support </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.google.com/about/careers/jobs#t=sq&amp;q=j&amp;li=20&amp;l=false&amp;jcoid=7c8c6665-81cf-4e11-8fc9-ec1d6a69120c&amp;j=Google+Cloud+Platform&amp;" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Careers"> Careers </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Free Trial Sign Up"> Free Trial Sign Up </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Blog"> Blog </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Community"> Community </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Google+"> Google+ </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//twitter.com/googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Twitter"> Twitter </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/company/3648281" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer LinkedIn"> LinkedIn </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="http://stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Stack Overflow"> Stack Overflow </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/c/googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer YouTube"> YouTube </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Podcast"> Podcast </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Newsletter Signup"> Newsletter Signup </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer UX Research"> UX Research </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/" class="gc-analytics-event devsite-footer-linkbox-logo-link" data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo" src="https://cloud.google.com/_static/a365d50fb9/images/redesign-14/lockup-color-knockout.png" /></a>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Android Link"> Android </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Chrome Link"> Chrome </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Firebase Link"> Firebase </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Cloud Link"> Google Cloud Platform </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Products Link"> All Products </a></li>
+        </ul></li>
+      </ul>
+     </nav>
+    </footer>
+    <footer class="devsite-utility-footer">
+     <nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width">
+      <div class="devsite-utility-footer-nav-left">
+       <form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post">
+        <input type="hidden" name="xsrf_token" value="D2I-0z1ORkIX-yw2Xuwhu5lyifLWZQIkN0LjS7weecE6MTQ5NzU5NTAxNTA0NTkxMA" />
+        <input type="hidden" name="next" value="/dns/api/v1/managedZones" />
+        <select class="devsite-utility-footer-language-select kd-select" name="language" track-type="languageSelector" track-name="click"><option value="en" selected="selected" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="en"> English </option><option value="es" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="es"> espa&ntilde;ol </option><option value="pt-br" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="pt-br"> Portugu&ecirc;s Brasileiro </option><option value="ja" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="ja"> ??? </option><option value="zh-tw" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="zh-tw"> ???? </option></select>
+       </form>
+       <span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event" href="https://cloud.google.com/terms/site-terms" data-category="Site-Wide Custom Events" data-label="Footer terms link">Terms </a><a class="devsite-utility-footer-link gc-analytics-event" href="https://www.google.com/policies/privacy/" data-category="Site-Wide Custom Events" data-label="Footer privacy link">Privacy </a></span>
+      </div>
+     </nav>
+    </footer>
+    <div class="devsite-feedback-dialog devsite-dialog">
+     <div class="devsite-dialog-contents">
+      <h3>Send feedback about...</h3>
+      <div class="devsite-feedback-item">
+       <a data-type="documentation" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Docs Feedback Image" track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header">
+        <div class="devsite-feedback-item-icon-container">
+         <div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div>
+        </div></a>
+       <div class="devsite-feedback-item-name">
+         This page 
+       </div>
+       <div class="devsite-feedback-item-description">
+        <a data-type="documentation" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Docs Feedback Text" track-type="feedback" track-name="feedbackDocText" track-metadata-position="header"> Documentation feedback </a>
+       </div>
+      </div>
+      <div class="devsite-feedback-item">
+       <a data-type="product" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Product Feedback Image" track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"><img class="devsite-feedback-item-icon" src="https://cloud.google.com/_static/a365d50fb9/images/feedback/google_56px.svg" /></a>
+       <div class="devsite-feedback-item-name">
+         Cloud DNS Documentation 
+       </div>
+       <div class="devsite-feedback-item-description">
+        <a data-type="product" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Product Feedback Text" track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"> Product feedback </a>
+       </div>
+      </div>
+     </div>
+     <div class="devsite-dialog-buttons">
+      <button type="button" class="devsite-feedback-cancel button-white gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button" track-type="feedback" track-name="cancelFeedbackButton" track-metadata-position="header"> Cancel </button>
+     </div>
+    </div>
+    <script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '713899',
+        'bucket': 'documentation',
+        'context': '',
+        'version': 'devsite-20170615-r00-rc01.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script>
+   </div>
+   <script async="" defer="" src="//www.gstatic.com/feedback/api.js"></script>
+   <script src="https://cloud.google.com/_static/a365d50fb9/js/jquery_ui-bundle.js"></script>
+   <script src="https://cloud.google.com/_static2/a365d50fb9/jsi18n/"></script>
+   <script src="https://cloud.google.com/_static/a365d50fb9/js/script_foot_closure.js"></script>
+   <script src="https://cloud.google.com/_static/a365d50fb9/js/script_foot.js"></script>
+   <script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'VERSION_HASH': 'a365d50fb9', 'SITE_NAME': 'cloud', 'HISTORY_ENABLED': 1, 'SUBPATH': '', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.api.ai', '.apigee.com', '.appspot.com', '.devsitetest.how', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0, 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com'},
+                               '[]','en',
+                               true, '',
+                               {"039e5d84b87fd75807ffb37b7f1bbf2c": true, "098dafe57affddc137df300142652cfd": false, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "752953480de00a336d911a46966cc16d": false, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/dns/docs/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script>
+   <script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script>
+  </div>
+  <span id="devsite-request-elapsed" data-request-elapsed="203.900098801"></span> 
+ </body>
+</html>

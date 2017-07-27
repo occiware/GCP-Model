@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en" class="chekov">
+ <head>
+  <script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script>
+  <meta charset="utf-8" />
+  <meta name="xsrf_token" content="Pp5Osbh-Mo4HVgoRr33f7EISNwp81e9hz0BZI-ASK2E6MTUwMTE2ODY2NTY0MjEyMA" />
+  <link rel="canonical" href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters" />
+  <link rel="alternate" href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters" hreflang="en" />
+  <link rel="alternate" href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters" hreflang="x-default" />
+  <link rel="shortcut icon" href="https://cloud.google.com/_static/19991010dc/images/cloud/icons/favicons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://cloud.google.com/_static/19991010dc/images/cloud/icons/favicons/apple-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons" />
+  <link rel="stylesheet" href="https://cloud.google.com/_static/19991010dc/css/devsite-cloud-white.css" />
+  <link rel="stylesheet" href="https://cloud.google.com/_static/19991010dc/css/cloud/cloud-site.css" />
+  <link rel="search" type="application/opensearchdescription+xml" title="Google Cloud Platform" href="https://cloud.google.com/s/opensearch.xml" />
+  <script src="https://cloud.google.com/_static/19991010dc/js/jquery-bundle.js"></script>
+  <meta property="og:site_name" content="Google Cloud Platform" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters" />
+  <meta property="og:locale" content="en" />
+  <script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script>
+  <title>Collection: projects.regions.clusters &nbsp;|&nbsp; Google Cloud Dataproc
+      &nbsp;|&nbsp; Google Cloud Platform</title>
+  <meta property="og:title" content="Collection: projects.regions.clusters &nbsp;|&nbsp; Google Cloud Dataproc
+      &nbsp;|&nbsp; Google Cloud Platform" />
+ </head>
+ <body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-lower-tabs
+               devsite-uhura" id="top_of_page">
+  <div class="devsite-wrapper">
+   <div class="devsite-top-section-wrapper
+            ">
+    <header class="devsite-top-section nocontent">
+     <div class="devsite-top-logo-row-wrapper-wrapper">
+      <div class="devsite-top-logo-row-wrapper">
+       <div class="devsite-top-logo-row devsite-full-site-width">
+        <button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button>
+        <div class="devsite-product-name-wrapper">
+         <a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/19991010dc/images/cloud/gcp-logo.svg" class="devsite-site-logo" alt="Google Cloud Platform" /><span class="devsite-site-name devsite-product-name">Google Cloud Platform</span></a>
+        </div>
+        <div class="devsite-header-upper-tabs">
+         <nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper">
+          <ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll">
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/why-google/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Why Google" track-type="globalNav" track-name="whyGoogle"> Why Google </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/products/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Products" track-type="globalNav" track-name="products"> Products </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/solutions/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Solutions" track-type="globalNav" track-name="solutions"> Solutions </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/launcher/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Launcher" track-type="globalNav" track-name="launcher"> Launcher </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/pricing/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Pricing" track-type="globalNav" track-name="pricing"> Pricing </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/customers/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Customers" track-type="globalNav" track-name="customers"> Customers </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/docs/" class="devsite-doc-set-nav-active
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Documentation"> Documentation </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/support/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Support" track-type="globalNav" track-name="support"> Support </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/partners/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Partners" track-type="globalNav" track-name="partners"> Partners </a></li>
+          </ul>
+         </nav>
+        </div>
+        <form class="devsite-search-form" action="https://cloud.google.com/s/results/" method="GET" id="top-search" search-placeholder="Search">
+         <div id="searchbox" class="devsite-searchbox">
+          <input placeholder="Search" type="text" class="devsite-search-field devsite-search-query" name="q" value="" autocomplete="off" />
+          <div class="devsite-search-image material-icons"></div>
+         </div>
+         <input type="hidden" name="p" id="search_project" value="/dataproc/" data-project-name="Google Cloud Dataproc" data-project-path="/dataproc/" data-query-match="" />
+         <input type="hidden" class="suggest-project" value="Google Cloud Dataproc" />
+         <div class="suggest-project-metadata" data-home_url="/dataproc/" data-path="/dataproc/" data-name="Google Cloud Dataproc"></div>
+        </form>
+        <a class="devsite-header-link devsite-top-button button gc-analytics-event" href="//console.cloud.google.com/" data-category="Site-Wide Custom Events" data-label="Site header link">
+         <div class="devsite-header-link-label">
+          Console
+         </div></a>
+        <button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button>
+        <a href="https://www.google.com/accounts/ServiceLogin?passive=true&amp;continue=https%3A%2F%2Fcloud.google.com%2Fdataproc%2Fdocs%2Freference%2Frest%2Fv1%2Fprojects.regions.clusters%3Frefresh%3D1&amp;service=cloudconsole" class="devsite-user-signin devsite-top-button button gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Sign in button"> Sign in </a>
+       </div>
+      </div>
+     </div>
+     <div class="devsite-collapsible-section">
+      <div class="devsite-header-background devsite-full-site-width">
+       <div class="devsite-product-id-row devsite-full-site-width">
+        <div class="devsite-product-description-row">
+         <ul class="devsite-breadcrumb-list">
+          <li class="devsite-breadcrumb-item"> Documentation </li>
+         </ul>
+        </div>
+        <div class="devsite-product-button-row
+            cloud-free-trial-eligible">
+         <button type="button" id="devsite-feedback-project" class="devsite-feedback-button devsite-top-button gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Send Feedback Button" track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header"> Send feedback </button>
+         <a href="https://console.cloud.google.com/freetrial" class="cloud-free-trial-button button-primary button" track-type="freeTrial" track-name="try" track-metadata-position="nav"> Try It Free </a>
+         <a href="https://cloud.google.com/contact/" class="cloud-contact-sales-button button" track-type="sales" track-name="contact" track-metadata-position="nav"> Contact Sales </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script>
+   </div>
+   <div id="gc-wrapper" itemscope="" itemtype="http://schema.org/APIReference">
+    <input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG" />
+    <script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "FR", "language": {"requested": "en", "served": "en"}, "projectName": "Google Cloud Dataproc", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script> 
+    <div class="devsite-site-mask"></div> 
+    <nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0"> 
+     <div class="devsite-nav-responsive-tabs-panel"> 
+      <nav class="devsite-nav-responsive-tabs devsite-nav"> 
+       <ul class="devsite-nav-list"> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/why-google/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google"> Why Google </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/products/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products"> Products </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/solutions/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions"> Solutions </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/launcher/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher"> Launcher </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/pricing/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing"> Pricing </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/customers/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers"> Customers </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation" tabindex="0"> Documentation </span> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/support/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support"> Support </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/partners/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners"> Partners </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="//console.cloud.google.com/" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Responsive Tab: console"> Console </a> </li> 
+       </ul> 
+      </nav> 
+     </div> 
+     <div class="devsite-nav-responsive-sidebar-panel"> 
+      <div class="devsite-nav-responsive-back" tabindex="0"></div> 
+      <nav class="devsite-nav-responsive-sidebar"> 
+       <ul class="devsite-nav-list devsite-nav-expandable">
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud Dataproc</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Quickstarts</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Quickstarts</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Using the API Explorer</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-explorer-create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Create a cluster</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-explorer-submit" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Submit a Spark job</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-explorer-update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Update a cluster</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-explorer-delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Delete a cluster</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-console" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the console</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-gcloud" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the gcloud command-line tool</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/guides/setup-project" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Set up a project</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/guides/create-cluster" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Create a cluster</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/guides/submit-job" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Submit a job</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/guides/manage-cluster" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Manage a cluster</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; Reference</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">REST</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-expanded">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">v1</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-expanded">
+            <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Collections</span></li>
+            <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.clusters</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+             <ul class="devsite-nav-section devsite-nav-section-expanded">
+              <li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/diagnose" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">diagnose</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+             </ul></li>
+            <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.jobs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+             <ul class="devsite-nav-section devsite-nav-section-collapsed">
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/submit" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">submit</a></li>
+             </ul></li>
+            <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+             <ul class="devsite-nav-section devsite-nav-section-collapsed">
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.operations/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.operations/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+             </ul></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">v1beta2</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Collections</span></li>
+            <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.clusters</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+             <ul class="devsite-nav-section devsite-nav-section-collapsed">
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/diagnose" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">diagnose</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+             </ul></li>
+            <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.jobs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+             <ul class="devsite-nav-section devsite-nav-section-collapsed">
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/submit" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">submit</a></li>
+             </ul></li>
+            <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+             <ul class="devsite-nav-section devsite-nav-section-collapsed">
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.operations/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.operations/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+              <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+             </ul></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Shared.Types</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Other Types</span></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/Shared.Types/CancelOperationRequest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">CancelOperationRequest</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/Shared.Types/DeleteOperationRequest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">DeleteOperationRequest</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/Shared.Types/GetOperationRequest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">GetOperationRequest</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/Shared.Types/ListOperationsRequest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListOperationsRequest</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/Shared.Types/ListOperationsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListOperationsResponse</a></li>
+           </ul></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">RPC</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/google.bytestream" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.bytestream</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.cloud.dataproc.v1</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.cloud.dataproc.v1beta2</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/google.longrunning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.longrunning</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/google.rpc" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.rpc</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/gcloud-installation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google Cloud SDK</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Dataproc overview</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Accessing clusters</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/cluster-web-interfaces" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cluster web interfaces</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/driver-output" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Job driver output</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/stackdriver-monitoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver monitoring</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Compute options</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/custom-machine-types" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Custom machine types</a></li>
+          <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/dataproc/docs/concepts/gpu-clusters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">GPUs in clusters</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/preemptible-vms" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Preemptible VMs</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Configuring clusters</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/dataproc/docs/concepts/auto-zone" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Auto Zone Placement</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/network" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Network configuration</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/cluster-properties" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cluster properties</a></li>
+          <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/dataproc/docs/concepts/high-availability" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">High Availability mode</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/init-actions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Initialization actions</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/scaling-clusters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Scaling clusters</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/service-accounts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service accounts</a></li>
+          <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/dataproc/docs/concepts/single-node-clusters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Single node clusters</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Configuring jobs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/dataproc/docs/concepts/restartable-jobs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Restartable jobs</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Connectors</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/connectors/bigquery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Bigquery connector</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/connectors/cloud-bigtable" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Bigtable</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/connectors/cloud-storage" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Storage connector</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/connectors/install-storage-connector" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Installing the Cloud Storage connector</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Identity and Access Management</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/iam" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Dataproc IAM Roles</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/labels" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Dataproc User Labels</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/regional-endpoints" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Regional endpoints</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Versioning</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/versioning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/dataproc-versions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Image version list</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Samples &amp; Tutorials</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Samples &amp; Tutorials</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Samples</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/examples/bigquery-example" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google BigQuery</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/examples/cloud-bigtable-example" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google Cloud Bigtable</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Tutorials</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/jupyter-notebook" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Install and run a Jupyter notebook</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/monte-carlo-methods-with-hadoop-spark" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Monte Carlo methods using Cloud Dataproc and Apache Spark</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/spark-scala" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Write and run Spark Scala jobs</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/python-library-example" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Use the Python client library</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/bigquery-sparkml" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Use BigQuery and Spark ML for Machine Learning</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/bigquery-connector-mapreduce-example" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Writing a MapReduce Job with the BigQuery Connector</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/bigquery-connector-spark-example" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the BigQuery Connector with Apache Spark</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">FAQ &amp; support</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources/faq" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Frequently asked questions</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/support/get-support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/support/diagnose-command" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Diagnose command</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Pricing and quotas</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/release-notes/service" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release notes</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/quotas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Resource quotas</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Other resources</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources/downloads" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Downloads</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources/partners" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Partners</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li>
+         </ul></li>
+       </ul> 
+      </nav> 
+     </div> 
+    </nav> 
+    <div class="devsite-main-content clearfix"> 
+     <nav class="devsite-section-nav devsite-nav nocontent"> 
+      <ul class="devsite-nav-list devsite-nav-expandable">
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud Dataproc</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Quickstarts</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Quickstarts</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Using the API Explorer</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-explorer-create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Create a cluster</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-explorer-submit" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Submit a Spark job</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-explorer-update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Update a cluster</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-explorer-delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Delete a cluster</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-console" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the console</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/quickstarts/quickstart-gcloud" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the gcloud command-line tool</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/guides/setup-project" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Set up a project</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/guides/create-cluster" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Create a cluster</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/guides/submit-job" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Submit a job</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/guides/manage-cluster" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Manage a cluster</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; Reference</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">REST</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-expanded">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">v1</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-expanded">
+           <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Collections</span></li>
+           <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.clusters</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+            <ul class="devsite-nav-section devsite-nav-section-expanded">
+             <li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/diagnose" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">diagnose</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+            </ul></li>
+           <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.jobs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+            <ul class="devsite-nav-section devsite-nav-section-collapsed">
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/submit" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">submit</a></li>
+            </ul></li>
+           <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+            <ul class="devsite-nav-section devsite-nav-section-collapsed">
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.operations/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.operations/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            </ul></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">v1beta2</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Collections</span></li>
+           <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.clusters</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+            <ul class="devsite-nav-section devsite-nav-section-collapsed">
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/create" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">create</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/diagnose" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">diagnose</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.clusters/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+            </ul></li>
+           <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.jobs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+            <ul class="devsite-nav-section devsite-nav-section-collapsed">
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/submit" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">submit</a></li>
+            </ul></li>
+           <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">projects.regions.operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="2"></a>
+            <ul class="devsite-nav-section devsite-nav-section-collapsed">
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.operations/cancel" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">cancel</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.operations/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+             <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="3" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            </ul></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Shared.Types</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="2">Other Types</span></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/Shared.Types/CancelOperationRequest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">CancelOperationRequest</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/Shared.Types/DeleteOperationRequest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">DeleteOperationRequest</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/Shared.Types/GetOperationRequest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">GetOperationRequest</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/Shared.Types/ListOperationsRequest" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListOperationsRequest</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rest/Shared.Types/ListOperationsResponse" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">ListOperationsResponse</a></li>
+          </ul></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">RPC</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/google.bytestream" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.bytestream</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.cloud.dataproc.v1</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.cloud.dataproc.v1beta2</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/google.longrunning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.longrunning</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/reference/rpc/google.rpc" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">google.rpc</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/gcloud-installation" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google Cloud SDK</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/overview" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Dataproc overview</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Accessing clusters</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/cluster-web-interfaces" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cluster web interfaces</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/driver-output" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Job driver output</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/stackdriver-monitoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Stackdriver monitoring</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Compute options</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/custom-machine-types" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Custom machine types</a></li>
+         <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/dataproc/docs/concepts/gpu-clusters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">GPUs in clusters</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/preemptible-vms" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Preemptible VMs</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Configuring clusters</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/dataproc/docs/concepts/auto-zone" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Auto Zone Placement</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/network" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Network configuration</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/cluster-properties" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cluster properties</a></li>
+         <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/dataproc/docs/concepts/high-availability" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">High Availability mode</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/init-actions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Initialization actions</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/scaling-clusters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Scaling clusters</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/service-accounts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service accounts</a></li>
+         <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/dataproc/docs/concepts/single-node-clusters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Single node clusters</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Configuring jobs</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item devsite-nav-beta devsite-nav-has-status"><a href="https://cloud.google.com/dataproc/docs/concepts/restartable-jobs" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click"><span class="devsite-nav-text">Restartable jobs</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Connectors</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/connectors/bigquery" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Bigquery connector</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/connectors/cloud-bigtable" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Bigtable</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/connectors/cloud-storage" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Storage connector</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/connectors/install-storage-connector" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Installing the Cloud Storage connector</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Identity and Access Management</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/iam" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Dataproc IAM Roles</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/labels" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud Dataproc User Labels</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/regional-endpoints" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Regional endpoints</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Versioning</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/versioning" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/concepts/dataproc-versions" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Image version list</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Samples &amp; Tutorials</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Samples &amp; Tutorials</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Samples</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/examples/bigquery-example" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google BigQuery</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/examples/cloud-bigtable-example" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Google Cloud Bigtable</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Tutorials</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/jupyter-notebook" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Install and run a Jupyter notebook</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/solutions/monte-carlo-methods-with-hadoop-spark" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Monte Carlo methods using Cloud Dataproc and Apache Spark</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/spark-scala" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Write and run Spark Scala jobs</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/python-library-example" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Use the Python client library</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/bigquery-sparkml" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Use BigQuery and Spark ML for Machine Learning</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/bigquery-connector-mapreduce-example" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Writing a MapReduce Job with the BigQuery Connector</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/tutorials/bigquery-connector-spark-example" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the BigQuery Connector with Apache Spark</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">FAQ &amp; support</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources/faq" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Frequently asked questions</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/support/get-support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/support/diagnose-command" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Diagnose command</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Pricing and quotas</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/release-notes/service" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release notes</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/quotas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Resource quotas</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Other resources</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources/downloads" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Downloads</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources/partners" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Partners</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/dataproc/docs/resources/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li>
+        </ul></li>
+      </ul> 
+     </nav> 
+     <nav class="devsite-page-nav devsite-nav"></nav> 
+     <article class="devsite-article"> 
+      <article class="devsite-article-inner"> 
+       <nav class="devsite-breadcrumb-nav devsite-nav"> 
+        <ul class="devsite-breadcrumb-list"> 
+         <li class="devsite-breadcrumb-item"> <a href="https://cloud.google.com/dataproc/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="1"> Google Cloud Dataproc </a> </li> 
+         <li class="devsite-breadcrumb-item"> 
+          <div class="devsite-breadcrumb-guillemet material-icons"></div> <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="2"> Documentation </a> </li> 
+        </ul> 
+       </nav> 
+       <h1 itemprop="name" class="devsite-page-title"> Collection: projects.regions.clusters </h1> 
+       <nav class="devsite-page-nav-embedded devsite-nav"></nav> 
+       <div class="devsite-article-body clearfix
+            " itemprop="articleBody"> 
+        <meta itemprop="name" content="projects.regions.clusters" /> 
+        <meta itemprop="path" content="/dataproc/docs/reference/rest/v1/projects.regions.clusters" /> 
+        <section id="/dataproc/docs/reference/rest/v1/projects.regions.clusters"> 
+         <ul class="toc"> 
+          <li><a href="#Cluster">Resource: Cluster</a> 
+           <ul> 
+            <li><a href="#Cluster.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#ClusterConfig">ClusterConfig</a> 
+           <ul> 
+            <li><a href="#ClusterConfig.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#GceClusterConfig">GceClusterConfig</a> 
+           <ul> 
+            <li><a href="#GceClusterConfig.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#InstanceGroupConfig">InstanceGroupConfig</a> 
+           <ul> 
+            <li><a href="#InstanceGroupConfig.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#DiskConfig">DiskConfig</a> 
+           <ul> 
+            <li><a href="#DiskConfig.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#ManagedGroupConfig">ManagedGroupConfig</a> 
+           <ul> 
+            <li><a href="#ManagedGroupConfig.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#AcceleratorConfig">AcceleratorConfig</a> 
+           <ul> 
+            <li><a href="#AcceleratorConfig.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#SoftwareConfig">SoftwareConfig</a> 
+           <ul> 
+            <li><a href="#SoftwareConfig.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#NodeInitializationAction">NodeInitializationAction</a> 
+           <ul> 
+            <li><a href="#NodeInitializationAction.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#ClusterStatus">ClusterStatus</a> 
+           <ul> 
+            <li><a href="#ClusterStatus.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#State">State</a></li> 
+          <li><a href="#Substate">Substate</a></li> 
+          <li><a href="#ClusterMetrics">ClusterMetrics</a> 
+           <ul> 
+            <li><a href="#ClusterMetrics.SCHEMA_REPRESENTATION">JSON representation</a></li> 
+           </ul> </li> 
+          <li><a href="#METHODS_SUMMARY">Methods</a></li> 
+         </ul> 
+         <section id="Cluster"> 
+          <h2>Resource: Cluster</h2> 
+          <section id="Cluster.description"> 
+           <p>Describes the identifying information, config, and status of a cluster of Google Compute Engine instances.</p> 
+          </section> 
+          <section id="Cluster.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;projectId&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
+  <span class="str">&quot;clusterName&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;config&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterConfig">ClusterConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;labels&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;status&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterStatus">ClusterStatus</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;statusHistory&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterStatus">ClusterStatus</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;clusterUuid&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;metrics&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterMetrics">ClusterMetrics</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="Cluster.FIELDS"> 
+           <table class="properties responsive" id="Cluster.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="Cluster.FIELDS.project_id"> 
+              <td><code>projectId</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Required. The Google Cloud Platform project ID that the cluster belongs to. </p> </td> 
+             </tr> 
+             <tr id="Cluster.FIELDS.cluster_name"> 
+              <td><code>clusterName</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused. </p> </td> 
+             </tr> 
+             <tr id="Cluster.FIELDS.config"> 
+              <td><code>config</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterConfig">ClusterConfig</a></code>)</code></p> <p> Required. The cluster config. Note that Cloud Dataproc may set default values, and values may change when clusters are updated. </p> </td> 
+             </tr> 
+             <tr id="Cluster.FIELDS.labels"> 
+              <td><code>labels</code></td> 
+              <td> <p><code class="apitype">map (key: string, value: string)</code></p> <p> </p><p>Optional. The labels to associate with this cluster. Label <strong>keys</strong> must contain 1 to 63 characters, and must conform to <a href="https://www.ietf.org/rfc/rfc1035.txt">RFC 1035</a>. Label <strong>values</strong> may be empty, but, if present, must contain 1 to 63 characters, and must conform to <a href="https://www.ietf.org/rfc/rfc1035.txt">RFC 1035</a>. No more than 32 labels can be associated with a cluster.</p><p>An object containing a list of <code>&quot;key&quot;: value</code> pairs. Example: <code>{ &quot;name&quot;: &quot;wrench&quot;, &quot;mass&quot;: &quot;1.3kg&quot;, &quot;count&quot;: &quot;3&quot; }</code>.</p> <p></p> </td> 
+             </tr> 
+             <tr id="Cluster.FIELDS.status"> 
+              <td><code>status</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterStatus">ClusterStatus</a></code>)</code></p> <p> Output-only. Cluster status. </p> </td> 
+             </tr> 
+             <tr id="Cluster.FIELDS.status_history"> 
+              <td><code>statusHistory[]</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterStatus">ClusterStatus</a></code>)</code></p> <p> Output-only. The previous cluster status. </p> </td> 
+             </tr> 
+             <tr id="Cluster.FIELDS.cluster_uuid"> 
+              <td><code>clusterUuid</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Output-only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when it creates the cluster. </p> </td> 
+             </tr> 
+             <tr id="Cluster.FIELDS.metrics"> 
+              <td><code>metrics</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterMetrics">ClusterMetrics</a></code>)</code></p> <p> </p><p>Contains cluster daemon metrics such as HDFS and YARN stats.</p><p><strong>Beta Feature</strong>: This report is available for testing purposes only. It may be changed before final release.</p> <p></p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="ClusterConfig"> 
+          <h2>ClusterConfig</h2> 
+          <section id="ClusterConfig.description"> 
+           <p>The cluster config.</p> 
+          </section> 
+          <section id="ClusterConfig.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;configBucket&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
+  <span class="str">&quot;gceClusterConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#GceClusterConfig">GceClusterConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;masterConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;workerConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;secondaryWorkerConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;softwareConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#SoftwareConfig">SoftwareConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;initializationActions&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#NodeInitializationAction">NodeInitializationAction</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="ClusterConfig.FIELDS"> 
+           <table class="properties responsive" id="ClusterConfig.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="ClusterConfig.FIELDS.config_bucket"> 
+              <td><code>configBucket</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Optional. A Google Cloud Storage staging bucket used for sharing generated SSH keys and config. If you do not specify a staging bucket, Cloud Dataproc will determine an appropriate Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Google Compute Engine zone where your cluster is deployed, and then it will create and manage this project-level, per-location bucket for you. </p> </td> 
+             </tr> 
+             <tr id="ClusterConfig.FIELDS.gce_cluster_config"> 
+              <td><code>gceClusterConfig</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#GceClusterConfig">GceClusterConfig</a></code>)</code></p> <p> Required. The shared Google Compute Engine config settings for all instances in a cluster. </p> </td> 
+             </tr> 
+             <tr id="ClusterConfig.FIELDS.master_config"> 
+              <td><code>masterConfig</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</code></p> <p> Optional. The Google Compute Engine config settings for the master instance in a cluster. </p> </td> 
+             </tr> 
+             <tr id="ClusterConfig.FIELDS.worker_config"> 
+              <td><code>workerConfig</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</code></p> <p> Optional. The Google Compute Engine config settings for worker instances in a cluster. </p> </td> 
+             </tr> 
+             <tr id="ClusterConfig.FIELDS.secondary_worker_config"> 
+              <td><code>secondaryWorkerConfig</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</code></p> <p> Optional. The Google Compute Engine config settings for additional worker instances in a cluster. </p> </td> 
+             </tr> 
+             <tr id="ClusterConfig.FIELDS.software_config"> 
+              <td><code>softwareConfig</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#SoftwareConfig">SoftwareConfig</a></code>)</code></p> <p> Optional. The config settings for software inside the cluster. </p> </td> 
+             </tr> 
+             <tr id="ClusterConfig.FIELDS.initialization_actions"> 
+              <td><code>initializationActions[]</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#NodeInitializationAction">NodeInitializationAction</a></code>)</code></p> <p> </p><p>Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's <code>role</code> metadata to run an executable on a master or worker node, as shown below using <code>curl</code> (you can also use <code>wget</code>):</p> <pre><code>ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role)
+if [[ &quot;${ROLE}&quot; == 'Master' ]]; then
+  ... master specific actions ...
+else
+  ... worker specific actions ...
+fi
+</code></pre> <p></p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="GceClusterConfig"> 
+          <h2>GceClusterConfig</h2> 
+          <section id="GceClusterConfig.description"> 
+           <p>Common config settings for resources of Google Compute Engine cluster instances, applicable to all instances in the cluster.</p> 
+          </section> 
+          <section id="GceClusterConfig.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;zoneUri&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
+  <span class="str">&quot;networkUri&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;subnetworkUri&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;internalIpOnly&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;serviceAccount&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;serviceAccountScopes&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">string</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;tags&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">string</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;metadata&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="GceClusterConfig.FIELDS"> 
+           <table class="properties responsive" id="GceClusterConfig.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="GceClusterConfig.FIELDS.zone_uri"> 
+              <td><code>zoneUri</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> </p><p>Optional. The zone where the Google Compute Engine cluster will be located. On a create request, it is required in the &quot;global&quot; region. If omitted in a non-global Cloud Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.</p><p>A full URL, partial URI, or short name are valid. Examples:</p> 
+               <ul> 
+                <li><code>https://www.googleapis.com/compute/v1/projects/[projectId]/zones/[zone]</code></li> 
+                <li><code>projects/[projectId]/zones/[zone]</code></li> 
+                <li><code>us-central1-f</code></li> 
+               </ul> <p></p> </td> 
+             </tr> 
+             <tr id="GceClusterConfig.FIELDS.network_uri"> 
+              <td><code>networkUri</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> </p><p>Optional. The Google Compute Engine network to be used for machine communications. Cannot be specified with subnetworkUri. If neither <code>networkUri</code> nor <code>subnetworkUri</code> is specified, the &quot;default&quot; network of the project is used, if it exists. Cannot be a &quot;Custom Subnet Network&quot; (see <a href="https://cloud.google.com/compute/docs/subnetworks">Using Subnetworks</a> for more information).</p><p>A full URL, partial URI, or short name are valid. Examples:</p> 
+               <ul> 
+                <li><code>https://www.googleapis.com/compute/v1/projects/[projectId]/regions/global/default</code></li> 
+                <li><code>projects/[projectId]/regions/global/default</code></li> 
+                <li><code>default</code></li> 
+               </ul> <p></p> </td> 
+             </tr> 
+             <tr id="GceClusterConfig.FIELDS.subnetwork_uri"> 
+              <td><code>subnetworkUri</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> </p><p>Optional. The Google Compute Engine subnetwork to be used for machine communications. Cannot be specified with networkUri.</p><p>A full URL, partial URI, or short name are valid. Examples:</p> 
+               <ul> 
+                <li><code>https://www.googleapis.com/compute/v1/projects/[projectId]/regions/us-east1/sub0</code></li> 
+                <li><code>projects/[projectId]/regions/us-east1/sub0</code></li> 
+                <li><code>sub0</code></li> 
+               </ul> <p></p> </td> 
+             </tr> 
+             <tr id="GceClusterConfig.FIELDS.internal_ip_only"> 
+              <td><code>internalIpOnly</code></td> 
+              <td> <p><code class="apitype">boolean</code></p> <p> Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This <code>internalIpOnly</code> restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses. </p> </td> 
+             </tr> 
+             <tr id="GceClusterConfig.FIELDS.service_account"> 
+              <td><code>serviceAccount</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> </p><p>Optional. The service account of the instances. Defaults to the default Google Compute Engine service account. Custom service accounts need permissions equivalent to the folloing IAM roles:</p> 
+               <ul> 
+                <li>roles/logging.logWriter</li> 
+                <li>roles/storage.objectAdmin</li> 
+               </ul><p>(see <a href="https://cloud.google.com/compute/docs/access/service-accounts#custom_service_accounts">https://cloud.google.com/compute/docs/access/service-accounts#custom_service_accounts</a> for more information). Example: <code>[account_id]@[projectId].iam.gserviceaccount.com</code></p> <p></p> </td> 
+             </tr> 
+             <tr id="GceClusterConfig.FIELDS.service_account_scopes"> 
+              <td><code>serviceAccountScopes[]</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> </p><p>Optional. The URIs of service account scopes to be included in Google Compute Engine instances. The following base set of scopes is always included:</p> 
+               <ul> 
+                <li><a href="https://www.googleapis.com/auth/cloud.useraccounts.readonly">https://www.googleapis.com/auth/cloud.useraccounts.readonly</a></li> 
+                <li><a href="https://www.googleapis.com/auth/devstorage.read_write">https://www.googleapis.com/auth/devstorage.read_write</a></li> 
+                <li><a href="https://www.googleapis.com/auth/logging.write">https://www.googleapis.com/auth/logging.write</a></li> 
+               </ul><p>If no scopes are specified, the following defaults are also provided:</p> 
+               <ul> 
+                <li><a href="https://www.googleapis.com/auth/bigquery">https://www.googleapis.com/auth/bigquery</a></li> 
+                <li><a href="https://www.googleapis.com/auth/bigtable.admin.table">https://www.googleapis.com/auth/bigtable.admin.table</a></li> 
+                <li><a href="https://www.googleapis.com/auth/bigtable.data">https://www.googleapis.com/auth/bigtable.data</a></li> 
+                <li><a href="https://www.googleapis.com/auth/devstorage.full_control">https://www.googleapis.com/auth/devstorage.full_control</a></li> 
+               </ul> <p></p> </td> 
+             </tr> 
+             <tr id="GceClusterConfig.FIELDS.tags"> 
+              <td><code>tags[]</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> The Google Compute Engine tags to add to all instances (see <a href="https://cloud.google.com/compute/docs/label-or-tag-resources#tags">Tagging instances</a>). </p> </td> 
+             </tr> 
+             <tr id="GceClusterConfig.FIELDS.metadata"> 
+              <td><code>metadata</code></td> 
+              <td> <p><code class="apitype">map (key: string, value: string)</code></p> <p> </p><p>The Google Compute Engine metadata entries to add to all instances (see <a href="https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata">Project and instance metadata</a>).</p><p>An object containing a list of <code>&quot;key&quot;: value</code> pairs. Example: <code>{ &quot;name&quot;: &quot;wrench&quot;, &quot;mass&quot;: &quot;1.3kg&quot;, &quot;count&quot;: &quot;3&quot; }</code>.</p> <p></p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="InstanceGroupConfig"> 
+          <h2>InstanceGroupConfig</h2> 
+          <section id="InstanceGroupConfig.description"> 
+           <p>Optional. The config settings for Google Compute Engine resources in an instance group, such as a master or worker group.</p> 
+          </section> 
+          <section id="InstanceGroupConfig.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;numInstances&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span>
+  <span class="str">&quot;instanceNames&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">string</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;imageUri&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;machineTypeUri&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;diskConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#DiskConfig">DiskConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;isPreemptible&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;managedGroupConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ManagedGroupConfig">ManagedGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;accelerators&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#AcceleratorConfig">AcceleratorConfig</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="InstanceGroupConfig.FIELDS"> 
+           <table class="properties responsive" id="InstanceGroupConfig.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="InstanceGroupConfig.FIELDS.num_instances"> 
+              <td><code>numInstances</code></td> 
+              <td> <p><code class="apitype">number</code></p> <p> Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1. </p> </td> 
+             </tr> 
+             <tr id="InstanceGroupConfig.FIELDS.instance_names"> 
+              <td><code>instanceNames[]</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Optional. The list of instance names. Cloud Dataproc derives the names from <code>clusterName</code>, <code>numInstances</code>, and the instance group if not set by user (recommended practice is to let Cloud Dataproc derive the name). </p> </td> 
+             </tr> 
+             <tr id="InstanceGroupConfig.FIELDS.image_uri"> 
+              <td><code>imageUri</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Output-only. The Google Compute Engine image resource used for cluster instances. Inferred from <code>SoftwareConfig.image_version</code>. </p> </td> 
+             </tr> 
+             <tr id="InstanceGroupConfig.FIELDS.machine_type_uri"> 
+              <td><code>machineTypeUri</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> </p><p>Optional. The Google Compute Engine machine type used for cluster instances.</p><p>A full URL, partial URI, or short name are valid. Examples:</p> 
+               <ul> 
+                <li><code>https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2</code></li> 
+                <li><code>projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2</code></li> 
+                <li><code>n1-standard-2</code></li> 
+               </ul> <p></p> </td> 
+             </tr> 
+             <tr id="InstanceGroupConfig.FIELDS.disk_config"> 
+              <td><code>diskConfig</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#DiskConfig">DiskConfig</a></code>)</code></p> <p> Optional. Disk option config settings. </p> </td> 
+             </tr> 
+             <tr id="InstanceGroupConfig.FIELDS.is_preemptible"> 
+              <td><code>isPreemptible</code></td> 
+              <td> <p><code class="apitype">boolean</code></p> <p> Optional. Specifies that this instance group contains preemptible instances. </p> </td> 
+             </tr> 
+             <tr id="InstanceGroupConfig.FIELDS.managed_group_config"> 
+              <td><code>managedGroupConfig</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ManagedGroupConfig">ManagedGroupConfig</a></code>)</code></p> <p> Output-only. The config for Google Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups. </p> </td> 
+             </tr> 
+             <tr id="InstanceGroupConfig.FIELDS.accelerators"> 
+              <td><code>accelerators[]</code></td> 
+              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#AcceleratorConfig">AcceleratorConfig</a></code>)</code></p> <p> </p><p>Optional. The Google Compute Engine accelerator configuration for these instances.</p><p><strong>Beta Feature</strong>: This feature is still under development. It may be changed before final release.</p> <p></p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="DiskConfig"> 
+          <h2>DiskConfig</h2> 
+          <section id="DiskConfig.description"> 
+           <p>Specifies the config of disk options for a group of VM instances.</p> 
+          </section> 
+          <section id="DiskConfig.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;bootDiskSizeGb&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span>
+  <span class="str">&quot;numLocalSsds&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="pun">}</span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="DiskConfig.FIELDS"> 
+           <table class="properties responsive" id="DiskConfig.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="DiskConfig.FIELDS.boot_disk_size_gb"> 
+              <td><code>bootDiskSizeGb</code></td> 
+              <td> <p><code class="apitype">number</code></p> <p> Optional. Size in GB of the boot disk (default is 500GB). </p> </td> 
+             </tr> 
+             <tr id="DiskConfig.FIELDS.num_local_ssds"> 
+              <td><code>numLocalSsds</code></td> 
+              <td> <p><code class="apitype">number</code></p> <p> Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and <a href="https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html">HDFS</a> data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries. </p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="ManagedGroupConfig"> 
+          <h2>ManagedGroupConfig</h2> 
+          <section id="ManagedGroupConfig.description"> 
+           <p>Specifies the resources used to actively manage an instance group.</p> 
+          </section> 
+          <section id="ManagedGroupConfig.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;instanceTemplateName&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
+  <span class="str">&quot;instanceGroupManagerName&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="pun">}</span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="ManagedGroupConfig.FIELDS"> 
+           <table class="properties responsive" id="ManagedGroupConfig.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="ManagedGroupConfig.FIELDS.instance_template_name"> 
+              <td><code>instanceTemplateName</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Output-only. The name of the Instance Template used for the Managed Instance Group. </p> </td> 
+             </tr> 
+             <tr id="ManagedGroupConfig.FIELDS.instance_group_manager_name"> 
+              <td><code>instanceGroupManagerName</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Output-only. The name of the Instance Group Manager for this group. </p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="AcceleratorConfig"> 
+          <h2>AcceleratorConfig</h2> 
+          <section id="AcceleratorConfig.description"> 
+           <p>Specifies the type and number of accelerator cards attached to the instances of an instance group (see <a href="https://cloud.google.com/compute/docs/gpus/">GPUs on Compute Engine</a>).</p> 
+          </section> 
+          <section id="AcceleratorConfig.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;acceleratorTypeUri&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
+  <span class="str">&quot;acceleratorCount&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="pun">}</span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="AcceleratorConfig.FIELDS"> 
+           <table class="properties responsive" id="AcceleratorConfig.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="AcceleratorConfig.FIELDS.accelerator_type_uri"> 
+              <td><code>acceleratorTypeUri</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> </p><p>Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See [Google Compute Engine AcceleratorTypes]( /compute/docs/reference/beta/acceleratorTypes)</p><p>Examples * <code>https://www.googleapis.com/compute/beta/projects/[projectId]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80</code> * <code>projects/[projectId]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80</code> * <code>nvidia-tesla-k80</code></p> <p></p> </td> 
+             </tr> 
+             <tr id="AcceleratorConfig.FIELDS.accelerator_count"> 
+              <td><code>acceleratorCount</code></td> 
+              <td> <p><code class="apitype">number</code></p> <p> The number of the accelerator cards of this type exposed to this instance. </p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="SoftwareConfig"> 
+          <h2>SoftwareConfig</h2> 
+          <section id="SoftwareConfig.description"> 
+           <p>Specifies the selection and config of software inside the cluster.</p> 
+          </section> 
+          <section id="SoftwareConfig.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;imageVersion&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
+  <span class="str">&quot;properties&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="SoftwareConfig.FIELDS"> 
+           <table class="properties responsive" id="SoftwareConfig.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="SoftwareConfig.FIELDS.image_version"> 
+              <td><code>imageVersion</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Optional. The version of software inside the cluster. It must match the regular expression <code>[0-9]+\.[0-9]+</code>. If unspecified, it defaults to the latest version (see <a href="https://cloud.google.com/dataproc/versioning">Cloud Dataproc Versioning</a>). </p> </td> 
+             </tr> 
+             <tr id="SoftwareConfig.FIELDS.properties"> 
+              <td><code>properties</code></td> 
+              <td> <p><code class="apitype">map (key: string, value: string)</code></p> <p> </p><p>Optional. The properties to set on daemon config files.</p><p>Property keys are specified in <code>prefix:property</code> format, such as <code>core:fs.defaultFS</code>. The following are supported prefixes and their mappings:</p> 
+               <ul> 
+                <li>capacity-scheduler: <code>capacity-scheduler.xml</code></li> 
+                <li>core: <code>core-site.xml</code></li> 
+                <li>distcp: <code>distcp-default.xml</code></li> 
+                <li>hdfs: <code>hdfs-site.xml</code></li> 
+                <li>hive: <code>hive-site.xml</code></li> 
+                <li>mapred: <code>mapred-site.xml</code></li> 
+                <li>pig: <code>pig.properties</code></li> 
+                <li>spark: <code>spark-defaults.conf</code></li> 
+                <li>yarn: <code>yarn-site.xml</code></li> 
+               </ul><p>An object containing a list of <code>&quot;key&quot;: value</code> pairs. Example: <code>{ &quot;name&quot;: &quot;wrench&quot;, &quot;mass&quot;: &quot;1.3kg&quot;, &quot;count&quot;: &quot;3&quot; }</code>.</p> <p></p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="NodeInitializationAction"> 
+          <h2>NodeInitializationAction</h2> 
+          <section id="NodeInitializationAction.description"> 
+           <p>Specifies an executable to run on a fully configured node and a timeout period for executable completion.</p> 
+          </section> 
+          <section id="NodeInitializationAction.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;executableFile&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
+  <span class="str">&quot;executionTimeout&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="pun">}</span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="NodeInitializationAction.FIELDS"> 
+           <table class="properties responsive" id="NodeInitializationAction.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="NodeInitializationAction.FIELDS.executable_file"> 
+              <td><code>executableFile</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Required. Google Cloud Storage URI of executable file. </p> </td> 
+             </tr> 
+             <tr id="NodeInitializationAction.FIELDS.execution_timeout"> 
+              <td><code>executionTimeout</code></td> 
+              <td> <p><code class="apitype">string (<code><a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration">Duration</a></code> format)</code></p> <p> </p><p>Optional. Amount of time executable has to complete. Default is 10 minutes. Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.</p><p>A duration in seconds with up to nine fractional digits, terminated by '<code>s</code>'. Example: <code>&quot;3.5s&quot;</code>.</p> <p></p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="ClusterStatus"> 
+          <h2>ClusterStatus</h2> 
+          <section id="ClusterStatus.description"> 
+           <p>The status of a cluster and its instances.</p> 
+          </section> 
+          <section id="ClusterStatus.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;state&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#State">State</a></code>)</span><span class="pun">,</span>
+  <span class="str">&quot;detail&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;stateStartTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;substate&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#Substate">Substate</a></code>)</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="ClusterStatus.FIELDS"> 
+           <table class="properties responsive" id="ClusterStatus.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="ClusterStatus.FIELDS.state"> 
+              <td><code>state</code></td> 
+              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#State">State</a></code>)</code></p> <p> Output-only. The cluster's state. </p> </td> 
+             </tr> 
+             <tr id="ClusterStatus.FIELDS.detail"> 
+              <td><code>detail</code></td> 
+              <td> <p><code class="apitype">string</code></p> <p> Output-only. Optional details of cluster's state. </p> </td> 
+             </tr> 
+             <tr id="ClusterStatus.FIELDS.state_start_time"> 
+              <td><code>stateStartTime</code></td> 
+              <td> <p><code class="apitype">string (<code><a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Timestamp">Timestamp</a></code> format)</code></p> <p> </p><p>Output-only. Time when this state was entered.</p><p>A timestamp in RFC3339 UTC &quot;Zulu&quot; format, accurate to nanoseconds. Example: <code>&quot;2014-10-02T15:01:23.045123456Z&quot;</code>.</p> <p></p> </td> 
+             </tr> 
+             <tr id="ClusterStatus.FIELDS.substate"> 
+              <td><code>substate</code></td> 
+              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#Substate">Substate</a></code>)</code></p> <p> Output-only. Additional state information that includes status reported by the agent. </p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="State"> 
+          <h2>State</h2> 
+          <section id="State.description"> 
+           <p>The cluster state.</p> 
+          </section> 
+          <section id="State.ENUM_VALUES"> 
+           <table class="constants responsive" id="State.ENUM_VALUES-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Enums</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="State.ENUM_VALUES.UNKNOWN"> 
+              <td><code class="apitype">UNKNOWN</code></td> 
+              <td>The cluster state is unknown.</td> 
+             </tr> 
+             <tr id="State.ENUM_VALUES.CREATING"> 
+              <td><code class="apitype">CREATING</code></td> 
+              <td>The cluster is being created and set up. It is not ready for use.</td> 
+             </tr> 
+             <tr id="State.ENUM_VALUES.RUNNING"> 
+              <td><code class="apitype">RUNNING</code></td> 
+              <td>The cluster is currently running and healthy. It is ready for use.</td> 
+             </tr> 
+             <tr id="State.ENUM_VALUES.ERROR"> 
+              <td><code class="apitype">ERROR</code></td> 
+              <td>The cluster encountered an error. It is not ready for use.</td> 
+             </tr> 
+             <tr id="State.ENUM_VALUES.DELETING"> 
+              <td><code class="apitype">DELETING</code></td> 
+              <td>The cluster is being deleted. It cannot be used.</td> 
+             </tr> 
+             <tr id="State.ENUM_VALUES.UPDATING"> 
+              <td><code class="apitype">UPDATING</code></td> 
+              <td>The cluster is being updated. It continues to accept and process jobs.</td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="Substate"> 
+          <h2>Substate</h2> 
+          <section id="Substate.description"> 
+          </section> 
+          <section id="Substate.ENUM_VALUES"> 
+           <table class="constants responsive" id="Substate.ENUM_VALUES-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Enums</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="Substate.ENUM_VALUES.UNSPECIFIED"> 
+              <td><code class="apitype">UNSPECIFIED</code></td> 
+              <td></td> 
+             </tr> 
+             <tr id="Substate.ENUM_VALUES.UNHEALTHY"> 
+              <td><code class="apitype">UNHEALTHY</code></td> 
+              <td><p>The cluster is known to be in an unhealthy state (for example, critical daemons are not running or HDFS capacity is exhausted).</p><p>Applies to RUNNING state.</p></td> 
+             </tr> 
+             <tr id="Substate.ENUM_VALUES.STALE_STATUS"> 
+              <td><code class="apitype">STALE_STATUS</code></td> 
+              <td><p>The agent-reported status is out of date (may occur if Cloud Dataproc loses communication with Agent).</p><p>Applies to RUNNING state.</p></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="ClusterMetrics"> 
+          <h2>ClusterMetrics</h2> 
+          <section id="ClusterMetrics.description"> 
+           <p>Contains cluster daemon metrics, such as HDFS and YARN stats.</p>
+           <p><strong>Beta Feature</strong>: This report is available for testing purposes only. It may be changed before final release.</p> 
+          </section> 
+          <section id="ClusterMetrics.SCHEMA_REPRESENTATION"> 
+           <table class="properties responsive"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">JSON representation</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr> 
+              <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
+  <span class="str">&quot;hdfsMetrics&quot;<span class="pun">: </span><span class="pun">{</span>
+    <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;yarnMetrics&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></pre></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+          <section id="ClusterMetrics.FIELDS"> 
+           <table class="properties responsive" id="ClusterMetrics.FIELDS-table"> 
+            <thead> 
+             <tr> 
+              <th colspan="2">Fields</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="ClusterMetrics.FIELDS.hdfs_metrics"> 
+              <td><code>hdfsMetrics</code></td> 
+              <td> <p><code class="apitype">map (key: string, value: string (<a href="https://developers.google.com/discovery/v1/type-format">int64</a> format))</code></p> <p> </p><p>The HDFS metrics.</p><p>An object containing a list of <code>&quot;key&quot;: value</code> pairs. Example: <code>{ &quot;name&quot;: &quot;wrench&quot;, &quot;mass&quot;: &quot;1.3kg&quot;, &quot;count&quot;: &quot;3&quot; }</code>.</p> <p></p> </td> 
+             </tr> 
+             <tr id="ClusterMetrics.FIELDS.yarn_metrics"> 
+              <td><code>yarnMetrics</code></td> 
+              <td> <p><code class="apitype">map (key: string, value: string (<a href="https://developers.google.com/discovery/v1/type-format">int64</a> format))</code></p> <p> </p><p>The YARN metrics.</p><p>An object containing a list of <code>&quot;key&quot;: value</code> pairs. Example: <code>{ &quot;name&quot;: &quot;wrench&quot;, &quot;mass&quot;: &quot;1.3kg&quot;, &quot;count&quot;: &quot;3&quot; }</code>.</p> <p></p> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="METHODS_SUMMARY"> 
+          <table class="methods responsive" id="METHODS_SUMMARY-table"> 
+           <thead> 
+            <tr> 
+             <th colspan="2"><h2>Methods</h2></th> 
+            </tr> 
+           </thead> 
+           <tbody> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/create">create</a></code></h3></td> 
+             <td> Creates a cluster in a project.</td> 
+            </tr> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/delete">delete</a></code></h3></td> 
+             <td> Deletes a cluster in a project.</td> 
+            </tr> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/diagnose">diagnose</a></code></h3></td> 
+             <td> Gets cluster diagnostic information.</td> 
+            </tr> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/get">get</a></code></h3></td> 
+             <td> Gets the resource representation for a cluster in a project.</td> 
+            </tr> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/list">list</a></code></h3></td> 
+             <td> Lists all regions/{region}/clusters in a project.</td> 
+            </tr> 
+            <tr> 
+             <td> <h3><code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch">patch</a></code></h3></td> 
+             <td> Updates a cluster in a project.</td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </section> 
+        </section> 
+       </div> 
+       <div class="devsite-content-footer nocontent"> 
+        <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p> 
+        <p class="devsite-content-footer-date" itemprop="datePublished" content="2017-06-30T22:27:08.102990"> Last updated June 30, 2017. </p> 
+       </div> 
+      </article> 
+     </article> 
+    </div> 
+    <footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup
+               devsite-footer-linkboxes-with-sites">
+     <nav class="devsite-full-site-width">
+      <ul class="devsite-footer-linkboxes-list">
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Compute"> Compute </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Storage"> Storage </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Networking"> Networking </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Big Data"> Big Data </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Machine Learning"> Machine Learning </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Management Tools"> Management Tools </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Developer Tools"> Developer Tools </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Identity and Security"> Identity &amp; Security </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer System Status"> System Status </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Why Google"> Why Google </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Pricing"> Pricing </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Documentation"> Documentation </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Tutorials"> Tutorials </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Training"> Training </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Solutions"> Solutions </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Security &amp; Compliance"> Security &amp; Compliance </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Partners"> Partners </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Customers"> Customers </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Support"> Support </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.google.com/about/careers/jobs#t=sq&amp;q=j&amp;li=20&amp;l=false&amp;jcoid=7c8c6665-81cf-4e11-8fc9-ec1d6a69120c&amp;j=Google+Cloud+Platform&amp;" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Careers"> Careers </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Free Trial Sign Up"> Free Trial Sign Up </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Blog"> Blog </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Community"> Community </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Google+"> Google+ </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//twitter.com/googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Twitter"> Twitter </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/company/3648281" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer LinkedIn"> LinkedIn </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="http://stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Stack Overflow"> Stack Overflow </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/c/googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer YouTube"> YouTube </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Podcast"> Podcast </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Newsletter Signup"> Newsletter Signup </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer UX Research"> UX Research </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/" class="gc-analytics-event devsite-footer-linkbox-logo-link" data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo" src="https://cloud.google.com/_static/19991010dc/images/redesign-14/lockup-color-knockout.png" /></a>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Android Link"> Android </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Chrome Link"> Chrome </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Firebase Link"> Firebase </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Cloud Link"> Google Cloud Platform </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Products Link"> All Products </a></li>
+        </ul></li>
+      </ul>
+     </nav>
+    </footer>
+    <footer class="devsite-utility-footer">
+     <nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width">
+      <div class="devsite-utility-footer-nav-left">
+       <form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post">
+        <input type="hidden" name="xsrf_token" value="Pp5Osbh-Mo4HVgoRr33f7EISNwp81e9hz0BZI-ASK2E6MTUwMTE2ODY2NTY0MjEyMA" />
+        <input type="hidden" name="next" value="/dataproc/docs/reference/rest/v1/projects.regions.clusters" />
+        <select class="devsite-utility-footer-language-select kd-select" name="language" track-type="languageSelector" track-name="click"><option value="en" selected="selected" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="en"> English </option><option value="es" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="es"> espa&ntilde;ol </option><option value="pt-br" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="pt-br"> Portugu&ecirc;s Brasileiro </option><option value="ja" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="ja"> ??? </option><option value="zh-tw" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="zh-tw"> ???? </option></select>
+       </form>
+       <span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event" href="https://cloud.google.com/terms/site-terms" data-category="Site-Wide Custom Events" data-label="Footer terms link">Terms </a><a class="devsite-utility-footer-link gc-analytics-event" href="https://www.google.com/policies/privacy/" data-category="Site-Wide Custom Events" data-label="Footer privacy link">Privacy </a></span>
+      </div>
+     </nav>
+    </footer>
+    <div class="devsite-feedback-dialog devsite-dialog">
+     <div class="devsite-dialog-contents">
+      <h3>Send feedback about...</h3>
+      <div class="devsite-feedback-item">
+       <a data-type="documentation" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Docs Feedback Image" track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header">
+        <div class="devsite-feedback-item-icon-container">
+         <div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div>
+        </div></a>
+       <div class="devsite-feedback-item-name">
+         This page 
+       </div>
+       <div class="devsite-feedback-item-description">
+        <a data-type="documentation" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Docs Feedback Text" track-type="feedback" track-name="feedbackDocText" track-metadata-position="header"> Documentation feedback </a>
+       </div>
+      </div>
+      <div class="devsite-feedback-item">
+       <a data-type="product" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Product Feedback Image" track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"><img class="devsite-feedback-item-icon" src="https://cloud.google.com/_static/19991010dc/images/feedback/google_56px.svg" /></a>
+       <div class="devsite-feedback-item-name">
+         Google Cloud Dataproc 
+       </div>
+       <div class="devsite-feedback-item-description">
+        <a data-type="product" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Product Feedback Text" track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"> Product feedback </a>
+       </div>
+      </div>
+     </div>
+     <div class="devsite-dialog-buttons">
+      <button type="button" class="devsite-feedback-cancel button-white gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button" track-type="feedback" track-name="cancelFeedbackButton" track-metadata-position="header"> Cancel </button>
+     </div>
+    </div>
+    <script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '714119',
+        'bucket': 'Dataproc Docs',
+        'context': 'Cloud Dataproc docs feedback link',
+        'version': 'devsite-20170726-r00-rc01.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script>
+   </div>
+   <script async="" defer="" src="//www.gstatic.com/feedback/api.js"></script>
+   <script src="https://cloud.google.com/_static/19991010dc/js/jquery_ui-bundle.js"></script>
+   <script src="https://cloud.google.com/_static2/19991010dc/jsi18n/"></script>
+   <script src="https://cloud.google.com/_static/19991010dc/js/script_foot_closure.js"></script>
+   <script src="https://cloud.google.com/_static/19991010dc/js/script_foot.js"></script>
+   <script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'VERSION_HASH': '19991010dc', 'SITE_NAME': 'cloud', 'HISTORY_ENABLED': 1, 'SUBPATH': '', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.api.ai', '.apigee.com', '.appspot.com', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0, 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com'},
+                               '[]','en',
+                               true, '',
+                               {"039e5d84b87fd75807ffb37b7f1bbf2c": true, "098dafe57affddc137df300142652cfd": false, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "752953480de00a336d911a46966cc16d": false, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/dataproc/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script>
+   <script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script>
+  </div>
+  <span id="devsite-request-elapsed" data-request-elapsed="272.289991379"></span> 
+ </body>
+</html>

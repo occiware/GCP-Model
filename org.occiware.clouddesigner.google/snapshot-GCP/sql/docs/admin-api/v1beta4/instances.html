@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en" class="chekov">
+ <head>
+  <script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script>
+  <meta charset="utf-8" />
+  <meta name="xsrf_token" content="01e67-Bwxv-Vb-2kw92fSi5bmT3-W_hB5Rr2B2pr1586MTQ5NzU5ODIxNDU3NzE2MA" />
+  <link rel="canonical" href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances" />
+  <link rel="alternate" href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances" hreflang="en" />
+  <link rel="alternate" href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances?hl=ja" hreflang="ja" />
+  <link rel="alternate" href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances" hreflang="x-default" />
+  <link rel="shortcut icon" href="https://cloud.google.com/_static/a365d50fb9/images/cloud/icons/favicons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://cloud.google.com/_static/a365d50fb9/images/cloud/icons/favicons/apple-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons" />
+  <link rel="stylesheet" href="https://cloud.google.com/_static/a365d50fb9/css/devsite-cloud-white.css" />
+  <link rel="stylesheet" href="https://cloud.google.com/_static/a365d50fb9/css/cloud/cloud-site.css" />
+  <link rel="search" type="application/opensearchdescription+xml" title="Google Cloud Platform" href="https://cloud.google.com/s/opensearch.xml" />
+  <script src="https://cloud.google.com/_static/a365d50fb9/js/jquery-bundle.js"></script>
+  <meta property="og:site_name" content="Google Cloud Platform" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances" />
+  <meta property="og:locale" content="en" />
+  <script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script>
+  <title>Instances &nbsp;|&nbsp; Cloud SQL for MySQL
+      &nbsp;|&nbsp; Google Cloud Platform</title>
+  <meta property="og:title" content="Instances &nbsp;|&nbsp; Cloud SQL for MySQL
+      &nbsp;|&nbsp; Google Cloud Platform" />
+ </head>
+ <body class="
+               devsite-doc-page
+               
+               
+               
+               devsite-header-no-lower-tabs
+               devsite-uhura" id="top_of_page">
+  <div class="devsite-wrapper">
+   <div class="devsite-top-section-wrapper
+            ">
+    <header class="devsite-top-section nocontent">
+     <div class="devsite-top-logo-row-wrapper-wrapper">
+      <div class="devsite-top-logo-row-wrapper">
+       <div class="devsite-top-logo-row
+                    
+                    devsite-full-site-width">
+        <button type="button" class="devsite-expand-section-nav devsite-header-icon-button
+                                       button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Hamburger menu"></button>
+        <div class="devsite-product-name-wrapper">
+         <a href="https://cloud.google.com/" class="devsite-site-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Site logo"><img src="https://cloud.google.com/_static/a365d50fb9/images/cloud/gcp-logo.svg" class="devsite-site-logo" alt="Google Cloud Platform" /><span class="devsite-site-name devsite-product-name">Google Cloud Platform</span></a>
+        </div>
+        <div class="devsite-header-upper-tabs">
+         <nav class="devsite-doc-set-nav devsite-nav devsite-overflow-tabs-scroll-wrapper">
+          <ul class="devsite-doc-set-nav-tab-list devsite-overflow-tabs-scroll">
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/why-google/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Why Google"> Why Google </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/products/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Products"> Products </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/solutions/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Solutions"> Solutions </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/launcher/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Launcher"> Launcher </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/pricing/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Pricing"> Pricing </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/customers/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Customers"> Customers </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/docs/" class="devsite-doc-set-nav-active
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Documentation"> Documentation </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/support/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Support"> Support </a></li>
+           <li class="devsite-doc-set-nav-tab-container"><a href="https://cloud.google.com/partners/" class="
+                devsite-doc-set-nav-tab gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Tab: Partners"> Partners </a></li>
+          </ul>
+         </nav>
+        </div>
+        <form class="devsite-search-form
+                       " action="https://cloud.google.com/s/results/" method="GET" id="top-search" search-placeholder="Search">
+         <div id="searchbox" class="devsite-searchbox">
+          <input placeholder="Search" type="text" class="devsite-search-field devsite-search-query" name="q" value="" autocomplete="off" />
+          <div class="devsite-search-image material-icons"></div>
+         </div>
+         <input type="hidden" name="p" id="search_project" value="/sql/docs/mysql/" data-project-name="Cloud SQL for MySQL" data-project-path="/sql/docs/mysql/" data-query-match="" />
+         <input type="hidden" class="suggest-project" value="Cloud SQL for MySQL" />
+        </form>
+        <a class="devsite-header-link devsite-top-button button gc-analytics-event" href="//console.cloud.google.com/" data-category="Site-Wide Custom Events" data-label="Site header link">
+         <div class="devsite-header-link-label">
+          Console
+         </div></a>
+        <button type="button" class="devsite-search-button devsite-header-icon-button button-flat
+                                       material-icons"></button>
+        <a href="https://www.google.com/accounts/ServiceLogin?passive=true&amp;continue=https%3A%2F%2Fcloud.google.com%2Fsql%2Fdocs%2Fmysql%2Fadmin-api%2Fv1beta4%2Finstances%3Frefresh%3D1&amp;service=cloudconsole" class="devsite-user-signin devsite-top-button button gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Sign in button"> Sign in </a>
+       </div>
+      </div>
+     </div>
+     <div class="devsite-collapsible-section">
+      <div class="devsite-header-background devsite-full-site-width">
+       <div class="devsite-product-id-row devsite-full-site-width">
+        <div class="devsite-product-description-row">
+         <ul class="devsite-breadcrumb-list">
+          <li class="devsite-breadcrumb-item"> Documentation </li>
+         </ul>
+        </div>
+        <div class="devsite-product-button-row
+            cloud-free-trial-eligible">
+         <button type="button" id="devsite-feedback-project" class="devsite-feedback-button devsite-top-button gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Send Feedback Button" track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header"> Send feedback </button>
+         <a href="https://console.cloud.google.com/freetrial" class="cloud-free-trial-button button-primary button" track-type="freeTrial" track-name="try" track-metadata-position="nav"> Try It Free </a>
+         <a href="https://cloud.google.com/contact/" class="cloud-contact-sales-button button" track-type="sales" track-name="contact" track-metadata-position="nav"> Contact Sales </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <script>
+    if (window.jQuery) {
+      $(document).ready(function() {
+        if (window.devsite && window.devsite.search) {
+          
+          window.devsite.search.init('en')
+        }
+      });
+    }
+  </script>
+   </div>
+   <div id="gc-wrapper" itemscope="" itemtype="http://schema.org/APIReference">
+    <input class="google-tag-manager-id" type="hidden" value="GTM-5CVQBG" />
+    <script>
+      var dataLayer = [{"freeTrialEligibleUser": "True", "userCountry": "FR", "language": {"requested": "en", "served": "en"}, "projectName": "Cloud SQL for MySQL", "scriptsafe": null, "signedIn": "False", "internalUser": "False"}];
+    </script> 
+    <div class="devsite-site-mask"></div> 
+    <nav class="devsite-nav-responsive devsite-nav nocontent" tabindex="0"> 
+     <div class="devsite-nav-responsive-tabs-panel"> 
+      <nav class="devsite-nav-responsive-tabs devsite-nav"> 
+       <ul class="devsite-nav-list"> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/why-google/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Why Google"> Why Google </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/products/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Products"> Products </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/solutions/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Solutions"> Solutions </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/launcher/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Launcher"> Launcher </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/pricing/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Pricing"> Pricing </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/customers/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Customers"> Customers </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <span class="devsite-nav-responsive-forward devsite-nav-responsive-tab devsite-nav-title
+                   devsite-nav-active gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Responsive Tab: Documentation" tabindex="0"> Documentation </span> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/support/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Support"> Support </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="https://cloud.google.com/partners/?nav=true" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event
+                " data-category="Site-Wide Custom Events" data-label="Responsive Tab: Partners"> Partners </a> </li> 
+        <li class="devsite-nav-item devsite-nav-item-heading"> <a href="//console.cloud.google.com/" class="devsite-nav-responsive-tab devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Responsive Tab: console"> Console </a> </li> 
+       </ul> 
+      </nav> 
+     </div> 
+     <div class="devsite-nav-responsive-sidebar-panel"> 
+      <div class="devsite-nav-responsive-back" tabindex="0"></div> 
+      <nav class="devsite-nav-responsive-sidebar"> 
+       <ul class="devsite-nav-list devsite-nav-expandable">
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud SQL for MySQL</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/quickstart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Creating and Managing Instances</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/create-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating Instances</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/instance-info" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Viewing Instance Information</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/edit-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Editing Instances</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/clone-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloning Instances</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/start-stop-restart-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Starting, Stopping, and Restarting Instances</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/delete-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Deleting Instances</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/configure-ip" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring IP Connectivity</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/configure-ssl-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring SSL</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/flags" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring Cloud SQL Flags</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Migrating to Second Generation</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/upgrade-db" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Upgrading MySQL</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Connecting to Instances</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-admin-ip" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting MySQL Client Using IP Addresses</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-admin-proxy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting MySQL Client Using the Proxy</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-docker" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting MySQL Client Using the Proxy Docker Image</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-compute-engine" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting MySQL Client from Google Compute Engine</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-app-engine" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting from Google App Engine</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-external-app" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting from External Applications</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-container-engine" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting from Google Container Engine</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-tools" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting from other MySQL tools</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Replication and Data Management</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/configure-ha" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring for High Availability</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/backup-recovery/backing-up" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Managing On-Demand and Automatic Backups</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/backup-recovery/restoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Restoring an Instance</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/create-replica" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating Read Replicas</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/configure-external-replica" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring External Replicas</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/configure-external-master" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring External Masters</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/manage-replicas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Replicas</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/import-export/importing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Importing Data into Cloud SQL</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/import-export/exporting" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting Data from Cloud SQL</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/import-export/creating-mysqldump-csv" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting Data for Import into Cloud SQL</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/import-export/checking-status-import-export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Checking the Status of Import and Export Operations</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Managing MySQL Databases and Users</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/create-manage-databases" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Managing Databases</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/create-manage-users" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Managing Users</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/cloud-sdk" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the Cloud SDK</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-beta devsite-nav-has-status"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0"><span class="devsite-nav-text">Cloud SQL v1beta4 API</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-expanded">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">BackupRuns</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/backupRuns" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/backupRuns/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/backupRuns/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/backupRuns/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/backupRuns/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Databases</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Flags</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/flags" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/flags/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Instances</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-expanded">
+            <li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/clone" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">clone</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">export</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/failover" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">failover</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/import" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">import</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/promoteReplica" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">promoteReplica</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/resetSslConfig" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">resetSslConfig</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/restart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">restart</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/restoreBackup" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">restoreBackup</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/startReplica" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">startReplica</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/stopReplica" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">stopReplica</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/truncateLog" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">truncateLog</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">SslCerts</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts/createEphemeral" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">createEphemeral</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Tiers</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/tiers" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/tiers/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           </ul></li>
+          <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Users</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+           <ul class="devsite-nav-section devsite-nav-section-collapsed">
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/users" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/users/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/users/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/users/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+            <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/users/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+           </ul></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/index" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the Cloud SQL API</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">API Basics</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/parameters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Standard Query Parameters</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/how-tos/authorizing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authorizing Requests</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/how-tos/performance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Performance Tips</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/how-tos/batch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Batch Requests</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Libraries and Samples</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of Libraries and Samples</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/api-lib/dotnet" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Library for .NET</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/api-lib/java" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Library for Java</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/api-lib/python" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Library for Python</a></li>
+         </ul></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/instance-settings" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Instance Settings</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/instance-locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Instance Locations</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/instance-access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Instance Access Control</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/project-access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Project Access Control</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/users" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">MySQL Users</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/external-connection-methods" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connection Options for External Applications</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/sql-proxy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">About the Proxy</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/high-availability" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of the High Availability Configuration</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Replication Options</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/tips" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Requirements and Tips for Configuring Replication</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/backup-recovery/backups" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of Backups</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/backup-recovery/restore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of Restoring an Instance</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/import-export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of Importing and Exporting Data</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/1st-2nd-gen-differences" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Second Generation Capabilities</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/diagnose-issues" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Diagnosing Issues</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Tutorial</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/phpmyadmin-on-app-engine" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using phpMyAdmin on Google App Engine</a></li>
+        <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Database Engine Choices</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/features" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud SQL Features</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release Notes</a></li>
+        <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Support</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+         <ul class="devsite-nav-section devsite-nav-section-collapsed">
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support Overview</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/faq" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">FAQ</a></li>
+          <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/launch-checklist" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Launch Checklist</a></li>
+         </ul></li>
+        <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li>
+       </ul> 
+      </nav> 
+     </div> 
+    </nav> 
+    <div class="devsite-main-content clearfix"> 
+     <nav class="devsite-section-nav devsite-nav nocontent"> 
+      <ul class="devsite-nav-list devsite-nav-expandable">
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Cloud SQL for MySQL</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Product Overview</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Documentation</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/quickstart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Quickstart</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">How-to Guides</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/how-to" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All How-to Guides</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Creating and Managing Instances</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/create-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating Instances</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/instance-info" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Viewing Instance Information</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/edit-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Editing Instances</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/clone-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloning Instances</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/start-stop-restart-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Starting, Stopping, and Restarting Instances</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/delete-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Deleting Instances</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/configure-ip" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring IP Connectivity</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/configure-ssl-instance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring SSL</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/flags" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring Cloud SQL Flags</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Migrating to Second Generation</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/upgrade-db" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Upgrading MySQL</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Connecting to Instances</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-admin-ip" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting MySQL Client Using IP Addresses</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-admin-proxy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting MySQL Client Using the Proxy</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-docker" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting MySQL Client Using the Proxy Docker Image</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-compute-engine" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting MySQL Client from Google Compute Engine</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-app-engine" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting from Google App Engine</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-external-app" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting from External Applications</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/connect-container-engine" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting from Google Container Engine</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-tools" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connecting from other MySQL tools</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Replication and Data Management</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/configure-ha" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring for High Availability</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/backup-recovery/backing-up" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Managing On-Demand and Automatic Backups</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/backup-recovery/restoring" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Restoring an Instance</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/create-replica" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating Read Replicas</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/configure-external-replica" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring External Replicas</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/configure-external-master" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Configuring External Masters</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/manage-replicas" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Managing Replicas</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/import-export/importing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Importing Data into Cloud SQL</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/import-export/exporting" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting Data from Cloud SQL</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/import-export/creating-mysqldump-csv" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Exporting Data for Import into Cloud SQL</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/import-export/checking-status-import-export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Checking the Status of Import and Export Operations</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Managing MySQL Databases and Users</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/create-manage-databases" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Managing Databases</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/create-manage-users" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Creating and Managing Users</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/cloud-sdk" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the Cloud SDK</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">APIs &amp; Reference</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/apis" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All APIs &amp; References</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable devsite-nav-beta devsite-nav-has-status"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0"><span class="devsite-nav-text">Cloud SQL v1beta4 API</span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" title="Beta"></span></span></span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-expanded">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">BackupRuns</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/backupRuns" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/backupRuns/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/backupRuns/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/backupRuns/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/backupRuns/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Databases</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/databases/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Flags</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/flags" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/flags/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Instances</span><a class="devsite-nav-toggle devsite-nav-toggle-expanded material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-expanded">
+           <li class="devsite-nav-item devsite-nav-active"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/clone" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">clone</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">export</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/failover" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">failover</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/import" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">import</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/patch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">patch</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/promoteReplica" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">promoteReplica</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/resetSslConfig" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">resetSslConfig</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/restart" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">restart</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/restoreBackup" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">restoreBackup</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/startReplica" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">startReplica</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/stopReplica" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">stopReplica</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/truncateLog" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">truncateLog</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Operations</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/operations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/operations/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/operations/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">SslCerts</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts/createEphemeral" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">createEphemeral</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts/get" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">get</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Tiers</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/tiers" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/tiers/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+          </ul></li>
+         <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="1">Users</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="1"></a>
+          <ul class="devsite-nav-section devsite-nav-section-collapsed">
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/users" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/users/delete" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">delete</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/users/insert" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">insert</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/users/list" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">list</a></li>
+           <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/users/update" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="2" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">update</a></li>
+          </ul></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/index" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using the Cloud SQL API</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">API Basics</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/parameters" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Standard Query Parameters</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/how-tos/authorizing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Authorizing Requests</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/how-tos/performance" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Performance Tips</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/how-tos/batch" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Batch Requests</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Libraries and Samples</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/libraries" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of Libraries and Samples</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/api-lib/dotnet" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Library for .NET</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/api-lib/java" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Library for Java</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/admin-api/api-lib/python" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Client Library for Python</a></li>
+        </ul></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Concepts</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/concepts" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Concepts</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/instance-settings" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Instance Settings</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/instance-locations" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Instance Locations</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/instance-access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Instance Access Control</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/project-access-control" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Project Access Control</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/users" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">MySQL Users</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/external-connection-methods" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Connection Options for External Applications</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/sql-proxy" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">About the Proxy</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/high-availability" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of the High Availability Configuration</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Replication Options</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/replication/tips" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Requirements and Tips for Configuring Replication</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/backup-recovery/backups" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of Backups</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/backup-recovery/restore" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of Restoring an Instance</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/import-export" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Overview of Importing and Exporting Data</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/1st-2nd-gen-differences" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Second Generation Capabilities</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/diagnose-issues" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Diagnosing Issues</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Tutorial</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/phpmyadmin-on-app-engine" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Using phpMyAdmin on Google App Engine</a></li>
+       <li class="devsite-nav-item devsite-nav-item-heading"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Resources</span></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/resources" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">All Resources</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Database Engine Choices</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/features" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Cloud SQL Features</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/pricing" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Pricing</a></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/release-notes" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Release Notes</a></li>
+       <li class="devsite-nav-item devsite-nav-item-section-expandable"><span class="devsite-nav-title devsite-nav-title-no-path" track-type="leftNav" track-name="expandNavSectionNoLink" track-metadata-position="0">Support</span><a class="devsite-nav-toggle devsite-nav-toggle-collapsed material-icons" track-type="leftNav" track-name="expandNavSectionArrow" track-metadata-position="0"></a>
+        <ul class="devsite-nav-section devsite-nav-section-collapsed">
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/support" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Support Overview</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/faq" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">FAQ</a></li>
+         <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/docs/mysql/launch-checklist" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="1" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Launch Checklist</a></li>
+        </ul></li>
+       <li class="devsite-nav-item"><a href="https://cloud.google.com/sql/sla" class="devsite-nav-title gc-analytics-event" track-type="leftNav" track-name="titleLink" track-metadata-position="0" data-category="Site-Wide Custom Events" data-label="Left nav" data-action="click">Service Level Agreement</a></li>
+      </ul> 
+     </nav> 
+     <nav class="devsite-page-nav devsite-nav"></nav> 
+     <article class="devsite-article"> 
+      <article class="devsite-article-inner"> 
+       <nav class="devsite-breadcrumb-nav devsite-nav"> 
+        <ul class="devsite-breadcrumb-list"> 
+         <li class="devsite-breadcrumb-item"> <a href="https://cloud.google.com/sql/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="1"> Cloud SQL </a> </li> 
+         <li class="devsite-breadcrumb-item"> 
+          <div class="devsite-breadcrumb-guillemet material-icons"></div> <a href="https://cloud.google.com/sql/docs/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="2"> Documentation </a> </li> 
+         <li class="devsite-breadcrumb-item"> 
+          <div class="devsite-breadcrumb-guillemet material-icons"></div> <a href="https://cloud.google.com/sql/docs/mysql/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="3"> MySQL </a> </li> 
+         <li class="devsite-breadcrumb-item"> 
+          <div class="devsite-breadcrumb-guillemet material-icons"></div> <a href="https://cloud.google.com/docs/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="4"> Documentation </a> </li> 
+        </ul> 
+       </nav> 
+       <h1 itemprop="name" class="devsite-page-title"> Instances </h1> 
+       <nav class="devsite-page-nav-embedded devsite-nav"></nav> 
+       <div class="devsite-article-body clearfix
+            " itemprop="articleBody"> 
+        <div itemscope="" itemtype="http://developers.google.com/ReferenceObject"> 
+         <meta itemprop="path" content="Instances" /> 
+         <section id="overview"> 
+          <p>Represents a Cloud SQL instance. Cloud SQL instances are SQL databases hosted in Google's cloud. The Instances resource provides methods for common configuration and management tasks. For more information, see <a href="https://cloud.google.com/sql/docs/mysql/create-instance">Creating Instances</a> and <a href="https://cloud.google.com/sql/docs/mysql/instance-settings">Instance Settings</a>.</p> 
+          <p>For a list of <a href="#methods">methods</a> for this resource, see the end of this page.</p> 
+         </section> 
+         <section id="resource"> 
+          <h2>Resource representations</h2> 
+          <p>An Instance resource.</p> 
+          <section> 
+           <pre id="alt-json" class="prettyprint" style="max-height: 500px; overflow: auto">{
+  &quot;kind&quot;: &quot;sql#instance&quot;,
+  &quot;selfLink&quot;: <var class="apiparam">string</var>,
+  &quot;name&quot;: <var class="apiparam">string</var>,
+  &quot;connectionName&quot;: <var class="apiparam">string</var>,
+  &quot;etag&quot;: <var class="apiparam">etag</var>,
+  &quot;project&quot;: <var class="apiparam">string</var>,
+  &quot;state&quot;: <var class="apiparam">string</var>,
+  &quot;backendType&quot;: <var class="apiparam">string</var>,
+  &quot;databaseVersion&quot;: <var class="apiparam">string</var>,
+  &quot;region&quot;: <var class="apiparam">string</var>,
+  &quot;currentDiskSize&quot;: <var class="apiparam">long</var>,
+  &quot;maxDiskSize&quot;: <var class="apiparam">long</var>,
+  &quot;settings&quot;: {
+    &quot;kind&quot;: &quot;sql#settings&quot;,
+    &quot;settingsVersion&quot;: <var class="apiparam">long</var>,
+    &quot;authorizedGaeApplications&quot;: [
+      <var class="apiparam">string</var>
+    ],
+    &quot;tier&quot;: <var class="apiparam">string</var>,
+    &quot;backupConfiguration&quot;: {
+      &quot;kind&quot;: &quot;sql#backupConfiguration&quot;,
+      &quot;startTime&quot;: <var class="apiparam">string</var>,
+      &quot;enabled&quot;: <var class="apiparam">boolean</var>,
+      &quot;binaryLogEnabled&quot;: <var class="apiparam">boolean</var>
+    },
+    &quot;pricingPlan&quot;: <var class="apiparam">string</var>,
+    &quot;replicationType&quot;: <var class="apiparam">string</var>,
+    &quot;activationPolicy&quot;: <var class="apiparam">string</var>,
+    &quot;ipConfiguration&quot;: {
+      &quot;ipv4Enabled&quot;: <var class="apiparam">boolean</var>,
+      &quot;authorizedNetworks&quot;: [
+        {
+          &quot;kind&quot;: &quot;sql#aclEntry&quot;,
+          &quot;value&quot;: <var class="apiparam">string</var>,
+          &quot;name&quot;: <var class="apiparam">string</var>,
+          &quot;expirationTime&quot;: <var class="apiparam">datetime</var>
+        }
+      ],
+      &quot;requireSsl&quot;: <var class="apiparam">boolean</var>
+    },
+    &quot;locationPreference&quot;: {
+      &quot;kind&quot;: &quot;sql#locationPreference&quot;,
+      &quot;followGaeApplication&quot;: <var class="apiparam">string</var>,
+      &quot;zone&quot;: <var class="apiparam">string</var>
+    },
+    &quot;databaseFlags&quot;: [
+      {
+        &quot;name&quot;: <var class="apiparam">string</var>,
+        &quot;value&quot;: <var class="apiparam">string</var>
+      }
+    ],
+    &quot;databaseReplicationEnabled&quot;: <var class="apiparam">boolean</var>,
+    &quot;crashSafeReplicationEnabled&quot;: <var class="apiparam">boolean</var>,
+    &quot;dataDiskSizeGb&quot;: <var class="apiparam">long</var>,
+    &quot;dataDiskType&quot;: <var class="apiparam">string</var>,
+    &quot;maintenanceWindow&quot;: {
+      &quot;kind&quot;: &quot;sql#maintenanceWindow&quot;,
+      &quot;hour&quot;: <var class="apiparam">integer</var>,
+      &quot;day&quot;: <var class="apiparam">integer</var>,
+      &quot;updateTrack&quot;: <var class="apiparam">string</var>
+    },
+    &quot;storageAutoResize&quot;: <var class="apiparam">boolean</var>,
+    &quot;storageAutoResizeLimit&quot;: <var class="apiparam">long</var>,
+    &quot;availabilityType&quot;: <var class="apiparam">string</var>,
+    &quot;labels&quot;: [
+      {
+        &quot;key&quot;: <var class="apiparam">string</var>,
+        &quot;value&quot;: <var class="apiparam">string</var>
+      }
+    ]
+  },
+  &quot;serverCaCert&quot;: <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts#resource">sslCerts Resource</a>,
+  &quot;ipAddresses&quot;: [
+    {
+      &quot;ipAddress&quot;: <var class="apiparam">string</var>,
+      &quot;timeToRetire&quot;: <var class="apiparam">datetime</var>,
+      &quot;type&quot;: <var class="apiparam">string</var>
+    }
+  ],
+  &quot;instanceType&quot;: <var class="apiparam">string</var>,
+  &quot;masterInstanceName&quot;: <var class="apiparam">string</var>,
+  &quot;replicaNames&quot;: [
+    <var class="apiparam">string</var>
+  ],
+  &quot;failoverReplica&quot;: {
+    &quot;name&quot;: <var class="apiparam">string</var>,
+    &quot;available&quot;: <var class="apiparam">boolean</var>
+  },
+  &quot;ipv6Address&quot;: <var class="apiparam">string</var>,
+  &quot;serviceAccountEmailAddress&quot;: <var class="apiparam">string</var>,
+  &quot;onPremisesConfiguration&quot;: {
+    &quot;kind&quot;: &quot;sql#onPremisesConfiguration&quot;,
+    &quot;hostPort&quot;: <var class="apiparam">string</var>
+  },
+  &quot;replicaConfiguration&quot;: {
+    &quot;kind&quot;: &quot;sql#replicaConfiguration&quot;,
+    &quot;mysqlReplicaConfiguration&quot;: {
+      &quot;kind&quot;: &quot;sql#mysqlReplicaConfiguration&quot;,
+      &quot;dumpFilePath&quot;: <var class="apiparam">string</var>,
+      &quot;username&quot;: <var class="apiparam">string</var>,
+      &quot;password&quot;: <var class="apiparam">string</var>,
+      &quot;connectRetryInterval&quot;: <var class="apiparam">integer</var>,
+      &quot;masterHeartbeatPeriod&quot;: <var class="apiparam">long</var>,
+      &quot;caCertificate&quot;: <var class="apiparam">string</var>,
+      &quot;clientCertificate&quot;: <var class="apiparam">string</var>,
+      &quot;clientKey&quot;: <var class="apiparam">string</var>,
+      &quot;sslCipher&quot;: <var class="apiparam">string</var>,
+      &quot;verifyServerCertificate&quot;: <var class="apiparam">boolean</var>
+    },
+    &quot;failoverTarget&quot;: <var class="apiparam">boolean</var>
+  },
+  &quot;suspensionReason&quot;: [
+    <var class="apiparam">string</var>
+  ]
+}</pre> 
+           <table class="matchpre" id="properties"> 
+            <thead> 
+             <tr> 
+              <th>Property name</th> 
+              <th>Value</th> 
+              <th>Description</th> 
+              <th>Notes</th> 
+             </tr> 
+            </thead> 
+            <tbody> 
+             <tr id="backendType"> 
+              <td><code>backendType</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td><br /><code>FIRST_GEN</code>: First Generation instance. MySQL only. <br /><code>SECOND_GEN</code>: Second Generation instance or PostgreSQL instance. <br /><code>EXTERNAL</code>: A database server that is not managed by Google.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="connectionName"> 
+              <td><code>connectionName</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>Connection name of the Cloud SQL instance used in connection strings.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="currentDiskSize"> 
+              <td><code>currentDiskSize</code></td> 
+              <td><code class="apitype">long</code></td> 
+              <td>The current disk usage of the instance in bytes. This property has been deprecated. Users should use the &quot;cloudsql.googleapis.com/database/disk/bytes_used&quot; metric in Cloud Monitoring API instead. Please see https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ for details.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="databaseVersion"> 
+              <td><code>databaseVersion</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The database engine type and version. For First Generation instances, can be <code>MYSQL_5_5</code>, or <code>MYSQL_5_6</code>. For Second Generation instances, can be <code>MYSQL_5_6</code> or <code>MYSQL_5_7</code>. Defaults to <code>MYSQL_5_6</code>.<br /> The databaseVersion property can not be changed after instance creation.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="etag"> 
+              <td><code>etag</code></td> 
+              <td><code class="apitype">etag</code></td> 
+              <td>HTTP 1.1 <a href="http://tools.ietf.org/html/rfc2616#section-3.11">Entity tag</a> for the resource.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="failoverReplica"> 
+              <td><code>failoverReplica</code></td> 
+              <td><code class="apitype">object</code></td> 
+              <td>The name and status of the failover replica. This property is applicable only to Second Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="failoverReplica.available"> 
+              <td><code><span class="quiet">failoverReplica.</span>available</code></td> 
+              <td><code class="apitype">boolean</code></td> 
+              <td>The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The master can only failover to the falover replica when the status is true.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="failoverReplica.name"> 
+              <td><code><span class="quiet">failoverReplica.</span>name</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="instanceType"> 
+              <td><code>instanceType</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The instance type. This can be one of the following. <br /><code>CLOUD_SQL_INSTANCE</code>: A Cloud SQL instance that is not replicating from a master. <br /><code>ON_PREMISES_INSTANCE</code>: An instance running on the customer's premises. <br /><code>READ_REPLICA_INSTANCE</code>: A Cloud SQL instance configured as a read-replica.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="ipAddresses"> 
+              <td><code>ipAddresses[]</code></td> 
+              <td><code class="apitype">list</code></td> 
+              <td>The assigned IP addresses for the instance.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="ipAddresses.ipAddress"> 
+              <td><code><span class="quiet">ipAddresses[].</span>ipAddress</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The IP address assigned.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="ipAddresses.timeToRetire"> 
+              <td><code><span class="quiet">ipAddresses[].</span>timeToRetire</code></td> 
+              <td><code class="apitype">datetime</code></td> 
+              <td>The due time for this IP to be retired in <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for example <code>2012-11-15T16:19:00.094Z</code>. This field is only available when the IP is scheduled to be retired.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="ipAddresses.type"> 
+              <td><code><span class="quiet">ipAddresses[].</span>type</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The type of this IP address. A <code>PRIMARY</code> address is an address that can accept incoming connections. An <code>OUTGOING</code> address is the source address of connections originating from the instance, if supported.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="ipv6Address"> 
+              <td><code>ipv6Address</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The IPv6 address assigned to the instance. This property is applicable only to First Generation instances.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="kind"> 
+              <td><code>kind</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>This is always <code>sql#instance</code>.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="masterInstanceName"> 
+              <td><code>masterInstanceName</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The name of the instance which will act as master in the replication setup.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="maxDiskSize"> 
+              <td><code>maxDiskSize</code></td> 
+              <td><code class="apitype">long</code></td> 
+              <td>The maximum disk size of the instance in bytes.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="name"> 
+              <td><code>name</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>Name of the Cloud SQL instance. This does not include the project ID.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="onPremisesConfiguration"> 
+              <td><code>onPremisesConfiguration</code></td> 
+              <td><code class="apitype">nested object</code></td> 
+              <td>Configuration specific to on-premises instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="onPremisesConfiguration.hostPort"> 
+              <td><code><span class="quiet">onPremisesConfiguration.</span>hostPort</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The host and port of the on-premises instance in host:port format</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="onPremisesConfiguration.kind"> 
+              <td><code><span class="quiet">onPremisesConfiguration.</span>kind</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>This is always <code>sql#onPremisesConfiguration</code>.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="project"> 
+              <td><code>project</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="region"> 
+              <td><code>region</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The geographical region. Defaults to <code>us-central</code> or <code>us-central1</code> depending on the instance type (First Generation or Second Generation/PostgreSQL). For a complete list of valid values, see <a href="https://cloud.google.com/sql/docs/mysql/instance-locations">Instance Locations</a>. The region cannot be changed after instance creation.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration"> 
+              <td><code>replicaConfiguration</code></td> 
+              <td><code class="apitype">nested object</code></td> 
+              <td>Configuration specific to failover replicas and read replicas.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.failoverTarget"> 
+              <td><code><span class="quiet">replicaConfiguration.</span>failoverTarget</code></td> 
+              <td><code class="apitype">boolean</code></td> 
+              <td>Specifies if the replica is the failover target. If the field is set to <code>true</code> the replica will be designated as a failover replica. In case the master instance fails, the replica instance will be promoted as the new master instance. <p>Only one replica can be specified as failover target, and the replica has to be in different zone with the master instance.</p></td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.kind"> 
+              <td><code><span class="quiet">replicaConfiguration.</span>kind</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>This is always <code>sql#replicaConfiguration</code>.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration"> 
+              <td><code><span class="quiet">replicaConfiguration.</span>mysqlReplicaConfiguration</code></td> 
+              <td><code class="apitype">nested object</code></td> 
+              <td>MySQL specific configuration when replicating from a MySQL on-premises master. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named <code>master.info</code> in the data directory.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.caCertificate"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>caCertificate</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>PEM representation of the trusted CA's x509 certificate.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.clientCertificate"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>clientCertificate</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>PEM representation of the slave's x509 certificate.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.clientKey"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>clientKey</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>PEM representation of the slave's private key. The corresponsing public key is encoded in the client's certificate.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.connectRetryInterval"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>connectRetryInterval</code></td> 
+              <td><code class="apitype">integer</code></td> 
+              <td>Seconds to wait between connect retries. MySQL's default is 60 seconds.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.dumpFilePath"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>dumpFilePath</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>Path to a SQL dump file in Google Cloud Storage from which the slave instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps should have the binlog co-ordinates from which replication should begin. This can be accomplished by setting --master-data to 1 when using mysqldump.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.kind"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>kind</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>This is always <code>sql#mysqlReplicaConfiguration</code>.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.masterHeartbeatPeriod"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>masterHeartbeatPeriod</code></td> 
+              <td><code class="apitype">long</code></td> 
+              <td>Interval in milliseconds between replication heartbeats.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.password"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>password</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The password for the replication connection.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.sslCipher"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>sslCipher</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>A list of permissible ciphers to use for SSL encryption.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.username"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>username</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The username for the replication connection.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaConfiguration.mysqlReplicaConfiguration.verifyServerCertificate"> 
+              <td><code><span class="quiet">replicaConfiguration.mysqlReplicaConfiguration.</span>verifyServerCertificate</code></td> 
+              <td><code class="apitype">boolean</code></td> 
+              <td>Whether or not to check the master's Common Name value in the certificate that it sends during the SSL handshake.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="replicaNames"> 
+              <td><code>replicaNames[]</code></td> 
+              <td><code class="apitype">list</code></td> 
+              <td>The replicas of the instance.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="selfLink"> 
+              <td><code>selfLink</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The URI of this resource.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="serverCaCert"> 
+              <td><code>serverCaCert</code></td> 
+              <td><code class="apitype">nested object</code></td> 
+              <td>SSL configuration.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="serviceAccountEmailAddress"> 
+              <td><code>serviceAccountEmailAddress</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The service account email address assigned to the instance. This property is applicable only to Second Generation instances.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings"> 
+              <td><code>settings</code></td> 
+              <td><code class="apitype">nested object</code></td> 
+              <td>The user settings.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.activationPolicy"> 
+              <td><code><span class="quiet">settings.</span>activationPolicy</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The activation policy specifies when the instance is activated; it is applicable only when the instance state is <code>RUNNABLE</code>. Valid values:<br /><code>ALWAYS</code>: The instance is in a functioning state. The activation policy determines whether the instance responds to connection requests or not.<br /><code>NEVER</code>: The instance is off; it is not activated, even if a connection request arrives. <br /><code>ON_DEMAND</code>: The instance responds to incoming requests, and turns itself off when not in use. Instances with <code>PER_USE</code> pricing turn off after 15 minutes of inactivity. Instances with <code>PER_PACKAGE</code> pricing turn off after 12 hours of inactivity.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.authorizedGaeApplications"> 
+              <td><code><span class="quiet">settings.</span>authorizedGaeApplications[]</code></td> 
+              <td><code class="apitype">list</code></td> 
+              <td>The App Engine app IDs that can access this instance. This property is only applicable to First Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.availabilityType"> 
+              <td><code><span class="quiet">settings.</span>availabilityType</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>Reserved for future use.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.backupConfiguration"> 
+              <td><code><span class="quiet">settings.</span>backupConfiguration</code></td> 
+              <td><code class="apitype">nested object</code></td> 
+              <td>The daily backup configuration for the instance.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.backupConfiguration.binaryLogEnabled"> 
+              <td><code><span class="quiet">settings.backupConfiguration.</span>binaryLogEnabled</code></td> 
+              <td><code class="apitype">boolean</code></td> 
+              <td>Whether binary log is enabled. If backup configuration is disabled, binary log must be disabled as well.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.backupConfiguration.enabled"> 
+              <td><code><span class="quiet">settings.backupConfiguration.</span>enabled</code></td> 
+              <td><code class="apitype">boolean</code></td> 
+              <td>Whether this configuration is enabled.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.backupConfiguration.kind"> 
+              <td><code><span class="quiet">settings.backupConfiguration.</span>kind</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>This is always <code>sql#backupConfiguration</code>.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.backupConfiguration.startTime"> 
+              <td><code><span class="quiet">settings.backupConfiguration.</span>startTime</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>Start time for the daily backup configuration in UTC timezone in the 24 hour format - <code>HH:MM</code>.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.crashSafeReplicationEnabled"> 
+              <td><code><span class="quiet">settings.</span>crashSafeReplicationEnabled</code></td> 
+              <td><code class="apitype">boolean</code></td> 
+              <td>Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property is only applicable to First Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.dataDiskSizeGb"> 
+              <td><code><span class="quiet">settings.</span>dataDiskSizeGb</code></td> 
+              <td><code class="apitype">long</code></td> 
+              <td>The size of data disk, in GB. The data disk size minimum is 10GB. Applies only to Second Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.dataDiskType"> 
+              <td><code><span class="quiet">settings.</span>dataDiskType</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The type of data disk: PD_SSD (default) or PD_HDD. Applies only to Second Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.databaseFlags"> 
+              <td><code><span class="quiet">settings.</span>databaseFlags[]</code></td> 
+              <td><code class="apitype">list</code></td> 
+              <td>The database flags passed to the instance at startup.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.databaseFlags.name"> 
+              <td><code><span class="quiet">settings.databaseFlags[].</span>name</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The name of the flag. These flags are passed at instance startup. Flags should be specified with underscores, not hyphens. For more information, see <a href="https://cloud.google.com/sql/docs/mysql/flags">Configuring Cloud SQL Flags</a> in the Cloud SQL documentation, as well as the official MySQL documentation for <a href="http://dev.mysql.com/doc/refman/5.7/en/server-options.html">server options</a> and <a href="http://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html">system variables</a>, or the PostgreSQL documentation for <a href="https://www.postgresql.org/docs/current/static/runtime-config.html">server configuration.</a></td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.databaseFlags.value"> 
+              <td><code><span class="quiet">settings.databaseFlags[].</span>value</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The value of the flag. Booleans should be set to <code>on</code> for true and <code>off</code> for false. This field must be omitted if the flag doesn't take a value.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.databaseReplicationEnabled"> 
+              <td><code><span class="quiet">settings.</span>databaseReplicationEnabled</code></td> 
+              <td><code class="apitype">boolean</code></td> 
+              <td>Configuration specific to read replica instances. Indicates whether replication is enabled or not.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.ipConfiguration"> 
+              <td><code><span class="quiet">settings.</span>ipConfiguration</code></td> 
+              <td><code class="apitype">nested object</code></td> 
+              <td>The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.ipConfiguration.authorizedNetworks"> 
+              <td><code><span class="quiet">settings.ipConfiguration.</span>authorizedNetworks[]</code></td> 
+              <td><code class="apitype">list</code></td> 
+              <td>The list of external networks that are allowed to connect to the instance using the IP. In <a href="http://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation">CIDR notation</a>, also known as 'slash' notation (e.g. <code>192.168.100.0/24</code>).</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.ipConfiguration.authorizedNetworks.expirationTime"> 
+              <td><code><span class="quiet">settings.ipConfiguration.authorizedNetworks[].</span>expirationTime</code></td> 
+              <td><code class="apitype">datetime</code></td> 
+              <td>The time when this access control entry expires in <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for example <code>2012-11-15T16:19:00.094Z</code>.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.ipConfiguration.authorizedNetworks.kind"> 
+              <td><code><span class="quiet">settings.ipConfiguration.authorizedNetworks[].</span>kind</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>This is always <code>sql#aclEntry</code>.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.ipConfiguration.authorizedNetworks.name"> 
+              <td><code><span class="quiet">settings.ipConfiguration.authorizedNetworks[].</span>name</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>An optional label to identify this entry.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.ipConfiguration.authorizedNetworks.value"> 
+              <td><code><span class="quiet">settings.ipConfiguration.authorizedNetworks[].</span>value</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The whitelisted value for the access control list. For example, to grant access to a client from an external IP (IPv4 or IPv6) address or subnet, use that address or subnet here.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.ipConfiguration.ipv4Enabled"> 
+              <td><code><span class="quiet">settings.ipConfiguration.</span>ipv4Enabled</code></td> 
+              <td><code class="apitype">boolean</code></td> 
+              <td>Whether the instance should be assigned an IP address or not.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.ipConfiguration.requireSsl"> 
+              <td><code><span class="quiet">settings.ipConfiguration.</span>requireSsl</code></td> 
+              <td><code class="apitype">boolean</code></td> 
+              <td>Whether the mysqld should default to 'REQUIRE X509' for users connecting over IP.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.kind"> 
+              <td><code><span class="quiet">settings.</span>kind</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>This is always <code>sql#settings</code>.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.labels"> 
+              <td><code><span class="quiet">settings.</span>labels[]</code></td> 
+              <td><code class="apitype">list</code></td> 
+              <td>Reserved for future use.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.labels.key"> 
+              <td><code><span class="quiet">settings.labels[].</span>key</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>Reserved for future use.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.labels.value"> 
+              <td><code><span class="quiet">settings.labels[].</span>value</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>Reserved for future use.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.locationPreference"> 
+              <td><code><span class="quiet">settings.</span>locationPreference</code></td> 
+              <td><code class="apitype">nested object</code></td> 
+              <td>The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Google Compute Engine zone for better performance.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.locationPreference.followGaeApplication"> 
+              <td><code><span class="quiet">settings.locationPreference.</span>followGaeApplication</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The App Engine application to follow, it must be in the same region as the Cloud SQL instance.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.locationPreference.kind"> 
+              <td><code><span class="quiet">settings.locationPreference.</span>kind</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>This is always <code>sql#locationPreference</code>.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.locationPreference.zone"> 
+              <td><code><span class="quiet">settings.locationPreference.</span>zone</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The preferred Compute Engine zone (e.g. us-centra1-a, us-central1-b, etc.).</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.maintenanceWindow"> 
+              <td><code><span class="quiet">settings.</span>maintenanceWindow</code></td> 
+              <td><code class="apitype">nested object</code></td> 
+              <td>The maintenance window for this instance. This specifies when the instance may be restarted for maintenance purposes. Applies only to Second Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.maintenanceWindow.day"> 
+              <td><code><span class="quiet">settings.maintenanceWindow.</span>day</code></td> 
+              <td><code class="apitype">integer</code></td> 
+              <td>day of week (1-7), starting on Monday.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.maintenanceWindow.hour"> 
+              <td><code><span class="quiet">settings.maintenanceWindow.</span>hour</code></td> 
+              <td><code class="apitype">integer</code></td> 
+              <td>hour of day - 0 to 23.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.maintenanceWindow.kind"> 
+              <td><code><span class="quiet">settings.maintenanceWindow.</span>kind</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>This is always <code>sql#maintenanceWindow</code>.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.maintenanceWindow.updateTrack"> 
+              <td><code><span class="quiet">settings.maintenanceWindow.</span>updateTrack</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td></td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.pricingPlan"> 
+              <td><code><span class="quiet">settings.</span>pricingPlan</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The pricing plan for this instance. This can be either <code>PER_USE</code> or <code>PACKAGE</code>. Only <code>PER_USE</code> is supported for Second Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.replicationType"> 
+              <td><code><span class="quiet">settings.</span>replicationType</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The type of replication this instance uses. This can be either <code>ASYNCHRONOUS</code> or <code>SYNCHRONOUS</code>.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.settingsVersion"> 
+              <td><code><span class="quiet">settings.</span>settingsVersion</code></td> 
+              <td><code class="apitype">long</code></td> 
+              <td>The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="settings.storageAutoResize"> 
+              <td><code><span class="quiet">settings.</span>storageAutoResize</code></td> 
+              <td><code class="apitype">boolean</code></td> 
+              <td>Configuration to increase storage size automatically. The default value is true. Applies only to Second Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.storageAutoResizeLimit"> 
+              <td><code><span class="quiet">settings.</span>storageAutoResizeLimit</code></td> 
+              <td><code class="apitype">long</code></td> 
+              <td>The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit. Applies only to Second Generation instances.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="settings.tier"> 
+              <td><code><span class="quiet">settings.</span>tier</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The tier or machine type for this instance, for example <code>db-n1-standard-1</code>. For MySQL instances, this field determines whether the instance is Second Generation (recommended) or First Generation. For more information, see <a href="https://cloud.google.com/sql/pricing">pricing</a>.</td> 
+              <td> writable </td> 
+             </tr> 
+             <tr id="state"> 
+              <td><code>state</code></td> 
+              <td><code class="apitype">string</code></td> 
+              <td>The current serving state of the Cloud SQL instance. This can be one of the following. <br /><code>RUNNABLE</code>: The instance is running, or is ready to run when accessed. <br /><code>SUSPENDED</code>: The instance is not available, for example due to problems with billing. <br /><code>PENDING_CREATE</code>: The instance is being created. <br /><code>MAINTENANCE</code>: The instance is down for maintenance. <br /><code>FAILED</code>: The instance creation failed. <br /><code>UNKNOWN_STATE</code>: The state of the instance is unknown.</td> 
+              <td> </td> 
+             </tr> 
+             <tr id="suspensionReason"> 
+              <td><code>suspensionReason[]</code></td> 
+              <td><code class="apitype">list</code></td> 
+              <td>If the instance state is SUSPENDED, the reason for the suspension. Potential values: <code>BILLING_ISSUE</code>, <code>INTERNAL_MAINTENANCE</code>, and <code>OPERATIONAL_ISSUE</code>.</td> 
+              <td> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </section> 
+         </section> 
+         <section id="methods"> 
+          <h2>Methods</h2> 
+          <dl> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/clone">clone</a>
+           </dt> 
+           <dd>
+            Creates a Cloud SQL instance as a clone of the source instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/delete">delete</a>
+           </dt> 
+           <dd>
+            Deletes a Cloud SQL instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/export">export</a>
+           </dt> 
+           <dd>
+            Exports data from a Cloud SQL instance to a Google Cloud Storage bucket as a MySQL dump or CSV file.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/failover">failover</a>
+           </dt> 
+           <dd>
+            Failover the instance to its failover replica instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/get">get</a>
+           </dt> 
+           <dd>
+            Retrieves a resource containing information about a Cloud SQL instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/import">import</a>
+           </dt> 
+           <dd>
+            Imports data into a Cloud SQL instance from a MySQL dump or CSV file in a Google Cloud Storage bucket.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/insert">insert</a>
+           </dt> 
+           <dd>
+            Creates a new Cloud SQL instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/list">list</a>
+           </dt> 
+           <dd>
+            Lists instances under a given project in alphabetical order by instance name.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/patch">patch</a>
+           </dt> 
+           <dd>
+            Updates settings of a Cloud SQL instance using patch semantics.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/promoteReplica">promoteReplica</a>
+           </dt> 
+           <dd>
+            Promotes the read replica instance to be a stand-alone Cloud SQL instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/resetSslConfig">resetSslConfig</a>
+           </dt> 
+           <dd>
+            Deletes all client certificates and generates a new server SSL certificate for the instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/restart">restart</a>
+           </dt> 
+           <dd>
+            Restarts a Cloud SQL instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/restoreBackup">restoreBackup</a>
+           </dt> 
+           <dd>
+            Restores a backup of a Cloud SQL instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/startReplica">startReplica</a>
+           </dt> 
+           <dd>
+            Starts the replication in the read replica instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/stopReplica">stopReplica</a>
+           </dt> 
+           <dd>
+            Stops the replication in the read replica instance.
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/truncateLog">truncateLog</a>
+           </dt> 
+           <dd>
+            Truncate MySQL general and slow query log tables
+           </dd> 
+           <dt>
+            <a href="https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/instances/update">update</a>
+           </dt> 
+           <dd>
+            Updates settings of a Cloud SQL instance.
+           </dd> 
+          </dl> 
+         </section> 
+        </div> 
+       </div> 
+       <div class="devsite-content-footer nocontent"> 
+        <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/terms/site-policies">Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p> 
+        <p class="devsite-content-footer-date" itemprop="datePublished" content="2017-05-23T00:34:10.634790"> Last updated May 23, 2017. </p> 
+       </div> 
+      </article> 
+     </article> 
+    </div> 
+    <footer class="devsite-footer-linkboxes nocontent
+               devsite-footer-linkboxes-all-backup">
+     <nav class="devsite-full-site-width">
+      <ul class="devsite-footer-linkboxes-list">
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Products</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/compute/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Compute"> Compute </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/storage/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Storage"> Storage </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/networking/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Networking"> Networking </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/big-data/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Big Data"> Big Data </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/machine-learning/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Machine Learning"> Machine Learning </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#management" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Management Tools"> Management Tools </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/tools/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Developer Tools"> Developer Tools </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/products/#identity-security" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Identity and Security"> Identity &amp; Security </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//status.cloud.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer System Status"> System Status </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Learn More</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/why-google/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Why Google"> Why Google </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/pricing/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Pricing"> Pricing </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Documentation"> Documentation </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/docs/tutorials/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Tutorials"> Tutorials </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/training/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Training"> Training </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/solutions/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Solutions"> Solutions </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/security/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Security &amp; Compliance"> Security &amp; Compliance </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/partners/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Partners"> Partners </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/customers/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Customers"> Customers </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/support/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Support"> Support </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.google.com/about/careers/jobs#t=sq&amp;q=j&amp;li=20&amp;l=false&amp;jcoid=7c8c6665-81cf-4e11-8fc9-ec1d6a69120c&amp;j=Google+Cloud+Platform&amp;" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Careers"> Careers </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-backup"><h3 class="devsite-footer-linkbox-heading">Engage</h3>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/free-trial/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Free Trial Sign Up"> Free Trial Sign Up </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloudplatform.googleblog.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Blog"> Blog </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="https://cloud.google.com/community/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Community"> Community </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//plus.google.com/+googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Google+"> Google+ </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//twitter.com/googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Twitter"> Twitter </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.linkedin.com/company/3648281" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer LinkedIn"> LinkedIn </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="http://stackoverflow.com/questions/tagged/google-cloud-platform" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Stack Overflow"> Stack Overflow </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.youtube.com/c/googlecloud" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer YouTube"> YouTube </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//www.gcppodcast.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Podcast"> Podcast </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/newsletter/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Newsletter Signup"> Newsletter Signup </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com/usability" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer UX Research"> UX Research </a></li>
+        </ul></li>
+       <li class="devsite-footer-linkbox devsite-footer-linkbox-sites"><a href="https://developers.google.com/" class="gc-analytics-event devsite-footer-linkbox-logo-link" data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link"><img class="devsite-footer-linkbox-logo" src="https://cloud.google.com/_static/a365d50fb9/images/redesign-14/lockup-color-knockout.png" /></a>
+        <ul class="devsite-footer-linkbox-list">
+         <li class="devsite-footer-linkbox-item"><a href="//developer.android.com/index.html" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Android Link"> Android </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//developer.chrome.com/home" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Chrome Link"> Chrome </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//firebase.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Firebase Link"> Firebase </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//cloud.google.com" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Cloud Link"> Google Cloud Platform </a></li>
+         <li class="devsite-footer-linkbox-item"><a href="//developers.google.com/products/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Products Link"> All Products </a></li>
+        </ul></li>
+      </ul>
+     </nav>
+    </footer>
+    <footer class="devsite-utility-footer">
+     <nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width">
+      <div class="devsite-utility-footer-nav-left">
+       <form class="devsite-utility-footer-language" action="/i18n/setlang/" method="post">
+        <input type="hidden" name="xsrf_token" value="01e67-Bwxv-Vb-2kw92fSi5bmT3-W_hB5Rr2B2pr1586MTQ5NzU5ODIxNDU3NzE2MA" />
+        <input type="hidden" name="next" value="/sql/docs/mysql/admin-api/v1beta4/instances" />
+        <select class="devsite-utility-footer-language-select kd-select" name="language" track-type="languageSelector" track-name="click"><option value="en" selected="selected" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="en"> English </option><option value="es" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="es"> espa&ntilde;ol </option><option value="pt-br" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="pt-br"> Portugu&ecirc;s Brasileiro </option><option value="ja" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="ja"> ??? </option><option value="zh-tw" track-type="languageSelector" track-name="changed" track-metadata-original-language="en" track-metadata-selected-language="zh-tw"> ???? </option></select>
+       </form>
+       <span class="devsite-utility-footer-links"><a class="devsite-utility-footer-link gc-analytics-event" href="https://cloud.google.com/terms/site-terms" data-category="Site-Wide Custom Events" data-label="Footer terms link">Terms </a><a class="devsite-utility-footer-link gc-analytics-event" href="https://www.google.com/policies/privacy/" data-category="Site-Wide Custom Events" data-label="Footer privacy link">Privacy </a></span>
+      </div>
+     </nav>
+    </footer>
+    <div class="devsite-feedback-dialog devsite-dialog">
+     <div class="devsite-dialog-contents">
+      <h3>Send feedback about...</h3>
+      <div class="devsite-feedback-item">
+       <a data-type="documentation" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Docs Feedback Image" track-type="feedback" track-name="feedbackDocIcon" track-metadata-position="header">
+        <div class="devsite-feedback-item-icon-container">
+         <div class="devsite-feedback-item-icon-white devsite-feedback-item-icon-docs
+                        material-icons"></div>
+        </div></a>
+       <div class="devsite-feedback-item-name">
+         This page 
+       </div>
+       <div class="devsite-feedback-item-description">
+        <a data-type="documentation" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Docs Feedback Text" track-type="feedback" track-name="feedbackDocText" track-metadata-position="header"> Documentation feedback </a>
+       </div>
+      </div>
+      <div class="devsite-feedback-item">
+       <a data-type="product" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Product Feedback Image" track-type="feedback" track-name="feedbackProductIcon" track-metadata-position="header"><img class="devsite-feedback-item-icon" src="https://cloud.google.com/_static/a365d50fb9/images/feedback/google_56px.svg" /></a>
+       <div class="devsite-feedback-item-name">
+         Cloud SQL for MySQL 
+       </div>
+       <div class="devsite-feedback-item-description">
+        <a data-type="product" tabindex="0" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Product Feedback Text" track-type="feedback" track-name="feedbackProductText" track-metadata-position="header"> Product feedback </a>
+       </div>
+      </div>
+     </div>
+     <div class="devsite-dialog-buttons">
+      <button type="button" class="devsite-feedback-cancel button-white gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Cancel Feedback Button" track-type="feedback" track-name="cancelFeedbackButton" track-metadata-position="header"> Cancel </button>
+     </div>
+    </div>
+    <script>
+  $(document).ready(function() {
+    new devsite.feedback.Widget({
+        'product_id': '82040',
+        'bucket': 'documentation',
+        'context': '',
+        'version': 'devsite-20170615-r00-rc01.default'
+      },
+      document.querySelectorAll('.devsite-feedback-button'),
+      'en',
+      document.querySelector('.devsite-site-mask'),
+      document.querySelector('.devsite-feedback-dialog'),
+      document.querySelector('.devsite-feedback-cancel'),
+      document.querySelectorAll('.devsite-feedback-item a:not([href])')
+    );
+  });
+  </script>
+   </div>
+   <script async="" defer="" src="//www.gstatic.com/feedback/api.js"></script>
+   <script src="https://cloud.google.com/_static/a365d50fb9/js/jquery_ui-bundle.js"></script>
+   <script src="https://cloud.google.com/_static2/a365d50fb9/jsi18n/"></script>
+   <script src="https://cloud.google.com/_static/a365d50fb9/js/script_foot_closure.js"></script>
+   <script src="https://cloud.google.com/_static/a365d50fb9/js/script_foot.js"></script>
+   <script>
+        (function($) {
+          
+          devsite.devsite.Init($, {'FULL_SITE_SEARCH_ENABLED': 1, 'ENABLE_BLOCKED_VIDEO_PLACEHOLDER': 0, 'VERSION_HASH': 'a365d50fb9', 'SITE_NAME': 'cloud', 'HISTORY_ENABLED': 1, 'SUBPATH': '', 'ENABLE_BLOCKED_LINK_TOOLTIP': 0, 'ALLOWED_HOSTS': ['.android.com', '.api.ai', '.apigee.com', '.appspot.com', '.devsitetest.how', '.gonglchuangl.net', '.google.cn', '.google.com', '.googleplex.com', '.nest.com', '.openthread.io', '.tensorflow.org'], 'BLOCK_RSS_FEEDS': 0, 'SCRIPTSAFE_DOMAIN': 'cloud-dot-google-developers.appspot.com'},
+                               '[]','en',
+                               true, '',
+                               {"039e5d84b87fd75807ffb37b7f1bbf2c": true, "098dafe57affddc137df300142652cfd": false, "cb025a64a50094835616312f4774a53d": true, "51470233c56fc1fde50f00b73c52b216": false, "752953480de00a336d911a46966cc16d": false, "700def1a83e356c06c0925afb05de4b0": false, "6749dcb526ce9bde6993550c7d928d24": true}, '/sql/docs/mysql/',
+                               'https://cloud.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+
+      </script>
+   <script>
+      $('.devsite-utility-footer-language-select').each(function() {
+        $(this).change(function(){$('.devsite-utility-footer-language').submit();});
+      });
+      </script>
+   <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=io3fmzpm5vnmhcak2spf4j563y"></script>
+  </div>
+  <span id="devsite-request-elapsed" data-request-elapsed="269.599914551"></span> 
+ </body>
+</html>
