@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.occiware.google.gcp.contribution1">
+         <menu
+               label="OCCI"
+               path="additions"
+               id="org.occiware.google.gcp.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Calculate"
+               class="org.occiware.google.gcp.popup.actions.Calculate"
+               menubarPath="org.occiware.google.gcp.menu1/group1"
+               enablesFor="1"
+               id="org.occiware.google.gcp.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
