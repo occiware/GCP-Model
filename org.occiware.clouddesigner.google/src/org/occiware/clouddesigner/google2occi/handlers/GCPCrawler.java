@@ -99,23 +99,23 @@ public class GCPCrawler {
 	}
 
 	private void createOCCIResource() {
-		// Enregistrer l'extension ".xmi" comme devant �tre ouverte �
+		// Enregistrer l'extension ".xmi" comme devant être ouverte.
 		// l'aide d'un objet "XMIResourceFactoryImpl"
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("xmi", new XMIResourceFactoryImpl());
 
-		// Cr�er un objet resourceSetImpl qui contiendra une ressource EMF (le
-		// mod�le)
+		// Créer un objet resourceSetImpl qui contiendra une ressource EMF (le
+		// modèle)
 		ResourceSet resSet = new ResourceSetImpl();
 
-		// D�finir la ressource (le mod�le)
+		// Définir la ressource (le modèle)
 		URI modelURI = URI.createURI("file:/C:/Users/schallit-adm/runtime-EclipseApplication/models/GCP.occie");
 		resource = resSet.createResource(modelURI);
 
-		// La fabrique pour fabriquer les �l�ments de SimplePDL
+		// La fabrique pour fabriquer les éléments de SimplePDL
 
-		// Cr�er un �l�ment extension
+		// Créer un élément extension
 		extension = OCCIFactory.eINSTANCE.createExtension();
 		extension.setDescription("Mon extension GCP");
 		extension.setScheme("http://gcp/occi#");

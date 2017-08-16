@@ -1,7 +1,9 @@
 package org.occiware.google.gcp.popup.actions;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -15,6 +17,8 @@ import org.eclipse.cmf.occi.core.Kind;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.util.OcciHelper;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.action.IAction;
@@ -54,7 +58,44 @@ public class Calculate implements IObjectActionDelegate {
 		Extension extension = (Extension) OcciHelper.getRootElement(resourceSet,
 				"file:" + occieFile.getLocation().toString());
 		System.out.println("extension " + extension);
+		// count(extension);
 
+		Extension coreExtension = OcciHelper.loadExtension("http://schemas.ogf.org/occi/core#");
+		if (coreExtension == null) {
+			throw new RuntimeException("Cannot load OCCI core extension!");
+		}
+		Kind linkKind = null;
+		Kind resourceKind = null;
+		List<Kind> coreKinds = coreExtension.getKinds();
+		for (Kind coreKind : coreKinds) {
+			if (coreKind.getTerm().equals("link")) {
+				linkKind = coreKind;
+			}
+			if (coreKind.getTerm().equals("resource")) {
+				resourceKind = coreKind;
+			}
+		}
+		for (Kind kind : extension.getKinds()) {
+			if (kind.getParent() != null) {
+				if (kind.getParent().getTerm().equals("link")) {
+					kind.setParent(resourceKind);
+					System.out.println("Replaced parent for " + kind.getName());
+				}
+			}
+		}
+		ResourceSet resSet = new ResourceSetImpl();
+		URI modelURI = URI.createURI("file:/C:/Users/schallit-adm/runtime-EclipseApplication/models/GCP-2.occie");
+		Resource resource = resSet.createResource(modelURI);		
+		resource.getContents().add(extension);
+		try {
+			resource.save(Collections.emptyMap());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void count(Extension extension) {
 		Map<String, Integer> counterPerAttribute = getCounterPerAttribute(extension);
 		Map<String, Integer> counterPerAction = getCounterPerAction(extension);
 		List<String> sortedAttributes = sort(counterPerAttribute);
@@ -81,16 +122,15 @@ public class Calculate implements IObjectActionDelegate {
 		final String nl = System.getProperty("line.separator");
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("\\begin{tabular}{l|rr|rr}").append(nl);
-		buffer.append("&\\multicolumn{2}{c|}{\\textbf{Before Abstraction}} & \\multicolumn{2}{c}{\\textbf{After Abstraction}} \\")
+		buffer.append(
+				"&\\multicolumn{2}{c|}{\\textbf{Before Abstraction}} & \\multicolumn{2}{c}{\\textbf{After Abstraction}} \\")
 				.append(nl).append("\\hline");
 		// Header Attributes
 		buffer.append("\\hline").append(nl);
 		buffer.append("\\textbf{\\begin{tabular}[c]{@{}c@{}}Redundant \\\\ Attributes \\end{tabular}} &").append(nl);
 		buffer.append("\\textbf{\\begin{tabular}[c]{@{}c@{}}\\# \\\\ of occurrences\\end{tabular}} &").append(nl);
 		buffer.append("\\textbf{\\begin{tabular}[c]{@{}c@{}}\\% \\\\ of redundancy\\end{tabular}}&").append(nl);
-		buffer.append(
-				"\\textbf{\\begin{tabular}[c]{@{}c@{}}\\# \\\\ of occurrences\\end{tabular}} &")
-				.append(nl);
+		buffer.append("\\textbf{\\begin{tabular}[c]{@{}c@{}}\\# \\\\ of occurrences\\end{tabular}} &").append(nl);
 		buffer.append("\\multicolumn{1}{c}{")
 				.append("\\textbf{\\begin{tabular}[c]{@{}c@{}}\\% \\\\ of redundancy\\end{tabular}}")
 				.append("} \\\\ \\hline").append(nl);
@@ -118,15 +158,13 @@ public class Calculate implements IObjectActionDelegate {
 		buffer.append("\\textbf{\\begin{tabular}[c]{@{}c@{}}Redundant \\\\ Actions \\end{tabular}} &").append(nl);
 		buffer.append("\\textbf{\\begin{tabular}[c]{@{}c@{}}\\# \\\\ of occurrences\\end{tabular}} &").append(nl);
 		buffer.append("\\textbf{\\begin{tabular}[c]{@{}c@{}}\\% \\\\ of redundancy\\end{tabular}}&").append(nl);
-		buffer.append(
-				"\\textbf{\\begin{tabular}[c]{@{}c@{}}\\# \\\\ of occurrences\\end{tabular}} &")
-				.append(nl);
+		buffer.append("\\textbf{\\begin{tabular}[c]{@{}c@{}}\\# \\\\ of occurrences\\end{tabular}} &").append(nl);
 		buffer.append("\\multicolumn{1}{c}{")
 				.append("\\textbf{\\begin{tabular}[c]{@{}c@{}}\\% \\\\ of redundancy\\end{tabular}}")
 				.append("} \\\\ \\hline").append(nl);
 
 		gray = false;
-		
+
 		// Actions
 		for (int i = 0; i < numberOfAction; i++) {
 			String action = sortedAction.get(i);

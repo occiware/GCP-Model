@@ -22,6 +22,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.occiware.clouddesigner.google2occi.handlers.json.KindsBuilder;
 import org.eclipse.jface.dialogs.MessageDialog;
 
 /**
@@ -35,21 +36,24 @@ public class GoogleCrawler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		GCPCrawler cr = new GCPCrawler();
-		try {
-			Document doc = Jsoup
-					.connect("https://cloud.google.com/deployment-manager/docs/configuration/supported-resource-types")
-					.get();
-			GCPCrawler.crawler(doc);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-		cr.saveOCCIResource();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+		KindsBuilder.build();
+		
+//		GCPCrawler cr = new GCPCrawler();
+//		try {
+//			Document doc = Jsoup
+//					.connect("https://cloud.google.com/deployment-manager/docs/configuration/supported-resource-types")
+//					.get();
+//			GCPCrawler.crawler(doc);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//		cr.saveOCCIResource();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		return null;
 	}
 
