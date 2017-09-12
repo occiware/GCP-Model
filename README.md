@@ -1,2 +1,2 @@
 # GCP-Model
-Model for Google Cloud Platform
+Model for Google Cloud Platform.
