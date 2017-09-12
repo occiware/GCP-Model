@@ -33,7 +33,7 @@ public class KindsBuilder {
 
 	public static void build() {
 			init();
-			File directory = new File("C:/Users/schallit-adm/workspace-15-03-2017/org.occiware.clouddesigner.google/out");
+			File directory = new File("C:/Users/schallit-adm/workspace-gcp/org.occiware.clouddesigner.google/out");
 			List<API> apis = new ArrayList<>();
 			for (File jsonFile : directory.listFiles()) {
 				apis.add(buildAPI(jsonFile.getAbsolutePath()));
@@ -89,12 +89,12 @@ public class KindsBuilder {
 
 	public static void init() {
 		ResourceSet resSet = new ResourceSetImpl();
-		URI modelURI = URI.createURI("file:/C:/Users/schallit-adm/runtime-EclipseApplication/models/GCP2.occie");
+		URI modelURI = URI.createURI("file:/C:/Users/schallit-adm/runtime-EclipseApplication31072017/json_model/GCP2.occie");
 		resource = resSet.createResource(modelURI);
 
 		extension = OCCIFactory.eINSTANCE.createExtension();
 		extension.setDescription("Mon extension GCP");
-		extension.setScheme("http://gcp/occi#");
+		extension.setScheme("http://gcp/json/occi#");
 		extension.setName("GCP");
 		resource.getContents().add(extension);
 

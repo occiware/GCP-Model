@@ -52,7 +52,7 @@
             <command
                   commandId="org.occiware.coulddesigner.google2occi.commands.sampleCommand"
                   icon="icons/sample.gif"
-                  tooltip="Say hello world"
+                  tooltip="GCP2OCCI"
                   id="org.occiware.coulddesigner.google2occi.toolbars.sampleCommand">
             </command>
          </toolbar>

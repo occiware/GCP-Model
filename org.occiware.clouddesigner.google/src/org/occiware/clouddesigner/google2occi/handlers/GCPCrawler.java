@@ -1,55 +1,38 @@
 package org.occiware.clouddesigner.google2occi.handlers;
 
-import java.util.List;
-
-import static org.occiware.clouddesigner.google2occi.handlers.GCPCrawler.extension;
-import static org.occiware.clouddesigner.google2occi.handlers.GCPCrawler.linkKind;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import org.eclipse.cmf.occi.core.Action;
 import org.eclipse.cmf.occi.core.Annotation;
 import org.eclipse.cmf.occi.core.ArrayType;
 import org.eclipse.cmf.occi.core.Attribute;
 import org.eclipse.cmf.occi.core.BooleanType;
-import org.eclipse.cmf.occi.core.Configuration;
 import org.eclipse.cmf.occi.core.DataType;
 import org.eclipse.cmf.occi.core.EObjectType;
-import org.eclipse.cmf.occi.core.EnumerationLiteral;
 import org.eclipse.cmf.occi.core.EnumerationType;
-import org.eclipse.cmf.occi.core.NumericTypeEnum;
 import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.Kind;
-import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.NumericType;
+import org.eclipse.cmf.occi.core.NumericTypeEnum;
 import org.eclipse.cmf.occi.core.OCCIFactory;
-import org.eclipse.cmf.occi.core.OCCIPackage;
-import org.eclipse.cmf.occi.core.RecordField;
 import org.eclipse.cmf.occi.core.RecordType;
 import org.eclipse.cmf.occi.core.StringType;
 import org.eclipse.cmf.occi.core.util.OcciHelper;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.emf.ecore.xml.type.util.XMLTypeUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

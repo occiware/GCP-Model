@@ -42,7 +42,7 @@ public class StringToDataType {
 		typeModelFloat.setType(NumericTypeEnum.FLOAT);
 		typeModelByte.setName("float");
 		typeModelInteger.setType(NumericTypeEnum.INTEGER);
-		typeModelByte.setName("integer");
+		typeModelInteger.setName("integer");
 		typeModelLong.setType(NumericTypeEnum.LONG);
 		typeModelByte.setName("long");
 		typeModelShort.setType(NumericTypeEnum.SHORT);
