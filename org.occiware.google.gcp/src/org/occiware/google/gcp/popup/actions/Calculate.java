@@ -3,7 +3,6 @@ package org.occiware.google.gcp.popup.actions;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -22,13 +21,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.internal.keys.KdeKeyFormatter;
 
 public class Calculate implements IObjectActionDelegate {
 	private ISelection selection;
@@ -58,23 +56,51 @@ public class Calculate implements IObjectActionDelegate {
 		Extension extension = (Extension) OcciHelper.getRootElement(resourceSet,
 				"file:" + occieFile.getLocation().toString());
 		System.out.println("extension " + extension);
+		
+		new FixRecord(extension).fix();
+		
 		// count(extension);
+		
 
 		Extension coreExtension = OcciHelper.loadExtension("http://schemas.ogf.org/occi/core#");
 		if (coreExtension == null) {
 			throw new RuntimeException("Cannot load OCCI core extension!");
 		}
-		Kind linkKind = null;
+		abstractaction(extension, coreExtension);
+		
+		ResourceSet resSet = new ResourceSetImpl();
+		URI modelURI = URI.createURI("file:/C:/Users/schallit-adm/runtime-EclipseApplication/fixed_GCP_model/GCP3.occie");
+		Resource resource = resSet.createResource(modelURI);		
+		resource.getContents().add(extension);
+		try {
+			System.out.println("Saving...");
+			resource.save(Collections.emptyMap());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void abstractaction(Extension extension, Extension coreExtension ) {
+		Map<String, Integer> counterPerAttribute = getCounterPerAttribute(extension);
+		Map<String, Integer> counterPerAction = getCounterPerAction(extension);
+		List<String> sortedAttributes = sort(counterPerAttribute);
+		List<String> sortedAction = sort(counterPerAction);
+		Kind abstractKind = computeAbstraction(filterExistingAbstractKind(extension), counterPerAttribute,
+				sortedAttributes, 5, counterPerAction, sortedAction, 4);
+		coreExtension = OcciHelper.loadExtension("http://schemas.ogf.org/occi/core#");
+		if (coreExtension == null) {
+			throw new RuntimeException("Cannot load OCCI core extension!");
+		}
 		Kind resourceKind = null;
 		List<Kind> coreKinds = coreExtension.getKinds();
 		for (Kind coreKind : coreKinds) {
-			if (coreKind.getTerm().equals("link")) {
-				linkKind = coreKind;
-			}
 			if (coreKind.getTerm().equals("resource")) {
 				resourceKind = coreKind;
 			}
 		}
+		abstractKind.setScheme(extension.getScheme());
+		abstractKind.setParent(resourceKind);
 		for (Kind kind : extension.getKinds()) {
 			if (kind.getParent() != null) {
 				if (kind.getParent().getTerm().equals("link")) {
@@ -82,17 +108,18 @@ public class Calculate implements IObjectActionDelegate {
 					System.out.println("Replaced parent for " + kind.getName());
 				}
 			}
+			/*if (kind.getName().startsWith("AbstractKind")) {
+				kind.setScheme(extension.getScheme());
+				kind.setParent(resourceKind);
+				List<String> kindNames = Arrays.asList(kind.getTitle().split(" "));
+				for (Kind childKind : extension.getKinds()) {
+					if (kindNames.contains(childKind.getName())) {
+						childKind.setParent(kind);
+					}
+				}
+			}*/
 		}
-		ResourceSet resSet = new ResourceSetImpl();
-		URI modelURI = URI.createURI("file:/C:/Users/schallit-adm/runtime-EclipseApplication/models/GCP-2.occie");
-		Resource resource = resSet.createResource(modelURI);		
-		resource.getContents().add(extension);
-		try {
-			resource.save(Collections.emptyMap());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		extension.getKinds().add(abstractKind);
 	}
 
 	public void count(Extension extension) {
@@ -202,8 +229,11 @@ public class Calculate implements IObjectActionDelegate {
 			}
 		}
 		Kind abstractKind = OCCIFactory.eINSTANCE.createKind();
-		abstractKind.setName("AbstractKind0");
+		abstractKind.setName("NewAbstractKind");
 		abstractKind.setTitle(listOfKindToBeAbstractToString(kindToBeAbstract));
+		for (Kind kind : kindToBeAbstract) {
+			kind.setParent(abstractKind);
+		}
 		for (Attribute attribute : kindToBeAbstract.get(0).getAttributes()) {
 			if (wantedAttributesToBeAbstract.contains(attribute.getName())) {
 				abstractKind.getAttributes().add(copyAttribute(attribute));
@@ -214,19 +244,23 @@ public class Calculate implements IObjectActionDelegate {
 				abstractKind.getActions().add(copyAction(action));
 			}
 		}
-		/*
-		 * List<Action> commonActions = new ArrayList<>(); for (Action action :
-		 * kindToBeAbstract.get(0).getActions()) {
-		 * commonActions.add(copyAction(action)); } for (int i = 1 ; i <
-		 * kindToBeAbstract.size() ; i++) { List<String> strCommon =
-		 * actionsAsString(commonActions); List<String> strCurrent =
-		 * actionsAsString(kindToBeAbstract.get(i).getActions());
-		 * strCommon.retainAll(strCurrent); List<Action> tmpList = new
-		 * ArrayList<>(commonActions); for (Action action : tmpList) { if
-		 * (!strCommon.contains(action.getName())) {
-		 * commonActions.remove(action); } } }
-		 * abstractKind.getActions().addAll(commonActions);
-		 */
+		
+		for (Kind kind : kinds) {
+			List<Attribute> toRemoveAttribute = new ArrayList<Attribute>();
+			for (Attribute attribute : kind.getAttributes()) {
+				if (wantedAttributesToBeAbstract.contains(attribute.getName())) {
+					toRemoveAttribute.add(attribute);
+				}
+			}
+			kind.getAttributes().removeAll(toRemoveAttribute);
+			List<Action> toRemoveAction = new ArrayList<Action>();
+			for (Action action : kind.getActions()) {
+				if (wantedActionToBeAbstract.contains(action.getName())) {
+					toRemoveAction.add(action);
+				}
+			}
+			kind.getActions().removeAll(toRemoveAction);
+		}
 		return abstractKind;
 	}
 
