@@ -69,7 +69,7 @@ public class Calculate implements IObjectActionDelegate {
 		abstractaction(extension, coreExtension);
 		
 		ResourceSet resSet = new ResourceSetImpl();
-		URI modelURI = URI.createURI("file:/C:/Users/schallit-adm/runtime-EclipseApplication/fixed_GCP_model/GCP3.occie");
+		URI modelURI = URI.createURI("file:/C:/Users/schallit/runtime-EclipseApplication31072017/fixed_GCP_model/GCP3.occie");
 		Resource resource = resSet.createResource(modelURI);		
 		resource.getContents().add(extension);
 		try {
