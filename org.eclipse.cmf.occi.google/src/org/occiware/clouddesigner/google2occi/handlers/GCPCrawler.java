@@ -93,7 +93,7 @@ public class GCPCrawler {
 		ResourceSet resSet = new ResourceSetImpl();
 
 		// Définir la ressource (le modèle)
-		URI modelURI = URI.createURI("file:/C:/Users/schallit-adm/runtime-EclipseApplication/models/GCP.occie");
+		URI modelURI = URI.createURI("file:/C:/Users/schallit/runtime-EclipseApplication31072017/models/GCP.occie");
 		resource = resSet.createResource(modelURI);
 
 		// La fabrique pour fabriquer les éléments de SimplePDL
@@ -506,7 +506,7 @@ public class GCPCrawler {
 		}
 		return action;
 	}
-
+	
 	protected static StringBuilder saveDocumentationFormat(String res, String attributeFormatUsed,
 			boolean isActionFormat, String kind, List<Action> actions, List<Attribute> attributes,
 			List<EnumerationType> enums) {
