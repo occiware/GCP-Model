@@ -1,4 +1,4 @@
-package org.occiware.clouddesigner.google2occi.handlers.json.data;
+package org.eclipse.cmf.occi.google.json.handlers.json.data;
 
 public class EnumField {
 

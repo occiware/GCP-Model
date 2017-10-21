@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Json
+Bundle-SymbolicName: org.eclipse.cmf.occi.googlejson;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.cmf.occi.core;bundle-version="1.0.0",
+ com.google.gson;bundle-version="2.2.4"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.eclipse.cmf.occi.core,
+ org.eclipse.cmf.occi.core.util

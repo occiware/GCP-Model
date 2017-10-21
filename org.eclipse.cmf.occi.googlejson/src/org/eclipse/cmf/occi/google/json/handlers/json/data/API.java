@@ -1,4 +1,4 @@
-package org.occiware.clouddesigner.google2occi.handlers.json.data;
+package org.eclipse.cmf.occi.google.json.handlers.json.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,5 +17,14 @@ public class API {
         this.title = title;
         this.id = id;
         this.kinds = new ArrayList<>();
+    }
+    
+    public KindData getKindDataPerName(String name) {
+    	for (KindData kind : this.kinds) {
+    		if (name.equals(kind.name)) {
+    			return kind;
+    		}
+    	}
+    	return null;
     }
 }

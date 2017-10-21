@@ -1,11 +1,11 @@
-package org.occiware.clouddesigner.google2occi.handlers.json.data;
+package org.eclipse.cmf.occi.google.json.handlers.json.data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.cmf.occi.core.Kind;
 import org.eclipse.cmf.occi.core.OCCIFactory;
-import org.occiware.clouddesigner.google2occi.handlers.json.KindsBuilder;
+import org.eclipse.cmf.occi.google.json.handlers.json.KindsBuilder;
 
 public class KindData {
 

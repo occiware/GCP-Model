@@ -1,7 +1,4 @@
-package org.occiware.clouddesigner.google2occi.handlers.json;
-
-import org.occiware.clouddesigner.google2occi.handlers.json.data.AttributeData;
-import org.occiware.clouddesigner.google2occi.handlers.json.data.EnumField;
+package org.eclipse.cmf.occi.google.json.handlers.json;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -9,6 +6,9 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.Map.Entry;
+
+import org.eclipse.cmf.occi.google.json.handlers.json.data.AttributeData;
+import org.eclipse.cmf.occi.google.json.handlers.json.data.EnumField;
 
 public class AttributeBuilder {
 

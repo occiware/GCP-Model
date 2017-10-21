@@ -1,4 +1,4 @@
-package org.occiware.clouddesigner.google2occi.handlers.json.data;
+package org.eclipse.cmf.occi.google.json.handlers.json.data;
 
 
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import org.eclipse.cmf.occi.core.NumericTypeEnum;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.RecordType;
 import org.eclipse.cmf.occi.core.StringType;
-import org.occiware.clouddesigner.google2occi.handlers.json.KindsBuilder;
+import org.eclipse.cmf.occi.google.json.handlers.json.KindsBuilder;
 
 public class StringToDataType {
 	
