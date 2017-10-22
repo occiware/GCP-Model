@@ -36,7 +36,7 @@ public class KindsBuilder {
 
 	public static void build() {
 			init();
-			File directory = new File("C:/Users/schallit/workspace-gcp/org.occiware.clouddesigner.google/out");
+			File directory = new File("C:/Users/schallit/workspace-gcp/plugins/org.eclipse.cmf.occi.googlejson/out");
 			List<API> apis = new ArrayList<>();
 			for (File jsonFile : directory.listFiles()) {
 				apis.add(buildAPI(jsonFile.getAbsolutePath()));
