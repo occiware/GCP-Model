@@ -129,7 +129,7 @@ public class KindsBuilder {
 
 	public static void init() {
 		ResourceSet resSet = new ResourceSetImpl();
-		URI modelURI = URI.createURI("file:/C:/Users/schallit/runtime-EclipseApplication31072017/json_model/GCP2.occie");
+		URI modelURI = URI.createURI("file:/C:/Users/schallit/runtime-EclipseApplication31072017/json_model/GCP-json.occie");
 		resource = resSet.createResource(modelURI);
 
 		extension = OCCIFactory.eINSTANCE.createExtension();
