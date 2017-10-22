@@ -1,4 +1,4 @@
-package org.eclipse.cmf.occi.google.json.handlers.json;
+package org.eclipse.cmf.occi.googlejson.handlers.json;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -7,8 +7,8 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.Map.Entry;
 
-import org.eclipse.cmf.occi.google.json.handlers.json.data.AttributeData;
-import org.eclipse.cmf.occi.google.json.handlers.json.data.EnumField;
+import org.eclipse.cmf.occi.googlejson.handlers.json.data.AttributeData;
+import org.eclipse.cmf.occi.googlejson.handlers.json.data.EnumField;
 
 public class AttributeBuilder {
 

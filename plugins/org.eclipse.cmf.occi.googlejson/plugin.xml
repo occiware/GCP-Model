@@ -18,7 +18,7 @@
          point="org.eclipse.ui.handlers">
       <handler
             commandId="org.eclipse.cmf.occi.google.json.commands.sampleCommand"
-            class="org.eclipse.cmf.occi.google.json.handlers.Main">
+            class="org.eclipse.cmf.occi.googlejson.handlers.Main">
       </handler>
    </extension>
    <extension

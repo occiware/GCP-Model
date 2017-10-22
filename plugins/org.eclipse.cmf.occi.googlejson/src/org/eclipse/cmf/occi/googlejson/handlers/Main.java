@@ -1,6 +1,6 @@
-package org.eclipse.cmf.occi.google.json.handlers;
+package org.eclipse.cmf.occi.googlejson.handlers;
 
-import org.eclipse.cmf.occi.google.json.handlers.json.KindsBuilder;
+import org.eclipse.cmf.occi.googlejson.handlers.json.KindsBuilder;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;

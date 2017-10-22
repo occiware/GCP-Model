@@ -1,4 +1,4 @@
-package org.eclipse.cmf.occi.google.json.handlers.json.data;
+package org.eclipse.cmf.occi.googlejson.handlers.json.data;
 
 public class EnumField {
 

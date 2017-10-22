@@ -1,13 +1,13 @@
-package org.eclipse.cmf.occi.google.json.handlers.json;
+package org.eclipse.cmf.occi.googlejson.handlers.json;
 
 import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.Kind;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.util.OcciHelper;
-import org.eclipse.cmf.occi.google.json.handlers.json.data.API;
-import org.eclipse.cmf.occi.google.json.handlers.json.data.ActionData;
-import org.eclipse.cmf.occi.google.json.handlers.json.data.AttributeData;
-import org.eclipse.cmf.occi.google.json.handlers.json.data.KindData;
+import org.eclipse.cmf.occi.googlejson.handlers.json.data.API;
+import org.eclipse.cmf.occi.googlejson.handlers.json.data.ActionData;
+import org.eclipse.cmf.occi.googlejson.handlers.json.data.AttributeData;
+import org.eclipse.cmf.occi.googlejson.handlers.json.data.KindData;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;

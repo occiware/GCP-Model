@@ -1,11 +1,11 @@
-package org.eclipse.cmf.occi.google.json.handlers.json.data;
+package org.eclipse.cmf.occi.googlejson.handlers.json.data;
 
 import java.util.List;
 
 import org.eclipse.cmf.occi.core.Attribute;
 import org.eclipse.cmf.occi.core.DataType;
 import org.eclipse.cmf.occi.core.OCCIFactory;
-import org.eclipse.cmf.occi.google.json.handlers.json.KindsBuilder;
+import org.eclipse.cmf.occi.googlejson.handlers.json.KindsBuilder;
 
 public class AttributeData {
 
