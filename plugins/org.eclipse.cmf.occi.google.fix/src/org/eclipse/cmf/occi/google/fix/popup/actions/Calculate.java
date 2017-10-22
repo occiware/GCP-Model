@@ -1,4 +1,4 @@
-package org.occiware.google.gcp.popup.actions;
+package org.eclipse.cmf.occi.google.fix.popup.actions;
 
 import java.io.IOException;
 import java.util.ArrayList;

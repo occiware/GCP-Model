@@ -17,7 +17,7 @@
          </menu>
          <action
                label="Calculate"
-               class="org.occiware.google.gcp.popup.actions.Calculate"
+               class="org.eclipse.cmf.occi.google.fix.popup.actions.Calculate"
                menubarPath="org.occiware.google.gcp.menu1/group1"
                enablesFor="1"
                id="org.occiware.google.gcp.newAction">
