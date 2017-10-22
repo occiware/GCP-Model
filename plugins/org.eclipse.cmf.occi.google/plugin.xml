@@ -18,7 +18,7 @@
          point="org.eclipse.ui.handlers">
       <handler
             commandId="org.occiware.coulddesigner.google2occi.commands.sampleCommand"
-            class="org.occiware.clouddesigner.google2occi.handlers.GoogleCrawler">
+            class="org.eclipse.cmf.occi.google.handlers.GoogleCrawler">
       </handler>
    </extension>
    <extension

@@ -1,6 +1,6 @@
-package org.occiware.clouddesigner.google2occi.handlers;
+package org.eclipse.cmf.occi.google.handlers;
 
-import static org.occiware.clouddesigner.google2occi.handlers.GCPCrawler.*;
+import static org.eclipse.cmf.occi.google.handlers.GCPCrawler.*;
 
 import java.io.File;
 import java.io.IOException;

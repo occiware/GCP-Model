@@ -1,4 +1,4 @@
-package org.occiware.clouddesigner.google2occi.handlers;
+package org.eclipse.cmf.occi.google.handlers;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
