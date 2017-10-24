@@ -1,12 +1,17 @@
 package org.eclipse.cmf.occi.googlejson.handlers;
 
-import org.eclipse.cmf.occi.googlejson.handlers.json.KindsBuilder;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.cmf.occi.core.Extension;
+import org.eclipse.cmf.occi.core.Kind;
+import org.eclipse.cmf.occi.core.util.OcciHelper;
+import org.eclipse.cmf.occi.googlejson.handlers.json.APIBuilder;
+import org.eclipse.cmf.occi.googlejson.handlers.json.data.API;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.jface.dialogs.MessageDialog;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -15,9 +20,38 @@ import org.eclipse.jface.dialogs.MessageDialog;
  */
 public class Main extends AbstractHandler {
 
+	public static Kind RESOURCE_KIND;
+	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		KindsBuilder.build();
+		//JSONDocDownloader.run();
+		build();
 		return null;
 	}
+	
+	private static void build() {
+		initResourceKindFromCoreExtension();
+		File directory = new File("C:/Users/schallit/workspace-gcp/plugins/org.eclipse.cmf.occi.googlejson/out");
+		List<API> apis = new ArrayList<>();
+		for (File jsonFile : directory.listFiles()) {
+			apis.add(APIBuilder.buildAPI(jsonFile.getAbsolutePath()));
+		}
+		for (API api : apis) {
+			api.toExtensionOcci();
+		}
+	}
+	
+	private static void initResourceKindFromCoreExtension() {
+		Extension coreExtension = OcciHelper.loadExtension("http://schemas.ogf.org/occi/core#");
+		if (coreExtension == null) {
+			throw new RuntimeException("Cannot load OCCI core extension!");
+		}
+		List<Kind> coreKinds = coreExtension.getKinds();
+		for (Kind coreKind : coreKinds) {
+			if (coreKind.getTerm().equals("resource")) {
+				RESOURCE_KIND = coreKind;
+			}
+		}
+	}
+	
 }

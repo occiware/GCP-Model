@@ -3,8 +3,10 @@ package org.eclipse.cmf.occi.googlejson.handlers.json.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.Kind;
 import org.eclipse.cmf.occi.core.OCCIFactory;
+import org.eclipse.cmf.occi.googlejson.handlers.Main;
 import org.eclipse.cmf.occi.googlejson.handlers.json.KindsBuilder;
 
 public class KindData {
@@ -25,14 +27,14 @@ public class KindData {
 
     public final List<ActionData> actions;
     
-    public Kind toKindOcci() {
+    public Kind toKindOcci(Extension extension) {
     	Kind kind = OCCIFactory.eINSTANCE.createKind();
     	kind.setName(this.name);
-    	kind.setParent(KindsBuilder.resourceKind);
-    	kind.setScheme(KindsBuilder.extension.getScheme());
+    	kind.setParent(Main.RESOURCE_KIND);
+    	kind.setScheme(extension.getScheme() + this.name);
     	kind.setTitle(this.description);
     	for (AttributeData attribute : this.attributes) {
-    		kind.getAttributes().add(attribute.toAttributeOcci());
+    		kind.getAttributes().add(attribute.toAttributeOcci(extension));
     	}
     	for (ActionData action : this.actions) {
     		kind.getActions().add(action.toActionOcci());

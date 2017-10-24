@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eclipse.cmf.occi.core.Attribute;
 import org.eclipse.cmf.occi.core.DataType;
+import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.googlejson.handlers.json.KindsBuilder;
 
@@ -30,7 +31,7 @@ public class AttributeData {
 		this.isAnotherKind = false;
 	}
 
-	public Attribute toAttributeOcci() {
+	public Attribute toAttributeOcci(Extension extension) {
 		final Attribute attribute = OCCIFactory.eINSTANCE.createAttribute();
 		attribute.setName(this.name);
 		attribute.setDescription(this.description);
@@ -40,7 +41,7 @@ public class AttributeData {
 			type.setName(this.type);
 			type.setDocumentation(this.description);
 			StringToDataType.map.put(this.type, type);
-			KindsBuilder.extension.getTypes().add(type);
+			extension.getTypes().add(type);
 		}
 		
 		attribute.setType(StringToDataType.map.get(this.type));

@@ -56,20 +56,6 @@ public class StringToDataType {
 		
 		typeModelMap.setName("map");
 		
-		KindsBuilder.extension.getTypes().add(typeModelString);
-		KindsBuilder.extension.getTypes().add(typeModelBoolean);
-		KindsBuilder.extension.getTypes().add(typeModelByte);
-		KindsBuilder.extension.getTypes().add(typeModelDouble);
-		KindsBuilder.extension.getTypes().add(typeModelFloat);
-		KindsBuilder.extension.getTypes().add(typeModelInteger);
-		KindsBuilder.extension.getTypes().add(typeModelLong);
-		KindsBuilder.extension.getTypes().add(typeModelShort);
-		KindsBuilder.extension.getTypes().add(typeEnum);
-		KindsBuilder.extension.getTypes().add(typeArray);
-		KindsBuilder.extension.getTypes().add(typeRecord);
-		
-		KindsBuilder.extension.getTypes().add(typeModelMap);
-		
 		map.put("string", typeModelString);
 		map.put("boolean", typeModelBoolean);	
 		
