@@ -19,13 +19,15 @@ public class API {
     public final String title;
     public final String id;
     public final List<KindData> kinds;
+    public final String nameByJSON;
 
-    public API(String name, String description, String title, String id) {
+    public API(String name, String description, String title, String id, String nameByJSON) {
         this.name = name;
         this.description = description;
         this.title = title;
         this.id = id;
         this.kinds = new ArrayList<>();
+        this.nameByJSON = nameByJSON;
     }
     
     public KindData getKindDataPerName(String name) {
@@ -39,7 +41,7 @@ public class API {
     
     public void toExtensionOcci() {
     	ResourceSet resSet = new ResourceSetImpl();
-		URI modelURI = URI.createURI("file:/C:/Users/schallit/runtime-EclipseApplication31072017/json_model/" + this.name + ".occie");
+		URI modelURI = URI.createURI("file:/C:/Users/schallit/runtime-EclipseApplication31072017/json_model/" + this.nameByJSON + ".occie");
 		Resource resource = resSet.createResource(modelURI);
 		Extension extension = OCCIFactory.eINSTANCE.createExtension();
 		extension.setDescription(this.description);

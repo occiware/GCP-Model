@@ -34,7 +34,8 @@ public class Main extends AbstractHandler {
 		File directory = new File("C:/Users/schallit/workspace-gcp/plugins/org.eclipse.cmf.occi.googlejson/out");
 		List<API> apis = new ArrayList<>();
 		for (File jsonFile : directory.listFiles()) {
-			apis.add(APIBuilder.buildAPI(jsonFile.getAbsolutePath()));
+			String nameOfFile = jsonFile.getName().substring(0, jsonFile.getName().length() - 5);
+			apis.add(APIBuilder.buildAPI(jsonFile.getAbsolutePath(), nameOfFile));
 		}
 		for (API api : apis) {
 			api.toExtensionOcci();
