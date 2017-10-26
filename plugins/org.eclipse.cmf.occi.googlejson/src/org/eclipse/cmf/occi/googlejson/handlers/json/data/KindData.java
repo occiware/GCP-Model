@@ -37,7 +37,7 @@ public class KindData {
     		kind.getAttributes().add(attribute.toAttributeOcci(extension));
     	}
     	for (ActionData action : this.actions) {
-    		kind.getActions().add(action.toActionOcci());
+    		kind.getActions().add(action.toActionOcci(extension));
     	}
     	return kind;
     }

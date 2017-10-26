@@ -8,12 +8,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import org.eclipse.cmf.occi.googlejson.handlers.json.data.API;
 import org.eclipse.cmf.occi.googlejson.handlers.json.data.ActionData;
@@ -35,25 +32,33 @@ public class ActionReader {
 			for (Entry<String, JsonElement> resource : resources.entrySet()) {
 				JsonObject entries = resource.getValue().getAsJsonObject();
 				for (Entry<String, JsonElement> entry : entries.entrySet()) {
+					String packageNameWithResource = parent.isEmpty() ? resource.getKey() : parent + "." + resource.getKey();
 					if (entry.getKey().equals("resources")) {
-						readAction(entries, api,
-								parent.isEmpty() ? resource.getKey() : parent + "." + resource.getKey());
+						readAction(entries, api, packageNameWithResource);
 					} else if (entry.getKey().equals("methods")) {
 						JsonObject methods = entry.getValue().getAsJsonObject();
 						for (Entry<String, JsonElement> method : methods.entrySet()) {
 							JsonObject mapMethod = method.getValue().getAsJsonObject();
 							String nameKind = resource.getKey();
-							if (packageToKindName.containsKey(nameKind)) {
-								nameKind = packageToKindName.get(nameKind); 
+							if (packageToKindName.containsKey(packageNameWithResource)) {
+								nameKind = packageToKindName.get(packageNameWithResource); 
 							} else {
 								nameKind = nameKind.substring(0, nameKind.length()-1);
 								nameKind = nameKind.substring(0, 1).toUpperCase() + nameKind.substring(1);
 							}
 							KindData kind = api.getKindDataPerName(nameKind);
 							if (kind != null) {
-								kind.actions.add(new ActionData(method.getKey(), mapMethod.get("description").getAsString()));
-							} else if (!unmappedPackages.contains(parent.isEmpty() ? resource.getKey() : parent + "." + resource.getKey())) {
-								unmappedPackages.add(parent.isEmpty() ? resource.getKey() : parent + "." + resource.getKey());
+								ActionData action = new ActionData(method.getKey(), mapMethod.get("description").getAsString());
+								if (mapMethod.get("parameters") != null) {
+									JsonObject parameters = mapMethod.get("parameters").getAsJsonObject();
+									for (Entry<String, JsonElement> parameter : parameters.entrySet()) {
+										action.attributes
+												.add(AttributeBuilder.buildAttribute(parameter.getValue().getAsJsonObject(), parameter.getKey()));
+									}
+								}
+								kind.actions.add(action);
+							} else if (!unmappedPackages.contains(packageNameWithResource)) {
+								unmappedPackages.add(packageNameWithResource);
 								//throw new RuntimeException("["+api.id+"]Could not find " + nameKind + " from path in action : " + method.getKey());
 							}
 						}
@@ -61,7 +66,7 @@ public class ActionReader {
 				}
 			}
 		}
-		//writeUnmappedPackages(unmappedPackages);
+		//writeUnmappedPackages(api.nameByJSON, unmappedPackages);
 	}
 	
 	private static Map<String, String> initMapping() {
@@ -74,8 +79,8 @@ public class ActionReader {
 			String line = null;
 			while((line = buffer.readLine()) != null) {
 				String[] splitted = line.split(";");
-				if (splitted.length > 1 && !splitted[1].isEmpty()) {
-					mapping.put(splitted[0], splitted[1]);
+				if (splitted.length > 2 && !splitted[2].isEmpty()) {
+					mapping.put(splitted[1], splitted[2]);
 				}
 			}
 			buffer.close();
@@ -85,12 +90,12 @@ public class ActionReader {
 		}
 	}
 	
-	private static void writeUnmappedPackages(List<String> unmappedPackages) {
+	private static void writeUnmappedPackages(String apiName, List<String> unmappedPackages) {
 		try {
 			FileWriter writer = new FileWriter(new File(pathToMappingFile), true);
 			String nl = System.getProperty("line.separator");
 			for (String unmappedPackage : unmappedPackages) {
-				writer.write(unmappedPackage + ";" + nl);
+				writer.write(apiName + ";" + unmappedPackage + ";" + nl);
 			}
 			writer.close();
 		} catch (IOException e) {
