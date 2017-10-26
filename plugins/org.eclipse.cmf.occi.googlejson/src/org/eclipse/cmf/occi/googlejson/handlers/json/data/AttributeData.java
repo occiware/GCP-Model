@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eclipse.cmf.occi.core.Attribute;
 import org.eclipse.cmf.occi.core.DataType;
+import org.eclipse.cmf.occi.core.EnumerationType;
 import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.googlejson.handlers.json.KindsBuilder;
@@ -11,7 +12,9 @@ import org.eclipse.cmf.occi.googlejson.handlers.json.KindsBuilder;
 public class AttributeData {
 
 	public final String name;
+	
 	public final String description;
+	
 	public String type;
 
 	public String format;
@@ -42,6 +45,17 @@ public class AttributeData {
 			type.setDocumentation(this.description);
 			StringToDataType.map.put(this.type, type);
 			extension.getTypes().add(type);
+		}
+		
+		if (this.enums != null) {
+			EnumerationType enumType = OCCIFactory.eINSTANCE.createEnumerationType();
+			enumType.setName(this.name);
+			enumType.setDocumentation(this.description);
+			for (EnumField field : this.enums) {
+				enumType.getLiterals().add(field.toOcci(enumType));	
+			}
+			StringToDataType.map.put(this.type, enumType);
+			extension.getTypes().add(enumType);
 		}
 		
 		attribute.setType(StringToDataType.map.get(this.type));
