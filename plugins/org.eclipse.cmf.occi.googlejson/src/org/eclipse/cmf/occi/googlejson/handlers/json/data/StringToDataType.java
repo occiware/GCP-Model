@@ -26,9 +26,6 @@ public class StringToDataType {
 	public final static NumericType typeModelInteger = OCCIFactory.eINSTANCE.createNumericType();
 	public final static NumericType typeModelLong = OCCIFactory.eINSTANCE.createNumericType();
 	public final static NumericType typeModelShort = OCCIFactory.eINSTANCE.createNumericType();
-	public final static EnumerationType typeEnum = OCCIFactory.eINSTANCE.createEnumerationType();
-	public final static ArrayType typeArray = OCCIFactory.eINSTANCE.createArrayType();
-	public final static RecordType typeRecord = OCCIFactory.eINSTANCE.createRecordType();
 	
 	public final static EObjectType typeModelMap = OCCIFactory.eINSTANCE.createEObjectType();
 	
@@ -38,27 +35,20 @@ public class StringToDataType {
 		typeModelByte.setType(NumericTypeEnum.BYTE);
 		typeModelByte.setName("byte");
 		typeModelDouble.setType(NumericTypeEnum.DOUBLE);
-		typeModelByte.setName("double");
+		typeModelDouble.setName("double");
 		typeModelFloat.setType(NumericTypeEnum.FLOAT);
-		typeModelByte.setName("float");
+		typeModelFloat.setName("float");
 		typeModelInteger.setType(NumericTypeEnum.INTEGER);
 		typeModelInteger.setName("integer");
 		typeModelLong.setType(NumericTypeEnum.LONG);
-		typeModelByte.setName("long");
+		typeModelLong.setName("long");
 		typeModelShort.setType(NumericTypeEnum.SHORT);
-		typeModelByte.setName("short");
-		
+		typeModelShort.setName("short");
 		typeModelBoolean.setName("boolean");
 		typeModelString.setName("string");
-		typeEnum.setName("enum");
-		typeArray.setName("array");
-		typeRecord.setName("record");
-		
 		typeModelMap.setName("map");
-		
 		map.put("string", typeModelString);
 		map.put("boolean", typeModelBoolean);	
-		
 		map.put("byte", typeModelByte);
 		map.put("double", typeModelDouble);
 		map.put("float", typeModelFloat);
@@ -67,11 +57,6 @@ public class StringToDataType {
 		map.put("uint32", typeModelInteger);
 		map.put("long", typeModelLong);
 		map.put("short", typeModelShort);
-		
-		map.put("enum", typeEnum);
-		map.put("array", typeArray);
-		map.put("record", typeRecord);
-		
 		map.put("map", typeModelMap);
 	}
 }
