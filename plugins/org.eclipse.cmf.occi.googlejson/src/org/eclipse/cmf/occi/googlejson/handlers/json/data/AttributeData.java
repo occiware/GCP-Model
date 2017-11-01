@@ -36,7 +36,7 @@ public class AttributeData {
 
 	public Attribute toAttributeOcci(Extension extension) {
 		final Attribute attribute = OCCIFactory.eINSTANCE.createAttribute();
-		attribute.setName(this.name);
+		attribute.setName(this.name.replaceAll("_", "."));
 		attribute.setDescription(this.description);
 
 		if (this.isAnotherKind && StringToDataType.map.get(this.type) == null) {
@@ -49,7 +49,7 @@ public class AttributeData {
 		
 		if (this.enums != null) {
 			EnumerationType enumType = OCCIFactory.eINSTANCE.createEnumerationType();
-			enumType.setName(this.name);
+			enumType.setName(this.name.replaceAll("_", "."));
 			enumType.setDocumentation(this.description);
 			for (EnumField field : this.enums) {
 				enumType.getLiterals().add(field.toOcci(enumType));	
