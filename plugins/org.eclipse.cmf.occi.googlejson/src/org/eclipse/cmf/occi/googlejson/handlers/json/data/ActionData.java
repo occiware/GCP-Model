@@ -27,6 +27,7 @@ public class ActionData {
 		for (AttributeData attribute : this.attributes) {
 			action.getAttributes().add(attribute.toAttributeOcci(extension));	
 		}
+		action.setScheme(extension.getScheme());
 		return action;
 	}
 }
