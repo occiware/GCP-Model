@@ -31,7 +31,7 @@ public class KindData {
     	Kind kind = OCCIFactory.eINSTANCE.createKind();
     	kind.setName(this.name);
     	kind.setParent(Main.RESOURCE_KIND);
-    	kind.setScheme(extension.getScheme() + this.name);
+    	kind.setScheme(extension.getScheme());
     	kind.setTitle(this.description);
     	for (AttributeData attribute : this.attributes) {
     		kind.getAttributes().add(attribute.toAttributeOcci(extension));
