@@ -18,7 +18,7 @@ public class APIBuilder {
 					object.get("description").getAsString(),
 					object.get("title").getAsString(), 
 					object.get("id").getAsString(),
-					nameOfJSON
+					object.get("name").getAsString()
 			);
 			JsonObject schemas = object.get("schemas").getAsJsonObject();
 			for (Entry<String, JsonElement> entry : schemas.entrySet()) {
