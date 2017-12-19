@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="cloudkms" scheme="http://occi/gcpcloudkms#" description="Manages encryption for your cloud services the same way you do on-premises. You can generate, use, rotate, and destroy AES256 encryption keys.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="Location" scheme="http://occi/gcpcloudkms#" title="A resource that represents Google Cloud Platform location.">
+    <attributes name="labels" required="true" description="Cross-service attributes for the location. For example&#xA;&#xA;    {&quot;cloud.googleapis.com/region&quot;: &quot;us-east1&quot;}" type="//@types.9"/>
+    <attributes name="name" required="true" description="Resource name for the location, which may vary between implementations.&#xA;For example: `&quot;projects/example-project/locations/us-east1&quot;`" type="//@types.0"/>
+    <attributes name="locationId" required="true" description="The canonical id for this location. For example: `&quot;us-east1&quot;`." type="//@types.0"/>
+    <attributes name="metadata" required="true" description="Service-specific metadata. For example the available capacity at the given&#xA;location." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListCryptoKeysResponse" scheme="http://occi/gcpcloudkms#" title="Response message for KeyManagementService.ListCryptoKeys.">
+    <attributes name="nextPageToken" required="true" description="A token to retrieve next page of results. Pass this value in&#xA;ListCryptoKeysRequest.page_token to retrieve the next page of results." type="//@types.0"/>
+    <attributes name="cryptoKeys" required="true" description="The list of CryptoKeys." type="//@types.7"/>
+    <attributes name="totalSize" required="true" description="The total number of CryptoKeys that matched the query." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestIamPermissionsResponse" scheme="http://occi/gcpcloudkms#" title="Response message for `TestIamPermissions` method.">
+    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is&#xA;allowed." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DestroyCryptoKeyVersionRequest" scheme="http://occi/gcpcloudkms#" title="Request message for KeyManagementService.DestroyCryptoKeyVersion.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuditLogConfig" scheme="http://occi/gcpcloudkms#" title="Provides the configuration for logging a type of permissions.&#xA;Example:&#xA;&#xA;    {&#xA;      &quot;audit_log_configs&quot;: [&#xA;        {&#xA;          &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;          &quot;exempted_members&quot;: [&#xA;            &quot;user:foo@gmail.com&quot;&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting&#xA;foo@gmail.com from DATA_READ logging.">
+    <attributes name="logType" required="true" description="The log type that this config enables." type="//@types.11"/>
+    <attributes name="exemptedMembers" required="true" description="Specifies the identities that do not cause logging for this type of&#xA;permission.&#xA;Follows the same format of Binding.members." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CryptoKeyVersionLink" scheme="http://occi/gcpcloudkms#" title="Output only. A copy of the &quot;primary&quot; CryptoKeyVersion that will be used&#xA;by Encrypt when this CryptoKey is given&#xA;in EncryptRequest.name.&#xA;&#xA;The CryptoKey's primary version can be updated via&#xA;UpdateCryptoKeyPrimaryVersion." source="//@kinds[term='cryptokey']" target="//@kinds[term='cryptokeyversion']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CryptoKey" scheme="http://occi/gcpcloudkms#" title="A CryptoKey represents a logical key that can be used for cryptographic&#xA;operations.&#xA;&#xA;A CryptoKey is made up of one or more versions, which&#xA;represent the actual key material used in cryptographic operations.">
+    <attributes name="rotationPeriod" required="true" description="next_rotation_time will be advanced by this period when the service&#xA;automatically rotates a key. Must be at least one day.&#xA;&#xA;If rotation_period is set, next_rotation_time must also be set." type="//@types.11"/>
+    <attributes name="name" required="true" description="Output only. The resource name for this CryptoKey in the format&#xA;`projects/*/locations/*/keyRings/*/cryptoKeys/*`." type="//@types.11"/>
+    <attributes name="purpose" required="true" description="The immutable purpose of this CryptoKey. Currently, the only acceptable&#xA;purpose is ENCRYPT_DECRYPT." type="//@types.12"/>
+    <attributes name="nextRotationTime" required="true" description="At next_rotation_time, the Key Management Service will automatically:&#xA;&#xA;1. Create a new version of this CryptoKey.&#xA;2. Mark the new version as primary.&#xA;&#xA;Key rotations performed manually via&#xA;CreateCryptoKeyVersion and&#xA;UpdateCryptoKeyPrimaryVersion&#xA;do not affect next_rotation_time." type="//@types.12"/>
+    <attributes name="labels" required="true" description="Labels with user defined metadata." type="//@types.9"/>
+    <attributes name="createTime" required="true" description="Output only. The time at which this CryptoKey was created." type="//@types.12"/>
+    <actions name="list" scheme="http://occi/gcpcloudkms/cryptokey/action#" title="Lists CryptoKeys.">
+      <attributes name="pageToken" required="true" description="Optional pagination token, returned earlier via&#xA;ListCryptoKeysResponse.next_page_token." type="//@types.12"/>
+      <attributes name="pageSize" required="true" description="Optional limit on the number of CryptoKeys to include in the&#xA;response.  Further CryptoKeys can subsequently be obtained by&#xA;including the ListCryptoKeysResponse.next_page_token in a subsequent&#xA;request.  If unspecified, the server will pick an appropriate default." type="//@types.3"/>
+      <attributes name="parent" required="true" description="Required. The resource name of the KeyRing to list, in the format&#xA;`projects/*/locations/*/keyRings/*`." type="//@types.12"/>
+    </actions>
+    <actions name="encrypt" scheme="http://occi/gcpcloudkms/cryptokey/action#" title="Encrypts data, so that it can only be recovered by a call to Decrypt.">
+      <attributes name="name" required="true" description="Required. The resource name of the CryptoKey or CryptoKeyVersion&#xA;to use for encryption.&#xA;&#xA;If a CryptoKey is specified, the server will use its&#xA;primary version." type="//@types.12"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpcloudkms/cryptokey/action#" title="Create a new CryptoKey within a KeyRing.&#xA;&#xA;CryptoKey.purpose is required.">
+      <attributes name="parent" required="true" description="Required. The name of the KeyRing associated with the&#xA;CryptoKeys." type="//@types.12"/>
+      <attributes name="cryptoKeyId" required="true" description="Required. It must be unique within a KeyRing and match the regular&#xA;expression `[a-zA-Z0-9_-]{1,63}`" type="//@types.12"/>
+    </actions>
+    <actions name="setIamPolicy" scheme="http://occi/gcpcloudkms/cryptokey/action#" title="Sets the access control policy on the specified resource. Replaces any&#xA;existing policy.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being specified.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.12"/>
+    </actions>
+    <actions name="updatePrimaryVersion" scheme="http://occi/gcpcloudkms/cryptokey/action#" title="Update the version of a CryptoKey that will be used in Encrypt">
+      <attributes name="name" required="true" description="The resource name of the CryptoKey to update." type="//@types.12"/>
+    </actions>
+    <actions name="getIamPolicy" scheme="http://occi/gcpcloudkms/cryptokey/action#" title="Gets the access control policy for a resource.&#xA;Returns an empty policy if the resource exists and does not have a policy&#xA;set.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being requested.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.12"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpcloudkms/cryptokey/action#" title="Returns metadata for a given CryptoKey, as well as its&#xA;primary CryptoKeyVersion.">
+      <attributes name="name" required="true" description="The name of the CryptoKey to get." type="//@types.12"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpcloudkms/cryptokey/action#" title="Update a CryptoKey.">
+      <attributes name="updateMask" required="true" description="Required list of fields to be updated in this request." type="//@types.12"/>
+      <attributes name="name" required="true" description="Output only. The resource name for this CryptoKey in the format&#xA;`projects/*/locations/*/keyRings/*/cryptoKeys/*`." type="//@types.12"/>
+    </actions>
+    <actions name="testIamPermissions" scheme="http://occi/gcpcloudkms/cryptokey/action#" title="Returns permissions that a caller has on the specified resource.&#xA;If the resource does not exist, this will return an empty set of&#xA;permissions, not a NOT_FOUND error.&#xA;&#xA;Note: This operation is designed to be used for building permission-aware&#xA;UIs and command-line tools, not for authorization checking. This operation&#xA;may &quot;fail open&quot; without warning.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy detail is being requested.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.12"/>
+    </actions>
+    <actions name="decrypt" scheme="http://occi/gcpcloudkms/cryptokey/action#" title="Decrypts data that was protected by Encrypt.">
+      <attributes name="name" required="true" description="Required. The resource name of the CryptoKey to use for decryption.&#xA;The server will choose the appropriate version." type="//@types.12"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DecryptResponse" scheme="http://occi/gcpcloudkms#" title="Response message for KeyManagementService.Decrypt.">
+    <attributes name="plaintext" required="true" description="The decrypted data originally supplied in EncryptRequest.plaintext." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestIamPermissionsRequest" scheme="http://occi/gcpcloudkms#" title="Request message for `TestIamPermissions` method.">
+    <attributes name="permissions" required="true" description="The set of permissions to check for the `resource`. Permissions with&#xA;wildcards (such as '*' or 'storage.*') are not allowed. For more&#xA;information see&#xA;[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="EncryptResponse" scheme="http://occi/gcpcloudkms#" title="Response message for KeyManagementService.Encrypt.">
+    <attributes name="name" required="true" description="The resource name of the CryptoKeyVersion used in encryption." type="//@types.12"/>
+    <attributes name="ciphertext" required="true" description="The encrypted data." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="KeyRing" scheme="http://occi/gcpcloudkms#" title="A KeyRing is a toplevel logical grouping of CryptoKeys.">
+    <attributes name="createTime" required="true" description="Output only. The time at which this KeyRing was created." type="//@types.12"/>
+    <attributes name="name" required="true" description="Output only. The resource name for the KeyRing in the format&#xA;`projects/*/locations/*/keyRings/*`." type="//@types.12"/>
+    <actions name="list" scheme="http://occi/gcpcloudkms/keyring/action#" title="Lists KeyRings.">
+      <attributes name="pageToken" required="true" description="Optional pagination token, returned earlier via&#xA;ListKeyRingsResponse.next_page_token." type="//@types.12"/>
+      <attributes name="pageSize" required="true" description="Optional limit on the number of KeyRings to include in the&#xA;response.  Further KeyRings can subsequently be obtained by&#xA;including the ListKeyRingsResponse.next_page_token in a subsequent&#xA;request.  If unspecified, the server will pick an appropriate default." type="//@types.3"/>
+      <attributes name="parent" required="true" description="Required. The resource name of the location associated with the&#xA;KeyRings, in the format `projects/*/locations/*`." type="//@types.12"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpcloudkms/keyring/action#" title="Create a new KeyRing in a given Project and Location.">
+      <attributes name="parent" required="true" description="Required. The resource name of the location associated with the&#xA;KeyRings, in the format `projects/*/locations/*`." type="//@types.12"/>
+      <attributes name="keyRingId" required="true" description="Required. It must be unique within a location and match the regular&#xA;expression `[a-zA-Z0-9_-]{1,63}`" type="//@types.12"/>
+    </actions>
+    <actions name="setIamPolicy" scheme="http://occi/gcpcloudkms/keyring/action#" title="Sets the access control policy on the specified resource. Replaces any&#xA;existing policy.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being specified.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.12"/>
+    </actions>
+    <actions name="getIamPolicy" scheme="http://occi/gcpcloudkms/keyring/action#" title="Gets the access control policy for a resource.&#xA;Returns an empty policy if the resource exists and does not have a policy&#xA;set.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being requested.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.12"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpcloudkms/keyring/action#" title="Returns metadata for a given KeyRing.">
+      <attributes name="name" required="true" description="The name of the KeyRing to get." type="//@types.12"/>
+    </actions>
+    <actions name="testIamPermissions" scheme="http://occi/gcpcloudkms/keyring/action#" title="Returns permissions that a caller has on the specified resource.&#xA;If the resource does not exist, this will return an empty set of&#xA;permissions, not a NOT_FOUND error.&#xA;&#xA;Note: This operation is designed to be used for building permission-aware&#xA;UIs and command-line tools, not for authorization checking. This operation&#xA;may &quot;fail open&quot; without warning.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy detail is being requested.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.12"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListLocationsResponse" scheme="http://occi/gcpcloudkms#" title="The response message for Locations.ListLocations.">
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.12"/>
+    <attributes name="locations" required="true" description="A list of locations that matches the specified filter in the request." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Policy" scheme="http://occi/gcpcloudkms#" title="Defines an Identity and Access Management (IAM) policy. It is used to&#xA;specify access control policies for Cloud Platform resources.&#xA;&#xA;&#xA;A `Policy` consists of a list of `bindings`. A `Binding` binds a list of&#xA;`members` to a `role`, where the members can be user accounts, Google groups,&#xA;Google domains, and service accounts. A `role` is a named list of permissions&#xA;defined by IAM.&#xA;&#xA;**Example**&#xA;&#xA;    {&#xA;      &quot;bindings&quot;: [&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/owner&quot;,&#xA;          &quot;members&quot;: [&#xA;            &quot;user:mike@example.com&quot;,&#xA;            &quot;group:admins@example.com&quot;,&#xA;            &quot;domain:google.com&quot;,&#xA;            &quot;serviceAccount:my-other-app@appspot.gserviceaccount.com&quot;,&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/viewer&quot;,&#xA;          &quot;members&quot;: [&quot;user:sean@example.com&quot;]&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;For a description of IAM and its features, see the&#xA;[IAM developer's guide](https://cloud.google.com/iam).">
+    <attributes name="auditConfigs" required="true" description="Specifies cloud audit logging configuration for this policy." type="//@types.7"/>
+    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`.&#xA;`bindings` with no members will result in an error." type="//@types.7"/>
+    <attributes name="iamOwned" required="true" description="" type="//@types.6"/>
+    <attributes name="etag" required="true" description="`etag` is used for optimistic concurrency control as a way to help&#xA;prevent simultaneous updates of a policy from overwriting each other.&#xA;It is strongly suggested that systems make use of the `etag` in the&#xA;read-modify-write cycle to perform policy updates in order to avoid race&#xA;conditions: An `etag` is returned in the response to `getIamPolicy`, and&#xA;systems are expected to put that etag in the request to `setIamPolicy` to&#xA;ensure that their change will be applied to the same version of the policy.&#xA;&#xA;If no `etag` is provided in the call to `setIamPolicy`, then the existing&#xA;policy is overwritten blindly." type="//@types.12"/>
+    <attributes name="version" required="true" description="Version of the `Policy`. The default version is 0." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="UpdateCryptoKeyPrimaryVersionRequest" scheme="http://occi/gcpcloudkms#" title="Request message for KeyManagementService.UpdateCryptoKeyPrimaryVersion.">
+    <attributes name="cryptoKeyVersionId" required="true" description="The id of the child CryptoKeyVersion to use as primary." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RestoreCryptoKeyVersionRequest" scheme="http://occi/gcpcloudkms#" title="Request message for KeyManagementService.RestoreCryptoKeyVersion.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListKeyRingsResponse" scheme="http://occi/gcpcloudkms#" title="Response message for KeyManagementService.ListKeyRings.">
+    <attributes name="nextPageToken" required="true" description="A token to retrieve next page of results. Pass this value in&#xA;ListKeyRingsRequest.page_token to retrieve the next page of results." type="//@types.12"/>
+    <attributes name="totalSize" required="true" description="The total number of KeyRings that matched the query." type="//@types.3"/>
+    <attributes name="keyRings" required="true" description="The list of KeyRings." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuditConfig" scheme="http://occi/gcpcloudkms#" title="Specifies the audit configuration for a service.&#xA;The configuration determines which permission types are logged, and what&#xA;identities, if any, are exempted from logging.&#xA;An AuditConfig must have one or more AuditLogConfigs.&#xA;&#xA;If there are AuditConfigs for both `allServices` and a specific service,&#xA;the union of the two AuditConfigs is used for that service: the log_types&#xA;specified in each AuditConfig are enabled, and the exempted_members in each&#xA;AuditConfig are exempted.&#xA;&#xA;Example Policy with multiple AuditConfigs:&#xA;&#xA;    {&#xA;      &quot;audit_configs&quot;: [&#xA;        {&#xA;          &quot;service&quot;: &quot;allServices&quot;&#xA;          &quot;audit_log_configs&quot;: [&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;              &quot;exempted_members&quot;: [&#xA;                &quot;user:foo@gmail.com&quot;&#xA;              ]&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;ADMIN_READ&quot;,&#xA;            }&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;service&quot;: &quot;fooservice.googleapis.com&quot;&#xA;          &quot;audit_log_configs&quot;: [&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;              &quot;exempted_members&quot;: [&#xA;                &quot;user:bar@gmail.com&quot;&#xA;              ]&#xA;            }&#xA;          ]&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ&#xA;logging. It also exempts foo@gmail.com from DATA_READ logging, and&#xA;bar@gmail.com from DATA_WRITE logging.">
+    <attributes name="exemptedMembers" required="true" description="" type="//@types.7"/>
+    <attributes name="service" required="true" description="Specifies a service that will be enabled for audit logging.&#xA;For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.&#xA;`allServices` is a special value that covers all services." type="//@types.12"/>
+    <attributes name="auditLogConfigs" required="true" description="The configuration for logging of each type of permission.&#xA;Next ID: 4" type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CryptoKeyVersion" scheme="http://occi/gcpcloudkms#" title="A CryptoKeyVersion represents an individual cryptographic key, and the&#xA;associated key material.&#xA;&#xA;It can be used for cryptographic operations either directly, or via its&#xA;parent CryptoKey, in which case the server will choose the appropriate&#xA;version for the operation.&#xA;&#xA;For security reasons, the raw cryptographic key material represented by a&#xA;CryptoKeyVersion can never be viewed or exported. It can only be used to&#xA;encrypt or decrypt data when an authorized user or application invokes Cloud&#xA;KMS.">
+    <attributes name="state" required="true" description="The current state of the CryptoKeyVersion." type="//@types.13"/>
+    <attributes name="name" required="true" description="Output only. The resource name for this CryptoKeyVersion in the format&#xA;`projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`." type="//@types.13"/>
+    <attributes name="destroyEventTime" required="true" description="Output only. The time this CryptoKeyVersion's key material was&#xA;destroyed. Only present if state is&#xA;DESTROYED." type="//@types.13"/>
+    <attributes name="destroyTime" required="true" description="Output only. The time this CryptoKeyVersion's key material is scheduled&#xA;for destruction. Only present if state is&#xA;DESTROY_SCHEDULED." type="//@types.13"/>
+    <attributes name="createTime" required="true" description="Output only. The time at which this CryptoKeyVersion was created." type="//@types.13"/>
+    <actions name="create" scheme="http://occi/gcpcloudkms/cryptokeyversion/action#" title="Create a new CryptoKeyVersion in a CryptoKey.&#xA;&#xA;The server will assign the next sequential id. If unset,&#xA;state will be set to&#xA;ENABLED.">
+      <attributes name="parent" required="true" description="Required. The name of the CryptoKey associated with&#xA;the CryptoKeyVersions." type="//@types.13"/>
+    </actions>
+    <actions name="destroy" scheme="http://occi/gcpcloudkms/cryptokeyversion/action#" title="Schedule a CryptoKeyVersion for destruction.&#xA;&#xA;Upon calling this method, CryptoKeyVersion.state will be set to&#xA;DESTROY_SCHEDULED&#xA;and destroy_time will be set to a time 24&#xA;hours in the future, at which point the state&#xA;will be changed to&#xA;DESTROYED, and the key&#xA;material will be irrevocably destroyed.&#xA;&#xA;Before the destroy_time is reached,&#xA;RestoreCryptoKeyVersion may be called to reverse the process.">
+      <attributes name="name" required="true" description="The resource name of the CryptoKeyVersion to destroy." type="//@types.13"/>
+    </actions>
+    <actions name="restore" scheme="http://occi/gcpcloudkms/cryptokeyversion/action#" title="Restore a CryptoKeyVersion in the&#xA;DESTROY_SCHEDULED,&#xA;state.&#xA;&#xA;Upon restoration of the CryptoKeyVersion, state&#xA;will be set to DISABLED,&#xA;and destroy_time will be cleared.">
+      <attributes name="name" required="true" description="The resource name of the CryptoKeyVersion to restore." type="//@types.13"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpcloudkms/cryptokeyversion/action#" title="Update a CryptoKeyVersion's metadata.&#xA;&#xA;state may be changed between&#xA;ENABLED and&#xA;DISABLED using this&#xA;method. See DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to&#xA;move between other states.">
+      <attributes name="name" required="true" description="Output only. The resource name for this CryptoKeyVersion in the format&#xA;`projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`." type="//@types.13"/>
+      <attributes name="updateMask" required="true" description="Required list of fields to be updated in this request." type="//@types.13"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpcloudkms/cryptokeyversion/action#" title="Returns metadata for a given CryptoKeyVersion.">
+      <attributes name="name" required="true" description="The name of the CryptoKeyVersion to get." type="//@types.13"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpcloudkms/cryptokeyversion/action#" title="Lists CryptoKeyVersions.">
+      <attributes name="pageToken" required="true" description="Optional pagination token, returned earlier via&#xA;ListCryptoKeyVersionsResponse.next_page_token." type="//@types.13"/>
+      <attributes name="pageSize" required="true" description="Optional limit on the number of CryptoKeyVersions to&#xA;include in the response. Further CryptoKeyVersions can&#xA;subsequently be obtained by including the&#xA;ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.&#xA;If unspecified, the server will pick an appropriate default." type="//@types.3"/>
+      <attributes name="parent" required="true" description="Required. The resource name of the CryptoKey to list, in the format&#xA;`projects/*/locations/*/keyRings/*/cryptoKeys/*`." type="//@types.13"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PolicyLink" scheme="http://occi/gcpcloudkms#" title="REQUIRED: The complete policy to be applied to the `resource`. The size of&#xA;the policy is limited to a few 10s of KB. An empty policy is a&#xA;valid policy but certain Cloud Platform services (such as Projects)&#xA;might reject them." source="//@kinds[term='setiampolicyrequest']" target="//@kinds[term='policy']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SetIamPolicyRequest" scheme="http://occi/gcpcloudkms#" title="Request message for `SetIamPolicy` method.">
+    <attributes name="updateMask" required="true" description="OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only&#xA;the fields in the mask will be modified. If no mask is provided, the&#xA;following default mask is used:&#xA;paths: &quot;bindings, etag&quot;&#xA;This field is only used by Cloud IAM." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DecryptRequest" scheme="http://occi/gcpcloudkms#" title="Request message for KeyManagementService.Decrypt.">
+    <attributes name="ciphertext" required="true" description="Required. The encrypted data originally returned in&#xA;EncryptResponse.ciphertext." type="//@types.13"/>
+    <attributes name="additionalAuthenticatedData" required="true" description="Optional data that must match the data originally supplied in&#xA;EncryptRequest.additional_authenticated_data." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ExprLink" scheme="http://occi/gcpcloudkms#" title="The condition that is associated with this binding.&#xA;NOTE: an unsatisfied condition will not allow user access via current&#xA;binding. Different bindings, including their conditions, are examined&#xA;independently.&#xA;This field is GOOGLE_INTERNAL." source="//@kinds[term='binding']" target="//@kinds[term='expr']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Binding" scheme="http://occi/gcpcloudkms#" title="Associates `members` with a `role`.">
+    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource.&#xA;`members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is&#xA;   on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone&#xA;   who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google&#xA;   account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service&#xA;   account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group.&#xA;   For example, `admins@example.com`.&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the&#xA;   users of that domain. For example, `google.com` or `example.com`.&#xA;&#xA;" type="//@types.7"/>
+    <attributes name="role" required="true" description="Role that is assigned to `members`.&#xA;For example, `roles/viewer`, `roles/editor`, or `roles/owner`.&#xA;Required" type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Expr" scheme="http://occi/gcpcloudkms#" title="Represents an expression text. Example:&#xA;&#xA;    title: &quot;User account presence&quot;&#xA;    description: &quot;Determines whether the request has a user account&quot;&#xA;    expression: &quot;size(request.user) > 0&quot;">
+    <attributes name="description" required="true" description="An optional description of the expression. This is a longer text which&#xA;describes the expression, e.g. when hovered over it in a UI." type="//@types.13"/>
+    <attributes name="expression" required="true" description="Textual representation of an expression in&#xA;Common Expression Language syntax.&#xA;&#xA;The application context of the containing message determines which&#xA;well-known feature set of CEL is supported." type="//@types.13"/>
+    <attributes name="location" required="true" description="An optional string indicating the location of the expression for error&#xA;reporting, e.g. a file name and a position in the file." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="EncryptRequest" scheme="http://occi/gcpcloudkms#" title="Request message for KeyManagementService.Encrypt.">
+    <attributes name="plaintext" required="true" description="Required. The data to encrypt. Must be no larger than 64KiB." type="//@types.13"/>
+    <attributes name="additionalAuthenticatedData" required="true" description="Optional data that, if specified, must also be provided during decryption&#xA;through DecryptRequest.additional_authenticated_data.  Must be no&#xA;larger than 64KiB." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListCryptoKeyVersionsResponse" scheme="http://occi/gcpcloudkms#" title="Response message for KeyManagementService.ListCryptoKeyVersions.">
+    <attributes name="cryptoKeyVersions" required="true" description="The list of CryptoKeyVersions." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="A token to retrieve next page of results. Pass this value in&#xA;ListCryptoKeyVersionsRequest.page_token to retrieve the next page of&#xA;results." type="//@types.13"/>
+    <attributes name="totalSize" required="true" description="The total number of CryptoKeyVersions that matched the&#xA;query." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="logType" documentation="The log type that this config enables.">
+    <literals name="LOG_TYPE_UNSPECIFIED" documentation="Default case. Should never be this."/>
+    <literals name="ADMIN_READ" documentation="Admin reads. Example: CloudIAM getIamPolicy"/>
+    <literals name="DATA_WRITE" documentation="Data writes. Example: CloudSQL Users create"/>
+    <literals name="DATA_READ" documentation="Data reads. Example: CloudSQL Users list"/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="purpose" documentation="The immutable purpose of this CryptoKey. Currently, the only acceptable&#xA;purpose is ENCRYPT_DECRYPT.">
+    <literals name="CRYPTO_KEY_PURPOSE_UNSPECIFIED" documentation="Not specified."/>
+    <literals name="ENCRYPT_DECRYPT" documentation="CryptoKeys with this purpose may be used with&#xA;Encrypt and&#xA;Decrypt."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="state" documentation="The current state of the CryptoKeyVersion.">
+    <literals name="CRYPTO_KEY_VERSION_STATE_UNSPECIFIED" documentation="Not specified."/>
+    <literals name="ENABLED" documentation="This version may be used in Encrypt and&#xA;Decrypt requests."/>
+    <literals name="DISABLED" documentation="This version may not be used, but the key material is still available,&#xA;and the version can be placed back into the ENABLED state."/>
+    <literals name="DESTROYED" documentation="This version is destroyed, and the key material is no longer stored.&#xA;A version may not leave this state once entered."/>
+    <literals name="DESTROY_SCHEDULED" documentation="This version is scheduled for destruction, and will be destroyed soon.&#xA;Call&#xA;RestoreCryptoKeyVersion&#xA;to put it back into the DISABLED state."/>
+  </types>
+</occi:Extension>

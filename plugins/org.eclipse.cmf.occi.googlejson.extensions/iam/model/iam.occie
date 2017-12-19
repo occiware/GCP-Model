@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="iam" scheme="http://occi/gcpiam#" description="Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="SignJwtRequest" scheme="http://occi/gcpiam#" title="The service account sign JWT request.">
+    <attributes name="payload" required="true" description="The JWT payload to sign, a JSON JWT Claim set." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Permission" scheme="http://occi/gcpiam#" title="A permission which can be included by a role.">
+    <attributes name="description" required="true" description="A brief description of what this Permission is used for." type="//@types.0"/>
+    <attributes name="customRolesSupportLevel" required="true" description="The current custom role support level." type="//@types.11"/>
+    <attributes name="stage" required="true" description="The current launch stage of the permission." type="//@types.12"/>
+    <attributes name="name" required="true" description="The name of this Permission." type="//@types.12"/>
+    <attributes name="onlyInPredefinedRoles" required="true" description="This permission can ONLY be used in predefined roles." type="//@types.6"/>
+    <actions name="queryTestablePermissions" scheme="http://occi/gcpiam/permission/action#" title="Lists the permissions testable on a resource.&#xA;A permission is testable if it can be tested for an identity on a resource."/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PolicyDelta" scheme="http://occi/gcpiam#" title="The difference delta between two policies.">
+    <attributes name="bindingDeltas" required="true" description="The delta for Bindings between two policies." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListServiceAccountsResponse" scheme="http://occi/gcpiam#" title="The service account list response.">
+    <attributes name="nextPageToken" required="true" description="To retrieve the next page of results, set&#xA;ListServiceAccountsRequest.page_token&#xA;to this value." type="//@types.12"/>
+    <attributes name="accounts" required="true" description="The list of matching service accounts." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="QueryGrantableRolesResponse" scheme="http://occi/gcpiam#" title="The grantable role query response.">
+    <attributes name="roles" required="true" description="The list of matching roles." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="To retrieve the next page of results, set&#xA;`QueryGrantableRolesRequest.page_token` to this value." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SignBlobRequest" scheme="http://occi/gcpiam#" title="The service account sign blob request.">
+    <attributes name="bytesToSign" required="true" description="The bytes to sign." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PolicyLink" scheme="http://occi/gcpiam#" title="REQUIRED: The complete policy to be applied to the `resource`. The size of&#xA;the policy is limited to a few 10s of KB. An empty policy is a&#xA;valid policy but certain Cloud Platform services (such as Projects)&#xA;might reject them." source="//@kinds[term='setiampolicyrequest']" target="//@kinds[term='policy']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SetIamPolicyRequest" scheme="http://occi/gcpiam#" title="Request message for `SetIamPolicy` method.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="QueryTestablePermissionsResponse" scheme="http://occi/gcpiam#" title="The response containing permissions which can be tested on a resource.">
+    <attributes name="permissions" required="true" description="The Permissions testable on the requested resource." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="To retrieve the next page of results, set&#xA;`QueryTestableRolesRequest.page_token` to this value." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Empty" scheme="http://occi/gcpiam#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CreateServiceAccountKeyRequest" scheme="http://occi/gcpiam#" title="The service account key create request.">
+    <attributes name="keyAlgorithm" required="true" description="Which type of key and algorithm to use for the key.&#xA;The default is currently a 2K RSA key.  However this may change in the&#xA;future." type="//@types.13"/>
+    <attributes name="privateKeyType" required="true" description="The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the&#xA;default output format." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SignJwtResponse" scheme="http://occi/gcpiam#" title="The service account sign JWT response.">
+    <attributes name="keyId" required="true" description="The id of the key used to sign the JWT." type="//@types.14"/>
+    <attributes name="signedJwt" required="true" description="The signed JWT." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestIamPermissionsRequest" scheme="http://occi/gcpiam#" title="Request message for `TestIamPermissions` method.">
+    <attributes name="permissions" required="true" description="The set of permissions to check for the `resource`. Permissions with&#xA;wildcards (such as '*' or 'storage.*') are not allowed. For more&#xA;information see&#xA;[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Policy" scheme="http://occi/gcpiam#" title="Defines an Identity and Access Management (IAM) policy. It is used to&#xA;specify access control policies for Cloud Platform resources.&#xA;&#xA;&#xA;A `Policy` consists of a list of `bindings`. A `Binding` binds a list of&#xA;`members` to a `role`, where the members can be user accounts, Google groups,&#xA;Google domains, and service accounts. A `role` is a named list of permissions&#xA;defined by IAM.&#xA;&#xA;**Example**&#xA;&#xA;    {&#xA;      &quot;bindings&quot;: [&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/owner&quot;,&#xA;          &quot;members&quot;: [&#xA;            &quot;user:mike@example.com&quot;,&#xA;            &quot;group:admins@example.com&quot;,&#xA;            &quot;domain:google.com&quot;,&#xA;            &quot;serviceAccount:my-other-app@appspot.gserviceaccount.com&quot;,&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/viewer&quot;,&#xA;          &quot;members&quot;: [&quot;user:sean@example.com&quot;]&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;For a description of IAM and its features, see the&#xA;[IAM developer's guide](https://cloud.google.com/iam).">
+    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`.&#xA;`bindings` with no members will result in an error." type="//@types.7"/>
+    <attributes name="etag" required="true" description="`etag` is used for optimistic concurrency control as a way to help&#xA;prevent simultaneous updates of a policy from overwriting each other.&#xA;It is strongly suggested that systems make use of the `etag` in the&#xA;read-modify-write cycle to perform policy updates in order to avoid race&#xA;conditions: An `etag` is returned in the response to `getIamPolicy`, and&#xA;systems are expected to put that etag in the request to `setIamPolicy` to&#xA;ensure that their change will be applied to the same version of the policy.&#xA;&#xA;If no `etag` is provided in the call to `setIamPolicy`, then the existing&#xA;policy is overwritten blindly." type="//@types.14"/>
+    <attributes name="version" required="true" description="Version of the `Policy`. The default version is 0." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListRolesResponse" scheme="http://occi/gcpiam#" title="The response containing the roles defined under a resource.">
+    <attributes name="roles" required="true" description="The Roles defined on this resource." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="To retrieve the next page of results, set&#xA;`ListRolesRequest.page_token` to this value." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PolicyDeltaLink" scheme="http://occi/gcpiam#" title="Policy delta between the original policy and the newly set policy." source="//@kinds[term='auditdata']" target="//@kinds[term='policydelta']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="AuditData" scheme="http://occi/gcpiam#" title="Audit log information specific to Cloud IAM. This message is serialized&#xA;as an `Any` type in the `ServiceData` message of an&#xA;`AuditLog` message.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ExprLink" scheme="http://occi/gcpiam#" title="The condition that is associated with this binding.&#xA;This field is GOOGLE_INTERNAL.&#xA;This field is not logged in IAM side because it's only for audit logging.&#xA;Optional" source="//@kinds[term='bindingdelta']" target="//@kinds[term='expr']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BindingDelta" scheme="http://occi/gcpiam#" title="One delta entry for Binding. Each individual change (only one member in each&#xA;entry) to a binding will be a separate entry.">
+    <attributes name="action" required="true" description="The action that was performed on a Binding.&#xA;Required" type="//@types.15"/>
+    <attributes name="member" required="true" description="A single identity requesting access for a Cloud Platform resource.&#xA;Follows the same format of Binding.members.&#xA;Required" type="//@types.15"/>
+    <attributes name="role" required="true" description="Role that is assigned to `members`.&#xA;For example, `roles/viewer`, `roles/editor`, or `roles/owner`.&#xA;Required" type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="UndeleteRoleRequest" scheme="http://occi/gcpiam#" title="The request to undelete an existing role.">
+    <attributes name="etag" required="true" description="Used to perform a consistent read-modify-write." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ServiceAccountLink" scheme="http://occi/gcpiam#" title="The ServiceAccount resource to create.&#xA;Currently, only the following values are user assignable:&#xA;`display_name` ." source="//@kinds[term='createserviceaccountrequest']" target="//@kinds[term='serviceaccount']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CreateServiceAccountRequest" scheme="http://occi/gcpiam#" title="The service account create request.">
+    <attributes name="accountId" required="true" description="Required. The account id that is used to generate the service account&#xA;email address and a stable unique id. It is unique within a project,&#xA;must be 6-30 characters long, and match the regular expression&#xA;`[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Role" scheme="http://occi/gcpiam#" title="A role in the Identity and Access Management API.">
+    <attributes name="includedPermissions" required="true" description="The names of the permissions this role grants when bound in an IAM policy." type="//@types.7"/>
+    <attributes name="description" required="true" description="Optional.  A human-readable description for the role." type="//@types.15"/>
+    <attributes name="etag" required="true" description="Used to perform a consistent read-modify-write." type="//@types.15"/>
+    <attributes name="stage" required="true" description="The current launch stage of the role." type="//@types.16"/>
+    <attributes name="name" required="true" description="The name of the role.&#xA;&#xA;When Role is used in CreateRole, the role name must not be set.&#xA;&#xA;When Role is used in output and other input such as UpdateRole, the role&#xA;name is the complete path, e.g., roles/logging.viewer for curated roles&#xA;and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles." type="//@types.16"/>
+    <attributes name="deleted" required="true" description="The current deleted state of the role. This field is read only.&#xA;It will be ignored in calls to CreateRole and UpdateRole." type="//@types.6"/>
+    <actions name="undelete" scheme="http://occi/gcpiam/role/action#" title="Undelete a Role, bringing it back in its previous state.">
+      <attributes name="name" required="true" description="The resource name of the role in one of the following formats:&#xA;`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`&#xA;`projects/{PROJECT_ID}/roles/{ROLE_NAME}`" type="//@types.16"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpiam/role/action#" title="Gets a Role definition.">
+      <attributes name="name" required="true" description="The resource name of the role in one of the following formats:&#xA;`roles/{ROLE_NAME}`&#xA;`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`&#xA;`projects/{PROJECT_ID}/roles/{ROLE_NAME}`" type="//@types.16"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpiam/role/action#" title="Updates a Role definition.">
+      <attributes name="name" required="true" description="The resource name of the role in one of the following formats:&#xA;`roles/{ROLE_NAME}`&#xA;`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`&#xA;`projects/{PROJECT_ID}/roles/{ROLE_NAME}`" type="//@types.16"/>
+      <attributes name="updateMask" required="true" description="A mask describing which fields in the Role have changed." type="//@types.16"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpiam/role/action#" title="Soft deletes a role. The role is suspended and cannot be used to create new&#xA;IAM Policy Bindings.&#xA;The Role will not be included in `ListRoles()` unless `show_deleted` is set&#xA;in the `ListRolesRequest`. The Role contains the deleted boolean set.&#xA;Existing Bindings remains, but are inactive. The Role can be undeleted&#xA;within 7 days. After 7 days the Role is deleted and all Bindings associated&#xA;with the role are removed.">
+      <attributes name="name" required="true" description="The resource name of the role in one of the following formats:&#xA;`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`&#xA;`projects/{PROJECT_ID}/roles/{ROLE_NAME}`" type="//@types.16"/>
+      <attributes name="etag" required="true" description="Used to perform a consistent read-modify-write." type="//@types.16"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpiam/role/action#" title="Lists the Roles defined on a resource.">
+      <attributes name="view" required="true" description="Optional view for the returned Role objects." type="//@types.16"/>
+      <attributes name="parent" required="true" description="The resource name of the parent resource in one of the following formats:&#xA;`` (empty string) -- this refers to curated roles.&#xA;`organizations/{ORGANIZATION_ID}`&#xA;`projects/{PROJECT_ID}`" type="//@types.16"/>
+      <attributes name="showDeleted" required="true" description="Include Roles that have been deleted." type="//@types.6"/>
+      <attributes name="pageToken" required="true" description="Optional pagination token returned in an earlier ListRolesResponse." type="//@types.16"/>
+      <attributes name="pageSize" required="true" description="Optional limit on the number of roles to include in the response." type="//@types.3"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpiam/role/action#" title="Creates a new Role.">
+      <attributes name="parent" required="true" description="The resource name of the parent resource in one of the following formats:&#xA;`organizations/{ORGANIZATION_ID}`&#xA;`projects/{PROJECT_ID}`" type="//@types.16"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpiam/role/action#" title="Lists the Roles defined on a resource.">
+      <attributes name="pageSize" required="true" description="Optional limit on the number of roles to include in the response." type="//@types.3"/>
+      <attributes name="view" required="true" description="Optional view for the returned Role objects." type="//@types.16"/>
+      <attributes name="parent" required="true" description="The resource name of the parent resource in one of the following formats:&#xA;`` (empty string) -- this refers to curated roles.&#xA;`organizations/{ORGANIZATION_ID}`&#xA;`projects/{PROJECT_ID}`" type="//@types.16"/>
+      <attributes name="showDeleted" required="true" description="Include Roles that have been deleted." type="//@types.6"/>
+      <attributes name="pageToken" required="true" description="Optional pagination token returned in an earlier ListRolesResponse." type="//@types.16"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpiam/role/action#" title="Creates a new Role.">
+      <attributes name="parent" required="true" description="The resource name of the parent resource in one of the following formats:&#xA;`organizations/{ORGANIZATION_ID}`&#xA;`projects/{PROJECT_ID}`" type="//@types.16"/>
+    </actions>
+    <actions name="undelete" scheme="http://occi/gcpiam/role/action#" title="Undelete a Role, bringing it back in its previous state.">
+      <attributes name="name" required="true" description="The resource name of the role in one of the following formats:&#xA;`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`&#xA;`projects/{PROJECT_ID}/roles/{ROLE_NAME}`" type="//@types.16"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpiam/role/action#" title="Gets a Role definition.">
+      <attributes name="name" required="true" description="The resource name of the role in one of the following formats:&#xA;`roles/{ROLE_NAME}`&#xA;`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`&#xA;`projects/{PROJECT_ID}/roles/{ROLE_NAME}`" type="//@types.16"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpiam/role/action#" title="Updates a Role definition.">
+      <attributes name="name" required="true" description="The resource name of the role in one of the following formats:&#xA;`roles/{ROLE_NAME}`&#xA;`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`&#xA;`projects/{PROJECT_ID}/roles/{ROLE_NAME}`" type="//@types.16"/>
+      <attributes name="updateMask" required="true" description="A mask describing which fields in the Role have changed." type="//@types.16"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpiam/role/action#" title="Soft deletes a role. The role is suspended and cannot be used to create new&#xA;IAM Policy Bindings.&#xA;The Role will not be included in `ListRoles()` unless `show_deleted` is set&#xA;in the `ListRolesRequest`. The Role contains the deleted boolean set.&#xA;Existing Bindings remains, but are inactive. The Role can be undeleted&#xA;within 7 days. After 7 days the Role is deleted and all Bindings associated&#xA;with the role are removed.">
+      <attributes name="name" required="true" description="The resource name of the role in one of the following formats:&#xA;`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`&#xA;`projects/{PROJECT_ID}/roles/{ROLE_NAME}`" type="//@types.16"/>
+      <attributes name="etag" required="true" description="Used to perform a consistent read-modify-write." type="//@types.16"/>
+    </actions>
+    <actions name="queryGrantableRoles" scheme="http://occi/gcpiam/role/action#" title="Queries roles that can be granted on a particular resource.&#xA;A role is grantable if it can be used as the role in a binding for a policy&#xA;for that resource."/>
+    <actions name="list" scheme="http://occi/gcpiam/role/action#" title="Lists the Roles defined on a resource.">
+      <attributes name="pageToken" required="true" description="Optional pagination token returned in an earlier ListRolesResponse." type="//@types.16"/>
+      <attributes name="pageSize" required="true" description="Optional limit on the number of roles to include in the response." type="//@types.3"/>
+      <attributes name="view" required="true" description="Optional view for the returned Role objects." type="//@types.16"/>
+      <attributes name="parent" required="true" description="The resource name of the parent resource in one of the following formats:&#xA;`` (empty string) -- this refers to curated roles.&#xA;`organizations/{ORGANIZATION_ID}`&#xA;`projects/{PROJECT_ID}`" type="//@types.16"/>
+      <attributes name="showDeleted" required="true" description="Include Roles that have been deleted." type="//@types.6"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpiam/role/action#" title="Gets a Role definition.">
+      <attributes name="name" required="true" description="The resource name of the role in one of the following formats:&#xA;`roles/{ROLE_NAME}`&#xA;`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`&#xA;`projects/{PROJECT_ID}/roles/{ROLE_NAME}`" type="//@types.16"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Binding" scheme="http://occi/gcpiam#" title="Associates `members` with a `role`.">
+    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource.&#xA;`members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is&#xA;   on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone&#xA;   who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google&#xA;   account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service&#xA;   account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group.&#xA;   For example, `admins@example.com`.&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the&#xA;   users of that domain. For example, `google.com` or `example.com`.&#xA;&#xA;" type="//@types.7"/>
+    <attributes name="role" required="true" description="Role that is assigned to `members`.&#xA;For example, `roles/viewer`, `roles/editor`, or `roles/owner`.&#xA;Required" type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="QueryGrantableRolesRequest" scheme="http://occi/gcpiam#" title="The grantable role query request.">
+    <attributes name="fullResourceName" required="true" description="Required. The full resource name to query from the list of grantable roles.&#xA;&#xA;The name follows the Google Cloud Platform resource format.&#xA;For example, a Cloud Platform project with id `my-project` will be named&#xA;`//cloudresourcemanager.googleapis.com/projects/my-project`." type="//@types.16"/>
+    <attributes name="pageToken" required="true" description="Optional pagination token returned in an earlier&#xA;QueryGrantableRolesResponse." type="//@types.16"/>
+    <attributes name="pageSize" required="true" description="Optional limit on the number of roles to include in the response." type="//@types.3"/>
+    <attributes name="view" required="true" description="" type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ServiceAccount" scheme="http://occi/gcpiam#" title="A service account in the Identity and Access Management API.&#xA;&#xA;To create a service account, specify the `project_id` and the `account_id`&#xA;for the account.  The `account_id` is unique within the project, and is used&#xA;to generate the service account email address and a stable&#xA;`unique_id`.&#xA;&#xA;If the account already exists, the account's resource name is returned&#xA;in util::Status's ResourceInfo.resource_name in the format of&#xA;projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}. The caller can&#xA;use the name in other methods to access the account.&#xA;&#xA;All other methods can identify the service account using the format&#xA;`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.&#xA;Using `-` as a wildcard for the `PROJECT_ID` will infer the project from&#xA;the account. The `ACCOUNT` value can be the `email` address or the&#xA;`unique_id` of the service account.">
+    <attributes name="name" required="true" description="The resource name of the service account in the following format:&#xA;`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.&#xA;&#xA;Requests using `-` as a wildcard for the `PROJECT_ID` will infer the&#xA;project from the `account` and the `ACCOUNT` value can be the `email`&#xA;address or the `unique_id` of the service account.&#xA;&#xA;In responses the resource name will always be in the format&#xA;`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`." type="//@types.17"/>
+    <attributes name="email" required="true" description="@OutputOnly The email address of the service account." type="//@types.17"/>
+    <attributes name="projectId" required="true" description="@OutputOnly The id of the project that owns the service account." type="//@types.17"/>
+    <attributes name="oauth2ClientId" required="true" description="@OutputOnly. The OAuth2 client id for the service account.&#xA;This is used in conjunction with the OAuth2 clientconfig API to make&#xA;three legged OAuth2 (3LO) flows to access the data of Google users." type="//@types.17"/>
+    <attributes name="uniqueId" required="true" description="@OutputOnly The unique and stable id of the service account." type="//@types.17"/>
+    <attributes name="displayName" required="true" description="Optional. A user-specified description of the service account.  Must be&#xA;fewer than 100 UTF-8 bytes." type="//@types.17"/>
+    <attributes name="etag" required="true" description="Used to perform a consistent read-modify-write." type="//@types.17"/>
+    <actions name="getIamPolicy" scheme="http://occi/gcpiam/serviceaccount/action#" title="Returns the IAM access control policy for a&#xA;ServiceAccount.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being requested.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.17"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpiam/serviceaccount/action#" title="Gets a ServiceAccount.">
+      <attributes name="name" required="true" description="The resource name of the service account in the following format:&#xA;`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.&#xA;Using `-` as a wildcard for the `PROJECT_ID` will infer the project from&#xA;the account. The `ACCOUNT` value can be the `email` address or the&#xA;`unique_id` of the service account." type="//@types.17"/>
+    </actions>
+    <actions name="update" scheme="http://occi/gcpiam/serviceaccount/action#" title="Updates a ServiceAccount.&#xA;&#xA;Currently, only the following fields are updatable:&#xA;`display_name` .&#xA;The `etag` is mandatory.">
+      <attributes name="name" required="true" description="The resource name of the service account in the following format:&#xA;`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.&#xA;&#xA;Requests using `-` as a wildcard for the `PROJECT_ID` will infer the&#xA;project from the `account` and the `ACCOUNT` value can be the `email`&#xA;address or the `unique_id` of the service account.&#xA;&#xA;In responses the resource name will always be in the format&#xA;`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`." type="//@types.17"/>
+    </actions>
+    <actions name="testIamPermissions" scheme="http://occi/gcpiam/serviceaccount/action#" title="Tests the specified permissions against the IAM access control policy&#xA;for a ServiceAccount.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy detail is being requested.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.17"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpiam/serviceaccount/action#" title="Deletes a ServiceAccount.">
+      <attributes name="name" required="true" description="The resource name of the service account in the following format:&#xA;`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.&#xA;Using `-` as a wildcard for the `PROJECT_ID` will infer the project from&#xA;the account. The `ACCOUNT` value can be the `email` address or the&#xA;`unique_id` of the service account." type="//@types.17"/>
+    </actions>
+    <actions name="signBlob" scheme="http://occi/gcpiam/serviceaccount/action#" title="Signs a blob using a service account's system-managed private key.">
+      <attributes name="name" required="true" description="The resource name of the service account in the following format:&#xA;`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.&#xA;Using `-` as a wildcard for the `PROJECT_ID` will infer the project from&#xA;the account. The `ACCOUNT` value can be the `email` address or the&#xA;`unique_id` of the service account." type="//@types.17"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpiam/serviceaccount/action#" title="Lists ServiceAccounts for a project.">
+      <attributes name="name" required="true" description="Required. The resource name of the project associated with the service&#xA;accounts, such as `projects/my-project-123`." type="//@types.17"/>
+      <attributes name="pageToken" required="true" description="Optional pagination token returned in an earlier&#xA;ListServiceAccountsResponse.next_page_token." type="//@types.17"/>
+      <attributes name="pageSize" required="true" description="Optional limit on the number of service accounts to include in the&#xA;response. Further accounts can subsequently be obtained by including the&#xA;ListServiceAccountsResponse.next_page_token&#xA;in a subsequent request." type="//@types.3"/>
+    </actions>
+    <actions name="setIamPolicy" scheme="http://occi/gcpiam/serviceaccount/action#" title="Sets the IAM access control policy for a&#xA;ServiceAccount.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being specified.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.17"/>
+    </actions>
+    <actions name="signJwt" scheme="http://occi/gcpiam/serviceaccount/action#" title="Signs a JWT using a service account's system-managed private key.&#xA;&#xA;If no expiry time (`exp`) is provided in the `SignJwtRequest`, IAM sets an&#xA;an expiry time of one hour by default. If you request an expiry time of&#xA;more than one hour, the request will fail.">
+      <attributes name="name" required="true" description="The resource name of the service account in the following format:&#xA;`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.&#xA;Using `-` as a wildcard for the `PROJECT_ID` will infer the project from&#xA;the account. The `ACCOUNT` value can be the `email` address or the&#xA;`unique_id` of the service account." type="//@types.17"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpiam/serviceaccount/action#" title="Creates a ServiceAccount&#xA;and returns it.">
+      <attributes name="name" required="true" description="Required. The resource name of the project associated with the service&#xA;accounts, such as `projects/my-project-123`." type="//@types.17"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Expr" scheme="http://occi/gcpiam#" title="Represents an expression text. Example:&#xA;&#xA;    title: &quot;User account presence&quot;&#xA;    description: &quot;Determines whether the request has a user account&quot;&#xA;    expression: &quot;size(request.user) > 0&quot;">
+    <attributes name="expression" required="true" description="Textual representation of an expression in&#xA;Common Expression Language syntax.&#xA;&#xA;The application context of the containing message determines which&#xA;well-known feature set of CEL is supported." type="//@types.17"/>
+    <attributes name="location" required="true" description="An optional string indicating the location of the expression for error&#xA;reporting, e.g. a file name and a position in the file." type="//@types.17"/>
+    <attributes name="description" required="true" description="An optional description of the expression. This is a longer text which&#xA;describes the expression, e.g. when hovered over it in a UI." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RoleLink" scheme="http://occi/gcpiam#" title="The Role resource to create." source="//@kinds[term='createrolerequest']" target="//@kinds[term='role']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CreateRoleRequest" scheme="http://occi/gcpiam#" title="The request to create a new role.">
+    <attributes name="roleId" required="true" description="The role id to use for this role." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListServiceAccountKeysResponse" scheme="http://occi/gcpiam#" title="The service account keys list response.">
+    <attributes name="keys" required="true" description="The public keys for the service account." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestIamPermissionsResponse" scheme="http://occi/gcpiam#" title="Response message for `TestIamPermissions` method.">
+    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is&#xA;allowed." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="QueryTestablePermissionsRequest" scheme="http://occi/gcpiam#" title="A request to get permissions which can be tested on a resource.">
+    <attributes name="fullResourceName" required="true" description="Required. The full resource name to query from the list of testable&#xA;permissions.&#xA;&#xA;The name follows the Google Cloud Platform resource format.&#xA;For example, a Cloud Platform project with id `my-project` will be named&#xA;`//cloudresourcemanager.googleapis.com/projects/my-project`." type="//@types.17"/>
+    <attributes name="pageToken" required="true" description="Optional pagination token returned in an earlier&#xA;QueryTestablePermissionsRequest." type="//@types.17"/>
+    <attributes name="pageSize" required="true" description="Optional limit on the number of permissions to include in the response." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ServiceAccountKey" scheme="http://occi/gcpiam#" title="Represents a service account key.&#xA;&#xA;A service account has two sets of key-pairs: user-managed, and&#xA;system-managed.&#xA;&#xA;User-managed key-pairs can be created and deleted by users.  Users are&#xA;responsible for rotating these keys periodically to ensure security of&#xA;their service accounts.  Users retain the private key of these key-pairs,&#xA;and Google retains ONLY the public key.&#xA;&#xA;System-managed key-pairs are managed automatically by Google, and rotated&#xA;daily without user intervention.  The private key never leaves Google's&#xA;servers to maximize security.&#xA;&#xA;Public keys for all service accounts are also published at the OAuth2&#xA;Service Account API.">
+    <attributes name="privateKeyData" required="true" description="The private key data. Only provided in `CreateServiceAccountKey`&#xA;responses. Make sure to keep the private key data secure because it&#xA;allows for the assertion of the service account identity.&#xA;When decoded, the private key data can be used to authenticate with&#xA;Google API client libraries and with&#xA;&lt;a href=&quot;/sdk/gcloud/reference/auth/activate-service-account&quot;>gcloud&#xA;auth activate-service-account&lt;/a>." type="//@types.17"/>
+    <attributes name="publicKeyData" required="true" description="The public key data. Only provided in `GetServiceAccountKey` responses." type="//@types.17"/>
+    <attributes name="name" required="true" description="The resource name of the service account key in the following format&#xA;`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`." type="//@types.17"/>
+    <attributes name="validBeforeTime" required="true" description="The key can be used before this timestamp." type="//@types.17"/>
+    <attributes name="keyAlgorithm" required="true" description="Specifies the algorithm (and possibly key size) for the key." type="//@types.18"/>
+    <attributes name="privateKeyType" required="true" description="The output format for the private key.&#xA;Only provided in `CreateServiceAccountKey` responses, not&#xA;in `GetServiceAccountKey` or `ListServiceAccountKey` responses.&#xA;&#xA;Google never exposes system-managed private keys, and never retains&#xA;user-managed private keys." type="//@types.19"/>
+    <attributes name="validAfterTime" required="true" description="The key can be used after this timestamp." type="//@types.19"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SignBlobResponse" scheme="http://occi/gcpiam#" title="The service account sign blob response.">
+    <attributes name="keyId" required="true" description="The id of the key used to sign the blob." type="//@types.19"/>
+    <attributes name="signature" required="true" description="The signed blob." type="//@types.19"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="customRolesSupportLevel" documentation="The current custom role support level.">
+    <literals name="SUPPORTED" documentation="Permission is fully supported for custom role use."/>
+    <literals name="TESTING" documentation="Permission is being tested to check custom role compatibility."/>
+    <literals name="NOT_SUPPORTED" documentation="Permission is not supported for custom role use."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="stage" documentation="The current launch stage of the permission.">
+    <literals name="ALPHA" documentation="The permission is currently in an alpha phase."/>
+    <literals name="BETA" documentation="The permission is currently in a beta phase."/>
+    <literals name="GA" documentation="The permission is generally available."/>
+    <literals name="DEPRECATED" documentation="The permission is being deprecated."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="keyAlgorithm" documentation="Which type of key and algorithm to use for the key.&#xA;The default is currently a 2K RSA key.  However this may change in the&#xA;future.">
+    <literals name="KEY_ALG_UNSPECIFIED" documentation="An unspecified key algorithm."/>
+    <literals name="KEY_ALG_RSA_1024" documentation="1k RSA Key."/>
+    <literals name="KEY_ALG_RSA_2048" documentation="2k RSA Key."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="privateKeyType" documentation="The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the&#xA;default output format.">
+    <literals name="TYPE_UNSPECIFIED" documentation="Unspecified. Equivalent to `TYPE_GOOGLE_CREDENTIALS_FILE`."/>
+    <literals name="TYPE_PKCS12_FILE" documentation="PKCS12 format.&#xA;The password for the PKCS12 file is `notasecret`.&#xA;For more information, see https://tools.ietf.org/html/rfc7292."/>
+    <literals name="TYPE_GOOGLE_CREDENTIALS_FILE" documentation="Google Credentials File format."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="action" documentation="The action that was performed on a Binding.&#xA;Required">
+    <literals name="ACTION_UNSPECIFIED" documentation="Unspecified."/>
+    <literals name="ADD" documentation="Addition of a Binding."/>
+    <literals name="REMOVE" documentation="Removal of a Binding."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="RoleSstage" documentation="The current launch stage of the role.">
+    <literals name="ALPHA" documentation="The user has indicated this role is currently in an alpha phase."/>
+    <literals name="BETA" documentation="The user has indicated this role is currently in a beta phase."/>
+    <literals name="GA" documentation="The user has indicated this role is generally available."/>
+    <literals name="DEPRECATED" documentation="The user has indicated this role is being deprecated."/>
+    <literals name="DISABLED" documentation="This role is disabled and will not contribute permissions to any members&#xA;it is granted to in policies."/>
+    <literals name="EAP" documentation="The user has indicated this role is currently in an eap phase."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="view" documentation="">
+    <literals name="BASIC" documentation="Omits the `included_permissions` field.&#xA;This is the default value."/>
+    <literals name="FULL" documentation="Returns all fields."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="ServiceAccountKeyKkeyalgorithm" documentation="Specifies the algorithm (and possibly key size) for the key.">
+    <literals name="KEY_ALG_UNSPECIFIED" documentation="An unspecified key algorithm."/>
+    <literals name="KEY_ALG_RSA_1024" documentation="1k RSA Key."/>
+    <literals name="KEY_ALG_RSA_2048" documentation="2k RSA Key."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="ServiceAccountKeyPprivatekeytype" documentation="The output format for the private key.&#xA;Only provided in `CreateServiceAccountKey` responses, not&#xA;in `GetServiceAccountKey` or `ListServiceAccountKey` responses.&#xA;&#xA;Google never exposes system-managed private keys, and never retains&#xA;user-managed private keys.">
+    <literals name="TYPE_UNSPECIFIED" documentation="Unspecified. Equivalent to `TYPE_GOOGLE_CREDENTIALS_FILE`."/>
+    <literals name="TYPE_PKCS12_FILE" documentation="PKCS12 format.&#xA;The password for the PKCS12 file is `notasecret`.&#xA;For more information, see https://tools.ietf.org/html/rfc7292."/>
+    <literals name="TYPE_GOOGLE_CREDENTIALS_FILE" documentation="Google Credentials File format."/>
+  </types>
+</occi:Extension>

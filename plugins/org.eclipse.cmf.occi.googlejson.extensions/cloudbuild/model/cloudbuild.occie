@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="cloudbuild" scheme="http://occi/gcpcloudbuild#" description="Builds container images in the cloud.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="StorageSourceLink" scheme="http://occi/gcpcloudbuild#" title="If provided, get the source from this location in Google Cloud Storage." source="//@kinds[term='source']" target="//@kinds[term='storagesource']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="RepoSourceLink" scheme="http://occi/gcpcloudbuild#" title="If provided, get source from this location in a Cloud Repo." source="//@kinds[term='source']" target="//@kinds[term='reposource']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Source" scheme="http://occi/gcpcloudbuild#" title="Source describes the location of the source in a supported storage&#xA;service.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BuildOptions" scheme="http://occi/gcpcloudbuild#" title="Optional arguments to enable specific features of builds.">
+    <attributes name="logStreamingOption" required="true" description="LogStreamingOption to define build log streaming behavior to Google Cloud&#xA;Storage." type="//@types.11"/>
+    <attributes name="substitutionOption" required="true" description="SubstitutionOption to allow unmatch substitutions." type="//@types.12"/>
+    <attributes name="requestedVerifyOption" required="true" description="Requested verifiability options." type="//@types.13"/>
+    <attributes name="sourceProvenanceHash" required="true" description="Requested hash for SourceProvenance." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="StorageSource" scheme="http://occi/gcpcloudbuild#" title="StorageSource describes the location of the source in an archive file in&#xA;Google Cloud Storage.">
+    <attributes name="bucket" required="true" description="Google Cloud Storage bucket containing source (see&#xA;[Bucket Name&#xA;Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements))." type="//@types.13"/>
+    <attributes name="object" required="true" description="Google Cloud Storage object containing source.&#xA;&#xA;This object must be a gzipped archive file (.tar.gz) containing source to&#xA;build." type="//@types.13"/>
+    <attributes name="generation" required="true" description="Google Cloud Storage generation for the object. If the generation is&#xA;omitted, the latest generation will be used." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Results" scheme="http://occi/gcpcloudbuild#" title="Results describes the artifacts created by the build pipeline.">
+    <attributes name="images" required="true" description="Images that were built as a part of the build." type="//@types.7"/>
+    <attributes name="buildStepImages" required="true" description="List of build step digests, in order corresponding to build step indices." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BuildLink" scheme="http://occi/gcpcloudbuild#" title="The build that the operation is tracking." source="//@kinds[term='buildoperationmetadata']" target="//@kinds[term='build']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BuildOperationMetadata" scheme="http://occi/gcpcloudbuild#" title="Metadata for build operations.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceProvenanceRepoSourceLink" scheme="http://occi/gcpcloudbuild#" title="A copy of the build's source.repo_source, if exists, with any&#xA;revisions resolved." source="//@kinds[term='sourceprovenance']" target="//@kinds[term='reposource']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SourceProvenanceStorageSourceLink" scheme="http://occi/gcpcloudbuild#" title="A copy of the build's source.storage_source, if exists, with any&#xA;generations resolved." source="//@kinds[term='sourceprovenance']" target="//@kinds[term='storagesource']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SourceProvenance" scheme="http://occi/gcpcloudbuild#" title="Provenance of the source. Ways to find the original source, or verify that&#xA;some source was used for this build.">
+    <attributes name="fileHashes" required="true" description="Hash(es) of the build source, which can be used to verify that the original&#xA;source integrity was maintained in the build. Note that FileHashes will&#xA;only be populated if BuildOptions has requested a SourceProvenanceHash.&#xA;&#xA;The keys to this map are file paths used as build source and the values&#xA;contain the hash values for those files.&#xA;&#xA;If the build source came in a single package such as a gzipped tarfile&#xA;(.tar.gz), the FileHash will be for the single path to that file.&#xA;@OutputOnly" type="//@types.10"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CancelOperationRequest" scheme="http://occi/gcpcloudbuild#" title="The request message for Operations.CancelOperation.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListBuildTriggersResponse" scheme="http://occi/gcpcloudbuild#" title="Response containing existing BuildTriggers.">
+    <attributes name="triggers" required="true" description="BuildTriggers for the project, sorted by create_time descending." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="StatusLink" scheme="http://occi/gcpcloudbuild#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='operation']" target="//@kinds[term='status']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Operation" scheme="http://occi/gcpcloudbuild#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.9"/>
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.9"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`." type="//@types.13"/>
+    <actions name="cancel" scheme="http://occi/gcpcloudbuild/operation/action#" title="Starts asynchronous cancellation on a long-running operation.  The server&#xA;makes a best effort to cancel the operation, but success is not&#xA;guaranteed.  If the server doesn't support this method, it returns&#xA;`google.rpc.Code.UNIMPLEMENTED`.  Clients can use&#xA;Operations.GetOperation or&#xA;other methods to check whether the cancellation succeeded or whether the&#xA;operation completed despite cancellation. On successful cancellation,&#xA;the operation is not deleted; instead, it becomes an operation with&#xA;an Operation.error value with a google.rpc.Status.code of 1,&#xA;corresponding to `Code.CANCELLED`.">
+      <attributes name="name" required="true" description="The name of the operation resource to be cancelled." type="//@types.13"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpcloudbuild/operation/action#" title="Gets the latest state of a long-running operation.  Clients can use this&#xA;method to poll the operation result at intervals as recommended by the API&#xA;service.">
+      <attributes name="name" required="true" description="The name of the operation resource." type="//@types.13"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpcloudbuild/operation/action#" title="Lists operations that match the specified filter in the request. If the&#xA;server doesn't support this method, it returns `UNIMPLEMENTED`.&#xA;&#xA;NOTE: the `name` binding allows API services to override the binding&#xA;to use different resource name schemes, such as `users/*/operations`. To&#xA;override the binding, API services can add a binding such as&#xA;`&quot;/v1/{name=users/*}/operations&quot;` to their service configuration.&#xA;For backwards compatibility, the default name includes the operations&#xA;collection id, however overriding users must ensure the name binding&#xA;is the parent resource, without the operations collection id.">
+      <attributes name="pageToken" required="true" description="The standard list page token." type="//@types.13"/>
+      <attributes name="name" required="true" description="The name of the operation's parent resource." type="//@types.13"/>
+      <attributes name="pageSize" required="true" description="The standard list page size." type="//@types.3"/>
+      <attributes name="filter" required="true" description="The standard list filter." type="//@types.13"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BuiltImage" scheme="http://occi/gcpcloudbuild#" title="BuiltImage describes an image built by the pipeline.">
+    <attributes name="name" required="true" description="Name used to push the container image to Google Container Registry, as&#xA;presented to `docker push`." type="//@types.13"/>
+    <attributes name="digest" required="true" description="Docker Registry 2.0 digest." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BuildStep" scheme="http://occi/gcpcloudbuild#" title="BuildStep describes a step to perform in the build pipeline.">
+    <attributes name="waitFor" required="true" description="The ID(s) of the step(s) that this build step depends on.&#xA;This build step will not start until all the build steps in wait_for&#xA;have completed successfully. If wait_for is empty, this build step will&#xA;start when all previous build steps in the Build.Steps list have completed&#xA;successfully." type="//@types.7"/>
+    <attributes name="env" required="true" description="A list of environment variable definitions to be used when running a step.&#xA;&#xA;The elements are of the form &quot;KEY=VALUE&quot; for the environment variable &quot;KEY&quot;&#xA;being given the value &quot;VALUE&quot;." type="//@types.7"/>
+    <attributes name="args" required="true" description="A list of arguments that will be presented to the step when it is started.&#xA;&#xA;If the image used to run the step's container has an entrypoint, these args&#xA;will be used as arguments to that entrypoint. If the image does not define&#xA;an entrypoint, the first element in args will be used as the entrypoint,&#xA;and the remainder will be used as arguments." type="//@types.7"/>
+    <attributes name="name" required="true" description="The name of the container image that will run this particular build step.&#xA;&#xA;If the image is already available in the host's Docker daemon's cache, it&#xA;will be run directly. If not, the host will attempt to pull the image&#xA;first, using the builder service account's credentials if necessary.&#xA;&#xA;The Docker daemon's cache will already have the latest versions of all of&#xA;the officially supported build steps&#xA;([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)).&#xA;The Docker daemon will also have cached many of the layers for some popular&#xA;images, like &quot;ubuntu&quot;, &quot;debian&quot;, but they will be refreshed at the time you&#xA;attempt to use them.&#xA;&#xA;If you built an image in a previous build step, it will be stored in the&#xA;host's Docker daemon's cache and is available to use as the name for a&#xA;later build step." type="//@types.13"/>
+    <attributes name="entrypoint" required="true" description="Optional entrypoint to be used instead of the build step image's default&#xA;If unset, the image's default will be used." type="//@types.13"/>
+    <attributes name="secretEnv" required="true" description="A list of environment variables which are encrypted using a Cloud KMS&#xA;crypto key. These values must be specified in the build's secrets." type="//@types.7"/>
+    <attributes name="volumes" required="true" description="List of volumes to mount into the build step.&#xA;&#xA;Each volume will be created as an empty volume prior to execution of the&#xA;build step. Upon completion of the build, volumes and their contents will&#xA;be discarded.&#xA;&#xA;Using a named volume in only one step is not valid as it is indicative&#xA;of a mis-configured build request." type="//@types.7"/>
+    <attributes name="dir" required="true" description="Working directory (relative to project source root) to use when running&#xA;this operation's container." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RepoSource" scheme="http://occi/gcpcloudbuild#" title="RepoSource describes the location of the source in a Google Cloud Source&#xA;Repository.">
+    <attributes name="branchName" required="true" description="Name of the branch to build." type="//@types.13"/>
+    <attributes name="repoName" required="true" description="Name of the repo. If omitted, the name &quot;default&quot; is assumed." type="//@types.13"/>
+    <attributes name="projectId" required="true" description="ID of the project that owns the repo. If omitted, the project ID requesting&#xA;the build is assumed." type="//@types.13"/>
+    <attributes name="commitSha" required="true" description="Explicit commit SHA to build." type="//@types.13"/>
+    <attributes name="tagName" required="true" description="Name of the tag to build." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Hash" scheme="http://occi/gcpcloudbuild#" title="Container message for hash values.">
+    <attributes name="type" required="true" description="The type of hash that was performed." type="//@types.14"/>
+    <attributes name="value" required="true" description="The hash value." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="FileHashes" scheme="http://occi/gcpcloudbuild#" title="Container message for hashes of byte content of files, used in&#xA;SourceProvenance messages to verify integrity of source input to the build.">
+    <attributes name="fileHash" required="true" description="Collection of file hashes." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Secret" scheme="http://occi/gcpcloudbuild#" title="Secret pairs a set of secret environment variables containing encrypted&#xA;values with the Cloud KMS key to use to decrypt the value.">
+    <attributes name="secretEnv" required="true" description="Map of environment variable name to its encrypted value.&#xA;&#xA;Secret environment variables must be unique across all of a build's&#xA;secrets, and must be used by at least one build step. Values can be at most&#xA;1 KB in size. There can be at most ten secret values across all of a&#xA;build's secrets." type="//@types.9"/>
+    <attributes name="kmsKeyName" required="true" description="Cloud KMS key name to use to decrypt these envs." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Status" scheme="http://occi/gcpcloudbuild#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.14"/>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Empty" scheme="http://occi/gcpcloudbuild#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BuildTriggerRepoSourceLink" scheme="http://occi/gcpcloudbuild#" title="Template describing the types of source changes to trigger a build.&#xA;&#xA;Branch and tag names in trigger templates are interpreted as regular&#xA;expressions. Any branch or tag change that matches that regular expression&#xA;will trigger a build." source="//@kinds[term='buildtrigger']" target="//@kinds[term='reposource']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BuildTriggerBuildLink" scheme="http://occi/gcpcloudbuild#" title="Contents of the build template." source="//@kinds[term='buildtrigger']" target="//@kinds[term='build']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BuildTrigger" scheme="http://occi/gcpcloudbuild#" title="Configuration for an automated build in response to source repository&#xA;changes.">
+    <attributes name="substitutions" required="true" description="Substitutions data for Build resource." type="//@types.9"/>
+    <attributes name="description" required="true" description="Human-readable description of this trigger." type="//@types.14"/>
+    <attributes name="createTime" required="true" description="Time when the trigger was created.&#xA;&#xA;@OutputOnly" type="//@types.14"/>
+    <attributes name="disabled" required="true" description="If true, the trigger will never result in a build." type="//@types.6"/>
+    <attributes name="filename" required="true" description="Path, from the source root, to a file whose contents is used for the&#xA;template." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceProvenanceLink" scheme="http://occi/gcpcloudbuild#" title="A permanent fixed identifier for source.&#xA;@OutputOnly" source="//@kinds[term='build']" target="//@kinds[term='sourceprovenance']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BuildOptionsLink" scheme="http://occi/gcpcloudbuild#" title="Special options for this build." source="//@kinds[term='build']" target="//@kinds[term='buildoptions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SourceLink" scheme="http://occi/gcpcloudbuild#" title="Describes where to find the source files to build." source="//@kinds[term='build']" target="//@kinds[term='source']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ResultsLink" scheme="http://occi/gcpcloudbuild#" title="Results of the build.&#xA;@OutputOnly" source="//@kinds[term='build']" target="//@kinds[term='results']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Build" scheme="http://occi/gcpcloudbuild#" title="A build resource in the Container Builder API.&#xA;&#xA;At a high level, a Build describes where to find source code, how to build&#xA;it (for example, the builder image to run on the source), and what tag to&#xA;apply to the built image when it is pushed to Google Container Registry.&#xA;&#xA;Fields can include the following variables which will be expanded when the&#xA;build is created:&#xA;&#xA;- $PROJECT_ID: the project ID of the build.&#xA;- $BUILD_ID: the autogenerated ID of the build.&#xA;- $REPO_NAME: the source repository name specified by RepoSource.&#xA;- $BRANCH_NAME: the branch name specified by RepoSource.&#xA;- $TAG_NAME: the tag name specified by RepoSource.&#xA;- $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or&#xA;  resolved from the specified branch or tag.&#xA;- $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.">
+    <attributes name="substitutions" required="true" description="Substitutions data for Build resource." type="//@types.9"/>
+    <attributes name="startTime" required="true" description="Time at which execution of the build was started.&#xA;@OutputOnly" type="//@types.14"/>
+    <attributes name="createTime" required="true" description="Time at which the request to create the build was received.&#xA;@OutputOnly" type="//@types.14"/>
+    <attributes name="images" required="true" description="A list of images to be pushed upon the successful completion of all build&#xA;steps.&#xA;&#xA;The images will be pushed using the builder service account's credentials.&#xA;&#xA;The digests of the pushed images will be stored in the Build resource's&#xA;results field.&#xA;&#xA;If any of the images fail to be pushed, the build is marked FAILURE." type="//@types.7"/>
+    <attributes name="projectId" required="true" description="ID of the project.&#xA;@OutputOnly." type="//@types.14"/>
+    <attributes name="logUrl" required="true" description="URL to logs for this build in Google Cloud Logging.&#xA;@OutputOnly" type="//@types.14"/>
+    <attributes name="finishTime" required="true" description="Time at which execution of the build was finished.&#xA;&#xA;The difference between finish_time and start_time is the duration of the&#xA;build's execution.&#xA;@OutputOnly" type="//@types.14"/>
+    <attributes name="statusDetail" required="true" description="Customer-readable message about the current status.&#xA;@OutputOnly" type="//@types.14"/>
+    <attributes name="status" required="true" description="Status of the build.&#xA;@OutputOnly" type="//@types.15"/>
+    <attributes name="timeout" required="true" description="Amount of time that this build should be allowed to run, to second&#xA;granularity. If this amount of time elapses, work on the build will cease&#xA;and the build status will be TIMEOUT.&#xA;&#xA;Default time is ten minutes." type="//@types.15"/>
+    <attributes name="secrets" required="true" description="Secrets to decrypt using Cloud KMS." type="//@types.7"/>
+    <attributes name="logsBucket" required="true" description="Google Cloud Storage bucket where logs should be written (see&#xA;[Bucket Name&#xA;Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).&#xA;Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`." type="//@types.15"/>
+    <attributes name="steps" required="true" description="Describes the operations to be performed on the workspace." type="//@types.7"/>
+    <attributes name="buildTriggerId" required="true" description="The ID of the BuildTrigger that triggered this build, if it was&#xA;triggered automatically.&#xA;@OutputOnly" type="//@types.15"/>
+    <attributes name="tags" required="true" description="Tags for annotation of a Build. These are not docker tags." type="//@types.7"/>
+    <actions name="list" scheme="http://occi/gcpcloudbuild/build/action#" title="Lists previously requested builds.&#xA;&#xA;Previously requested builds may still be in-progress, or may have finished&#xA;successfully or unsuccessfully.">
+      <attributes name="filter" required="true" description="The raw filter text to constrain the results." type="//@types.15"/>
+      <attributes name="pageToken" required="true" description="Token to provide to skip to a particular spot in the list." type="//@types.15"/>
+      <attributes name="pageSize" required="true" description="Number of results to return in the list." type="//@types.3"/>
+      <attributes name="projectId" required="true" description="ID of the project." type="//@types.15"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpcloudbuild/build/action#" title="Returns information about a previously requested build.&#xA;&#xA;The Build that is returned includes its status (e.g., success or failure,&#xA;or in-progress), and timing information.">
+      <attributes name="projectId" required="true" description="ID of the project." type="//@types.15"/>
+      <attributes name="id" required="true" description="ID of the build." type="//@types.15"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpcloudbuild/build/action#" title="Starts a build with the specified configuration.&#xA;&#xA;The long-running Operation returned by this method will include the ID of&#xA;the build, which can be passed to GetBuild to determine its status (e.g.,&#xA;success or failure).">
+      <attributes name="projectId" required="true" description="ID of the project." type="//@types.15"/>
+    </actions>
+    <actions name="cancel" scheme="http://occi/gcpcloudbuild/build/action#" title="Cancels a requested build in progress.">
+      <attributes name="id" required="true" description="ID of the build." type="//@types.15"/>
+      <attributes name="projectId" required="true" description="ID of the project." type="//@types.15"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CancelBuildRequest" scheme="http://occi/gcpcloudbuild#" title="Request to cancel an ongoing build.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Volume" scheme="http://occi/gcpcloudbuild#" title="Volume describes a Docker container volume which is mounted into build steps&#xA;in order to persist files across build step execution.">
+    <attributes name="name" required="true" description="Name of the volume to mount.&#xA;&#xA;Volume names must be unique per build step and must be valid names for&#xA;Docker volumes. Each named volume must be used by at least two build steps." type="//@types.15"/>
+    <attributes name="path" required="true" description="Path at which to mount the volume.&#xA;&#xA;Paths must be absolute and cannot conflict with other volume paths on the&#xA;same build step or with certain reserved volume paths." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListBuildsResponse" scheme="http://occi/gcpcloudbuild#" title="Response including listed builds.">
+    <attributes name="nextPageToken" required="true" description="Token to receive the next page of results." type="//@types.15"/>
+    <attributes name="builds" required="true" description="Builds will be sorted by create_time, descending." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListOperationsResponse" scheme="http://occi/gcpcloudbuild#" title="The response message for Operations.ListOperations.">
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="logStreamingOption" documentation="LogStreamingOption to define build log streaming behavior to Google Cloud&#xA;Storage.">
+    <literals name="STREAM_DEFAULT" documentation="Service may automatically determine build log streaming behavior."/>
+    <literals name="STREAM_ON" documentation="Build logs should be streamed to Google Cloud Storage."/>
+    <literals name="STREAM_OFF" documentation="Build logs should not be streamed to Google Cloud Storage; they will be&#xA;written when the build is completed."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="substitutionOption" documentation="SubstitutionOption to allow unmatch substitutions.">
+    <literals name="MUST_MATCH" documentation="Fails the build if error in substitutions checks, like missing&#xA;a substitution in the template or in the map."/>
+    <literals name="ALLOW_LOOSE" documentation="Do not fail the build if error in substitutions checks."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="requestedVerifyOption" documentation="Requested verifiability options.">
+    <literals name="NOT_VERIFIED" documentation="Not a verifiable build. (default)"/>
+    <literals name="VERIFIED" documentation="Verified build."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="type" documentation="The type of hash that was performed.">
+    <literals name="NONE" documentation="No hash requested."/>
+    <literals name="SHA256" documentation="Use a sha256 hash."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="status" documentation="Status of the build.&#xA;@OutputOnly">
+    <literals name="STATUS_UNKNOWN" documentation="Status of the build is unknown."/>
+    <literals name="QUEUED" documentation="Build is queued; work has not yet begun."/>
+    <literals name="WORKING" documentation="Build is being executed."/>
+    <literals name="SUCCESS" documentation="Build finished successfully."/>
+    <literals name="FAILURE" documentation="Build failed to complete successfully."/>
+    <literals name="INTERNAL_ERROR" documentation="Build failed due to an internal cause."/>
+    <literals name="TIMEOUT" documentation="Build took longer than was allowed."/>
+    <literals name="CANCELLED" documentation="Build was canceled by a user."/>
+  </types>
+</occi:Extension>

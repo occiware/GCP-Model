@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="clouddebugger" scheme="http://occi/gcpclouddebugger#" description="Examines the call stack and variables of a running application without stopping or slowing it down.&#xA;">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="AliasContext" scheme="http://occi/gcpclouddebugger#" title="An alias to a repo revision.">
+    <attributes name="kind" required="true" description="The alias kind." type="//@types.11"/>
+    <attributes name="name" required="true" description="The alias name." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListDebuggeesResponse" scheme="http://occi/gcpclouddebugger#" title="Response for listing debuggees.">
+    <attributes name="debuggees" required="true" description="List of debuggees accessible to the calling user.&#xA;The fields `debuggee.id` and `description` are guaranteed to be set.&#xA;The `description` field is a human readable field provided by agents and&#xA;can be displayed to users." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Empty" scheme="http://occi/gcpclouddebugger#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceLocation" scheme="http://occi/gcpclouddebugger#" title="Represents a location in the source code.">
+    <attributes name="line" required="true" description="Line inside the file. The first line in the file has the value `1`." type="//@types.3"/>
+    <attributes name="path" required="true" description="Path to the source file within the source context of the target binary." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="StatusMessageLink" scheme="http://occi/gcpclouddebugger#" title="Human readable message to be displayed to the user about this debuggee.&#xA;Absence of this field indicates no status. The message can be either&#xA;informational or an error status." source="//@kinds[term='debuggee']" target="//@kinds[term='statusmessage']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Debuggee" scheme="http://occi/gcpclouddebugger#" title="Represents the debugged application. The application may include one or more&#xA;replicated processes executing the same code. Each of these processes is&#xA;attached with a debugger agent, carrying out the debugging commands.&#xA;Agents attached to the same debuggee identify themselves as such by using&#xA;exactly the same Debuggee message value when registering.">
+    <attributes name="labels" required="true" description="A set of custom debuggee properties, populated by the agent, to be&#xA;displayed to the user." type="//@types.9"/>
+    <attributes name="isInactive" required="true" description="If set to `true`, indicates that Controller service does not detect any&#xA;activity from the debuggee agents and the application is possibly stopped." type="//@types.6"/>
+    <attributes name="project" required="true" description="Project the debuggee is associated with.&#xA;Use project number or id when registering a Google Cloud Platform project." type="//@types.11"/>
+    <attributes name="isDisabled" required="true" description="If set to `true`, indicates that the agent should disable itself and&#xA;detach from the debuggee." type="//@types.6"/>
+    <attributes name="agentVersion" required="true" description="Version ID of the agent.&#xA;Schema: `domain/language-platform/vmajor.minor` (for example&#xA;`google.com/java-gcp/v1.1`)." type="//@types.11"/>
+    <attributes name="description" required="true" description="Human readable description of the debuggee.&#xA;Including a human-readable project name, environment name and version&#xA;information is recommended." type="//@types.11"/>
+    <attributes name="uniquifier" required="true" description="Uniquifier to further distiguish the application.&#xA;It is possible that different applications might have identical values in&#xA;the debuggee message, thus, incorrectly identified as a single application&#xA;by the Controller service. This field adds salt to further distiguish the&#xA;application. Agents should consider seeding this field with value that&#xA;identifies the code, binary, configuration and environment." type="//@types.11"/>
+    <attributes name="sourceContexts" required="true" description="References to the locations and revisions of the source code used in the&#xA;deployed application." type="//@types.7"/>
+    <attributes name="extSourceContexts" required="true" description="References to the locations and revisions of the source code used in the&#xA;deployed application.&#xA;&#xA;NOTE: this field is experimental and can be ignored." type="//@types.7"/>
+    <actions name="register" scheme="http://occi/gcpclouddebugger/debuggee/action#" title="Registers the debuggee with the controller service.&#xA;&#xA;All agents attached to the same application must call this method with&#xA;exactly the same request content to get back the same stable `debuggee_id`.&#xA;Agents should call this method again whenever `google.rpc.Code.NOT_FOUND`&#xA;is returned from any controller method.&#xA;&#xA;This protocol allows the controller service to disable debuggees, recover&#xA;from data loss, or change the `debuggee_id` format. Agents must handle&#xA;`debuggee_id` value changing upon re-registration."/>
+    <actions name="list" scheme="http://occi/gcpclouddebugger/debuggee/action#" title="Lists all the debuggees that the user has access to.">
+      <attributes name="project" required="true" description="Project number of a Google Cloud project whose debuggees to list." type="//@types.11"/>
+      <attributes name="clientVersion" required="true" description="The client version making the call.&#xA;Schema: `domain/type/version` (e.g., `google.com/intellij/v1`)." type="//@types.11"/>
+      <attributes name="includeInactive" required="true" description="When set to `true`, the result includes all debuggees. Otherwise, the&#xA;result includes only debuggees that are active." type="//@types.6"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListActiveBreakpointsResponse" scheme="http://occi/gcpclouddebugger#" title="Response for listing active breakpoints.">
+    <attributes name="waitExpired" required="true" description="If set to `true`, indicates that there is no change to the&#xA;list of active breakpoints and the server-selected timeout has expired.&#xA;The `breakpoints` field would be empty and should be ignored." type="//@types.6"/>
+    <attributes name="nextWaitToken" required="true" description="A token that can be used in the next method call to block until&#xA;the list of breakpoints changes." type="//@types.11"/>
+    <attributes name="breakpoints" required="true" description="List of all active breakpoints.&#xA;The fields `id` and `location` are guaranteed to be set on each breakpoint." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ProjectRepoId" scheme="http://occi/gcpclouddebugger#" title="Selects a repo using a Google Cloud Platform project ID&#xA;(e.g. winged-cargo-31) and a repo name within that project.">
+    <attributes name="repoName" required="true" description="The name of the repo. Leave empty for the default repo." type="//@types.11"/>
+    <attributes name="projectId" required="true" description="The ID of the project." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CloudWorkspaceIdLink" scheme="http://occi/gcpclouddebugger#" title="The ID of the workspace." source="//@kinds[term='cloudworkspacesourcecontext']" target="//@kinds[term='cloudworkspaceid']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CloudWorkspaceSourceContext" scheme="http://occi/gcpclouddebugger#" title="A CloudWorkspaceSourceContext denotes a workspace at a particular snapshot.">
+    <attributes name="snapshotId" required="true" description="The ID of the snapshot.&#xA;An empty snapshot_id refers to the most recent snapshot." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AliasContextLink" scheme="http://occi/gcpclouddebugger#" title="An alias, which may be a branch or tag." source="//@kinds[term='gerritsourcecontext']" target="//@kinds[term='aliascontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GerritSourceContext" scheme="http://occi/gcpclouddebugger#" title="A SourceContext referring to a Gerrit project.">
+    <attributes name="revisionId" required="true" description="A revision (commit) ID." type="//@types.11"/>
+    <attributes name="hostUri" required="true" description="The URI of a running Gerrit instance." type="//@types.11"/>
+    <attributes name="aliasName" required="true" description="The name of an alias (branch, tag, etc.)." type="//@types.11"/>
+    <attributes name="gerritProject" required="true" description="The full project name within the host. Projects may be nested, so&#xA;&quot;project/subproject&quot; is a valid project name.&#xA;The &quot;repo name&quot; is hostURI/project." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="UpdateActiveBreakpointResponse" scheme="http://occi/gcpclouddebugger#" title="Response for updating an active breakpoint.&#xA;The message is defined to allow future extensions.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RepoIdLink" scheme="http://occi/gcpclouddebugger#" title="The ID of the repo containing the workspace." source="//@kinds[term='cloudworkspaceid']" target="//@kinds[term='repoid']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CloudWorkspaceId" scheme="http://occi/gcpclouddebugger#" title="A CloudWorkspaceId is a unique identifier for a cloud workspace.&#xA;A cloud workspace is a place associated with a repo where modified files&#xA;can be stored before they are committed.">
+    <attributes name="name" required="true" description="The unique name of the workspace within the repo.  This is the name&#xA;chosen by the client in the Source API's CreateWorkspace method." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListBreakpointsResponse" scheme="http://occi/gcpclouddebugger#" title="Response for listing breakpoints.">
+    <attributes name="nextWaitToken" required="true" description="A wait token that can be used in the next call to `list` (REST) or&#xA;`ListBreakpoints` (RPC) to block until the list of breakpoints has changes." type="//@types.11"/>
+    <attributes name="breakpoints" required="true" description="List of breakpoints matching the request.&#xA;The fields `id` and `location` are guaranteed to be set on each breakpoint.&#xA;The fields: `stack_frames`, `evaluated_expressions` and `variable_table`&#xA;are cleared on each breakpoint regardless of its status." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceLocationLink" scheme="http://occi/gcpclouddebugger#" title="Breakpoint source location." source="//@kinds[term='breakpoint']" target="//@kinds[term='sourcelocation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BreakpointStatusMessageLink" scheme="http://occi/gcpclouddebugger#" title="Breakpoint status.&#xA;&#xA;The status includes an error flag and a human readable message.&#xA;This field is usually unset. The message can be either&#xA;informational or an error message. Regardless, clients should always&#xA;display the text message back to the user.&#xA;&#xA;Error status indicates complete failure of the breakpoint.&#xA;&#xA;Example (non-final state): `Still loading symbols...`&#xA;&#xA;Examples (final state):&#xA;&#xA;*   `Invalid line number` referring to location&#xA;*   `Field f not found in class C` referring to condition" source="//@kinds[term='breakpoint']" target="//@kinds[term='statusmessage']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Breakpoint" scheme="http://occi/gcpclouddebugger#" title="Represents the breakpoint specification, status and results.">
+    <attributes name="logLevel" required="true" description="Indicates the severity of the log. Only relevant when action is `LOG`." type="//@types.12"/>
+    <attributes name="finalTime" required="true" description="Time this breakpoint was finalized as seen by the server in seconds&#xA;resolution." type="//@types.12"/>
+    <attributes name="variableTable" required="true" description="The `variable_table` exists to aid with computation, memory and network&#xA;traffic optimization.  It enables storing a variable once and reference&#xA;it from multiple variables, including variables stored in the&#xA;`variable_table` itself.&#xA;For example, the same `this` object, which may appear at many levels of&#xA;the stack, can have all of its data stored once in this table.  The&#xA;stack frame variables then would hold only a reference to it.&#xA;&#xA;The variable `var_table_index` field is an index into this repeated field.&#xA;The stored objects are nameless and get their name from the referencing&#xA;variable. The effective variable is a merge of the referencing variable&#xA;and the referenced variable." type="//@types.7"/>
+    <attributes name="logMessageFormat" required="true" description="Only relevant when action is `LOG`. Defines the message to log when&#xA;the breakpoint hits. The message may include parameter placeholders `$0`,&#xA;`$1`, etc. These placeholders are replaced with the evaluated value&#xA;of the appropriate expression. Expressions not referenced in&#xA;`log_message_format` are not logged.&#xA;&#xA;Example: `Message received, id = $0, count = $1` with&#xA;`expressions` = `[ message.id, message.count ]`." type="//@types.12"/>
+    <attributes name="createTime" required="true" description="Time this breakpoint was created by the server in seconds resolution." type="//@types.12"/>
+    <attributes name="labels" required="true" description="A set of custom breakpoint properties, populated by the agent, to be&#xA;displayed to the user." type="//@types.9"/>
+    <attributes name="expressions" required="true" description="List of read-only expressions to evaluate at the breakpoint location.&#xA;The expressions are composed using expressions in the programming language&#xA;at the source location. If the breakpoint action is `LOG`, the evaluated&#xA;expressions are included in log statements." type="//@types.7"/>
+    <attributes name="evaluatedExpressions" required="true" description="Values of evaluated expressions at breakpoint time.&#xA;The evaluated expressions appear in exactly the same order they&#xA;are listed in the `expressions` field.&#xA;The `name` field holds the original expression text, the `value` or&#xA;`members` field holds the result of the evaluated expression.&#xA;If the expression cannot be evaluated, the `status` inside the `Variable`&#xA;will indicate an error and contain the error text." type="//@types.7"/>
+    <attributes name="isFinalState" required="true" description="When true, indicates that this is a final result and the&#xA;breakpoint state will not change from here on." type="//@types.6"/>
+    <attributes name="stackFrames" required="true" description="The stack at breakpoint time." type="//@types.7"/>
+    <attributes name="condition" required="true" description="Condition that triggers the breakpoint.&#xA;The condition is a compound boolean expression composed using expressions&#xA;in a programming language at the source location." type="//@types.12"/>
+    <attributes name="userEmail" required="true" description="E-mail address of the user that created this breakpoint" type="//@types.12"/>
+    <attributes name="action" required="true" description="Action that the agent should perform when the code at the&#xA;breakpoint location is hit." type="//@types.13"/>
+    <actions name="list" scheme="http://occi/gcpclouddebugger/breakpoint/action#" title="Returns the list of all active breakpoints for the debuggee.&#xA;&#xA;The breakpoint specification (`location`, `condition`, and `expressions`&#xA;fields) is semantically immutable, although the field values may&#xA;change. For example, an agent may update the location line number&#xA;to reflect the actual line where the breakpoint was set, but this&#xA;doesn't change the breakpoint semantics.&#xA;&#xA;This means that an agent does not need to check if a breakpoint has changed&#xA;when it encounters the same breakpoint on a successive call.&#xA;Moreover, an agent should remember the breakpoints that are completed&#xA;until the controller removes them from the active list to avoid&#xA;setting those breakpoints again.">
+      <attributes name="successOnTimeout" required="true" description="If set to `true` (recommended), returns `google.rpc.Code.OK` status and&#xA;sets the `wait_expired` response field to `true` when the server-selected&#xA;timeout has expired.&#xA;&#xA;If set to `false` (deprecated), returns `google.rpc.Code.ABORTED` status&#xA;when the server-selected timeout has expired." type="//@types.6"/>
+      <attributes name="debuggeeId" required="true" description="Identifies the debuggee." type="//@types.13"/>
+      <attributes name="waitToken" required="true" description="A token that, if specified, blocks the method call until the list&#xA;of active breakpoints has changed, or a server-selected timeout has&#xA;expired. The value should be set from the `next_wait_token` field in&#xA;the last response. The initial value should be set to `&quot;init&quot;`." type="//@types.13"/>
+    </actions>
+    <actions name="update" scheme="http://occi/gcpclouddebugger/breakpoint/action#" title="Updates the breakpoint state or mutable fields.&#xA;The entire Breakpoint message must be sent back to the controller service.&#xA;&#xA;Updates to active breakpoint fields are only allowed if the new value&#xA;does not change the breakpoint specification. Updates to the `location`,&#xA;`condition` and `expressions` fields should not alter the breakpoint&#xA;semantics. These may only make changes such as canonicalizing a value&#xA;or snapping the location to the correct line of code.">
+      <attributes name="debuggeeId" required="true" description="Identifies the debuggee being debugged." type="//@types.13"/>
+      <attributes name="id" required="true" description="Breakpoint identifier, unique in the scope of the debuggee." type="//@types.13"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpclouddebugger/breakpoint/action#" title="Deletes the breakpoint from the debuggee.">
+      <attributes name="clientVersion" required="true" description="The client version making the call.&#xA;Schema: `domain/type/version` (e.g., `google.com/intellij/v1`)." type="//@types.13"/>
+      <attributes name="breakpointId" required="true" description="ID of the breakpoint to delete." type="//@types.13"/>
+      <attributes name="debuggeeId" required="true" description="ID of the debuggee whose breakpoint to delete." type="//@types.13"/>
+    </actions>
+    <actions name="set" scheme="http://occi/gcpclouddebugger/breakpoint/action#" title="Sets the breakpoint to the debuggee.">
+      <attributes name="clientVersion" required="true" description="The client version making the call.&#xA;Schema: `domain/type/version` (e.g., `google.com/intellij/v1`)." type="//@types.13"/>
+      <attributes name="debuggeeId" required="true" description="ID of the debuggee where the breakpoint is to be set." type="//@types.13"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpclouddebugger/breakpoint/action#" title="Lists all breakpoints for the debuggee.">
+      <attributes name="action.value" required="true" description="Only breakpoints with the specified action will pass the filter." type="//@types.13"/>
+      <attributes name="clientVersion" required="true" description="The client version making the call.&#xA;Schema: `domain/type/version` (e.g., `google.com/intellij/v1`)." type="//@types.13"/>
+      <attributes name="includeInactive" required="true" description="When set to `true`, the response includes active and inactive&#xA;breakpoints. Otherwise, it includes only active breakpoints." type="//@types.6"/>
+      <attributes name="includeAllUsers" required="true" description="When set to `true`, the response includes the list of breakpoints set by&#xA;any user. Otherwise, it includes only breakpoints set by the caller." type="//@types.6"/>
+      <attributes name="stripResults" required="true" description="This field is deprecated. The following fields are always stripped out of&#xA;the result: `stack_frames`, `evaluated_expressions` and `variable_table`." type="//@types.6"/>
+      <attributes name="debuggeeId" required="true" description="ID of the debuggee whose breakpoints to list." type="//@types.13"/>
+      <attributes name="waitToken" required="true" description="A wait token that, if specified, blocks the call until the breakpoints&#xA;list has changed, or a server selected timeout has expired.  The value&#xA;should be set from the last response. The error code&#xA;`google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which&#xA;should be called again with the same `wait_token`." type="//@types.13"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpclouddebugger/breakpoint/action#" title="Gets breakpoint information.">
+      <attributes name="clientVersion" required="true" description="The client version making the call.&#xA;Schema: `domain/type/version` (e.g., `google.com/intellij/v1`)." type="//@types.13"/>
+      <attributes name="breakpointId" required="true" description="ID of the breakpoint to get." type="//@types.13"/>
+      <attributes name="debuggeeId" required="true" description="ID of the debuggee whose breakpoint to get." type="//@types.13"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BreakpointLink" scheme="http://occi/gcpclouddebugger#" title="Updated breakpoint information.&#xA;The field `id` must be set.&#xA;The agent must echo all Breakpoint specification fields in the update." source="//@kinds[term='updateactivebreakpointrequest']" target="//@kinds[term='breakpoint']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="UpdateActiveBreakpointRequest" scheme="http://occi/gcpclouddebugger#" title="Request to update an active breakpoint.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SetBreakpointResponseBreakpointLink" scheme="http://occi/gcpclouddebugger#" title="Breakpoint resource.&#xA;The field `id` is guaranteed to be set (in addition to the echoed fileds)." source="//@kinds[term='setbreakpointresponse']" target="//@kinds[term='breakpoint']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SetBreakpointResponse" scheme="http://occi/gcpclouddebugger#" title="Response for setting a breakpoint.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GitSourceContextLink" scheme="http://occi/gcpclouddebugger#" title="A SourceContext referring to any third party Git repo (e.g. GitHub)." source="//@kinds[term='sourcecontext']" target="//@kinds[term='gitsourcecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GerritSourceContextLink" scheme="http://occi/gcpclouddebugger#" title="A SourceContext referring to a Gerrit project." source="//@kinds[term='sourcecontext']" target="//@kinds[term='gerritsourcecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CloudWorkspaceSourceContextLink" scheme="http://occi/gcpclouddebugger#" title="A SourceContext referring to a snapshot in a cloud workspace." source="//@kinds[term='sourcecontext']" target="//@kinds[term='cloudworkspacesourcecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CloudRepoSourceContextLink" scheme="http://occi/gcpclouddebugger#" title="A SourceContext referring to a revision in a cloud repo." source="//@kinds[term='sourcecontext']" target="//@kinds[term='cloudreposourcecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SourceContext" scheme="http://occi/gcpclouddebugger#" title="A SourceContext is a reference to a tree of files. A SourceContext together&#xA;with a path point to a unique revision of a single file or directory.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CloudRepoSourceContextRepoIdLink" scheme="http://occi/gcpclouddebugger#" title="The ID of the repo." source="//@kinds[term='cloudreposourcecontext']" target="//@kinds[term='repoid']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CloudRepoSourceContextAliasContextLink" scheme="http://occi/gcpclouddebugger#" title="An alias, which may be a branch or tag." source="//@kinds[term='cloudreposourcecontext']" target="//@kinds[term='aliascontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CloudRepoSourceContext" scheme="http://occi/gcpclouddebugger#" title="A CloudRepoSourceContext denotes a particular revision in a cloud&#xA;repo (a repo hosted by the Google Cloud Platform).">
+    <attributes name="revisionId" required="true" description="A revision ID." type="//@types.13"/>
+    <attributes name="aliasName" required="true" description="The name of an alias (branch, tag, etc.)." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DebuggeeLink" scheme="http://occi/gcpclouddebugger#" title="Debuggee information to register.&#xA;The fields `project`, `uniquifier`, `description` and `agent_version`&#xA;of the debuggee must be set." source="//@kinds[term='registerdebuggeerequest']" target="//@kinds[term='debuggee']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="RegisterDebuggeeRequest" scheme="http://occi/gcpclouddebugger#" title="Request to register a debuggee.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RegisterDebuggeeResponseDebuggeeLink" scheme="http://occi/gcpclouddebugger#" title="Debuggee resource.&#xA;The field `id` is guranteed to be set (in addition to the echoed fields).&#xA;If the field `is_disabled` is set to `true`, the agent should disable&#xA;itself by removing all breakpoints and detaching from the application.&#xA;It should however continue to poll `RegisterDebuggee` until reenabled." source="//@kinds[term='registerdebuggeeresponse']" target="//@kinds[term='debuggee']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="RegisterDebuggeeResponse" scheme="http://occi/gcpclouddebugger#" title="Response for registering a debuggee.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GetBreakpointResponseBreakpointLink" scheme="http://occi/gcpclouddebugger#" title="Complete breakpoint state.&#xA;The fields `id` and `location` are guaranteed to be set." source="//@kinds[term='getbreakpointresponse']" target="//@kinds[term='breakpoint']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GetBreakpointResponse" scheme="http://occi/gcpclouddebugger#" title="Response for getting breakpoint information.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="FormatMessageLink" scheme="http://occi/gcpclouddebugger#" title="Status message text." source="//@kinds[term='statusmessage']" target="//@kinds[term='formatmessage']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="StatusMessage" scheme="http://occi/gcpclouddebugger#" title="Represents a contextual status message.&#xA;The message can indicate an error or informational status, and refer to&#xA;specific parts of the containing object.&#xA;For example, the `Breakpoint.status` field can indicate an error referring&#xA;to the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.">
+    <attributes name="isError" required="true" description="Distinguishes errors from informational messages." type="//@types.6"/>
+    <attributes name="refersTo" required="true" description="Reference to which the message applies." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GitSourceContext" scheme="http://occi/gcpclouddebugger#" title="A GitSourceContext denotes a particular revision in a third party Git&#xA;repository (e.g. GitHub).">
+    <attributes name="revisionId" required="true" description="Git commit hash.&#xA;required." type="//@types.14"/>
+    <attributes name="url" required="true" description="Git repository URL." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="VariableStatusMessageLink" scheme="http://occi/gcpclouddebugger#" title="Status associated with the variable. This field will usually stay&#xA;unset. A status of a single variable only applies to that variable or&#xA;expression. The rest of breakpoint data still remains valid. Variables&#xA;might be reported in error state even when breakpoint is not in final&#xA;state.&#xA;&#xA;The message may refer to variable name with `refers_to` set to&#xA;`VARIABLE_NAME`. Alternatively `refers_to` will be set to `VARIABLE_VALUE`.&#xA;In either case variable value and members will be unset.&#xA;&#xA;Example of error message applied to name: `Invalid expression syntax`.&#xA;&#xA;Example of information message applied to value: `Not captured`.&#xA;&#xA;Examples of error message applied to value:&#xA;&#xA;*   `Malformed string`,&#xA;*   `Field f not found in class C`&#xA;*   `Null pointer dereference`" source="//@kinds[term='variable']" target="//@kinds[term='statusmessage']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Variable" scheme="http://occi/gcpclouddebugger#" title="Represents a variable or an argument possibly of a compound object type.&#xA;Note how the following variables are represented:&#xA;&#xA;1) A simple variable:&#xA;&#xA;    int x = 5&#xA;&#xA;    { name: &quot;x&quot;, value: &quot;5&quot;, type: &quot;int&quot; }  // Captured variable&#xA;&#xA;2) A compound object:&#xA;&#xA;    struct T {&#xA;        int m1;&#xA;        int m2;&#xA;    };&#xA;    T x = { 3, 7 };&#xA;&#xA;    {  // Captured variable&#xA;        name: &quot;x&quot;,&#xA;        type: &quot;T&quot;,&#xA;        members { name: &quot;m1&quot;, value: &quot;3&quot;, type: &quot;int&quot; },&#xA;        members { name: &quot;m2&quot;, value: &quot;7&quot;, type: &quot;int&quot; }&#xA;    }&#xA;&#xA;3) A pointer where the pointee was captured:&#xA;&#xA;    T x = { 3, 7 };&#xA;    T* p = &amp;x;&#xA;&#xA;    {   // Captured variable&#xA;        name: &quot;p&quot;,&#xA;        type: &quot;T*&quot;,&#xA;        value: &quot;0x00500500&quot;,&#xA;        members { name: &quot;m1&quot;, value: &quot;3&quot;, type: &quot;int&quot; },&#xA;        members { name: &quot;m2&quot;, value: &quot;7&quot;, type: &quot;int&quot; }&#xA;    }&#xA;&#xA;4) A pointer where the pointee was not captured:&#xA;&#xA;    T* p = new T;&#xA;&#xA;    {   // Captured variable&#xA;        name: &quot;p&quot;,&#xA;        type: &quot;T*&quot;,&#xA;        value: &quot;0x00400400&quot;&#xA;        status { is_error: true, description { format: &quot;unavailable&quot; } }&#xA;    }&#xA;&#xA;The status should describe the reason for the missing value,&#xA;such as `&lt;optimized out>`, `&lt;inaccessible>`, `&lt;pointers limit reached>`.&#xA;&#xA;Note that a null pointer should not have members.&#xA;&#xA;5) An unnamed value:&#xA;&#xA;    int* p = new int(7);&#xA;&#xA;    {   // Captured variable&#xA;        name: &quot;p&quot;,&#xA;        value: &quot;0x00500500&quot;,&#xA;        type: &quot;int*&quot;,&#xA;        members { value: &quot;7&quot;, type: &quot;int&quot; } }&#xA;&#xA;6) An unnamed pointer where the pointee was not captured:&#xA;&#xA;    int* p = new int(7);&#xA;    int** pp = &amp;p;&#xA;&#xA;    {  // Captured variable&#xA;        name: &quot;pp&quot;,&#xA;        value: &quot;0x00500500&quot;,&#xA;        type: &quot;int**&quot;,&#xA;        members {&#xA;            value: &quot;0x00400400&quot;,&#xA;            type: &quot;int*&quot;&#xA;            status {&#xA;                is_error: true,&#xA;                description: { format: &quot;unavailable&quot; } }&#xA;            }&#xA;        }&#xA;    }&#xA;&#xA;To optimize computation, memory and network traffic, variables that&#xA;repeat in the output multiple times can be stored once in a shared&#xA;variable table and be referenced using the `var_table_index` field.  The&#xA;variables stored in the shared table are nameless and are essentially&#xA;a partition of the complete variable. To reconstruct the complete&#xA;variable, merge the referencing variable with the referenced variable.&#xA;&#xA;When using the shared variable table, the following variables:&#xA;&#xA;    T x = { 3, 7 };&#xA;    T* p = &amp;x;&#xA;    T&amp; r = x;&#xA;&#xA;    { name: &quot;x&quot;, var_table_index: 3, type: &quot;T&quot; }  // Captured variables&#xA;    { name: &quot;p&quot;, value &quot;0x00500500&quot;, type=&quot;T*&quot;, var_table_index: 3 }&#xA;    { name: &quot;r&quot;, type=&quot;T&amp;&quot;, var_table_index: 3 }&#xA;&#xA;    {  // Shared variable table entry #3:&#xA;        members { name: &quot;m1&quot;, value: &quot;3&quot;, type: &quot;int&quot; },&#xA;        members { name: &quot;m2&quot;, value: &quot;7&quot;, type: &quot;int&quot; }&#xA;    }&#xA;&#xA;Note that the pointer address is stored with the referencing variable&#xA;and not with the referenced variable. This allows the referenced variable&#xA;to be shared between pointers and references.&#xA;&#xA;The type field is optional. The debugger agent may or may not support it.">
+    <attributes name="members" required="true" description="Members contained or pointed to by the variable." type="//@types.7"/>
+    <attributes name="name" required="true" description="Name of the variable, if any." type="//@types.14"/>
+    <attributes name="type" required="true" description="Variable type (e.g. `MyClass`). If the variable is split with&#xA;`var_table_index`, `type` goes next to `value`. The interpretation of&#xA;a type is agent specific. It is recommended to include the dynamic type&#xA;rather than a static type of an object." type="//@types.14"/>
+    <attributes name="value" required="true" description="Simple value of the variable." type="//@types.14"/>
+    <attributes name="varTableIndex" required="true" description="Reference to a variable in the shared variable table. More than&#xA;one variable can reference the same variable in the table. The&#xA;`var_table_index` field is an index into `variable_table` in Breakpoint." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="StackFrameSourceLocationLink" scheme="http://occi/gcpclouddebugger#" title="Source location of the call site." source="//@kinds[term='stackframe']" target="//@kinds[term='sourcelocation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="StackFrame" scheme="http://occi/gcpclouddebugger#" title="Represents a stack frame context.">
+    <attributes name="locals" required="true" description="Set of local variables at the stack frame location.&#xA;Note that this might not be populated for all stack frames." type="//@types.7"/>
+    <attributes name="function" required="true" description="Demangled function name at the call site." type="//@types.14"/>
+    <attributes name="arguments" required="true" description="Set of arguments passed to this function.&#xA;Note that this might not be populated for all stack frames." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ProjectRepoIdLink" scheme="http://occi/gcpclouddebugger#" title="A combination of a project ID and a repo name." source="//@kinds[term='repoid']" target="//@kinds[term='projectrepoid']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="RepoId" scheme="http://occi/gcpclouddebugger#" title="A unique identifier for a cloud repo.">
+    <attributes name="uid" required="true" description="A server-assigned, globally unique identifier." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="FormatMessage" scheme="http://occi/gcpclouddebugger#" title="Represents a message with parameters.">
+    <attributes name="format" required="true" description="Format template for the message. The `format` uses placeholders `$0`,&#xA;`$1`, etc. to reference parameters. `$$` can be used to denote the `$`&#xA;character.&#xA;&#xA;Examples:&#xA;&#xA;*   `Failed to load '$0' which helps debug $1 the first time it&#xA;    is loaded.  Again, $0 is very important.`&#xA;*   `Please pay $$10 to use $0 instead of $1.`" type="//@types.14"/>
+    <attributes name="parameters" required="true" description="Optional parameters to be embedded into the message." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceContextLink" scheme="http://occi/gcpclouddebugger#" title="Any source context." source="//@kinds[term='extendedsourcecontext']" target="//@kinds[term='sourcecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ExtendedSourceContext" scheme="http://occi/gcpclouddebugger#" title="An ExtendedSourceContext is a SourceContext combined with additional&#xA;details describing the context.">
+    <attributes name="labels" required="true" description="Labels with user defined metadata." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="kind" documentation="The alias kind.">
+    <literals name="ANY" documentation="Do not use."/>
+    <literals name="FIXED" documentation="Git tag"/>
+    <literals name="MOVABLE" documentation="Git branch"/>
+    <literals name="OTHER" documentation="OTHER is used to specify non-standard aliases, those not of the kinds&#xA;above. For example, if a Git repo has a ref named &quot;refs/foo/bar&quot;, it&#xA;is considered to be of kind OTHER."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="logLevel" documentation="Indicates the severity of the log. Only relevant when action is `LOG`.">
+    <literals name="INFO" documentation="Information log message."/>
+    <literals name="WARNING" documentation="Warning log message."/>
+    <literals name="ERROR" documentation="Error log message."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="action" documentation="Action that the agent should perform when the code at the&#xA;breakpoint location is hit.">
+    <literals name="CAPTURE" documentation="Capture stack frame and variables and update the breakpoint.&#xA;The data is only captured once. After that the breakpoint is set&#xA;in a final state."/>
+    <literals name="LOG" documentation="Log each breakpoint hit. The breakpoint remains active until&#xA;deleted or expired."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="refersTo" documentation="Reference to which the message applies.">
+    <literals name="UNSPECIFIED" documentation="Status doesn't refer to any particular input."/>
+    <literals name="BREAKPOINT_SOURCE_LOCATION" documentation="Status applies to the breakpoint and is related to its location."/>
+    <literals name="BREAKPOINT_CONDITION" documentation="Status applies to the breakpoint and is related to its condition."/>
+    <literals name="BREAKPOINT_EXPRESSION" documentation="Status applies to the breakpoint and is related to its expressions."/>
+    <literals name="BREAKPOINT_AGE" documentation="Status applies to the breakpoint and is related to its age."/>
+    <literals name="VARIABLE_NAME" documentation="Status applies to the entire variable."/>
+    <literals name="VARIABLE_VALUE" documentation="Status applies to variable value (variable name is valid)."/>
+  </types>
+</occi:Extension>

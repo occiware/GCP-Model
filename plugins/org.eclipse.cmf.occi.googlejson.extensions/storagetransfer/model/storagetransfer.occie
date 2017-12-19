@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="storagetransfer" scheme="http://occi/gcpstoragetransfer#" description="Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="Status" scheme="http://occi/gcpstoragetransfer#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ResumeTransferOperationRequest" scheme="http://occi/gcpstoragetransfer#" title="Request passed to ResumeTransferOperation.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListOperationsResponse" scheme="http://occi/gcpstoragetransfer#" title="The response message for Operations.ListOperations.">
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.0"/>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GoogleServiceAccount" scheme="http://occi/gcpstoragetransfer#" title="Google service account">
+    <attributes name="accountEmail" required="true" description="Required." type="//@types.0"/>
+    <actions name="get" scheme="http://occi/gcpstoragetransfer/googleserviceaccount/action#" title="Returns the Google service account that is used by Storage Transfer&#xA;Service to access buckets in the project where transfers&#xA;run or in other projects. Each Google service account is associated&#xA;with one Google Cloud Platform Console project. Users&#xA;should add this service account to the Google Cloud Storage bucket&#xA;ACLs to grant access to Storage Transfer Service. This service&#xA;account is created and owned by Storage Transfer Service and can&#xA;only be used by Storage Transfer Service.">
+      <attributes name="projectId" required="true" description="The ID of the Google Cloud Platform Console project that the Google service&#xA;account is associated with.&#xA;Required." type="//@types.0"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TimeOfDay" scheme="http://occi/gcpstoragetransfer#" title="Represents a time of day. The date and time zone are either not significant&#xA;or are specified elsewhere. An API may choose to allow leap seconds. Related&#xA;types are google.type.Date and `google.protobuf.Timestamp`.">
+    <attributes name="nanos" required="true" description="Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999." type="//@types.3"/>
+    <attributes name="seconds" required="true" description="Seconds of minutes of the time. Must normally be from 0 to 59. An API may&#xA;allow the value 60 if it allows leap-seconds." type="//@types.3"/>
+    <attributes name="minutes" required="true" description="Minutes of hour of day. Must be from 0 to 59." type="//@types.3"/>
+    <attributes name="hours" required="true" description="Hours of day in 24 hour format. Should be from 0 to 23. An API may choose&#xA;to allow the value &quot;24:00:00&quot; for scenarios like business closing time." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ErrorLogEntry" scheme="http://occi/gcpstoragetransfer#" title="An entry describing an error that has occurred.">
+    <attributes name="errorDetails" required="true" description="A list of messages that carry the error details." type="//@types.7"/>
+    <attributes name="url" required="true" description="A URL that refers to the target (a data source, a data sink,&#xA;or an object) with which the error is associated.&#xA;Required." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TransferSpecLink" scheme="http://occi/gcpstoragetransfer#" title="Transfer specification." source="//@kinds[term='transferjob']" target="//@kinds[term='transferspec']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ScheduleLink" scheme="http://occi/gcpstoragetransfer#" title="Schedule specification." source="//@kinds[term='transferjob']" target="//@kinds[term='schedule']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TransferJob" scheme="http://occi/gcpstoragetransfer#" title="This resource represents the configuration of a transfer job that runs&#xA;periodically.">
+    <attributes name="description" required="true" description="A description provided by the user for the job. Its max length is 1024&#xA;bytes when Unicode-encoded." type="//@types.0"/>
+    <attributes name="creationTime" required="true" description="This field cannot be changed by user requests." type="//@types.0"/>
+    <attributes name="status" required="true" description="Status of the job. This value MUST be specified for&#xA;`CreateTransferJobRequests`.&#xA;&#xA;NOTE: The effect of the new job status takes place during a subsequent job&#xA;run. For example, if you change the job status from `ENABLED` to&#xA;`DISABLED`, and an operation spawned by the transfer is running, the status&#xA;change would not affect the current operation." type="//@types.11"/>
+    <attributes name="name" required="true" description="A globally unique name assigned by Storage Transfer Service when the&#xA;job is created. This field should be left empty in requests to create a new&#xA;transfer job; otherwise, the requests result in an `INVALID_ARGUMENT`&#xA;error." type="//@types.11"/>
+    <attributes name="deletionTime" required="true" description="This field cannot be changed by user requests." type="//@types.11"/>
+    <attributes name="lastModificationTime" required="true" description="This field cannot be changed by user requests." type="//@types.11"/>
+    <attributes name="projectId" required="true" description="The ID of the Google Cloud Platform Console project that owns the job." type="//@types.11"/>
+    <actions name="list" scheme="http://occi/gcpstoragetransfer/transferjob/action#" title="Lists transfer jobs.">
+      <attributes name="pageToken" required="true" description="The list page token." type="//@types.11"/>
+      <attributes name="pageSize" required="true" description="The list page size. The max allowed value is 256." type="//@types.3"/>
+      <attributes name="filter" required="true" description="A list of query parameters specified as JSON text in the form of&#xA;{&quot;project_id&quot;:&quot;my_project_id&quot;,&#xA;&quot;job_names&quot;:[&quot;jobid1&quot;,&quot;jobid2&quot;,...],&#xA;&quot;job_statuses&quot;:[&quot;status1&quot;,&quot;status2&quot;,...]}.&#xA;Since `job_names` and `job_statuses` support multiple values, their values&#xA;must be specified with array notation. `project_id` is required. `job_names`&#xA;and `job_statuses` are optional.  The valid values for `job_statuses` are&#xA;case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`." type="//@types.11"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpstoragetransfer/transferjob/action#" title="Gets a transfer job.">
+      <attributes name="projectId" required="true" description="The ID of the Google Cloud Platform Console project that owns the job.&#xA;Required." type="//@types.11"/>
+      <attributes name="jobName" required="true" description="The job to get.&#xA;Required." type="//@types.11"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpstoragetransfer/transferjob/action#" title="Updates a transfer job. Updating a job's transfer spec does not affect&#xA;transfer operations that are running already. Updating the scheduling&#xA;of a job is not allowed.">
+      <attributes name="jobName" required="true" description="The name of job to update.&#xA;Required." type="//@types.11"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpstoragetransfer/transferjob/action#" title="Creates a transfer job that runs periodically."/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DateLink" scheme="http://occi/gcpstoragetransfer#" title="The last day the recurring transfer will be run. If `scheduleEndDate`&#xA;is the same as `scheduleStartDate`, the transfer will be executed only&#xA;once." source="//@kinds[term='schedule']" target="//@kinds[term='date']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TimeOfDayLink" scheme="http://occi/gcpstoragetransfer#" title="The time in UTC at which the transfer will be scheduled to start in a day.&#xA;Transfers may start later than this time. If not specified, recurring and&#xA;one-time transfers that are scheduled to run today will run immediately;&#xA;recurring transfers that are scheduled to run on a future date will start&#xA;at approximately midnight UTC on that date. Note that when configuring a&#xA;transfer with the Cloud Platform Console, the transfer's start time in a&#xA;day is specified in your local timezone." source="//@kinds[term='schedule']" target="//@kinds[term='timeofday']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ScheduleDateLink" scheme="http://occi/gcpstoragetransfer#" title="The first day the recurring transfer is scheduled to run. If&#xA;`scheduleStartDate` is in the past, the transfer will run for the first&#xA;time on the following day.&#xA;Required." source="//@kinds[term='schedule']" target="//@kinds[term='date']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Schedule" scheme="http://occi/gcpstoragetransfer#" title="Transfers can be scheduled to recur or to run just once.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Date" scheme="http://occi/gcpstoragetransfer#" title="Represents a whole calendar date, e.g. date of birth. The time of day and&#xA;time zone are either specified elsewhere or are not significant. The date&#xA;is relative to the Proleptic Gregorian Calendar. The day may be 0 to&#xA;represent a year and month where the day is not significant, e.g. credit card&#xA;expiration date. The year may be 0 to represent a month and day independent&#xA;of year, e.g. anniversary date. Related types are google.type.TimeOfDay&#xA;and `google.protobuf.Timestamp`.">
+    <attributes name="day" required="true" description="Day of month. Must be from 1 to 31 and valid for the year and month, or 0&#xA;if specifying a year/month where the day is not significant." type="//@types.3"/>
+    <attributes name="year" required="true" description="Year of date. Must be from 1 to 9999, or 0 if specifying a date without&#xA;a year." type="//@types.3"/>
+    <attributes name="month" required="true" description="Month of year. Must be from 1 to 12." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TransferOperationTransferSpecLink" scheme="http://occi/gcpstoragetransfer#" title="Transfer specification.&#xA;Required." source="//@kinds[term='transferoperation']" target="//@kinds[term='transferspec']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TransferCountersLink" scheme="http://occi/gcpstoragetransfer#" title="Information about the progress of the transfer operation." source="//@kinds[term='transferoperation']" target="//@kinds[term='transfercounters']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TransferOperation" scheme="http://occi/gcpstoragetransfer#" title="A description of the execution of a transfer.">
+    <attributes name="status" required="true" description="Status of the transfer operation." type="//@types.12"/>
+    <attributes name="errorBreakdowns" required="true" description="Summarizes errors encountered with sample error log entries." type="//@types.7"/>
+    <attributes name="name" required="true" description="A globally unique ID assigned by the system." type="//@types.12"/>
+    <attributes name="projectId" required="true" description="The ID of the Google Cloud Platform Console project that owns the operation.&#xA;Required." type="//@types.12"/>
+    <attributes name="endTime" required="true" description="End time of this transfer execution." type="//@types.12"/>
+    <attributes name="startTime" required="true" description="Start time of this transfer execution." type="//@types.12"/>
+    <attributes name="transferJobName" required="true" description="The name of the transfer job that triggers this transfer operation." type="//@types.12"/>
+    <actions name="delete" scheme="http://occi/gcpstoragetransfer/transferoperation/action#" title="This method is not supported and the server returns `UNIMPLEMENTED`.">
+      <attributes name="name" required="true" description="The name of the operation resource to be deleted." type="//@types.12"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpstoragetransfer/transferoperation/action#" title="Lists operations that match the specified filter in the request. If the&#xA;server doesn't support this method, it returns `UNIMPLEMENTED`.&#xA;&#xA;NOTE: the `name` binding allows API services to override the binding&#xA;to use different resource name schemes, such as `users/*/operations`. To&#xA;override the binding, API services can add a binding such as&#xA;`&quot;/v1/{name=users/*}/operations&quot;` to their service configuration.&#xA;For backwards compatibility, the default name includes the operations&#xA;collection id, however overriding users must ensure the name binding&#xA;is the parent resource, without the operations collection id.">
+      <attributes name="pageToken" required="true" description="The list page token." type="//@types.12"/>
+      <attributes name="name" required="true" description="The value `transferOperations`." type="//@types.12"/>
+      <attributes name="pageSize" required="true" description="The list page size. The max allowed value is 256." type="//@types.3"/>
+      <attributes name="filter" required="true" description="A list of query parameters specified as JSON text in the form of {\&quot;project_id\&quot; : \&quot;my_project_id\&quot;, \&quot;job_names\&quot; : [\&quot;jobid1\&quot;, \&quot;jobid2\&quot;,...], \&quot;operation_names\&quot; : [\&quot;opid1\&quot;, \&quot;opid2\&quot;,...], \&quot;transfer_statuses\&quot;:[\&quot;status1\&quot;, \&quot;status2\&quot;,...]}. Since `job_names`, `operation_names`, and `transfer_statuses` support multiple values, they must be specified with array notation. `job_names`, `operation_names`, and `transfer_statuses` are optional." type="//@types.12"/>
+    </actions>
+    <actions name="resume" scheme="http://occi/gcpstoragetransfer/transferoperation/action#" title="Resumes a transfer operation that is paused.">
+      <attributes name="name" required="true" description="The name of the transfer operation.&#xA;Required." type="//@types.12"/>
+    </actions>
+    <actions name="cancel" scheme="http://occi/gcpstoragetransfer/transferoperation/action#" title="Cancels a transfer. Use the get method to check whether the cancellation succeeded or whether the operation completed despite cancellation.">
+      <attributes name="name" required="true" description="The name of the operation resource to be cancelled." type="//@types.12"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpstoragetransfer/transferoperation/action#" title="Gets the latest state of a long-running operation.  Clients can use this&#xA;method to poll the operation result at intervals as recommended by the API&#xA;service.">
+      <attributes name="name" required="true" description="The name of the operation resource." type="//@types.12"/>
+    </actions>
+    <actions name="pause" scheme="http://occi/gcpstoragetransfer/transferoperation/action#" title="Pauses a transfer operation.">
+      <attributes name="name" required="true" description="The name of the transfer operation.&#xA;Required." type="//@types.12"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AwsAccessKeyLink" scheme="http://occi/gcpstoragetransfer#" title="AWS access key used to sign the API requests to the AWS S3 bucket.&#xA;Permissions on the bucket must be granted to the access ID of the&#xA;AWS access key.&#xA;Required." source="//@kinds[term='awss3data']" target="//@kinds[term='awsaccesskey']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="AwsS3Data" scheme="http://occi/gcpstoragetransfer#" title="An AwsS3Data can be a data source, but not a data sink.&#xA;In an AwsS3Data, an object's name is the S3 object's key name.">
+    <attributes name="bucketName" required="true" description="S3 Bucket name (see&#xA;[Creating a bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).&#xA;Required." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AwsAccessKey" scheme="http://occi/gcpstoragetransfer#" title="AWS access key (see&#xA;[AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).">
+    <attributes name="accessKeyId" required="true" description="AWS access key ID.&#xA;Required." type="//@types.12"/>
+    <attributes name="secretAccessKey" required="true" description="AWS secret access key. This field is not returned in RPC responses.&#xA;Required." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Empty" scheme="http://occi/gcpstoragetransfer#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PauseTransferOperationRequest" scheme="http://occi/gcpstoragetransfer#" title="Request passed to PauseTransferOperation.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TransferCounters" scheme="http://occi/gcpstoragetransfer#" title="A collection of counters that report the progress of a transfer operation.">
+    <attributes name="objectsFromSourceSkippedBySync" required="true" description="Objects in the data source that are not transferred because they already&#xA;exist in the data sink." type="//@types.12"/>
+    <attributes name="bytesFoundFromSource" required="true" description="Bytes found in the data source that are scheduled to be transferred,&#xA;which will be copied, excluded based on conditions, or skipped due to&#xA;failures." type="//@types.12"/>
+    <attributes name="bytesDeletedFromSource" required="true" description="Bytes that are deleted from the data source." type="//@types.12"/>
+    <attributes name="objectsFoundFromSource" required="true" description="Objects found in the data source that are scheduled to be transferred,&#xA;which will be copied, excluded based on conditions, or skipped due to&#xA;failures." type="//@types.12"/>
+    <attributes name="objectsFailedToDeleteFromSink" required="true" description="Objects that failed to be deleted from the data sink." type="//@types.12"/>
+    <attributes name="objectsDeletedFromSink" required="true" description="Objects that are deleted from the data sink." type="//@types.12"/>
+    <attributes name="objectsFoundOnlyFromSink" required="true" description="Objects found only in the data sink that are scheduled to be deleted." type="//@types.12"/>
+    <attributes name="bytesFromSourceSkippedBySync" required="true" description="Bytes in the data source that are not transferred because they already&#xA;exist in the data sink." type="//@types.12"/>
+    <attributes name="bytesFailedToDeleteFromSink" required="true" description="Bytes that failed to be deleted from the data sink." type="//@types.12"/>
+    <attributes name="bytesDeletedFromSink" required="true" description="Bytes that are deleted from the data sink." type="//@types.12"/>
+    <attributes name="bytesFromSourceFailed" required="true" description="Bytes in the data source that failed during the transfer." type="//@types.12"/>
+    <attributes name="objectsCopiedToSink" required="true" description="Objects that are copied to the data sink." type="//@types.12"/>
+    <attributes name="objectsFromSourceFailed" required="true" description="Objects in the data source that failed during the transfer." type="//@types.12"/>
+    <attributes name="bytesFoundOnlyFromSink" required="true" description="Bytes found only in the data sink that are scheduled to be deleted." type="//@types.12"/>
+    <attributes name="objectsDeletedFromSource" required="true" description="Objects that are deleted from the data source." type="//@types.12"/>
+    <attributes name="bytesCopiedToSink" required="true" description="Bytes that are copied to the data sink." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ErrorSummary" scheme="http://occi/gcpstoragetransfer#" title="A summary of errors by error code, plus a count and sample error log&#xA;entries.">
+    <attributes name="errorCount" required="true" description="Count of this type of error.&#xA;Required." type="//@types.12"/>
+    <attributes name="errorLogEntries" required="true" description="Error samples." type="//@types.7"/>
+    <attributes name="errorCode" required="true" description="Required." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="HttpData" scheme="http://occi/gcpstoragetransfer#" title="An HttpData specifies a list of objects on the web to be transferred over&#xA;HTTP.  The information of the objects to be transferred is contained in a&#xA;file referenced by a URL. The first line in the file must be&#xA;&quot;TsvHttpData-1.0&quot;, which specifies the format of the file.  Subsequent lines&#xA;specify the information of the list of objects, one object per list entry.&#xA;Each entry has the following tab-delimited fields:&#xA;&#xA;* HTTP URL - The location of the object.&#xA;&#xA;* Length - The size of the object in bytes.&#xA;&#xA;* MD5 - The base64-encoded MD5 hash of the object.&#xA;&#xA;For an example of a valid TSV file, see&#xA;[Transferring data from URLs](https://cloud.google.com/storage/transfer/create-url-list).&#xA;&#xA;When transferring data based on a URL list, keep the following in mind:&#xA;&#xA;* When an object located at `http(s)://hostname:port/&lt;URL-path>` is transferred&#xA;to a data sink, the name of the object at the data sink is&#xA;`&lt;hostname>/&lt;URL-path>`.&#xA;&#xA;* If the specified size of an object does not match the actual size of the&#xA;object fetched, the object will not be transferred.&#xA;&#xA;* If the specified MD5 does not match the MD5 computed from the transferred&#xA;bytes, the object transfer will fail. For more information, see&#xA;[Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)&#xA;&#xA;* Ensure that each URL you specify is publicly accessible. For&#xA;example, in Google Cloud Storage you can&#xA;[share an object publicly]&#xA;(https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get&#xA;a link to it.&#xA;&#xA;* Storage Transfer Service obeys `robots.txt` rules and requires the source&#xA;HTTP server to support `Range` requests and to return a `Content-Length`&#xA;header in each response.&#xA;&#xA;* [ObjectConditions](#ObjectConditions) have no effect when filtering objects&#xA;to transfer.">
+    <attributes name="listUrl" required="true" description="The URL that points to the file that stores the object list entries.&#xA;This file must allow public access.  Currently, only URLs with HTTP and&#xA;HTTPS schemes are supported.&#xA;Required." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GcsData" scheme="http://occi/gcpstoragetransfer#" title="In a GcsData, an object's name is the Google Cloud Storage object's name and&#xA;its `lastModificationTime` refers to the object's updated time, which changes&#xA;when the content or the metadata of the object is updated.">
+    <attributes name="bucketName" required="true" description="Google Cloud Storage bucket name (see&#xA;[Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).&#xA;Required." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListTransferJobsResponse" scheme="http://occi/gcpstoragetransfer#" title="Response from ListTransferJobs.">
+    <attributes name="nextPageToken" required="true" description="The list next page token." type="//@types.13"/>
+    <attributes name="transferJobs" required="true" description="A list of transfer jobs." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TransferJobLink" scheme="http://occi/gcpstoragetransfer#" title="The job to update. `transferJob` is expected to specify only three fields:&#xA;`description`, `transferSpec`, and `status`.  An UpdateTransferJobRequest&#xA;that specifies other fields will be rejected with an error&#xA;`INVALID_ARGUMENT`.&#xA;Required." source="//@kinds[term='updatetransferjobrequest']" target="//@kinds[term='transferjob']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="UpdateTransferJobRequest" scheme="http://occi/gcpstoragetransfer#" title="Request passed to UpdateTransferJob.">
+    <attributes name="projectId" required="true" description="The ID of the Google Cloud Platform Console project that owns the job.&#xA;Required." type="//@types.13"/>
+    <attributes name="updateTransferJobFieldMask" required="true" description="The field mask of the fields in `transferJob` that are to be updated in&#xA;this request.  Fields in `transferJob` that can be updated are:&#xA;`description`, `transferSpec`, and `status`.  To update the `transferSpec`&#xA;of the job, a complete transfer specification has to be provided. An&#xA;incomplete specification which misses any required fields will be rejected&#xA;with the error `INVALID_ARGUMENT`." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ObjectConditions" scheme="http://occi/gcpstoragetransfer#" title="Conditions that determine which objects will be transferred.">
+    <attributes name="includePrefixes" required="true" description="If `includePrefixes` is specified, objects that satisfy the object&#xA;conditions must have names that start with one of the `includePrefixes`&#xA;and that do not start with any of the `excludePrefixes`. If `includePrefixes`&#xA;is not specified, all objects except those that have names starting with&#xA;one of the `excludePrefixes` must satisfy the object conditions.&#xA;&#xA;Requirements:&#xA;&#xA;  * Each include-prefix and exclude-prefix can contain any sequence of&#xA;    Unicode characters, of max length 1024 bytes when UTF8-encoded, and&#xA;    must not contain Carriage Return or Line Feed characters.  Wildcard&#xA;    matching and regular expression matching are not supported.&#xA;&#xA;  * Each include-prefix and exclude-prefix must omit the leading slash.&#xA;    For example, to include the `requests.gz` object in a transfer from&#xA;    `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include&#xA;    prefix as `logs/y=2015/requests.gz`.&#xA;&#xA;  * None of the include-prefix or the exclude-prefix values can be empty,&#xA;    if specified.&#xA;&#xA;  * Each include-prefix must include a distinct portion of the object&#xA;    namespace, i.e., no include-prefix may be a prefix of another&#xA;    include-prefix.&#xA;&#xA;  * Each exclude-prefix must exclude a distinct portion of the object&#xA;    namespace, i.e., no exclude-prefix may be a prefix of another&#xA;    exclude-prefix.&#xA;&#xA;  * If `includePrefixes` is specified, then each exclude-prefix must start&#xA;    with the value of a path explicitly included by `includePrefixes`.&#xA;&#xA;The max size of `includePrefixes` is 1000." type="//@types.7"/>
+    <attributes name="excludePrefixes" required="true" description="`excludePrefixes` must follow the requirements described for&#xA;`includePrefixes`.&#xA;&#xA;The max size of `excludePrefixes` is 1000." type="//@types.7"/>
+    <attributes name="minTimeElapsedSinceLastModification" required="true" description="If unspecified, `minTimeElapsedSinceLastModification` takes a zero value&#xA;and `maxTimeElapsedSinceLastModification` takes the maximum possible&#xA;value of Duration. Objects that satisfy the object conditions&#xA;must either have a `lastModificationTime` greater or equal to&#xA;`NOW` - `maxTimeElapsedSinceLastModification` and less than&#xA;`NOW` - `minTimeElapsedSinceLastModification`, or not have a&#xA;`lastModificationTime`." type="//@types.13"/>
+    <attributes name="maxTimeElapsedSinceLastModification" required="true" description="`maxTimeElapsedSinceLastModification` is the complement to&#xA;`minTimeElapsedSinceLastModification`." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="StatusLink" scheme="http://occi/gcpstoragetransfer#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='operation']" target="//@kinds[term='status']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Operation" scheme="http://occi/gcpstoragetransfer#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.9"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should have the format of `transferOperations/some/unique/name`." type="//@types.13"/>
+    <attributes name="metadata" required="true" description="Represents the transfer operation object." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ObjectConditionsLink" scheme="http://occi/gcpstoragetransfer#" title="Only objects that satisfy these object conditions are included in the set&#xA;of data source and data sink objects.  Object conditions based on&#xA;objects' `lastModificationTime` do not exclude objects in a data sink." source="//@kinds[term='transferspec']" target="//@kinds[term='objectconditions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GcsDataLink" scheme="http://occi/gcpstoragetransfer#" title="A Google Cloud Storage data sink." source="//@kinds[term='transferspec']" target="//@kinds[term='gcsdata']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TransferSpecGcsDataLink" scheme="http://occi/gcpstoragetransfer#" title="A Google Cloud Storage data source." source="//@kinds[term='transferspec']" target="//@kinds[term='gcsdata']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TransferOptionsLink" scheme="http://occi/gcpstoragetransfer#" title="If the option `deleteObjectsUniqueInSink` is `true`, object conditions&#xA;based on objects' `lastModificationTime` are ignored and do not exclude&#xA;objects in a data source or a data sink." source="//@kinds[term='transferspec']" target="//@kinds[term='transferoptions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="AwsS3DataLink" scheme="http://occi/gcpstoragetransfer#" title="An AWS S3 data source." source="//@kinds[term='transferspec']" target="//@kinds[term='awss3data']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="HttpDataLink" scheme="http://occi/gcpstoragetransfer#" title="An HTTP URL data source." source="//@kinds[term='transferspec']" target="//@kinds[term='httpdata']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TransferSpec" scheme="http://occi/gcpstoragetransfer#" title="Configuration for running a transfer.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TransferOptions" scheme="http://occi/gcpstoragetransfer#" title="TransferOptions uses three boolean parameters to define the actions&#xA;to be performed on objects in a transfer.">
+    <attributes name="overwriteObjectsAlreadyExistingInSink" required="true" description="Whether overwriting objects that already exist in the sink is allowed." type="//@types.6"/>
+    <attributes name="deleteObjectsFromSourceAfterTransfer" required="true" description="Whether objects should be deleted from the source after they are&#xA;transferred to the sink.  Note that this option and&#xA;`deleteObjectsUniqueInSink` are mutually exclusive." type="//@types.6"/>
+    <attributes name="deleteObjectsUniqueInSink" required="true" description="Whether objects that exist only in the sink should be deleted.  Note that&#xA;this option and `deleteObjectsFromSourceAfterTransfer` are mutually&#xA;exclusive." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="status" documentation="Status of the job. This value MUST be specified for&#xA;`CreateTransferJobRequests`.&#xA;&#xA;NOTE: The effect of the new job status takes place during a subsequent job&#xA;run. For example, if you change the job status from `ENABLED` to&#xA;`DISABLED`, and an operation spawned by the transfer is running, the status&#xA;change would not affect the current operation.">
+    <literals name="STATUS_UNSPECIFIED" documentation="Zero is an illegal value."/>
+    <literals name="ENABLED" documentation="New transfers will be performed based on the schedule."/>
+    <literals name="DISABLED" documentation="New transfers will not be scheduled."/>
+    <literals name="DELETED" documentation="This is a soft delete state. After a transfer job is set to this&#xA;state, the job and all the transfer executions are subject to&#xA;garbage collection."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="TransferOperationSstatus" documentation="Status of the transfer operation.">
+    <literals name="STATUS_UNSPECIFIED" documentation="Zero is an illegal value."/>
+    <literals name="IN_PROGRESS" documentation="In progress."/>
+    <literals name="PAUSED" documentation="Paused."/>
+    <literals name="SUCCESS" documentation="Completed successfully."/>
+    <literals name="FAILED" documentation="Terminated due to an unrecoverable failure."/>
+    <literals name="ABORTED" documentation="Aborted by the user."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="errorCode" documentation="Required.">
+    <literals name="OK" documentation="Not an error; returned on success&#xA;&#xA;HTTP Mapping: 200 OK"/>
+    <literals name="CANCELLED" documentation="The operation was cancelled, typically by the caller.&#xA;&#xA;HTTP Mapping: 499 Client Closed Request"/>
+    <literals name="UNKNOWN" documentation="Unknown error.  For example, this error may be returned when&#xA;a `Status` value received from another address space belongs to&#xA;an error space that is not known in this address space.  Also&#xA;errors raised by APIs that do not return enough error information&#xA;may be converted to this error.&#xA;&#xA;HTTP Mapping: 500 Internal Server Error"/>
+    <literals name="INVALID_ARGUMENT" documentation="The client specified an invalid argument.  Note that this differs&#xA;from `FAILED_PRECONDITION`.  `INVALID_ARGUMENT` indicates arguments&#xA;that are problematic regardless of the state of the system&#xA;(e.g., a malformed file name).&#xA;&#xA;HTTP Mapping: 400 Bad Request"/>
+    <literals name="DEADLINE_EXCEEDED" documentation="The deadline expired before the operation could complete. For operations&#xA;that change the state of the system, this error may be returned&#xA;even if the operation has completed successfully.  For example, a&#xA;successful response from a server could have been delayed long&#xA;enough for the deadline to expire.&#xA;&#xA;HTTP Mapping: 504 Gateway Timeout"/>
+    <literals name="NOT_FOUND" documentation="Some requested entity (e.g., file or directory) was not found.&#xA;&#xA;Note to server developers: if a request is denied for an entire class&#xA;of users, such as gradual feature rollout or undocumented whitelist,&#xA;`NOT_FOUND` may be used. If a request is denied for some users within&#xA;a class of users, such as user-based access control, `PERMISSION_DENIED`&#xA;must be used.&#xA;&#xA;HTTP Mapping: 404 Not Found"/>
+    <literals name="ALREADY_EXISTS" documentation="The entity that a client attempted to create (e.g., file or directory)&#xA;already exists.&#xA;&#xA;HTTP Mapping: 409 Conflict"/>
+    <literals name="PERMISSION_DENIED" documentation="The caller does not have permission to execute the specified&#xA;operation. `PERMISSION_DENIED` must not be used for rejections&#xA;caused by exhausting some resource (use `RESOURCE_EXHAUSTED`&#xA;instead for those errors). `PERMISSION_DENIED` must not be&#xA;used if the caller can not be identified (use `UNAUTHENTICATED`&#xA;instead for those errors). This error code does not imply the&#xA;request is valid or the requested entity exists or satisfies&#xA;other pre-conditions.&#xA;&#xA;HTTP Mapping: 403 Forbidden"/>
+    <literals name="UNAUTHENTICATED" documentation="The request does not have valid authentication credentials for the&#xA;operation.&#xA;&#xA;HTTP Mapping: 401 Unauthorized"/>
+    <literals name="RESOURCE_EXHAUSTED" documentation="Some resource has been exhausted, perhaps a per-user quota, or&#xA;perhaps the entire file system is out of space.&#xA;&#xA;HTTP Mapping: 429 Too Many Requests"/>
+    <literals name="FAILED_PRECONDITION" documentation="The operation was rejected because the system is not in a state&#xA;required for the operation's execution.  For example, the directory&#xA;to be deleted is non-empty, an rmdir operation is applied to&#xA;a non-directory, etc.&#xA;&#xA;Service implementors can use the following guidelines to decide&#xA;between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:&#xA; (a) Use `UNAVAILABLE` if the client can retry just the failing call.&#xA; (b) Use `ABORTED` if the client should retry at a higher level&#xA;     (e.g., when a client-specified test-and-set fails, indicating the&#xA;     client should restart a read-modify-write sequence).&#xA; (c) Use `FAILED_PRECONDITION` if the client should not retry until&#xA;     the system state has been explicitly fixed.  E.g., if an &quot;rmdir&quot;&#xA;     fails because the directory is non-empty, `FAILED_PRECONDITION`&#xA;     should be returned since the client should not retry unless&#xA;     the files are deleted from the directory.&#xA;&#xA;HTTP Mapping: 400 Bad Request"/>
+    <literals name="ABORTED" documentation="The operation was aborted, typically due to a concurrency issue such as&#xA;a sequencer check failure or transaction abort.&#xA;&#xA;See the guidelines above for deciding between `FAILED_PRECONDITION`,&#xA;`ABORTED`, and `UNAVAILABLE`.&#xA;&#xA;HTTP Mapping: 409 Conflict"/>
+    <literals name="OUT_OF_RANGE" documentation="The operation was attempted past the valid range.  E.g., seeking or&#xA;reading past end-of-file.&#xA;&#xA;Unlike `INVALID_ARGUMENT`, this error indicates a problem that may&#xA;be fixed if the system state changes. For example, a 32-bit file&#xA;system will generate `INVALID_ARGUMENT` if asked to read at an&#xA;offset that is not in the range [0,2^32-1], but it will generate&#xA;`OUT_OF_RANGE` if asked to read from an offset past the current&#xA;file size.&#xA;&#xA;There is a fair bit of overlap between `FAILED_PRECONDITION` and&#xA;`OUT_OF_RANGE`.  We recommend using `OUT_OF_RANGE` (the more specific&#xA;error) when it applies so that callers who are iterating through&#xA;a space can easily look for an `OUT_OF_RANGE` error to detect when&#xA;they are done.&#xA;&#xA;HTTP Mapping: 400 Bad Request"/>
+    <literals name="UNIMPLEMENTED" documentation="The operation is not implemented or is not supported/enabled in this&#xA;service.&#xA;&#xA;HTTP Mapping: 501 Not Implemented"/>
+    <literals name="INTERNAL" documentation="Internal errors.  This means that some invariants expected by the&#xA;underlying system have been broken.  This error code is reserved&#xA;for serious errors.&#xA;&#xA;HTTP Mapping: 500 Internal Server Error"/>
+    <literals name="UNAVAILABLE" documentation="The service is currently unavailable.  This is most likely a&#xA;transient condition, which can be corrected by retrying with&#xA;a backoff.&#xA;&#xA;See the guidelines above for deciding between `FAILED_PRECONDITION`,&#xA;`ABORTED`, and `UNAVAILABLE`.&#xA;&#xA;HTTP Mapping: 503 Service Unavailable"/>
+    <literals name="DATA_LOSS" documentation="Unrecoverable data loss or corruption.&#xA;&#xA;HTTP Mapping: 500 Internal Server Error"/>
+  </types>
+</occi:Extension>

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="bigquerydatatransfer" scheme="http://occi/gcpbigquerydatatransfer#" description="Transfers data from partner SaaS applications to Google BigQuery on a scheduled, managed basis.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="DataSource" scheme="http://occi/gcpbigquerydatatransfer#" title="Represents data source metadata. Metadata is sufficient to&#xA;render UI and request proper OAuth tokens.">
+    <attributes name="description" required="true" description="User friendly data source description string." type="//@types.0"/>
+    <attributes name="dataSourceId" required="true" description="Data source id." type="//@types.0"/>
+    <attributes name="name" required="true" description="Data source resource name." type="//@types.0"/>
+    <attributes name="scopes" required="true" description="Api auth scopes for which refresh token needs to be obtained. Only valid&#xA;when `client_id` is specified. Ignored otherwise. These are scopes needed&#xA;by a data source to prepare data and ingest them into BigQuery,&#xA;e.g., https://www.googleapis.com/auth/bigquery" type="//@types.7"/>
+    <attributes name="minimumScheduleInterval" required="true" description="The minimum interval between two consecutive scheduled runs." type="//@types.0"/>
+    <attributes name="clientId" required="true" description="Data source client id which should be used to receive refresh token.&#xA;When not supplied, no offline credentials are populated for data transfer." type="//@types.0"/>
+    <attributes name="authorizationType" required="true" description="Indicates the type of authorization." type="//@types.11"/>
+    <attributes name="supportsCustomSchedule" required="true" description="Specifies whether the data source supports a user defined schedule, or&#xA;operates on the default schedule.&#xA;When set to `true`, user can override default schedule." type="//@types.6"/>
+    <attributes name="displayName" required="true" description="User friendly data source name." type="//@types.11"/>
+    <attributes name="updateDeadlineSeconds" required="true" description="The number of seconds to wait for an update from the data source&#xA;before BigQuery marks the transfer as failed." type="//@types.3"/>
+    <attributes name="dataRefreshType" required="true" description="Specifies whether the data source supports automatic data refresh for the&#xA;past few days, and how it's supported.&#xA;For some data sources, data might not be complete until a few days later,&#xA;so it's useful to refresh data automatically." type="//@types.12"/>
+    <attributes name="parameters" required="true" description="Data source parameters." type="//@types.7"/>
+    <attributes name="helpUrl" required="true" description="Url for the help document for this data source." type="//@types.12"/>
+    <attributes name="defaultSchedule" required="true" description="Default data transfer schedule.&#xA;Examples of valid schedules include:&#xA;`1st,3rd monday of month 15:30`,&#xA;`every wed,fri of jan,jun 13:15`, and&#xA;`first sunday of quarter 00:00`." type="//@types.12"/>
+    <attributes name="supportsMultipleTransfers" required="true" description="Indicates whether the data source supports multiple transfers&#xA;to different BigQuery targets." type="//@types.6"/>
+    <attributes name="defaultDataRefreshWindowDays" required="true" description="Default data refresh window on days.&#xA;Only meaningful when `data_refresh_type` = `SLIDING_WINDOW`." type="//@types.3"/>
+    <attributes name="manualRunsDisabled" required="true" description="Disables backfilling and manual run scheduling&#xA;for the data source." type="//@types.6"/>
+    <attributes name="transferType" required="true" description="Transfer type. Currently supports only batch transfers,&#xA;which are transfers that use the BigQuery batch APIs (load or&#xA;query) to ingest the data." type="//@types.13"/>
+    <actions name="checkValidCreds" scheme="http://occi/gcpbigquerydatatransfer/datasource/action#" title="Returns true if valid credentials exist for the given data source and&#xA;requesting user.&#xA;Some data sources doesn't support service account, so we need to talk to&#xA;them on behalf of the end user. This API just checks whether we have OAuth&#xA;token for the particular user, which is a pre-requisite before user can&#xA;create a transfer config.">
+      <attributes name="name" required="true" description="The data source in the form:&#xA;`projects/{project_id}/dataSources/{data_source_id}`" type="//@types.13"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpbigquerydatatransfer/datasource/action#" title="Lists supported data sources and returns their settings,&#xA;which can be used for UI rendering.">
+      <attributes name="pageToken" required="true" description="Pagination token, which can be used to request a specific page&#xA;of `ListDataSourcesRequest` list results. For multiple-page&#xA;results, `ListDataSourcesResponse` outputs&#xA;a `next_page` token, which can be used as the&#xA;`page_token` value to request the next page of list results." type="//@types.13"/>
+      <attributes name="pageSize" required="true" description="Page size. The default page size is the maximum value of 1000 results." type="//@types.3"/>
+      <attributes name="parent" required="true" description="The BigQuery project id for which data sources should be returned.&#xA;Must be in the form: `projects/{project_id}`" type="//@types.13"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpbigquerydatatransfer/datasource/action#" title="Retrieves a supported data source and returns its settings,&#xA;which can be used for UI rendering.">
+      <attributes name="name" required="true" description="The field will contain name of the resource requested, for example:&#xA;`projects/{project_id}/dataSources/{data_source_id}`" type="//@types.13"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpbigquerydatatransfer/datasource/action#" title="Lists supported data sources and returns their settings,&#xA;which can be used for UI rendering.">
+      <attributes name="pageToken" required="true" description="Pagination token, which can be used to request a specific page&#xA;of `ListDataSourcesRequest` list results. For multiple-page&#xA;results, `ListDataSourcesResponse` outputs&#xA;a `next_page` token, which can be used as the&#xA;`page_token` value to request the next page of list results." type="//@types.13"/>
+      <attributes name="pageSize" required="true" description="Page size. The default page size is the maximum value of 1000 results." type="//@types.3"/>
+      <attributes name="parent" required="true" description="The BigQuery project id for which data sources should be returned.&#xA;Must be in the form: `projects/{project_id}`" type="//@types.13"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpbigquerydatatransfer/datasource/action#" title="Retrieves a supported data source and returns its settings,&#xA;which can be used for UI rendering.">
+      <attributes name="name" required="true" description="The field will contain name of the resource requested, for example:&#xA;`projects/{project_id}/dataSources/{data_source_id}`" type="//@types.13"/>
+    </actions>
+    <actions name="checkValidCreds" scheme="http://occi/gcpbigquerydatatransfer/datasource/action#" title="Returns true if valid credentials exist for the given data source and&#xA;requesting user.&#xA;Some data sources doesn't support service account, so we need to talk to&#xA;them on behalf of the end user. This API just checks whether we have OAuth&#xA;token for the particular user, which is a pre-requisite before user can&#xA;create a transfer config.">
+      <attributes name="name" required="true" description="The data source in the form:&#xA;`projects/{project_id}/dataSources/{data_source_id}`" type="//@types.13"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ScheduleTransferRunsRequest" scheme="http://occi/gcpbigquerydatatransfer#" title="A request to schedule transfer runs for a time range.">
+    <attributes name="endTime" required="true" description="End time of the range of transfer runs. For example,&#xA;`&quot;2017-05-30T00:00:00+00:00&quot;`." type="//@types.13"/>
+    <attributes name="startTime" required="true" description="Start time of the range of transfer runs. For example,&#xA;`&quot;2017-05-25T00:00:00+00:00&quot;`." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Empty" scheme="http://occi/gcpbigquerydatatransfer#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Location" scheme="http://occi/gcpbigquerydatatransfer#" title="A resource that represents Google Cloud Platform location.">
+    <attributes name="labels" required="true" description="Cross-service attributes for the location. For example&#xA;&#xA;    {&quot;cloud.googleapis.com/region&quot;: &quot;us-east1&quot;}" type="//@types.9"/>
+    <attributes name="name" required="true" description="Resource name for the location, which may vary between implementations.&#xA;For example: `&quot;projects/example-project/locations/us-east1&quot;`" type="//@types.13"/>
+    <attributes name="locationId" required="true" description="The canonical id for this location. For example: `&quot;us-east1&quot;`." type="//@types.13"/>
+    <attributes name="metadata" required="true" description="Service-specific metadata. For example the available capacity at the given&#xA;location." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TransferConfig" scheme="http://occi/gcpbigquerydatatransfer#" title="Represents a data transfer configuration. A transfer configuration&#xA;contains all metadata needed to perform a data transfer. For example,&#xA;`destination_dataset_id` specifies where data should be stored.&#xA;When a new transfer configuration is created, the specified&#xA;`destination_dataset_id` is created when needed and shared with the&#xA;appropriate data source service account.">
+    <attributes name="dataSourceId" required="true" description="Data source id. Cannot be changed once data transfer is created." type="//@types.13"/>
+    <attributes name="state" required="true" description="Output only. State of the most recently updated transfer run." type="//@types.14"/>
+    <attributes name="userId" required="true" description="Output only. Unique ID of the user on whose behalf transfer is done.&#xA;Applicable only to data sources that do not support service accounts.&#xA;When set to 0, the data source service account credentials are used." type="//@types.14"/>
+    <attributes name="destinationDatasetId" required="true" description="The BigQuery target dataset id." type="//@types.14"/>
+    <attributes name="name" required="true" description="The resource name of the transfer config.&#xA;Transfer config names have the form&#xA;`projects/{project_id}/transferConfigs/{config_id}`.&#xA;Where `config_id` is usually a uuid, even though it is not&#xA;guaranteed or required. The name is ignored when creating a transfer&#xA;config." type="//@types.14"/>
+    <attributes name="params" required="true" description="Data transfer specific parameters." type="//@types.9"/>
+    <attributes name="datasetRegion" required="true" description="Output only. Region in which BigQuery dataset is located." type="//@types.14"/>
+    <attributes name="displayName" required="true" description="User specified display name for the data transfer." type="//@types.14"/>
+    <attributes name="disabled" required="true" description="Is this config disabled. When set to true, no runs are scheduled&#xA;for a given transfer." type="//@types.6"/>
+    <attributes name="nextRunTime" required="true" description="Output only. Next time when data transfer will run." type="//@types.14"/>
+    <attributes name="updateTime" required="true" description="Output only. Data transfer modification time. Ignored by server on input." type="//@types.14"/>
+    <attributes name="schedule" required="true" description="Data transfer schedule.&#xA;If the data source does not support a custom schedule, this should be&#xA;empty. If it is empty, the default value for the data source will be&#xA;used.&#xA;The specified times are in UTC.&#xA;Examples of valid format:&#xA;`1st,3rd monday of month 15:30`,&#xA;`every wed,fri of jan,jun 13:15`, and&#xA;`first sunday of quarter 00:00`.&#xA;See more explanation about the format here:&#xA;https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format&#xA;NOTE: the granularity should be at least 8 hours, or less frequent." type="//@types.14"/>
+    <attributes name="dataRefreshWindowDays" required="true" description="The number of days to look back to automatically refresh the data.&#xA;For example, if `data_refresh_window_days = 10`, then every day&#xA;BigQuery reingests data for [today-10, today-1], rather than ingesting data&#xA;for just [today-1].&#xA;Only valid if the data source supports the feature. Set the value to  0&#xA;to use the default value." type="//@types.3"/>
+    <actions name="create" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Creates a new data transfer configuration.">
+      <attributes name="authorizationCode" required="true" description="Optional OAuth2 authorization code to use with this transfer configuration.&#xA;This is required if new credentials are needed, as indicated by&#xA;`CheckValidCreds`.&#xA;In order to obtain authorization_code, please make a&#xA;request to&#xA;https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&lt;datatransferapiclientid>&amp;scope=&lt;data_source_scopes>&amp;redirect_uri=&lt;redirect_uri>&#xA;&#xA;* client_id should be OAuth client_id of BigQuery DTS API for the given&#xA;  data source returned by ListDataSources method.&#xA;* data_source_scopes are the scopes returned by ListDataSources method.&#xA;* redirect_uri is an optional parameter. If not specified, then&#xA;  authorization code is posted to the opener of authorization flow window.&#xA;  Otherwise it will be sent to the redirect uri. A special value of&#xA;  urn:ietf:wg:oauth:2.0:oob means that authorization code should be&#xA;  returned in the title bar of the browser, with the page text prompting&#xA;  the user to copy the code and paste it in the application." type="//@types.14"/>
+      <attributes name="parent" required="true" description="The BigQuery project id where the transfer configuration should be created.&#xA;Must be in the format /projects/{project_id}/locations/{location_id}&#xA;or&#xA;/projects/{project_id}/locations/-&#xA;In case when '-' is specified as location_id, location is infered from&#xA;the destination dataset region." type="//@types.14"/>
+    </actions>
+    <actions name="scheduleRuns" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Creates transfer runs for a time range [range_start_time, range_end_time].&#xA;For each date - or whatever granularity the data source supports - in the&#xA;range, one transfer run is created.&#xA;Note that runs are created per UTC time in the time range.">
+      <attributes name="parent" required="true" description="Transfer configuration name in the form:&#xA;`projects/{project_id}/transferConfigs/{config_id}`." type="//@types.14"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Returns information about a data transfer config.">
+      <attributes name="name" required="true" description="The field will contain name of the resource requested, for example:&#xA;`projects/{project_id}/transferConfigs/{config_id}`" type="//@types.14"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Updates a data transfer configuration.&#xA;All fields must be set, even if they are not updated.">
+      <attributes name="updateMask" required="true" description="Required list of fields to be updated in this request." type="//@types.14"/>
+      <attributes name="name" required="true" description="The resource name of the transfer config.&#xA;Transfer config names have the form&#xA;`projects/{project_id}/transferConfigs/{config_id}`.&#xA;Where `config_id` is usually a uuid, even though it is not&#xA;guaranteed or required. The name is ignored when creating a transfer&#xA;config." type="//@types.14"/>
+      <attributes name="authorizationCode" required="true" description="Optional OAuth2 authorization code to use with this transfer configuration.&#xA;If it is provided, the transfer configuration will be associated with the&#xA;gaia id of the authorizing user.&#xA;In order to obtain authorization_code, please make a&#xA;request to&#xA;https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&lt;datatransferapiclientid>&amp;scope=&lt;data_source_scopes>&amp;redirect_uri=&lt;redirect_uri>&#xA;&#xA;* client_id should be OAuth client_id of BigQuery DTS API for the given&#xA;  data source returned by ListDataSources method.&#xA;* data_source_scopes are the scopes returned by ListDataSources method.&#xA;* redirect_uri is an optional parameter. If not specified, then&#xA;  authorization code is posted to the opener of authorization flow window.&#xA;  Otherwise it will be sent to the redirect uri. A special value of&#xA;  urn:ietf:wg:oauth:2.0:oob means that authorization code should be&#xA;  returned in the title bar of the browser, with the page text prompting&#xA;  the user to copy the code and paste it in the application." type="//@types.14"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Deletes a data transfer configuration,&#xA;including any associated transfer runs and logs.">
+      <attributes name="name" required="true" description="The field will contain name of the resource requested, for example:&#xA;`projects/{project_id}/transferConfigs/{config_id}`" type="//@types.14"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Returns information about all data transfers in the project.">
+      <attributes name="dataSourceIds" required="true" description="When specified, only configurations of requested data sources are returned." type="//@types.14"/>
+      <attributes name="parent" required="true" description="The BigQuery project id for which data sources&#xA;should be returned: `projects/{project_id}`." type="//@types.14"/>
+      <attributes name="pageToken" required="true" description="Pagination token, which can be used to request a specific page&#xA;of `ListTransfersRequest` list results. For multiple-page&#xA;results, `ListTransfersResponse` outputs&#xA;a `next_page` token, which can be used as the&#xA;`page_token` value to request the next page of list results." type="//@types.14"/>
+      <attributes name="pageSize" required="true" description="Page size. The default page size is the maximum value of 1000 results." type="//@types.3"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Deletes a data transfer configuration,&#xA;including any associated transfer runs and logs.">
+      <attributes name="name" required="true" description="The field will contain name of the resource requested, for example:&#xA;`projects/{project_id}/transferConfigs/{config_id}`" type="//@types.14"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Returns information about all data transfers in the project.">
+      <attributes name="pageToken" required="true" description="Pagination token, which can be used to request a specific page&#xA;of `ListTransfersRequest` list results. For multiple-page&#xA;results, `ListTransfersResponse` outputs&#xA;a `next_page` token, which can be used as the&#xA;`page_token` value to request the next page of list results." type="//@types.14"/>
+      <attributes name="pageSize" required="true" description="Page size. The default page size is the maximum value of 1000 results." type="//@types.3"/>
+      <attributes name="dataSourceIds" required="true" description="When specified, only configurations of requested data sources are returned." type="//@types.14"/>
+      <attributes name="parent" required="true" description="The BigQuery project id for which data sources&#xA;should be returned: `projects/{project_id}`." type="//@types.14"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Creates a new data transfer configuration.">
+      <attributes name="authorizationCode" required="true" description="Optional OAuth2 authorization code to use with this transfer configuration.&#xA;This is required if new credentials are needed, as indicated by&#xA;`CheckValidCreds`.&#xA;In order to obtain authorization_code, please make a&#xA;request to&#xA;https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&lt;datatransferapiclientid>&amp;scope=&lt;data_source_scopes>&amp;redirect_uri=&lt;redirect_uri>&#xA;&#xA;* client_id should be OAuth client_id of BigQuery DTS API for the given&#xA;  data source returned by ListDataSources method.&#xA;* data_source_scopes are the scopes returned by ListDataSources method.&#xA;* redirect_uri is an optional parameter. If not specified, then&#xA;  authorization code is posted to the opener of authorization flow window.&#xA;  Otherwise it will be sent to the redirect uri. A special value of&#xA;  urn:ietf:wg:oauth:2.0:oob means that authorization code should be&#xA;  returned in the title bar of the browser, with the page text prompting&#xA;  the user to copy the code and paste it in the application." type="//@types.14"/>
+      <attributes name="parent" required="true" description="The BigQuery project id where the transfer configuration should be created.&#xA;Must be in the format /projects/{project_id}/locations/{location_id}&#xA;or&#xA;/projects/{project_id}/locations/-&#xA;In case when '-' is specified as location_id, location is infered from&#xA;the destination dataset region." type="//@types.14"/>
+    </actions>
+    <actions name="scheduleRuns" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Creates transfer runs for a time range [range_start_time, range_end_time].&#xA;For each date - or whatever granularity the data source supports - in the&#xA;range, one transfer run is created.&#xA;Note that runs are created per UTC time in the time range.">
+      <attributes name="parent" required="true" description="Transfer configuration name in the form:&#xA;`projects/{project_id}/transferConfigs/{config_id}`." type="//@types.14"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Updates a data transfer configuration.&#xA;All fields must be set, even if they are not updated.">
+      <attributes name="name" required="true" description="The resource name of the transfer config.&#xA;Transfer config names have the form&#xA;`projects/{project_id}/transferConfigs/{config_id}`.&#xA;Where `config_id` is usually a uuid, even though it is not&#xA;guaranteed or required. The name is ignored when creating a transfer&#xA;config." type="//@types.14"/>
+      <attributes name="authorizationCode" required="true" description="Optional OAuth2 authorization code to use with this transfer configuration.&#xA;If it is provided, the transfer configuration will be associated with the&#xA;gaia id of the authorizing user.&#xA;In order to obtain authorization_code, please make a&#xA;request to&#xA;https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&lt;datatransferapiclientid>&amp;scope=&lt;data_source_scopes>&amp;redirect_uri=&lt;redirect_uri>&#xA;&#xA;* client_id should be OAuth client_id of BigQuery DTS API for the given&#xA;  data source returned by ListDataSources method.&#xA;* data_source_scopes are the scopes returned by ListDataSources method.&#xA;* redirect_uri is an optional parameter. If not specified, then&#xA;  authorization code is posted to the opener of authorization flow window.&#xA;  Otherwise it will be sent to the redirect uri. A special value of&#xA;  urn:ietf:wg:oauth:2.0:oob means that authorization code should be&#xA;  returned in the title bar of the browser, with the page text prompting&#xA;  the user to copy the code and paste it in the application." type="//@types.14"/>
+      <attributes name="updateMask" required="true" description="Required list of fields to be updated in this request." type="//@types.14"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpbigquerydatatransfer/transferconfig/action#" title="Returns information about a data transfer config.">
+      <attributes name="name" required="true" description="The field will contain name of the resource requested, for example:&#xA;`projects/{project_id}/transferConfigs/{config_id}`" type="//@types.14"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TransferRun" scheme="http://occi/gcpbigquerydatatransfer#" title="Represents a data transfer run.">
+    <attributes name="state" required="true" description="Output only. Data transfer run state. Ignored for input requests." type="//@types.15"/>
+    <attributes name="userId" required="true" description="Output only. Unique ID of the user on whose behalf transfer is done.&#xA;Applicable only to data sources that do not support service accounts.&#xA;When set to 0, the data source service account credentials are used." type="//@types.15"/>
+    <attributes name="destinationDatasetId" required="true" description="The BigQuery target dataset id." type="//@types.15"/>
+    <attributes name="name" required="true" description="The resource name of the transfer run.&#xA;Transfer run names have the form&#xA;`projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.&#xA;The name is ignored when creating a transfer run." type="//@types.15"/>
+    <attributes name="params" required="true" description="Data transfer specific parameters." type="//@types.9"/>
+    <attributes name="endTime" required="true" description="Output only. Time when transfer run ended.&#xA;Parameter ignored by server for input requests." type="//@types.15"/>
+    <attributes name="datasetRegion" required="true" description="Output only. Region in which BigQuery dataset is located." type="//@types.15"/>
+    <attributes name="startTime" required="true" description="Output only. Time when transfer run was started.&#xA;Parameter ignored by server for input requests." type="//@types.15"/>
+    <attributes name="scheduleTime" required="true" description="Minimum time after which a transfer run can be started." type="//@types.15"/>
+    <attributes name="updateTime" required="true" description="Output only. Last time the data transfer run state was updated." type="//@types.15"/>
+    <attributes name="schedule" required="true" description="Output only. Describes the schedule of this transfer run if it was&#xA;created as part of a regular schedule. For batch transfer runs that are&#xA;scheduled manually, this is empty.&#xA;NOTE: the system might choose to delay the schedule depending on the&#xA;current load, so `schedule_time` doesn't always matches this." type="//@types.15"/>
+    <attributes name="runTime" required="true" description="For batch transfer runs, specifies the date and time that&#xA;data should be ingested." type="//@types.15"/>
+    <attributes name="dataSourceId" required="true" description="Output only. Data source id." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CheckValidCredsRequest" scheme="http://occi/gcpbigquerydatatransfer#" title="A request to determine whether the user has valid credentials. This method&#xA;is used to limit the number of OAuth popups in the user interface. The&#xA;user id is inferred from the API call context.&#xA;If the data source has the Google+ authorization type, this method&#xA;returns false, as it cannot be determined whether the credentials are&#xA;already valid merely based on the user id.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CheckValidCredsResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="A response indicating whether the credentials exist and are valid.">
+    <attributes name="hasValidCreds" required="true" description="If set to `true`, the credentials exist and are valid." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ScheduleTransferRunsResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="A response to schedule transfer runs for a time range.">
+    <attributes name="runs" required="true" description="The transfer runs that were scheduled." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListTransferLogsResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="The returned list transfer run messages.">
+    <attributes name="nextPageToken" required="true" description="Output only. The next-pagination token. For multiple-page list results,&#xA;this token can be used as the&#xA;`GetTransferRunLogRequest.page_token`&#xA;to request the next page of list results." type="//@types.15"/>
+    <attributes name="transferMessages" required="true" description="Output only. The stored pipeline transfer messages." type="//@types.7"/>
+    <actions name="list" scheme="http://occi/gcpbigquerydatatransfer/listtransferlogsresponse/action#" title="Returns user facing log messages for the data transfer run.">
+      <attributes name="pageToken" required="true" description="Pagination token, which can be used to request a specific page&#xA;of `ListTransferLogsRequest` list results. For multiple-page&#xA;results, `ListTransferLogsResponse` outputs&#xA;a `next_page` token, which can be used as the&#xA;`page_token` value to request the next page of list results." type="//@types.15"/>
+      <attributes name="pageSize" required="true" description="Page size. The default page size is the maximum value of 1000 results." type="//@types.3"/>
+      <attributes name="messageTypes" required="true" description="Message types to return. If not populated - INFO, WARNING and ERROR&#xA;messages are returned." type="//@types.15"/>
+      <attributes name="parent" required="true" description="Transfer run name in the form:&#xA;`projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`." type="//@types.15"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpbigquerydatatransfer/listtransferlogsresponse/action#" title="Returns user facing log messages for the data transfer run.">
+      <attributes name="parent" required="true" description="Transfer run name in the form:&#xA;`projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`." type="//@types.15"/>
+      <attributes name="pageToken" required="true" description="Pagination token, which can be used to request a specific page&#xA;of `ListTransferLogsRequest` list results. For multiple-page&#xA;results, `ListTransferLogsResponse` outputs&#xA;a `next_page` token, which can be used as the&#xA;`page_token` value to request the next page of list results." type="//@types.15"/>
+      <attributes name="pageSize" required="true" description="Page size. The default page size is the maximum value of 1000 results." type="//@types.3"/>
+      <attributes name="messageTypes" required="true" description="Message types to return. If not populated - INFO, WARNING and ERROR&#xA;messages are returned." type="//@types.15"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TransferMessage" scheme="http://occi/gcpbigquerydatatransfer#" title="Represents a user facing message for a particular data transfer run.">
+    <attributes name="messageText" required="true" description="Message text." type="//@types.15"/>
+    <attributes name="severity" required="true" description="Message severity." type="//@types.16"/>
+    <attributes name="messageTime" required="true" description="Time when message was logged." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListDataSourcesResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="Returns list of supported data sources and their metadata.">
+    <attributes name="nextPageToken" required="true" description="Output only. The next-pagination token. For multiple-page list results,&#xA;this token can be used as the&#xA;`ListDataSourcesRequest.page_token`&#xA;to request the next page of list results." type="//@types.16"/>
+    <attributes name="dataSources" required="true" description="List of supported data sources and their transfer settings." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DataSourceParameter" scheme="http://occi/gcpbigquerydatatransfer#" title="Represents a data source parameter with validation rules, so that&#xA;parameters can be rendered in the UI. These parameters are given to us by&#xA;supported data sources, and include all needed information for rendering&#xA;and validation.&#xA;Thus, whoever uses this api can decide to generate either generic ui,&#xA;or custom data source specific forms.">
+    <attributes name="displayName" required="true" description="Parameter display name in the user interface." type="//@types.16"/>
+    <attributes name="immutable" required="true" description="Cannot be changed after initial creation." type="//@types.6"/>
+    <attributes name="validationDescription" required="true" description="Description of the requirements for this field, in case the user input does&#xA;not fulfill the regex pattern or min/max values." type="//@types.16"/>
+    <attributes name="fields" required="true" description="When parameter is a record, describes child fields." type="//@types.7"/>
+    <attributes name="maxValue" required="true" description="For integer and double values specifies maxminum allowed value." type="//@types.3"/>
+    <attributes name="type" required="true" description="Parameter type." type="//@types.17"/>
+    <attributes name="recurse" required="true" description="If set to true, schema should be taken from the parent with the same&#xA;parameter_id. Only applicable when parameter type is RECORD." type="//@types.6"/>
+    <attributes name="description" required="true" description="Parameter description." type="//@types.17"/>
+    <attributes name="allowedValues" required="true" description="All possible values for the parameter." type="//@types.7"/>
+    <attributes name="validationHelpUrl" required="true" description="URL to a help document to further explain the naming requirements." type="//@types.17"/>
+    <attributes name="minValue" required="true" description="For integer and double values specifies minimum allowed value." type="//@types.3"/>
+    <attributes name="validationRegex" required="true" description="Regular expression which can be used for parameter validation." type="//@types.17"/>
+    <attributes name="paramId" required="true" description="Parameter identifier." type="//@types.17"/>
+    <attributes name="required" required="true" description="Is parameter required." type="//@types.6"/>
+    <attributes name="repeated" required="true" description="Can parameter have multiple values." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListTransferRunsResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="The returned list of pipelines in the project.">
+    <attributes name="transferRuns" required="true" description="Output only. The stored pipeline transfer runs." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="Output only. The next-pagination token. For multiple-page list results,&#xA;this token can be used as the&#xA;`ListTransferRunsRequest.page_token`&#xA;to request the next page of list results." type="//@types.17"/>
+    <actions name="delete" scheme="http://occi/gcpbigquerydatatransfer/listtransferrunsresponse/action#" title="Deletes the specified transfer run.">
+      <attributes name="name" required="true" description="The field will contain name of the resource requested, for example:&#xA;`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`" type="//@types.17"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpbigquerydatatransfer/listtransferrunsresponse/action#" title="Returns information about running and completed jobs.">
+      <attributes name="pageSize" required="true" description="Page size. The default page size is the maximum value of 1000 results." type="//@types.3"/>
+      <attributes name="states" required="true" description="When specified, only transfer runs with requested states are returned." type="//@types.17"/>
+      <attributes name="runAttempt" required="true" description="Indicates how run attempts are to be pulled." type="//@types.17"/>
+      <attributes name="parent" required="true" description="Name of transfer configuration for which transfer runs should be retrieved.&#xA;Format of transfer configuration resource name is:&#xA;`projects/{project_id}/transferConfigs/{config_id}`." type="//@types.17"/>
+      <attributes name="pageToken" required="true" description="Pagination token, which can be used to request a specific page&#xA;of `ListTransferRunsRequest` list results. For multiple-page&#xA;results, `ListTransferRunsResponse` outputs&#xA;a `next_page` token, which can be used as the&#xA;`page_token` value to request the next page of list results." type="//@types.17"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpbigquerydatatransfer/listtransferrunsresponse/action#" title="Returns information about the particular transfer run.">
+      <attributes name="name" required="true" description="The field will contain name of the resource requested, for example:&#xA;`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`" type="//@types.17"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpbigquerydatatransfer/listtransferrunsresponse/action#" title="Deletes the specified transfer run.">
+      <attributes name="name" required="true" description="The field will contain name of the resource requested, for example:&#xA;`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`" type="//@types.17"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpbigquerydatatransfer/listtransferrunsresponse/action#" title="Returns information about running and completed jobs.">
+      <attributes name="pageSize" required="true" description="Page size. The default page size is the maximum value of 1000 results." type="//@types.3"/>
+      <attributes name="states" required="true" description="When specified, only transfer runs with requested states are returned." type="//@types.17"/>
+      <attributes name="runAttempt" required="true" description="Indicates how run attempts are to be pulled." type="//@types.17"/>
+      <attributes name="parent" required="true" description="Name of transfer configuration for which transfer runs should be retrieved.&#xA;Format of transfer configuration resource name is:&#xA;`projects/{project_id}/transferConfigs/{config_id}`." type="//@types.17"/>
+      <attributes name="pageToken" required="true" description="Pagination token, which can be used to request a specific page&#xA;of `ListTransferRunsRequest` list results. For multiple-page&#xA;results, `ListTransferRunsResponse` outputs&#xA;a `next_page` token, which can be used as the&#xA;`page_token` value to request the next page of list results." type="//@types.17"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpbigquerydatatransfer/listtransferrunsresponse/action#" title="Returns information about the particular transfer run.">
+      <attributes name="name" required="true" description="The field will contain name of the resource requested, for example:&#xA;`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`" type="//@types.17"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListLocationsResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="The response message for Locations.ListLocations.">
+    <attributes name="locations" required="true" description="A list of locations that matches the specified filter in the request." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListTransferConfigsResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="The returned list of pipelines in the project.">
+    <attributes name="nextPageToken" required="true" description="Output only. The next-pagination token. For multiple-page list results,&#xA;this token can be used as the&#xA;`ListTransferConfigsRequest.page_token`&#xA;to request the next page of list results." type="//@types.17"/>
+    <attributes name="transferConfigs" required="true" description="Output only. The stored pipeline transfer configurations." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="authorizationType" documentation="Indicates the type of authorization.">
+    <literals name="AUTHORIZATION_TYPE_UNSPECIFIED" documentation="Type unspecified."/>
+    <literals name="AUTHORIZATION_CODE" documentation="Use OAuth 2 authorization codes that can be exchanged&#xA;for a refresh token on the backend."/>
+    <literals name="GOOGLE_PLUS_AUTHORIZATION_CODE" documentation="Return an authorization code for a given Google+ page that can then be&#xA;exchanged for a refresh token on the backend."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="dataRefreshType" documentation="Specifies whether the data source supports automatic data refresh for the&#xA;past few days, and how it's supported.&#xA;For some data sources, data might not be complete until a few days later,&#xA;so it's useful to refresh data automatically.">
+    <literals name="DATA_REFRESH_TYPE_UNSPECIFIED" documentation="The data source won't support data auto refresh, which is default value."/>
+    <literals name="SLIDING_WINDOW" documentation="The data source supports data auto refresh, and runs will be scheduled&#xA;for the past few days. Does not allow custom values to be set for each&#xA;transfer config."/>
+    <literals name="CUSTOM_SLIDING_WINDOW" documentation="The data source supports data auto refresh, and runs will be scheduled&#xA;for the past few days. Allows custom values to be set for each transfer&#xA;config."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="transferType" documentation="Transfer type. Currently supports only batch transfers,&#xA;which are transfers that use the BigQuery batch APIs (load or&#xA;query) to ingest the data.">
+    <literals name="TRANSFER_TYPE_UNSPECIFIED" documentation="Invalid or Unknown transfer type placeholder."/>
+    <literals name="BATCH" documentation="Batch data transfer."/>
+    <literals name="STREAMING" documentation="Streaming data transfer. Streaming data source currently doesn't&#xA;support multiple transfer configs per project."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="state" documentation="Output only. State of the most recently updated transfer run.">
+    <literals name="TRANSFER_STATE_UNSPECIFIED" documentation="State placeholder."/>
+    <literals name="INACTIVE" documentation="Data transfer is inactive."/>
+    <literals name="PENDING" documentation="Data transfer is scheduled and is waiting to be picked up by&#xA;data transfer backend."/>
+    <literals name="RUNNING" documentation="Data transfer is in progress."/>
+    <literals name="SUCCEEDED" documentation="Data transfer completed successsfully."/>
+    <literals name="FAILED" documentation="Data transfer failed."/>
+    <literals name="CANCELLED" documentation="Data transfer is cancelled."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="TransferRunSstate" documentation="Output only. Data transfer run state. Ignored for input requests.">
+    <literals name="TRANSFER_STATE_UNSPECIFIED" documentation="State placeholder."/>
+    <literals name="INACTIVE" documentation="Data transfer is inactive."/>
+    <literals name="PENDING" documentation="Data transfer is scheduled and is waiting to be picked up by&#xA;data transfer backend."/>
+    <literals name="RUNNING" documentation="Data transfer is in progress."/>
+    <literals name="SUCCEEDED" documentation="Data transfer completed successsfully."/>
+    <literals name="FAILED" documentation="Data transfer failed."/>
+    <literals name="CANCELLED" documentation="Data transfer is cancelled."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="severity" documentation="Message severity.">
+    <literals name="MESSAGE_SEVERITY_UNSPECIFIED" documentation="No severity specified."/>
+    <literals name="INFO" documentation="Informational message."/>
+    <literals name="WARNING" documentation="Warning message."/>
+    <literals name="ERROR" documentation="Error message."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="type" documentation="Parameter type.">
+    <literals name="TYPE_UNSPECIFIED" documentation="Type unspecified."/>
+    <literals name="STRING" documentation="String parameter."/>
+    <literals name="INTEGER" documentation="Integer parameter (64-bits).&#xA;Will be serialized to json as string."/>
+    <literals name="DOUBLE" documentation="Double precision floating point parameter."/>
+    <literals name="BOOLEAN" documentation="Boolean parameter."/>
+    <literals name="RECORD" documentation="Record parameter."/>
+    <literals name="PLUS_PAGE" documentation="Page ID for a Google+ Page."/>
+  </types>
+</occi:Extension>

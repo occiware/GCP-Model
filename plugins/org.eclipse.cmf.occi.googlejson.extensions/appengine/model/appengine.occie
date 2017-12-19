@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="appengine" scheme="http://occi/gcpappengine#" description="The App Engine Admin API enables developers to provision and manage their App Engine applications.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="CpuUtilization" scheme="http://occi/gcpappengine#" title="Target scaling by CPU usage.">
+    <attributes name="aggregationWindowLength" required="true" description="Period of time over which CPU utilization is calculated." type="//@types.0"/>
+    <attributes name="targetUtilization" required="true" description="Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Status" scheme="http://occi/gcpappengine#" title="The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). The error model is designed to be:&#xA;Simple to use and understand for most users&#xA;Flexible enough to meet unexpected needsOverviewThe Status message contains three pieces of data: error code, error message, and error details. The error code should be an enum value of google.rpc.Code, but it may accept additional error codes if needed. The error message should be a developer-facing English message that helps developers understand and resolve the error. If a localized user-facing error message is needed, put the localized message in the error details or localize it in the client. The optional error details may contain arbitrary information about the error. There is a predefined set of error detail types in the package google.rpc that can be used for common error conditions.Language mappingThe Status message is the logical representation of the error model, but it is not necessarily the actual wire format. When the Status message is exposed in different client libraries and different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some error codes in C.Other usesThe error model and the Status message can be used in a variety of environments, either with or without APIs, to provide a consistent developer experience across different environments.Example uses of this error model include:&#xA;Partial errors. If a service needs to return partial errors to the client, it may embed the Status in the normal response to indicate the partial errors.&#xA;Workflow errors. A typical workflow has multiple steps. Each step may have a Status message for error reporting.&#xA;Batch operations. If a client uses batch request and batch response, the Status message should be used directly inside batch response, one for each error sub-response.&#xA;Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of those operations should be represented directly using the Status message.&#xA;Logging. If some API errors are stored in logs, the message Status could be used directly after any stripping needed for security/privacy reasons.">
+    <attributes name="details" required="true" description="A list of messages that carry the error details. There is a common set of message types for APIs to use." type="//@types.7"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="IdentityAwareProxy" scheme="http://occi/gcpappengine#" title="Identity-Aware Proxy">
+    <attributes name="oauth2ClientSecret" required="true" description="OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly" type="//@types.0"/>
+    <attributes name="oauth2ClientId" required="true" description="OAuth2 client ID to use for the authentication flow." type="//@types.0"/>
+    <attributes name="oauth2ClientSecretSha256" required="true" description="Hex-encoded SHA-256 hash of the client secret.@OutputOnly" type="//@types.0"/>
+    <attributes name="enabled" required="true" description="Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ManualScaling" scheme="http://occi/gcpappengine#" title="A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.">
+    <attributes name="instances" required="true" description="Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LocationMetadata" scheme="http://occi/gcpappengine#" title="Metadata for the given google.cloud.location.Location.">
+    <attributes name="flexibleEnvironmentAvailable" required="true" description="App Engine Flexible Environment is available in the given location.@OutputOnly" type="//@types.6"/>
+    <attributes name="standardEnvironmentAvailable" required="true" description="App Engine Standard Environment is available in the given location.@OutputOnly" type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TrafficSplitLink" scheme="http://occi/gcpappengine#" title="Mapping that defines fractional HTTP traffic diversion to different versions within the service." source="//@kinds[term='service']" target="//@kinds[term='trafficsplit']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Service" scheme="http://occi/gcpappengine#" title="A Service resource is a logical component of an application that can share state and communicate in a secure fashion with other services. For example, an application that handles customer requests might include separate services to handle tasks such as backend data analysis or API requests from mobile devices. Each service has a collection of versions that define a specific set of code used to implement the functionality of that service.">
+    <attributes name="name" required="true" description="Full path to the Service resource in the API. Example: apps/myapp/services/default.@OutputOnly" type="//@types.0"/>
+    <actions name="delete" scheme="http://occi/gcpappengine/service/action#" title="Deletes the specified service and all enclosed versions.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource requested. Example: apps/myapp/services/default." type="//@types.0"/>
+      <attributes name="servicesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.0"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpappengine/service/action#" title="Lists all the services in the application.">
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the parent Application resource. Example: apps/myapp." type="//@types.0"/>
+      <attributes name="pageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.0"/>
+      <attributes name="pageSize" required="true" description="Maximum results to return per page." type="//@types.3"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpappengine/service/action#" title="Gets the current configuration of the specified service.">
+      <attributes name="servicesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.0"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource requested. Example: apps/myapp/services/default." type="//@types.0"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpappengine/service/action#" title="Updates the configuration of the specified service.">
+      <attributes name="updateMask" required="true" description="Standard field mask for the set of fields to be updated." type="//@types.0"/>
+      <attributes name="servicesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.0"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource to update. Example: apps/myapp/services/default." type="//@types.0"/>
+      <attributes name="migrateTraffic" required="true" description="Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#inboundservicetype) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#automaticscaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#shardby) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic)." type="//@types.6"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListOperationsResponse" scheme="http://occi/gcpappengine#" title="The response message for Operations.ListOperations.">
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.0"/>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationMetadata" scheme="http://occi/gcpappengine#" title="Metadata for the given google.longrunning.Operation.">
+    <attributes name="user" required="true" description="User who requested this operation.@OutputOnly" type="//@types.0"/>
+    <attributes name="target" required="true" description="Name of the resource that this operation is acting on. Example: apps/myapp/modules/default.@OutputOnly" type="//@types.0"/>
+    <attributes name="method" required="true" description="API method that initiated this operation. Example: google.appengine.v1beta4.Version.CreateVersion.@OutputOnly" type="//@types.0"/>
+    <attributes name="endTime" required="true" description="Timestamp that this operation completed.@OutputOnly" type="//@types.0"/>
+    <attributes name="operationType" required="true" description="Type of this operation. Deprecated, use method field instead. Example: &quot;create_version&quot;.@OutputOnly" type="//@types.0"/>
+    <attributes name="insertTime" required="true" description="Timestamp that this operation was created.@OutputOnly" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="FirewallRule" scheme="http://occi/gcpappengine#" title="A single firewall rule that is evaluated against incoming traffic and provides an action to take on matched requests.">
+    <attributes name="sourceRange" required="true" description="IP address or range, defined using CIDR notation, of requests that this rule applies to. You can use the wildcard character &quot;*&quot; to match all IPs equivalent to &quot;0/0&quot; and &quot;::/0&quot; together. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32  or 2001:0db8:0000:0042:0000:8a2e:0370:7334.&lt;p>Truncation will be silently performed on addresses which are not properly truncated. For example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as 2001:db8::/32." type="//@types.0"/>
+    <attributes name="priority" required="true" description="A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user." type="//@types.3"/>
+    <attributes name="action" required="true" description="The action to take on matched requests." type="//@types.11"/>
+    <attributes name="description" required="true" description="An optional string description of this rule. This field has a maximum length of 100 characters." type="//@types.11"/>
+    <actions name="get" scheme="http://occi/gcpappengine/firewallrule/action#" title="Gets the specified firewall rule.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the Firewall resource to retrieve. Example: apps/myapp/firewall/ingressRules/100." type="//@types.11"/>
+      <attributes name="ingressRulesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.11"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpappengine/firewallrule/action#" title="Updates the specified firewall rule.">
+      <attributes name="updateMask" required="true" description="Standard field mask for the set of fields to be updated." type="//@types.11"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the Firewall resource to update. Example: apps/myapp/firewall/ingressRules/100." type="//@types.11"/>
+      <attributes name="ingressRulesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.11"/>
+    </actions>
+    <actions name="batchUpdate" scheme="http://occi/gcpappengine/firewallrule/action#" title="Replaces the entire firewall ruleset in one bulk operation. This overrides and replaces the rules of an existing firewall with the new rules.If the final rule does not match traffic with the '*' wildcard IP range, then an &quot;allow all&quot; rule is explicitly added to the end of the list.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/firewall/ingressRules." type="//@types.11"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpappengine/firewallrule/action#" title="Deletes the specified firewall rule.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the Firewall resource to delete. Example: apps/myapp/firewall/ingressRules/100." type="//@types.11"/>
+      <attributes name="ingressRulesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.11"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpappengine/firewallrule/action#" title="Lists the firewall rules of an application.">
+      <attributes name="pageSize" required="true" description="Maximum results to return per page." type="//@types.3"/>
+      <attributes name="matchingAddress" required="true" description="A valid IP Address. If set, only rules matching this address will be returned. The first returned rule will be the rule that fires on requests from this IP." type="//@types.11"/>
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the Firewall collection to retrieve. Example: apps/myapp/firewall/ingressRules." type="//@types.11"/>
+      <attributes name="pageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.11"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpappengine/firewallrule/action#" title="Creates a firewall rule for the application.">
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the parent Firewall collection in which to create a new rule. Example: apps/myapp/firewall/ingressRules." type="//@types.11"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListAuthorizedCertificatesResponse" scheme="http://occi/gcpappengine#" title="Response message for AuthorizedCertificates.ListAuthorizedCertificates.">
+    <attributes name="certificates" required="true" description="The SSL certificates the user is authorized to administer." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="FeatureSettings" scheme="http://occi/gcpappengine#" title="The feature specific settings to be used in the application. These define behaviors that are user configurable.">
+    <attributes name="splitHealthChecks" required="true" description="Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true, this setting can be removed." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ErrorHandler" scheme="http://occi/gcpappengine#" title="Custom static error page to be served when an error occurs.">
+    <attributes name="errorCode" required="true" description="Error condition this handler applies to." type="//@types.12"/>
+    <attributes name="mimeType" required="true" description="MIME type of file. Defaults to text/html." type="//@types.12"/>
+    <attributes name="staticFile" required="true" description="Static file content to be served for this error." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SslSettings" scheme="http://occi/gcpappengine#" title="SSL configuration for a DomainMapping resource.">
+    <attributes name="certificateId" required="true" description="ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support. Example: 12345." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationMetadataV1" scheme="http://occi/gcpappengine#" title="Metadata for the given google.longrunning.Operation.">
+    <attributes name="warning" required="true" description="Durable messages that persist on every operation poll. @OutputOnly" type="//@types.7"/>
+    <attributes name="insertTime" required="true" description="Time that this operation was created.@OutputOnly" type="//@types.12"/>
+    <attributes name="target" required="true" description="Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly" type="//@types.12"/>
+    <attributes name="user" required="true" description="User who requested this operation.@OutputOnly" type="//@types.12"/>
+    <attributes name="ephemeralMessage" required="true" description="Ephemeral message that may change every time the operation is polled. @OutputOnly" type="//@types.12"/>
+    <attributes name="method" required="true" description="API method that initiated this operation. Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly" type="//@types.12"/>
+    <attributes name="endTime" required="true" description="Time that this operation completed.@OutputOnly" type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="FeatureSettingsLink" scheme="http://occi/gcpappengine#" title="The feature specific settings to be used in the application." source="//@kinds[term='application']" target="//@kinds[term='featuresettings']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="IdentityAwareProxyLink" scheme="http://occi/gcpappengine#" title="" source="//@kinds[term='application']" target="//@kinds[term='identityawareproxy']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Application" scheme="http://occi/gcpappengine#" title="An Application resource contains the top-level configuration of an App Engine application. Next tag: 20">
+    <attributes name="dispatchRules" required="true" description="HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.@OutputOnly" type="//@types.7"/>
+    <attributes name="gcrDomain" required="true" description="The Google Container Registry domain used for storing managed build docker images for this application." type="//@types.12"/>
+    <attributes name="name" required="true" description="Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly" type="//@types.12"/>
+    <attributes name="defaultCookieExpiration" required="true" description="Cookie expiration policy for this application." type="//@types.12"/>
+    <attributes name="locationId" required="true" description="Location from which this application will be run. Application instances will run out of data centers in the chosen location, which is also where all of the application's end user content is stored.Defaults to us-central.Options are:us-central - Central USeurope-west - Western Europeus-east1 - Eastern US" type="//@types.12"/>
+    <attributes name="servingStatus" required="true" description="Serving status of this application." type="//@types.13"/>
+    <attributes name="defaultHostname" required="true" description="Hostname used to reach this application, as resolved by App Engine.@OutputOnly" type="//@types.13"/>
+    <attributes name="authDomain" required="true" description="Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account." type="//@types.13"/>
+    <attributes name="codeBucket" required="true" description="Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly" type="//@types.13"/>
+    <attributes name="defaultBucket" required="true" description="Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly" type="//@types.13"/>
+    <actions name="repair" scheme="http://occi/gcpappengine/application/action#" title="Recreates the required App Engine features for the specified App Engine application, for example a Cloud Storage bucket or App Engine service account. Use this method if you receive an error message about a missing feature, for example, Error retrieving the App Engine service account.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the application to repair. Example: apps/myapp" type="//@types.13"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpappengine/application/action#" title="Gets information about an application.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the Application resource to get. Example: apps/myapp." type="//@types.13"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpappengine/application/action#" title="Updates the specified Application resource. You can update the following fields:&#xA;auth_domain - Google authentication domain for controlling user access to the application.&#xA;default_cookie_expiration - Cookie expiration policy for the application.">
+      <attributes name="updateMask" required="true" description="Standard field mask for the set of fields to be updated." type="//@types.13"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the Application resource to update. Example: apps/myapp." type="//@types.13"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpappengine/application/action#" title="Creates an App Engine application for a Google Cloud Platform project. Required fields:&#xA;id - The ID of the target Cloud Platform project.&#xA;location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/python/console/)."/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Network" scheme="http://occi/gcpappengine#" title="Extra network settings. Only applicable for App Engine flexible environment versions">
+    <attributes name="name" required="true" description="Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default." type="//@types.13"/>
+    <attributes name="forwardedPorts" required="true" description="List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable for App Engine flexible environment versions." type="//@types.7"/>
+    <attributes name="instanceTag" required="true" description="Tag to apply to the VM instance during creation. Only applicable for for App Engine flexible environment versions." type="//@types.13"/>
+    <attributes name="subnetworkName" required="true" description="Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.If a subnetwork name is specified, a network name will also be required unless it is for the default network.&#xA;If the network the VM instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.&#xA;If the network the VM instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetwork_name) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network.&#xA;If the network the VM instance is being created in is a custom Subnet Mode Network, then the subnetwork_name must be specified and the IP address is created from the IPCidrRange of the subnetwork.If specified, the subnetwork must exist in the same region as the App Engine flexible environment application." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Instance" scheme="http://occi/gcpappengine#" title="An Instance resource is the computing unit that App Engine uses to automatically scale an application.">
+    <attributes name="averageLatency" required="true" description="Average latency (ms) over the last minute.@OutputOnly" type="//@types.3"/>
+    <attributes name="memoryUsage" required="true" description="Total memory in use (bytes).@OutputOnly" type="//@types.13"/>
+    <attributes name="vmIp" required="true" description="The IP address of this instance. Only applicable for instances in App Engine flexible environment.@OutputOnly" type="//@types.13"/>
+    <attributes name="availability" required="true" description="Availability of the instance.@OutputOnly" type="//@types.14"/>
+    <attributes name="vmStatus" required="true" description="Status of the virtual machine where this instance lives. Only applicable for instances in App Engine flexible environment.@OutputOnly" type="//@types.14"/>
+    <attributes name="errors" required="true" description="Number of errors since this instance was started.@OutputOnly" type="//@types.3"/>
+    <attributes name="startTime" required="true" description="Time that this instance was started.@OutputOnly" type="//@types.14"/>
+    <attributes name="vmDebugEnabled" required="true" description="Whether this instance is in debug mode. Only applicable for instances in App Engine flexible environment.@OutputOnly" type="//@types.6"/>
+    <attributes name="requests" required="true" description="Number of requests since this instance was started.@OutputOnly" type="//@types.3"/>
+    <attributes name="appEngineRelease" required="true" description="App Engine release this instance is running on.@OutputOnly" type="//@types.14"/>
+    <attributes name="vmName" required="true" description="Name of the virtual machine where this instance lives. Only applicable for instances in App Engine flexible environment.@OutputOnly" type="//@types.14"/>
+    <attributes name="qps" required="true" description="Average queries per second (QPS) over the last minute.@OutputOnly" type="//@types.3"/>
+    <attributes name="vmId" required="true" description="Virtual machine ID of this instance. Only applicable for instances in App Engine flexible environment.@OutputOnly" type="//@types.14"/>
+    <attributes name="vmZoneName" required="true" description="Zone where the virtual machine is located. Only applicable for instances in App Engine flexible environment.@OutputOnly" type="//@types.14"/>
+    <attributes name="name" required="true" description="Full path to the Instance resource in the API. Example: apps/myapp/services/default/versions/v1/instances/instance-1.@OutputOnly" type="//@types.14"/>
+    <actions name="list" scheme="http://occi/gcpappengine/instance/action#" title="Lists the instances of a version.Tip: To aggregate details about instances over time, see the Stackdriver Monitoring API (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).">
+      <attributes name="servicesId" required="true" description="Part of `parent`. See documentation of `appsId`." type="//@types.14"/>
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the parent Version resource. Example: apps/myapp/services/default/versions/v1." type="//@types.14"/>
+      <attributes name="pageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.14"/>
+      <attributes name="pageSize" required="true" description="Maximum results to return per page." type="//@types.3"/>
+      <attributes name="versionsId" required="true" description="Part of `parent`. See documentation of `appsId`." type="//@types.14"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpappengine/instance/action#" title="Gets instance information.">
+      <attributes name="servicesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.14"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1." type="//@types.14"/>
+      <attributes name="instancesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.14"/>
+      <attributes name="versionsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.14"/>
+    </actions>
+    <actions name="debug" scheme="http://occi/gcpappengine/instance/action#" title="Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in &quot;debug mode&quot;, the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment.">
+      <attributes name="servicesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.14"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1." type="//@types.14"/>
+      <attributes name="instancesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.14"/>
+      <attributes name="versionsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.14"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpappengine/instance/action#" title="Stops a running instance.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1." type="//@types.14"/>
+      <attributes name="instancesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.14"/>
+      <attributes name="versionsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.14"/>
+      <attributes name="servicesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.14"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LivenessCheck" scheme="http://occi/gcpappengine#" title="Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.">
+    <attributes name="failureThreshold" required="true" description="Number of consecutive failed checks required before considering the VM unhealthy." type="//@types.3"/>
+    <attributes name="timeout" required="true" description="Time before the check is considered failed." type="//@types.14"/>
+    <attributes name="initialDelay" required="true" description="The initial delay before starting to execute the checks." type="//@types.14"/>
+    <attributes name="path" required="true" description="The request path." type="//@types.14"/>
+    <attributes name="host" required="true" description="Host header to send when performing a HTTP Liveness check. Example: &quot;myapp.appspot.com&quot;" type="//@types.14"/>
+    <attributes name="successThreshold" required="true" description="Number of consecutive successful checks required before considering the VM healthy." type="//@types.3"/>
+    <attributes name="checkInterval" required="true" description="Interval between health checks." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BatchUpdateIngressRulesRequest" scheme="http://occi/gcpappengine#" title="Request message for Firewall.BatchUpdateIngressRules.">
+    <attributes name="ingressRules" required="true" description="A list of FirewallRules to replace the existing set." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="NetworkUtilization" scheme="http://occi/gcpappengine#" title="Target scaling by network usage. Only applicable for VM runtimes.">
+    <attributes name="targetSentPacketsPerSecond" required="true" description="Target packets sent per second." type="//@types.3"/>
+    <attributes name="targetReceivedBytesPerSecond" required="true" description="Target bytes received per second." type="//@types.3"/>
+    <attributes name="targetReceivedPacketsPerSecond" required="true" description="Target packets received per second." type="//@types.3"/>
+    <attributes name="targetSentBytesPerSecond" required="true" description="Target bytes sent per second." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Location" scheme="http://occi/gcpappengine#" title="A resource that represents Google Cloud Platform location.">
+    <attributes name="metadata" required="true" description="Service-specific metadata. For example the available capacity at the given location." type="//@types.9"/>
+    <attributes name="labels" required="true" description="Cross-service attributes for the location. For example&#xA;{&quot;cloud.googleapis.com/region&quot;: &quot;us-east1&quot;}&#xA;" type="//@types.9"/>
+    <attributes name="name" required="true" description="Resource name for the location, which may vary between implementations. For example: &quot;projects/example-project/locations/us-east1&quot;" type="//@types.14"/>
+    <attributes name="locationId" required="true" description="The canonical id for this location. For example: &quot;us-east1&quot;." type="//@types.14"/>
+    <actions name="list" scheme="http://occi/gcpappengine/location/action#" title="Lists information about the supported locations for this service.">
+      <attributes name="pageSize" required="true" description="The standard list page size." type="//@types.3"/>
+      <attributes name="filter" required="true" description="The standard list filter." type="//@types.14"/>
+      <attributes name="appsId" required="true" description="Part of `name`. The resource that owns the locations collection, if applicable." type="//@types.14"/>
+      <attributes name="pageToken" required="true" description="The standard list page token." type="//@types.14"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpappengine/location/action#" title="Get information about a location.">
+      <attributes name="locationsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.14"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Resource name for the location." type="//@types.14"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="HealthCheck" scheme="http://occi/gcpappengine#" title="Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.">
+    <attributes name="timeout" required="true" description="Time before the health check is considered failed." type="//@types.14"/>
+    <attributes name="unhealthyThreshold" required="true" description="Number of consecutive failed health checks required before removing traffic." type="//@types.3"/>
+    <attributes name="disableHealthCheck" required="true" description="Whether to explicitly disable health checks for this instance." type="//@types.6"/>
+    <attributes name="host" required="true" description="Host header to send when performing an HTTP health check. Example: &quot;myapp.appspot.com&quot;" type="//@types.14"/>
+    <attributes name="healthyThreshold" required="true" description="Number of consecutive successful health checks required before receiving traffic." type="//@types.3"/>
+    <attributes name="restartThreshold" required="true" description="Number of consecutive failed health checks required before an instance is restarted." type="//@types.3"/>
+    <attributes name="checkInterval" required="true" description="Interval between health checks." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReadinessCheck" scheme="http://occi/gcpappengine#" title="Readiness checking configuration for VM instances. Unhealthy instances are removed from traffic rotation.">
+    <attributes name="path" required="true" description="The request path." type="//@types.14"/>
+    <attributes name="host" required="true" description="Host header to send when performing a HTTP Readiness check. Example: &quot;myapp.appspot.com&quot;" type="//@types.14"/>
+    <attributes name="successThreshold" required="true" description="Number of consecutive successful checks required before receiving traffic." type="//@types.3"/>
+    <attributes name="checkInterval" required="true" description="Interval between health checks." type="//@types.14"/>
+    <attributes name="failureThreshold" required="true" description="Number of consecutive failed checks required before removing traffic." type="//@types.3"/>
+    <attributes name="timeout" required="true" description="Time before the check is considered failed." type="//@types.14"/>
+    <attributes name="appStartTimeout" required="true" description="A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DebugInstanceRequest" scheme="http://occi/gcpappengine#" title="Request message for Instances.DebugInstance.">
+    <attributes name="sshKey" required="true" description="Public SSH key to add to the instance. Examples:&#xA;[USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME]&#xA;[USERNAME]:ssh-rsa [KEY_VALUE] google-ssh {&quot;userName&quot;:&quot;[USERNAME]&quot;,&quot;expireOn&quot;:&quot;[EXPIRE_TIME]&quot;}For more information, see Adding and Removing SSH Keys (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys)." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationMetadataV1Beta5" scheme="http://occi/gcpappengine#" title="Metadata for the given google.longrunning.Operation.">
+    <attributes name="insertTime" required="true" description="Timestamp that this operation was created.@OutputOnly" type="//@types.14"/>
+    <attributes name="endTime" required="true" description="Timestamp that this operation completed.@OutputOnly" type="//@types.14"/>
+    <attributes name="user" required="true" description="User who requested this operation.@OutputOnly" type="//@types.14"/>
+    <attributes name="target" required="true" description="Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly" type="//@types.14"/>
+    <attributes name="method" required="true" description="API method name that initiated this operation. Example: google.appengine.v1beta5.Version.CreateVersion.@OutputOnly" type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AutomaticScalingLink" scheme="http://occi/gcpappengine#" title="Automatic scaling is based on request rate, response latencies, and other application metrics." source="//@kinds[term='version']" target="//@kinds[term='automaticscaling']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="HealthCheckLink" scheme="http://occi/gcpappengine#" title="Configures health checking for VM instances. Unhealthy instances are stopped and replaced with new instances. Only applicable for VM runtimes.Only returned in GET requests if view=FULL is set." source="//@kinds[term='version']" target="//@kinds[term='healthcheck']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ReadinessCheckLink" scheme="http://occi/gcpappengine#" title="Configures readiness health checking for VM instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set." source="//@kinds[term='version']" target="//@kinds[term='readinesscheck']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ManualScalingLink" scheme="http://occi/gcpappengine#" title="A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time." source="//@kinds[term='version']" target="//@kinds[term='manualscaling']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ApiConfigHandlerLink" scheme="http://occi/gcpappengine#" title="Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set." source="//@kinds[term='version']" target="//@kinds[term='apiconfighandler']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="EndpointsApiServiceLink" scheme="http://occi/gcpappengine#" title="Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app." source="//@kinds[term='version']" target="//@kinds[term='endpointsapiservice']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="DeploymentLink" scheme="http://occi/gcpappengine#" title="Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set." source="//@kinds[term='version']" target="//@kinds[term='deployment']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ResourcesLink" scheme="http://occi/gcpappengine#" title="Machine resources for this version. Only applicable for VM runtimes." source="//@kinds[term='version']" target="//@kinds[term='resources']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BasicScalingLink" scheme="http://occi/gcpappengine#" title="A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity." source="//@kinds[term='version']" target="//@kinds[term='basicscaling']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LivenessCheckLink" scheme="http://occi/gcpappengine#" title="Configures liveness health checking for VM instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set." source="//@kinds[term='version']" target="//@kinds[term='livenesscheck']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="NetworkLink" scheme="http://occi/gcpappengine#" title="Extra network settings. Only applicable for App Engine flexible environment versions." source="//@kinds[term='version']" target="//@kinds[term='network']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Version" scheme="http://occi/gcpappengine#" title="A Version resource is a specific set of source code and configuration files that are deployed into a service.">
+    <attributes name="env" required="true" description="App Engine execution environment for this version.Defaults to standard." type="//@types.14"/>
+    <attributes name="handlers" required="true" description="An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set." type="//@types.7"/>
+    <attributes name="diskUsageBytes" required="true" description="Total size in bytes of all the files that are included in this version and curerntly hosted on the App Engine disk.@OutputOnly" type="//@types.14"/>
+    <attributes name="threadsafe" required="true" description="Whether multiple requests can be dispatched to this version at once." type="//@types.6"/>
+    <attributes name="name" required="true" description="Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly" type="//@types.14"/>
+    <attributes name="vm" required="true" description="Whether to deploy this version in a container on a virtual machine." type="//@types.6"/>
+    <attributes name="versionUrl" required="true" description="Serving URL for this version. Example: &quot;https://myversion-dot-myservice-dot-myapp.appspot.com&quot;@OutputOnly" type="//@types.14"/>
+    <attributes name="instanceClass" required="true" description="Instance class that is used to run this version. Valid values are:&#xA;AutomaticScaling: F1, F2, F4, F4_1G&#xA;ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling." type="//@types.14"/>
+    <attributes name="servingStatus" required="true" description="Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING." type="//@types.15"/>
+    <attributes name="runtimeApiVersion" required="true" description="The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard/&lt;language>/config/appref" type="//@types.15"/>
+    <attributes name="createTime" required="true" description="Time that this version was created.@OutputOnly" type="//@types.15"/>
+    <attributes name="inboundServices" required="true" description="Before an application can receive email or XMPP messages, the application must be configured to enable the service." type="//@types.7"/>
+    <attributes name="errorHandlers" required="true" description="Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set." type="//@types.7"/>
+    <attributes name="defaultExpiration" required="true" description="Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#staticfileshandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set." type="//@types.15"/>
+    <attributes name="libraries" required="true" description="Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set." type="//@types.7"/>
+    <attributes name="nobuildFilesRegex" required="true" description="Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set." type="//@types.15"/>
+    <attributes name="runtime" required="true" description="Desired runtime. Example: python27." type="//@types.15"/>
+    <attributes name="createdBy" required="true" description="Email address of the user who created this version.@OutputOnly" type="//@types.15"/>
+    <attributes name="envVariables" required="true" description="Environment variables available to the application.Only returned in GET requests if view=FULL is set." type="//@types.9"/>
+    <attributes name="betaSettings" required="true" description="Metadata settings that are supplied to this version to enable beta runtime features." type="//@types.9"/>
+    <actions name="delete" scheme="http://occi/gcpappengine/version/action#" title="Deletes an existing Version resource.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1." type="//@types.15"/>
+      <attributes name="versionsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.15"/>
+      <attributes name="servicesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.15"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpappengine/version/action#" title="Lists the versions of a service.">
+      <attributes name="pageSize" required="true" description="Maximum results to return per page." type="//@types.3"/>
+      <attributes name="view" required="true" description="Controls the set of fields returned in the List response." type="//@types.15"/>
+      <attributes name="servicesId" required="true" description="Part of `parent`. See documentation of `appsId`." type="//@types.15"/>
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the parent Service resource. Example: apps/myapp/services/default." type="//@types.15"/>
+      <attributes name="pageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.15"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpappengine/version/action#" title="Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.">
+      <attributes name="versionsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.15"/>
+      <attributes name="view" required="true" description="Controls the set of fields returned in the Get response." type="//@types.15"/>
+      <attributes name="servicesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.15"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1." type="//@types.15"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpappengine/version/action#" title="Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:&#xA;serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status):  For Version resources that use basic scaling, manual scaling, or run in  the App Engine flexible environment.&#xA;instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class):  For Version resources that run in the App Engine standard environment.&#xA;automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version resources that use automatic scaling and run in the App  Engine standard environment.&#xA;automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version resources that use automatic scaling and run in the App  Engine standard environment.&#xA;automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version resources that use automatic scaling and run in the App  Engine Flexible environment.&#xA;automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version resources that use automatic scaling and run in the App  Engine Flexible environment.&#xA;automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version resources that use automatic scaling and run in the App  Engine Flexible environment.&#xA;automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version resources that use automatic scaling and run in the App  Engine Flexible environment.">
+      <attributes name="updateMask" required="true" description="Standard field mask for the set of fields to be updated." type="//@types.15"/>
+      <attributes name="servicesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.15"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource to update. Example: apps/myapp/services/default/versions/1." type="//@types.15"/>
+      <attributes name="versionsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.15"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpappengine/version/action#" title="Deploys code and resource files to a new version.">
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the parent resource to create this version under. Example: apps/myapp/services/default." type="//@types.15"/>
+      <attributes name="servicesId" required="true" description="Part of `parent`. See documentation of `appsId`." type="//@types.15"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RepairApplicationRequest" scheme="http://occi/gcpappengine#" title="Request message for 'Applications.RepairApplication'.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CertificateRawData" scheme="http://occi/gcpappengine#" title="An SSL certificate obtained from a certificate authority.">
+    <attributes name="publicCertificate" required="true" description="PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: &lt;pre> -----BEGIN CERTIFICATE----- &lt;certificate_value> -----END CERTIFICATE----- &lt;/pre>" type="//@types.15"/>
+    <attributes name="privateKey" required="true" description="Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: &lt;pre> -----BEGIN RSA PRIVATE KEY----- &lt;unencrypted_key_value> -----END RSA PRIVATE KEY----- &lt;/pre> @InputOnly" type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="FileInfo" scheme="http://occi/gcpappengine#" title="Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately.">
+    <attributes name="sourceUrl" required="true" description="URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com/&lt;bucket>/&lt;object>'." type="//@types.15"/>
+    <attributes name="sha1Sum" required="true" description="The SHA1 hash of the file, in hex." type="//@types.15"/>
+    <attributes name="mimeType" required="true" description="The MIME type of the file.Defaults to the value from Google Cloud Storage." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ScriptHandler" scheme="http://occi/gcpappengine#" title="Executes a script to handle the request that matches the URL pattern.">
+    <attributes name="scriptPath" required="true" description="Path to the script from the application root directory." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationMetadataExperimental" scheme="http://occi/gcpappengine#" title="Metadata for the given google.longrunning.Operation.">
+    <attributes name="user" required="true" description="User who requested this operation.@OutputOnly" type="//@types.15"/>
+    <attributes name="target" required="true" description="Name of the resource that this operation is acting on. Example: apps/myapp/customDomains/example.com.@OutputOnly" type="//@types.15"/>
+    <attributes name="method" required="true" description="API method that initiated this operation. Example: google.appengine.experimental.CustomDomains.CreateCustomDomain.@OutputOnly" type="//@types.15"/>
+    <attributes name="insertTime" required="true" description="Time that this operation was created.@OutputOnly" type="//@types.15"/>
+    <attributes name="endTime" required="true" description="Time that this operation completed.@OutputOnly" type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuthorizedDomain" scheme="http://occi/gcpappengine#" title="A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership via Webmaster Central (https://www.google.com/webmasters/verification/home).">
+    <attributes name="name" required="true" description="Full path to the AuthorizedDomain resource in the API. Example: apps/myapp/authorizedDomains/example.com.@OutputOnly" type="//@types.15"/>
+    <actions name="list" scheme="http://occi/gcpappengine/authorizeddomain/action#" title="Lists all domains the user is authorized to administer.">
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the parent Application resource. Example: apps/myapp." type="//@types.15"/>
+      <attributes name="pageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.15"/>
+      <attributes name="pageSize" required="true" description="Maximum results to return per page." type="//@types.3"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TrafficSplit" scheme="http://occi/gcpappengine#" title="Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.">
+    <attributes name="shardBy" required="true" description="Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed." type="//@types.16"/>
+    <attributes name="allocations" required="true" description="Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationMetadataV1Beta" scheme="http://occi/gcpappengine#" title="Metadata for the given google.longrunning.Operation.">
+    <attributes name="user" required="true" description="User who requested this operation.@OutputOnly" type="//@types.16"/>
+    <attributes name="target" required="true" description="Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly" type="//@types.16"/>
+    <attributes name="ephemeralMessage" required="true" description="Ephemeral message that may change every time the operation is polled. @OutputOnly" type="//@types.16"/>
+    <attributes name="method" required="true" description="API method that initiated this operation. Example: google.appengine.v1beta.Versions.CreateVersion.@OutputOnly" type="//@types.16"/>
+    <attributes name="endTime" required="true" description="Time that this operation completed.@OutputOnly" type="//@types.16"/>
+    <attributes name="warning" required="true" description="Durable messages that persist on every operation poll. @OutputOnly" type="//@types.7"/>
+    <attributes name="insertTime" required="true" description="Time that this operation was created.@OutputOnly" type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListServicesResponse" scheme="http://occi/gcpappengine#" title="Response message for Services.ListServices.">
+    <attributes name="services" required="true" description="The services belonging to the requested application." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListIngressRulesResponse" scheme="http://occi/gcpappengine#" title="Response message for Firewall.ListIngressRules.">
+    <attributes name="nextPageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.16"/>
+    <attributes name="ingressRules" required="true" description="The ingress FirewallRules for this application." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Resources" scheme="http://occi/gcpappengine#" title="Machine resources for a version.">
+    <attributes name="volumes" required="true" description="User specified volumes." type="//@types.7"/>
+    <attributes name="diskGb" required="true" description="Disk size (GB) needed." type="//@types.3"/>
+    <attributes name="cpu" required="true" description="Number of CPU cores needed." type="//@types.3"/>
+    <attributes name="memoryGb" required="true" description="Memory (GB) needed." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ZipInfoLink" scheme="http://occi/gcpappengine#" title="The zip file for this deployment, if this is a zip deployment." source="//@kinds[term='deployment']" target="//@kinds[term='zipinfo']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ContainerInfoLink" scheme="http://occi/gcpappengine#" title="The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment." source="//@kinds[term='deployment']" target="//@kinds[term='containerinfo']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Deployment" scheme="http://occi/gcpappengine#" title="Code and application artifacts used to deploy a version to App Engine.">
+    <attributes name="files" required="true" description="Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call." type="//@types.10"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BatchUpdateIngressRulesResponse" scheme="http://occi/gcpappengine#" title="Response message for Firewall.UpdateAllIngressRules.">
+    <attributes name="ingressRules" required="true" description="The full list of ingress FirewallRules for this application." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Volume" scheme="http://occi/gcpappengine#" title="Volumes mounted within the app container. Only applicable for VM runtimes.">
+    <attributes name="volumeType" required="true" description="Underlying volume type, e.g. 'tmpfs'." type="//@types.16"/>
+    <attributes name="sizeGb" required="true" description="Volume size in gigabytes." type="//@types.3"/>
+    <attributes name="name" required="true" description="Unique name for the volume." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListInstancesResponse" scheme="http://occi/gcpappengine#" title="Response message for Instances.ListInstances.">
+    <attributes name="instances" required="true" description="The instances belonging to the requested version." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListDomainMappingsResponse" scheme="http://occi/gcpappengine#" title="Response message for DomainMappings.ListDomainMappings.">
+    <attributes name="nextPageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.16"/>
+    <attributes name="domainMappings" required="true" description="The domain mappings for the application." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationMetadataV1Alpha" scheme="http://occi/gcpappengine#" title="Metadata for the given google.longrunning.Operation.">
+    <attributes name="endTime" required="true" description="Time that this operation completed.@OutputOnly" type="//@types.16"/>
+    <attributes name="warning" required="true" description="Durable messages that persist on every operation poll. @OutputOnly" type="//@types.7"/>
+    <attributes name="insertTime" required="true" description="Time that this operation was created.@OutputOnly" type="//@types.16"/>
+    <attributes name="user" required="true" description="User who requested this operation.@OutputOnly" type="//@types.16"/>
+    <attributes name="target" required="true" description="Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly" type="//@types.16"/>
+    <attributes name="ephemeralMessage" required="true" description="Ephemeral message that may change every time the operation is polled. @OutputOnly" type="//@types.16"/>
+    <attributes name="method" required="true" description="API method that initiated this operation. Example: google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly" type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="UrlDispatchRule" scheme="http://occi/gcpappengine#" title="Rules to match an HTTP request and dispatch that request to a service.">
+    <attributes name="domain" required="true" description="Domain name to match against. The wildcard &quot;*&quot; is supported if specified before a period: &quot;*.&quot;.Defaults to matching all domains: &quot;*&quot;." type="//@types.16"/>
+    <attributes name="service" required="true" description="Resource ID of a service in this application that should serve the matched request. The service must already exist. Example: default." type="//@types.16"/>
+    <attributes name="path" required="true" description="Pathname within the host. Must start with a &quot;/&quot;. A single &quot;*&quot; can be included at the end of the path.The sum of the lengths of the domain and path may not exceed 100 characters." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListVersionsResponse" scheme="http://occi/gcpappengine#" title="Response message for Versions.ListVersions.">
+    <attributes name="nextPageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.16"/>
+    <attributes name="versions" required="true" description="The versions belonging to the requested service." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListAuthorizedDomainsResponse" scheme="http://occi/gcpappengine#" title="Response message for AuthorizedDomains.ListAuthorizedDomains.">
+    <attributes name="domains" required="true" description="The authorized domains belonging to the user." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Empty" scheme="http://occi/gcpappengine#" title="A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:&#xA;service Foo {&#xA;  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;}&#xA;The JSON representation for Empty is empty JSON object {}.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ApiEndpointHandler" scheme="http://occi/gcpappengine#" title="Uses Google Cloud Endpoints to handle requests.">
+    <attributes name="scriptPath" required="true" description="Path to the script from the application root directory." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SslSettingsLink" scheme="http://occi/gcpappengine#" title="SSL configuration for this domain. If unconfigured, this domain will not serve with SSL." source="//@kinds[term='domainmapping']" target="//@kinds[term='sslsettings']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="DomainMapping" scheme="http://occi/gcpappengine#" title="A domain serving an App Engine application.">
+    <attributes name="resourceRecords" required="true" description="The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly" type="//@types.7"/>
+    <attributes name="name" required="true" description="Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly" type="//@types.16"/>
+    <actions name="delete" scheme="http://occi/gcpappengine/domainmapping/action#" title="Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com." type="//@types.16"/>
+      <attributes name="domainMappingsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.16"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpappengine/domainmapping/action#" title="Lists the domain mappings on an application.">
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the parent Application resource. Example: apps/myapp." type="//@types.16"/>
+      <attributes name="pageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.16"/>
+      <attributes name="pageSize" required="true" description="Maximum results to return per page." type="//@types.3"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpappengine/domainmapping/action#" title="Gets the specified domain mapping.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com." type="//@types.16"/>
+      <attributes name="domainMappingsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.16"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpappengine/domainmapping/action#" title="Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource.">
+      <attributes name="updateMask" required="true" description="Standard field mask for the set of fields to be updated." type="//@types.16"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource to update. Example: apps/myapp/domainMappings/example.com." type="//@types.16"/>
+      <attributes name="domainMappingsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.16"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpappengine/domainmapping/action#" title="Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.">
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the parent Application resource. Example: apps/myapp." type="//@types.16"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RequestUtilizationLink" scheme="http://occi/gcpappengine#" title="Target scaling by request utilization." source="//@kinds[term='automaticscaling']" target="//@kinds[term='requestutilization']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="NetworkUtilizationLink" scheme="http://occi/gcpappengine#" title="Target scaling by network usage." source="//@kinds[term='automaticscaling']" target="//@kinds[term='networkutilization']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CpuUtilizationLink" scheme="http://occi/gcpappengine#" title="Target scaling by CPU usage." source="//@kinds[term='automaticscaling']" target="//@kinds[term='cpuutilization']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="DiskUtilizationLink" scheme="http://occi/gcpappengine#" title="Target scaling by disk usage." source="//@kinds[term='automaticscaling']" target="//@kinds[term='diskutilization']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="AutomaticScaling" scheme="http://occi/gcpappengine#" title="Automatic scaling is based on request rate, response latencies, and other application metrics.">
+    <attributes name="minPendingLatency" required="true" description="Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it." type="//@types.16"/>
+    <attributes name="maxIdleInstances" required="true" description="Maximum number of idle instances that should be maintained for this version." type="//@types.3"/>
+    <attributes name="minIdleInstances" required="true" description="Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service." type="//@types.3"/>
+    <attributes name="maxTotalInstances" required="true" description="Maximum number of instances that should be started to handle requests." type="//@types.3"/>
+    <attributes name="minTotalInstances" required="true" description="Minimum number of instances that should be maintained for this version." type="//@types.3"/>
+    <attributes name="maxConcurrentRequests" required="true" description="Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value." type="//@types.3"/>
+    <attributes name="coolDownPeriod" required="true" description="Amount of time that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait between changes to the number of virtual machines. Only applicable for VM runtimes." type="//@types.16"/>
+    <attributes name="maxPendingLatency" required="true" description="Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ZipInfo" scheme="http://occi/gcpappengine#" title="The zip file information for a zip deployment.">
+    <attributes name="sourceUrl" required="true" description="URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com/&lt;bucket>/&lt;object>'." type="//@types.16"/>
+    <attributes name="filesCount" required="true" description="An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CertificateRawDataLink" scheme="http://occi/gcpappengine#" title="The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority." source="//@kinds[term='authorizedcertificate']" target="//@kinds[term='certificaterawdata']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="AuthorizedCertificate" scheme="http://occi/gcpappengine#" title="An SSL certificate that a user has been authorized to administer. A user is authorized to administer any certificate that applies to one of their authorized domains.">
+    <attributes name="domainMappingsCount" required="true" description="Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly" type="//@types.3"/>
+    <attributes name="domainNames" required="true" description="Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.@OutputOnly" type="//@types.7"/>
+    <attributes name="displayName" required="true" description="The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate." type="//@types.16"/>
+    <attributes name="visibleDomainMappings" required="true" description="The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly" type="//@types.7"/>
+    <attributes name="expireTime" required="true" description="The time when this certificate expires. To update the renewal time on this certificate, upload an SSL certificate with a different expiration time using AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly" type="//@types.16"/>
+    <attributes name="name" required="true" description="Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly" type="//@types.16"/>
+    <actions name="delete" scheme="http://occi/gcpappengine/authorizedcertificate/action#" title="Deletes the specified SSL certificate.">
+      <attributes name="authorizedCertificatesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.16"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345." type="//@types.16"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpappengine/authorizedcertificate/action#" title="Lists all SSL certificates the user is authorized to administer.">
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the parent Application resource. Example: apps/myapp." type="//@types.16"/>
+      <attributes name="pageToken" required="true" description="Continuation token for fetching the next page of results." type="//@types.16"/>
+      <attributes name="pageSize" required="true" description="Maximum results to return per page." type="//@types.3"/>
+      <attributes name="view" required="true" description="Controls the set of fields returned in the LIST response." type="//@types.16"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpappengine/authorizedcertificate/action#" title="Gets the specified SSL certificate.">
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345." type="//@types.16"/>
+      <attributes name="view" required="true" description="Controls the set of fields returned in the GET response." type="//@types.16"/>
+      <attributes name="authorizedCertificatesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.16"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpappengine/authorizedcertificate/action#" title="Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated.">
+      <attributes name="authorizedCertificatesId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.16"/>
+      <attributes name="updateMask" required="true" description="Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields." type="//@types.16"/>
+      <attributes name="appsId" required="true" description="Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345." type="//@types.16"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpappengine/authorizedcertificate/action#" title="Uploads the specified SSL certificate.">
+      <attributes name="appsId" required="true" description="Part of `parent`. Name of the parent Application resource. Example: apps/myapp." type="//@types.16"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ResourceRecord" scheme="http://occi/gcpappengine#" title="A DNS resource record.">
+    <attributes name="type" required="true" description="Resource record type. Example: AAAA." type="//@types.17"/>
+    <attributes name="rrdata" required="true" description="Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)." type="//@types.17"/>
+    <attributes name="name" required="true" description="Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Library" scheme="http://occi/gcpappengine#" title="Third-party Python runtime library that is required by the application.">
+    <attributes name="version" required="true" description="Version of the library to select, or &quot;latest&quot;." type="//@types.17"/>
+    <attributes name="name" required="true" description="Name of the library. Example: &quot;django&quot;." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListLocationsResponse" scheme="http://occi/gcpappengine#" title="The response message for Locations.ListLocations.">
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.17"/>
+    <attributes name="locations" required="true" description="A list of locations that matches the specified filter in the request." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ContainerInfo" scheme="http://occi/gcpappengine#" title="Docker image that is used to create a container and start a VM instance for the version that you deploy. Only applicable for instances running in the App Engine flexible environment.">
+    <attributes name="image" required="true" description="URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: &quot;gcr.io/my-project/image:tag&quot; or &quot;gcr.io/my-project/image@digest&quot;" type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RequestUtilization" scheme="http://occi/gcpappengine#" title="Target scaling by request utilization. Only applicable for VM runtimes.">
+    <attributes name="targetRequestCountPerSecond" required="true" description="Target requests per second." type="//@types.3"/>
+    <attributes name="targetConcurrentRequests" required="true" description="Target number of concurrent requests." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ApiEndpointHandlerLink" scheme="http://occi/gcpappengine#" title="Uses API Endpoints to handle requests." source="//@kinds[term='urlmap']" target="//@kinds[term='apiendpointhandler']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="StaticFilesHandlerLink" scheme="http://occi/gcpappengine#" title="Returns the contents of a file, such as an image, as the response." source="//@kinds[term='urlmap']" target="//@kinds[term='staticfileshandler']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ScriptHandlerLink" scheme="http://occi/gcpappengine#" title="Executes a script to handle the request that matches this URL pattern." source="//@kinds[term='urlmap']" target="//@kinds[term='scripthandler']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="UrlMap" scheme="http://occi/gcpappengine#" title="URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.">
+    <attributes name="redirectHttpResponseCode" required="true" description="30x code to use when performing redirects for the secure field. Defaults to 302." type="//@types.18"/>
+    <attributes name="securityLevel" required="true" description="Security (HTTPS) enforcement for this URL." type="//@types.19"/>
+    <attributes name="authFailAction" required="true" description="Action to take when users access resources that require authentication. Defaults to redirect." type="//@types.20"/>
+    <attributes name="urlRegex" required="true" description="URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path." type="//@types.20"/>
+    <attributes name="login" required="true" description="Level of login required to access this resource." type="//@types.21"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="EndpointsApiService" scheme="http://occi/gcpappengine#" title="Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy.The fields here refer to the name and configuration id of a &quot;service&quot; resource in the Service Management API (https://cloud.google.com/service-management/overview).">
+    <attributes name="name" required="true" description="Endpoints service name which is the name of the &quot;service&quot; resource in the Service Management API. For example &quot;myapi.endpoints.myproject.cloud.goog&quot;" type="//@types.21"/>
+    <attributes name="configId" required="true" description="Endpoints service configuration id as specified by the Service Management API. For example &quot;2016-09-19r1&quot;" type="//@types.21"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="StatusLink" scheme="http://occi/gcpappengine#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='operation']" target="//@kinds[term='status']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Operation" scheme="http://occi/gcpappengine#" title="This resource represents a long-running operation that is the result of a network API call.">
+    <attributes name="response" required="true" description="The normal response of the operation in case of success. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse." type="//@types.9"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should have the format of operations/some/unique/name." type="//@types.21"/>
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any." type="//@types.9"/>
+    <attributes name="done" required="true" description="If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available." type="//@types.6"/>
+    <actions name="list" scheme="http://occi/gcpappengine/operation/action#" title="Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as &quot;/v1/{name=users/*}/operations&quot; to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.">
+      <attributes name="filter" required="true" description="The standard list filter." type="//@types.21"/>
+      <attributes name="appsId" required="true" description="Part of `name`. The name of the operation's parent resource." type="//@types.21"/>
+      <attributes name="pageToken" required="true" description="The standard list page token." type="//@types.21"/>
+      <attributes name="pageSize" required="true" description="The standard list page size." type="//@types.3"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpappengine/operation/action#" title="Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.">
+      <attributes name="appsId" required="true" description="Part of `name`. The name of the operation resource." type="//@types.21"/>
+      <attributes name="operationsId" required="true" description="Part of `name`. See documentation of `appsId`." type="//@types.21"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ApiConfigHandler" scheme="http://occi/gcpappengine#" title="Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.">
+    <attributes name="securityLevel" required="true" description="Security (HTTPS) enforcement for this URL." type="//@types.22"/>
+    <attributes name="authFailAction" required="true" description="Action to take when users access resources that require authentication. Defaults to redirect." type="//@types.23"/>
+    <attributes name="script" required="true" description="Path to the script from the application root directory." type="//@types.23"/>
+    <attributes name="login" required="true" description="Level of login required to access this resource. Defaults to optional." type="//@types.24"/>
+    <attributes name="url" required="true" description="URL to serve the endpoint at." type="//@types.24"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="StaticFilesHandler" scheme="http://occi/gcpappengine#" title="Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.">
+    <attributes name="applicationReadable" required="true" description="Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas." type="//@types.6"/>
+    <attributes name="httpHeaders" required="true" description="HTTP headers to use for all responses from these URLs." type="//@types.9"/>
+    <attributes name="uploadPathRegex" required="true" description="Regular expression that matches the file paths for all files that should be referenced by this handler." type="//@types.24"/>
+    <attributes name="path" required="true" description="Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern." type="//@types.24"/>
+    <attributes name="mimeType" required="true" description="MIME type used to serve all files served by this handler.Defaults to file-specific MIME types, which are derived from each file's filename extension." type="//@types.24"/>
+    <attributes name="requireMatchingFile" required="true" description="Whether this handler should match the request if the file referenced by the handler does not exist." type="//@types.6"/>
+    <attributes name="expiration" required="true" description="Time a static file served by this handler should be cached by web proxies and browsers." type="//@types.24"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BasicScaling" scheme="http://occi/gcpappengine#" title="A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.">
+    <attributes name="maxInstances" required="true" description="Maximum number of instances to create for this version." type="//@types.3"/>
+    <attributes name="idleTimeout" required="true" description="Duration of time after the last request that an instance must wait before the instance is shut down." type="//@types.24"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DiskUtilization" scheme="http://occi/gcpappengine#" title="Target scaling by disk usage. Only applicable for VM runtimes.">
+    <attributes name="targetWriteBytesPerSecond" required="true" description="Target bytes written per second." type="//@types.3"/>
+    <attributes name="targetReadBytesPerSecond" required="true" description="Target bytes read per second." type="//@types.3"/>
+    <attributes name="targetReadOpsPerSecond" required="true" description="Target ops read per seconds." type="//@types.3"/>
+    <attributes name="targetWriteOpsPerSecond" required="true" description="Target ops written per second." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="action" documentation="The action to take on matched requests.">
+    <literals name="UNSPECIFIED_ACTION" documentation=""/>
+    <literals name="ALLOW" documentation="Matching requests are allowed."/>
+    <literals name="DENY" documentation="Matching requests are denied."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="errorCode" documentation="Error condition this handler applies to.">
+    <literals name="ERROR_CODE_UNSPECIFIED" documentation="Not specified. ERROR_CODE_DEFAULT is assumed."/>
+    <literals name="ERROR_CODE_DEFAULT" documentation="All other error types."/>
+    <literals name="ERROR_CODE_OVER_QUOTA" documentation="Application has exceeded a resource quota."/>
+    <literals name="ERROR_CODE_DOS_API_DENIAL" documentation="Client blocked by the application's Denial of Service protection configuration."/>
+    <literals name="ERROR_CODE_TIMEOUT" documentation="Deadline reached before the application responds."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="servingStatus" documentation="Serving status of this application.">
+    <literals name="UNSPECIFIED" documentation="Serving status is unspecified."/>
+    <literals name="SERVING" documentation="Application is serving."/>
+    <literals name="USER_DISABLED" documentation="Application has been disabled by the user."/>
+    <literals name="SYSTEM_DISABLED" documentation="Application has been disabled by the system."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="availability" documentation="Availability of the instance.@OutputOnly">
+    <literals name="UNSPECIFIED" documentation=""/>
+    <literals name="RESIDENT" documentation=""/>
+    <literals name="DYNAMIC" documentation=""/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="VersionSservingstatus" documentation="Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.">
+    <literals name="SERVING_STATUS_UNSPECIFIED" documentation="Not specified."/>
+    <literals name="SERVING" documentation="Currently serving. Instances are created according to the scaling settings of the version."/>
+    <literals name="STOPPED" documentation="Disabled. No instances will be created and the scaling settings are ignored until the state of the version changes to SERVING."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="shardBy" documentation="Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.">
+    <literals name="UNSPECIFIED" documentation="Diversion method unspecified."/>
+    <literals name="COOKIE" documentation="Diversion based on a specially named cookie, &quot;GOOGAPPUID.&quot; The cookie must be set by the application itself or no diversion will occur."/>
+    <literals name="IP" documentation="Diversion based on applying the modulus operation to a fingerprint of the IP address."/>
+    <literals name="RANDOM" documentation="Diversion based on weighted random assignment. An incoming request is randomly routed to a version in the traffic split, with probability proportional to the version's traffic share."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="type" documentation="Resource record type. Example: AAAA.">
+    <literals name="RECORD_TYPE_UNSPECIFIED" documentation="An unknown resource record."/>
+    <literals name="A" documentation="An A resource record. Data is an IPv4 address."/>
+    <literals name="AAAA" documentation="An AAAA resource record. Data is an IPv6 address."/>
+    <literals name="CNAME" documentation="A CNAME resource record. Data is a domain name to be aliased."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="redirectHttpResponseCode" documentation="30x code to use when performing redirects for the secure field. Defaults to 302.">
+    <literals name="REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED" documentation="Not specified. 302 is assumed."/>
+    <literals name="REDIRECT_HTTP_RESPONSE_CODE_301" documentation="301 Moved Permanently code."/>
+    <literals name="REDIRECT_HTTP_RESPONSE_CODE_302" documentation="302 Moved Temporarily code."/>
+    <literals name="REDIRECT_HTTP_RESPONSE_CODE_303" documentation="303 See Other code."/>
+    <literals name="REDIRECT_HTTP_RESPONSE_CODE_307" documentation="307 Temporary Redirect code."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="securityLevel" documentation="Security (HTTPS) enforcement for this URL.">
+    <literals name="SECURE_UNSPECIFIED" documentation="Not specified."/>
+    <literals name="SECURE_DEFAULT" documentation="Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used, and respond accordingly."/>
+    <literals name="SECURE_NEVER" documentation="Requests for a URL that match this handler that use HTTPS are automatically redirected to the HTTP equivalent URL."/>
+    <literals name="SECURE_OPTIONAL" documentation="Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly."/>
+    <literals name="SECURE_ALWAYS" documentation="Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="authFailAction" documentation="Action to take when users access resources that require authentication. Defaults to redirect.">
+    <literals name="AUTH_FAIL_ACTION_UNSPECIFIED" documentation="Not specified. AUTH_FAIL_ACTION_REDIRECT is assumed."/>
+    <literals name="AUTH_FAIL_ACTION_REDIRECT" documentation="Redirects user to &quot;accounts.google.com&quot;. The user is redirected back to the application URL after signing in or creating an account."/>
+    <literals name="AUTH_FAIL_ACTION_UNAUTHORIZED" documentation="Rejects request with a 401 HTTP status code and an error message."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="login" documentation="Level of login required to access this resource.">
+    <literals name="LOGIN_UNSPECIFIED" documentation="Not specified. LOGIN_OPTIONAL is assumed."/>
+    <literals name="LOGIN_OPTIONAL" documentation="Does not require that the user is signed in."/>
+    <literals name="LOGIN_ADMIN" documentation="If the user is not signed in, the auth_fail_action is taken. In addition, if the user is not an administrator for the application, they are given an error message regardless of auth_fail_action. If the user is an administrator, the handler proceeds."/>
+    <literals name="LOGIN_REQUIRED" documentation="If the user has signed in, the handler proceeds normally. Otherwise, the auth_fail_action is taken."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="ApiConfigHandlerSsecuritylevel" documentation="Security (HTTPS) enforcement for this URL.">
+    <literals name="SECURE_UNSPECIFIED" documentation="Not specified."/>
+    <literals name="SECURE_DEFAULT" documentation="Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used, and respond accordingly."/>
+    <literals name="SECURE_NEVER" documentation="Requests for a URL that match this handler that use HTTPS are automatically redirected to the HTTP equivalent URL."/>
+    <literals name="SECURE_OPTIONAL" documentation="Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly."/>
+    <literals name="SECURE_ALWAYS" documentation="Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="ApiConfigHandlerAauthfailaction" documentation="Action to take when users access resources that require authentication. Defaults to redirect.">
+    <literals name="AUTH_FAIL_ACTION_UNSPECIFIED" documentation="Not specified. AUTH_FAIL_ACTION_REDIRECT is assumed."/>
+    <literals name="AUTH_FAIL_ACTION_REDIRECT" documentation="Redirects user to &quot;accounts.google.com&quot;. The user is redirected back to the application URL after signing in or creating an account."/>
+    <literals name="AUTH_FAIL_ACTION_UNAUTHORIZED" documentation="Rejects request with a 401 HTTP status code and an error message."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="ApiConfigHandlerLlogin" documentation="Level of login required to access this resource. Defaults to optional.">
+    <literals name="LOGIN_UNSPECIFIED" documentation="Not specified. LOGIN_OPTIONAL is assumed."/>
+    <literals name="LOGIN_OPTIONAL" documentation="Does not require that the user is signed in."/>
+    <literals name="LOGIN_ADMIN" documentation="If the user is not signed in, the auth_fail_action is taken. In addition, if the user is not an administrator for the application, they are given an error message regardless of auth_fail_action. If the user is an administrator, the handler proceeds."/>
+    <literals name="LOGIN_REQUIRED" documentation="If the user has signed in, the handler proceeds normally. Otherwise, the auth_fail_action is taken."/>
+  </types>
+</occi:Extension>

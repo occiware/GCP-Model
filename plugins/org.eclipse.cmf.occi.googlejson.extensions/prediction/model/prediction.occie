@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="prediction" scheme="http://occi/gcpprediction#" description="Lets you access a cloud hosted machine learning service that makes it easy to build smart apps">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="Analyze" scheme="http://occi/gcpprediction#" title="">
+    <attributes name="dataDescription" required="true" description="Description of the data the model was trained on." type="//@types.10"/>
+    <attributes name="errors" required="true" description="List of errors with the data." type="//@types.7"/>
+    <attributes name="kind" required="true" description="What kind of resource this is." type="//@types.0"/>
+    <attributes name="modelDescription" required="true" description="Description of the model." type="//@types.10"/>
+    <attributes name="selfLink" required="true" description="A URL to re-request this resource." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Input" scheme="http://occi/gcpprediction#" title="">
+    <attributes name="input" required="true" description="Input to the model for a prediction." type="//@types.10"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Insert" scheme="http://occi/gcpprediction#" title="">
+    <attributes name="modelType" required="true" description="Type of predictive model (classification or regression)." type="//@types.0"/>
+    <attributes name="sourceModel" required="true" description="The Id of the model to be copied over." type="//@types.0"/>
+    <attributes name="storageDataLocation" required="true" description="Google storage location of the training data file." type="//@types.0"/>
+    <attributes name="storagePMMLLocation" required="true" description="Google storage location of the preprocessing pmml file." type="//@types.0"/>
+    <attributes name="storagePMMLModelLocation" required="true" description="Google storage location of the pmml model file." type="//@types.0"/>
+    <attributes name="trainingInstances" required="true" description="Instances to train model on." type="//@types.7"/>
+    <attributes name="utility" required="true" description="A class weighting function, which allows the importance weights for class labels to be specified (Categorical models only)." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Insert2" scheme="http://occi/gcpprediction#" title="">
+    <attributes name="created" required="true" description="Insert time of the model (as a RFC 3339 timestamp)." type="//@types.0"/>
+    <attributes name="kind" required="true" description="What kind of resource this is." type="//@types.0"/>
+    <attributes name="modelInfo" required="true" description="Model metadata." type="//@types.10"/>
+    <attributes name="modelType" required="true" description="Type of predictive model (CLASSIFICATION or REGRESSION)." type="//@types.0"/>
+    <attributes name="selfLink" required="true" description="A URL to re-request this resource." type="//@types.0"/>
+    <attributes name="storageDataLocation" required="true" description="Google storage location of the training data file." type="//@types.0"/>
+    <attributes name="storagePMMLLocation" required="true" description="Google storage location of the preprocessing pmml file." type="//@types.0"/>
+    <attributes name="storagePMMLModelLocation" required="true" description="Google storage location of the pmml model file." type="//@types.0"/>
+    <attributes name="trainingComplete" required="true" description="Training completion time (as a RFC 3339 timestamp)." type="//@types.0"/>
+    <attributes name="trainingStatus" required="true" description="The current status of the training job. This can be one of following: RUNNING; DONE; ERROR; ERROR: TRAINING JOB NOT FOUND" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="List" scheme="http://occi/gcpprediction#" title="">
+    <attributes name="items" required="true" description="List of models." type="//@types.7"/>
+    <attributes name="kind" required="true" description="What kind of resource this is." type="//@types.0"/>
+    <attributes name="nextPageToken" required="true" description="Pagination token to fetch the next page, if one exists." type="//@types.0"/>
+    <attributes name="selfLink" required="true" description="A URL to re-request this resource." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Output" scheme="http://occi/gcpprediction#" title="">
+    <attributes name="kind" required="true" description="What kind of resource this is." type="//@types.0"/>
+    <attributes name="outputLabel" required="true" description="The most likely class label (Categorical models only)." type="//@types.0"/>
+    <attributes name="outputMulti" required="true" description="A list of class labels with their estimated probabilities (Categorical models only)." type="//@types.7"/>
+    <attributes name="outputValue" required="true" description="The estimated regression value (Regression models only)." type="//@types.0"/>
+    <attributes name="selfLink" required="true" description="A URL to re-request this resource." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Update" scheme="http://occi/gcpprediction#" title="">
+    <attributes name="csvInstance" required="true" description="The input features for this instance." type="//@types.7"/>
+    <attributes name="output" required="true" description="The generic output value - could be regression or class label." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+</occi:Extension>

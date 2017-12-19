@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="servicemanagement" scheme="http://occi/gcpservicemanagement#" description="Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="MetricRule" scheme="http://occi/gcpservicemanagement#" title="Bind API methods to metrics. Binding a method to a metric causes that&#xA;metric's configured quota behaviors to apply to the method call.">
+    <attributes name="selector" required="true" description="Selects the methods to which this rule applies.&#xA;&#xA;Refer to selector for syntax details." type="//@types.0"/>
+    <attributes name="metricCosts" required="true" description="Metrics to update when the selected methods are called, and the associated&#xA;cost applied to each metric.&#xA;&#xA;The key of the map is the metric name, and the values are the amount&#xA;increased for the metric against which the quota limits are defined.&#xA;The value must not be negative." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Authentication" scheme="http://occi/gcpservicemanagement#" title="`Authentication` defines the authentication configuration for an API.&#xA;&#xA;Example for an API targeted for external use:&#xA;&#xA;    name: calendar.googleapis.com&#xA;    authentication:&#xA;      providers:&#xA;      - id: google_calendar_auth&#xA;        jwks_uri: https://www.googleapis.com/oauth2/v1/certs&#xA;        issuer: https://securetoken.google.com&#xA;      rules:&#xA;      - selector: &quot;*&quot;&#xA;        requirements:&#xA;          provider_id: google_calendar_auth">
+    <attributes name="rules" required="true" description="A list of authentication rules that apply to individual API methods.&#xA;&#xA;**NOTE:** All service configuration rules follow &quot;last one wins&quot; order." type="//@types.7"/>
+    <attributes name="providers" required="true" description="Defines a set of authentication providers that a service supports." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="StatusLink" scheme="http://occi/gcpservicemanagement#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='operation']" target="//@kinds[term='status']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Operation" scheme="http://occi/gcpservicemanagement#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.9"/>
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.9"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`." type="//@types.0"/>
+    <actions name="list" scheme="http://occi/gcpservicemanagement/operation/action#" title="Lists service operations that match the specified filter in the request.">
+      <attributes name="pageSize" required="true" description="The maximum number of operations to return. If unspecified, defaults to&#xA;50. The maximum value is 100." type="//@types.3"/>
+      <attributes name="filter" required="true" description="A string for filtering Operations.&#xA;  The following filter fields are supported&amp;#58;&#xA;&#xA;  * serviceName&amp;#58; Required. Only `=` operator is allowed.&#xA;  * startTime&amp;#58; The time this job was started, in ISO 8601 format.&#xA;    Allowed operators are `>=`,  `>`, `&lt;=`, and `&lt;`.&#xA;  * status&amp;#58; Can be `done`, `in_progress`, or `failed`. Allowed&#xA;    operators are `=`, and `!=`.&#xA;&#xA;  Filter expression supports conjunction (AND) and disjunction (OR)&#xA;  logical operators. However, the serviceName restriction must be at the&#xA;  top-level and can only be combined with other restrictions via the AND&#xA;  logical operator.&#xA;&#xA;  Examples&amp;#58;&#xA;&#xA;  * `serviceName={some-service}.googleapis.com`&#xA;  * `serviceName={some-service}.googleapis.com AND startTime>=&quot;2017-02-01&quot;`&#xA;  * `serviceName={some-service}.googleapis.com AND status=done`&#xA;  * `serviceName={some-service}.googleapis.com AND (status=done OR startTime>=&quot;2017-02-01&quot;)`" type="//@types.0"/>
+      <attributes name="name" required="true" description="Not used." type="//@types.0"/>
+      <attributes name="pageToken" required="true" description="The standard list page token." type="//@types.0"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpservicemanagement/operation/action#" title="Gets the latest state of a long-running operation.  Clients can use this&#xA;method to poll the operation result at intervals as recommended by the API&#xA;service.">
+      <attributes name="name" required="true" description="The name of the operation resource." type="//@types.0"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Page" scheme="http://occi/gcpservicemanagement#" title="Represents a documentation page. A page can contain subpages to represent&#xA;nested documentation set structure.">
+    <attributes name="name" required="true" description="The name of the page. It will be used as an identity of the page to&#xA;generate URI of the page, text of the link to this page in navigation,&#xA;etc. The full page name (start from the root page name to this page&#xA;concatenated with `.`) can be used as reference to the page in your&#xA;documentation. For example:&#xA;&lt;pre>&lt;code>pages:&#xA;- name: Tutorial&#xA;  content: &amp;#40;== include tutorial.md ==&amp;#41;&#xA;  subpages:&#xA;  - name: Java&#xA;    content: &amp;#40;== include tutorial_java.md ==&amp;#41;&#xA;&lt;/code>&lt;/pre>&#xA;You can reference `Java` page using Markdown reference link syntax:&#xA;`Java`." type="//@types.0"/>
+    <attributes name="content" required="true" description="The Markdown content of the page. You can use &lt;code>&amp;#40;== include {path} ==&amp;#41;&lt;/code>&#xA;to include content from a Markdown file." type="//@types.0"/>
+    <attributes name="subpages" required="true" description="Subpages of this page. The order of subpages specified here will be&#xA;honored in the generated docset." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Status" scheme="http://occi/gcpservicemanagement#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ExprLink" scheme="http://occi/gcpservicemanagement#" title="The condition that is associated with this binding.&#xA;NOTE: an unsatisfied condition will not allow user access via current&#xA;binding. Different bindings, including their conditions, are examined&#xA;independently.&#xA;This field is GOOGLE_INTERNAL." source="//@kinds[term='binding']" target="//@kinds[term='expr']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Binding" scheme="http://occi/gcpservicemanagement#" title="Associates `members` with a `role`.">
+    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource.&#xA;`members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is&#xA;   on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone&#xA;   who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google&#xA;   account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service&#xA;   account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group.&#xA;   For example, `admins@example.com`.&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the&#xA;   users of that domain. For example, `google.com` or `example.com`.&#xA;&#xA;" type="//@types.7"/>
+    <attributes name="role" required="true" description="Role that is assigned to `members`.&#xA;For example, `roles/viewer`, `roles/editor`, or `roles/owner`.&#xA;Required" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuthProvider" scheme="http://occi/gcpservicemanagement#" title="Configuration for an anthentication provider, including support for&#xA;[JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).">
+    <attributes name="issuer" required="true" description="Identifies the principal that issued the JWT. See&#xA;https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1&#xA;Usually a URL or an email address.&#xA;&#xA;Example: https://securetoken.google.com&#xA;Example: 1234567-compute@developer.gserviceaccount.com" type="//@types.0"/>
+    <attributes name="authorizationUrl" required="true" description="Redirect URL if JWT token is required but no present or is expired.&#xA;Implement authorizationUrl of securityDefinitions in OpenAPI spec." type="//@types.0"/>
+    <attributes name="jwksUri" required="true" description="URL of the provider's public key set to validate signature of the JWT. See&#xA;[OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).&#xA;Optional if the key set document:&#xA; - can be retrieved from&#xA;   [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html&#xA;   of the issuer.&#xA; - can be inferred from the email domain of the issuer (e.g. a Google service account).&#xA;&#xA;Example: https://www.googleapis.com/oauth2/v1/certs" type="//@types.0"/>
+    <attributes name="audiences" required="true" description="The list of JWT&#xA;[audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).&#xA;that are allowed to access. A JWT containing any of these audiences will&#xA;be accepted. When this setting is absent, only JWTs with audience&#xA;&quot;https://Service_name/API_name&quot;&#xA;will be accepted. For example, if no audiences are in the setting,&#xA;LibraryService API will only accept JWTs with the following audience&#xA;&quot;https://library-example.googleapis.com/google.example.library.v1.LibraryService&quot;.&#xA;&#xA;Example:&#xA;&#xA;    audiences: bookstore_android.apps.googleusercontent.com,&#xA;               bookstore_web.apps.googleusercontent.com" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CustomErrorLink" scheme="http://occi/gcpservicemanagement#" title="Custom error configuration." source="//@kinds[term='service']" target="//@kinds[term='customerror']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SourceInfoLink" scheme="http://occi/gcpservicemanagement#" title="Output only. The source information for this configuration if available." source="//@kinds[term='service']" target="//@kinds[term='sourceinfo']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="HttpLink" scheme="http://occi/gcpservicemanagement#" title="HTTP configuration." source="//@kinds[term='service']" target="//@kinds[term='http']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SystemParametersLink" scheme="http://occi/gcpservicemanagement#" title="System parameter configuration." source="//@kinds[term='service']" target="//@kinds[term='systemparameters']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BackendLink" scheme="http://occi/gcpservicemanagement#" title="API backend configuration." source="//@kinds[term='service']" target="//@kinds[term='backend']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="DocumentationLink" scheme="http://occi/gcpservicemanagement#" title="Additional API documentation." source="//@kinds[term='service']" target="//@kinds[term='documentation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LoggingLink" scheme="http://occi/gcpservicemanagement#" title="Logging configuration." source="//@kinds[term='service']" target="//@kinds[term='logging']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ContextLink" scheme="http://occi/gcpservicemanagement#" title="Context configuration." source="//@kinds[term='service']" target="//@kinds[term='context']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="UsageLink" scheme="http://occi/gcpservicemanagement#" title="Configuration controlling usage of this service." source="//@kinds[term='service']" target="//@kinds[term='usage']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="AuthenticationLink" scheme="http://occi/gcpservicemanagement#" title="Auth configuration." source="//@kinds[term='service']" target="//@kinds[term='authentication']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ExperimentalLink" scheme="http://occi/gcpservicemanagement#" title="Experimental configuration." source="//@kinds[term='service']" target="//@kinds[term='experimental']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ControlLink" scheme="http://occi/gcpservicemanagement#" title="Configuration for the service control plane." source="//@kinds[term='service']" target="//@kinds[term='control']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="MonitoringLink" scheme="http://occi/gcpservicemanagement#" title="Monitoring configuration." source="//@kinds[term='service']" target="//@kinds[term='monitoring']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="VisibilityLink" scheme="http://occi/gcpservicemanagement#" title="API visibility configuration." source="//@kinds[term='service']" target="//@kinds[term='visibility']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="QuotaLink" scheme="http://occi/gcpservicemanagement#" title="Quota configuration." source="//@kinds[term='service']" target="//@kinds[term='quota']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BillingLink" scheme="http://occi/gcpservicemanagement#" title="Billing configuration." source="//@kinds[term='service']" target="//@kinds[term='billing']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Service" scheme="http://occi/gcpservicemanagement#" title="`Service` is the root object of Google service configuration schema. It&#xA;describes basic information about a service, such as the name and the&#xA;title, and delegates other aspects to sub-sections. Each sub-section is&#xA;either a proto message or a repeated proto message that configures a&#xA;specific aspect, such as auth. See each proto message definition for details.&#xA;&#xA;Example:&#xA;&#xA;    type: google.api.Service&#xA;    config_version: 3&#xA;    name: calendar.googleapis.com&#xA;    title: Google Calendar API&#xA;    apis:&#xA;    - name: google.calendar.v3.Calendar&#xA;    authentication:&#xA;      providers:&#xA;      - id: google_calendar_auth&#xA;        jwks_uri: https://www.googleapis.com/oauth2/v1/certs&#xA;        issuer: https://securetoken.google.com&#xA;      rules:&#xA;      - selector: &quot;*&quot;&#xA;        requirements:&#xA;          provider_id: google_calendar_auth">
+    <attributes name="endpoints" required="true" description="Configuration for network endpoints.  If this is empty, then an endpoint&#xA;with the same name as the service is automatically generated to service all&#xA;defined APIs." type="//@types.7"/>
+    <attributes name="apis" required="true" description="A list of API interfaces exported by this service. Only the `name` field&#xA;of the google.protobuf.Api needs to be provided by the configuration&#xA;author, as the remaining fields will be derived from the IDL during the&#xA;normalization process. It is an error to specify an API interface here&#xA;which cannot be resolved against the associated IDL files." type="//@types.7"/>
+    <attributes name="logs" required="true" description="Defines the logs used by this service." type="//@types.7"/>
+    <attributes name="types" required="true" description="A list of all proto message types included in this API service.&#xA;Types referenced directly or indirectly by the `apis` are&#xA;automatically included.  Messages which are not referenced but&#xA;shall be included, such as types used by the `google.protobuf.Any` type,&#xA;should be listed here by name. Example:&#xA;&#xA;    types:&#xA;    - name: google.protobuf.Int32" type="//@types.7"/>
+    <attributes name="monitoredResources" required="true" description="Defines the monitored resources used by this service. This is required&#xA;by the Service.monitoring and Service.logging configurations." type="//@types.7"/>
+    <attributes name="enums" required="true" description="A list of all enum types included in this API service.  Enums&#xA;referenced directly or indirectly by the `apis` are automatically&#xA;included.  Enums which are not referenced but shall be included&#xA;should be listed here by name. Example:&#xA;&#xA;    enums:&#xA;    - name: google.someapi.v1.SomeEnum" type="//@types.7"/>
+    <attributes name="metrics" required="true" description="Defines the metrics used by this service." type="//@types.7"/>
+    <attributes name="configVersion" required="true" description="The semantic version of the service configuration. The config version&#xA;affects the interpretation of the service configuration. For example,&#xA;certain features are enabled by default for certain config versions.&#xA;The latest config version is `3`." type="//@types.3"/>
+    <attributes name="producerProjectId" required="true" description="The Google project that owns this service." type="//@types.0"/>
+    <attributes name="systemTypes" required="true" description="A list of all proto message types included in this API service.&#xA;It serves similar purpose as [google.api.Service.types], except that&#xA;these types are not needed by user-defined APIs. Therefore, they will not&#xA;show up in the generated discovery doc. This field should only be used&#xA;to define system APIs in ESF." type="//@types.7"/>
+    <attributes name="name" required="true" description="The DNS address at which this service is available,&#xA;e.g. `calendar.googleapis.com`." type="//@types.0"/>
+    <actions name="get" scheme="http://occi/gcpservicemanagement/service/action#" title="Gets a managed service. Authentication is required unless the service is&#xA;public.">
+      <attributes name="serviceName" required="true" description="The name of the service.  See the `ServiceManager` overview for naming&#xA;requirements.  For example: `example.googleapis.com`." type="//@types.0"/>
+    </actions>
+    <actions name="testIamPermissions" scheme="http://occi/gcpservicemanagement/service/action#" title="Returns permissions that a caller has on the specified resource.&#xA;If the resource does not exist, this will return an empty set of&#xA;permissions, not a NOT_FOUND error.&#xA;&#xA;Note: This operation is designed to be used for building permission-aware&#xA;UIs and command-line tools, not for authorization checking. This operation&#xA;may &quot;fail open&quot; without warning.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy detail is being requested.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.0"/>
+    </actions>
+    <actions name="getConfig" scheme="http://occi/gcpservicemanagement/service/action#" title="Gets a service configuration (version) for a managed service.">
+      <attributes name="serviceName" required="true" description="The name of the service.  See the [overview](/service-management/overview)&#xA;for naming requirements.  For example: `example.googleapis.com`." type="//@types.0"/>
+      <attributes name="configId" required="true" description="The id of the service configuration resource." type="//@types.0"/>
+      <attributes name="view" required="true" description="Specifies which parts of the Service Config should be returned in the&#xA;response." type="//@types.0"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpservicemanagement/service/action#" title="Deletes a managed service. This method will change the service to the&#xA;`Soft-Delete` state for 30 days. Within this period, service producers may&#xA;call UndeleteService to restore the service.&#xA;After 30 days, the service will be permanently deleted.&#xA;&#xA;Operation&lt;response: google.protobuf.Empty>">
+      <attributes name="serviceName" required="true" description="The name of the service.  See the [overview](/service-management/overview)&#xA;for naming requirements.  For example: `example.googleapis.com`." type="//@types.0"/>
+    </actions>
+    <actions name="enable" scheme="http://occi/gcpservicemanagement/service/action#" title="Enables a service for a project, so it can be used&#xA;for the project. See&#xA;[Cloud Auth Guide](https://cloud.google.com/docs/authentication) for&#xA;more information.&#xA;&#xA;Operation&lt;response: EnableServiceResponse>">
+      <attributes name="serviceName" required="true" description="Name of the service to enable. Specifying an unknown service name will&#xA;cause the request to fail." type="//@types.0"/>
+    </actions>
+    <actions name="setIamPolicy" scheme="http://occi/gcpservicemanagement/service/action#" title="Sets the access control policy on the specified resource. Replaces any&#xA;existing policy.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being specified.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.0"/>
+    </actions>
+    <actions name="disable" scheme="http://occi/gcpservicemanagement/service/action#" title="Disables a service for a project, so it can no longer be&#xA;be used for the project. It prevents accidental usage that may cause&#xA;unexpected billing charges or security leaks.&#xA;&#xA;Operation&lt;response: DisableServiceResponse>">
+      <attributes name="serviceName" required="true" description="Name of the service to disable. Specifying an unknown service name&#xA;will cause the request to fail." type="//@types.0"/>
+    </actions>
+    <actions name="getIamPolicy" scheme="http://occi/gcpservicemanagement/service/action#" title="Gets the access control policy for a resource.&#xA;Returns an empty policy if the resource exists and does not have a policy&#xA;set.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being requested.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.0"/>
+    </actions>
+    <actions name="undelete" scheme="http://occi/gcpservicemanagement/service/action#" title="Revives a previously deleted managed service. The method restores the&#xA;service using the configuration at the time the service was deleted.&#xA;The target service must exist and must have been deleted within the&#xA;last 30 days.&#xA;&#xA;Operation&lt;response: UndeleteServiceResponse>">
+      <attributes name="serviceName" required="true" description="The name of the service. See the [overview](/service-management/overview)&#xA;for naming requirements. For example: `example.googleapis.com`." type="//@types.0"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpservicemanagement/service/action#" title="Lists managed services.&#xA;&#xA;Returns all public services. For authenticated users, also returns all&#xA;services the calling user has &quot;servicemanagement.services.get&quot; permission&#xA;for.&#xA;&#xA;**BETA:** If the caller specifies the `consumer_id`, it returns only the&#xA;services enabled on the consumer. The `consumer_id` must have the format&#xA;of &quot;project:{PROJECT-ID}&quot;.">
+      <attributes name="pageSize" required="true" description="Requested size of the next page of data." type="//@types.3"/>
+      <attributes name="producerProjectId" required="true" description="Include services produced by the specified project." type="//@types.0"/>
+      <attributes name="consumerId" required="true" description="Include services consumed by the specified consumer.&#xA;&#xA;The Google Service Management implementation accepts the following&#xA;forms:&#xA;- project:&lt;project_id>" type="//@types.0"/>
+      <attributes name="pageToken" required="true" description="Token identifying which result to start with; returned by a previous list&#xA;call." type="//@types.0"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpservicemanagement/service/action#" title="Creates a new managed service.&#xA;Please note one producer project can own no more than 20 services.&#xA;&#xA;Operation&lt;response: ManagedService>"/>
+    <actions name="generateConfigReport" scheme="http://occi/gcpservicemanagement/service/action#" title="Generates and returns a report (errors, warnings and changes from&#xA;existing configurations) associated with&#xA;GenerateConfigReportRequest.new_value&#xA;&#xA;If GenerateConfigReportRequest.old_value is specified,&#xA;GenerateConfigReportRequest will contain a single ChangeReport based on the&#xA;comparison between GenerateConfigReportRequest.new_value and&#xA;GenerateConfigReportRequest.old_value.&#xA;If GenerateConfigReportRequest.old_value is not specified, this method&#xA;will compare GenerateConfigReportRequest.new_value with the last pushed&#xA;service configuration."/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="EnumValue" scheme="http://occi/gcpservicemanagement#" title="Enum value definition.">
+    <attributes name="number" required="true" description="Enum value number." type="//@types.3"/>
+    <attributes name="name" required="true" description="Enum value name." type="//@types.0"/>
+    <attributes name="options" required="true" description="Protocol buffer options." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListOperationsResponse" scheme="http://occi/gcpservicemanagement#" title="The response message for Operations.ListOperations.">
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.0"/>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CustomHttpPattern" scheme="http://occi/gcpservicemanagement#" title="A custom pattern is used for defining custom HTTP verb.">
+    <attributes name="kind" required="true" description="The name of this custom HTTP verb." type="//@types.0"/>
+    <attributes name="path" required="true" description="The path matched by this custom verb." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationMetadata" scheme="http://occi/gcpservicemanagement#" title="The metadata associated with a long running operation resource.">
+    <attributes name="startTime" required="true" description="The start time of the operation." type="//@types.0"/>
+    <attributes name="resourceNames" required="true" description="The full name of the resources that this operation is directly&#xA;associated with." type="//@types.7"/>
+    <attributes name="steps" required="true" description="Detailed status information for each step. The order is undetermined." type="//@types.7"/>
+    <attributes name="progressPercentage" required="true" description="Percentage of completion of this operation, ranging from 0 to 100." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SystemParameterRule" scheme="http://occi/gcpservicemanagement#" title="Define a system parameter rule mapping system parameter definitions to&#xA;methods.">
+    <attributes name="parameters" required="true" description="Define parameters. Multiple names may be defined for a parameter.&#xA;For a given method call, only one of them should be used. If multiple&#xA;names are used the behavior is implementation-dependent.&#xA;If none of the specified names are present the behavior is&#xA;parameter-dependent." type="//@types.7"/>
+    <attributes name="selector" required="true" description="Selects the methods to which this rule applies. Use '*' to indicate all&#xA;methods in all APIs.&#xA;&#xA;Refer to selector for syntax details." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MediaUploadLink" scheme="http://occi/gcpservicemanagement#" title="Use this only for Scotty Requests. Do not use this for media support using&#xA;Bytestream, add instead&#xA;[][google.bytestream.RestByteStream] as an API to your&#xA;configuration for Bytestream methods." source="//@kinds[term='httprule']" target="//@kinds[term='mediaupload']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CustomHttpPatternLink" scheme="http://occi/gcpservicemanagement#" title="The custom pattern is used for specifying an HTTP method that is not&#xA;included in the `pattern` field, such as HEAD, or &quot;*&quot; to leave the&#xA;HTTP method unspecified for this rule. The wild-card rule is useful&#xA;for services that provide content to Web (HTML) clients." source="//@kinds[term='httprule']" target="//@kinds[term='customhttppattern']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="MediaDownloadLink" scheme="http://occi/gcpservicemanagement#" title="Use this only for Scotty Requests. Do not use this for bytestream methods.&#xA;For media support, add instead [][google.bytestream.RestByteStream] as an&#xA;API to your configuration." source="//@kinds[term='httprule']" target="//@kinds[term='mediadownload']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="HttpRule" scheme="http://occi/gcpservicemanagement#" title="`HttpRule` defines the mapping of an RPC method to one or more HTTP&#xA;REST API methods. The mapping specifies how different portions of the RPC&#xA;request message are mapped to URL path, URL query parameters, and&#xA;HTTP request body. The mapping is typically specified as an&#xA;`google.api.http` annotation on the RPC method,&#xA;see &quot;google/api/annotations.proto&quot; for details.&#xA;&#xA;The mapping consists of a field specifying the path template and&#xA;method kind.  The path template can refer to fields in the request&#xA;message, as in the example below which describes a REST GET&#xA;operation on a resource collection of messages:&#xA;&#xA;&#xA;    service Messaging {&#xA;      rpc GetMessage(GetMessageRequest) returns (Message) {&#xA;        option (google.api.http).get = &quot;/v1/messages/{message_id}/{sub.subfield}&quot;;&#xA;      }&#xA;    }&#xA;    message GetMessageRequest {&#xA;      message SubMessage {&#xA;        string subfield = 1;&#xA;      }&#xA;      string message_id = 1; // mapped to the URL&#xA;      SubMessage sub = 2;    // `sub.subfield` is url-mapped&#xA;    }&#xA;    message Message {&#xA;      string text = 1; // content of the resource&#xA;    }&#xA;&#xA;The same http annotation can alternatively be expressed inside the&#xA;`GRPC API Configuration` YAML file.&#xA;&#xA;    http:&#xA;      rules:&#xA;        - selector: &lt;proto_package_name>.Messaging.GetMessage&#xA;          get: /v1/messages/{message_id}/{sub.subfield}&#xA;&#xA;This definition enables an automatic, bidrectional mapping of HTTP&#xA;JSON to RPC. Example:&#xA;&#xA;HTTP | RPC&#xA;-----|-----&#xA;`GET /v1/messages/123456/foo`  | `GetMessage(message_id: &quot;123456&quot; sub: SubMessage(subfield: &quot;foo&quot;))`&#xA;&#xA;In general, not only fields but also field paths can be referenced&#xA;from a path pattern. Fields mapped to the path pattern cannot be&#xA;repeated and must have a primitive (non-message) type.&#xA;&#xA;Any fields in the request message which are not bound by the path&#xA;pattern automatically become (optional) HTTP query&#xA;parameters. Assume the following definition of the request message:&#xA;&#xA;&#xA;    service Messaging {&#xA;      rpc GetMessage(GetMessageRequest) returns (Message) {&#xA;        option (google.api.http).get = &quot;/v1/messages/{message_id}&quot;;&#xA;      }&#xA;    }&#xA;    message GetMessageRequest {&#xA;      message SubMessage {&#xA;        string subfield = 1;&#xA;      }&#xA;      string message_id = 1; // mapped to the URL&#xA;      int64 revision = 2;    // becomes a parameter&#xA;      SubMessage sub = 3;    // `sub.subfield` becomes a parameter&#xA;    }&#xA;&#xA;&#xA;This enables a HTTP JSON to RPC mapping as below:&#xA;&#xA;HTTP | RPC&#xA;-----|-----&#xA;`GET /v1/messages/123456?revision=2&amp;sub.subfield=foo` | `GetMessage(message_id: &quot;123456&quot; revision: 2 sub: SubMessage(subfield: &quot;foo&quot;))`&#xA;&#xA;Note that fields which are mapped to HTTP parameters must have a&#xA;primitive type or a repeated primitive type. Message types are not&#xA;allowed. In the case of a repeated type, the parameter can be&#xA;repeated in the URL, as in `...?param=A&amp;param=B`.&#xA;&#xA;For HTTP method kinds which allow a request body, the `body` field&#xA;specifies the mapping. Consider a REST update method on the&#xA;message resource collection:&#xA;&#xA;&#xA;    service Messaging {&#xA;      rpc UpdateMessage(UpdateMessageRequest) returns (Message) {&#xA;        option (google.api.http) = {&#xA;          put: &quot;/v1/messages/{message_id}&quot;&#xA;          body: &quot;message&quot;&#xA;        };&#xA;      }&#xA;    }&#xA;    message UpdateMessageRequest {&#xA;      string message_id = 1; // mapped to the URL&#xA;      Message message = 2;   // mapped to the body&#xA;    }&#xA;&#xA;&#xA;The following HTTP JSON to RPC mapping is enabled, where the&#xA;representation of the JSON in the request body is determined by&#xA;protos JSON encoding:&#xA;&#xA;HTTP | RPC&#xA;-----|-----&#xA;`PUT /v1/messages/123456 { &quot;text&quot;: &quot;Hi!&quot; }` | `UpdateMessage(message_id: &quot;123456&quot; message { text: &quot;Hi!&quot; })`&#xA;&#xA;The special name `*` can be used in the body mapping to define that&#xA;every field not bound by the path template should be mapped to the&#xA;request body.  This enables the following alternative definition of&#xA;the update method:&#xA;&#xA;    service Messaging {&#xA;      rpc UpdateMessage(Message) returns (Message) {&#xA;        option (google.api.http) = {&#xA;          put: &quot;/v1/messages/{message_id}&quot;&#xA;          body: &quot;*&quot;&#xA;        };&#xA;      }&#xA;    }&#xA;    message Message {&#xA;      string message_id = 1;&#xA;      string text = 2;&#xA;    }&#xA;&#xA;&#xA;The following HTTP JSON to RPC mapping is enabled:&#xA;&#xA;HTTP | RPC&#xA;-----|-----&#xA;`PUT /v1/messages/123456 { &quot;text&quot;: &quot;Hi!&quot; }` | `UpdateMessage(message_id: &quot;123456&quot; text: &quot;Hi!&quot;)`&#xA;&#xA;Note that when using `*` in the body mapping, it is not possible to&#xA;have HTTP parameters, as all fields not bound by the path end in&#xA;the body. This makes this option more rarely used in practice of&#xA;defining REST APIs. The common usage of `*` is in custom methods&#xA;which don't use the URL at all for transferring data.&#xA;&#xA;It is possible to define multiple HTTP methods for one RPC by using&#xA;the `additional_bindings` option. Example:&#xA;&#xA;    service Messaging {&#xA;      rpc GetMessage(GetMessageRequest) returns (Message) {&#xA;        option (google.api.http) = {&#xA;          get: &quot;/v1/messages/{message_id}&quot;&#xA;          additional_bindings {&#xA;            get: &quot;/v1/users/{user_id}/messages/{message_id}&quot;&#xA;          }&#xA;        };&#xA;      }&#xA;    }&#xA;    message GetMessageRequest {&#xA;      string message_id = 1;&#xA;      string user_id = 2;&#xA;    }&#xA;&#xA;&#xA;This enables the following two alternative HTTP JSON to RPC&#xA;mappings:&#xA;&#xA;HTTP | RPC&#xA;-----|-----&#xA;`GET /v1/messages/123456` | `GetMessage(message_id: &quot;123456&quot;)`&#xA;`GET /v1/users/me/messages/123456` | `GetMessage(user_id: &quot;me&quot; message_id: &quot;123456&quot;)`&#xA;&#xA;# Rules for HTTP mapping&#xA;&#xA;The rules for mapping HTTP path, query parameters, and body fields&#xA;to the request message are as follows:&#xA;&#xA;1. The `body` field specifies either `*` or a field path, or is&#xA;   omitted. If omitted, it indicates there is no HTTP request body.&#xA;2. Leaf fields (recursive expansion of nested messages in the&#xA;   request) can be classified into three types:&#xA;    (a) Matched in the URL template.&#xA;    (b) Covered by body (if body is `*`, everything except (a) fields;&#xA;        else everything under the body field)&#xA;    (c) All other fields.&#xA;3. URL query parameters found in the HTTP request are mapped to (c) fields.&#xA;4. Any body sent with an HTTP request can contain only (b) fields.&#xA;&#xA;The syntax of the path template is as follows:&#xA;&#xA;    Template = &quot;/&quot; Segments [ Verb ] ;&#xA;    Segments = Segment { &quot;/&quot; Segment } ;&#xA;    Segment  = &quot;*&quot; | &quot;**&quot; | LITERAL | Variable ;&#xA;    Variable = &quot;{&quot; FieldPath [ &quot;=&quot; Segments ] &quot;}&quot; ;&#xA;    FieldPath = IDENT { &quot;.&quot; IDENT } ;&#xA;    Verb     = &quot;:&quot; LITERAL ;&#xA;&#xA;The syntax `*` matches a single path segment. The syntax `**` matches zero&#xA;or more path segments, which must be the last part of the path except the&#xA;`Verb`. The syntax `LITERAL` matches literal text in the path.&#xA;&#xA;The syntax `Variable` matches part of the URL path as specified by its&#xA;template. A variable template must not contain other variables. If a variable&#xA;matches a single path segment, its template may be omitted, e.g. `{var}`&#xA;is equivalent to `{var=*}`.&#xA;&#xA;If a variable contains exactly one path segment, such as `&quot;{var}&quot;` or&#xA;`&quot;{var=*}&quot;`, when such a variable is expanded into a URL path, all characters&#xA;except `[-_.~0-9a-zA-Z]` are percent-encoded. Such variables show up in the&#xA;Discovery Document as `{var}`.&#xA;&#xA;If a variable contains one or more path segments, such as `&quot;{var=foo/*}&quot;`&#xA;or `&quot;{var=**}&quot;`, when such a variable is expanded into a URL path, all&#xA;characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. Such variables&#xA;show up in the Discovery Document as `{+var}`.&#xA;&#xA;NOTE: While the single segment variable matches the semantics of&#xA;[RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2&#xA;Simple String Expansion, the multi segment variable **does not** match&#xA;RFC 6570 Reserved Expansion. The reason is that the Reserved Expansion&#xA;does not expand special characters like `?` and `#`, which would lead&#xA;to invalid URLs.&#xA;&#xA;NOTE: the field paths in variables and in the `body` must not refer to&#xA;repeated fields or map fields.">
+    <attributes name="responseBody" required="true" description="The name of the response field whose value is mapped to the HTTP body of&#xA;response. Other response fields are ignored. This field is optional. When&#xA;not set, the response message will be used as HTTP body of response.&#xA;NOTE: the referred field must be not a repeated field and must be present&#xA;at the top-level of response message type." type="//@types.0"/>
+    <attributes name="selector" required="true" description="Selects methods to which this rule applies.&#xA;&#xA;Refer to selector for syntax details." type="//@types.0"/>
+    <attributes name="patch" required="true" description="Used for updating a resource." type="//@types.0"/>
+    <attributes name="get" required="true" description="Used for listing and getting information about resources." type="//@types.0"/>
+    <attributes name="put" required="true" description="Used for updating a resource." type="//@types.0"/>
+    <attributes name="delete" required="true" description="Used for deleting a resource." type="//@types.0"/>
+    <attributes name="body" required="true" description="The name of the request field whose value is mapped to the HTTP body, or&#xA;`*` for mapping all fields not captured by the path pattern to the HTTP&#xA;body. NOTE: the referred field must not be a repeated field and must be&#xA;present at the top-level of request message type." type="//@types.0"/>
+    <attributes name="post" required="true" description="Used for creating a resource." type="//@types.0"/>
+    <attributes name="additionalBindings" required="true" description="Additional HTTP bindings for the selector. Nested bindings must&#xA;not contain an `additional_bindings` field themselves (that is,&#xA;the nesting may only be one level deep)." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="VisibilityRule" scheme="http://occi/gcpservicemanagement#" title="A visibility rule provides visibility configuration for an individual API&#xA;element.">
+    <attributes name="restriction" required="true" description="A comma-separated list of visibility labels that apply to the `selector`.&#xA;Any of the listed labels can be used to grant the visibility.&#xA;&#xA;If a rule has multiple labels, removing one of the labels but not all of&#xA;them can break clients.&#xA;&#xA;Example:&#xA;&#xA;    visibility:&#xA;      rules:&#xA;      - selector: google.calendar.Calendar.EnhancedSearch&#xA;        restriction: GOOGLE_INTERNAL, TRUSTED_TESTER&#xA;&#xA;Removing GOOGLE_INTERNAL from this restriction will break clients that&#xA;rely on this method and only had access to it through GOOGLE_INTERNAL." type="//@types.0"/>
+    <attributes name="selector" required="true" description="Selects methods, messages, fields, enums, etc. to which this rule applies.&#xA;&#xA;Refer to selector for syntax details." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MonitoringDestination" scheme="http://occi/gcpservicemanagement#" title="Configuration of a specific monitoring destination (the producer project&#xA;or the consumer project).">
+    <attributes name="metrics" required="true" description="Names of the metrics to report to this monitoring destination.&#xA;Each name must be defined in Service.metrics section." type="//@types.7"/>
+    <attributes name="monitoredResource" required="true" description="The monitored resource type. The type must be defined in&#xA;Service.monitored_resources section." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Visibility" scheme="http://occi/gcpservicemanagement#" title="`Visibility` defines restrictions for the visibility of service&#xA;elements.  Restrictions are specified using visibility labels&#xA;(e.g., TRUSTED_TESTER) that are elsewhere linked to users and projects.&#xA;&#xA;Users and projects can have access to more than one visibility label. The&#xA;effective visibility for multiple labels is the union of each label's&#xA;elements, plus any unrestricted elements.&#xA;&#xA;If an element and its parents have no restrictions, visibility is&#xA;unconditionally granted.&#xA;&#xA;Example:&#xA;&#xA;    visibility:&#xA;      rules:&#xA;      - selector: google.calendar.Calendar.EnhancedSearch&#xA;        restriction: TRUSTED_TESTER&#xA;      - selector: google.calendar.Calendar.Delegate&#xA;        restriction: GOOGLE_INTERNAL&#xA;&#xA;Here, all methods are publicly visible except for the restricted methods&#xA;EnhancedSearch and Delegate.">
+    <attributes name="rules" required="true" description="A list of visibility rules that apply to individual API elements.&#xA;&#xA;**NOTE:** All service configuration rules follow &quot;last one wins&quot; order." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SystemParameters" scheme="http://occi/gcpservicemanagement#" title="### System parameter configuration&#xA;&#xA;A system parameter is a special kind of parameter defined by the API&#xA;system, not by an individual API. It is typically mapped to an HTTP header&#xA;and/or a URL query parameter. This configuration specifies which methods&#xA;change the names of the system parameters.">
+    <attributes name="rules" required="true" description="Define system parameters.&#xA;&#xA;The parameters defined here will override the default parameters&#xA;implemented by the system. If this field is missing from the service&#xA;config, default system parameters will be used. Default system parameters&#xA;and names is implementation-dependent.&#xA;&#xA;Example: define api key for all methods&#xA;&#xA;    system_parameters&#xA;      rules:&#xA;        - selector: &quot;*&quot;&#xA;          parameters:&#xA;            - name: api_key&#xA;              url_query_parameter: api_key&#xA;&#xA;&#xA;Example: define 2 api key names for a specific method.&#xA;&#xA;    system_parameters&#xA;      rules:&#xA;        - selector: &quot;/ListShelves&quot;&#xA;          parameters:&#xA;            - name: api_key&#xA;              http_header: Api-Key1&#xA;            - name: api_key&#xA;              http_header: Api-Key2&#xA;&#xA;**NOTE:** All service configuration rules follow &quot;last one wins&quot; order." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ConfigChange" scheme="http://occi/gcpservicemanagement#" title="Output generated from semantically comparing two versions of a service&#xA;configuration.&#xA;&#xA;Includes detailed information about a field that have changed with&#xA;applicable advice about potential consequences for the change, such as&#xA;backwards-incompatibility.">
+    <attributes name="newValue" required="true" description="Value of the changed object in the new Service configuration,&#xA;in JSON format. This field will not be populated if ChangeType == REMOVED." type="//@types.0"/>
+    <attributes name="changeType" required="true" description="The type for this change, either ADDED, REMOVED, or MODIFIED." type="//@types.11"/>
+    <attributes name="element" required="true" description="Object hierarchy path to the change, with levels separated by a '.'&#xA;character. For repeated fields, an applicable unique identifier field is&#xA;used for the index (usually selector, name, or id). For maps, the term&#xA;'key' is used. If the field has no unique identifier, the numeric index&#xA;is used.&#xA;Examples:&#xA;- visibility.rules[selector==&quot;google.LibraryService.CreateBook&quot;].restriction&#xA;- quota.metric_rules[selector==&quot;google&quot;].metric_costs[key==&quot;reads&quot;].value&#xA;- logging.producer_destinations[0]" type="//@types.11"/>
+    <attributes name="oldValue" required="true" description="Value of the changed object in the old Service configuration,&#xA;in JSON format. This field will not be populated if ChangeType == ADDED." type="//@types.11"/>
+    <attributes name="advices" required="true" description="Collection of advice provided for this change, useful for determining the&#xA;possible impact of this change." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Quota" scheme="http://occi/gcpservicemanagement#" title="Quota configuration helps to achieve fairness and budgeting in service&#xA;usage.&#xA;&#xA;The quota configuration works this way:&#xA;- The service configuration defines a set of metrics.&#xA;- For API calls, the quota.metric_rules maps methods to metrics with&#xA;  corresponding costs.&#xA;- The quota.limits defines limits on the metrics, which will be used for&#xA;  quota checks at runtime.&#xA;&#xA;An example quota configuration in yaml format:&#xA;&#xA;   quota:&#xA;&#xA;     - name: apiWriteQpsPerProject&#xA;       metric: library.googleapis.com/write_calls&#xA;       unit: &quot;1/min/{project}&quot;  # rate limit for consumer projects&#xA;       values:&#xA;         STANDARD: 10000&#xA;&#xA;&#xA;     # The metric rules bind all methods to the read_calls metric,&#xA;     # except for the UpdateBook and DeleteBook methods. These two methods&#xA;     # are mapped to the write_calls metric, with the UpdateBook method&#xA;     # consuming at twice rate as the DeleteBook method.&#xA;     metric_rules:&#xA;     - selector: &quot;*&quot;&#xA;       metric_costs:&#xA;         library.googleapis.com/read_calls: 1&#xA;     - selector: google.example.library.v1.LibraryService.UpdateBook&#xA;       metric_costs:&#xA;         library.googleapis.com/write_calls: 2&#xA;     - selector: google.example.library.v1.LibraryService.DeleteBook&#xA;       metric_costs:&#xA;         library.googleapis.com/write_calls: 1&#xA;&#xA; Corresponding Metric definition:&#xA;&#xA;     metrics:&#xA;     - name: library.googleapis.com/read_calls&#xA;       display_name: Read requests&#xA;       metric_kind: DELTA&#xA;       value_type: INT64&#xA;&#xA;     - name: library.googleapis.com/write_calls&#xA;       display_name: Write requests&#xA;       metric_kind: DELTA&#xA;       value_type: INT64">
+    <attributes name="limits" required="true" description="List of `QuotaLimit` definitions for the service." type="//@types.7"/>
+    <attributes name="metricRules" required="true" description="List of `MetricRule` definitions, each one mapping a selected method to one&#xA;or more metrics." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DeleteServiceStrategyLink" scheme="http://occi/gcpservicemanagement#" title="The strategy associated with a rollout to delete a `ManagedService`.&#xA;Readonly." source="//@kinds[term='rollout']" target="//@kinds[term='deleteservicestrategy']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TrafficPercentStrategyLink" scheme="http://occi/gcpservicemanagement#" title="Google Service Control selects service configurations based on&#xA;traffic percentage." source="//@kinds[term='rollout']" target="//@kinds[term='trafficpercentstrategy']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Rollout" scheme="http://occi/gcpservicemanagement#" title="A rollout resource that defines how service configuration versions are pushed&#xA;to control plane systems. Typically, you create a new version of the&#xA;service config, and then create a Rollout to push the service config.">
+    <attributes name="createTime" required="true" description="Creation time of the rollout. Readonly." type="//@types.11"/>
+    <attributes name="status" required="true" description="The status of this rollout. Readonly. In case of a failed rollout,&#xA;the system will automatically rollback to the current Rollout&#xA;version. Readonly." type="//@types.12"/>
+    <attributes name="serviceName" required="true" description="The name of the service associated with this Rollout." type="//@types.12"/>
+    <attributes name="createdBy" required="true" description="The user who created the Rollout. Readonly." type="//@types.12"/>
+    <attributes name="rolloutId" required="true" description="Optional unique identifier of this Rollout. Only lower case letters, digits&#xA; and '-' are allowed.&#xA;&#xA;If not specified by client, the server will generate one. The generated id&#xA;will have the form of &lt;date>&lt;revision number>, where &quot;date&quot; is the create&#xA;date in ISO 8601 format.  &quot;revision number&quot; is a monotonically increasing&#xA;positive number that is reset every day for each service.&#xA;An example of the generated rollout_id is '2016-02-16r1'" type="//@types.12"/>
+    <actions name="list" scheme="http://occi/gcpservicemanagement/rollout/action#" title="Lists the history of the service configuration rollouts for a managed&#xA;service, from the newest to the oldest.">
+      <attributes name="serviceName" required="true" description="The name of the service.  See the [overview](/service-management/overview)&#xA;for naming requirements.  For example: `example.googleapis.com`." type="//@types.12"/>
+      <attributes name="pageToken" required="true" description="The token of the page to retrieve." type="//@types.12"/>
+      <attributes name="pageSize" required="true" description="The max number of items to include in the response list." type="//@types.3"/>
+      <attributes name="filter" required="true" description="Use `filter` to return subset of rollouts.&#xA;The following filters are supported:&#xA;  -- To limit the results to only those in&#xA;     [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS',&#xA;     use filter='status=SUCCESS'&#xA;  -- To limit the results to those in&#xA;     [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED'&#xA;     or 'FAILED', use filter='status=CANCELLED OR status=FAILED'" type="//@types.12"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpservicemanagement/rollout/action#" title="Gets a service configuration rollout.">
+      <attributes name="serviceName" required="true" description="The name of the service.  See the [overview](/service-management/overview)&#xA;for naming requirements.  For example: `example.googleapis.com`." type="//@types.12"/>
+      <attributes name="rolloutId" required="true" description="The id of the rollout resource." type="//@types.12"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpservicemanagement/rollout/action#" title="Creates a new service configuration rollout. Based on rollout, the&#xA;Google Service Management will roll out the service configurations to&#xA;different backend services. For example, the logging configuration will be&#xA;pushed to Google Cloud Logging.&#xA;&#xA;Please note that any previous pending and running Rollouts and associated&#xA;Operations will be automatically cancelled so that the latest Rollout will&#xA;not be blocked by previous Rollouts.&#xA;&#xA;Operation&lt;response: Rollout>">
+      <attributes name="serviceName" required="true" description="The name of the service.  See the [overview](/service-management/overview)&#xA;for naming requirements.  For example: `example.googleapis.com`." type="//@types.12"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GenerateConfigReportRequest" scheme="http://occi/gcpservicemanagement#" title="Request message for GenerateConfigReport method.">
+    <attributes name="oldConfig" required="true" description="Service configuration against which the comparison will be done.&#xA;For this version of API, the supported types are&#xA;google.api.servicemanagement.v1.ConfigRef,&#xA;google.api.servicemanagement.v1.ConfigSource,&#xA;and google.api.Service" type="//@types.9"/>
+    <attributes name="newConfig" required="true" description="Service configuration for which we want to generate the report.&#xA;For this version of API, the supported types are&#xA;google.api.servicemanagement.v1.ConfigRef,&#xA;google.api.servicemanagement.v1.ConfigSource,&#xA;and google.api.Service" type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PolicyLink" scheme="http://occi/gcpservicemanagement#" title="REQUIRED: The complete policy to be applied to the `resource`. The size of&#xA;the policy is limited to a few 10s of KB. An empty policy is a&#xA;valid policy but certain Cloud Platform services (such as Projects)&#xA;might reject them." source="//@kinds[term='setiampolicyrequest']" target="//@kinds[term='policy']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SetIamPolicyRequest" scheme="http://occi/gcpservicemanagement#" title="Request message for `SetIamPolicy` method.">
+    <attributes name="updateMask" required="true" description="OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only&#xA;the fields in the mask will be modified. If no mask is provided, the&#xA;following default mask is used:&#xA;paths: &quot;bindings, etag&quot;&#xA;This field is only used by Cloud IAM." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DeleteServiceStrategy" scheme="http://occi/gcpservicemanagement#" title="Strategy used to delete a service. This strategy is a placeholder only&#xA;used by the system generated rollout to delete a service.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Step" scheme="http://occi/gcpservicemanagement#" title="Represents the status of one operation step.">
+    <attributes name="status" required="true" description="The status code." type="//@types.13"/>
+    <attributes name="description" required="true" description="The short description of the step." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LoggingDestination" scheme="http://occi/gcpservicemanagement#" title="Configuration of a specific logging destination (the producer project&#xA;or the consumer project).">
+    <attributes name="logs" required="true" description="Names of the logs to be sent to this destination. Each name must&#xA;be defined in the Service.logs section. If the log name is&#xA;not a domain scoped name, it will be automatically prefixed with&#xA;the service name followed by &quot;/&quot;." type="//@types.7"/>
+    <attributes name="monitoredResource" required="true" description="The monitored resource type. The type must be defined in the&#xA;Service.monitored_resources section." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Option" scheme="http://occi/gcpservicemanagement#" title="A protocol buffer option, which can be attached to a message, field,&#xA;enumeration, etc.">
+    <attributes name="value" required="true" description="The option's value packed in an Any message. If the value is a primitive,&#xA;the corresponding wrapper type defined in google/protobuf/wrappers.proto&#xA;should be used. If the value is an enum, it should be stored as an int32&#xA;value using the google.protobuf.Int32Value type." type="//@types.9"/>
+    <attributes name="name" required="true" description="The option's name. For protobuf built-in options (options defined in&#xA;descriptor.proto), this is the short name. For example, `&quot;map_entry&quot;`.&#xA;For custom options, it should be the fully-qualified name. For example,&#xA;`&quot;google.api.http&quot;`." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Logging" scheme="http://occi/gcpservicemanagement#" title="Logging configuration of the service.&#xA;&#xA;The following example shows how to configure logs to be sent to the&#xA;producer and consumer projects. In the example, the `activity_history`&#xA;log is sent to both the producer and consumer projects, whereas the&#xA;`purchase_history` log is only sent to the producer project.&#xA;&#xA;    monitored_resources:&#xA;    - type: library.googleapis.com/branch&#xA;      labels:&#xA;      - key: /city&#xA;        description: The city where the library branch is located in.&#xA;      - key: /name&#xA;        description: The name of the branch.&#xA;    logs:&#xA;    - name: activity_history&#xA;      labels:&#xA;      - key: /customer_id&#xA;    - name: purchase_history&#xA;    logging:&#xA;      producer_destinations:&#xA;      - monitored_resource: library.googleapis.com/branch&#xA;        logs:&#xA;        - activity_history&#xA;        - purchase_history&#xA;      consumer_destinations:&#xA;      - monitored_resource: library.googleapis.com/branch&#xA;        logs:&#xA;        - activity_history">
+    <attributes name="producerDestinations" required="true" description="Logging configurations for sending logs to the producer project.&#xA;There can be multiple producer destinations, each one must have a&#xA;different monitored resource type. A log can be used in at most&#xA;one producer destination." type="//@types.7"/>
+    <attributes name="consumerDestinations" required="true" description="Logging configurations for sending logs to the consumer project.&#xA;There can be multiple consumer destinations, each one must have a&#xA;different monitored resource type. A log can be used in at most&#xA;one consumer destination." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="QuotaLimit" scheme="http://occi/gcpservicemanagement#" title="`QuotaLimit` defines a specific limit that applies over a specified duration&#xA;for a limit type. There can be at most one limit for a duration and limit&#xA;type combination defined within a `QuotaGroup`.">
+    <attributes name="unit" required="true" description="Specify the unit of the quota limit. It uses the same syntax as&#xA;Metric.unit. The supported unit kinds are determined by the quota&#xA;backend system.&#xA;&#xA;Here are some examples:&#xA;* &quot;1/min/{project}&quot; for quota per minute per project.&#xA;&#xA;Note: the order of unit components is insignificant.&#xA;The &quot;1&quot; at the beginning is required to follow the metric unit syntax." type="//@types.13"/>
+    <attributes name="maxLimit" required="true" description="Maximum number of tokens that can be consumed during the specified&#xA;duration. Client application developers can override the default limit up&#xA;to this maximum. If specified, this value cannot be set to a value less&#xA;than the default limit. If not specified, it is set to the default limit.&#xA;&#xA;To allow clients to apply overrides with no upper bound, set this to -1,&#xA;indicating unlimited maximum quota.&#xA;&#xA;Used by group-based quotas only." type="//@types.13"/>
+    <attributes name="name" required="true" description="Name of the quota limit.&#xA;&#xA;The name must be provided, and it must be unique within the service. The&#xA;name can only include alphanumeric characters as well as '-'.&#xA;&#xA;The maximum length of the limit name is 64 characters." type="//@types.13"/>
+    <attributes name="duration" required="true" description="Duration of this limit in textual notation. Example: &quot;100s&quot;, &quot;24h&quot;, &quot;1d&quot;.&#xA;For duration longer than a day, only multiple of days is supported. We&#xA;support only &quot;100s&quot; and &quot;1d&quot; for now. Additional support will be added in&#xA;the future. &quot;0&quot; indicates indefinite duration.&#xA;&#xA;Used by group-based quotas only." type="//@types.13"/>
+    <attributes name="freeTier" required="true" description="Free tier value displayed in the Developers Console for this limit.&#xA;The free tier is the number of tokens that will be subtracted from the&#xA;billed amount when billing is enabled.&#xA;This field can only be set on a limit with duration &quot;1d&quot;, in a billable&#xA;group; it is invalid on any other limit. If this field is not set, it&#xA;defaults to 0, indicating that there is no free tier for this service.&#xA;&#xA;Used by group-based quotas only." type="//@types.13"/>
+    <attributes name="defaultLimit" required="true" description="Default number of tokens that can be consumed during the specified&#xA;duration. This is the number of tokens assigned when a client&#xA;application developer activates the service for his/her project.&#xA;&#xA;Specifying a value of 0 will block all requests. This can be used if you&#xA;are provisioning quota to selected consumers and blocking others.&#xA;Similarly, a value of -1 will indicate an unlimited quota. No other&#xA;negative values are allowed.&#xA;&#xA;Used by group-based quotas only." type="//@types.13"/>
+    <attributes name="description" required="true" description="Optional. User-visible, extended description for this quota limit.&#xA;Should be used only when more context is needed to understand this limit&#xA;than provided by the limit's display name (see: `display_name`)." type="//@types.13"/>
+    <attributes name="metric" required="true" description="The name of the metric this quota limit applies to. The quota limits with&#xA;the same metric will be checked together during runtime. The metric must be&#xA;defined within the service config." type="//@types.13"/>
+    <attributes name="displayName" required="true" description="User-visible display name for this limit.&#xA;Optional. If not set, the UI will provide a default display name based on&#xA;the quota configuration. This field can be used to override the default&#xA;display name generated from the configuration." type="//@types.13"/>
+    <attributes name="values" required="true" description="Tiered limit values. You must specify this as a key:value pair, with an&#xA;integer value that is the maximum number of requests allowed for the&#xA;specified unit. Currently only STANDARD is supported." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Method" scheme="http://occi/gcpservicemanagement#" title="Method represents a method of an API interface.">
+    <attributes name="syntax" required="true" description="The source syntax of this method." type="//@types.14"/>
+    <attributes name="responseTypeUrl" required="true" description="The URL of the output message type." type="//@types.14"/>
+    <attributes name="options" required="true" description="Any metadata attached to the method." type="//@types.7"/>
+    <attributes name="responseStreaming" required="true" description="If true, the response is streamed." type="//@types.6"/>
+    <attributes name="name" required="true" description="The simple name of this method." type="//@types.14"/>
+    <attributes name="requestTypeUrl" required="true" description="A URL of the input message type." type="//@types.14"/>
+    <attributes name="requestStreaming" required="true" description="If true, the request is streamed." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ConfigRef" scheme="http://occi/gcpservicemanagement#" title="Represents a service configuration with its name and id.">
+    <attributes name="name" required="true" description="Resource name of a service config. It must have the following&#xA;format: &quot;services/{service name}/configs/{config id}&quot;." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListServiceRolloutsResponse" scheme="http://occi/gcpservicemanagement#" title="Response message for ListServiceRollouts method.">
+    <attributes name="nextPageToken" required="true" description="The token of the next page of results." type="//@types.14"/>
+    <attributes name="rollouts" required="true" description="The list of rollout resources." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Mixin" scheme="http://occi/gcpservicemanagement#" title="Declares an API Interface to be included in this interface. The including&#xA;interface must redeclare all the methods from the included interface, but&#xA;documentation and options are inherited as follows:&#xA;&#xA;- If after comment and whitespace stripping, the documentation&#xA;  string of the redeclared method is empty, it will be inherited&#xA;  from the original method.&#xA;&#xA;- Each annotation belonging to the service config (http,&#xA;  visibility) which is not set in the redeclared method will be&#xA;  inherited.&#xA;&#xA;- If an http annotation is inherited, the path pattern will be&#xA;  modified as follows. Any version prefix will be replaced by the&#xA;  version of the including interface plus the root path if&#xA;  specified.&#xA;&#xA;Example of a simple mixin:&#xA;&#xA;    package google.acl.v1;&#xA;    service AccessControl {&#xA;      // Get the underlying ACL object.&#xA;      rpc GetAcl(GetAclRequest) returns (Acl) {&#xA;        option (google.api.http).get = &quot;/v1/{resource=**}:getAcl&quot;;&#xA;      }&#xA;    }&#xA;&#xA;    package google.storage.v2;&#xA;    service Storage {&#xA;      //       rpc GetAcl(GetAclRequest) returns (Acl);&#xA;&#xA;      // Get a data record.&#xA;      rpc GetData(GetDataRequest) returns (Data) {&#xA;        option (google.api.http).get = &quot;/v2/{resource=**}&quot;;&#xA;      }&#xA;    }&#xA;&#xA;Example of a mixin configuration:&#xA;&#xA;    apis:&#xA;    - name: google.storage.v2.Storage&#xA;      mixins:&#xA;      - name: google.acl.v1.AccessControl&#xA;&#xA;The mixin construct implies that all methods in `AccessControl` are&#xA;also declared with same name and request/response types in&#xA;`Storage`. A documentation generator or annotation processor will&#xA;see the effective `Storage.GetAcl` method after inherting&#xA;documentation and annotations as follows:&#xA;&#xA;    service Storage {&#xA;      // Get the underlying ACL object.&#xA;      rpc GetAcl(GetAclRequest) returns (Acl) {&#xA;        option (google.api.http).get = &quot;/v2/{resource=**}:getAcl&quot;;&#xA;      }&#xA;      ...&#xA;    }&#xA;&#xA;Note how the version in the path pattern changed from `v1` to `v2`.&#xA;&#xA;If the `root` field in the mixin is specified, it should be a&#xA;relative path under which inherited HTTP paths are placed. Example:&#xA;&#xA;    apis:&#xA;    - name: google.storage.v2.Storage&#xA;      mixins:&#xA;      - name: google.acl.v1.AccessControl&#xA;        root: acls&#xA;&#xA;This implies the following inherited HTTP annotation:&#xA;&#xA;    service Storage {&#xA;      // Get the underlying ACL object.&#xA;      rpc GetAcl(GetAclRequest) returns (Acl) {&#xA;        option (google.api.http).get = &quot;/v2/acls/{resource=**}:getAcl&quot;;&#xA;      }&#xA;      ...&#xA;    }">
+    <attributes name="root" required="true" description="If non-empty specifies a path under which inherited HTTP paths&#xA;are rooted." type="//@types.14"/>
+    <attributes name="name" required="true" description="The fully qualified name of the interface which is included." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="FlowOperationMetadata" scheme="http://occi/gcpservicemanagement#" title="The metadata associated with a long running operation resource.">
+    <attributes name="cancelState" required="true" description="The state of the operation with respect to cancellation." type="//@types.15"/>
+    <attributes name="deadline" required="true" description="Deadline for the flow to complete, to prevent orphaned Operations.&#xA;&#xA;If the flow has not completed by this time, it may be terminated by&#xA;the engine, or force-failed by Operation lookup.&#xA;&#xA;Note that this is not a hard deadline after which the Flow will&#xA;definitely be failed, rather it is a deadline after which it is reasonable&#xA;to suspect a problem and other parts of the system may kill operation&#xA;to ensure we don't have orphans.&#xA;see also: go/prevent-orphaned-operations" type="//@types.15"/>
+    <attributes name="operationType" required="true" description="Operation type which is a flow type and subtype info as that is missing in&#xA;our datastore otherwise. This maps to the ordinal value of the enum:&#xA;jcg/api/tenant/operations/OperationNamespace.java" type="//@types.3"/>
+    <attributes name="startTime" required="true" description="The start time of the operation." type="//@types.15"/>
+    <attributes name="surface" required="true" description="" type="//@types.16"/>
+    <attributes name="flowName" required="true" description="The name of the top-level flow corresponding to this operation.&#xA;Must be equal to the &quot;name&quot; field for a FlowName enum." type="//@types.16"/>
+    <attributes name="resourceNames" required="true" description="The full name of the resources that this flow is directly associated with." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CustomError" scheme="http://occi/gcpservicemanagement#" title="Customize service error responses.  For example, list any service&#xA;specific protobuf types that can appear in error detail lists of&#xA;error responses.&#xA;&#xA;Example:&#xA;&#xA;    custom_error:&#xA;      types:&#xA;      - google.foo.v1.CustomError&#xA;      - google.foo.v1.AnotherError">
+    <attributes name="types" required="true" description="The list of custom error detail types, e.g. 'google.foo.v1.CustomError'." type="//@types.7"/>
+    <attributes name="rules" required="true" description="The list of custom error rules that apply to individual API messages.&#xA;&#xA;**NOTE:** All service configuration rules follow &quot;last one wins&quot; order." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Http" scheme="http://occi/gcpservicemanagement#" title="Defines the HTTP configuration for an API service. It contains a list of&#xA;HttpRule, each specifying the mapping of an RPC method&#xA;to one or more HTTP REST API methods.">
+    <attributes name="rules" required="true" description="A list of HTTP configuration rules that apply to individual API methods.&#xA;&#xA;**NOTE:** All service configuration rules follow &quot;last one wins&quot; order." type="//@types.7"/>
+    <attributes name="fullyDecodeReservedExpansion" required="true" description="When set to true, URL path parmeters will be fully URI-decoded except in&#xA;cases of single segment matches in reserved expansion, where &quot;%2F&quot; will be&#xA;left encoded.&#xA;&#xA;The default behavior is to not decode RFC 6570 reserved characters in multi&#xA;segment matches." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceInfo" scheme="http://occi/gcpservicemanagement#" title="Source information used to create a Service Config">
+    <attributes name="sourceFiles" required="true" description="All files used during config generation." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Control" scheme="http://occi/gcpservicemanagement#" title="Selects and configures the service controller used by the service.  The&#xA;service controller handles features like abuse, quota, billing, logging,&#xA;monitoring, etc.">
+    <attributes name="environment" required="true" description="The service control environment to use. If empty, no control plane&#xA;feature (like quota and billing) will be enabled." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SystemParameter" scheme="http://occi/gcpservicemanagement#" title="Define a parameter's name and location. The parameter may be passed as either&#xA;an HTTP header or a URL query parameter, and if both are passed the behavior&#xA;is implementation-dependent.">
+    <attributes name="urlQueryParameter" required="true" description="Define the URL query parameter name to use for the parameter. It is case&#xA;sensitive." type="//@types.16"/>
+    <attributes name="httpHeader" required="true" description="Define the HTTP header name to use for the parameter. It is case&#xA;insensitive." type="//@types.16"/>
+    <attributes name="name" required="true" description="Define the name of the parameter, such as &quot;api_key&quot; . It is case sensitive." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Field" scheme="http://occi/gcpservicemanagement#" title="A single field of a message type.">
+    <attributes name="typeUrl" required="true" description="The field type URL, without the scheme, for message or enumeration&#xA;types. Example: `&quot;type.googleapis.com/google.protobuf.Timestamp&quot;`." type="//@types.16"/>
+    <attributes name="number" required="true" description="The field number." type="//@types.3"/>
+    <attributes name="jsonName" required="true" description="The field JSON name." type="//@types.16"/>
+    <attributes name="kind" required="true" description="The field type." type="//@types.17"/>
+    <attributes name="options" required="true" description="The protocol buffer options." type="//@types.7"/>
+    <attributes name="oneofIndex" required="true" description="The index of the field type in `Type.oneofs`, for message or enumeration&#xA;types. The first type has index 1; zero means the type is not in the list." type="//@types.3"/>
+    <attributes name="cardinality" required="true" description="The field cardinality." type="//@types.18"/>
+    <attributes name="packed" required="true" description="Whether to use alternative packed wire representation." type="//@types.6"/>
+    <attributes name="defaultValue" required="true" description="The string value of the default value of this field. Proto2 syntax only." type="//@types.18"/>
+    <attributes name="name" required="true" description="The field name." type="//@types.18"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Monitoring" scheme="http://occi/gcpservicemanagement#" title="Monitoring configuration of the service.&#xA;&#xA;The example below shows how to configure monitored resources and metrics&#xA;for monitoring. In the example, a monitored resource and two metrics are&#xA;defined. The `library.googleapis.com/book/returned_count` metric is sent&#xA;to both producer and consumer projects, whereas the&#xA;`library.googleapis.com/book/overdue_count` metric is only sent to the&#xA;consumer project.&#xA;&#xA;    monitored_resources:&#xA;    - type: library.googleapis.com/branch&#xA;      labels:&#xA;      - key: /city&#xA;        description: The city where the library branch is located in.&#xA;      - key: /name&#xA;        description: The name of the branch.&#xA;    metrics:&#xA;    - name: library.googleapis.com/book/returned_count&#xA;      metric_kind: DELTA&#xA;      value_type: INT64&#xA;      labels:&#xA;      - key: /customer_id&#xA;    - name: library.googleapis.com/book/overdue_count&#xA;      metric_kind: GAUGE&#xA;      value_type: INT64&#xA;      labels:&#xA;      - key: /customer_id&#xA;    monitoring:&#xA;      producer_destinations:&#xA;      - monitored_resource: library.googleapis.com/branch&#xA;        metrics:&#xA;        - library.googleapis.com/book/returned_count&#xA;      consumer_destinations:&#xA;      - monitored_resource: library.googleapis.com/branch&#xA;        metrics:&#xA;        - library.googleapis.com/book/returned_count&#xA;        - library.googleapis.com/book/overdue_count">
+    <attributes name="consumerDestinations" required="true" description="Monitoring configurations for sending metrics to the consumer project.&#xA;There can be multiple consumer destinations, each one must have a&#xA;different monitored resource type. A metric can be used in at most&#xA;one consumer destination." type="//@types.7"/>
+    <attributes name="producerDestinations" required="true" description="Monitoring configurations for sending metrics to the producer project.&#xA;There can be multiple producer destinations, each one must have a&#xA;different monitored resource type. A metric can be used in at most&#xA;one producer destination." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestIamPermissionsRequest" scheme="http://occi/gcpservicemanagement#" title="Request message for `TestIamPermissions` method.">
+    <attributes name="permissions" required="true" description="The set of permissions to check for the `resource`. Permissions with&#xA;wildcards (such as '*' or 'storage.*') are not allowed. For more&#xA;information see&#xA;[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceContextLink" scheme="http://occi/gcpservicemanagement#" title="The source context." source="//@kinds[term='enum']" target="//@kinds[term='sourcecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Enum" scheme="http://occi/gcpservicemanagement#" title="Enum type definition.">
+    <attributes name="options" required="true" description="Protocol buffer options." type="//@types.7"/>
+    <attributes name="syntax" required="true" description="The source syntax." type="//@types.19"/>
+    <attributes name="name" required="true" description="Enum type name." type="//@types.19"/>
+    <attributes name="enumvalue" required="true" description="Enum value definitions." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LabelDescriptor" scheme="http://occi/gcpservicemanagement#" title="A description of a label.">
+    <attributes name="key" required="true" description="The label key." type="//@types.19"/>
+    <attributes name="description" required="true" description="A human-readable description for the label." type="//@types.19"/>
+    <attributes name="valueType" required="true" description="The type of data that can be assigned to the label." type="//@types.20"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Diagnostic" scheme="http://occi/gcpservicemanagement#" title="Represents a diagnostic message (error or warning)">
+    <attributes name="location" required="true" description="File name and line number of the error or warning." type="//@types.20"/>
+    <attributes name="kind" required="true" description="The kind of diagnostic information provided." type="//@types.21"/>
+    <attributes name="message" required="true" description="Message describing the error or warning." type="//@types.21"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="EnableServiceRequest" scheme="http://occi/gcpservicemanagement#" title="Request message for EnableService method.">
+    <attributes name="consumerId" required="true" description="The identity of consumer resource which service enablement will be&#xA;applied to.&#xA;&#xA;The Google Service Management implementation accepts the following&#xA;forms:&#xA;- &quot;project:&lt;project_id>&quot;&#xA;&#xA;Note: this is made compatible with&#xA;google.api.servicecontrol.v1.Operation.consumer_id." type="//@types.21"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TypeSourceContextLink" scheme="http://occi/gcpservicemanagement#" title="The source context." source="//@kinds[term='type']" target="//@kinds[term='sourcecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Type" scheme="http://occi/gcpservicemanagement#" title="A protocol buffer message type.">
+    <attributes name="fields" required="true" description="The list of fields." type="//@types.7"/>
+    <attributes name="name" required="true" description="The fully qualified message name." type="//@types.21"/>
+    <attributes name="oneofs" required="true" description="The list of types appearing in `oneof` definitions in this type." type="//@types.7"/>
+    <attributes name="syntax" required="true" description="The source syntax." type="//@types.22"/>
+    <attributes name="options" required="true" description="The protocol buffer options." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GenerateConfigReportResponse" scheme="http://occi/gcpservicemanagement#" title="Response message for GenerateConfigReport method.">
+    <attributes name="diagnostics" required="true" description="Errors / Linter warnings associated with the service definition this&#xA;report&#xA;belongs to." type="//@types.7"/>
+    <attributes name="serviceName" required="true" description="Name of the service this report belongs to." type="//@types.22"/>
+    <attributes name="changeReports" required="true" description="list of ChangeReport, each corresponding to comparison between two&#xA;service configurations." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuthorizationConfigLink" scheme="http://occi/gcpservicemanagement#" title="Authorization configuration." source="//@kinds[term='experimental']" target="//@kinds[term='authorizationconfig']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Experimental" scheme="http://occi/gcpservicemanagement#" title="Experimental service configuration. These configuration options can&#xA;only be used by whitelisted users.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListServiceConfigsResponse" scheme="http://occi/gcpservicemanagement#" title="Response message for ListServiceConfigs method.">
+    <attributes name="serviceConfigs" required="true" description="The list of service configuration resources." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The token of the next page of results." type="//@types.22"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuditConfig" scheme="http://occi/gcpservicemanagement#" title="Specifies the audit configuration for a service.&#xA;The configuration determines which permission types are logged, and what&#xA;identities, if any, are exempted from logging.&#xA;An AuditConfig must have one or more AuditLogConfigs.&#xA;&#xA;If there are AuditConfigs for both `allServices` and a specific service,&#xA;the union of the two AuditConfigs is used for that service: the log_types&#xA;specified in each AuditConfig are enabled, and the exempted_members in each&#xA;AuditConfig are exempted.&#xA;&#xA;Example Policy with multiple AuditConfigs:&#xA;&#xA;    {&#xA;      &quot;audit_configs&quot;: [&#xA;        {&#xA;          &quot;service&quot;: &quot;allServices&quot;&#xA;          &quot;audit_log_configs&quot;: [&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;              &quot;exempted_members&quot;: [&#xA;                &quot;user:foo@gmail.com&quot;&#xA;              ]&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;ADMIN_READ&quot;,&#xA;            }&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;service&quot;: &quot;fooservice.googleapis.com&quot;&#xA;          &quot;audit_log_configs&quot;: [&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;              &quot;exempted_members&quot;: [&#xA;                &quot;user:bar@gmail.com&quot;&#xA;              ]&#xA;            }&#xA;          ]&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ&#xA;logging. It also exempts foo@gmail.com from DATA_READ logging, and&#xA;bar@gmail.com from DATA_WRITE logging.">
+    <attributes name="service" required="true" description="Specifies a service that will be enabled for audit logging.&#xA;For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.&#xA;`allServices` is a special value that covers all services." type="//@types.22"/>
+    <attributes name="auditLogConfigs" required="true" description="The configuration for logging of each type of permission.&#xA;Next ID: 4" type="//@types.7"/>
+    <attributes name="exemptedMembers" required="true" description="" type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Backend" scheme="http://occi/gcpservicemanagement#" title="`Backend` defines the backend configuration for a service.">
+    <attributes name="rules" required="true" description="A list of API backend rules that apply to individual API methods.&#xA;&#xA;**NOTE:** All service configuration rules follow &quot;last one wins&quot; order." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ConfigSourceLink" scheme="http://occi/gcpservicemanagement#" title="The source configuration for the service." source="//@kinds[term='submitconfigsourcerequest']" target="//@kinds[term='configsource']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SubmitConfigSourceRequest" scheme="http://occi/gcpservicemanagement#" title="Request message for SubmitConfigSource method.">
+    <attributes name="validateOnly" required="true" description="Optional. If set, this will result in the generation of a&#xA;`google.api.Service` configuration based on the `ConfigSource` provided,&#xA;but the generated config and the sources will NOT be persisted." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuthorizationConfig" scheme="http://occi/gcpservicemanagement#" title="Configuration of authorization.&#xA;&#xA;This section determines the authorization provider, if unspecified, then no&#xA;authorization check will be done.&#xA;&#xA;Example:&#xA;&#xA;    experimental:&#xA;      authorization:&#xA;        provider: firebaserules.googleapis.com">
+    <attributes name="provider" required="true" description="The name of the authorization provider, such as&#xA;firebaserules.googleapis.com." type="//@types.22"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DocumentationRule" scheme="http://occi/gcpservicemanagement#" title="A documentation rule provides information about individual API elements.">
+    <attributes name="selector" required="true" description="The selector is a comma-separated list of patterns. Each pattern is a&#xA;qualified name of the element which may end in &quot;*&quot;, indicating a wildcard.&#xA;Wildcards are only allowed at the end and for a whole component of the&#xA;qualified name, i.e. &quot;foo.*&quot; is ok, but not &quot;foo.b*&quot; or &quot;foo.*.bar&quot;. To&#xA;specify a default for all applicable elements, the whole pattern &quot;*&quot;&#xA;is used." type="//@types.22"/>
+    <attributes name="description" required="true" description="Description of the selected API(s)." type="//@types.22"/>
+    <attributes name="deprecationDescription" required="true" description="Deprecation description of the selected element(s). It can be provided if an&#xA;element is marked as `deprecated`." type="//@types.22"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ContextRule" scheme="http://occi/gcpservicemanagement#" title="A context rule provides information about the context for an individual API&#xA;element.">
+    <attributes name="provided" required="true" description="A list of full type names of provided contexts." type="//@types.7"/>
+    <attributes name="requested" required="true" description="A list of full type names of requested contexts." type="//@types.7"/>
+    <attributes name="selector" required="true" description="Selects the methods to which this rule applies.&#xA;&#xA;Refer to selector for syntax details." type="//@types.22"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Billing" scheme="http://occi/gcpservicemanagement#" title="Billing related configuration of the service.&#xA;&#xA;The following example shows how to configure monitored resources and metrics&#xA;for billing:&#xA;&#xA;    monitored_resources:&#xA;    - type: library.googleapis.com/branch&#xA;      labels:&#xA;      - key: /city&#xA;        description: The city where the library branch is located in.&#xA;      - key: /name&#xA;        description: The name of the branch.&#xA;    metrics:&#xA;    - name: library.googleapis.com/book/borrowed_count&#xA;      metric_kind: DELTA&#xA;      value_type: INT64&#xA;    billing:&#xA;      consumer_destinations:&#xA;      - monitored_resource: library.googleapis.com/branch&#xA;        metrics:&#xA;        - library.googleapis.com/book/borrowed_count">
+    <attributes name="consumerDestinations" required="true" description="Billing configurations for sending metrics to the consumer project.&#xA;There can be multiple consumer destinations per service, each one must have&#xA;a different monitored resource type. A metric can be used in at most&#xA;one consumer destination." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MetricDescriptor" scheme="http://occi/gcpservicemanagement#" title="Defines a metric type and its schema. Once a metric descriptor is created,&#xA;deleting or altering it stops data collection and makes the metric type's&#xA;existing data unusable.">
+    <attributes name="metricKind" required="true" description="Whether the metric records instantaneous values, changes to a value, etc.&#xA;Some combinations of `metric_kind` and `value_type` might not be supported." type="//@types.23"/>
+    <attributes name="description" required="true" description="A detailed description of the metric, which can be used in documentation." type="//@types.23"/>
+    <attributes name="displayName" required="true" description="A concise name for the metric, which can be displayed in user interfaces.&#xA;Use sentence case without an ending period, for example &quot;Request count&quot;.&#xA;This field is optional but it is recommended to be set for any metrics&#xA;associated with user-visible concepts, such as Quota." type="//@types.23"/>
+    <attributes name="unit" required="true" description="The unit in which the metric value is reported. It is only applicable&#xA;if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The&#xA;supported units are a subset of [The Unified Code for Units of&#xA;Measure](http://unitsofmeasure.org/ucum.html) standard:&#xA;&#xA;**Basic units (UNIT)**&#xA;&#xA;* `bit`   bit&#xA;* `By`    byte&#xA;* `s`     second&#xA;* `min`   minute&#xA;* `h`     hour&#xA;* `d`     day&#xA;&#xA;**Prefixes (PREFIX)**&#xA;&#xA;* `k`     kilo    (10**3)&#xA;* `M`     mega    (10**6)&#xA;* `G`     giga    (10**9)&#xA;* `T`     tera    (10**12)&#xA;* `P`     peta    (10**15)&#xA;* `E`     exa     (10**18)&#xA;* `Z`     zetta   (10**21)&#xA;* `Y`     yotta   (10**24)&#xA;* `m`     milli   (10**-3)&#xA;* `u`     micro   (10**-6)&#xA;* `n`     nano    (10**-9)&#xA;* `p`     pico    (10**-12)&#xA;* `f`     femto   (10**-15)&#xA;* `a`     atto    (10**-18)&#xA;* `z`     zepto   (10**-21)&#xA;* `y`     yocto   (10**-24)&#xA;* `Ki`    kibi    (2**10)&#xA;* `Mi`    mebi    (2**20)&#xA;* `Gi`    gibi    (2**30)&#xA;* `Ti`    tebi    (2**40)&#xA;&#xA;**Grammar**&#xA;&#xA;The grammar includes the dimensionless unit `1`, such as `1/s`.&#xA;&#xA;The grammar also includes these connectors:&#xA;&#xA;* `/`    division (as an infix operator, e.g. `1/s`).&#xA;* `.`    multiplication (as an infix operator, e.g. `GBy.d`)&#xA;&#xA;The grammar for a unit is as follows:&#xA;&#xA;    Expression = Component { &quot;.&quot; Component } { &quot;/&quot; Component } ;&#xA;&#xA;    Component = [ PREFIX ] UNIT [ Annotation ]&#xA;              | Annotation&#xA;              | &quot;1&quot;&#xA;              ;&#xA;&#xA;    Annotation = &quot;{&quot; NAME &quot;}&quot; ;&#xA;&#xA;Notes:&#xA;&#xA;* `Annotation` is just a comment if it follows a `UNIT` and is&#xA;   equivalent to `1` if it is used alone. For examples,&#xA;   `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.&#xA;* `NAME` is a sequence of non-blank printable ASCII characters not&#xA;   containing '{' or '}'." type="//@types.23"/>
+    <attributes name="labels" required="true" description="The set of labels that can be used to describe a specific&#xA;instance of this metric type. For example, the&#xA;`appengine.googleapis.com/http/server/response_latencies` metric&#xA;type has a label for the HTTP response code, `response_code`, so&#xA;you can look at latencies for successful responses or just&#xA;for responses that failed." type="//@types.7"/>
+    <attributes name="name" required="true" description="The resource name of the metric descriptor." type="//@types.23"/>
+    <attributes name="type" required="true" description="The metric type, including its DNS name prefix. The type is not&#xA;URL-encoded.  All user-defined custom metric types have the DNS name&#xA;`custom.googleapis.com`.  Metric types should use a natural hierarchical&#xA;grouping. For example:&#xA;&#xA;    &quot;custom.googleapis.com/invoice/paid/amount&quot;&#xA;    &quot;appengine.googleapis.com/http/server/response_latencies&quot;" type="//@types.23"/>
+    <attributes name="valueType" required="true" description="Whether the measurement is an integer, a floating-point number, etc.&#xA;Some combinations of `metric_kind` and `value_type` might not be supported." type="//@types.24"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceContext" scheme="http://occi/gcpservicemanagement#" title="`SourceContext` represents information about the source of a&#xA;protobuf element, like the file in which it is defined.">
+    <attributes name="fileName" required="true" description="The path-qualified name of the .proto file that contained the associated&#xA;protobuf element.  For example: `&quot;google/protobuf/source_context.proto&quot;`." type="//@types.24"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Expr" scheme="http://occi/gcpservicemanagement#" title="Represents an expression text. Example:&#xA;&#xA;    title: &quot;User account presence&quot;&#xA;    description: &quot;Determines whether the request has a user account&quot;&#xA;    expression: &quot;size(request.user) > 0&quot;">
+    <attributes name="description" required="true" description="An optional description of the expression. This is a longer text which&#xA;describes the expression, e.g. when hovered over it in a UI." type="//@types.24"/>
+    <attributes name="expression" required="true" description="Textual representation of an expression in&#xA;Common Expression Language syntax.&#xA;&#xA;The application context of the containing message determines which&#xA;well-known feature set of CEL is supported." type="//@types.24"/>
+    <attributes name="location" required="true" description="An optional string indicating the location of the expression for error&#xA;reporting, e.g. a file name and a position in the file." type="//@types.24"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListServicesResponse" scheme="http://occi/gcpservicemanagement#" title="Response message for `ListServices` method.">
+    <attributes name="services" required="true" description="The returned services will only have the name field set." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="Token that can be passed to `ListServices` to resume a paginated query." type="//@types.24"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Endpoint" scheme="http://occi/gcpservicemanagement#" title="`Endpoint` describes a network endpoint that serves a set of APIs.&#xA;A service may expose any number of endpoints, and all endpoints share the&#xA;same service configuration, such as quota configuration and monitoring&#xA;configuration.&#xA;&#xA;Example service configuration:&#xA;&#xA;    name: library-example.googleapis.com&#xA;    endpoints:&#xA;      # Below entry makes 'google.example.library.v1.Library'&#xA;      # API be served from endpoint address library-example.googleapis.com.&#xA;      # It also allows HTTP OPTIONS calls to be passed to the backend, for&#xA;      # it to decide whether the subsequent cross-origin request is&#xA;      # allowed to proceed.&#xA;    - name: library-example.googleapis.com&#xA;      allow_cors: true">
+    <attributes name="apis" required="true" description="The list of APIs served by this endpoint.&#xA;&#xA;If no APIs are specified this translates to &quot;all APIs&quot; exported by the&#xA;service, as defined in the top-level service configuration." type="//@types.7"/>
+    <attributes name="allowCors" required="true" description="Allowing&#xA;[CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka&#xA;cross-domain traffic, would allow the backends served from this endpoint to&#xA;receive and respond to HTTP OPTIONS requests. The response will be used by&#xA;the browser to determine whether the subsequent cross-origin request is&#xA;allowed to proceed." type="//@types.6"/>
+    <attributes name="aliases" required="true" description="DEPRECATED: This field is no longer supported. Instead of using aliases,&#xA;please specify multiple google.api.Endpoint for each of the intended&#xA;aliases.&#xA;&#xA;Additional names that this endpoint will be hosted on." type="//@types.7"/>
+    <attributes name="name" required="true" description="The canonical name of this endpoint." type="//@types.24"/>
+    <attributes name="target" required="true" description="The specification of an Internet routable address of API frontend that will&#xA;handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary).&#xA;It should be either a valid IPv4 address or a fully-qualified domain name.&#xA;For example, &quot;8.8.8.8&quot; or &quot;myservice.appspot.com&quot;." type="//@types.24"/>
+    <attributes name="features" required="true" description="The list of features enabled on this endpoint." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OAuthRequirements" scheme="http://occi/gcpservicemanagement#" title="OAuth scopes are a way to define data and permissions on data. For example,&#xA;there are scopes defined for &quot;Read-only access to Google Calendar&quot; and&#xA;&quot;Access to Cloud Platform&quot;. Users can consent to a scope for an application,&#xA;giving it permission to access that data on their behalf.&#xA;&#xA;OAuth scope specifications should be fairly coarse grained; a user will need&#xA;to see and understand the text description of what your scope means.&#xA;&#xA;In most cases: use one or at most two OAuth scopes for an entire family of&#xA;products. If your product has multiple APIs, you should probably be sharing&#xA;the OAuth scope across all of those APIs.&#xA;&#xA;When you need finer grained OAuth consent screens: talk with your product&#xA;management about how developers will use them in practice.&#xA;&#xA;Please note that even though each of the canonical scopes is enough for a&#xA;request to be accepted and passed to the backend, a request can still fail&#xA;due to the backend requiring additional scopes or permissions.">
+    <attributes name="canonicalScopes" required="true" description="The list of publicly documented OAuth scopes that are allowed access. An&#xA;OAuth token containing any of these scopes will be accepted.&#xA;&#xA;Example:&#xA;&#xA;     canonical_scopes: https://www.googleapis.com/auth/calendar,&#xA;                       https://www.googleapis.com/auth/calendar.read" type="//@types.24"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestIamPermissionsResponse" scheme="http://occi/gcpservicemanagement#" title="Response message for `TestIamPermissions` method.">
+    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is&#xA;allowed." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GetIamPolicyRequest" scheme="http://occi/gcpservicemanagement#" title="Request message for `GetIamPolicy` method.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Usage" scheme="http://occi/gcpservicemanagement#" title="Configuration controlling usage of a service.">
+    <attributes name="requirements" required="true" description="Requirements that must be satisfied before a consumer project can use the&#xA;service. Each requirement is of the form &lt;service.name>/&lt;requirement-id>;&#xA;for example 'serviceusage.googleapis.com/billing-enabled'." type="//@types.7"/>
+    <attributes name="producerNotificationChannel" required="true" description="The full resource name of a channel used for sending notifications to the&#xA;service producer.&#xA;&#xA;Google Service Management currently only supports&#xA;[Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification&#xA;channel. To use Google Cloud Pub/Sub as the channel, this must be the name&#xA;of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format&#xA;documented in https://cloud.google.com/pubsub/docs/overview." type="//@types.24"/>
+    <attributes name="rules" required="true" description="A list of usage rules that apply to individual API methods.&#xA;&#xA;**NOTE:** All service configuration rules follow &quot;last one wins&quot; order." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Context" scheme="http://occi/gcpservicemanagement#" title="`Context` defines which contexts an API requests.&#xA;&#xA;Example:&#xA;&#xA;    context:&#xA;      rules:&#xA;      - selector: &quot;*&quot;&#xA;        requested:&#xA;        - google.rpc.context.ProjectContext&#xA;        - google.rpc.context.OriginContext&#xA;&#xA;The above specifies that all methods in the API request&#xA;`google.rpc.context.ProjectContext` and&#xA;`google.rpc.context.OriginContext`.&#xA;&#xA;Available context types are defined in package&#xA;`google.rpc.context`.">
+    <attributes name="rules" required="true" description="A list of RPC context rules that apply to individual API methods.&#xA;&#xA;**NOTE:** All service configuration rules follow &quot;last one wins&quot; order." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LogDescriptor" scheme="http://occi/gcpservicemanagement#" title="A description of a log type. Example in YAML format:&#xA;&#xA;    - name: library.googleapis.com/activity_history&#xA;      description: The history of borrowing and returning library items.&#xA;      display_name: Activity&#xA;      labels:&#xA;      - key: /customer_id&#xA;        description: Identifier of a library customer">
+    <attributes name="name" required="true" description="The name of the log. It must be less than 512 characters long and can&#xA;include the following characters: upper- and lower-case alphanumeric&#xA;characters [A-Za-z0-9], and punctuation characters including&#xA;slash, underscore, hyphen, period [/_-.]." type="//@types.24"/>
+    <attributes name="description" required="true" description="A human-readable description of this log. This information appears in&#xA;the documentation and can contain details." type="//@types.24"/>
+    <attributes name="displayName" required="true" description="The human-readable name for this log. This information appears on&#xA;the user interface and should be concise." type="//@types.24"/>
+    <attributes name="labels" required="true" description="The set of labels that are available to describe a specific log entry.&#xA;Runtime requests that contain labels not specified here are&#xA;considered invalid." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ConfigFile" scheme="http://occi/gcpservicemanagement#" title="Generic specification of a source configuration file">
+    <attributes name="fileContents" required="true" description="The bytes that constitute the file." type="//@types.24"/>
+    <attributes name="filePath" required="true" description="The file name of the configuration file (full or relative path)." type="//@types.24"/>
+    <attributes name="fileType" required="true" description="The type of configuration file this represents." type="//@types.25"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MonitoredResourceDescriptor" scheme="http://occi/gcpservicemanagement#" title="An object that describes the schema of a MonitoredResource object using a&#xA;type name and a set of labels.  For example, the monitored resource&#xA;descriptor for Google Compute Engine VM instances has a type of&#xA;`&quot;gce_instance&quot;` and specifies the use of the labels `&quot;instance_id&quot;` and&#xA;`&quot;zone&quot;` to identify particular VM instances.&#xA;&#xA;Different APIs can support different monitored resource types. APIs generally&#xA;provide a `list` method that returns the monitored resource descriptors used&#xA;by the API.">
+    <attributes name="name" required="true" description="Optional. The resource name of the monitored resource descriptor:&#xA;`&quot;projects/{project_id}/monitoredResourceDescriptors/{type}&quot;` where&#xA;{type} is the value of the `type` field in this object and&#xA;{project_id} is a project ID that provides API-specific context for&#xA;accessing the type.  APIs that do not use project information can use the&#xA;resource name format `&quot;monitoredResourceDescriptors/{type}&quot;`." type="//@types.25"/>
+    <attributes name="displayName" required="true" description="Optional. A concise name for the monitored resource type that might be&#xA;displayed in user interfaces. It should be a Title Cased Noun Phrase,&#xA;without any article or other determiners. For example,&#xA;`&quot;Google Cloud SQL Database&quot;`." type="//@types.25"/>
+    <attributes name="description" required="true" description="Optional. A detailed description of the monitored resource type that might&#xA;be used in documentation." type="//@types.25"/>
+    <attributes name="type" required="true" description="Required. The monitored resource type. For example, the type&#xA;`&quot;cloudsql_database&quot;` represents databases in Google Cloud SQL.&#xA;The maximum length of this value is 256 characters." type="//@types.25"/>
+    <attributes name="labels" required="true" description="Required. A set of labels used to describe instances of this monitored&#xA;resource type. For example, an individual Google Cloud SQL database is&#xA;identified by values for the labels `&quot;database_id&quot;` and `&quot;zone&quot;`." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CustomErrorRule" scheme="http://occi/gcpservicemanagement#" title="A custom error rule.">
+    <attributes name="isErrorType" required="true" description="Mark this message as possible payload in error response.  Otherwise,&#xA;objects of this type will be filtered when they appear in error payload." type="//@types.6"/>
+    <attributes name="selector" required="true" description="Selects messages to which this rule applies.&#xA;&#xA;Refer to selector for syntax details." type="//@types.25"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CustomAuthRequirements" scheme="http://occi/gcpservicemanagement#" title="Configuration for a custom authentication provider.">
+    <attributes name="provider" required="true" description="A configuration string containing connection information for the&#xA;authentication provider, typically formatted as a SmartService string&#xA;(go/smartservice)." type="//@types.25"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MediaDownload" scheme="http://occi/gcpservicemanagement#" title="Defines the Media configuration for a service in case of a download.&#xA;Use this only for Scotty Requests. Do not use this for media support using&#xA;Bytestream, add instead [][google.bytestream.RestByteStream] as an API to&#xA;your configuration for Bytestream methods.">
+    <attributes name="enabled" required="true" description="Whether download is enabled." type="//@types.6"/>
+    <attributes name="downloadService" required="true" description="DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.&#xA;&#xA;Specify name of the download service if one is used for download." type="//@types.25"/>
+    <attributes name="completeNotification" required="true" description="A boolean that determines whether a notification for the completion of a&#xA;download should be sent to the backend." type="//@types.6"/>
+    <attributes name="maxDirectDownloadSize" required="true" description="Optional maximum acceptable size for direct download.&#xA;The size is specified in bytes." type="//@types.25"/>
+    <attributes name="dropzone" required="true" description="Name of the Scotty dropzone to use for the current API." type="//@types.25"/>
+    <attributes name="useDirectDownload" required="true" description="A boolean that determines if direct download from ESF should be used for&#xA;download of this media." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ChangeReport" scheme="http://occi/gcpservicemanagement#" title="Change report associated with a particular service configuration.&#xA;&#xA;It contains a list of ConfigChanges based on the comparison between&#xA;two service configurations.">
+    <attributes name="configChanges" required="true" description="List of changes between two service configurations.&#xA;The changes will be alphabetically sorted based on the identifier&#xA;of each change.&#xA;A ConfigChange identifier is a dot separated path to the configuration.&#xA;Example: visibility.rules[selector='LibraryService.CreateBook'].restriction" type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DisableServiceRequest" scheme="http://occi/gcpservicemanagement#" title="Request message for DisableService method.">
+    <attributes name="consumerId" required="true" description="The identity of consumer resource which service disablement will be&#xA;applied to.&#xA;&#xA;The Google Service Management implementation accepts the following&#xA;forms:&#xA;- &quot;project:&lt;project_id>&quot;&#xA;&#xA;Note: this is made compatible with&#xA;google.api.servicecontrol.v1.Operation.consumer_id." type="//@types.25"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ServiceLink" scheme="http://occi/gcpservicemanagement#" title="The generated service configuration." source="//@kinds[term='submitconfigsourceresponse']" target="//@kinds[term='service']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SubmitConfigSourceResponse" scheme="http://occi/gcpservicemanagement#" title="Response message for SubmitConfigSource method.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MediaUpload" scheme="http://occi/gcpservicemanagement#" title="Defines the Media configuration for a service in case of an upload.&#xA;Use this only for Scotty Requests. Do not use this for media support using&#xA;Bytestream, add instead [][google.bytestream.RestByteStream] as an API to&#xA;your configuration for Bytestream methods.">
+    <attributes name="startNotification" required="true" description="Whether to receive a notification on the start of media upload." type="//@types.6"/>
+    <attributes name="uploadService" required="true" description="DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.&#xA;&#xA;Specify name of the upload service if one is used for upload." type="//@types.25"/>
+    <attributes name="maxSize" required="true" description="Optional maximum acceptable size for an upload.&#xA;The size is specified in bytes." type="//@types.25"/>
+    <attributes name="mimeTypes" required="true" description="An array of mimetype patterns. Esf will only accept uploads that match one&#xA;of the given patterns." type="//@types.7"/>
+    <attributes name="completeNotification" required="true" description="A boolean that determines whether a notification for the completion of an&#xA;upload should be sent to the backend. These notifications will not be seen&#xA;by the client and will not consume quota." type="//@types.6"/>
+    <attributes name="progressNotification" required="true" description="Whether to receive a notification for progress changes of media upload." type="//@types.6"/>
+    <attributes name="enabled" required="true" description="Whether upload is enabled." type="//@types.6"/>
+    <attributes name="dropzone" required="true" description="Name of the Scotty dropzone to use for the current API." type="//@types.25"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BillingDestination" scheme="http://occi/gcpservicemanagement#" title="Configuration of a specific billing destination (Currently only support&#xA;bill against consumer project).">
+    <attributes name="monitoredResource" required="true" description="The monitored resource type. The type must be defined in&#xA;Service.monitored_resources section." type="//@types.25"/>
+    <attributes name="metrics" required="true" description="Names of the metrics to report to this billing destination.&#xA;Each name must be defined in Service.metrics section." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Advice" scheme="http://occi/gcpservicemanagement#" title="Generated advice about this change, used for providing more&#xA;information about how a change will affect the existing service.">
+    <attributes name="description" required="true" description="Useful description for why this advice was applied and what actions should&#xA;be taken to mitigate any implied risks." type="//@types.25"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ManagedService" scheme="http://occi/gcpservicemanagement#" title="The full representation of a Service that is managed by&#xA;Google Service Management.">
+    <attributes name="serviceName" required="true" description="The name of the service. See the [overview](/service-management/overview)&#xA;for naming requirements." type="//@types.25"/>
+    <attributes name="producerProjectId" required="true" description="ID of the project that produces and owns this service." type="//@types.25"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="UsageRule" scheme="http://occi/gcpservicemanagement#" title="Usage configuration rules for the service.&#xA;&#xA;NOTE: Under development.&#xA;&#xA;&#xA;Use this rule to configure unregistered calls for the service. Unregistered&#xA;calls are calls that do not contain consumer project identity.&#xA;(Example: calls that do not contain an API key).&#xA;By default, API methods do not allow unregistered calls, and each method call&#xA;must be identified by a consumer project identity. Use this rule to&#xA;allow/disallow unregistered calls.&#xA;&#xA;Example of an API that wants to allow unregistered calls for entire service.&#xA;&#xA;    usage:&#xA;      rules:&#xA;      - selector: &quot;*&quot;&#xA;        allow_unregistered_calls: true&#xA;&#xA;Example of a method that wants to allow unregistered calls.&#xA;&#xA;    usage:&#xA;      rules:&#xA;      - selector: &quot;google.example.library.v1.LibraryService.CreateBook&quot;&#xA;        allow_unregistered_calls: true">
+    <attributes name="selector" required="true" description="Selects the methods to which this rule applies. Use '*' to indicate all&#xA;methods in all APIs.&#xA;&#xA;Refer to selector for syntax details." type="//@types.25"/>
+    <attributes name="skipServiceControl" required="true" description="True, if the method should skip service control. If so, no control plane&#xA;feature (like quota and billing) will be enabled.&#xA;This flag is used by ESP to allow some Endpoints customers to bypass&#xA;Google internal checks." type="//@types.6"/>
+    <attributes name="allowUnregisteredCalls" required="true" description="True, if the method allows unregistered calls; false otherwise." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuthRequirement" scheme="http://occi/gcpservicemanagement#" title="User-defined authentication requirements, including support for&#xA;[JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).">
+    <attributes name="audiences" required="true" description="NOTE: This will be deprecated soon, once AuthProvider.audiences is&#xA;implemented and accepted in all the runtime components.&#xA;&#xA;The list of JWT&#xA;[audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).&#xA;that are allowed to access. A JWT containing any of these audiences will&#xA;be accepted. When this setting is absent, only JWTs with audience&#xA;&quot;https://Service_name/API_name&quot;&#xA;will be accepted. For example, if no audiences are in the setting,&#xA;LibraryService API will only accept JWTs with the following audience&#xA;&quot;https://library-example.googleapis.com/google.example.library.v1.LibraryService&quot;.&#xA;&#xA;Example:&#xA;&#xA;    audiences: bookstore_android.apps.googleusercontent.com,&#xA;               bookstore_web.apps.googleusercontent.com" type="//@types.25"/>
+    <attributes name="providerId" required="true" description="id from authentication provider.&#xA;&#xA;Example:&#xA;&#xA;    provider_id: bookstore_auth" type="//@types.25"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TrafficPercentStrategy" scheme="http://occi/gcpservicemanagement#" title="Strategy that specifies how clients of Google Service Controller want to&#xA;send traffic to use different config versions. This is generally&#xA;used by API proxy to split traffic based on your configured precentage for&#xA;each config version.&#xA;&#xA;One example of how to gradually rollout a new service configuration using&#xA;this&#xA;strategy:&#xA;Day 1&#xA;&#xA;    Rollout {&#xA;      id: &quot;example.googleapis.com/rollout_20160206&quot;&#xA;      traffic_percent_strategy {&#xA;        percentages: {&#xA;          &quot;example.googleapis.com/20160201&quot;: 70.00&#xA;          &quot;example.googleapis.com/20160206&quot;: 30.00&#xA;        }&#xA;      }&#xA;    }&#xA;&#xA;Day 2&#xA;&#xA;    Rollout {&#xA;      id: &quot;example.googleapis.com/rollout_20160207&quot;&#xA;      traffic_percent_strategy: {&#xA;        percentages: {&#xA;          &quot;example.googleapis.com/20160206&quot;: 100.00&#xA;        }&#xA;      }&#xA;    }">
+    <attributes name="percentages" required="true" description="Maps service configuration IDs to their corresponding traffic percentage.&#xA;Key is the service configuration ID, Value is the traffic percentage&#xA;which must be greater than 0.0 and the sum must equal to 100.0." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Documentation" scheme="http://occi/gcpservicemanagement#" title="`Documentation` provides the information for describing a service.&#xA;&#xA;Example:&#xA;&lt;pre>&lt;code>documentation:&#xA;  summary: >&#xA;    The Google Calendar API gives access&#xA;    to most calendar features.&#xA;  pages:&#xA;  - name: Overview&#xA;    content: &amp;#40;== include google/foo/overview.md ==&amp;#41;&#xA;  - name: Tutorial&#xA;    content: &amp;#40;== include google/foo/tutorial.md ==&amp;#41;&#xA;    subpages;&#xA;    - name: Java&#xA;      content: &amp;#40;== include google/foo/tutorial_java.md ==&amp;#41;&#xA;  rules:&#xA;  - selector: google.calendar.Calendar.Get&#xA;    description: >&#xA;      ...&#xA;  - selector: google.calendar.Calendar.Put&#xA;    description: >&#xA;      ...&#xA;&lt;/code>&lt;/pre>&#xA;Documentation is provided in markdown syntax. In addition to&#xA;standard markdown features, definition lists, tables and fenced&#xA;code blocks are supported. Section headers can be provided and are&#xA;interpreted relative to the section nesting of the context where&#xA;a documentation fragment is embedded.&#xA;&#xA;Documentation from the IDL is merged with documentation defined&#xA;via the config at normalization time, where documentation provided&#xA;by config rules overrides IDL provided.&#xA;&#xA;A number of constructs specific to the API platform are supported&#xA;in documentation text.&#xA;&#xA;In order to reference a proto element, the following&#xA;notation can be used:&#xA;&lt;pre>&lt;code>&amp;#91;fully.qualified.proto.name]&amp;#91;]&lt;/code>&lt;/pre>&#xA;To override the display text used for the link, this can be used:&#xA;&lt;pre>&lt;code>&amp;#91;display text]&amp;#91;fully.qualified.proto.name]&lt;/code>&lt;/pre>&#xA;Text can be excluded from doc using the following notation:&#xA;&lt;pre>&lt;code>&amp;#40;-- internal comment --&amp;#41;&lt;/code>&lt;/pre>&#xA;Comments can be made conditional using a visibility label. The below&#xA;text will be only rendered if the `BETA` label is available:&#xA;&lt;pre>&lt;code>&amp;#40;--BETA: comment for BETA users --&amp;#41;&lt;/code>&lt;/pre>&#xA;A few directives are available in documentation. Note that&#xA;directives must appear on a single line to be properly&#xA;identified. The `include` directive includes a markdown file from&#xA;an external source:&#xA;&lt;pre>&lt;code>&amp;#40;== include path/to/file ==&amp;#41;&lt;/code>&lt;/pre>&#xA;The `resource_for` directive marks a message to be the resource of&#xA;a collection in REST view. If it is not specified, tools attempt&#xA;to infer the resource from the operations in a collection:&#xA;&lt;pre>&lt;code>&amp;#40;== resource_for v1.shelves.books ==&amp;#41;&lt;/code>&lt;/pre>&#xA;The directive `suppress_warning` does not directly affect documentation&#xA;and is documented together with service config validation.">
+    <attributes name="documentationRootUrl" required="true" description="The URL to the root of documentation." type="//@types.25"/>
+    <attributes name="rules" required="true" description="A list of documentation rules that apply to individual API elements.&#xA;&#xA;**NOTE:** All service configuration rules follow &quot;last one wins&quot; order." type="//@types.7"/>
+    <attributes name="overview" required="true" description="Declares a single overview page. For example:&#xA;&lt;pre>&lt;code>documentation:&#xA;  summary: ...&#xA;  overview: &amp;#40;== include overview.md ==&amp;#41;&#xA;&lt;/code>&lt;/pre>&#xA;This is a shortcut for the following declaration (using pages style):&#xA;&lt;pre>&lt;code>documentation:&#xA;  summary: ...&#xA;  pages:&#xA;  - name: Overview&#xA;    content: &amp;#40;== include overview.md ==&amp;#41;&#xA;&lt;/code>&lt;/pre>&#xA;Note: you cannot specify both `overview` field and `pages` field." type="//@types.25"/>
+    <attributes name="pages" required="true" description="The top level pages for the documentation set." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuditLogConfig" scheme="http://occi/gcpservicemanagement#" title="Provides the configuration for logging a type of permissions.&#xA;Example:&#xA;&#xA;    {&#xA;      &quot;audit_log_configs&quot;: [&#xA;        {&#xA;          &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;          &quot;exempted_members&quot;: [&#xA;            &quot;user:foo@gmail.com&quot;&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting&#xA;foo@gmail.com from DATA_READ logging.">
+    <attributes name="exemptedMembers" required="true" description="Specifies the identities that do not cause logging for this type of&#xA;permission.&#xA;Follows the same format of Binding.members." type="//@types.7"/>
+    <attributes name="logType" required="true" description="The log type that this config enables." type="//@types.26"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ConfigSource" scheme="http://occi/gcpservicemanagement#" title="Represents a source file which is used to generate the service configuration&#xA;defined by `google.api.Service`.">
+    <attributes name="files" required="true" description="Set of source configuration files that are used to generate a service&#xA;configuration (`google.api.Service`)." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OAuthRequirementsLink" scheme="http://occi/gcpservicemanagement#" title="The requirements for OAuth credentials." source="//@kinds[term='authenticationrule']" target="//@kinds[term='oauthrequirements']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CustomAuthRequirementsLink" scheme="http://occi/gcpservicemanagement#" title="Configuration for custom authentication." source="//@kinds[term='authenticationrule']" target="//@kinds[term='customauthrequirements']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="AuthenticationRule" scheme="http://occi/gcpservicemanagement#" title="Authentication rules for the service.&#xA;&#xA;By default, if a method has any authentication requirements, every request&#xA;must include a valid credential matching one of the requirements.&#xA;It's an error to include more than one kind of credential in a single&#xA;request.&#xA;&#xA;If a method doesn't have any auth requirements, request credentials will be&#xA;ignored.">
+    <attributes name="requirements" required="true" description="Requirements for additional authentication providers." type="//@types.7"/>
+    <attributes name="selector" required="true" description="Selects the methods to which this rule applies.&#xA;&#xA;Refer to selector for syntax details." type="//@types.26"/>
+    <attributes name="allowWithoutCredential" required="true" description="Whether to allow requests without a credential. The credential can be&#xA;an OAuth token, Google cookies (first-party auth) or EndUserCreds.&#xA;&#xA;For requests without credentials, if the service control environment is&#xA;specified, each incoming request **must** be associated with a service&#xA;consumer. This can be done by passing an API key that belongs to a consumer&#xA;project." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BackendRule" scheme="http://occi/gcpservicemanagement#" title="A backend rule provides configuration for an individual API element.">
+    <attributes name="selector" required="true" description="Selects the methods to which this rule applies.&#xA;&#xA;Refer to selector for syntax details." type="//@types.26"/>
+    <attributes name="deadline" required="true" description="The number of seconds to wait for a response from a request.  The default&#xA;deadline for gRPC is infinite (no deadline) and HTTP requests is 5 seconds." type="//@types.3"/>
+    <attributes name="minDeadline" required="true" description="Minimum deadline in seconds needed for this method. Calls having deadline&#xA;value lower than this will be rejected." type="//@types.3"/>
+    <attributes name="address" required="true" description="The address of the API backend." type="//@types.26"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Policy" scheme="http://occi/gcpservicemanagement#" title="Defines an Identity and Access Management (IAM) policy. It is used to&#xA;specify access control policies for Cloud Platform resources.&#xA;&#xA;&#xA;A `Policy` consists of a list of `bindings`. A `Binding` binds a list of&#xA;`members` to a `role`, where the members can be user accounts, Google groups,&#xA;Google domains, and service accounts. A `role` is a named list of permissions&#xA;defined by IAM.&#xA;&#xA;**Example**&#xA;&#xA;    {&#xA;      &quot;bindings&quot;: [&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/owner&quot;,&#xA;          &quot;members&quot;: [&#xA;            &quot;user:mike@example.com&quot;,&#xA;            &quot;group:admins@example.com&quot;,&#xA;            &quot;domain:google.com&quot;,&#xA;            &quot;serviceAccount:my-other-app@appspot.gserviceaccount.com&quot;,&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/viewer&quot;,&#xA;          &quot;members&quot;: [&quot;user:sean@example.com&quot;]&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;For a description of IAM and its features, see the&#xA;[IAM developer's guide](https://cloud.google.com/iam).">
+    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`.&#xA;`bindings` with no members will result in an error." type="//@types.7"/>
+    <attributes name="iamOwned" required="true" description="" type="//@types.6"/>
+    <attributes name="etag" required="true" description="`etag` is used for optimistic concurrency control as a way to help&#xA;prevent simultaneous updates of a policy from overwriting each other.&#xA;It is strongly suggested that systems make use of the `etag` in the&#xA;read-modify-write cycle to perform policy updates in order to avoid race&#xA;conditions: An `etag` is returned in the response to `getIamPolicy`, and&#xA;systems are expected to put that etag in the request to `setIamPolicy` to&#xA;ensure that their change will be applied to the same version of the policy.&#xA;&#xA;If no `etag` is provided in the call to `setIamPolicy`, then the existing&#xA;policy is overwritten blindly." type="//@types.26"/>
+    <attributes name="version" required="true" description="Version of the `Policy`. The default version is 0." type="//@types.3"/>
+    <attributes name="auditConfigs" required="true" description="Specifies cloud audit logging configuration for this policy." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ManagedServiceLink" scheme="http://occi/gcpservicemanagement#" title="Revived service resource." source="//@kinds[term='undeleteserviceresponse']" target="//@kinds[term='managedservice']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="UndeleteServiceResponse" scheme="http://occi/gcpservicemanagement#" title="Response message for UndeleteService method.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ApiSourceContextLink" scheme="http://occi/gcpservicemanagement#" title="Source context for the protocol buffer service represented by this&#xA;message." source="//@kinds[term='api']" target="//@kinds[term='sourcecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Api" scheme="http://occi/gcpservicemanagement#" title="Api is a light-weight descriptor for an API Interface.&#xA;&#xA;Interfaces are also described as &quot;protocol buffer services&quot; in some contexts,&#xA;such as by the &quot;service&quot; keyword in a .proto file, but they are different&#xA;from API Services, which represent a concrete implementation of an interface&#xA;as opposed to simply a description of methods and bindings. They are also&#xA;sometimes simply referred to as &quot;APIs&quot; in other contexts, such as the name of&#xA;this message itself. See https://cloud.google.com/apis/design/glossary for&#xA;detailed terminology.">
+    <attributes name="methods" required="true" description="The methods of this interface, in unspecified order." type="//@types.7"/>
+    <attributes name="name" required="true" description="The fully qualified name of this interface, including package name&#xA;followed by the interface's simple name." type="//@types.26"/>
+    <attributes name="syntax" required="true" description="The source syntax of the service." type="//@types.27"/>
+    <attributes name="version" required="true" description="A version string for this interface. If specified, must have the form&#xA;`major-version.minor-version`, as in `1.10`. If the minor version is&#xA;omitted, it defaults to zero. If the entire version field is empty, the&#xA;major version is derived from the package name, as outlined below. If the&#xA;field is not empty, the version in the package name will be verified to be&#xA;consistent with what is provided here.&#xA;&#xA;The versioning schema uses [semantic&#xA;versioning](http://semver.org) where the major version number&#xA;indicates a breaking change and the minor version an additive,&#xA;non-breaking change. Both version numbers are signals to users&#xA;what to expect from different versions, and should be carefully&#xA;chosen based on the product plan.&#xA;&#xA;The major version is also reflected in the package name of the&#xA;interface, which must end in `v&lt;major-version>`, as in&#xA;`google.feature.v1`. For major versions 0 and 1, the suffix can&#xA;be omitted. Zero major versions must only be used for&#xA;experimental, non-GA interfaces.&#xA;" type="//@types.27"/>
+    <attributes name="mixins" required="true" description="Included interfaces. See Mixin." type="//@types.7"/>
+    <attributes name="options" required="true" description="Any metadata attached to the interface." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="changeType" documentation="The type for this change, either ADDED, REMOVED, or MODIFIED.">
+    <literals name="CHANGE_TYPE_UNSPECIFIED" documentation="No value was provided."/>
+    <literals name="ADDED" documentation="The changed object exists in the 'new' service configuration, but not&#xA;in the 'old' service configuration."/>
+    <literals name="REMOVED" documentation="The changed object exists in the 'old' service configuration, but not&#xA;in the 'new' service configuration."/>
+    <literals name="MODIFIED" documentation="The changed object exists in both service configurations, but its value&#xA;is different."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="status" documentation="The status of this rollout. Readonly. In case of a failed rollout,&#xA;the system will automatically rollback to the current Rollout&#xA;version. Readonly.">
+    <literals name="ROLLOUT_STATUS_UNSPECIFIED" documentation="No status specified."/>
+    <literals name="IN_PROGRESS" documentation="The Rollout is in progress."/>
+    <literals name="SUCCESS" documentation="The Rollout has completed successfully."/>
+    <literals name="CANCELLED" documentation="The Rollout has been cancelled. This can happen if you have overlapping&#xA;Rollout pushes, and the previous ones will be cancelled."/>
+    <literals name="FAILED" documentation="The Rollout has failed and the rollback attempt has failed too."/>
+    <literals name="PENDING" documentation="The Rollout has not started yet and is pending for execution."/>
+    <literals name="FAILED_ROLLED_BACK" documentation="The Rollout has failed and rolled back to the previous successful&#xA;Rollout."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="StepSstatus" documentation="The status code.">
+    <literals name="STATUS_UNSPECIFIED" documentation="Unspecifed code."/>
+    <literals name="DONE" documentation="The operation or step has completed without errors."/>
+    <literals name="NOT_STARTED" documentation="The operation or step has not started yet."/>
+    <literals name="IN_PROGRESS" documentation="The operation or step is in progress."/>
+    <literals name="FAILED" documentation="The operation or step has completed with errors. If the operation is&#xA;rollbackable, the rollback completed with errors too."/>
+    <literals name="CANCELLED" documentation="The operation or step has completed with cancellation."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="syntax" documentation="The source syntax of this method.">
+    <literals name="SYNTAX_PROTO2" documentation="Syntax `proto2`."/>
+    <literals name="SYNTAX_PROTO3" documentation="Syntax `proto3`."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="cancelState" documentation="The state of the operation with respect to cancellation.">
+    <literals name="RUNNING" documentation="Default state, cancellable but not cancelled."/>
+    <literals name="UNCANCELLABLE" documentation="The operation has proceeded past the point of no return and cannot&#xA;be cancelled."/>
+    <literals name="CANCELLED" documentation="The operation has been cancelled, work should cease&#xA;and any needed rollback steps executed."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="surface" documentation="">
+    <literals name="UNSPECIFIED_OP_SERVICE" documentation=""/>
+    <literals name="SERVICE_MANAGEMENT" documentation=""/>
+    <literals name="SERVICE_USAGE" documentation=""/>
+    <literals name="SERVICE_CONSUMER_MANAGEMENT" documentation="TenancyUnit, ServiceNetworking fall under this"/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="FieldKkind" documentation="The field type.">
+    <literals name="TYPE_UNKNOWN" documentation="Field type unknown."/>
+    <literals name="TYPE_DOUBLE" documentation="Field type double."/>
+    <literals name="TYPE_FLOAT" documentation="Field type float."/>
+    <literals name="TYPE_INT64" documentation="Field type int64."/>
+    <literals name="TYPE_UINT64" documentation="Field type uint64."/>
+    <literals name="TYPE_INT32" documentation="Field type int32."/>
+    <literals name="TYPE_FIXED64" documentation="Field type fixed64."/>
+    <literals name="TYPE_FIXED32" documentation="Field type fixed32."/>
+    <literals name="TYPE_BOOL" documentation="Field type bool."/>
+    <literals name="TYPE_STRING" documentation="Field type string."/>
+    <literals name="TYPE_GROUP" documentation="Field type group. Proto2 syntax only, and deprecated."/>
+    <literals name="TYPE_MESSAGE" documentation="Field type message."/>
+    <literals name="TYPE_BYTES" documentation="Field type bytes."/>
+    <literals name="TYPE_UINT32" documentation="Field type uint32."/>
+    <literals name="TYPE_ENUM" documentation="Field type enum."/>
+    <literals name="TYPE_SFIXED32" documentation="Field type sfixed32."/>
+    <literals name="TYPE_SFIXED64" documentation="Field type sfixed64."/>
+    <literals name="TYPE_SINT32" documentation="Field type sint32."/>
+    <literals name="TYPE_SINT64" documentation="Field type sint64."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="cardinality" documentation="The field cardinality.">
+    <literals name="CARDINALITY_UNKNOWN" documentation="For fields with unknown cardinality."/>
+    <literals name="CARDINALITY_OPTIONAL" documentation="For optional fields."/>
+    <literals name="CARDINALITY_REQUIRED" documentation="For required fields. Proto2 syntax only."/>
+    <literals name="CARDINALITY_REPEATED" documentation="For repeated fields."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="EnumSsyntax" documentation="The source syntax.">
+    <literals name="SYNTAX_PROTO2" documentation="Syntax `proto2`."/>
+    <literals name="SYNTAX_PROTO3" documentation="Syntax `proto3`."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="valueType" documentation="The type of data that can be assigned to the label.">
+    <literals name="STRING" documentation="A variable-length string. This is the default."/>
+    <literals name="BOOL" documentation="Boolean; true or false."/>
+    <literals name="INT64" documentation="A 64-bit signed integer."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="DiagnosticKkind" documentation="The kind of diagnostic information provided.">
+    <literals name="WARNING" documentation="Warnings and errors"/>
+    <literals name="ERROR" documentation="Only errors"/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="TypeSsyntax" documentation="The source syntax.">
+    <literals name="SYNTAX_PROTO2" documentation="Syntax `proto2`."/>
+    <literals name="SYNTAX_PROTO3" documentation="Syntax `proto3`."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="metricKind" documentation="Whether the metric records instantaneous values, changes to a value, etc.&#xA;Some combinations of `metric_kind` and `value_type` might not be supported.">
+    <literals name="METRIC_KIND_UNSPECIFIED" documentation="Do not use this default value."/>
+    <literals name="GAUGE" documentation="An instantaneous measurement of a value."/>
+    <literals name="DELTA" documentation="The change in a value during a time interval."/>
+    <literals name="CUMULATIVE" documentation="A value accumulated over a time interval.  Cumulative&#xA;measurements in a time series should have the same start time&#xA;and increasing end times, until an event resets the cumulative&#xA;value to zero and sets a new start time for the following&#xA;points."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="MetricDescriptorVvaluetype" documentation="Whether the measurement is an integer, a floating-point number, etc.&#xA;Some combinations of `metric_kind` and `value_type` might not be supported.">
+    <literals name="VALUE_TYPE_UNSPECIFIED" documentation="Do not use this default value."/>
+    <literals name="BOOL" documentation="The value is a boolean.&#xA;This value type can be used only if the metric kind is `GAUGE`."/>
+    <literals name="INT64" documentation="The value is a signed 64-bit integer."/>
+    <literals name="DOUBLE" documentation="The value is a double precision floating point number."/>
+    <literals name="STRING" documentation="The value is a text string.&#xA;This value type can be used only if the metric kind is `GAUGE`."/>
+    <literals name="DISTRIBUTION" documentation="The value is a `Distribution`."/>
+    <literals name="MONEY" documentation="The value is money."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="fileType" documentation="The type of configuration file this represents.">
+    <literals name="FILE_TYPE_UNSPECIFIED" documentation="Unknown file type."/>
+    <literals name="SERVICE_CONFIG_YAML" documentation="YAML-specification of service."/>
+    <literals name="OPEN_API_JSON" documentation="OpenAPI specification, serialized in JSON."/>
+    <literals name="OPEN_API_YAML" documentation="OpenAPI specification, serialized in YAML."/>
+    <literals name="FILE_DESCRIPTOR_SET_PROTO" documentation="FileDescriptorSet, generated by protoc.&#xA;&#xA;To generate, use protoc with imports and source info included.&#xA;For an example test.proto file, the following command would put the value&#xA;in a new file named out.pb.&#xA;&#xA;$protoc --include_imports --include_source_info test.proto -o out.pb"/>
+    <literals name="PROTO_FILE" documentation="Uncompiled Proto file. Used for storage and display purposes only,&#xA;currently server-side compilation is not supported. Should match the&#xA;inputs to 'protoc' command used to generated FILE_DESCRIPTOR_SET_PROTO. A&#xA;file of this type can only be included if at least one file of type&#xA;FILE_DESCRIPTOR_SET_PROTO is included."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="logType" documentation="The log type that this config enables.">
+    <literals name="LOG_TYPE_UNSPECIFIED" documentation="Default case. Should never be this."/>
+    <literals name="ADMIN_READ" documentation="Admin reads. Example: CloudIAM getIamPolicy"/>
+    <literals name="DATA_WRITE" documentation="Data writes. Example: CloudSQL Users create"/>
+    <literals name="DATA_READ" documentation="Data reads. Example: CloudSQL Users list"/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="ApiSsyntax" documentation="The source syntax of the service.">
+    <literals name="SYNTAX_PROTO2" documentation="Syntax `proto2`."/>
+    <literals name="SYNTAX_PROTO3" documentation="Syntax `proto3`."/>
+  </types>
+</occi:Extension>

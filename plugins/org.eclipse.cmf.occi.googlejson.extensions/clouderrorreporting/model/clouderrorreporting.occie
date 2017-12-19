@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="clouderrorreporting" scheme="http://occi/gcpclouderrorreporting#" description="Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors.&#xA;">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="ListEventsResponse" scheme="http://occi/gcpclouderrorreporting#" title="Contains a set of requested error events.">
+    <attributes name="timeRangeBegin" required="true" description="The timestamp specifies the start time to which the request was restricted." type="//@types.0"/>
+    <attributes name="errorEvents" required="true" description="The error events which match the given request." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="If non-empty, more results are available.&#xA;Pass this token, along with the same query parameters as the first&#xA;request, to view the next page of results." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TimedCount" scheme="http://occi/gcpclouderrorreporting#" title="The number of errors in a given time period.&#xA;All numbers are approximate since the error events are sampled&#xA;before counting them.">
+    <attributes name="endTime" required="true" description="End of the time period to which `count` refers (excluded)." type="//@types.0"/>
+    <attributes name="startTime" required="true" description="Start of the time period to which `count` refers (included)." type="//@types.0"/>
+    <attributes name="count" required="true" description="Approximate number of occurrences in the given time period." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ErrorGroup" scheme="http://occi/gcpclouderrorreporting#" title="Description of a group of similar error events.">
+    <attributes name="trackingIssues" required="true" description="Associated tracking issues." type="//@types.7"/>
+    <attributes name="groupId" required="true" description="Group IDs are unique for a given project. If the same kind of error&#xA;occurs in different service contexts, it will receive the same group ID." type="//@types.0"/>
+    <attributes name="name" required="true" description="The group resource name.&#xA;Example: &lt;code>projects/my-project-123/groups/my-groupid&lt;/code>" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceLocation" scheme="http://occi/gcpclouderrorreporting#" title="Indicates a location in the source code of the service for which errors are&#xA;reported. `functionName` must be provided by the application when reporting&#xA;an error, unless the error report contains a `message` with a supported&#xA;exception stack trace. All fields are optional for the later case.">
+    <attributes name="functionName" required="true" description="Human-readable name of a function or method.&#xA;The value can include optional context like the class or package name.&#xA;For example, `my.package.MyClass.method` in case of Java." type="//@types.0"/>
+    <attributes name="filePath" required="true" description="The source code filename, which can include a truncated relative&#xA;path, or a full path from a production machine." type="//@types.0"/>
+    <attributes name="lineNumber" required="true" description="1-based. 0 indicates that the line number is unknown." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ServiceContext" scheme="http://occi/gcpclouderrorreporting#" title="Describes a running service that sends errors.&#xA;Its version changes over time and multiple versions can run in parallel.">
+    <attributes name="service" required="true" description="An identifier of the service, such as the name of the&#xA;executable, job, or Google App Engine service name. This field is expected&#xA;to have a low number of values that are relatively stable over time, as&#xA;opposed to `version`, which can be changed whenever new code is deployed.&#xA;&#xA;Contains the service name for error reports extracted from Google&#xA;App Engine logs or `default` if the App Engine default service is used." type="//@types.0"/>
+    <attributes name="resourceType" required="true" description="Type of the MonitoredResource. List of possible values:&#xA;https://cloud.google.com/monitoring/api/resources&#xA;&#xA;Value is set automatically for incoming errors and must not be set when&#xA;reporting errors." type="//@types.0"/>
+    <attributes name="version" required="true" description="Represents the source code version that the developer provided,&#xA;which could represent a version label or a Git SHA-1 hash, for example.&#xA;For App Engine standard environment, the version is set to the version of&#xA;the app." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReportErrorEventResponse" scheme="http://occi/gcpclouderrorreporting#" title="Response for reporting an individual error event.&#xA;Data may be added to this message in the future.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="HttpRequestContext" scheme="http://occi/gcpclouderrorreporting#" title="HTTP request data that is related to a reported error.&#xA;This data should be provided by the application when reporting an error,&#xA;unless the&#xA;error report has been generated automatically from Google App Engine logs.">
+    <attributes name="remoteIp" required="true" description="The IP address from which the request originated.&#xA;This can be IPv4, IPv6, or a token which is derived from the&#xA;IP address, depending on the data that has been provided&#xA;in the error report." type="//@types.0"/>
+    <attributes name="referrer" required="true" description="The referrer information that is provided with the request." type="//@types.0"/>
+    <attributes name="userAgent" required="true" description="The user agent information that is provided with the request." type="//@types.0"/>
+    <attributes name="url" required="true" description="The URL of the request." type="//@types.0"/>
+    <attributes name="responseStatusCode" required="true" description="The HTTP response status code for the request." type="//@types.3"/>
+    <attributes name="method" required="true" description="The type of HTTP request, such as `GET`, `POST`, etc." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListGroupStatsResponse" scheme="http://occi/gcpclouderrorreporting#" title="Contains a set of requested error group stats.">
+    <attributes name="timeRangeBegin" required="true" description="The timestamp specifies the start time to which the request was restricted.&#xA;The start time is set based on the requested time range. It may be adjusted&#xA;to a later time if a project has exceeded the storage quota and older data&#xA;has been deleted." type="//@types.0"/>
+    <attributes name="errorGroupStats" required="true" description="The error group stats which match the given request." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="If non-empty, more results are available.&#xA;Pass this token, along with the same query parameters as the first&#xA;request, to view the next page of results." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceReference" scheme="http://occi/gcpclouderrorreporting#" title="A reference to a particular snapshot of the source tree used to build and&#xA;deploy an application.">
+    <attributes name="repository" required="true" description="Optional. A URI string identifying the repository.&#xA;Example: &quot;https://github.com/GoogleCloudPlatform/kubernetes.git&quot;" type="//@types.0"/>
+    <attributes name="revisionId" required="true" description="The canonical and persistent identifier of the deployed revision.&#xA;Example (git): &quot;0035781c50ec7aa23385dc841529ce8a4b70db1b&quot;" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DeleteEventsResponse" scheme="http://occi/gcpclouderrorreporting#" title="Response message for deleting error events.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ErrorContextLink" scheme="http://occi/gcpclouderrorreporting#" title="Data about the context in which the error occurred." source="//@kinds[term='errorevent']" target="//@kinds[term='errorcontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ServiceContextLink" scheme="http://occi/gcpclouderrorreporting#" title="The `ServiceContext` for which this error was reported." source="//@kinds[term='errorevent']" target="//@kinds[term='servicecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ErrorEvent" scheme="http://occi/gcpclouderrorreporting#" title="An error event which is returned by the Error Reporting system.">
+    <attributes name="message" required="true" description="The stack trace that was reported or logged by the service." type="//@types.0"/>
+    <attributes name="eventTime" required="true" description="Time when the event occurred as provided in the error report.&#xA;If the report did not contain a timestamp, the time the error was received&#xA;by the Error Reporting system is used." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReportedErrorEventServiceContextLink" scheme="http://occi/gcpclouderrorreporting#" title="[Required] The service context in which this error has occurred." source="//@kinds[term='reportederrorevent']" target="//@kinds[term='servicecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ReportedErrorEventErrorContextLink" scheme="http://occi/gcpclouderrorreporting#" title="[Optional] A description of the context in which the error occurred." source="//@kinds[term='reportederrorevent']" target="//@kinds[term='errorcontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ReportedErrorEvent" scheme="http://occi/gcpclouderrorreporting#" title="An error event which is reported to the Error Reporting system.">
+    <attributes name="eventTime" required="true" description="[Optional] Time when the event occurred.&#xA;If not provided, the time when the event was received by the&#xA;Error Reporting system will be used." type="//@types.0"/>
+    <attributes name="message" required="true" description="[Required] The error message.&#xA;If no `context.reportLocation` is provided, the message must contain a&#xA;header (typically consisting of the exception type name and an error&#xA;message) and an exception stack trace in one of the supported programming&#xA;languages and formats.&#xA;Supported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go.&#xA;Supported stack trace formats are:&#xA;&#xA;* **Java**: Must be the return value of [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).&#xA;* **Python**: Must be the return value of [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).&#xA;* **JavaScript**: Must be the value of [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API)&#xA;as returned by V8.&#xA;* **Ruby**: Must contain frames returned by [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).&#xA;* **C#**: Must be the return value of [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).&#xA;* **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`&#xA;and contain the result of [`(string)$exception`](http://php.net/manual/en/exception.tostring.php).&#xA;* **Go**: Must be the return value of [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack)." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceLocationLink" scheme="http://occi/gcpclouderrorreporting#" title="The location in the source code where the decision was made to&#xA;report the error, usually the place where it was logged.&#xA;For a logged exception this would be the source line where the&#xA;exception is logged, usually close to the place where it was&#xA;caught." source="//@kinds[term='errorcontext']" target="//@kinds[term='sourcelocation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="HttpRequestContextLink" scheme="http://occi/gcpclouderrorreporting#" title="The HTTP request which was processed when the error was&#xA;triggered." source="//@kinds[term='errorcontext']" target="//@kinds[term='httprequestcontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ErrorContext" scheme="http://occi/gcpclouderrorreporting#" title="A description of the context in which an error occurred.&#xA;This data should be provided by the application when reporting an error,&#xA;unless the&#xA;error report has been generated automatically from Google App Engine logs.">
+    <attributes name="sourceReferences" required="true" description="Source code that was used to build the executable which has&#xA;caused the given error message." type="//@types.7"/>
+    <attributes name="user" required="true" description="The user who caused or was affected by the crash.&#xA;This can be a user ID, an email address, or an arbitrary token that&#xA;uniquely identifies the user.&#xA;When sending an error report, leave this field empty if the user was not&#xA;logged in. In this case the&#xA;Error Reporting system will use other data, such as remote IP address, to&#xA;distinguish affected users. See `affected_users_count` in&#xA;`ErrorGroupStats`." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TrackingIssue" scheme="http://occi/gcpclouderrorreporting#" title="Information related to tracking the progress on resolving the error.">
+    <attributes name="url" required="true" description="A URL pointing to a related entry in an issue tracking system.&#xA;Example: https://github.com/user/project/issues/4" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ErrorEventLink" scheme="http://occi/gcpclouderrorreporting#" title="An arbitrary event that is chosen as representative for the whole group.&#xA;The representative event is intended to be used as a quick preview for&#xA;the whole group. Events in the group are usually sufficiently similar&#xA;to each other such that showing an arbitrary representative provides&#xA;insight into the characteristics of the group as a whole." source="//@kinds[term='errorgroupstats']" target="//@kinds[term='errorevent']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ErrorGroupLink" scheme="http://occi/gcpclouderrorreporting#" title="Group data that is independent of the filter criteria." source="//@kinds[term='errorgroupstats']" target="//@kinds[term='errorgroup']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ErrorGroupStats" scheme="http://occi/gcpclouderrorreporting#" title="Data extracted for a specific group based on certain filter criteria,&#xA;such as a given time period and/or service filter.">
+    <attributes name="count" required="true" description="Approximate total number of events in the given group that match&#xA;the filter criteria." type="//@types.0"/>
+    <attributes name="lastSeenTime" required="true" description="Approximate last occurrence that was ever seen for this group and&#xA;which matches the given filter criteria, ignoring the time_range&#xA;that was specified in the request." type="//@types.0"/>
+    <attributes name="affectedUsersCount" required="true" description="Approximate number of affected users in the given group that&#xA;match the filter criteria.&#xA;Users are distinguished by data in the `ErrorContext` of the&#xA;individual error events, such as their login name or their remote&#xA;IP address in case of HTTP requests.&#xA;The number of affected users can be zero even if the number of&#xA;errors is non-zero if no data was provided from which the&#xA;affected user could be deduced.&#xA;Users are counted based on data in the request&#xA;context that was provided in the error report. If more users are&#xA;implicitly affected, such as due to a crash of the whole service,&#xA;this is not reflected here." type="//@types.0"/>
+    <attributes name="numAffectedServices" required="true" description="The total number of services with a non-zero error count for the given&#xA;filter criteria." type="//@types.3"/>
+    <attributes name="affectedServices" required="true" description="Service contexts with a non-zero error count for the given filter&#xA;criteria. This list can be truncated if multiple services are affected.&#xA;Refer to `num_affected_services` for the total count." type="//@types.7"/>
+    <attributes name="timedCounts" required="true" description="Approximate number of occurrences over time.&#xA;Timed counts returned by ListGroups are guaranteed to be:&#xA;&#xA;- Inside the requested time interval&#xA;- Non-overlapping, and&#xA;- Ordered by ascending time." type="//@types.7"/>
+    <attributes name="firstSeenTime" required="true" description="Approximate first occurrence that was ever seen for this group&#xA;and which matches the given filter criteria, ignoring the&#xA;time_range that was specified in the request." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+</occi:Extension>

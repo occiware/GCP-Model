@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="genomics" scheme="http://occi/gcpgenomics#" description="Upload, process, query, and search Genomics data in the cloud.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="ExperimentLink" scheme="http://occi/gcpgenomics#" title="The experiment used to generate this read group." source="//@kinds[term='readgroup']" target="//@kinds[term='experiment']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ReadGroup" scheme="http://occi/gcpgenomics#" title="A read group is all the data that's processed the same way by the sequencer.">
+    <attributes name="predictedInsertSize" required="true" description="The predicted insert size of this read group. The insert size is the length&#xA;the sequenced DNA fragment from end-to-end, not including the adapters." type="//@types.3"/>
+    <attributes name="programs" required="true" description="The programs used to generate this read group. Programs are always&#xA;identical for all read groups within a read group set. For this reason,&#xA;only the first read group in a returned set will have this field&#xA;populated." type="//@types.7"/>
+    <attributes name="description" required="true" description="A free-form text description of this read group." type="//@types.0"/>
+    <attributes name="sampleId" required="true" description="A client-supplied sample identifier for the reads in this read group." type="//@types.0"/>
+    <attributes name="datasetId" required="true" description="The dataset to which this read group belongs." type="//@types.0"/>
+    <attributes name="name" required="true" description="The read group name. This corresponds to the @RG ID field in the SAM spec." type="//@types.0"/>
+    <attributes name="referenceSetId" required="true" description="The reference set the reads in this read group are aligned to." type="//@types.0"/>
+    <attributes name="info" required="true" description="A map of additional read group information. This must be of the form&#xA;map&lt;string, string[]> (string key mapping to a list of string values)." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReadGroupSet" scheme="http://occi/gcpgenomics#" title="A read group set is a logical collection of read groups, which are&#xA;collections of reads produced by a sequencer. A read group set typically&#xA;models reads corresponding to one sample, sequenced one way, and aligned one&#xA;way.&#xA;&#xA;* A read group set belongs to one dataset.&#xA;* A read group belongs to one read group set.&#xA;* A read belongs to one read group.&#xA;&#xA;For more genomics resource definitions, see [Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+    <attributes name="datasetId" required="true" description="The dataset to which this read group set belongs." type="//@types.0"/>
+    <attributes name="filename" required="true" description="The filename of the original source file for this read group set, if any." type="//@types.0"/>
+    <attributes name="readGroups" required="true" description="The read groups in this set. There are typically 1-10 read groups in a read&#xA;group set." type="//@types.7"/>
+    <attributes name="name" required="true" description="The read group set name. By default this will be initialized to the sample&#xA;name of the sequenced data contained in this set." type="//@types.0"/>
+    <attributes name="referenceSetId" required="true" description="The reference set to which the reads in this read group set are aligned." type="//@types.0"/>
+    <attributes name="info" required="true" description="A map of additional read group set information." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchVariantSetsResponse" scheme="http://occi/gcpgenomics#" title="The search variant sets response.">
+    <attributes name="variantSets" required="true" description="The variant sets belonging to the requested dataset." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Empty" scheme="http://occi/gcpgenomics#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AnnotationLink" scheme="http://occi/gcpgenomics#" title="The created annotation, if creation was successful." source="//@kinds[term='entry']" target="//@kinds[term='annotation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="StatusLink" scheme="http://occi/gcpgenomics#" title="The creation status." source="//@kinds[term='entry']" target="//@kinds[term='status']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Entry" scheme="http://occi/gcpgenomics#" title="">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Position" scheme="http://occi/gcpgenomics#" title="An abstraction for referring to a genomic position, in relation to some&#xA;already known reference. For now, represents a genomic position as a&#xA;reference name, a base number on that reference (0-based), and a&#xA;determination of forward or reverse strand.">
+    <attributes name="position" required="true" description="The 0-based offset from the start of the forward strand for that reference." type="//@types.0"/>
+    <attributes name="referenceName" required="true" description="The name of the reference in whatever reference set is being used." type="//@types.0"/>
+    <attributes name="reverseStrand" required="true" description="Whether this position is on the reverse strand, as opposed to the forward&#xA;strand." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchReferenceSetsResponse" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="referenceSets" required="true" description="The matching references sets." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchCallSetsRequest" scheme="http://occi/gcpgenomics#" title="The call set search request.">
+    <attributes name="variantSetIds" required="true" description="Restrict the query to call sets within the given variant sets. At least one&#xA;ID must be provided." type="//@types.7"/>
+    <attributes name="pageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;To get the next page of results, set this parameter to the value of&#xA;`nextPageToken` from the previous response." type="//@types.0"/>
+    <attributes name="name" required="true" description="Only return call sets for which a substring of the name matches this&#xA;string." type="//@types.0"/>
+    <attributes name="pageSize" required="true" description="The maximum number of results to return in a single page. If unspecified,&#xA;defaults to 1024." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ImportReadGroupSetsRequest" scheme="http://occi/gcpgenomics#" title="The read group set import request.">
+    <attributes name="datasetId" required="true" description="Required. The ID of the dataset these read group sets will belong to. The&#xA;caller must have WRITE permissions to this dataset." type="//@types.0"/>
+    <attributes name="sourceUris" required="true" description="A list of URIs pointing at [BAM&#xA;files](https://samtools.github.io/hts-specs/SAMv1.pdf)&#xA;in Google Cloud Storage.&#xA;Those URIs can include wildcards (*), but do not add or remove&#xA;matching files before import has completed.&#xA;&#xA;Note that Google Cloud Storage object listing is only eventually&#xA;consistent: files added may be not be immediately visible to&#xA;everyone. Thus, if using a wildcard it is preferable not to start&#xA;the import immediately after the files are created." type="//@types.7"/>
+    <attributes name="referenceSetId" required="true" description="The reference set to which the imported read group sets are aligned to, if&#xA;any. The reference names of this reference set must be a superset of those&#xA;found in the imported file headers. If no reference set id is provided, a&#xA;best effort is made to associate with a matching reference set." type="//@types.0"/>
+    <attributes name="partitionStrategy" required="true" description="The partition strategy describes how read groups are partitioned into read&#xA;group sets." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Policy" scheme="http://occi/gcpgenomics#" title="Defines an Identity and Access Management (IAM) policy. It is used to&#xA;specify access control policies for Cloud Platform resources.&#xA;&#xA;&#xA;A `Policy` consists of a list of `bindings`. A `Binding` binds a list of&#xA;`members` to a `role`, where the members can be user accounts, Google groups,&#xA;Google domains, and service accounts. A `role` is a named list of permissions&#xA;defined by IAM.&#xA;&#xA;**Example**&#xA;&#xA;    {&#xA;      &quot;bindings&quot;: [&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/owner&quot;,&#xA;          &quot;members&quot;: [&#xA;            &quot;user:mike@example.com&quot;,&#xA;            &quot;group:admins@example.com&quot;,&#xA;            &quot;domain:google.com&quot;,&#xA;            &quot;serviceAccount:my-other-app@appspot.gserviceaccount.com&quot;,&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/viewer&quot;,&#xA;          &quot;members&quot;: [&quot;user:sean@example.com&quot;]&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;For a description of IAM and its features, see the&#xA;[IAM developer's guide](https://cloud.google.com/iam).">
+    <attributes name="etag" required="true" description="`etag` is used for optimistic concurrency control as a way to help&#xA;prevent simultaneous updates of a policy from overwriting each other.&#xA;It is strongly suggested that systems make use of the `etag` in the&#xA;read-modify-write cycle to perform policy updates in order to avoid race&#xA;conditions: An `etag` is returned in the response to `getIamPolicy`, and&#xA;systems are expected to put that etag in the request to `setIamPolicy` to&#xA;ensure that their change will be applied to the same version of the policy.&#xA;&#xA;If no `etag` is provided in the call to `setIamPolicy`, then the existing&#xA;policy is overwritten blindly." type="//@types.11"/>
+    <attributes name="version" required="true" description="Version of the `Policy`. The default version is 0." type="//@types.3"/>
+    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`.&#xA;`bindings` with no members will result in an error." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchReadsRequest" scheme="http://occi/gcpgenomics#" title="The read search request.">
+    <attributes name="start" required="true" description="The start position of the range on the reference, 0-based inclusive. If&#xA;specified, `referenceName` must also be specified." type="//@types.11"/>
+    <attributes name="referenceName" required="true" description="The reference sequence name, for example `chr1`, `1`, or `chrX`. If set to&#xA;`*`, only unmapped reads are returned. If unspecified, all reads (mapped&#xA;and unmapped) are returned." type="//@types.11"/>
+    <attributes name="readGroupSetIds" required="true" description="The IDs of the read groups sets within which to search for reads. All&#xA;specified read group sets must be aligned against a common set of reference&#xA;sequences; this defines the genomic coordinates for the query. Must specify&#xA;one of `readGroupSetIds` or `readGroupIds`." type="//@types.7"/>
+    <attributes name="readGroupIds" required="true" description="The IDs of the read groups within which to search for reads. All specified&#xA;read groups must belong to the same read group sets. Must specify one of&#xA;`readGroupSetIds` or `readGroupIds`." type="//@types.7"/>
+    <attributes name="end" required="true" description="The end position of the range on the reference, 0-based exclusive. If&#xA;specified, `referenceName` must also be specified." type="//@types.11"/>
+    <attributes name="pageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;To get the next page of results, set this parameter to the value of&#xA;`nextPageToken` from the previous response." type="//@types.11"/>
+    <attributes name="pageSize" required="true" description="The maximum number of results to return in a single page. If unspecified,&#xA;defaults to 256. The maximum value is 2048." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CancelOperationRequest" scheme="http://occi/gcpgenomics#" title="The request message for Operations.CancelOperation.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TranscriptLink" scheme="http://occi/gcpgenomics#" title="A transcript value represents the assertion that a particular region of&#xA;the reference genome may be transcribed as RNA. An alternative splicing&#xA;pattern would be represented as a separate transcript object. This field&#xA;is only set for annotations of type `TRANSCRIPT`." source="//@kinds[term='annotation']" target="//@kinds[term='transcript']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="VariantAnnotationLink" scheme="http://occi/gcpgenomics#" title="A variant annotation, which describes the effect of a variant on the&#xA;genome, the coding sequence, and/or higher level consequences at the&#xA;organism level e.g. pathogenicity. This field is only set for annotations&#xA;of type `VARIANT`." source="//@kinds[term='annotation']" target="//@kinds[term='variantannotation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Annotation" scheme="http://occi/gcpgenomics#" title="An annotation describes a region of reference genome. The value of an&#xA;annotation may be one of several canonical types, supplemented by arbitrary&#xA;info tags. An annotation is not inherently associated with a specific&#xA;sample or individual (though a client could choose to use annotations in&#xA;this way). Example canonical annotation types are `GENE` and&#xA;`VARIANT`.">
+    <attributes name="reverseStrand" required="true" description="Whether this range refers to the reverse strand, as opposed to the forward&#xA;strand. Note that regardless of this field, the start/end position of the&#xA;range always refer to the forward strand." type="//@types.6"/>
+    <attributes name="referenceName" required="true" description="The display name corresponding to the reference specified by&#xA;`referenceId`, for example `chr1`, `1`, or `chrX`." type="//@types.11"/>
+    <attributes name="info" required="true" description="A map of additional read alignment information. This must be of the form&#xA;map&lt;string, string[]> (string key mapping to a list of string values)." type="//@types.9"/>
+    <attributes name="type" required="true" description="The data type for this annotation. Must match the containing annotation&#xA;set's type." type="//@types.12"/>
+    <attributes name="end" required="true" description="The end position of the range on the reference, 0-based exclusive." type="//@types.12"/>
+    <attributes name="start" required="true" description="The start position of the range on the reference, 0-based inclusive." type="//@types.12"/>
+    <attributes name="annotationSetId" required="true" description="The annotation set to which this annotation belongs." type="//@types.12"/>
+    <attributes name="name" required="true" description="The display name of this annotation." type="//@types.12"/>
+    <attributes name="referenceId" required="true" description="The ID of the Google Genomics reference associated with this range." type="//@types.12"/>
+    <actions name="delete" scheme="http://occi/gcpgenomics/annotation/action#" title="Deletes an annotation. Caller must have WRITE permission for&#xA;the associated annotation set.">
+      <attributes name="annotationId" required="true" description="The ID of the annotation to be deleted." type="//@types.12"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpgenomics/annotation/action#" title="Creates a new annotation. Caller must have WRITE permission&#xA;for the associated annotation set.&#xA;&#xA;The following fields are required:&#xA;&#xA;* annotationSetId&#xA;* referenceName or&#xA;  referenceId&#xA;&#xA;### Transcripts&#xA;&#xA;For annotations of type TRANSCRIPT, the following fields of&#xA;transcript must be provided:&#xA;&#xA;* exons.start&#xA;* exons.end&#xA;&#xA;All other fields may be optionally specified, unless documented as being&#xA;server-generated (for example, the `id` field). The annotated&#xA;range must be no longer than 100Mbp (mega base pairs). See the&#xA;Annotation resource&#xA;for additional restrictions on each field."/>
+    <actions name="batchCreate" scheme="http://occi/gcpgenomics/annotation/action#" title="Creates one or more new annotations atomically. All annotations must&#xA;belong to the same annotation set. Caller must have WRITE&#xA;permission for this annotation set. For optimal performance, batch&#xA;positionally adjacent annotations together.&#xA;&#xA;If the request has a systemic issue, such as an attempt to write to&#xA;an inaccessible annotation set, the entire RPC will fail accordingly. For&#xA;lesser data issues, when possible an error will be isolated to the&#xA;corresponding batch entry in the response; the remaining well formed&#xA;annotations will be created normally.&#xA;&#xA;For details on the requirements for each individual annotation resource,&#xA;see&#xA;CreateAnnotation."/>
+    <actions name="search" scheme="http://occi/gcpgenomics/annotation/action#" title="Searches for annotations that match the given criteria. Results are&#xA;ordered by genomic coordinate (by reference sequence, then position).&#xA;Annotations with equivalent genomic coordinates are returned in an&#xA;unspecified order. This order is consistent, such that two queries for the&#xA;same content (regardless of page size) yield annotations in the same order&#xA;across their respective streams of paginated responses. Caller must have&#xA;READ permission for the queried annotation sets."/>
+    <actions name="get" scheme="http://occi/gcpgenomics/annotation/action#" title="Gets an annotation. Caller must have READ permission&#xA;for the associated annotation set.">
+      <attributes name="annotationId" required="true" description="The ID of the annotation to be retrieved." type="//@types.12"/>
+    </actions>
+    <actions name="update" scheme="http://occi/gcpgenomics/annotation/action#" title="Updates an annotation. Caller must have&#xA;WRITE permission for the associated dataset.">
+      <attributes name="updateMask" required="true" description="An optional mask specifying which fields to update. Mutable fields are&#xA;name,&#xA;variant,&#xA;transcript, and&#xA;info. If unspecified, all mutable&#xA;fields will be updated." type="//@types.12"/>
+      <attributes name="annotationId" required="true" description="The ID of the annotation to be updated." type="//@types.12"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationStatusLink" scheme="http://occi/gcpgenomics#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='operation']" target="//@kinds[term='status']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Operation" scheme="http://occi/gcpgenomics#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
+    <attributes name="metadata" required="true" description="An OperationMetadata object. This will always be returned with the Operation." type="//@types.9"/>
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
+    <attributes name="response" required="true" description="If importing ReadGroupSets, an ImportReadGroupSetsResponse is returned. If importing Variants, an ImportVariantsResponse is returned. For pipelines and exports, an Empty response is returned." type="//@types.9"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that originally returns it. For example&amp;#58; `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`" type="//@types.12"/>
+    <actions name="cancel" scheme="http://occi/gcpgenomics/operation/action#" title="Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite cancellation.">
+      <attributes name="name" required="true" description="The name of the operation resource to be cancelled." type="//@types.12"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpgenomics/operation/action#" title="Gets the latest state of a long-running operation.  Clients can use this&#xA;method to poll the operation result at intervals as recommended by the API&#xA;service.">
+      <attributes name="name" required="true" description="The name of the operation resource." type="//@types.12"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpgenomics/operation/action#" title="Lists operations that match the specified filter in the request.">
+      <attributes name="filter" required="true" description="A string for filtering Operations.&#xA;The following filter fields are supported&amp;#58;&#xA;&#xA;* projectId&amp;#58; Required. Corresponds to&#xA;  OperationMetadata.projectId.&#xA;* createTime&amp;#58; The time this job was created, in seconds from the&#xA;  [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `&lt;=`&#xA;  operators.&#xA;* status&amp;#58; Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only&#xA;  one status may be specified.&#xA;* labels.key where key is a label key.&#xA;&#xA;Examples&amp;#58;&#xA;&#xA;* `projectId = my-project AND createTime >= 1432140000`&#xA;* `projectId = my-project AND createTime >= 1432140000 AND createTime &lt;= 1432150000 AND status = RUNNING`&#xA;* `projectId = my-project AND labels.color = *`&#xA;* `projectId = my-project AND labels.color = red`" type="//@types.12"/>
+      <attributes name="pageToken" required="true" description="The standard list page token." type="//@types.12"/>
+      <attributes name="name" required="true" description="The name of the operation's parent resource." type="//@types.12"/>
+      <attributes name="pageSize" required="true" description="The maximum number of results to return. If unspecified, defaults to&#xA;256. The maximum value is 2048." type="//@types.3"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ComputeEngineLink" scheme="http://occi/gcpgenomics#" title="Execution information specific to Google Compute Engine." source="//@kinds[term='runtimemetadata']" target="//@kinds[term='computeengine']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="RuntimeMetadata" scheme="http://occi/gcpgenomics#" title="Runtime metadata that will be populated in the&#xA;runtimeMetadata&#xA;field of the Operation associated with a RunPipeline execution.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ImportReadGroupSetsResponse" scheme="http://occi/gcpgenomics#" title="The read group set import response.">
+    <attributes name="readGroupSetIds" required="true" description="IDs of the read group sets that were created." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="VariantCall" scheme="http://occi/gcpgenomics#" title="A call represents the determination of genotype with respect to a particular&#xA;variant. It may include associated information such as quality and phasing.&#xA;For example, a call might assign a probability of 0.32 to the occurrence of&#xA;a SNP named rs1234 in a call set with the name NA12345.">
+    <attributes name="phaseset" required="true" description="If this field is present, this variant call's genotype ordering implies&#xA;the phase of the bases and is consistent with any other variant calls in&#xA;the same reference sequence which have the same phaseset value.&#xA;When importing data from VCF, if the genotype data was phased but no&#xA;phase set was specified this field will be set to `*`." type="//@types.12"/>
+    <attributes name="info" required="true" description="A map of additional variant call information. This must be of the form&#xA;map&lt;string, string[]> (string key mapping to a list of string values)." type="//@types.9"/>
+    <attributes name="callSetName" required="true" description="The name of the call set this variant call belongs to." type="//@types.12"/>
+    <attributes name="genotypeLikelihood" required="true" description="The genotype likelihoods for this variant call. Each array entry&#xA;represents how likely a specific genotype is for this call. The value&#xA;ordering is defined by the GL tag in the VCF spec.&#xA;If Phred-scaled genotype likelihood scores (PL) are available and&#xA;log10(P) genotype likelihood scores (GL) are not, PL scores are converted&#xA;to GL scores.  If both are available, PL scores are stored in `info`." type="//@types.7"/>
+    <attributes name="callSetId" required="true" description="The ID of the call set this variant call belongs to." type="//@types.12"/>
+    <attributes name="genotype" required="true" description="The genotype of this variant call. Each value represents either the value&#xA;of the `referenceBases` field or a 1-based index into&#xA;`alternateBases`. If a variant had a `referenceBases`&#xA;value of `T` and an `alternateBases`&#xA;value of `[&quot;A&quot;, &quot;C&quot;]`, and the `genotype` was&#xA;`[2, 1]`, that would mean the call&#xA;represented the heterozygous value `CA` for this variant.&#xA;If the `genotype` was instead `[0, 1]`, the&#xA;represented value would be `TA`. Ordering of the&#xA;genotype values is important if the `phaseset` is present.&#xA;If a genotype is not called (that is, a `.` is present in the&#xA;GT string) -1 is returned." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchVariantsResponse" scheme="http://occi/gcpgenomics#" title="The variant search response.">
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.12"/>
+    <attributes name="variants" required="true" description="The list of matching Variants." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListBasesResponse" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="sequence" required="true" description="A substring of the bases that make up this reference." type="//@types.12"/>
+    <attributes name="offset" required="true" description="The offset position (0-based) of the given `sequence` from the&#xA;start of this `Reference`. This value will differ for each page&#xA;in a paginated request." type="//@types.12"/>
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Status" scheme="http://occi/gcpgenomics#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="UndeleteDatasetRequest" scheme="http://occi/gcpgenomics#" title="">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Binding" scheme="http://occi/gcpgenomics#" title="Associates `members` with a `role`.">
+    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource.&#xA;`members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is&#xA;   on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone&#xA;   who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google&#xA;   account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service&#xA;   account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group.&#xA;   For example, `admins@example.com`.&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the&#xA;   users of that domain. For example, `google.com` or `example.com`.&#xA;&#xA;" type="//@types.7"/>
+    <attributes name="role" required="true" description="Role that is assigned to `members`.&#xA;For example, `roles/viewer`, `roles/editor`, or `roles/owner`.&#xA;Required" type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Range" scheme="http://occi/gcpgenomics#" title="A 0-based half-open genomic coordinate range for search requests.">
+    <attributes name="start" required="true" description="The start position of the range on the reference, 0-based inclusive." type="//@types.12"/>
+    <attributes name="end" required="true" description="The end position of the range on the reference, 0-based exclusive." type="//@types.12"/>
+    <attributes name="referenceName" required="true" description="The reference sequence name, for example `chr1`,&#xA;`1`, or `chrX`." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="VariantSet" scheme="http://occi/gcpgenomics#" title="A variant set is a collection of call sets and variants. It contains summary&#xA;statistics of those contents. A variant set belongs to a dataset.&#xA;&#xA;For more genomics resource definitions, see [Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+    <attributes name="referenceSetId" required="true" description="The reference set to which the variant set is mapped. The reference set&#xA;describes the alignment provenance of the variant set, while the&#xA;`referenceBounds` describe the shape of the actual variant data. The&#xA;reference set's reference names are a superset of those found in the&#xA;`referenceBounds`.&#xA;&#xA;For example, given a variant set that is mapped to the GRCh38 reference set&#xA;and contains a single variant on reference 'X', `referenceBounds` would&#xA;contain only an entry for 'X', while the associated reference set&#xA;enumerates all possible references: '1', '2', 'X', 'Y', 'MT', etc." type="//@types.12"/>
+    <attributes name="metadata" required="true" description="The metadata associated with this variant set." type="//@types.7"/>
+    <attributes name="referenceBounds" required="true" description="A list of all references used by the variants in a variant set&#xA;with associated coordinate upper bounds for each one." type="//@types.7"/>
+    <attributes name="description" required="true" description="A textual description of this variant set." type="//@types.12"/>
+    <attributes name="datasetId" required="true" description="The dataset to which this variant set belongs." type="//@types.12"/>
+    <attributes name="name" required="true" description="User-specified, mutable name." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BatchCreateAnnotationsResponse" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="entries" required="true" description="The resulting per-annotation entries, ordered consistently with the&#xA;original request." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReferenceBound" scheme="http://occi/gcpgenomics#" title="ReferenceBound records an upper bound for the starting coordinate of&#xA;variants in a particular reference.">
+    <attributes name="upperBound" required="true" description="An upper bound (inclusive) on the starting coordinate of any&#xA;variant in the reference sequence." type="//@types.12"/>
+    <attributes name="referenceName" required="true" description="The name of the reference associated with this reference bound." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListOperationsResponse" scheme="http://occi/gcpgenomics#" title="The response message for Operations.ListOperations.">
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.12"/>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Variant" scheme="http://occi/gcpgenomics#" title="A variant represents a change in DNA sequence relative to a reference&#xA;sequence. For example, a variant could represent a SNP or an insertion.&#xA;Variants belong to a variant set.&#xA;&#xA;For more genomics resource definitions, see [Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;Each of the calls on a variant represent a determination of genotype with&#xA;respect to that variant. For example, a call might assign probability of 0.32&#xA;to the occurrence of a SNP named rs1234 in a sample named NA12345. A call&#xA;belongs to a call set, which contains related calls typically from one&#xA;sample.">
+    <attributes name="referenceBases" required="true" description="The reference bases for this variant. They start at the given&#xA;position." type="//@types.12"/>
+    <attributes name="names" required="true" description="Names for the variant, for example a RefSNP ID." type="//@types.7"/>
+    <attributes name="alternateBases" required="true" description="The bases that appear instead of the reference bases." type="//@types.7"/>
+    <attributes name="end" required="true" description="The end position (0-based) of this variant. This corresponds to the first&#xA;base after the last base in the reference allele. So, the length of&#xA;the reference allele is (end - start). This is useful for variants&#xA;that don't explicitly give alternate bases, for example large deletions." type="//@types.12"/>
+    <attributes name="filter" required="true" description="A list of filters (normally quality filters) this variant has failed.&#xA;`PASS` indicates this variant has passed all filters." type="//@types.7"/>
+    <attributes name="calls" required="true" description="The variant calls for this particular variant. Each one represents the&#xA;determination of genotype with respect to this variant." type="//@types.7"/>
+    <attributes name="created" required="true" description="The date this variant was created, in milliseconds from the epoch." type="//@types.12"/>
+    <attributes name="start" required="true" description="The position at which this variant occurs (0-based).&#xA;This corresponds to the first base of the string of reference bases." type="//@types.12"/>
+    <attributes name="quality" required="true" description="A measure of how likely this variant is to be real.&#xA;A higher value is better." type="//@types.3"/>
+    <attributes name="variantSetId" required="true" description="The ID of the variant set this variant belongs to." type="//@types.12"/>
+    <attributes name="referenceName" required="true" description="The reference on which this variant occurs.&#xA;(such as `chr20` or `X`)" type="//@types.12"/>
+    <attributes name="info" required="true" description="A map of additional variant information. This must be of the form&#xA;map&lt;string, string[]> (string key mapping to a list of string values)." type="//@types.9"/>
+    <actions name="search" scheme="http://occi/gcpgenomics/variant/action#" title="Gets a list of variants matching the criteria.&#xA;&#xA;For the definitions of variants and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;Implements&#xA;[GlobalAllianceApi.searchVariants](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L126)."/>
+    <actions name="patch" scheme="http://occi/gcpgenomics/variant/action#" title="Updates a variant.&#xA;&#xA;For the definitions of variants and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;This method supports patch semantics. Returns the modified variant without&#xA;its calls.">
+      <attributes name="updateMask" required="true" description="An optional mask specifying which fields to update. At this time, mutable&#xA;fields are names and&#xA;info. Acceptable values are &quot;names&quot; and&#xA;&quot;info&quot;. If unspecified, all mutable fields will be updated." type="//@types.12"/>
+      <attributes name="variantId" required="true" description="The ID of the variant to be updated." type="//@types.12"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpgenomics/variant/action#" title="Gets a variant by ID.&#xA;&#xA;For the definitions of variants and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+      <attributes name="variantId" required="true" description="The ID of the variant." type="//@types.12"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpgenomics/variant/action#" title="Deletes a variant.&#xA;&#xA;For the definitions of variants and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+      <attributes name="variantId" required="true" description="The ID of the variant to be deleted." type="//@types.12"/>
+    </actions>
+    <actions name="import" scheme="http://occi/gcpgenomics/variant/action#" title="Creates variant data by asynchronously importing the provided information.&#xA;&#xA;For the definitions of variant sets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;The variants for import will be merged with any existing variant that&#xA;matches its reference sequence, start, end, reference bases, and&#xA;alternative bases. If no such variant exists, a new one will be created.&#xA;&#xA;When variants are merged, the call information from the new variant&#xA;is added to the existing variant, and Variant info fields are merged&#xA;as specified in&#xA;infoMergeConfig.&#xA;As a special case, for single-sample VCF files, QUAL and FILTER fields will&#xA;be moved to the call level; these are sometimes interpreted in a&#xA;call-specific context.&#xA;Imported VCF headers are appended to the metadata already in a variant set."/>
+    <actions name="merge" scheme="http://occi/gcpgenomics/variant/action#" title="Merges the given variants with existing variants.&#xA;&#xA;For the definitions of variants and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;Each variant will be&#xA;merged with an existing variant that matches its reference sequence,&#xA;start, end, reference bases, and alternative bases. If no such variant&#xA;exists, a new one will be created.&#xA;&#xA;When variants are merged, the call information from the new variant&#xA;is added to the existing variant. Variant info fields are merged as&#xA;specified in the&#xA;infoMergeConfig&#xA;field of the MergeVariantsRequest.&#xA;&#xA;Please exercise caution when using this method!  It is easy to introduce&#xA;mistakes in existing variants and difficult to back out of them.  For&#xA;example,&#xA;suppose you were trying to merge a new variant with an existing one and&#xA;both&#xA;variants contain calls that belong to callsets with the same callset ID.&#xA;&#xA;    // Existing variant - irrelevant fields trimmed for clarity&#xA;    {&#xA;        &quot;variantSetId&quot;: &quot;10473108253681171589&quot;,&#xA;        &quot;referenceName&quot;: &quot;1&quot;,&#xA;        &quot;start&quot;: &quot;10582&quot;,&#xA;        &quot;referenceBases&quot;: &quot;G&quot;,&#xA;        &quot;alternateBases&quot;: [&#xA;            &quot;A&quot;&#xA;        ],&#xA;        &quot;calls&quot;: [&#xA;            {&#xA;                &quot;callSetId&quot;: &quot;10473108253681171589-0&quot;,&#xA;                &quot;callSetName&quot;: &quot;CALLSET0&quot;,&#xA;                &quot;genotype&quot;: [&#xA;                    0,&#xA;                    1&#xA;                ],&#xA;            }&#xA;        ]&#xA;    }&#xA;&#xA;    // New variant with conflicting call information&#xA;    {&#xA;        &quot;variantSetId&quot;: &quot;10473108253681171589&quot;,&#xA;        &quot;referenceName&quot;: &quot;1&quot;,&#xA;        &quot;start&quot;: &quot;10582&quot;,&#xA;        &quot;referenceBases&quot;: &quot;G&quot;,&#xA;        &quot;alternateBases&quot;: [&#xA;            &quot;A&quot;&#xA;        ],&#xA;        &quot;calls&quot;: [&#xA;            {&#xA;                &quot;callSetId&quot;: &quot;10473108253681171589-0&quot;,&#xA;                &quot;callSetName&quot;: &quot;CALLSET0&quot;,&#xA;                &quot;genotype&quot;: [&#xA;                    1,&#xA;                    1&#xA;                ],&#xA;            }&#xA;        ]&#xA;    }&#xA;&#xA;The resulting merged variant would overwrite the existing calls with those&#xA;from the new variant:&#xA;&#xA;    {&#xA;        &quot;variantSetId&quot;: &quot;10473108253681171589&quot;,&#xA;        &quot;referenceName&quot;: &quot;1&quot;,&#xA;        &quot;start&quot;: &quot;10582&quot;,&#xA;        &quot;referenceBases&quot;: &quot;G&quot;,&#xA;        &quot;alternateBases&quot;: [&#xA;            &quot;A&quot;&#xA;        ],&#xA;        &quot;calls&quot;: [&#xA;            {&#xA;                &quot;callSetId&quot;: &quot;10473108253681171589-0&quot;,&#xA;                &quot;callSetName&quot;: &quot;CALLSET0&quot;,&#xA;                &quot;genotype&quot;: [&#xA;                    1,&#xA;                    1&#xA;                ],&#xA;            }&#xA;        ]&#xA;    }&#xA;&#xA;This may be the desired outcome, but it is up to the user to determine if&#xA;if that is indeed the case."/>
+    <actions name="create" scheme="http://occi/gcpgenomics/variant/action#" title="Creates a new variant.&#xA;&#xA;For the definitions of variants and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchCallSetsResponse" scheme="http://occi/gcpgenomics#" title="The call set search response.">
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.12"/>
+    <attributes name="callSets" required="true" description="The list of matching call sets." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchVariantsRequest" scheme="http://occi/gcpgenomics#" title="The variant search request.">
+    <attributes name="maxCalls" required="true" description="The maximum number of calls to return in a single page. Note that this&#xA;limit may be exceeded in the event that a matching variant contains more&#xA;calls than the requested maximum. If unspecified, defaults to 5000. The&#xA;maximum value is 10000." type="//@types.3"/>
+    <attributes name="pageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;To get the next page of results, set this parameter to the value of&#xA;`nextPageToken` from the previous response." type="//@types.12"/>
+    <attributes name="pageSize" required="true" description="The maximum number of variants to return in a single page. If unspecified,&#xA;defaults to 5000. The maximum value is 10000." type="//@types.3"/>
+    <attributes name="callSetIds" required="true" description="Only return variant calls which belong to call sets with these ids.&#xA;Leaving this blank returns all variant calls. If a variant has no&#xA;calls belonging to any of these call sets, it won't be returned at all." type="//@types.7"/>
+    <attributes name="variantName" required="true" description="Only return variants which have exactly this name." type="//@types.12"/>
+    <attributes name="start" required="true" description="The beginning of the window (0-based, inclusive) for which&#xA;overlapping variants should be returned. If unspecified, defaults to 0." type="//@types.12"/>
+    <attributes name="referenceName" required="true" description="Required. Only return variants in this reference sequence." type="//@types.12"/>
+    <attributes name="variantSetIds" required="true" description="At most one variant set ID must be provided. Only variants from this&#xA;variant set will be returned. If omitted, a call set id must be included in&#xA;the request." type="//@types.7"/>
+    <attributes name="end" required="true" description="The end of the window, 0-based exclusive. If unspecified or 0, defaults to&#xA;the length of the reference." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationMetadata" scheme="http://occi/gcpgenomics#" title="Metadata describing an Operation.">
+    <attributes name="endTime" required="true" description="The time at which the job stopped running." type="//@types.12"/>
+    <attributes name="events" required="true" description="Optional event messages that were generated during the job's execution.&#xA;This also contains any warnings that were generated during import&#xA;or export." type="//@types.7"/>
+    <attributes name="startTime" required="true" description="The time at which the job began to run." type="//@types.12"/>
+    <attributes name="request" required="true" description="The original request that started the operation. Note that this will be in&#xA;current version of the API. If the operation was started with v1beta2 API&#xA;and a GetOperation is performed on v1 API, a v1 request will be returned." type="//@types.9"/>
+    <attributes name="runtimeMetadata" required="true" description="Runtime metadata on this Operation." type="//@types.9"/>
+    <attributes name="createTime" required="true" description="The time at which the job was submitted to the Genomics service." type="//@types.12"/>
+    <attributes name="labels" required="true" description="Optionally provided by the caller when submitting the request that creates&#xA;the operation." type="//@types.9"/>
+    <attributes name="projectId" required="true" description="The Google Cloud Project in which the job is scoped." type="//@types.12"/>
+    <attributes name="clientId" required="true" description="This field is deprecated. Use `labels` instead. Optionally provided by the&#xA;caller when submitting the request that creates the operation." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchReadGroupSetsRequest" scheme="http://occi/gcpgenomics#" title="The read group set search request.">
+    <attributes name="datasetIds" required="true" description="Restricts this query to read group sets within the given datasets. At least&#xA;one ID must be provided." type="//@types.7"/>
+    <attributes name="pageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;To get the next page of results, set this parameter to the value of&#xA;`nextPageToken` from the previous response." type="//@types.12"/>
+    <attributes name="name" required="true" description="Only return read group sets for which a substring of the name matches this&#xA;string." type="//@types.12"/>
+    <attributes name="pageSize" required="true" description="The maximum number of results to return in a single page. If unspecified,&#xA;defaults to 256. The maximum value is 1024." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchAnnotationsResponse" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="annotations" required="true" description="The matching annotations." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchReadsResponse" scheme="http://occi/gcpgenomics#" title="The read search response.">
+    <attributes name="alignments" required="true" description="The list of matching alignments sorted by mapped genomic coordinate,&#xA;if any, ascending in position within the same reference. Unmapped reads,&#xA;which have no position, are returned contiguously and are sorted in&#xA;ascending lexicographic order by fragment name." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ClinicalCondition" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="conceptId" required="true" description="The MedGen concept id associated with this gene.&#xA;Search for these IDs at http://www.ncbi.nlm.nih.gov/medgen/" type="//@types.12"/>
+    <attributes name="names" required="true" description="A set of names for the condition." type="//@types.7"/>
+    <attributes name="omimId" required="true" description="The OMIM id for this condition.&#xA;Search for these IDs at http://omim.org/" type="//@types.12"/>
+    <attributes name="externalIds" required="true" description="The set of external IDs for this condition." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Program" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="prevProgramId" required="true" description="The ID of the program run before this one." type="//@types.12"/>
+    <attributes name="commandLine" required="true" description="The command line used to run this program." type="//@types.12"/>
+    <attributes name="version" required="true" description="The version of the program run." type="//@types.12"/>
+    <attributes name="name" required="true" description="The display name of the program. This is typically the colloquial name of&#xA;the tool used, for example 'bwa' or 'picard'." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RangeLink" scheme="http://occi/gcpgenomics#" title="The genomic coordinate range spanned by this bucket." source="//@kinds[term='coveragebucket']" target="//@kinds[term='range']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CoverageBucket" scheme="http://occi/gcpgenomics#" title="A bucket over which read coverage has been precomputed. A bucket corresponds&#xA;to a specific range of the reference sequence.">
+    <attributes name="meanCoverage" required="true" description="The average number of reads which are aligned to each individual&#xA;reference base in this bucket." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ComputeEngine" scheme="http://occi/gcpgenomics#" title="Describes a Compute Engine resource that is being managed by a running&#xA;pipeline.">
+    <attributes name="instanceName" required="true" description="The instance on which the operation is running." type="//@types.12"/>
+    <attributes name="zone" required="true" description="The availability zone in which the instance resides." type="//@types.12"/>
+    <attributes name="diskNames" required="true" description="The names of the disks that were created for this pipeline." type="//@types.7"/>
+    <attributes name="machineType" required="true" description="The machine type of the instance." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ExternalId" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="sourceName" required="true" description="The name of the source of this data." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Reference" scheme="http://occi/gcpgenomics#" title="A reference is a canonical assembled DNA sequence, intended to act as a&#xA;reference coordinate space for other genomic annotations. A single reference&#xA;might represent the human chromosome 1 or mitochandrial DNA, for instance. A&#xA;reference belongs to one or more reference sets.&#xA;&#xA;For more genomics resource definitions, see [Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+    <attributes name="name" required="true" description="The name of this reference, for example `22`." type="//@types.12"/>
+    <attributes name="md5checksum" required="true" description="MD5 of the upper-case sequence excluding all whitespace characters (this&#xA;is equivalent to SQ:M5 in SAM). This value is represented in lower case&#xA;hexadecimal format." type="//@types.12"/>
+    <attributes name="length" required="true" description="The length of this reference's sequence." type="//@types.12"/>
+    <attributes name="sourceAccessions" required="true" description="All known corresponding accession IDs in INSDC (GenBank/ENA/DDBJ) ideally&#xA;with a version number, for example `GCF_000001405.26`." type="//@types.7"/>
+    <attributes name="ncbiTaxonId" required="true" description="ID from http://www.ncbi.nlm.nih.gov/taxonomy. For example, 9606 for human." type="//@types.3"/>
+    <attributes name="sourceUri" required="true" description="The URI from which the sequence was obtained. Typically specifies a FASTA&#xA;format file." type="//@types.12"/>
+    <actions name="search" scheme="http://occi/gcpgenomics/reference/action#" title="Searches for references which match the given criteria.&#xA;&#xA;For the definitions of references and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;Implements&#xA;[GlobalAllianceApi.searchReferences](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L146)."/>
+    <actions name="get" scheme="http://occi/gcpgenomics/reference/action#" title="Gets a reference.&#xA;&#xA;For the definitions of references and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;Implements&#xA;[GlobalAllianceApi.getReference](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L158).">
+      <attributes name="referenceId" required="true" description="The ID of the reference." type="//@types.12"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="VariantSetMetadata" scheme="http://occi/gcpgenomics#" title="Metadata describes a single piece of variant call metadata.&#xA;These data include a top level key and either a single value string (value)&#xA;or a list of key-value pairs (info.)&#xA;Value and info are mutually exclusive.">
+    <attributes name="type" required="true" description="The type of data. Possible types include: Integer, Float,&#xA;Flag, Character, and String." type="//@types.13"/>
+    <attributes name="info" required="true" description="Remaining structured metadata key-value pairs. This must be of the form&#xA;map&lt;string, string[]> (string key mapping to a list of string values)." type="//@types.9"/>
+    <attributes name="value" required="true" description="The value field for simple metadata" type="//@types.13"/>
+    <attributes name="number" required="true" description="The number of values that can be included in a field described by this&#xA;metadata." type="//@types.13"/>
+    <attributes name="key" required="true" description="The top-level key." type="//@types.13"/>
+    <attributes name="description" required="true" description="A textual description of this metadata." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchVariantSetsRequest" scheme="http://occi/gcpgenomics#" title="The search variant sets request.">
+    <attributes name="pageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;To get the next page of results, set this parameter to the value of&#xA;`nextPageToken` from the previous response." type="//@types.13"/>
+    <attributes name="pageSize" required="true" description="The maximum number of results to return in a single page. If unspecified,&#xA;defaults to 1024." type="//@types.3"/>
+    <attributes name="datasetIds" required="true" description="Exactly one dataset ID must be provided here. Only variant sets which&#xA;belong to this dataset will be returned." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchReferenceSetsRequest" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="pageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;To get the next page of results, set this parameter to the value of&#xA;`nextPageToken` from the previous response." type="//@types.13"/>
+    <attributes name="accessions" required="true" description="If present, return reference sets for which a prefix of any of&#xA;sourceAccessions&#xA;match any of these strings. Accession numbers typically have a main number&#xA;and a version, for example `NC_000001.11`." type="//@types.7"/>
+    <attributes name="pageSize" required="true" description="The maximum number of results to return in a single page. If unspecified,&#xA;defaults to 1024. The maximum value is 4096." type="//@types.3"/>
+    <attributes name="assemblyId" required="true" description="If present, return reference sets for which a substring of their&#xA;`assemblyId` matches this string (case insensitive)." type="//@types.13"/>
+    <attributes name="md5checksums" required="true" description="If present, return reference sets for which the&#xA;md5checksum matches exactly." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PolicyLink" scheme="http://occi/gcpgenomics#" title="REQUIRED: The complete policy to be applied to the `resource`. The size of&#xA;the policy is limited to a few 10s of KB. An empty policy is a&#xA;valid policy but certain Cloud Platform services (such as Projects)&#xA;might reject them." source="//@kinds[term='setiampolicyrequest']" target="//@kinds[term='policy']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SetIamPolicyRequest" scheme="http://occi/gcpgenomics#" title="Request message for `SetIamPolicy` method.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MergeVariantsRequest" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="variants" required="true" description="The variants to be merged with existing variants." type="//@types.7"/>
+    <attributes name="infoMergeConfig" required="true" description="A mapping between info field keys and the InfoMergeOperations to&#xA;be performed on them." type="//@types.14"/>
+    <attributes name="variantSetId" required="true" description="The destination variant set." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BatchCreateAnnotationsRequest" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="annotations" required="true" description="The annotations to be created. At most 4096 can be specified in a single&#xA;request." type="//@types.7"/>
+    <attributes name="requestId" required="true" description="A unique request ID which enables the server to detect duplicated requests.&#xA;If provided, duplicated requests will result in the same response; if not&#xA;provided, duplicated requests may result in duplicated data. For a given&#xA;annotation set, callers should not reuse `request_id`s when writing&#xA;different batches of annotations - behavior in this case is undefined.&#xA;A common approach is to use a UUID. For batch jobs where worker crashes are&#xA;a possibility, consider using some unique variant of a worker or run ID." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LinearAlignmentLink" scheme="http://occi/gcpgenomics#" title="The linear alignment for this alignment record. This field is null for&#xA;unmapped reads." source="//@kinds[term='read']" target="//@kinds[term='linearalignment']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="PositionLink" scheme="http://occi/gcpgenomics#" title="The mapping of the primary alignment of the&#xA;`(readNumber+1)%numberReads` read in the fragment. It replaces&#xA;mate position and mate strand in SAM." source="//@kinds[term='read']" target="//@kinds[term='position']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Read" scheme="http://occi/gcpgenomics#" title="A read alignment describes a linear alignment of a string of DNA to a&#xA;reference sequence, in addition to metadata&#xA;about the fragment (the molecule of DNA sequenced) and the read (the bases&#xA;which were read by the sequencer). A read is equivalent to a line in a SAM&#xA;file. A read belongs to exactly one read group and exactly one&#xA;read group set.&#xA;&#xA;For more genomics resource definitions, see [Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;### Reverse-stranded reads&#xA;&#xA;Mapped reads (reads having a non-null `alignment`) can be aligned to either&#xA;the forward or the reverse strand of their associated reference. Strandedness&#xA;of a mapped read is encoded by `alignment.position.reverseStrand`.&#xA;&#xA;If we consider the reference to be a forward-stranded coordinate space of&#xA;`[0, reference.length)` with `0` as the left-most position and&#xA;`reference.length` as the right-most position, reads are always aligned left&#xA;to right. That is, `alignment.position.position` always refers to the&#xA;left-most reference coordinate and `alignment.cigar` describes the alignment&#xA;of this read to the reference from left to right. All per-base fields such as&#xA;`alignedSequence` and `alignedQuality` share this same left-to-right&#xA;orientation; this is true of reads which are aligned to either strand. For&#xA;reverse-stranded reads, this means that `alignedSequence` is the reverse&#xA;complement of the bases that were originally reported by the sequencing&#xA;machine.&#xA;&#xA;### Generating a reference-aligned sequence string&#xA;&#xA;When interacting with mapped reads, it's often useful to produce a string&#xA;representing the local alignment of the read to reference. The following&#xA;pseudocode demonstrates one way of doing this:&#xA;&#xA;    out = &quot;&quot;&#xA;    offset = 0&#xA;    for c in read.alignment.cigar {&#xA;      switch c.operation {&#xA;      case &quot;ALIGNMENT_MATCH&quot;, &quot;SEQUENCE_MATCH&quot;, &quot;SEQUENCE_MISMATCH&quot;:&#xA;        out += read.alignedSequence[offset:offset+c.operationLength]&#xA;        offset += c.operationLength&#xA;        break&#xA;      case &quot;CLIP_SOFT&quot;, &quot;INSERT&quot;:&#xA;        offset += c.operationLength&#xA;        break&#xA;      case &quot;PAD&quot;:&#xA;        out += repeat(&quot;*&quot;, c.operationLength)&#xA;        break&#xA;      case &quot;DELETE&quot;:&#xA;        out += repeat(&quot;-&quot;, c.operationLength)&#xA;        break&#xA;      case &quot;SKIP&quot;:&#xA;        out += repeat(&quot; &quot;, c.operationLength)&#xA;        break&#xA;      case &quot;CLIP_HARD&quot;:&#xA;        break&#xA;      }&#xA;    }&#xA;    return out&#xA;&#xA;### Converting to SAM's CIGAR string&#xA;&#xA;The following pseudocode generates a SAM CIGAR string from the&#xA;`cigar` field. Note that this is a lossy conversion&#xA;(`cigar.referenceSequence` is lost).&#xA;&#xA;    cigarMap = {&#xA;      &quot;ALIGNMENT_MATCH&quot;: &quot;M&quot;,&#xA;      &quot;INSERT&quot;: &quot;I&quot;,&#xA;      &quot;DELETE&quot;: &quot;D&quot;,&#xA;      &quot;SKIP&quot;: &quot;N&quot;,&#xA;      &quot;CLIP_SOFT&quot;: &quot;S&quot;,&#xA;      &quot;CLIP_HARD&quot;: &quot;H&quot;,&#xA;      &quot;PAD&quot;: &quot;P&quot;,&#xA;      &quot;SEQUENCE_MATCH&quot;: &quot;=&quot;,&#xA;      &quot;SEQUENCE_MISMATCH&quot;: &quot;X&quot;,&#xA;    }&#xA;    cigarStr = &quot;&quot;&#xA;    for c in read.alignment.cigar {&#xA;      cigarStr += c.operationLength + cigarMap[c.operation]&#xA;    }&#xA;    return cigarStr">
+    <attributes name="supplementaryAlignment" required="true" description="Whether this alignment is supplementary. Equivalent to SAM flag 0x800.&#xA;Supplementary alignments are used in the representation of a chimeric&#xA;alignment. In a chimeric alignment, a read is split into multiple&#xA;linear alignments that map to different reference contigs. The first&#xA;linear alignment in the read will be designated as the representative&#xA;alignment; the remaining linear alignments will be designated as&#xA;supplementary alignments. These alignments may have different mapping&#xA;quality scores. In each linear alignment in a chimeric alignment, the read&#xA;will be hard clipped. The `alignedSequence` and&#xA;`alignedQuality` fields in the alignment record will only&#xA;represent the bases for its respective linear alignment." type="//@types.6"/>
+    <attributes name="properPlacement" required="true" description="The orientation and the distance between reads from the fragment are&#xA;consistent with the sequencing protocol (SAM flag 0x2)." type="//@types.6"/>
+    <attributes name="fragmentLength" required="true" description="The observed length of the fragment, equivalent to TLEN in SAM." type="//@types.3"/>
+    <attributes name="failedVendorQualityChecks" required="true" description="Whether this read did not pass filters, such as platform or vendor quality&#xA;controls (SAM flag 0x200)." type="//@types.6"/>
+    <attributes name="alignedQuality" required="true" description="The quality of the read sequence contained in this alignment record&#xA;(equivalent to QUAL in SAM).&#xA;`alignedSequence` and `alignedQuality` may be shorter than the full read&#xA;sequence and quality. This will occur if the alignment is part of a&#xA;chimeric alignment, or if the read was trimmed. When this occurs, the CIGAR&#xA;for this read will begin/end with a hard clip operator that will indicate&#xA;the length of the excised sequence." type="//@types.7"/>
+    <attributes name="numberReads" required="true" description="The number of reads in the fragment (extension to SAM flag 0x1)." type="//@types.3"/>
+    <attributes name="secondaryAlignment" required="true" description="Whether this alignment is secondary. Equivalent to SAM flag 0x100.&#xA;A secondary alignment represents an alternative to the primary alignment&#xA;for this read. Aligners may return secondary alignments if a read can map&#xA;ambiguously to multiple coordinates in the genome. By convention, each read&#xA;has one and only one alignment where both `secondaryAlignment`&#xA;and `supplementaryAlignment` are false." type="//@types.6"/>
+    <attributes name="fragmentName" required="true" description="The fragment name. Equivalent to QNAME (query template name) in SAM." type="//@types.13"/>
+    <attributes name="readGroupSetId" required="true" description="The ID of the read group set this read belongs to. A read belongs to&#xA;exactly one read group set." type="//@types.13"/>
+    <attributes name="duplicateFragment" required="true" description="The fragment is a PCR or optical duplicate (SAM flag 0x400)." type="//@types.6"/>
+    <attributes name="readNumber" required="true" description="The read number in sequencing. 0-based and less than numberReads. This&#xA;field replaces SAM flag 0x40 and 0x80." type="//@types.3"/>
+    <attributes name="readGroupId" required="true" description="The ID of the read group this read belongs to. A read belongs to exactly&#xA;one read group. This is a server-generated ID which is distinct from SAM's&#xA;RG tag (for that value, see&#xA;ReadGroup.name)." type="//@types.13"/>
+    <attributes name="alignedSequence" required="true" description="The bases of the read sequence contained in this alignment record,&#xA;**without CIGAR operations applied** (equivalent to SEQ in SAM).&#xA;`alignedSequence` and `alignedQuality` may be&#xA;shorter than the full read sequence and quality. This will occur if the&#xA;alignment is part of a chimeric alignment, or if the read was trimmed. When&#xA;this occurs, the CIGAR for this read will begin/end with a hard clip&#xA;operator that will indicate the length of the excised sequence." type="//@types.13"/>
+    <attributes name="info" required="true" description="A map of additional read alignment information. This must be of the form&#xA;map&lt;string, string[]> (string key mapping to a list of string values)." type="//@types.14"/>
+    <actions name="search" scheme="http://occi/gcpgenomics/read/action#" title="Gets a list of reads for one or more read group sets.&#xA;&#xA;For the definitions of read group sets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;Reads search operates over a genomic coordinate space of reference sequence&#xA;&amp; position defined over the reference sequences to which the requested&#xA;read group sets are aligned.&#xA;&#xA;If a target positional range is specified, search returns all reads whose&#xA;alignment to the reference genome overlap the range. A query which&#xA;specifies only read group set IDs yields all reads in those read group&#xA;sets, including unmapped reads.&#xA;&#xA;All reads returned (including reads on subsequent pages) are ordered by&#xA;genomic coordinate (by reference sequence, then position). Reads with&#xA;equivalent genomic coordinates are returned in an unspecified order. This&#xA;order is consistent, such that two queries for the same content (regardless&#xA;of page size) yield reads in the same order across their respective streams&#xA;of paginated responses.&#xA;&#xA;Implements&#xA;[GlobalAllianceApi.searchReads](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/readmethods.avdl#L85)."/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReferenceSet" scheme="http://occi/gcpgenomics#" title="A reference set is a set of references which typically comprise a reference&#xA;assembly for a species, such as `GRCh38` which is representative&#xA;of the human genome. A reference set defines a common coordinate space for&#xA;comparing reference-aligned experimental data. A reference set contains 1 or&#xA;more references.&#xA;&#xA;For more genomics resource definitions, see [Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+    <attributes name="referenceIds" required="true" description="The IDs of the reference objects that are part of this set.&#xA;`Reference.md5checksum` must be unique within this set." type="//@types.7"/>
+    <attributes name="assemblyId" required="true" description="Public id of this reference set, such as `GRCh37`." type="//@types.13"/>
+    <attributes name="md5checksum" required="true" description="Order-independent MD5 checksum which identifies this reference set. The&#xA;checksum is computed by sorting all lower case hexidecimal string&#xA;`reference.md5checksum` (for all reference in this set) in&#xA;ascending lexicographic order, concatenating, and taking the MD5 of that&#xA;value. The resulting value is represented in lower case hexadecimal format." type="//@types.13"/>
+    <attributes name="sourceAccessions" required="true" description="All known corresponding accession IDs in INSDC (GenBank/ENA/DDBJ) ideally&#xA;with a version number, for example `NC_000001.11`." type="//@types.7"/>
+    <attributes name="description" required="true" description="Free text description of this reference set." type="//@types.13"/>
+    <attributes name="ncbiTaxonId" required="true" description="ID from http://www.ncbi.nlm.nih.gov/taxonomy (for example, 9606 for human)&#xA;indicating the species which this reference set is intended to model. Note&#xA;that contained references may specify a different `ncbiTaxonId`, as&#xA;assemblies may contain reference sequences which do not belong to the&#xA;modeled species, for example EBV in a human reference genome." type="//@types.3"/>
+    <attributes name="sourceUri" required="true" description="The URI from which the references were obtained." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CigarUnit" scheme="http://occi/gcpgenomics#" title="A single CIGAR operation.">
+    <attributes name="referenceSequence" required="true" description="`referenceSequence` is only used at mismatches&#xA;(`SEQUENCE_MISMATCH`) and deletions (`DELETE`).&#xA;Filling this field replaces SAM's MD tag. If the relevant information is&#xA;not available, this field is unset." type="//@types.13"/>
+    <attributes name="operationLength" required="true" description="The number of genomic bases that the operation runs for. Required." type="//@types.13"/>
+    <attributes name="operation" required="true" description="" type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CodingSequenceLink" scheme="http://occi/gcpgenomics#" title="The range of the coding sequence for this transcript, if any. To determine&#xA;the exact ranges of coding sequence, intersect this range with those of the&#xA;exons, if any. If there are any&#xA;exons, the&#xA;codingSequence must start&#xA;and end within them.&#xA;&#xA;Note that in some cases, the reference genome will not exactly match the&#xA;observed mRNA transcript e.g. due to variance in the source genome from&#xA;reference. In these cases,&#xA;exon.frame will not necessarily&#xA;match the expected reference reading frame and coding exon reference bases&#xA;cannot necessarily be concatenated to produce the original transcript mRNA." source="//@kinds[term='transcript']" target="//@kinds[term='codingsequence']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Transcript" scheme="http://occi/gcpgenomics#" title="A transcript represents the assertion that a particular region of the&#xA;reference genome may be transcribed as RNA.">
+    <attributes name="exons" required="true" description="The &lt;a href=&quot;http://en.wikipedia.org/wiki/Exon&quot;>exons&lt;/a> that compose&#xA;this transcript. This field should be unset for genomes where transcript&#xA;splicing does not occur, for example prokaryotes.&#xA;&#xA;Introns are regions of the transcript that are not included in the&#xA;spliced RNA product. Though not explicitly modeled here, intron ranges can&#xA;be deduced; all regions of this transcript that are not exons are introns.&#xA;&#xA;Exonic sequences do not necessarily code for a translational product&#xA;(amino acids). Only the regions of exons bounded by the&#xA;codingSequence correspond&#xA;to coding DNA sequence.&#xA;&#xA;Exons are ordered by start position and may not overlap." type="//@types.7"/>
+    <attributes name="geneId" required="true" description="The annotation ID of the gene from which this transcript is transcribed." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AnnotationSet" scheme="http://occi/gcpgenomics#" title="An annotation set is a logical grouping of annotations that share consistent&#xA;type information and provenance. Examples of annotation sets include 'all&#xA;genes from refseq', and 'all variant annotations from ClinVar'.">
+    <attributes name="name" required="true" description="The display name for this annotation set." type="//@types.15"/>
+    <attributes name="referenceSetId" required="true" description="The ID of the reference set that defines the coordinate space for this&#xA;set's annotations." type="//@types.15"/>
+    <attributes name="info" required="true" description="A map of additional read alignment information. This must be of the form&#xA;map&lt;string, string[]> (string key mapping to a list of string values)." type="//@types.14"/>
+    <attributes name="type" required="true" description="The type of annotations contained within this set." type="//@types.16"/>
+    <attributes name="datasetId" required="true" description="The dataset to which this annotation set belongs." type="//@types.16"/>
+    <attributes name="sourceUri" required="true" description="The source URI describing the file from which this annotation set was&#xA;generated, if any." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Experiment" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="platformUnit" required="true" description="The platform unit used as part of this experiment, for example&#xA;flowcell-barcode.lane for Illumina or slide for SOLiD. Corresponds to the&#xA;@RG PU field in the SAM spec." type="//@types.16"/>
+    <attributes name="instrumentModel" required="true" description="The instrument model used as part of this experiment. This maps to&#xA;sequencing technology in the SAM spec." type="//@types.16"/>
+    <attributes name="libraryId" required="true" description="A client-supplied library identifier; a library is a collection of DNA&#xA;fragments which have been prepared for sequencing from a sample. This&#xA;field is important for quality control as error or bias can be introduced&#xA;during sample preparation." type="//@types.16"/>
+    <attributes name="sequencingCenter" required="true" description="The sequencing center used as part of this experiment." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListDatasetsResponse" scheme="http://occi/gcpgenomics#" title="The dataset list response.">
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.16"/>
+    <attributes name="datasets" required="true" description="The list of matching Datasets." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestIamPermissionsRequest" scheme="http://occi/gcpgenomics#" title="Request message for `TestIamPermissions` method.">
+    <attributes name="permissions" required="true" description="REQUIRED: The set of permissions to check for the 'resource'.&#xA;Permissions with wildcards (such as '*' or 'storage.*') are not allowed.&#xA;Allowed permissions are&amp;#58;&#xA;&#xA;* `genomics.datasets.create`&#xA;* `genomics.datasets.delete`&#xA;* `genomics.datasets.get`&#xA;* `genomics.datasets.list`&#xA;* `genomics.datasets.update`&#xA;* `genomics.datasets.getIamPolicy`&#xA;* `genomics.datasets.setIamPolicy`" type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Exon" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="start" required="true" description="The start position of the exon on this annotation's reference sequence,&#xA;0-based inclusive. Note that this is relative to the reference start, and&#xA;**not** the containing annotation start." type="//@types.16"/>
+    <attributes name="frame" required="true" description="The frame of this exon. Contains a value of 0, 1, or 2, which indicates&#xA;the offset of the first coding base of the exon within the reading frame&#xA;of the coding DNA sequence, if any. This field is dependent on the&#xA;strandedness of this annotation (see&#xA;Annotation.reverse_strand).&#xA;For forward stranded annotations, this offset is relative to the&#xA;exon.start. For reverse&#xA;strand annotations, this offset is relative to the&#xA;exon.end `- 1`.&#xA;&#xA;Unset if this exon does not intersect the coding sequence. Upon creation&#xA;of a transcript, the frame must be populated for all or none of the&#xA;coding exons." type="//@types.3"/>
+    <attributes name="end" required="true" description="The end position of the exon on this annotation's reference sequence,&#xA;0-based exclusive. Note that this is relative to the reference start, and&#xA;*not* the containing annotation start." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ExportReadGroupSetRequest" scheme="http://occi/gcpgenomics#" title="The read group set export request.">
+    <attributes name="projectId" required="true" description="Required. The Google Cloud project ID that owns this&#xA;export. The caller must have WRITE access to this project." type="//@types.16"/>
+    <attributes name="referenceNames" required="true" description="The reference names to export. If this is not specified, all reference&#xA;sequences, including unmapped reads, are exported.&#xA;Use `*` to export only unmapped reads." type="//@types.7"/>
+    <attributes name="exportUri" required="true" description="Required. A Google Cloud Storage URI for the exported BAM file.&#xA;The currently authenticated user must have write access to the new file.&#xA;An error will be returned if the URI already contains data." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CallSet" scheme="http://occi/gcpgenomics#" title="A call set is a collection of variant calls, typically for one sample. It&#xA;belongs to a variant set.&#xA;&#xA;For more genomics resource definitions, see [Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+    <attributes name="name" required="true" description="The call set name." type="//@types.16"/>
+    <attributes name="info" required="true" description="A map of additional call set information. This must be of the form&#xA;map&lt;string, string[]> (string key mapping to a list of string values)." type="//@types.14"/>
+    <attributes name="variantSetIds" required="true" description="The IDs of the variant sets this call set belongs to. This field must&#xA;have exactly length one, as a call set belongs to a single variant set.&#xA;This field is repeated for compatibility with the&#xA;[GA4GH 0.5.1&#xA;API](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variants.avdl#L76)." type="//@types.7"/>
+    <attributes name="created" required="true" description="The date this call set was created in milliseconds from the epoch." type="//@types.16"/>
+    <attributes name="sampleId" required="true" description="The sample ID this call set corresponds to." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchAnnotationSetsResponse" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.16"/>
+    <attributes name="annotationSets" required="true" description="The matching annotation sets." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ImportVariantsRequest" scheme="http://occi/gcpgenomics#" title="The variant data import request.">
+    <attributes name="infoMergeConfig" required="true" description="A mapping between info field keys and the InfoMergeOperations to&#xA;be performed on them. This is plumbed down to the MergeVariantRequests&#xA;generated by the resulting import job." type="//@types.17"/>
+    <attributes name="sourceUris" required="true" description="A list of URIs referencing variant files in Google Cloud Storage. URIs can&#xA;include wildcards [as described&#xA;here](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames).&#xA;Note that recursive wildcards ('**') are not supported." type="//@types.7"/>
+    <attributes name="variantSetId" required="true" description="Required. The variant set to which variant data should be imported." type="//@types.16"/>
+    <attributes name="normalizeReferenceNames" required="true" description="Convert reference names to the canonical representation.&#xA;hg19 haploytypes (those reference names containing &quot;_hap&quot;)&#xA;are not modified in any way.&#xA;All other reference names are modified according to the following rules:&#xA;The reference name is capitalized.&#xA;The &quot;chr&quot; prefix is dropped for all autosomes and sex chromsomes.&#xA;For example &quot;chr17&quot; becomes &quot;17&quot; and &quot;chrX&quot; becomes &quot;X&quot;.&#xA;All mitochondrial chromosomes (&quot;chrM&quot;, &quot;chrMT&quot;, etc) become &quot;MT&quot;." type="//@types.6"/>
+    <attributes name="format" required="true" description="The format of the variant data being imported. If unspecified, defaults to&#xA;to `VCF`." type="//@types.18"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="VariantAnnotation" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="conditions" required="true" description="The set of conditions associated with this variant.&#xA;A condition describes the way a variant influences human health." type="//@types.7"/>
+    <attributes name="effect" required="true" description="Effect of the variant on the coding sequence." type="//@types.19"/>
+    <attributes name="transcriptIds" required="true" description="Google annotation IDs of the transcripts affected by this variant. These&#xA;should be provided when the variant is created." type="//@types.7"/>
+    <attributes name="type" required="true" description="Type has been adapted from ClinVar's list of variant types." type="//@types.20"/>
+    <attributes name="alternateBases" required="true" description="The alternate allele for this variant. If multiple alternate alleles&#xA;exist at this location, create a separate variant for each one, as they&#xA;may represent distinct conditions." type="//@types.20"/>
+    <attributes name="geneId" required="true" description="Google annotation ID of the gene affected by this variant. This should&#xA;be provided when the variant is created." type="//@types.20"/>
+    <attributes name="clinicalSignificance" required="true" description="Describes the clinical significance of a variant.&#xA;It is adapted from the ClinVar controlled vocabulary for clinical&#xA;significance described at:&#xA;http://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/" type="//@types.21"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListCoverageBucketsResponse" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.21"/>
+    <attributes name="bucketWidth" required="true" description="The length of each coverage bucket in base pairs. Note that buckets at the&#xA;end of a reference sequence may be shorter. This value is omitted if the&#xA;bucket width is infinity (the default behaviour, with no range or&#xA;`targetBucketWidth`)." type="//@types.21"/>
+    <attributes name="coverageBuckets" required="true" description="The coverage buckets. The list of buckets is sparse; a bucket with 0&#xA;overlapping reads is not returned. A bucket never crosses more than one&#xA;reference sequence. Each bucket has width `bucketWidth`, unless&#xA;its end is the end of the reference sequence." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ExportVariantSetRequest" scheme="http://occi/gcpgenomics#" title="The variant data export request.">
+    <attributes name="bigqueryTable" required="true" description="Required. The BigQuery table to export data to.&#xA;If the table doesn't exist, it will be created. If it already exists, it&#xA;will be overwritten." type="//@types.21"/>
+    <attributes name="bigqueryDataset" required="true" description="Required. The BigQuery dataset to export data to. This dataset must already&#xA;exist. Note that this is distinct from the Genomics concept of &quot;dataset&quot;." type="//@types.21"/>
+    <attributes name="format" required="true" description="The format for the exported data." type="//@types.22"/>
+    <attributes name="projectId" required="true" description="Required. The Google Cloud project ID that owns the destination&#xA;BigQuery dataset. The caller must have WRITE access to this project.  This&#xA;project will also own the resulting export job." type="//@types.22"/>
+    <attributes name="callSetIds" required="true" description="If provided, only variant call information from the specified call sets&#xA;will be exported. By default all variant calls are exported." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchAnnotationsRequest" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="pageSize" required="true" description="The maximum number of results to return in a single page. If unspecified,&#xA;defaults to 256. The maximum value is 2048." type="//@types.3"/>
+    <attributes name="start" required="true" description="The start position of the range on the reference, 0-based inclusive. If&#xA;specified,&#xA;referenceId or&#xA;referenceName&#xA;must be specified. Defaults to 0." type="//@types.22"/>
+    <attributes name="annotationSetIds" required="true" description="Required. The annotation sets to search within. The caller must have&#xA;`READ` access to these annotation sets.&#xA;All queried annotation sets must have the same type." type="//@types.7"/>
+    <attributes name="referenceName" required="true" description="The name of the reference to query, within the reference set associated&#xA;with this query." type="//@types.22"/>
+    <attributes name="referenceId" required="true" description="The ID of the reference to query." type="//@types.22"/>
+    <attributes name="end" required="true" description="The end position of the range on the reference, 0-based exclusive. If&#xA;referenceId or&#xA;referenceName&#xA;must be specified, Defaults to the length of the reference." type="//@types.22"/>
+    <attributes name="pageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;To get the next page of results, set this parameter to the value of&#xA;`nextPageToken` from the previous response." type="//@types.22"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationEvent" scheme="http://occi/gcpgenomics#" title="An event that occurred during an Operation.">
+    <attributes name="endTime" required="true" description="Optional time of when event finished. An event can have a start time and no&#xA;finish time. If an event has a finish time, there must be a start time." type="//@types.22"/>
+    <attributes name="startTime" required="true" description="Optional time of when event started." type="//@types.22"/>
+    <attributes name="description" required="true" description="Required description of event." type="//@types.22"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CodingSequence" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="start" required="true" description="The start of the coding sequence on this annotation's reference sequence,&#xA;0-based inclusive. Note that this position is relative to the reference&#xA;start, and *not* the containing annotation start." type="//@types.22"/>
+    <attributes name="end" required="true" description="The end of the coding sequence on this annotation's reference sequence,&#xA;0-based exclusive. Note that this position is relative to the reference&#xA;start, and *not* the containing annotation start." type="//@types.22"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GetIamPolicyRequest" scheme="http://occi/gcpgenomics#" title="Request message for `GetIamPolicy` method.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestIamPermissionsResponse" scheme="http://occi/gcpgenomics#" title="Response message for `TestIamPermissions` method.">
+    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is&#xA;allowed." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchReferencesResponse" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="references" required="true" description="The matching references." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.22"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchAnnotationSetsRequest" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="types" required="true" description="If specified, only annotation sets that have any of these types are&#xA;returned." type="//@types.7"/>
+    <attributes name="name" required="true" description="Only return annotations sets for which a substring of the name matches this&#xA;string (case insensitive)." type="//@types.22"/>
+    <attributes name="referenceSetId" required="true" description="If specified, only annotation sets associated with the given reference set&#xA;are returned." type="//@types.22"/>
+    <attributes name="pageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;To get the next page of results, set this parameter to the value of&#xA;`nextPageToken` from the previous response." type="//@types.22"/>
+    <attributes name="pageSize" required="true" description="The maximum number of results to return in a single page. If unspecified,&#xA;defaults to 128. The maximum value is 1024." type="//@types.3"/>
+    <attributes name="datasetIds" required="true" description="Required. The dataset IDs to search within. Caller must have `READ` access&#xA;to these datasets." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchReadGroupSetsResponse" scheme="http://occi/gcpgenomics#" title="The read group set search response.">
+    <attributes name="nextPageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;Provide this value in a subsequent request to return the next page of&#xA;results. This field will be empty if there aren't any additional results." type="//@types.22"/>
+    <attributes name="readGroupSets" required="true" description="The list of matching read group sets." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LinearAlignmentPositionLink" scheme="http://occi/gcpgenomics#" title="The position of this alignment." source="//@kinds[term='linearalignment']" target="//@kinds[term='position']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LinearAlignment" scheme="http://occi/gcpgenomics#" title="A linear alignment can be represented by one CIGAR string. Describes the&#xA;mapped position and local alignment of the read to the reference.">
+    <attributes name="mappingQuality" required="true" description="The mapping quality of this alignment. Represents how likely&#xA;the read maps to this position as opposed to other locations.&#xA;&#xA;Specifically, this is -10 log10 Pr(mapping position is wrong), rounded to&#xA;the nearest integer." type="//@types.3"/>
+    <attributes name="cigar" required="true" description="Represents the local alignment of this sequence (alignment matches, indels,&#xA;etc) against the reference." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SearchReferencesRequest" scheme="http://occi/gcpgenomics#" title="">
+    <attributes name="md5checksums" required="true" description="If present, return references for which the&#xA;md5checksum matches exactly." type="//@types.7"/>
+    <attributes name="pageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;To get the next page of results, set this parameter to the value of&#xA;`nextPageToken` from the previous response." type="//@types.22"/>
+    <attributes name="accessions" required="true" description="If present, return references for which a prefix of any of&#xA;sourceAccessions match&#xA;any of these strings. Accession numbers typically have a main number and a&#xA;version, for example `GCF_000001405.26`." type="//@types.7"/>
+    <attributes name="pageSize" required="true" description="The maximum number of results to return in a single page. If unspecified,&#xA;defaults to 1024. The maximum value is 4096." type="//@types.3"/>
+    <attributes name="referenceSetId" required="true" description="If present, return only references which belong to this reference set." type="//@types.22"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Dataset" scheme="http://occi/gcpgenomics#" title="A Dataset is a collection of genomic data.&#xA;&#xA;For more genomics resource definitions, see [Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+    <attributes name="name" required="true" description="The dataset name." type="//@types.22"/>
+    <attributes name="projectId" required="true" description="The Google Cloud project ID that this dataset belongs to." type="//@types.22"/>
+    <attributes name="createTime" required="true" description="The time this dataset was created, in seconds from the epoch." type="//@types.22"/>
+    <actions name="delete" scheme="http://occi/gcpgenomics/dataset/action#" title="Deletes a dataset and all of its contents (all read group sets,&#xA;reference sets, variant sets, call sets, annotation sets, etc.)&#xA;This is reversible (up to one week after the deletion) via&#xA;the&#xA;datasets.undelete&#xA;operation.&#xA;&#xA;For the definitions of datasets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+      <attributes name="datasetId" required="true" description="The ID of the dataset to be deleted." type="//@types.22"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpgenomics/dataset/action#" title="Lists datasets within a project.&#xA;&#xA;For the definitions of datasets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+      <attributes name="pageToken" required="true" description="The continuation token, which is used to page through large result sets.&#xA;To get the next page of results, set this parameter to the value of&#xA;`nextPageToken` from the previous response." type="//@types.22"/>
+      <attributes name="pageSize" required="true" description="The maximum number of results to return in a single page. If unspecified,&#xA;defaults to 50. The maximum value is 1024." type="//@types.3"/>
+      <attributes name="projectId" required="true" description="Required. The Google Cloud project ID to list datasets for." type="//@types.22"/>
+    </actions>
+    <actions name="create" scheme="http://occi/gcpgenomics/dataset/action#" title="Creates a new dataset.&#xA;&#xA;For the definitions of datasets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)"/>
+    <actions name="setIamPolicy" scheme="http://occi/gcpgenomics/dataset/action#" title="Sets the access control policy on the specified dataset. Replaces any&#xA;existing policy.&#xA;&#xA;For the definitions of datasets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;See &lt;a href=&quot;/iam/docs/managing-policies#setting_a_policy&quot;>Setting a&#xA;Policy&lt;/a> for more information.">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which policy is being specified. Format is&#xA;`datasets/&lt;dataset ID>`." type="//@types.22"/>
+    </actions>
+    <actions name="getIamPolicy" scheme="http://occi/gcpgenomics/dataset/action#" title="Gets the access control policy for the dataset. This is empty if the&#xA;policy or resource does not exist.&#xA;&#xA;See &lt;a href=&quot;/iam/docs/managing-policies#getting_a_policy&quot;>Getting a&#xA;Policy&lt;/a> for more information.&#xA;&#xA;For the definitions of datasets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which policy is being specified. Format is&#xA;`datasets/&lt;dataset ID>`." type="//@types.22"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpgenomics/dataset/action#" title="Updates a dataset.&#xA;&#xA;For the definitions of datasets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;This method supports patch semantics.">
+      <attributes name="datasetId" required="true" description="The ID of the dataset to be updated." type="//@types.22"/>
+      <attributes name="updateMask" required="true" description="An optional mask specifying which fields to update. At this time, the only&#xA;mutable field is name. The only&#xA;acceptable value is &quot;name&quot;. If unspecified, all mutable fields will be&#xA;updated." type="//@types.22"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpgenomics/dataset/action#" title="Gets a dataset by ID.&#xA;&#xA;For the definitions of datasets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+      <attributes name="datasetId" required="true" description="The ID of the dataset." type="//@types.22"/>
+    </actions>
+    <actions name="undelete" scheme="http://occi/gcpgenomics/dataset/action#" title="Undeletes a dataset by restoring a dataset which was deleted via this API.&#xA;&#xA;For the definitions of datasets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)&#xA;&#xA;This operation is only possible for a week after the deletion occurred.">
+      <attributes name="datasetId" required="true" description="The ID of the dataset to be undeleted." type="//@types.22"/>
+    </actions>
+    <actions name="testIamPermissions" scheme="http://occi/gcpgenomics/dataset/action#" title="Returns permissions that a caller has on the specified resource.&#xA;See &lt;a href=&quot;/iam/docs/managing-policies#testing_permissions&quot;>Testing&#xA;Permissions&lt;/a> for more information.&#xA;&#xA;For the definitions of datasets and other genomics resources, see&#xA;[Fundamentals of Google&#xA;Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)">
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which policy is being specified. Format is&#xA;`datasets/&lt;dataset ID>`." type="//@types.22"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ImportVariantsResponse" scheme="http://occi/gcpgenomics#" title="The variant data import response.">
+    <attributes name="callSetIds" required="true" description="IDs of the call sets created during the import." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="partitionStrategy" documentation="The partition strategy describes how read groups are partitioned into read&#xA;group sets.">
+    <literals name="PARTITION_STRATEGY_UNSPECIFIED" documentation=""/>
+    <literals name="PER_FILE_PER_SAMPLE" documentation="In most cases, this strategy yields one read group set per file. This is&#xA;the default behavior.&#xA;&#xA;Allocate one read group set per file per sample. For BAM files, read&#xA;groups are considered to share a sample if they have identical sample&#xA;names. Furthermore, all reads for each file which do not belong to a read&#xA;group, if any, will be grouped into a single read group set per-file."/>
+    <literals name="MERGE_ALL" documentation="Includes all read groups in all imported files into a single read group&#xA;set. Requires that the headers for all imported files are equivalent. All&#xA;reads which do not belong to a read group, if any, will be grouped into a&#xA;separate read group set."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="type" documentation="The data type for this annotation. Must match the containing annotation&#xA;set's type.">
+    <literals name="ANNOTATION_TYPE_UNSPECIFIED" documentation=""/>
+    <literals name="GENERIC" documentation="A `GENERIC` annotation type should be used when no other annotation&#xA;type will suffice. This represents an untyped annotation of the reference&#xA;genome."/>
+    <literals name="VARIANT" documentation="A `VARIANT` annotation type."/>
+    <literals name="GENE" documentation="A `GENE` annotation type represents the existence of a gene at the&#xA;associated reference coordinates. The start coordinate is typically the&#xA;gene's transcription start site and the end is typically the end of the&#xA;gene's last exon."/>
+    <literals name="TRANSCRIPT" documentation="A `TRANSCRIPT` annotation type represents the assertion that a&#xA;particular region of the reference genome may be transcribed as RNA."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="VariantSetMetadataTtype" documentation="The type of data. Possible types include: Integer, Float,&#xA;Flag, Character, and String.">
+    <literals name="TYPE_UNSPECIFIED" documentation=""/>
+    <literals name="INTEGER" documentation=""/>
+    <literals name="FLOAT" documentation=""/>
+    <literals name="FLAG" documentation=""/>
+    <literals name="CHARACTER" documentation=""/>
+    <literals name="STRING" documentation=""/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="infoMergeConfig" documentation="A mapping between info field keys and the InfoMergeOperations to&#xA;be performed on them.">
+    <literals name="INFO_MERGE_OPERATION_UNSPECIFIED" documentation=""/>
+    <literals name="IGNORE_NEW" documentation=""/>
+    <literals name="MOVE_TO_CALLS" documentation=""/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="operation" documentation="">
+    <literals name="OPERATION_UNSPECIFIED" documentation=""/>
+    <literals name="ALIGNMENT_MATCH" documentation="An alignment match indicates that a sequence can be aligned to the&#xA;reference without evidence of an INDEL. Unlike the&#xA;`SEQUENCE_MATCH` and `SEQUENCE_MISMATCH` operators,&#xA;the `ALIGNMENT_MATCH` operator does not indicate whether the&#xA;reference and read sequences are an exact match. This operator is&#xA;equivalent to SAM's `M`."/>
+    <literals name="INSERT" documentation="The insert operator indicates that the read contains evidence of bases&#xA;being inserted into the reference. This operator is equivalent to SAM's&#xA;`I`."/>
+    <literals name="DELETE" documentation="The delete operator indicates that the read contains evidence of bases&#xA;being deleted from the reference. This operator is equivalent to SAM's&#xA;`D`."/>
+    <literals name="SKIP" documentation="The skip operator indicates that this read skips a long segment of the&#xA;reference, but the bases have not been deleted. This operator is commonly&#xA;used when working with RNA-seq data, where reads may skip long segments&#xA;of the reference between exons. This operator is equivalent to SAM's&#xA;`N`."/>
+    <literals name="CLIP_SOFT" documentation="The soft clip operator indicates that bases at the start/end of a read&#xA;have not been considered during alignment. This may occur if the majority&#xA;of a read maps, except for low quality bases at the start/end of a read.&#xA;This operator is equivalent to SAM's `S`. Bases that are soft&#xA;clipped will still be stored in the read."/>
+    <literals name="CLIP_HARD" documentation="The hard clip operator indicates that bases at the start/end of a read&#xA;have been omitted from this alignment. This may occur if this linear&#xA;alignment is part of a chimeric alignment, or if the read has been&#xA;trimmed (for example, during error correction or to trim poly-A tails for&#xA;RNA-seq). This operator is equivalent to SAM's `H`."/>
+    <literals name="PAD" documentation="The pad operator indicates that there is padding in an alignment. This&#xA;operator is equivalent to SAM's `P`."/>
+    <literals name="SEQUENCE_MATCH" documentation="This operator indicates that this portion of the aligned sequence exactly&#xA;matches the reference. This operator is equivalent to SAM's `=`."/>
+    <literals name="SEQUENCE_MISMATCH" documentation="This operator indicates that this portion of the aligned sequence is an&#xA;alignment match to the reference, but a sequence mismatch. This can&#xA;indicate a SNP or a read error. This operator is equivalent to SAM's&#xA;`X`."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="AnnotationSetTtype" documentation="The type of annotations contained within this set.">
+    <literals name="ANNOTATION_TYPE_UNSPECIFIED" documentation=""/>
+    <literals name="GENERIC" documentation="A `GENERIC` annotation type should be used when no other annotation&#xA;type will suffice. This represents an untyped annotation of the reference&#xA;genome."/>
+    <literals name="VARIANT" documentation="A `VARIANT` annotation type."/>
+    <literals name="GENE" documentation="A `GENE` annotation type represents the existence of a gene at the&#xA;associated reference coordinates. The start coordinate is typically the&#xA;gene's transcription start site and the end is typically the end of the&#xA;gene's last exon."/>
+    <literals name="TRANSCRIPT" documentation="A `TRANSCRIPT` annotation type represents the assertion that a&#xA;particular region of the reference genome may be transcribed as RNA."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="ImportVariantsRequestIinfomergeconfig" documentation="A mapping between info field keys and the InfoMergeOperations to&#xA;be performed on them. This is plumbed down to the MergeVariantRequests&#xA;generated by the resulting import job.">
+    <literals name="INFO_MERGE_OPERATION_UNSPECIFIED" documentation=""/>
+    <literals name="IGNORE_NEW" documentation=""/>
+    <literals name="MOVE_TO_CALLS" documentation=""/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="format" documentation="The format of the variant data being imported. If unspecified, defaults to&#xA;to `VCF`.">
+    <literals name="FORMAT_UNSPECIFIED" documentation=""/>
+    <literals name="FORMAT_VCF" documentation="VCF (Variant Call Format). The VCF files may be gzip compressed. gVCF is&#xA;also supported. Disclaimer: gzip VCF imports are currently much slower&#xA;than equivalent uncompressed VCF imports. For this reason, uncompressed&#xA;VCF is currently recommended for imports with more than 1GB combined&#xA;uncompressed size, or for time sensitive imports."/>
+    <literals name="FORMAT_COMPLETE_GENOMICS" documentation="Complete Genomics masterVarBeta format. The masterVarBeta files may&#xA;be bzip2 compressed."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="effect" documentation="Effect of the variant on the coding sequence.">
+    <literals name="EFFECT_UNSPECIFIED" documentation=""/>
+    <literals name="EFFECT_OTHER" documentation="`EFFECT_OTHER` should be used when no other Effect&#xA;will suffice."/>
+    <literals name="FRAMESHIFT" documentation="`FRAMESHIFT` indicates a mutation in which the insertion or&#xA;deletion of nucleotides resulted in a frameshift change."/>
+    <literals name="FRAME_PRESERVING_INDEL" documentation="`FRAME_PRESERVING_INDEL` indicates a mutation in which a&#xA;multiple of three nucleotides has been inserted or deleted, resulting&#xA;in no change to the reading frame of the coding sequence."/>
+    <literals name="SYNONYMOUS_SNP" documentation="`SYNONYMOUS_SNP` indicates a single nucleotide polymorphism&#xA;mutation that results in no amino acid change."/>
+    <literals name="NONSYNONYMOUS_SNP" documentation="`NONSYNONYMOUS_SNP` indicates a single nucleotide&#xA;polymorphism mutation that results in an amino acid change."/>
+    <literals name="STOP_GAIN" documentation="`STOP_GAIN` indicates a mutation that leads to the creation&#xA;of a stop codon at the variant site. Frameshift mutations creating&#xA;downstream stop codons do not count as `STOP_GAIN`."/>
+    <literals name="STOP_LOSS" documentation="`STOP_LOSS` indicates a mutation that eliminates a&#xA;stop codon at the variant site."/>
+    <literals name="SPLICE_SITE_DISRUPTION" documentation="`SPLICE_SITE_DISRUPTION` indicates that this variant is&#xA;found in a splice site for the associated transcript, and alters the&#xA;normal splicing pattern."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="VariantAnnotationTtype" documentation="Type has been adapted from ClinVar's list of variant types.">
+    <literals name="TYPE_UNSPECIFIED" documentation=""/>
+    <literals name="TYPE_OTHER" documentation="`TYPE_OTHER` should be used when no other Type will suffice.&#xA;Further explanation of the variant type may be included in the&#xA;info field."/>
+    <literals name="INSERTION" documentation="`INSERTION` indicates an insertion."/>
+    <literals name="DELETION" documentation="`DELETION` indicates a deletion."/>
+    <literals name="SUBSTITUTION" documentation="`SUBSTITUTION` indicates a block substitution of&#xA;two or more nucleotides."/>
+    <literals name="SNP" documentation="`SNP` indicates a single nucleotide polymorphism."/>
+    <literals name="STRUCTURAL" documentation="`STRUCTURAL` indicates a large structural variant,&#xA;including chromosomal fusions, inversions, etc."/>
+    <literals name="CNV" documentation="`CNV` indicates a variation in copy number."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="clinicalSignificance" documentation="Describes the clinical significance of a variant.&#xA;It is adapted from the ClinVar controlled vocabulary for clinical&#xA;significance described at:&#xA;http://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/">
+    <literals name="CLINICAL_SIGNIFICANCE_UNSPECIFIED" documentation=""/>
+    <literals name="CLINICAL_SIGNIFICANCE_OTHER" documentation="`OTHER` should be used when no other clinical significance&#xA;value will suffice."/>
+    <literals name="UNCERTAIN" documentation=""/>
+    <literals name="BENIGN" documentation=""/>
+    <literals name="LIKELY_BENIGN" documentation=""/>
+    <literals name="LIKELY_PATHOGENIC" documentation=""/>
+    <literals name="PATHOGENIC" documentation=""/>
+    <literals name="DRUG_RESPONSE" documentation=""/>
+    <literals name="HISTOCOMPATIBILITY" documentation=""/>
+    <literals name="CONFERS_SENSITIVITY" documentation=""/>
+    <literals name="RISK_FACTOR" documentation=""/>
+    <literals name="ASSOCIATION" documentation=""/>
+    <literals name="PROTECTIVE" documentation=""/>
+    <literals name="MULTIPLE_REPORTED" documentation="`MULTIPLE_REPORTED` should be used when multiple clinical&#xA;signficances are reported for a variant. The original clinical&#xA;significance values may be provided in the `info` field."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="ExportVariantSetRequestFformat" documentation="The format for the exported data.">
+    <literals name="FORMAT_UNSPECIFIED" documentation=""/>
+    <literals name="FORMAT_BIGQUERY" documentation="Export the data to Google BigQuery."/>
+  </types>
+</occi:Extension>

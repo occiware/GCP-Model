@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="storage" scheme="http://occi/gcpstorage#" description="Stores and retrieves potentially large, immutable data objects.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="Bucket" scheme="http://occi/gcpstorage#" title="A bucket.">
+    <attributes name="acl" required="true" description="Access controls on the bucket." type="//@types.7"/>
+    <attributes name="billing" required="true" description="The bucket's billing configuration." type="//@types.10"/>
+    <attributes name="cors" required="true" description="The bucket's Cross-Origin Resource Sharing (CORS) configuration." type="//@types.7"/>
+    <attributes name="defaultObjectAcl" required="true" description="Default access controls to apply to new objects when no ACL is provided." type="//@types.7"/>
+    <attributes name="encryption" required="true" description="Encryption configuration used by default for newly inserted objects, when no encryption config is specified." type="//@types.10"/>
+    <attributes name="etag" required="true" description="HTTP 1.1 Entity tag for the bucket." type="//@types.0"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For buckets, this is always storage#bucket." type="//@types.0"/>
+    <attributes name="labels" required="true" description="User-provided labels, in key/value pairs." type="//@types.9"/>
+    <attributes name="lifecycle" required="true" description="The bucket's lifecycle configuration. See lifecycle management for more information." type="//@types.10"/>
+    <attributes name="location" required="true" description="The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list." type="//@types.0"/>
+    <attributes name="logging" required="true" description="The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs." type="//@types.10"/>
+    <attributes name="metageneration" required="true" description="The metadata generation of this bucket." type="//@types.0"/>
+    <attributes name="name" required="true" description="The name of the bucket." type="//@types.0"/>
+    <attributes name="owner" required="true" description="The owner of the bucket. This is always the project team's owner group." type="//@types.10"/>
+    <attributes name="projectNumber" required="true" description="The project number of the project the bucket belongs to." type="//@types.0"/>
+    <attributes name="selfLink" required="true" description="The URI of this bucket." type="//@types.0"/>
+    <attributes name="storageClass" required="true" description="The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes." type="//@types.0"/>
+    <attributes name="timeCreated" required="true" description="The creation time of the bucket in RFC 3339 format." type="//@types.0"/>
+    <attributes name="updated" required="true" description="The modification time of the bucket in RFC 3339 format." type="//@types.0"/>
+    <attributes name="versioning" required="true" description="The bucket's versioning configuration." type="//@types.10"/>
+    <attributes name="website" required="true" description="The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information." type="//@types.10"/>
+    <actions name="delete" scheme="http://occi/gcpstorage/bucket/action#" title="Permanently deletes an empty bucket.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.0"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="If set, only deletes the bucket if its metageneration matches this value." type="//@types.0"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="If set, only deletes the bucket if its metageneration does not match this value." type="//@types.0"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.0"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpstorage/bucket/action#" title="Returns metadata for the specified bucket.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.0"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the return of the bucket metadata conditional on whether the bucket's current metageneration matches the given value." type="//@types.0"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="Makes the return of the bucket metadata conditional on whether the bucket's current metageneration does not match the given value." type="//@types.0"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to noAcl." type="//@types.11"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.11"/>
+    </actions>
+    <actions name="getIamPolicy" scheme="http://occi/gcpstorage/bucket/action#" title="Returns an IAM policy for the specified bucket.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.11"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.11"/>
+    </actions>
+    <actions name="insert" scheme="http://occi/gcpstorage/bucket/action#" title="Creates a new bucket.">
+      <attributes name="predefinedAcl" required="true" description="Apply a predefined set of access controls to this bucket." type="//@types.12"/>
+      <attributes name="predefinedDefaultObjectAcl" required="true" description="Apply a predefined set of default object access controls to this bucket." type="//@types.13"/>
+      <attributes name="project" required="true" description="A valid API project identifier." type="//@types.13"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full." type="//@types.14"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request" type="//@types.14"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpstorage/bucket/action#" title="Retrieves a list of buckets for a given project.">
+      <attributes name="maxResults" required="true" description="Maximum number of buckets to return in a single response. The service will use this parameter or 1,000 items, whichever is smaller." type="//@types.3"/>
+      <attributes name="pageToken" required="true" description="A previously-returned page token representing part of the larger set of results to view." type="//@types.14"/>
+      <attributes name="prefix" required="true" description="Filter results to buckets whose names begin with this prefix." type="//@types.14"/>
+      <attributes name="project" required="true" description="A valid API project identifier." type="//@types.14"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to noAcl." type="//@types.15"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request." type="//@types.15"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpstorage/bucket/action#" title="Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate. This method supports patch semantics.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.15"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the return of the bucket metadata conditional on whether the bucket's current metageneration matches the given value." type="//@types.15"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="Makes the return of the bucket metadata conditional on whether the bucket's current metageneration does not match the given value." type="//@types.15"/>
+      <attributes name="predefinedAcl" required="true" description="Apply a predefined set of access controls to this bucket." type="//@types.16"/>
+      <attributes name="predefinedDefaultObjectAcl" required="true" description="Apply a predefined set of default object access controls to this bucket." type="//@types.17"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to full." type="//@types.18"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.18"/>
+    </actions>
+    <actions name="setIamPolicy" scheme="http://occi/gcpstorage/bucket/action#" title="Updates an IAM policy for the specified bucket.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.18"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.18"/>
+    </actions>
+    <actions name="testIamPermissions" scheme="http://occi/gcpstorage/bucket/action#" title="Tests a set of permissions on the given bucket to see which, if any, are held by the caller.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.18"/>
+      <attributes name="permissions" required="true" description="Permissions to test." type="//@types.18"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.18"/>
+    </actions>
+    <actions name="update" scheme="http://occi/gcpstorage/bucket/action#" title="Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.18"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the return of the bucket metadata conditional on whether the bucket's current metageneration matches the given value." type="//@types.18"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="Makes the return of the bucket metadata conditional on whether the bucket's current metageneration does not match the given value." type="//@types.18"/>
+      <attributes name="predefinedAcl" required="true" description="Apply a predefined set of access controls to this bucket." type="//@types.19"/>
+      <attributes name="predefinedDefaultObjectAcl" required="true" description="Apply a predefined set of default object access controls to this bucket." type="//@types.20"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to full." type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BucketAccessControl" scheme="http://occi/gcpstorage#" title="An access-control entry.">
+    <attributes name="bucket" required="true" description="The name of the bucket." type="//@types.21"/>
+    <attributes name="domain" required="true" description="The domain associated with the entity, if any." type="//@types.21"/>
+    <attributes name="email" required="true" description="The email address associated with the entity, if any." type="//@types.21"/>
+    <attributes name="entity" required="true" description="The entity holding the permission, in one of the following forms: &#xA;- user-userId &#xA;- user-email &#xA;- group-groupId &#xA;- group-email &#xA;- domain-domain &#xA;- project-team-projectId &#xA;- allUsers &#xA;- allAuthenticatedUsers Examples: &#xA;- The user liz@example.com would be user-liz@example.com. &#xA;- The group example@googlegroups.com would be group-example@googlegroups.com. &#xA;- To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com." type="//@types.21"/>
+    <attributes name="entityId" required="true" description="The ID for the entity, if any." type="//@types.21"/>
+    <attributes name="etag" required="true" description="HTTP 1.1 Entity tag for the access-control entry." type="//@types.21"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl." type="//@types.21"/>
+    <attributes name="projectTeam" required="true" description="The project team associated with the entity, if any." type="//@types.10"/>
+    <attributes name="role" required="true" description="The access permission for the entity." type="//@types.21"/>
+    <attributes name="selfLink" required="true" description="The link to this access-control entry." type="//@types.21"/>
+    <actions name="delete" scheme="http://occi/gcpstorage/bucketaccesscontrol/action#" title="Permanently deletes the ACL entry for the specified entity on the specified bucket.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.21"/>
+      <attributes name="entity" required="true" description="The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers." type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpstorage/bucketaccesscontrol/action#" title="Returns the ACL entry for the specified entity on the specified bucket.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.21"/>
+      <attributes name="entity" required="true" description="The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers." type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <actions name="insert" scheme="http://occi/gcpstorage/bucketaccesscontrol/action#" title="Creates a new ACL entry on the specified bucket.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpstorage/bucketaccesscontrol/action#" title="Retrieves ACL entries on the specified bucket.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpstorage/bucketaccesscontrol/action#" title="Updates an ACL entry on the specified bucket. This method supports patch semantics.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.21"/>
+      <attributes name="entity" required="true" description="The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers." type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <actions name="update" scheme="http://occi/gcpstorage/bucketaccesscontrol/action#" title="Updates an ACL entry on the specified bucket.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.21"/>
+      <attributes name="entity" required="true" description="The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers." type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BucketAccessControls" scheme="http://occi/gcpstorage#" title="An access-control list.">
+    <attributes name="items" required="true" description="The list of items." type="//@types.7"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For lists of bucket access control entries, this is always storage#bucketAccessControls." type="//@types.21"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Buckets" scheme="http://occi/gcpstorage#" title="A list of buckets.">
+    <attributes name="items" required="true" description="The list of items." type="//@types.7"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For lists of buckets, this is always storage#buckets." type="//@types.21"/>
+    <attributes name="nextPageToken" required="true" description="The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results." type="//@types.21"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Channel" scheme="http://occi/gcpstorage#" title="An notification channel used to watch for resource changes.">
+    <attributes name="address" required="true" description="The address where notifications are delivered for this channel." type="//@types.21"/>
+    <attributes name="expiration" required="true" description="Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional." type="//@types.21"/>
+    <attributes name="kind" required="true" description="Identifies this as a notification channel used to watch for changes to a resource. Value: the fixed string &quot;api#channel&quot;." type="//@types.21"/>
+    <attributes name="params" required="true" description="Additional parameters controlling delivery channel behavior. Optional." type="//@types.9"/>
+    <attributes name="payload" required="true" description="A Boolean value to indicate whether payload is wanted. Optional." type="//@types.6"/>
+    <attributes name="resourceId" required="true" description="An opaque ID that identifies the resource being watched on this channel. Stable across different API versions." type="//@types.21"/>
+    <attributes name="resourceUri" required="true" description="A version-specific identifier for the watched resource." type="//@types.21"/>
+    <attributes name="token" required="true" description="An arbitrary string delivered to the target address with each notification delivered over this channel. Optional." type="//@types.21"/>
+    <attributes name="type" required="true" description="The type of delivery mechanism used for this channel." type="//@types.21"/>
+    <actions name="stop" scheme="http://occi/gcpstorage/channel/action#" title="Stop watching resources through this channel"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ObjectLink" scheme="http://occi/gcpstorage#" title="Properties of the resulting object." source="//@kinds[term='composerequest']" target="//@kinds[term='object']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ComposeRequest" scheme="http://occi/gcpstorage#" title="A Compose request.">
+    <attributes name="kind" required="true" description="The kind of item this is." type="//@types.21"/>
+    <attributes name="sourceObjects" required="true" description="The list of source objects that will be concatenated into a single object." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Notification" scheme="http://occi/gcpstorage#" title="A subscription to receive Google PubSub notifications.">
+    <attributes name="custom.attributes" required="true" description="An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription." type="//@types.9"/>
+    <attributes name="etag" required="true" description="HTTP 1.1 Entity tag for this subscription notification." type="//@types.21"/>
+    <attributes name="event.types" required="true" description="If present, only send notifications about listed event types. If empty, sent notifications for all event types." type="//@types.7"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For notifications, this is always storage#notification." type="//@types.21"/>
+    <attributes name="object.name.prefix" required="true" description="If present, only apply this notification configuration to object names that begin with this prefix." type="//@types.21"/>
+    <attributes name="payload.format" required="true" description="The desired content of the Payload." type="//@types.21"/>
+    <attributes name="selfLink" required="true" description="The canonical URL of this notification." type="//@types.21"/>
+    <attributes name="topic" required="true" description="The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'" type="//@types.21"/>
+    <actions name="delete" scheme="http://occi/gcpstorage/notification/action#" title="Permanently deletes a notification subscription.">
+      <attributes name="bucket" required="true" description="The parent bucket of the notification." type="//@types.21"/>
+      <attributes name="notification" required="true" description="ID of the notification to delete." type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpstorage/notification/action#" title="View a notification configuration.">
+      <attributes name="bucket" required="true" description="The parent bucket of the notification." type="//@types.21"/>
+      <attributes name="notification" required="true" description="Notification ID" type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <actions name="insert" scheme="http://occi/gcpstorage/notification/action#" title="Creates a notification subscription for a given bucket.">
+      <attributes name="bucket" required="true" description="The parent bucket of the notification." type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpstorage/notification/action#" title="Retrieves a list of notification subscriptions for a given bucket.">
+      <attributes name="bucket" required="true" description="Name of a Google Cloud Storage bucket." type="//@types.21"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.21"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Notifications" scheme="http://occi/gcpstorage#" title="A list of notification subscriptions.">
+    <attributes name="items" required="true" description="The list of items." type="//@types.7"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For lists of notifications, this is always storage#notifications." type="//@types.21"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Object" scheme="http://occi/gcpstorage#" title="An object.">
+    <attributes name="acl" required="true" description="Access controls on the object." type="//@types.7"/>
+    <attributes name="bucket" required="true" description="The name of the bucket containing this object." type="//@types.21"/>
+    <attributes name="cacheControl" required="true" description="Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600." type="//@types.21"/>
+    <attributes name="componentCount" required="true" description="Number of underlying components that make up this object. Components are accumulated by compose operations." type="//@types.3"/>
+    <attributes name="contentDisposition" required="true" description="Content-Disposition of the object data." type="//@types.21"/>
+    <attributes name="contentEncoding" required="true" description="Content-Encoding of the object data." type="//@types.21"/>
+    <attributes name="contentLanguage" required="true" description="Content-Language of the object data." type="//@types.21"/>
+    <attributes name="contentType" required="true" description="Content-Type of the object data. If an object is stored without a Content-Type, it is served as application/octet-stream." type="//@types.21"/>
+    <attributes name="crc32c" required="true" description="CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices." type="//@types.21"/>
+    <attributes name="customerEncryption" required="true" description="Metadata of customer-supplied encryption key, if the object is encrypted by such a key." type="//@types.10"/>
+    <attributes name="etag" required="true" description="HTTP 1.1 Entity tag for the object." type="//@types.21"/>
+    <attributes name="generation" required="true" description="The content generation of this object. Used for object versioning." type="//@types.21"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For objects, this is always storage#object." type="//@types.21"/>
+    <attributes name="kmsKeyName" required="true" description="Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key." type="//@types.21"/>
+    <attributes name="md5Hash" required="true" description="MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices." type="//@types.21"/>
+    <attributes name="mediaLink" required="true" description="Media download link." type="//@types.21"/>
+    <attributes name="metadata" required="true" description="User-provided metadata, in key/value pairs." type="//@types.9"/>
+    <attributes name="metageneration" required="true" description="The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object." type="//@types.21"/>
+    <attributes name="name" required="true" description="The name of the object. Required if not specified by URL parameter." type="//@types.21"/>
+    <attributes name="owner" required="true" description="The owner of the object. This will always be the uploader of the object." type="//@types.10"/>
+    <attributes name="selfLink" required="true" description="The link to this object." type="//@types.21"/>
+    <attributes name="size" required="true" description="Content-Length of the data in bytes." type="//@types.21"/>
+    <attributes name="storageClass" required="true" description="Storage class of the object." type="//@types.21"/>
+    <attributes name="timeCreated" required="true" description="The creation time of the object in RFC 3339 format." type="//@types.21"/>
+    <attributes name="timeDeleted" required="true" description="The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted." type="//@types.21"/>
+    <attributes name="timeStorageClassUpdated" required="true" description="The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated." type="//@types.21"/>
+    <attributes name="updated" required="true" description="The modification time of the object metadata in RFC 3339 format." type="//@types.21"/>
+    <actions name="compose" scheme="http://occi/gcpstorage/object/action#" title="Concatenates a list of existing objects into a new object in the same bucket.">
+      <attributes name="destinationBucket" required="true" description="Name of the bucket in which to store the new object." type="//@types.21"/>
+      <attributes name="destinationObject" required="true" description="Name of the new object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.21"/>
+      <attributes name="destinationPredefinedAcl" required="true" description="Apply a predefined set of access controls to the destination object." type="//@types.22"/>
+      <attributes name="ifGenerationMatch" required="true" description="Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object." type="//@types.22"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration matches the given value." type="//@types.22"/>
+      <attributes name="kmsKeyName" required="true" description="Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any." type="//@types.22"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.22"/>
+    </actions>
+    <actions name="copy" scheme="http://occi/gcpstorage/object/action#" title="Copies a source object to a destination object. Optionally overrides metadata.">
+      <attributes name="destinationBucket" required="true" description="Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any.For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.22"/>
+      <attributes name="destinationObject" required="true" description="Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any." type="//@types.22"/>
+      <attributes name="destinationPredefinedAcl" required="true" description="Apply a predefined set of access controls to the destination object." type="//@types.23"/>
+      <attributes name="ifGenerationMatch" required="true" description="Makes the operation conditional on whether the destination object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object." type="//@types.23"/>
+      <attributes name="ifGenerationNotMatch" required="true" description="Makes the operation conditional on whether the destination object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object." type="//@types.23"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the operation conditional on whether the destination object's current metageneration matches the given value." type="//@types.23"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="Makes the operation conditional on whether the destination object's current metageneration does not match the given value." type="//@types.23"/>
+      <attributes name="ifSourceGenerationMatch" required="true" description="Makes the operation conditional on whether the source object's current generation matches the given value." type="//@types.23"/>
+      <attributes name="ifSourceGenerationNotMatch" required="true" description="Makes the operation conditional on whether the source object's current generation does not match the given value." type="//@types.23"/>
+      <attributes name="ifSourceMetagenerationMatch" required="true" description="Makes the operation conditional on whether the source object's current metageneration matches the given value." type="//@types.23"/>
+      <attributes name="ifSourceMetagenerationNotMatch" required="true" description="Makes the operation conditional on whether the source object's current metageneration does not match the given value." type="//@types.23"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full." type="//@types.24"/>
+      <attributes name="sourceBucket" required="true" description="Name of the bucket in which to find the source object." type="//@types.24"/>
+      <attributes name="sourceGeneration" required="true" description="If present, selects a specific revision of the source object (as opposed to the latest version, the default)." type="//@types.24"/>
+      <attributes name="sourceObject" required="true" description="Name of the source object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.24"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.24"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpstorage/object/action#" title="Deletes an object and its metadata. Deletions are permanent if versioning is not enabled for the bucket, or if the generation parameter is used.">
+      <attributes name="bucket" required="true" description="Name of the bucket in which the object resides." type="//@types.24"/>
+      <attributes name="generation" required="true" description="If present, permanently deletes a specific revision of this object (as opposed to the latest version, the default)." type="//@types.24"/>
+      <attributes name="ifGenerationMatch" required="true" description="Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object." type="//@types.24"/>
+      <attributes name="ifGenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object." type="//@types.24"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration matches the given value." type="//@types.24"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration does not match the given value." type="//@types.24"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.24"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.24"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpstorage/object/action#" title="Retrieves an object or its metadata.">
+      <attributes name="bucket" required="true" description="Name of the bucket in which the object resides." type="//@types.24"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.24"/>
+      <attributes name="ifGenerationMatch" required="true" description="Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object." type="//@types.24"/>
+      <attributes name="ifGenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object." type="//@types.24"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration matches the given value." type="//@types.24"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration does not match the given value." type="//@types.24"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.24"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to noAcl." type="//@types.25"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.25"/>
+    </actions>
+    <actions name="getIamPolicy" scheme="http://occi/gcpstorage/object/action#" title="Returns an IAM policy for the specified object.">
+      <attributes name="bucket" required="true" description="Name of the bucket in which the object resides." type="//@types.25"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.25"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.25"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.25"/>
+    </actions>
+    <actions name="insert" scheme="http://occi/gcpstorage/object/action#" title="Stores a new object and metadata.">
+      <attributes name="bucket" required="true" description="Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any." type="//@types.25"/>
+      <attributes name="contentEncoding" required="true" description="If set, sets the contentEncoding property of the final object to this value. Setting this parameter is equivalent to setting the contentEncoding metadata property. This can be useful when uploading an object with uploadType=media to indicate the encoding of the content being uploaded." type="//@types.25"/>
+      <attributes name="ifGenerationMatch" required="true" description="Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object." type="//@types.25"/>
+      <attributes name="ifGenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object." type="//@types.25"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration matches the given value." type="//@types.25"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration does not match the given value." type="//@types.25"/>
+      <attributes name="kmsKeyName" required="true" description="Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any." type="//@types.25"/>
+      <attributes name="name" required="true" description="Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.25"/>
+      <attributes name="predefinedAcl" required="true" description="Apply a predefined set of access controls to this object." type="//@types.26"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full." type="//@types.27"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.27"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpstorage/object/action#" title="Retrieves a list of objects matching the criteria.">
+      <attributes name="bucket" required="true" description="Name of the bucket in which to look for objects." type="//@types.27"/>
+      <attributes name="delimiter" required="true" description="Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted." type="//@types.27"/>
+      <attributes name="maxResults" required="true" description="Maximum number of items plus prefixes to return in a single page of responses. As duplicate prefixes are omitted, fewer total results may be returned than requested. The service will use this parameter or 1,000 items, whichever is smaller." type="//@types.3"/>
+      <attributes name="pageToken" required="true" description="A previously-returned page token representing part of the larger set of results to view." type="//@types.27"/>
+      <attributes name="prefix" required="true" description="Filter results to objects whose names begin with this prefix." type="//@types.27"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to noAcl." type="//@types.28"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.28"/>
+      <attributes name="versions" required="true" description="If true, lists all versions of an object as distinct results. The default is false. For more information, see Object Versioning." type="//@types.6"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpstorage/object/action#" title="Updates an object's metadata. This method supports patch semantics.">
+      <attributes name="bucket" required="true" description="Name of the bucket in which the object resides." type="//@types.28"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.28"/>
+      <attributes name="ifGenerationMatch" required="true" description="Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object." type="//@types.28"/>
+      <attributes name="ifGenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object." type="//@types.28"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration matches the given value." type="//@types.28"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration does not match the given value." type="//@types.28"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.28"/>
+      <attributes name="predefinedAcl" required="true" description="Apply a predefined set of access controls to this object." type="//@types.29"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to full." type="//@types.30"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.30"/>
+    </actions>
+    <actions name="rewrite" scheme="http://occi/gcpstorage/object/action#" title="Rewrites a source object to a destination object. Optionally overrides metadata.">
+      <attributes name="destinationBucket" required="true" description="Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any." type="//@types.30"/>
+      <attributes name="destinationKmsKeyName" required="true" description="Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any." type="//@types.30"/>
+      <attributes name="destinationObject" required="true" description="Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.30"/>
+      <attributes name="destinationPredefinedAcl" required="true" description="Apply a predefined set of access controls to the destination object." type="//@types.31"/>
+      <attributes name="ifGenerationMatch" required="true" description="Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object." type="//@types.31"/>
+      <attributes name="ifGenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object." type="//@types.31"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the operation conditional on whether the destination object's current metageneration matches the given value." type="//@types.31"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="Makes the operation conditional on whether the destination object's current metageneration does not match the given value." type="//@types.31"/>
+      <attributes name="ifSourceGenerationMatch" required="true" description="Makes the operation conditional on whether the source object's current generation matches the given value." type="//@types.31"/>
+      <attributes name="ifSourceGenerationNotMatch" required="true" description="Makes the operation conditional on whether the source object's current generation does not match the given value." type="//@types.31"/>
+      <attributes name="ifSourceMetagenerationMatch" required="true" description="Makes the operation conditional on whether the source object's current metageneration matches the given value." type="//@types.31"/>
+      <attributes name="ifSourceMetagenerationNotMatch" required="true" description="Makes the operation conditional on whether the source object's current metageneration does not match the given value." type="//@types.31"/>
+      <attributes name="maxBytesRewrittenPerCall" required="true" description="The maximum number of bytes that will be rewritten per rewrite request. Most callers shouldn't need to specify this parameter - it is primarily in place to support testing. If specified the value must be an integral multiple of 1 MiB (1048576). Also, this only applies to requests where the source and destination span locations and/or storage classes. Finally, this value must not change across rewrite calls else you'll get an error that the rewriteToken is invalid." type="//@types.31"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full." type="//@types.32"/>
+      <attributes name="rewriteToken" required="true" description="Include this field (from the previous rewrite response) on each rewrite request after the first one, until the rewrite response 'done' flag is true. Calls that provide a rewriteToken can omit all other request fields, but if included those fields must match the values provided in the first rewrite request." type="//@types.32"/>
+      <attributes name="sourceBucket" required="true" description="Name of the bucket in which to find the source object." type="//@types.32"/>
+      <attributes name="sourceGeneration" required="true" description="If present, selects a specific revision of the source object (as opposed to the latest version, the default)." type="//@types.32"/>
+      <attributes name="sourceObject" required="true" description="Name of the source object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.32"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.32"/>
+    </actions>
+    <actions name="setIamPolicy" scheme="http://occi/gcpstorage/object/action#" title="Updates an IAM policy for the specified object.">
+      <attributes name="bucket" required="true" description="Name of the bucket in which the object resides." type="//@types.32"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.32"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.32"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.32"/>
+    </actions>
+    <actions name="testIamPermissions" scheme="http://occi/gcpstorage/object/action#" title="Tests a set of permissions on the given object to see which, if any, are held by the caller.">
+      <attributes name="bucket" required="true" description="Name of the bucket in which the object resides." type="//@types.32"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.32"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.32"/>
+      <attributes name="permissions" required="true" description="Permissions to test." type="//@types.32"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.32"/>
+    </actions>
+    <actions name="update" scheme="http://occi/gcpstorage/object/action#" title="Updates an object's metadata.">
+      <attributes name="bucket" required="true" description="Name of the bucket in which the object resides." type="//@types.32"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.32"/>
+      <attributes name="ifGenerationMatch" required="true" description="Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object." type="//@types.32"/>
+      <attributes name="ifGenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object." type="//@types.32"/>
+      <attributes name="ifMetagenerationMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration matches the given value." type="//@types.32"/>
+      <attributes name="ifMetagenerationNotMatch" required="true" description="Makes the operation conditional on whether the object's current metageneration does not match the given value." type="//@types.32"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.32"/>
+      <attributes name="predefinedAcl" required="true" description="Apply a predefined set of access controls to this object." type="//@types.33"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to full." type="//@types.34"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.34"/>
+    </actions>
+    <actions name="watchAll" scheme="http://occi/gcpstorage/object/action#" title="Watch for changes on all objects in a bucket.">
+      <attributes name="bucket" required="true" description="Name of the bucket in which to look for objects." type="//@types.34"/>
+      <attributes name="delimiter" required="true" description="Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted." type="//@types.34"/>
+      <attributes name="maxResults" required="true" description="Maximum number of items plus prefixes to return in a single page of responses. As duplicate prefixes are omitted, fewer total results may be returned than requested. The service will use this parameter or 1,000 items, whichever is smaller." type="//@types.3"/>
+      <attributes name="pageToken" required="true" description="A previously-returned page token representing part of the larger set of results to view." type="//@types.34"/>
+      <attributes name="prefix" required="true" description="Filter results to objects whose names begin with this prefix." type="//@types.34"/>
+      <attributes name="projection" required="true" description="Set of properties to return. Defaults to noAcl." type="//@types.35"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.35"/>
+      <attributes name="versions" required="true" description="If true, lists all versions of an object as distinct results. The default is false. For more information, see Object Versioning." type="//@types.6"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ObjectAccessControl" scheme="http://occi/gcpstorage#" title="An access-control entry.">
+    <attributes name="bucket" required="true" description="The name of the bucket." type="//@types.35"/>
+    <attributes name="domain" required="true" description="The domain associated with the entity, if any." type="//@types.35"/>
+    <attributes name="email" required="true" description="The email address associated with the entity, if any." type="//@types.35"/>
+    <attributes name="entity" required="true" description="The entity holding the permission, in one of the following forms: &#xA;- user-userId &#xA;- user-email &#xA;- group-groupId &#xA;- group-email &#xA;- domain-domain &#xA;- project-team-projectId &#xA;- allUsers &#xA;- allAuthenticatedUsers Examples: &#xA;- The user liz@example.com would be user-liz@example.com. &#xA;- The group example@googlegroups.com would be group-example@googlegroups.com. &#xA;- To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com." type="//@types.35"/>
+    <attributes name="entityId" required="true" description="The ID for the entity, if any." type="//@types.35"/>
+    <attributes name="etag" required="true" description="HTTP 1.1 Entity tag for the access-control entry." type="//@types.35"/>
+    <attributes name="generation" required="true" description="The content generation of the object, if applied to an object." type="//@types.35"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For object access control entries, this is always storage#objectAccessControl." type="//@types.35"/>
+    <attributes name="object" required="true" description="The name of the object, if applied to an object." type="//@types.35"/>
+    <attributes name="projectTeam" required="true" description="The project team associated with the entity, if any." type="//@types.10"/>
+    <attributes name="role" required="true" description="The access permission for the entity." type="//@types.35"/>
+    <attributes name="selfLink" required="true" description="The link to this access-control entry." type="//@types.35"/>
+    <actions name="delete" scheme="http://occi/gcpstorage/objectaccesscontrol/action#" title="Permanently deletes the ACL entry for the specified entity on the specified object.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.35"/>
+      <attributes name="entity" required="true" description="The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers." type="//@types.35"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.35"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.35"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.35"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpstorage/objectaccesscontrol/action#" title="Returns the ACL entry for the specified entity on the specified object.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.35"/>
+      <attributes name="entity" required="true" description="The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers." type="//@types.35"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.35"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.35"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.35"/>
+    </actions>
+    <actions name="insert" scheme="http://occi/gcpstorage/objectaccesscontrol/action#" title="Creates a new ACL entry on the specified object.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.35"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.35"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.35"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.35"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpstorage/objectaccesscontrol/action#" title="Retrieves ACL entries on the specified object.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.35"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.35"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.35"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.35"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpstorage/objectaccesscontrol/action#" title="Updates an ACL entry on the specified object. This method supports patch semantics.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.35"/>
+      <attributes name="entity" required="true" description="The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers." type="//@types.35"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.35"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.35"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.35"/>
+    </actions>
+    <actions name="update" scheme="http://occi/gcpstorage/objectaccesscontrol/action#" title="Updates an ACL entry on the specified object.">
+      <attributes name="bucket" required="true" description="Name of a bucket." type="//@types.35"/>
+      <attributes name="entity" required="true" description="The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers." type="//@types.35"/>
+      <attributes name="generation" required="true" description="If present, selects a specific revision of this object (as opposed to the latest version, the default)." type="//@types.35"/>
+      <attributes name="object" required="true" description="Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts." type="//@types.35"/>
+      <attributes name="userProject" required="true" description="The project to be billed for this request. Required for Requester Pays buckets." type="//@types.35"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ObjectAccessControls" scheme="http://occi/gcpstorage#" title="An access-control list.">
+    <attributes name="items" required="true" description="The list of items." type="//@types.7"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For lists of object access control entries, this is always storage#objectAccessControls." type="//@types.35"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Objects" scheme="http://occi/gcpstorage#" title="A list of objects.">
+    <attributes name="items" required="true" description="The list of items." type="//@types.7"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For lists of objects, this is always storage#objects." type="//@types.35"/>
+    <attributes name="nextPageToken" required="true" description="The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results." type="//@types.35"/>
+    <attributes name="prefixes" required="true" description="The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Policy" scheme="http://occi/gcpstorage#" title="A bucket/object IAM policy.">
+    <attributes name="bindings" required="true" description="An association between a role, which comes with a set of permissions, and members who may assume that role." type="//@types.7"/>
+    <attributes name="etag" required="true" description="HTTP 1.1  Entity tag for the policy." type="//@types.35"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For policies, this is always storage#policy. This field is ignored on input." type="//@types.35"/>
+    <attributes name="resourceId" required="true" description="The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input." type="//@types.35"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RewriteResponseObjectLink" scheme="http://occi/gcpstorage#" title="A resource containing the metadata for the copied-to object. This property is present in the response only when copying completes." source="//@kinds[term='rewriteresponse']" target="//@kinds[term='object']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="RewriteResponse" scheme="http://occi/gcpstorage#" title="A rewrite response.">
+    <attributes name="done" required="true" description="true if the copy is finished; otherwise, false if the copy is in progress. This property is always present in the response." type="//@types.6"/>
+    <attributes name="kind" required="true" description="The kind of item this is." type="//@types.35"/>
+    <attributes name="objectSize" required="true" description="The total size of the object being copied in bytes. This property is always present in the response." type="//@types.35"/>
+    <attributes name="rewriteToken" required="true" description="A token to use in subsequent requests to continue copying data. This token is present in the response only when there is more data to copy." type="//@types.35"/>
+    <attributes name="totalBytesRewritten" required="true" description="The total bytes written so far, which can be used to provide a waiting user with a progress indicator. This property is always present in the response." type="//@types.35"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ServiceAccount" scheme="http://occi/gcpstorage#" title="A subscription to receive Google PubSub notifications.">
+    <attributes name="email.address" required="true" description="The ID of the notification." type="//@types.35"/>
+    <attributes name="kind" required="true" description="The kind of item this is. For notifications, this is always storage#notification." type="//@types.35"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestIamPermissionsResponse" scheme="http://occi/gcpstorage#" title="A storage.(buckets|objects).testIamPermissions response.">
+    <attributes name="kind" required="true" description="The kind of item this is." type="//@types.35"/>
+    <attributes name="permissions" required="true" description="The permissions held by the caller. Permissions are always of the format storage.resource.capability, where resource is one of buckets or objects. The supported permissions are as follows:  &#xA;- storage.buckets.delete &#xe2;&#x20ac;&#x201d; Delete bucket.  &#xA;- storage.buckets.get &#xe2;&#x20ac;&#x201d; Read bucket metadata.  &#xA;- storage.buckets.getIamPolicy &#xe2;&#x20ac;&#x201d; Read bucket IAM policy.  &#xA;- storage.buckets.create &#xe2;&#x20ac;&#x201d; Create bucket.  &#xA;- storage.buckets.list &#xe2;&#x20ac;&#x201d; List buckets.  &#xA;- storage.buckets.setIamPolicy &#xe2;&#x20ac;&#x201d; Update bucket IAM policy.  &#xA;- storage.buckets.update &#xe2;&#x20ac;&#x201d; Update bucket metadata.  &#xA;- storage.objects.delete &#xe2;&#x20ac;&#x201d; Delete object.  &#xA;- storage.objects.get &#xe2;&#x20ac;&#x201d; Read object data and metadata.  &#xA;- storage.objects.getIamPolicy &#xe2;&#x20ac;&#x201d; Read object IAM policy.  &#xA;- storage.objects.create &#xe2;&#x20ac;&#x201d; Create object.  &#xA;- storage.objects.list &#xe2;&#x20ac;&#x201d; List objects.  &#xA;- storage.objects.setIamPolicy &#xe2;&#x20ac;&#x201d; Update object IAM policy.  &#xA;- storage.objects.update &#xe2;&#x20ac;&#x201d; Update object metadata." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to noAcl.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit owner, acl and defaultObjectAcl properties."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="predefinedAcl" documentation="Apply a predefined set of access controls to this bucket.">
+    <literals name="authenticatedRead" documentation="Project team owners get OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="private" documentation="Project team owners get OWNER access."/>
+    <literals name="projectPrivate" documentation="Project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Project team owners get OWNER access, and allUsers get READER access."/>
+    <literals name="publicReadWrite" documentation="Project team owners get OWNER access, and allUsers get WRITER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="predefinedDefaultObjectAcl" documentation="Apply a predefined set of default object access controls to this bucket.">
+    <literals name="authenticatedRead" documentation="Object owner gets OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="bucketOwnerFullControl" documentation="Object owner gets OWNER access, and project team owners get OWNER access."/>
+    <literals name="bucketOwnerRead" documentation="Object owner gets OWNER access, and project team owners get READER access."/>
+    <literals name="private" documentation="Object owner gets OWNER access."/>
+    <literals name="projectPrivate" documentation="Object owner gets OWNER access, and project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Object owner gets OWNER access, and allUsers get READER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit owner, acl and defaultObjectAcl properties."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to noAcl.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit owner, acl and defaultObjectAcl properties."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="predefinedAcl" documentation="Apply a predefined set of access controls to this bucket.">
+    <literals name="authenticatedRead" documentation="Project team owners get OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="private" documentation="Project team owners get OWNER access."/>
+    <literals name="projectPrivate" documentation="Project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Project team owners get OWNER access, and allUsers get READER access."/>
+    <literals name="publicReadWrite" documentation="Project team owners get OWNER access, and allUsers get WRITER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="predefinedDefaultObjectAcl" documentation="Apply a predefined set of default object access controls to this bucket.">
+    <literals name="authenticatedRead" documentation="Object owner gets OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="bucketOwnerFullControl" documentation="Object owner gets OWNER access, and project team owners get OWNER access."/>
+    <literals name="bucketOwnerRead" documentation="Object owner gets OWNER access, and project team owners get READER access."/>
+    <literals name="private" documentation="Object owner gets OWNER access."/>
+    <literals name="projectPrivate" documentation="Object owner gets OWNER access, and project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Object owner gets OWNER access, and allUsers get READER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to full.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit owner, acl and defaultObjectAcl properties."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="predefinedAcl" documentation="Apply a predefined set of access controls to this bucket.">
+    <literals name="authenticatedRead" documentation="Project team owners get OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="private" documentation="Project team owners get OWNER access."/>
+    <literals name="projectPrivate" documentation="Project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Project team owners get OWNER access, and allUsers get READER access."/>
+    <literals name="publicReadWrite" documentation="Project team owners get OWNER access, and allUsers get WRITER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="predefinedDefaultObjectAcl" documentation="Apply a predefined set of default object access controls to this bucket.">
+    <literals name="authenticatedRead" documentation="Object owner gets OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="bucketOwnerFullControl" documentation="Object owner gets OWNER access, and project team owners get OWNER access."/>
+    <literals name="bucketOwnerRead" documentation="Object owner gets OWNER access, and project team owners get READER access."/>
+    <literals name="private" documentation="Object owner gets OWNER access."/>
+    <literals name="projectPrivate" documentation="Object owner gets OWNER access, and project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Object owner gets OWNER access, and allUsers get READER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to full.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit owner, acl and defaultObjectAcl properties."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="destinationPredefinedAcl" documentation="Apply a predefined set of access controls to the destination object.">
+    <literals name="authenticatedRead" documentation="Object owner gets OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="bucketOwnerFullControl" documentation="Object owner gets OWNER access, and project team owners get OWNER access."/>
+    <literals name="bucketOwnerRead" documentation="Object owner gets OWNER access, and project team owners get READER access."/>
+    <literals name="private" documentation="Object owner gets OWNER access."/>
+    <literals name="projectPrivate" documentation="Object owner gets OWNER access, and project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Object owner gets OWNER access, and allUsers get READER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="destinationPredefinedAcl" documentation="Apply a predefined set of access controls to the destination object.">
+    <literals name="authenticatedRead" documentation="Object owner gets OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="bucketOwnerFullControl" documentation="Object owner gets OWNER access, and project team owners get OWNER access."/>
+    <literals name="bucketOwnerRead" documentation="Object owner gets OWNER access, and project team owners get READER access."/>
+    <literals name="private" documentation="Object owner gets OWNER access."/>
+    <literals name="projectPrivate" documentation="Object owner gets OWNER access, and project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Object owner gets OWNER access, and allUsers get READER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit the owner, acl property."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to noAcl.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit the owner, acl property."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="predefinedAcl" documentation="Apply a predefined set of access controls to this object.">
+    <literals name="authenticatedRead" documentation="Object owner gets OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="bucketOwnerFullControl" documentation="Object owner gets OWNER access, and project team owners get OWNER access."/>
+    <literals name="bucketOwnerRead" documentation="Object owner gets OWNER access, and project team owners get READER access."/>
+    <literals name="private" documentation="Object owner gets OWNER access."/>
+    <literals name="projectPrivate" documentation="Object owner gets OWNER access, and project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Object owner gets OWNER access, and allUsers get READER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit the owner, acl property."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to noAcl.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit the owner, acl property."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="predefinedAcl" documentation="Apply a predefined set of access controls to this object.">
+    <literals name="authenticatedRead" documentation="Object owner gets OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="bucketOwnerFullControl" documentation="Object owner gets OWNER access, and project team owners get OWNER access."/>
+    <literals name="bucketOwnerRead" documentation="Object owner gets OWNER access, and project team owners get READER access."/>
+    <literals name="private" documentation="Object owner gets OWNER access."/>
+    <literals name="projectPrivate" documentation="Object owner gets OWNER access, and project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Object owner gets OWNER access, and allUsers get READER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to full.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit the owner, acl property."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="destinationPredefinedAcl" documentation="Apply a predefined set of access controls to the destination object.">
+    <literals name="authenticatedRead" documentation="Object owner gets OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="bucketOwnerFullControl" documentation="Object owner gets OWNER access, and project team owners get OWNER access."/>
+    <literals name="bucketOwnerRead" documentation="Object owner gets OWNER access, and project team owners get READER access."/>
+    <literals name="private" documentation="Object owner gets OWNER access."/>
+    <literals name="projectPrivate" documentation="Object owner gets OWNER access, and project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Object owner gets OWNER access, and allUsers get READER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit the owner, acl property."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="predefinedAcl" documentation="Apply a predefined set of access controls to this object.">
+    <literals name="authenticatedRead" documentation="Object owner gets OWNER access, and allAuthenticatedUsers get READER access."/>
+    <literals name="bucketOwnerFullControl" documentation="Object owner gets OWNER access, and project team owners get OWNER access."/>
+    <literals name="bucketOwnerRead" documentation="Object owner gets OWNER access, and project team owners get READER access."/>
+    <literals name="private" documentation="Object owner gets OWNER access."/>
+    <literals name="projectPrivate" documentation="Object owner gets OWNER access, and project team members get access according to their roles."/>
+    <literals name="publicRead" documentation="Object owner gets OWNER access, and allUsers get READER access."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to full.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit the owner, acl property."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="projection" documentation="Set of properties to return. Defaults to noAcl.">
+    <literals name="full" documentation="Include all properties."/>
+    <literals name="noAcl" documentation="Omit the owner, acl property."/>
+  </types>
+</occi:Extension>

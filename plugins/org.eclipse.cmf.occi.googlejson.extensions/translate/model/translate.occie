@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="translate" scheme="http://occi/gcptranslate#" description="The Google Cloud Translation API lets websites and programs integrate with&#xA;    Google Translate programmatically.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="TranslateTextRequest" scheme="http://occi/gcptranslate#" title="The main translation request message for the Cloud Translation API.">
+    <attributes name="format" required="true" description="The format of the source text, in either HTML (default) or plain-text. A&#xA;value of &quot;html&quot; indicates HTML and a value of &quot;text&quot; indicates plain-text." type="//@types.0"/>
+    <attributes name="q" required="true" description="The input text to translate. Repeat this parameter to perform translation&#xA;operations on multiple text inputs." type="//@types.7"/>
+    <attributes name="source" required="true" description="The language of the source text, set to one of the language codes listed in&#xA;Language Support. If the source language is not specified, the API will&#xA;attempt to identify the source language automatically and return it within&#xA;the response." type="//@types.0"/>
+    <attributes name="model" required="true" description="The `model` type requested for this translation. Valid values are&#xA;listed in public documentation." type="//@types.0"/>
+    <attributes name="target" required="true" description="The language to use for translation of the input text, set to one of the&#xA;language codes listed in Language Support." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DetectLanguageRequest" scheme="http://occi/gcptranslate#" title="The request message for language detection.">
+    <attributes name="q" required="true" description="The input text upon which to perform language detection. Repeat this&#xA;parameter to perform language detection on multiple text inputs." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LanguagesResource" scheme="http://occi/gcptranslate#" title="">
+    <attributes name="name" required="true" description="Human readable name of the language localized to the target language." type="//@types.0"/>
+    <attributes name="language" required="true" description="Supported language code, generally consisting of its ISO 639-1&#xA;identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including&#xA;language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH')" type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DetectionsListResponse" scheme="http://occi/gcptranslate#" title="">
+    <attributes name="detections" required="true" description="A detections contains detection results of several text" type="//@types.7"/>
+    <actions name="detect" scheme="http://occi/gcptranslate/detectionslistresponse/action#" title="Detects the language of text within a request."/>
+    <actions name="list" scheme="http://occi/gcptranslate/detectionslistresponse/action#" title="Detects the language of text within a request.">
+      <attributes name="q" required="true" description="The input text upon which to perform language detection. Repeat this&#xA;parameter to perform language detection on multiple text inputs." type="//@types.0"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GetSupportedLanguagesRequest" scheme="http://occi/gcptranslate#" title="The request message for discovering supported languages.">
+    <attributes name="target" required="true" description="The language to use to return localized, human readable names of supported&#xA;languages." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LanguagesListResponse" scheme="http://occi/gcptranslate#" title="">
+    <attributes name="languages" required="true" description="List of source/target languages supported by the translation API. If target parameter is unspecified, the list is sorted by the ASCII code point order of the language code. If target parameter is specified, the list is sorted by the collation order of the language name in the target language." type="//@types.7"/>
+    <actions name="list" scheme="http://occi/gcptranslate/languageslistresponse/action#" title="Returns a list of supported languages for translation.">
+      <attributes name="target" required="true" description="The language to use to return localized, human readable names of supported&#xA;languages." type="//@types.0"/>
+      <attributes name="model" required="true" description="The model type for which supported languages should be returned." type="//@types.0"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TranslationsResource" scheme="http://occi/gcptranslate#" title="">
+    <attributes name="translatedText" required="true" description="Text translated into the target language." type="//@types.0"/>
+    <attributes name="detectedSourceLanguage" required="true" description="The source language of the initial request, detected automatically, if&#xA;no source language was passed within the initial request. If the&#xA;source language was passed, auto-detection of the language will not&#xA;occur and this field will be empty." type="//@types.0"/>
+    <attributes name="model" required="true" description="The `model` type used for this translation. Valid values are&#xA;listed in public documentation. Can be different from requested `model`.&#xA;Present only if specific model type was explicitly requested." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DetectionsResource" scheme="http://occi/gcptranslate#" title="An array of languages which we detect for the given text The most likely language list first.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TranslationsListResponse" scheme="http://occi/gcptranslate#" title="The main language translation response message.">
+    <attributes name="translations" required="true" description="Translations contains list of translation results of given text" type="//@types.7"/>
+    <actions name="translate" scheme="http://occi/gcptranslate/translationslistresponse/action#" title="Translates input text, returning translated text."/>
+    <actions name="list" scheme="http://occi/gcptranslate/translationslistresponse/action#" title="Translates input text, returning translated text.">
+      <attributes name="q" required="true" description="The input text to translate. Repeat this parameter to perform translation&#xA;operations on multiple text inputs." type="//@types.0"/>
+      <attributes name="source" required="true" description="The language of the source text, set to one of the language codes listed in&#xA;Language Support. If the source language is not specified, the API will&#xA;attempt to identify the source language automatically and return it within&#xA;the response." type="//@types.0"/>
+      <attributes name="cid" required="true" description="The customization id for translate" type="//@types.0"/>
+      <attributes name="target" required="true" description="The language to use for translation of the input text, set to one of the&#xA;language codes listed in Language Support." type="//@types.0"/>
+      <attributes name="format" required="true" description="The format of the source text, in either HTML (default) or plain-text. A&#xA;value of &quot;html&quot; indicates HTML and a value of &quot;text&quot; indicates plain-text." type="//@types.11"/>
+      <attributes name="model" required="true" description="The `model` type requested for this translation. Valid values are&#xA;listed in public documentation." type="//@types.11"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="Fformat" documentation="The format of the source text, in either HTML (default) or plain-text. A&#xA;value of &quot;html&quot; indicates HTML and a value of &quot;text&quot; indicates plain-text.">
+    <literals name="html" documentation="Specifies the input is in HTML"/>
+    <literals name="text" documentation="Specifies the input is in plain textual format"/>
+  </types>
+</occi:Extension>

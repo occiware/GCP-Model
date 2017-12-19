@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="deploymentmanager" scheme="http://occi/gcpdeploymentmanager#" description="Declares, configures, and deploys complex solutions on Google Cloud Platform.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="AuditConfig" scheme="http://occi/gcpdeploymentmanager#" title="Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs.&#xA;&#xA;If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditConfig are exempted.&#xA;&#xA;Example Policy with multiple AuditConfigs:&#xA;&#xA;{ &quot;audit_configs&quot;: [ { &quot;service&quot;: &quot;allServices&quot; &quot;audit_log_configs&quot;: [ { &quot;log_type&quot;: &quot;DATA_READ&quot;, &quot;exempted_members&quot;: [ &quot;user:foo@gmail.com&quot; ] }, { &quot;log_type&quot;: &quot;DATA_WRITE&quot;, }, { &quot;log_type&quot;: &quot;ADMIN_READ&quot;, } ] }, { &quot;service&quot;: &quot;fooservice.googleapis.com&quot; &quot;audit_log_configs&quot;: [ { &quot;log_type&quot;: &quot;DATA_READ&quot;, }, { &quot;log_type&quot;: &quot;DATA_WRITE&quot;, &quot;exempted_members&quot;: [ &quot;user:bar@gmail.com&quot; ] } ] } ] }&#xA;&#xA;For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.">
+    <attributes name="auditLogConfigs" required="true" description="The configuration for logging of each type of permission." type="//@types.7"/>
+    <attributes name="exemptedMembers" required="true" description="" type="//@types.7"/>
+    <attributes name="service" required="true" description="Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuditLogConfig" scheme="http://occi/gcpdeploymentmanager#" title="Provides the configuration for logging a type of permissions. Example:&#xA;&#xA;{ &quot;audit_log_configs&quot;: [ { &quot;log_type&quot;: &quot;DATA_READ&quot;, &quot;exempted_members&quot;: [ &quot;user:foo@gmail.com&quot; ] }, { &quot;log_type&quot;: &quot;DATA_WRITE&quot;, } ] }&#xA;&#xA;This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ logging.">
+    <attributes name="exemptedMembers" required="true" description="Specifies the identities that do not cause logging for this type of permission. Follows the same format of [Binding.members][]." type="//@types.7"/>
+    <attributes name="logType" required="true" description="The log type that this config enables." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuthorizationLoggingOptions" scheme="http://occi/gcpdeploymentmanager#" title="Authorization-related information used by Cloud Audit Logging.">
+    <attributes name="permissionType" required="true" description="The type of the permission that was checked." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ExprLink" scheme="http://occi/gcpdeploymentmanager#" title="The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently. This field is GOOGLE_INTERNAL." source="//@kinds[term='binding']" target="//@kinds[term='expr']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Binding" scheme="http://occi/gcpdeploymentmanager#" title="Associates `members` with a `role`.">
+    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.&#xA;&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example, `google.com` or `example.com`." type="//@types.7"/>
+    <attributes name="role" required="true" description="Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Condition" scheme="http://occi/gcpdeploymentmanager#" title="A condition to be met.">
+    <attributes name="iam" required="true" description="Trusted attributes supplied by the IAM system." type="//@types.0"/>
+    <attributes name="op" required="true" description="An operator to apply the subject with." type="//@types.0"/>
+    <attributes name="svc" required="true" description="Trusted attributes discharged by the service." type="//@types.0"/>
+    <attributes name="sys" required="true" description="Trusted attributes supplied by any service that owns resources and uses the IAM system for access control." type="//@types.0"/>
+    <attributes name="value" required="true" description="DEPRECATED. Use 'values' instead." type="//@types.0"/>
+    <attributes name="values" required="true" description="The objects of the condition. This is mutually exclusive with 'value'." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ConfigFile" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="content" required="true" description="The contents of the file." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationLink" scheme="http://occi/gcpdeploymentmanager#" title="Output only. The Operation that most recently ran, or is currently running, on this deployment." source="//@kinds[term='deployment']" target="//@kinds[term='operation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TargetConfigurationLink" scheme="http://occi/gcpdeploymentmanager#" title="[Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates." source="//@kinds[term='deployment']" target="//@kinds[term='targetconfiguration']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="DeploymentUpdateLink" scheme="http://occi/gcpdeploymentmanager#" title="Output only. If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here." source="//@kinds[term='deployment']" target="//@kinds[term='deploymentupdate']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Deployment" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="description" required="true" description="An optional user-provided description of the deployment." type="//@types.0"/>
+    <attributes name="fingerprint" required="true" description="Provides a fingerprint to use in requests to modify a deployment, such as update(), stop(), and cancelPreview() requests. A fingerprint is a randomly generated value that must be provided with update(), stop(), and cancelPreview() requests to perform optimistic locking. This ensures optimistic concurrency so that only one request happens at a time.&#xA;&#xA;The fingerprint is initially generated by Deployment Manager and changes after every request to modify data. To get the latest fingerprint value, perform a get() request to a deployment." type="//@types.0"/>
+    <attributes name="insertTime" required="true" description="Output only. Timestamp when the deployment was created, in RFC3339 text format ." type="//@types.0"/>
+    <attributes name="labels" required="true" description="Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?" type="//@types.7"/>
+    <attributes name="manifest" required="true" description="Output only. URL of the manifest representing the last manifest that was successfully deployed." type="//@types.0"/>
+    <attributes name="name" required="true" description="Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash." type="//@types.0"/>
+    <attributes name="selfLink" required="true" description="Output only. Self link for the deployment." type="//@types.0"/>
+    <actions name="cancelPreview" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Cancels and removes the preview currently associated with the deployment.">
+      <attributes name="deployment" required="true" description="The name of the deployment for this request." type="//@types.0"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.0"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Deletes a deployment and all of the resources in the deployment.">
+      <attributes name="deletePolicy" required="true" description="Sets the policy to use for deleting resources." type="//@types.11"/>
+      <attributes name="deployment" required="true" description="The name of the deployment for this request." type="//@types.11"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.11"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Gets information about a specific deployment.">
+      <attributes name="deployment" required="true" description="The name of the deployment for this request." type="//@types.11"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.11"/>
+    </actions>
+    <actions name="getIamPolicy" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Gets the access control policy for a resource. May be empty if no such policy or resource exists.">
+      <attributes name="project" required="true" description="Project ID for this request." type="//@types.11"/>
+      <attributes name="resource" required="true" description="Name of the resource for this request." type="//@types.11"/>
+    </actions>
+    <actions name="insert" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Creates a deployment and all of the resources described by the deployment manifest.">
+      <attributes name="preview" required="true" description="If set to true, creates a deployment and creates &quot;shell&quot; resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the update() method or you can use the cancelPreview() method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it." type="//@types.6"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.11"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Lists all deployments for a given project.">
+      <attributes name="filter" required="true" description="Sets a filter {expression} for filtering listed resources. Your {expression} must be in the format: field_name comparison_string literal_string.&#xA;&#xA;The field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.&#xA;&#xA;For example, to filter for instances that do not have a name of example-instance, you would use name ne example-instance.&#xA;&#xA;You can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.&#xA;&#xA;To filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters." type="//@types.11"/>
+      <attributes name="maxResults" required="true" description="The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)" type="//@types.3"/>
+      <attributes name="orderBy" required="true" description="Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.&#xA;&#xA;You can also sort results in descending order based on the creation timestamp using orderBy=&quot;creationTimestamp desc&quot;. This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.&#xA;&#xA;Currently, only sorting by name or creationTimestamp desc is supported." type="//@types.11"/>
+      <attributes name="pageToken" required="true" description="Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results." type="//@types.11"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.11"/>
+    </actions>
+    <actions name="patch" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Updates a deployment and all of the resources described by the deployment manifest. This method supports patch semantics.">
+      <attributes name="createPolicy" required="true" description="Sets the policy to use for creating new resources." type="//@types.12"/>
+      <attributes name="deletePolicy" required="true" description="Sets the policy to use for deleting resources." type="//@types.13"/>
+      <attributes name="deployment" required="true" description="The name of the deployment for this request." type="//@types.13"/>
+      <attributes name="preview" required="true" description="If set to true, updates the deployment and creates and updates the &quot;shell&quot; resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a target.config with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the update() or you can cancelPreview() to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it." type="//@types.6"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.13"/>
+    </actions>
+    <actions name="setIamPolicy" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Sets the access control policy on the specified resource. Replaces any existing policy.">
+      <attributes name="project" required="true" description="Project ID for this request." type="//@types.13"/>
+      <attributes name="resource" required="true" description="Name of the resource for this request." type="//@types.13"/>
+    </actions>
+    <actions name="stop" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents any new work from being started.">
+      <attributes name="deployment" required="true" description="The name of the deployment for this request." type="//@types.13"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.13"/>
+    </actions>
+    <actions name="testIamPermissions" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Returns permissions that a caller has on the specified resource.">
+      <attributes name="project" required="true" description="Project ID for this request." type="//@types.13"/>
+      <attributes name="resource" required="true" description="Name of the resource for this request." type="//@types.13"/>
+    </actions>
+    <actions name="update" scheme="http://occi/gcpdeploymentmanager/deployment/action#" title="Updates a deployment and all of the resources described by the deployment manifest.">
+      <attributes name="createPolicy" required="true" description="Sets the policy to use for creating new resources." type="//@types.14"/>
+      <attributes name="deletePolicy" required="true" description="Sets the policy to use for deleting resources." type="//@types.15"/>
+      <attributes name="deployment" required="true" description="The name of the deployment for this request." type="//@types.15"/>
+      <attributes name="preview" required="true" description="If set to true, updates the deployment and creates and updates the &quot;shell&quot; resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a target.config with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the update() or you can cancelPreview() to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it." type="//@types.6"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.15"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DeploymentLabelEntry" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="key" required="true" description="" type="//@types.15"/>
+    <attributes name="value" required="true" description="" type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DeploymentUpdate" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="description" required="true" description="Output only. An optional user-provided description of the deployment after the current update has been applied." type="//@types.15"/>
+    <attributes name="labels" required="true" description="Output only. Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?" type="//@types.7"/>
+    <attributes name="manifest" required="true" description="Output only. URL of the manifest representing the update configuration of this deployment." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DeploymentUpdateLabelEntry" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="key" required="true" description="" type="//@types.15"/>
+    <attributes name="value" required="true" description="" type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DeploymentsCancelPreviewRequest" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="fingerprint" required="true" description="Specifies a fingerprint for cancelPreview() requests. A fingerprint is a randomly generated value that must be provided in cancelPreview() requests to perform optimistic locking. This ensures optimistic concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to make a new update request while another user attempts to cancel a preview, this would prevent one of the requests).&#xA;&#xA;The fingerprint is initially generated by Deployment Manager and changes after every request to modify a deployment. To get the latest fingerprint value, perform a get() request on the deployment." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DeploymentsListResponse" scheme="http://occi/gcpdeploymentmanager#" title="A response containing a partial list of deployments and a page token used to build the next request if the request has been truncated.">
+    <attributes name="deployments" required="true" description="Output only. The deployments contained in this response." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="Output only. A token used to continue a truncated list request." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DeploymentsStopRequest" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="fingerprint" required="true" description="Specifies a fingerprint for stop() requests. A fingerprint is a randomly generated value that must be provided in stop() requests to perform optimistic locking. This ensures optimistic concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to make a new update request while another user attempts to stop an ongoing update request, this would prevent a collision).&#xA;&#xA;The fingerprint is initially generated by Deployment Manager and changes after every request to modify a deployment. To get the latest fingerprint value, perform a get() request on the deployment." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Expr" scheme="http://occi/gcpdeploymentmanager#" title="Represents an expression text. Example:&#xA;&#xA;title: &quot;User account presence&quot; description: &quot;Determines whether the request has a user account&quot; expression: &quot;size(request.user) > 0&quot;">
+    <attributes name="description" required="true" description="An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI." type="//@types.15"/>
+    <attributes name="expression" required="true" description="Textual representation of an expression in Common Expression Language syntax.&#xA;&#xA;The application context of the containing message determines which well-known feature set of CEL is supported." type="//@types.15"/>
+    <attributes name="location" required="true" description="An optional string indicating the location of the expression for error reporting, e.g. a file name and a position in the file." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ImportFile" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="content" required="true" description="The contents of the file." type="//@types.15"/>
+    <attributes name="name" required="true" description="The name of the file." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LogConfigCloudAuditOptionsLink" scheme="http://occi/gcpdeploymentmanager#" title="Cloud audit options." source="//@kinds[term='logconfig']" target="//@kinds[term='logconfigcloudauditoptions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LogConfigCounterOptionsLink" scheme="http://occi/gcpdeploymentmanager#" title="Counter options." source="//@kinds[term='logconfig']" target="//@kinds[term='logconfigcounteroptions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LogConfigDataAccessOptionsLink" scheme="http://occi/gcpdeploymentmanager#" title="Data access options." source="//@kinds[term='logconfig']" target="//@kinds[term='logconfigdataaccessoptions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LogConfig" scheme="http://occi/gcpdeploymentmanager#" title="Specifies what kind of log the caller must write">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AuthorizationLoggingOptionsLink" scheme="http://occi/gcpdeploymentmanager#" title="Information used by the Cloud Audit Logging pipeline." source="//@kinds[term='logconfigcloudauditoptions']" target="//@kinds[term='authorizationloggingoptions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LogConfigCloudAuditOptions" scheme="http://occi/gcpdeploymentmanager#" title="Write a Cloud Audit log">
+    <attributes name="logName" required="true" description="The log_name to populate in the Cloud Audit Record." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LogConfigCounterOptions" scheme="http://occi/gcpdeploymentmanager#" title="Increment a streamz counter with the specified metric and field names.&#xA;&#xA;Metric names should start with a '/', generally be lowercase-only, and end in &quot;_count&quot;. Field names should not contain an initial slash. The actual exported metric names will have &quot;/iam/policy&quot; prepended.&#xA;&#xA;Field names correspond to IAM request parameters and field values are their respective values.&#xA;&#xA;At present the only supported field names are - &quot;iam_principal&quot;, corresponding to IAMContext.principal; - &quot;&quot; (empty string), resulting in one aggretated counter with no field.&#xA;&#xA;Examples: counter { metric: &quot;/debug_access_count&quot; field: &quot;iam_principal&quot; } ==> increment counter /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}&#xA;&#xA;At this time we do not support: * multiple field names (though this may be supported in the future) * decrementing the counter * incrementing it by anything other than 1">
+    <attributes name="field" required="true" description="The field value to attribute." type="//@types.15"/>
+    <attributes name="metric" required="true" description="The metric to update." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LogConfigDataAccessOptions" scheme="http://occi/gcpdeploymentmanager#" title="Write a Data Access (Gin) log">
+    <attributes name="logMode" required="true" description="Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in the LocalIAM implementation, for now." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ConfigFileLink" scheme="http://occi/gcpdeploymentmanager#" title="Output only. The YAML configuration for this manifest." source="//@kinds[term='manifest']" target="//@kinds[term='configfile']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Manifest" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="expandedConfig" required="true" description="Output only. The fully-expanded configuration file, including any templates and references." type="//@types.15"/>
+    <attributes name="imports" required="true" description="Output only. The imported files for this manifest." type="//@types.7"/>
+    <attributes name="insertTime" required="true" description="Output only. Timestamp when the manifest was created, in RFC3339 text format." type="//@types.15"/>
+    <attributes name="layout" required="true" description="Output only. The YAML layout for this manifest." type="//@types.15"/>
+    <attributes name="name" required="true" description="Output only.&#xA;&#xA;The name of the manifest." type="//@types.15"/>
+    <attributes name="selfLink" required="true" description="Output only. Self link for the manifest." type="//@types.15"/>
+    <actions name="get" scheme="http://occi/gcpdeploymentmanager/manifest/action#" title="Gets information about a specific manifest.">
+      <attributes name="deployment" required="true" description="The name of the deployment for this request." type="//@types.15"/>
+      <attributes name="manifest" required="true" description="The name of the manifest for this request." type="//@types.15"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.15"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpdeploymentmanager/manifest/action#" title="Lists all manifests for a given deployment.">
+      <attributes name="deployment" required="true" description="The name of the deployment for this request." type="//@types.15"/>
+      <attributes name="filter" required="true" description="Sets a filter {expression} for filtering listed resources. Your {expression} must be in the format: field_name comparison_string literal_string.&#xA;&#xA;The field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.&#xA;&#xA;For example, to filter for instances that do not have a name of example-instance, you would use name ne example-instance.&#xA;&#xA;You can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.&#xA;&#xA;To filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters." type="//@types.15"/>
+      <attributes name="maxResults" required="true" description="The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)" type="//@types.3"/>
+      <attributes name="orderBy" required="true" description="Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.&#xA;&#xA;You can also sort results in descending order based on the creation timestamp using orderBy=&quot;creationTimestamp desc&quot;. This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.&#xA;&#xA;Currently, only sorting by name or creationTimestamp desc is supported." type="//@types.15"/>
+      <attributes name="pageToken" required="true" description="Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results." type="//@types.15"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.15"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ManifestsListResponse" scheme="http://occi/gcpdeploymentmanager#" title="A response containing a partial list of manifests and a page token used to build the next request if the request has been truncated.">
+    <attributes name="manifests" required="true" description="Output only. Manifests contained in this list response." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="Output only. A token used to continue a truncated list request." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Operation" scheme="http://occi/gcpdeploymentmanager#" title="An Operation resource, used to manage asynchronous API requests.">
+    <attributes name="clientOperationId" required="true" description="[Output Only] Reserved for future use." type="//@types.15"/>
+    <attributes name="creationTimestamp" required="true" description="[Deprecated] This field is deprecated." type="//@types.15"/>
+    <attributes name="description" required="true" description="[Output Only] A textual description of the operation, which is set when the operation is created." type="//@types.15"/>
+    <attributes name="endTime" required="true" description="[Output Only] The time that this operation was completed. This value is in RFC3339 text format." type="//@types.15"/>
+    <attributes name="error" required="true" description="[Output Only] If errors are generated during processing of the operation, this field will be populated." type="//@types.10"/>
+    <attributes name="httpErrorMessage" required="true" description="[Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as NOT FOUND." type="//@types.15"/>
+    <attributes name="httpErrorStatusCode" required="true" description="[Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a 404 means the resource was not found." type="//@types.3"/>
+    <attributes name="insertTime" required="true" description="[Output Only] The time that this operation was requested. This value is in RFC3339 text format." type="//@types.15"/>
+    <attributes name="kind" required="true" description="[Output Only] Type of the resource. Always compute#operation for Operation resources." type="//@types.15"/>
+    <attributes name="name" required="true" description="[Output Only] Name of the resource." type="//@types.15"/>
+    <attributes name="operationType" required="true" description="[Output Only] The type of operation, such as insert, update, or delete, and so on." type="//@types.15"/>
+    <attributes name="progress" required="true" description="[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses." type="//@types.3"/>
+    <attributes name="region" required="true" description="[Output Only] The URL of the region where the operation resides. Only available when performing regional operations." type="//@types.15"/>
+    <attributes name="selfLink" required="true" description="[Output Only] Server-defined URL for the resource." type="//@types.15"/>
+    <attributes name="startTime" required="true" description="[Output Only] The time that this operation was started by the server. This value is in RFC3339 text format." type="//@types.15"/>
+    <attributes name="status" required="true" description="[Output Only] The status of the operation, which can be one of the following: PENDING, RUNNING, or DONE." type="//@types.15"/>
+    <attributes name="statusMessage" required="true" description="[Output Only] An optional textual description of the current status of the operation." type="//@types.15"/>
+    <attributes name="targetId" required="true" description="[Output Only] The unique target ID, which identifies a specific incarnation of the target resource." type="//@types.15"/>
+    <attributes name="targetLink" required="true" description="[Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from." type="//@types.15"/>
+    <attributes name="user" required="true" description="[Output Only] User who requested the operation, for example: user@example.com." type="//@types.15"/>
+    <attributes name="warnings" required="true" description="[Output Only] If warning messages are generated during processing of the operation, this field will be populated." type="//@types.7"/>
+    <attributes name="zone" required="true" description="[Output Only] The URL of the zone where the operation resides. Only available when performing per-zone operations." type="//@types.15"/>
+    <actions name="get" scheme="http://occi/gcpdeploymentmanager/operation/action#" title="Gets information about a specific operation.">
+      <attributes name="operation" required="true" description="The name of the operation for this request." type="//@types.15"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.15"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpdeploymentmanager/operation/action#" title="Lists all operations for a project.">
+      <attributes name="filter" required="true" description="Sets a filter {expression} for filtering listed resources. Your {expression} must be in the format: field_name comparison_string literal_string.&#xA;&#xA;The field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.&#xA;&#xA;For example, to filter for instances that do not have a name of example-instance, you would use name ne example-instance.&#xA;&#xA;You can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.&#xA;&#xA;To filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters." type="//@types.15"/>
+      <attributes name="maxResults" required="true" description="The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)" type="//@types.3"/>
+      <attributes name="orderBy" required="true" description="Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.&#xA;&#xA;You can also sort results in descending order based on the creation timestamp using orderBy=&quot;creationTimestamp desc&quot;. This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.&#xA;&#xA;Currently, only sorting by name or creationTimestamp desc is supported." type="//@types.15"/>
+      <attributes name="pageToken" required="true" description="Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results." type="//@types.15"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.15"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationsListResponse" scheme="http://occi/gcpdeploymentmanager#" title="A response containing a partial list of operations and a page token used to build the next request if the request has been truncated.">
+    <attributes name="nextPageToken" required="true" description="Output only. A token used to continue a truncated list request." type="//@types.15"/>
+    <attributes name="operations" required="true" description="Output only. Operations contained in this list response." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Policy" scheme="http://occi/gcpdeploymentmanager#" title="Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies for Cloud Platform resources.&#xA;&#xA;&#xA;&#xA;A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of permissions defined by IAM.&#xA;&#xA;**Example**&#xA;&#xA;{ &quot;bindings&quot;: [ { &quot;role&quot;: &quot;roles/owner&quot;, &quot;members&quot;: [ &quot;user:mike@example.com&quot;, &quot;group:admins@example.com&quot;, &quot;domain:google.com&quot;, &quot;serviceAccount:my-other-app@appspot.gserviceaccount.com&quot;, ] }, { &quot;role&quot;: &quot;roles/viewer&quot;, &quot;members&quot;: [&quot;user:sean@example.com&quot;] } ] }&#xA;&#xA;For a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).">
+    <attributes name="auditConfigs" required="true" description="Specifies cloud audit logging configuration for this policy." type="//@types.7"/>
+    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`. `bindings` with no members will result in an error." type="//@types.7"/>
+    <attributes name="etag" required="true" description="`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy.&#xA;&#xA;If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten blindly." type="//@types.15"/>
+    <attributes name="iamOwned" required="true" description="" type="//@types.6"/>
+    <attributes name="rules" required="true" description="If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied." type="//@types.7"/>
+    <attributes name="version" required="true" description="Version of the `Policy`. The default version is 0." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ResourceAccessControlLink" scheme="http://occi/gcpdeploymentmanager#" title="The Access Control Policy set on this resource." source="//@kinds[term='resource']" target="//@kinds[term='resourceaccesscontrol']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ResourceUpdateLink" scheme="http://occi/gcpdeploymentmanager#" title="Output only. If Deployment Manager is currently updating or previewing an update to this resource, the updated configuration appears here." source="//@kinds[term='resource']" target="//@kinds[term='resourceupdate']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Resource" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="finalProperties" required="true" description="Output only. The evaluated properties of the resource with references expanded. Returned as serialized YAML." type="//@types.15"/>
+    <attributes name="insertTime" required="true" description="Output only. Timestamp when the resource was created or acquired, in RFC3339 text format ." type="//@types.15"/>
+    <attributes name="manifest" required="true" description="Output only. URL of the manifest representing the current configuration of this resource." type="//@types.15"/>
+    <attributes name="name" required="true" description="Output only. The name of the resource as it appears in the YAML config." type="//@types.15"/>
+    <attributes name="properties" required="true" description="Output only. The current properties of the resource before any references have been filled in. Returned as serialized YAML." type="//@types.15"/>
+    <attributes name="type" required="true" description="Output only. The type of the resource, for example compute.v1.instance, or cloudfunctions.v1beta1.function." type="//@types.15"/>
+    <attributes name="updateTime" required="true" description="Output only. Timestamp when the resource was updated, in RFC3339 text format ." type="//@types.15"/>
+    <attributes name="url" required="true" description="Output only. The URL of the actual resource." type="//@types.15"/>
+    <attributes name="warnings" required="true" description="Output only. If warning messages are generated during processing of this resource, this field will be populated." type="//@types.7"/>
+    <actions name="get" scheme="http://occi/gcpdeploymentmanager/resource/action#" title="Gets information about a single resource.">
+      <attributes name="deployment" required="true" description="The name of the deployment for this request." type="//@types.15"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.15"/>
+      <attributes name="resource" required="true" description="The name of the resource for this request." type="//@types.15"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpdeploymentmanager/resource/action#" title="Lists all resources in a given deployment.">
+      <attributes name="deployment" required="true" description="The name of the deployment for this request." type="//@types.15"/>
+      <attributes name="filter" required="true" description="Sets a filter {expression} for filtering listed resources. Your {expression} must be in the format: field_name comparison_string literal_string.&#xA;&#xA;The field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.&#xA;&#xA;For example, to filter for instances that do not have a name of example-instance, you would use name ne example-instance.&#xA;&#xA;You can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.&#xA;&#xA;To filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters." type="//@types.15"/>
+      <attributes name="maxResults" required="true" description="The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)" type="//@types.3"/>
+      <attributes name="orderBy" required="true" description="Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.&#xA;&#xA;You can also sort results in descending order based on the creation timestamp using orderBy=&quot;creationTimestamp desc&quot;. This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.&#xA;&#xA;Currently, only sorting by name or creationTimestamp desc is supported." type="//@types.15"/>
+      <attributes name="pageToken" required="true" description="Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results." type="//@types.15"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.15"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ResourceAccessControl" scheme="http://occi/gcpdeploymentmanager#" title="The access controls set on the resource.">
+    <attributes name="gcpIamPolicy" required="true" description="The GCP IAM Policy to set on the resource." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ResourceUpdateResourceAccessControlLink" scheme="http://occi/gcpdeploymentmanager#" title="The Access Control Policy to set on this resource after updating the resource itself." source="//@kinds[term='resourceupdate']" target="//@kinds[term='resourceaccesscontrol']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ResourceUpdate" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="error" required="true" description="Output only. If errors are generated during update of the resource, this field will be populated." type="//@types.10"/>
+    <attributes name="finalProperties" required="true" description="Output only. The expanded properties of the resource with reference values expanded. Returned as serialized YAML." type="//@types.15"/>
+    <attributes name="intent" required="true" description="Output only. The intent of the resource: PREVIEW, UPDATE, or CANCEL." type="//@types.15"/>
+    <attributes name="manifest" required="true" description="Output only. URL of the manifest representing the update configuration of this resource." type="//@types.15"/>
+    <attributes name="properties" required="true" description="Output only. The set of updated properties for this resource, before references are expanded. Returned as serialized YAML." type="//@types.15"/>
+    <attributes name="state" required="true" description="Output only. The state of the resource." type="//@types.15"/>
+    <attributes name="warnings" required="true" description="Output only. If warning messages are generated during processing of this resource, this field will be populated." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ResourcesListResponse" scheme="http://occi/gcpdeploymentmanager#" title="A response containing a partial list of resources and a page token used to build the next request if the request has been truncated.">
+    <attributes name="nextPageToken" required="true" description="A token used to continue a truncated list request." type="//@types.15"/>
+    <attributes name="resources" required="true" description="Resources contained in this list response." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Rule" scheme="http://occi/gcpdeploymentmanager#" title="A rule to be applied in a Policy.">
+    <attributes name="action" required="true" description="Required" type="//@types.15"/>
+    <attributes name="conditions" required="true" description="Additional restrictions that must be met. All conditions must pass for the rule to match." type="//@types.7"/>
+    <attributes name="description" required="true" description="Human-readable description of the rule." type="//@types.15"/>
+    <attributes name="ins" required="true" description="If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries." type="//@types.7"/>
+    <attributes name="logConfigs" required="true" description="The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action." type="//@types.7"/>
+    <attributes name="notIns" required="true" description="If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries." type="//@types.7"/>
+    <attributes name="permissions" required="true" description="A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TargetConfigurationConfigFileLink" scheme="http://occi/gcpdeploymentmanager#" title="The configuration to use for this deployment." source="//@kinds[term='targetconfiguration']" target="//@kinds[term='configfile']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TargetConfiguration" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="imports" required="true" description="Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestPermissionsRequest" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="permissions" required="true" description="The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or 'storage.*') are not allowed." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TestPermissionsResponse" scheme="http://occi/gcpdeploymentmanager#" title="">
+    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is allowed." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TypeOperationLink" scheme="http://occi/gcpdeploymentmanager#" title="Output only. The Operation that most recently ran, or is currently running, on this type." source="//@kinds[term='type']" target="//@kinds[term='operation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Type" scheme="http://occi/gcpdeploymentmanager#" title="A resource type supported by Deployment Manager.">
+    <attributes name="insertTime" required="true" description="Output only. Timestamp when the type was created, in RFC3339 text format." type="//@types.15"/>
+    <attributes name="name" required="true" description="Name of the type." type="//@types.15"/>
+    <attributes name="selfLink" required="true" description="Output only. Self link for the type." type="//@types.15"/>
+    <actions name="list" scheme="http://occi/gcpdeploymentmanager/type/action#" title="Lists all resource types for Deployment Manager.">
+      <attributes name="filter" required="true" description="Sets a filter {expression} for filtering listed resources. Your {expression} must be in the format: field_name comparison_string literal_string.&#xA;&#xA;The field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.&#xA;&#xA;For example, to filter for instances that do not have a name of example-instance, you would use name ne example-instance.&#xA;&#xA;You can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.&#xA;&#xA;To filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters." type="//@types.15"/>
+      <attributes name="maxResults" required="true" description="The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)" type="//@types.3"/>
+      <attributes name="orderBy" required="true" description="Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.&#xA;&#xA;You can also sort results in descending order based on the creation timestamp using orderBy=&quot;creationTimestamp desc&quot;. This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.&#xA;&#xA;Currently, only sorting by name or creationTimestamp desc is supported." type="//@types.15"/>
+      <attributes name="pageToken" required="true" description="Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results." type="//@types.15"/>
+      <attributes name="project" required="true" description="The project ID for this request." type="//@types.15"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TypesListResponse" scheme="http://occi/gcpdeploymentmanager#" title="A response that returns all Types supported by Deployment Manager">
+    <attributes name="nextPageToken" required="true" description="A token used to continue a truncated list request." type="//@types.15"/>
+    <attributes name="types" required="true" description="Output only. A list of resource types supported by Deployment Manager." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="deletePolicy" documentation="Sets the policy to use for deleting resources.">
+    <literals name="ABANDON" documentation=""/>
+    <literals name="DELETE" documentation=""/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="createPolicy" documentation="Sets the policy to use for creating new resources.">
+    <literals name="ACQUIRE" documentation=""/>
+    <literals name="CREATE_OR_ACQUIRE" documentation=""/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="deletePolicy" documentation="Sets the policy to use for deleting resources.">
+    <literals name="ABANDON" documentation=""/>
+    <literals name="DELETE" documentation=""/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="createPolicy" documentation="Sets the policy to use for creating new resources.">
+    <literals name="ACQUIRE" documentation=""/>
+    <literals name="CREATE_OR_ACQUIRE" documentation=""/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="deletePolicy" documentation="Sets the policy to use for deleting resources.">
+    <literals name="ABANDON" documentation=""/>
+    <literals name="DELETE" documentation=""/>
+  </types>
+</occi:Extension>

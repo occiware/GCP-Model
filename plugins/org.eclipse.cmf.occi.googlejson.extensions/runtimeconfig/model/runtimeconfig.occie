@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="runtimeconfig" scheme="http://occi/gcpruntimeconfig#" description="The Runtime Configurator allows you to dynamically configure and expose variables through Google Cloud Platform. In addition, you can also set Watchers and Waiters that will watch for changes to your data and return based on certain conditions.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="CancelOperationRequest" scheme="http://occi/gcpruntimeconfig#" title="The request message for Operations.CancelOperation.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Status" scheme="http://occi/gcpruntimeconfig#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="StatusLink" scheme="http://occi/gcpruntimeconfig#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='operation']" target="//@kinds[term='status']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Operation" scheme="http://occi/gcpruntimeconfig#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.9"/>
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.9"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`." type="//@types.0"/>
+    <actions name="cancel" scheme="http://occi/gcpruntimeconfig/operation/action#" title="Starts asynchronous cancellation on a long-running operation.  The server&#xA;makes a best effort to cancel the operation, but success is not&#xA;guaranteed.  If the server doesn't support this method, it returns&#xA;`google.rpc.Code.UNIMPLEMENTED`.  Clients can use&#xA;Operations.GetOperation or&#xA;other methods to check whether the cancellation succeeded or whether the&#xA;operation completed despite cancellation. On successful cancellation,&#xA;the operation is not deleted; instead, it becomes an operation with&#xA;an Operation.error value with a google.rpc.Status.code of 1,&#xA;corresponding to `Code.CANCELLED`.">
+      <attributes name="name" required="true" description="The name of the operation resource to be cancelled." type="//@types.0"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpruntimeconfig/operation/action#" title="Deletes a long-running operation. This method indicates that the client is&#xA;no longer interested in the operation result. It does not cancel the&#xA;operation. If the server doesn't support this method, it returns&#xA;`google.rpc.Code.UNIMPLEMENTED`.">
+      <attributes name="name" required="true" description="The name of the operation resource to be deleted." type="//@types.0"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpruntimeconfig/operation/action#" title="Lists operations that match the specified filter in the request. If the&#xA;server doesn't support this method, it returns `UNIMPLEMENTED`.&#xA;&#xA;NOTE: the `name` binding allows API services to override the binding&#xA;to use different resource name schemes, such as `users/*/operations`. To&#xA;override the binding, API services can add a binding such as&#xA;`&quot;/v1/{name=users/*}/operations&quot;` to their service configuration.&#xA;For backwards compatibility, the default name includes the operations&#xA;collection id, however overriding users must ensure the name binding&#xA;is the parent resource, without the operations collection id.">
+      <attributes name="filter" required="true" description="The standard list filter." type="//@types.0"/>
+      <attributes name="pageToken" required="true" description="The standard list page token." type="//@types.0"/>
+      <attributes name="name" required="true" description="The name of the operation's parent resource." type="//@types.0"/>
+      <attributes name="pageSize" required="true" description="The standard list page size." type="//@types.3"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListOperationsResponse" scheme="http://occi/gcpruntimeconfig#" title="The response message for Operations.ListOperations.">
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.0"/>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Empty" scheme="http://occi/gcpruntimeconfig#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+</occi:Extension>

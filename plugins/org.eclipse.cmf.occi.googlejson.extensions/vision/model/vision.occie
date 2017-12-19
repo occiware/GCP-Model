@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="vision" scheme="http://occi/gcpvision#" description="Integrates Google Vision features, including image labeling, face, logo, and landmark detection, optical character recognition (OCR), and detection of explicit content, into applications.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="DominantColorsAnnotationLink" scheme="http://occi/gcpvision#" title="If present, dominant colors completed successfully." source="//@kinds[term='imageproperties']" target="//@kinds[term='dominantcolorsannotation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ImageProperties" scheme="http://occi/gcpvision#" title="Stores image properties, such as dominant colors.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Feature" scheme="http://occi/gcpvision#" title="Users describe the type of Google Cloud Vision API tasks to perform over&#xA;images by using *Feature*s. Each Feature indicates a type of image&#xA;detection task to perform. Features encode the Cloud Vision API&#xA;vertical to operate on and the number of top-scoring results to return.">
+    <attributes name="maxResults" required="true" description="Maximum number of results of this type." type="//@types.3"/>
+    <attributes name="type" required="true" description="The feature type." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SafeSearchAnnotation" scheme="http://occi/gcpvision#" title="Set of features pertaining to the image, computed by computer vision&#xA;methods over safe-search verticals (for example, adult, spoof, medical,&#xA;violence).">
+    <attributes name="adult" required="true" description="Represents the adult content likelihood for the image. Adult content may&#xA;contain elements such as nudity, pornographic images or cartoons, or&#xA;sexual activities." type="//@types.12"/>
+    <attributes name="spoof" required="true" description="Spoof likelihood. The likelihood that an modification&#xA;was made to the image's canonical version to make it appear&#xA;funny or offensive." type="//@types.13"/>
+    <attributes name="medical" required="true" description="Likelihood that this is a medical image." type="//@types.14"/>
+    <attributes name="violence" required="true" description="Likelihood that this image contains violent content." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DominantColorsAnnotation" scheme="http://occi/gcpvision#" title="Set of dominant colors and their corresponding scores.">
+    <attributes name="colors" required="true" description="RGB color values with their score and pixel fraction." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TextAnnotation" scheme="http://occi/gcpvision#" title="TextAnnotation contains a structured representation of OCR extracted text.&#xA;The hierarchy of an OCR extracted text structure is like this:&#xA;    TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol&#xA;Each structural component, starting from Page, may further have their own&#xA;properties. Properties describe detected languages, breaks etc.. Please&#xA;refer to the google.cloud.vision.v1.TextAnnotation.TextProperty message&#xA;definition below for more detail.">
+    <attributes name="pages" required="true" description="List of pages detected by OCR." type="//@types.7"/>
+    <attributes name="text" required="true" description="UTF-8 text detected on the pages." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DetectedLanguage" scheme="http://occi/gcpvision#" title="Detected language for a structural component.">
+    <attributes name="languageCode" required="true" description="The BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more&#xA;information, see&#xA;http://www.unicode.org/reports/tr35/#Unicode_locale_identifier." type="//@types.15"/>
+    <attributes name="confidence" required="true" description="Confidence of detected language. Range [0, 1]." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Vertex" scheme="http://occi/gcpvision#" title="A vertex represents a 2D point in the image.&#xA;NOTE: the vertex coordinates are in the same scale as the original image.">
+    <attributes name="x" required="true" description="X coordinate." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DetectedBreakLink" scheme="http://occi/gcpvision#" title="Detected start or end of a text segment." source="//@kinds[term='textproperty']" target="//@kinds[term='detectedbreak']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TextProperty" scheme="http://occi/gcpvision#" title="Additional information detected on the structural component.">
+    <attributes name="detectedLanguages" required="true" description="A list of detected languages together with confidence." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BoundingPoly" scheme="http://occi/gcpvision#" title="A bounding polygon for the detected image annotation.">
+    <attributes name="vertices" required="true" description="The bounding polygon vertices." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="WebEntity" scheme="http://occi/gcpvision#" title="Entity deduced from similar images on the Internet.">
+    <attributes name="entityId" required="true" description="Opaque entity ID." type="//@types.15"/>
+    <attributes name="description" required="true" description="Canonical description of the entity, in English." type="//@types.15"/>
+    <attributes name="score" required="true" description="Overall relevancy score for the entity.&#xA;Not normalized and not comparable across different image queries." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ImagePropertiesLink" scheme="http://occi/gcpvision#" title="If present, image properties were extracted successfully." source="//@kinds[term='annotateimageresponse']" target="//@kinds[term='imageproperties']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CropHintsAnnotationLink" scheme="http://occi/gcpvision#" title="If present, crop hints have completed successfully." source="//@kinds[term='annotateimageresponse']" target="//@kinds[term='crophintsannotation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="WebDetectionLink" scheme="http://occi/gcpvision#" title="If present, web detection has completed successfully." source="//@kinds[term='annotateimageresponse']" target="//@kinds[term='webdetection']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SafeSearchAnnotationLink" scheme="http://occi/gcpvision#" title="If present, safe-search annotation has completed successfully." source="//@kinds[term='annotateimageresponse']" target="//@kinds[term='safesearchannotation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="StatusLink" scheme="http://occi/gcpvision#" title="If set, represents the error message for the operation.&#xA;Note that filled-in image annotations are guaranteed to be&#xA;correct, even when `error` is set." source="//@kinds[term='annotateimageresponse']" target="//@kinds[term='status']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TextAnnotationLink" scheme="http://occi/gcpvision#" title="If present, text (OCR) detection or document (OCR) text detection has&#xA;completed successfully.&#xA;This annotation provides the structural hierarchy for the OCR detected&#xA;text." source="//@kinds[term='annotateimageresponse']" target="//@kinds[term='textannotation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="AnnotateImageResponse" scheme="http://occi/gcpvision#" title="Response to an image annotation request.">
+    <attributes name="landmarkAnnotations" required="true" description="If present, landmark detection has completed successfully." type="//@types.7"/>
+    <attributes name="textAnnotations" required="true" description="If present, text (OCR) detection has completed successfully." type="//@types.7"/>
+    <attributes name="faceAnnotations" required="true" description="If present, face detection has completed successfully." type="//@types.7"/>
+    <attributes name="logoAnnotations" required="true" description="If present, logo detection has completed successfully." type="//@types.7"/>
+    <attributes name="labelAnnotations" required="true" description="If present, label detection has completed successfully." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CropHintsParams" scheme="http://occi/gcpvision#" title="Parameters for crop hints annotation request.">
+    <attributes name="aspectRatios" required="true" description="Aspect ratios in floats, representing the ratio of the width to the height&#xA;of the image. For example, if the desired aspect ratio is 4/3, the&#xA;corresponding float value should be 1.33333.  If not specified, the&#xA;best possible crop is returned. The number of provided aspect ratios is&#xA;limited to a maximum of 16; any aspect ratios provided after the 16th are&#xA;ignored." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TextPropertyLink" scheme="http://occi/gcpvision#" title="Additional information detected for the block." source="//@kinds[term='block']" target="//@kinds[term='textproperty']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BoundingPolyLink" scheme="http://occi/gcpvision#" title="The bounding box for the block.&#xA;The vertices are in the order of top-left, top-right, bottom-right,&#xA;bottom-left. When a rotation of the bounding box is detected the rotation&#xA;is represented as around the top-left corner as defined when the text is&#xA;read in the 'natural' orientation.&#xA;For example:&#xA;  * when the text is horizontal it might look like:&#xA;     0----1&#xA;     |    |&#xA;     3----2&#xA;  * when it's rotated 180 degrees around the top-left corner it becomes:&#xA;     2----3&#xA;     |    |&#xA;     1----0&#xA;  and the vertice order will still be (0, 1, 2, 3)." source="//@kinds[term='block']" target="//@kinds[term='boundingpoly']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Block" scheme="http://occi/gcpvision#" title="Logical element on the page.">
+    <attributes name="blockType" required="true" description="Detected block type (text, image etc) for this block." type="//@types.16"/>
+    <attributes name="paragraphs" required="true" description="List of paragraphs in this block (if this blocks is of type text)." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="WebDetection" scheme="http://occi/gcpvision#" title="Relevant information for the image from the Internet.">
+    <attributes name="visuallySimilarImages" required="true" description="The visually similar image results." type="//@types.7"/>
+    <attributes name="partialMatchingImages" required="true" description="Partial matching images from the Internet.&#xA;Those images are similar enough to share some key-point features. For&#xA;example an original image will likely have partial matching for its crops." type="//@types.7"/>
+    <attributes name="fullMatchingImages" required="true" description="Fully matching images from the Internet.&#xA;Can include resized copies of the query image." type="//@types.7"/>
+    <attributes name="webEntities" required="true" description="Deduced entities from similar images on the Internet." type="//@types.7"/>
+    <attributes name="pagesWithMatchingImages" required="true" description="Web pages containing the matching images from the Internet." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Property" scheme="http://occi/gcpvision#" title="A `Property` consists of a user-supplied name/value pair.">
+    <attributes name="value" required="true" description="Value of the property." type="//@types.16"/>
+    <attributes name="uint64Value" required="true" description="Value of numeric properties." type="//@types.16"/>
+    <attributes name="name" required="true" description="Name of the property." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LatLngLink" scheme="http://occi/gcpvision#" title="lat/long location coordinates." source="//@kinds[term='locationinfo']" target="//@kinds[term='latlng']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LocationInfo" scheme="http://occi/gcpvision#" title="Detected entity location information.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ImageSource" scheme="http://occi/gcpvision#" title="External image source (Google Cloud Storage image location).">
+    <attributes name="gcsImageUri" required="true" description="NOTE: For new code `image_uri` below is preferred.&#xA;Google Cloud Storage image URI, which must be in the following form:&#xA;`gs://bucket_name/object_name` (for details, see&#xA;[Google Cloud Storage Request&#xA;URIs](https://cloud.google.com/storage/docs/reference-uris)).&#xA;NOTE: Cloud Storage object versioning is not supported." type="//@types.16"/>
+    <attributes name="imageUri" required="true" description="Image URI which supports:&#xA;1) Google Cloud Storage image URI, which must be in the following form:&#xA;`gs://bucket_name/object_name` (for details, see&#xA;[Google Cloud Storage Request&#xA;URIs](https://cloud.google.com/storage/docs/reference-uris)).&#xA;NOTE: Cloud Storage object versioning is not supported.&#xA;2) Publicly accessible image HTTP/HTTPS URL.&#xA;This is preferred over the legacy `gcs_image_uri` above. When both&#xA;`gcs_image_uri` and `image_uri` are specified, `image_uri` takes&#xA;precedence." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BatchAnnotateImagesResponse" scheme="http://occi/gcpvision#" title="Response to a batch image annotation request.">
+    <attributes name="responses" required="true" description="Individual responses to image annotation requests within the batch." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Position" scheme="http://occi/gcpvision#" title="A 3D position in the image, used primarily for Face detection landmarks.&#xA;A valid Position must have both x and y coordinates.&#xA;The position coordinates are in the same scale as the original image.">
+    <attributes name="z" required="true" description="Z coordinate (or depth)." type="//@types.3"/>
+    <attributes name="x" required="true" description="X coordinate." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="WebPage" scheme="http://occi/gcpvision#" title="Metadata for web pages.">
+    <attributes name="score" required="true" description="(Deprecated) Overall relevancy score for the web page." type="//@types.3"/>
+    <attributes name="url" required="true" description="The result web page URL." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ColorLink" scheme="http://occi/gcpvision#" title="RGB components of the color." source="//@kinds[term='colorinfo']" target="//@kinds[term='color']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ColorInfo" scheme="http://occi/gcpvision#" title="Color information consists of RGB channels, score, and the fraction of&#xA;the image that the color occupies in the image.">
+    <attributes name="pixelFraction" required="true" description="The fraction of pixels the color occupies in the image.&#xA;Value in range [0, 1]." type="//@types.3"/>
+    <attributes name="score" required="true" description="Image-specific score for this color. Value in range [0, 1]." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="EntityAnnotationBoundingPolyLink" scheme="http://occi/gcpvision#" title="Image region to which this entity belongs. Not produced&#xA;for `LABEL_DETECTION` features." source="//@kinds[term='entityannotation']" target="//@kinds[term='boundingpoly']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="EntityAnnotation" scheme="http://occi/gcpvision#" title="Set of detected entity features.">
+    <attributes name="mid" required="true" description="Opaque entity ID. Some IDs may be available in&#xA;[Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/)." type="//@types.16"/>
+    <attributes name="confidence" required="true" description="The accuracy of the entity detection in an image.&#xA;For example, for an image in which the &quot;Eiffel Tower&quot; entity is detected,&#xA;this field represents the confidence that there is a tower in the query&#xA;image. Range [0, 1]." type="//@types.3"/>
+    <attributes name="locale" required="true" description="The language code for the locale in which the entity textual&#xA;`description` is expressed." type="//@types.16"/>
+    <attributes name="description" required="true" description="Entity textual description, expressed in its `locale` language." type="//@types.16"/>
+    <attributes name="topicality" required="true" description="The relevancy of the ICA (Image Content Annotation) label to the&#xA;image. For example, the relevancy of &quot;tower&quot; is likely higher to an image&#xA;containing the detected &quot;Eiffel Tower&quot; than to an image containing a&#xA;detected distant towering building, even though the confidence that&#xA;there is a tower in each image may be the same. Range [0, 1]." type="//@types.3"/>
+    <attributes name="properties" required="true" description="Some entities may have optional user-supplied `Property` (name/value)&#xA;fields, such a score or string that qualifies the entity." type="//@types.7"/>
+    <attributes name="score" required="true" description="Overall score of the result. Range [0, 1]." type="//@types.3"/>
+    <attributes name="locations" required="true" description="The location information for the detected entity. Multiple&#xA;`LocationInfo` elements can be present because one location may&#xA;indicate the location of the scene in the image, and another location&#xA;may indicate the location of the place where the image was taken.&#xA;Location information is usually present for landmarks." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CropHintBoundingPolyLink" scheme="http://occi/gcpvision#" title="The bounding polygon for the crop region. The coordinates of the bounding&#xA;box are in the original image's scale, as returned in `ImageParams`." source="//@kinds[term='crophint']" target="//@kinds[term='boundingpoly']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CropHint" scheme="http://occi/gcpvision#" title="Single crop hint that is used to generate a new crop when serving an image.">
+    <attributes name="importanceFraction" required="true" description="Fraction of importance of this salient region with respect to the original&#xA;image." type="//@types.3"/>
+    <attributes name="confidence" required="true" description="Confidence of this being a salient region.  Range [0, 1]." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PositionLink" scheme="http://occi/gcpvision#" title="Face landmark position." source="//@kinds[term='landmark']" target="//@kinds[term='position']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Landmark" scheme="http://occi/gcpvision#" title="A face-specific landmark (for example, a face feature).&#xA;Landmark positions may fall outside the bounds of the image&#xA;if the face is near one or more edges of the image.&#xA;Therefore it is NOT guaranteed that `0 &lt;= x &lt; width` or&#xA;`0 &lt;= y &lt; height`.">
+    <attributes name="type" required="true" description="Face landmark type." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="WebImage" scheme="http://occi/gcpvision#" title="Metadata for online images.">
+    <attributes name="score" required="true" description="(Deprecated) Overall relevancy score for the image." type="//@types.3"/>
+    <attributes name="url" required="true" description="The result image URL." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="WordBoundingPolyLink" scheme="http://occi/gcpvision#" title="The bounding box for the word.&#xA;The vertices are in the order of top-left, top-right, bottom-right,&#xA;bottom-left. When a rotation of the bounding box is detected the rotation&#xA;is represented as around the top-left corner as defined when the text is&#xA;read in the 'natural' orientation.&#xA;For example:&#xA;  * when the text is horizontal it might look like:&#xA;     0----1&#xA;     |    |&#xA;     3----2&#xA;  * when it's rotated 180 degrees around the top-left corner it becomes:&#xA;     2----3&#xA;     |    |&#xA;     1----0&#xA;  and the vertice order will still be (0, 1, 2, 3)." source="//@kinds[term='word']" target="//@kinds[term='boundingpoly']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="WordTextPropertyLink" scheme="http://occi/gcpvision#" title="Additional information detected for the word." source="//@kinds[term='word']" target="//@kinds[term='textproperty']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Word" scheme="http://occi/gcpvision#" title="A word representation.">
+    <attributes name="symbols" required="true" description="List of symbols in the word.&#xA;The order of the symbols follows the natural reading order." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ImageSourceLink" scheme="http://occi/gcpvision#" title="Google Cloud Storage image location. If both `content` and `source`&#xA;are provided for an image, `content` takes precedence and is&#xA;used to perform the image annotation request." source="//@kinds[term='image']" target="//@kinds[term='imagesource']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Image" scheme="http://occi/gcpvision#" title="Client image to perform Google Cloud Vision API tasks over.">
+    <attributes name="content" required="true" description="Image content, represented as a stream of bytes.&#xA;Note: as with all `bytes` fields, protobuffers use a pure binary&#xA;representation, whereas JSON representations use base64." type="//@types.17"/>
+    <actions name="annotate" scheme="http://occi/gcpvision/image/action#" title="Run image detection and annotation for a batch of images."/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ParagraphBoundingPolyLink" scheme="http://occi/gcpvision#" title="The bounding box for the paragraph.&#xA;The vertices are in the order of top-left, top-right, bottom-right,&#xA;bottom-left. When a rotation of the bounding box is detected the rotation&#xA;is represented as around the top-left corner as defined when the text is&#xA;read in the 'natural' orientation.&#xA;For example:&#xA;  * when the text is horizontal it might look like:&#xA;     0----1&#xA;     |    |&#xA;     3----2&#xA;  * when it's rotated 180 degrees around the top-left corner it becomes:&#xA;     2----3&#xA;     |    |&#xA;     1----0&#xA;  and the vertice order will still be (0, 1, 2, 3)." source="//@kinds[term='paragraph']" target="//@kinds[term='boundingpoly']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ParagraphTextPropertyLink" scheme="http://occi/gcpvision#" title="Additional information detected for the paragraph." source="//@kinds[term='paragraph']" target="//@kinds[term='textproperty']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Paragraph" scheme="http://occi/gcpvision#" title="Structural unit of text representing a number of words in certain order.">
+    <attributes name="words" required="true" description="List of words in this paragraph." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="FaceAnnotationBoundingPolyLink" scheme="http://occi/gcpvision#" title="The bounding polygon around the face. The coordinates of the bounding box&#xA;are in the original image's scale, as returned in `ImageParams`.&#xA;The bounding box is computed to &quot;frame&quot; the face in accordance with human&#xA;expectations. It is based on the landmarker results.&#xA;Note that one or more x and/or y coordinates may not be generated in the&#xA;`BoundingPoly` (the polygon will be unbounded) if only a partial face&#xA;appears in the image to be annotated." source="//@kinds[term='faceannotation']" target="//@kinds[term='boundingpoly']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="FaceAnnotationBoundingPolyLink" scheme="http://occi/gcpvision#" title="The `fd_bounding_poly` bounding polygon is tighter than the&#xA;`boundingPoly`, and encloses only the skin part of the face. Typically, it&#xA;is used to eliminate the face from any image analysis that detects the&#xA;&quot;amount of skin&quot; visible in an image. It is not based on the&#xA;landmarker results, only on the initial face detection, hence&#xA;the &lt;code>fd&lt;/code> (face detection) prefix." source="//@kinds[term='faceannotation']" target="//@kinds[term='boundingpoly']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="FaceAnnotation" scheme="http://occi/gcpvision#" title="A face annotation object contains the results of face detection.">
+    <attributes name="underExposedLikelihood" required="true" description="Under-exposed likelihood." type="//@types.18"/>
+    <attributes name="panAngle" required="true" description="Yaw angle, which indicates the leftward/rightward angle that the face is&#xA;pointing relative to the vertical plane perpendicular to the image. Range&#xA;[-180,180]." type="//@types.3"/>
+    <attributes name="detectionConfidence" required="true" description="Detection confidence. Range [0, 1]." type="//@types.3"/>
+    <attributes name="blurredLikelihood" required="true" description="Blurred likelihood." type="//@types.19"/>
+    <attributes name="headwearLikelihood" required="true" description="Headwear likelihood." type="//@types.20"/>
+    <attributes name="rollAngle" required="true" description="Roll angle, which indicates the amount of clockwise/anti-clockwise rotation&#xA;of the face relative to the image vertical about the axis perpendicular to&#xA;the face. Range [-180,180]." type="//@types.3"/>
+    <attributes name="sorrowLikelihood" required="true" description="Sorrow likelihood." type="//@types.21"/>
+    <attributes name="tiltAngle" required="true" description="Pitch angle, which indicates the upwards/downwards angle that the face is&#xA;pointing relative to the image's horizontal plane. Range [-180,180]." type="//@types.3"/>
+    <attributes name="angerLikelihood" required="true" description="Anger likelihood." type="//@types.22"/>
+    <attributes name="landmarks" required="true" description="Detected face landmarks." type="//@types.7"/>
+    <attributes name="surpriseLikelihood" required="true" description="Surprise likelihood." type="//@types.23"/>
+    <attributes name="joyLikelihood" required="true" description="Joy likelihood." type="//@types.24"/>
+    <attributes name="landmarkingConfidence" required="true" description="Face landmarking confidence. Range [0, 1]." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BatchAnnotateImagesRequest" scheme="http://occi/gcpvision#" title="Multiple image annotation requests are batched into a single service call.">
+    <attributes name="requests" required="true" description="Individual image annotation requests for this batch." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="DetectedBreak" scheme="http://occi/gcpvision#" title="Detected start or end of a structural component.">
+    <attributes name="type" required="true" description="Detected break type." type="//@types.25"/>
+    <attributes name="isPrefix" required="true" description="True if break prepends the element." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LatLongRectLink" scheme="http://occi/gcpvision#" title="lat/long rectangle that specifies the location of the image." source="//@kinds[term='imagecontext']" target="//@kinds[term='latlongrect']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="CropHintsParamsLink" scheme="http://occi/gcpvision#" title="Parameters for crop hints annotation request." source="//@kinds[term='imagecontext']" target="//@kinds[term='crophintsparams']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ImageContext" scheme="http://occi/gcpvision#" title="Image context and/or feature-specific parameters.">
+    <attributes name="languageHints" required="true" description="List of languages to use for TEXT_DETECTION. In most cases, an empty value&#xA;yields the best results since it enables automatic language detection. For&#xA;languages based on the Latin alphabet, setting `language_hints` is not&#xA;needed. In rare cases, when the language of the text in the image is known,&#xA;setting a hint will help get better results (although it will be a&#xA;significant hindrance if the hint is wrong). Text detection returns an&#xA;error if one or more of the specified languages is not one of the&#xA;[supported languages](/vision/docs/languages)." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PageTextPropertyLink" scheme="http://occi/gcpvision#" title="Additional information detected on the page." source="//@kinds[term='page']" target="//@kinds[term='textproperty']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Page" scheme="http://occi/gcpvision#" title="Detected page from OCR.">
+    <attributes name="height" required="true" description="Page height in pixels." type="//@types.3"/>
+    <attributes name="width" required="true" description="Page width in pixels." type="//@types.3"/>
+    <attributes name="blocks" required="true" description="List of blocks of text, images etc on this page." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ImageLink" scheme="http://occi/gcpvision#" title="The image to be processed." source="//@kinds[term='annotateimagerequest']" target="//@kinds[term='image']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ImageContextLink" scheme="http://occi/gcpvision#" title="Additional context that may accompany the image." source="//@kinds[term='annotateimagerequest']" target="//@kinds[term='imagecontext']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="AnnotateImageRequest" scheme="http://occi/gcpvision#" title="Request for performing Google Cloud Vision API tasks over a user-provided&#xA;image, with user-requested features.">
+    <attributes name="features" required="true" description="Requested features." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Status" scheme="http://occi/gcpvision#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.25"/>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SymbolTextPropertyLink" scheme="http://occi/gcpvision#" title="Additional information detected for the symbol." source="//@kinds[term='symbol']" target="//@kinds[term='textproperty']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="SymbolBoundingPolyLink" scheme="http://occi/gcpvision#" title="The bounding box for the symbol.&#xA;The vertices are in the order of top-left, top-right, bottom-right,&#xA;bottom-left. When a rotation of the bounding box is detected the rotation&#xA;is represented as around the top-left corner as defined when the text is&#xA;read in the 'natural' orientation.&#xA;For example:&#xA;  * when the text is horizontal it might look like:&#xA;     0----1&#xA;     |    |&#xA;     3----2&#xA;  * when it's rotated 180 degrees around the top-left corner it becomes:&#xA;     2----3&#xA;     |    |&#xA;     1----0&#xA;  and the vertice order will still be (0, 1, 2, 3)." source="//@kinds[term='symbol']" target="//@kinds[term='boundingpoly']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Symbol" scheme="http://occi/gcpvision#" title="A single symbol representation.">
+    <attributes name="text" required="true" description="The actual UTF-8 representation of the symbol." type="//@types.25"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LatLongRectLatLngLink" scheme="http://occi/gcpvision#" title="Min lat/long pair." source="//@kinds[term='latlongrect']" target="//@kinds[term='latlng']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LatLongRectLatLngLink" scheme="http://occi/gcpvision#" title="Max lat/long pair." source="//@kinds[term='latlongrect']" target="//@kinds[term='latlng']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LatLongRect" scheme="http://occi/gcpvision#" title="Rectangle determined by min and max `LatLng` pairs.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CropHintsAnnotation" scheme="http://occi/gcpvision#" title="Set of crop hints that are used to generate new crops when serving images.">
+    <attributes name="cropHints" required="true" description="Crop hint results." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LatLng" scheme="http://occi/gcpvision#" title="An object representing a latitude/longitude pair. This is expressed as a pair&#xA;of doubles representing degrees latitude and degrees longitude. Unless&#xA;specified otherwise, this must conform to the&#xA;&lt;a href=&quot;http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf&quot;>WGS84&#xA;standard&lt;/a>. Values must be within normalized ranges.&#xA;&#xA;Example of normalization code in Python:&#xA;&#xA;    def NormalizeLongitude(longitude):&#xA;      &quot;&quot;&quot;Wraps decimal degrees longitude to [-180.0, 180.0].&quot;&quot;&quot;&#xA;      q, r = divmod(longitude, 360.0)&#xA;      if r > 180.0 or (r == 180.0 and q &lt;= -1.0):&#xA;        return r - 360.0&#xA;      return r&#xA;&#xA;    def NormalizeLatLng(latitude, longitude):&#xA;      &quot;&quot;&quot;Wraps decimal degrees latitude and longitude to&#xA;      [-90.0, 90.0] and [-180.0, 180.0], respectively.&quot;&quot;&quot;&#xA;      r = latitude % 360.0&#xA;      if r &lt;= 90.0:&#xA;        return r, NormalizeLongitude(longitude)&#xA;      elif r >= 270.0:&#xA;        return r - 360, NormalizeLongitude(longitude)&#xA;      else:&#xA;        return 180 - r, NormalizeLongitude(longitude + 180.0)&#xA;&#xA;    assert 180.0 == NormalizeLongitude(180.0)&#xA;    assert -180.0 == NormalizeLongitude(-180.0)&#xA;    assert -179.0 == NormalizeLongitude(181.0)&#xA;    assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)&#xA;    assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)&#xA;    assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)&#xA;    assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)&#xA;    assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)&#xA;    assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)&#xA;    assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)&#xA;    assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)&#xA;    assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)&#xA;    assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)">
+    <attributes name="longitude" required="true" description="The longitude in degrees. It must be in the range [-180.0, +180.0]." type="//@types.3"/>
+    <attributes name="latitude" required="true" description="The latitude in degrees. It must be in the range [-90.0, +90.0]." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Color" scheme="http://occi/gcpvision#" title="Represents a color in the RGBA color space. This representation is designed&#xA;for simplicity of conversion to/from color representations in various&#xA;languages over compactness; for example, the fields of this representation&#xA;can be trivially provided to the constructor of &quot;java.awt.Color&quot; in Java; it&#xA;can also be trivially provided to UIColor's &quot;+colorWithRed:green:blue:alpha&quot;&#xA;method in iOS; and, with just a little work, it can be easily formatted into&#xA;a CSS &quot;rgba()&quot; string in JavaScript, as well. Here are some examples:&#xA;&#xA;Example (Java):&#xA;&#xA;     import com.google.type.Color;&#xA;&#xA;     // ...&#xA;     public static java.awt.Color fromProto(Color protocolor) {&#xA;       float alpha = protocolor.hasAlpha()&#xA;           ? protocolor.getAlpha().getValue()&#xA;           : 1.0;&#xA;&#xA;       return new java.awt.Color(&#xA;           protocolor.getRed(),&#xA;           protocolor.getGreen(),&#xA;           protocolor.getBlue(),&#xA;           alpha);&#xA;     }&#xA;&#xA;     public static Color toProto(java.awt.Color color) {&#xA;       float red = (float) color.getRed();&#xA;       float green = (float) color.getGreen();&#xA;       float blue = (float) color.getBlue();&#xA;       float denominator = 255.0;&#xA;       Color.Builder resultBuilder =&#xA;           Color&#xA;               .newBuilder()&#xA;               .setRed(red / denominator)&#xA;               .setGreen(green / denominator)&#xA;               .setBlue(blue / denominator);&#xA;       int alpha = color.getAlpha();&#xA;       if (alpha != 255) {&#xA;         result.setAlpha(&#xA;             FloatValue&#xA;                 .newBuilder()&#xA;                 .setValue(((float) alpha) / denominator)&#xA;                 .build());&#xA;       }&#xA;       return resultBuilder.build();&#xA;     }&#xA;     // ...&#xA;&#xA;Example (iOS / Obj-C):&#xA;&#xA;     // ...&#xA;     static UIColor* fromProto(Color* protocolor) {&#xA;        float red = [protocolor red];&#xA;        float green = [protocolor green];&#xA;        float blue = [protocolor blue];&#xA;        FloatValue* alpha_wrapper = [protocolor alpha];&#xA;        float alpha = 1.0;&#xA;        if (alpha_wrapper != nil) {&#xA;          alpha = [alpha_wrapper value];&#xA;        }&#xA;        return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];&#xA;     }&#xA;&#xA;     static Color* toProto(UIColor* color) {&#xA;         CGFloat red, green, blue, alpha;&#xA;         if (![color getRed:&amp;red green:&amp;green blue:&amp;blue alpha:&amp;alpha]) {&#xA;           return nil;&#xA;         }&#xA;         Color* result = [Color alloc] init];&#xA;         [result setRed:red];&#xA;         [result setGreen:green];&#xA;         [result setBlue:blue];&#xA;         if (alpha &lt;= 0.9999) {&#xA;           [result setAlpha:floatWrapperWithValue(alpha)];&#xA;         }&#xA;         [result autorelease];&#xA;         return result;&#xA;    }&#xA;    // ...&#xA;&#xA; Example (JavaScript):&#xA;&#xA;    // ...&#xA;&#xA;    var protoToCssColor = function(rgb_color) {&#xA;       var redFrac = rgb_color.red || 0.0;&#xA;       var greenFrac = rgb_color.green || 0.0;&#xA;       var blueFrac = rgb_color.blue || 0.0;&#xA;       var red = Math.floor(redFrac * 255);&#xA;       var green = Math.floor(greenFrac * 255);&#xA;       var blue = Math.floor(blueFrac * 255);&#xA;&#xA;       if (!('alpha' in rgb_color)) {&#xA;          return rgbToCssColor_(red, green, blue);&#xA;       }&#xA;&#xA;       var alphaFrac = rgb_color.alpha.value || 0.0;&#xA;       var rgbParams = [red, green, blue].join(',');&#xA;       return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');&#xA;    };&#xA;&#xA;    var rgbToCssColor_ = function(red, green, blue) {&#xA;      var rgbNumber = new Number((red &lt;&lt; 16) | (green &lt;&lt; 8) | blue);&#xA;      var hexString = rgbNumber.toString(16);&#xA;      var missingZeros = 6 - hexString.length;&#xA;      var resultBuilder = ['#'];&#xA;      for (var i = 0; i &lt; missingZeros; i++) {&#xA;         resultBuilder.push('0');&#xA;      }&#xA;      resultBuilder.push(hexString);&#xA;      return resultBuilder.join('');&#xA;    };&#xA;&#xA;    // ...">
+    <attributes name="alpha" required="true" description="The fraction of this color that should be applied to the pixel. That is,&#xA;the final pixel color is defined by the equation:&#xA;&#xA;  pixel color = alpha * (this color) + (1.0 - alpha) * (background color)&#xA;&#xA;This means that a value of 1.0 corresponds to a solid color, whereas&#xA;a value of 0.0 corresponds to a completely transparent color. This&#xA;uses a wrapper message rather than a simple float scalar so that it is&#xA;possible to distinguish between a default value and the value being unset.&#xA;If omitted, this color object is to be rendered as a solid color&#xA;(as if the alpha value had been explicitly given with a value of 1.0)." type="//@types.3"/>
+    <attributes name="blue" required="true" description="The amount of blue in the color as a value in the interval [0, 1]." type="//@types.3"/>
+    <attributes name="green" required="true" description="The amount of green in the color as a value in the interval [0, 1]." type="//@types.3"/>
+    <attributes name="red" required="true" description="The amount of red in the color as a value in the interval [0, 1]." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="type" documentation="The feature type.">
+    <literals name="TYPE_UNSPECIFIED" documentation="Unspecified feature type."/>
+    <literals name="FACE_DETECTION" documentation="Run face detection."/>
+    <literals name="LANDMARK_DETECTION" documentation="Run landmark detection."/>
+    <literals name="LOGO_DETECTION" documentation="Run logo detection."/>
+    <literals name="LABEL_DETECTION" documentation="Run label detection."/>
+    <literals name="TEXT_DETECTION" documentation="Run OCR."/>
+    <literals name="DOCUMENT_TEXT_DETECTION" documentation="Run dense text document OCR. Takes precedence when both&#xA;DOCUMENT_TEXT_DETECTION and TEXT_DETECTION are present."/>
+    <literals name="SAFE_SEARCH_DETECTION" documentation="Run computer vision models to compute image safe-search properties."/>
+    <literals name="IMAGE_PROPERTIES" documentation="Compute a set of image properties, such as the image's dominant colors."/>
+    <literals name="CROP_HINTS" documentation="Run crop hints."/>
+    <literals name="WEB_DETECTION" documentation="Run web detection."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="adult" documentation="Represents the adult content likelihood for the image. Adult content may&#xA;contain elements such as nudity, pornographic images or cartoons, or&#xA;sexual activities.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="spoof" documentation="Spoof likelihood. The likelihood that an modification&#xA;was made to the image's canonical version to make it appear&#xA;funny or offensive.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="medical" documentation="Likelihood that this is a medical image.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="violence" documentation="Likelihood that this image contains violent content.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="blockType" documentation="Detected block type (text, image etc) for this block.">
+    <literals name="UNKNOWN" documentation="Unknown block type."/>
+    <literals name="TEXT" documentation="Regular text block."/>
+    <literals name="TABLE" documentation="Table block."/>
+    <literals name="PICTURE" documentation="Image block."/>
+    <literals name="RULER" documentation="Horizontal/vertical line box."/>
+    <literals name="BARCODE" documentation="Barcode block."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="LandmarkTtype" documentation="Face landmark type.">
+    <literals name="UNKNOWN_LANDMARK" documentation="Unknown face landmark detected. Should not be filled."/>
+    <literals name="LEFT_EYE" documentation="Left eye."/>
+    <literals name="RIGHT_EYE" documentation="Right eye."/>
+    <literals name="LEFT_OF_LEFT_EYEBROW" documentation="Left of left eyebrow."/>
+    <literals name="RIGHT_OF_LEFT_EYEBROW" documentation="Right of left eyebrow."/>
+    <literals name="LEFT_OF_RIGHT_EYEBROW" documentation="Left of right eyebrow."/>
+    <literals name="RIGHT_OF_RIGHT_EYEBROW" documentation="Right of right eyebrow."/>
+    <literals name="MIDPOINT_BETWEEN_EYES" documentation="Midpoint between eyes."/>
+    <literals name="NOSE_TIP" documentation="Nose tip."/>
+    <literals name="UPPER_LIP" documentation="Upper lip."/>
+    <literals name="LOWER_LIP" documentation="Lower lip."/>
+    <literals name="MOUTH_LEFT" documentation="Mouth left."/>
+    <literals name="MOUTH_RIGHT" documentation="Mouth right."/>
+    <literals name="MOUTH_CENTER" documentation="Mouth center."/>
+    <literals name="NOSE_BOTTOM_RIGHT" documentation="Nose, bottom right."/>
+    <literals name="NOSE_BOTTOM_LEFT" documentation="Nose, bottom left."/>
+    <literals name="NOSE_BOTTOM_CENTER" documentation="Nose, bottom center."/>
+    <literals name="LEFT_EYE_TOP_BOUNDARY" documentation="Left eye, top boundary."/>
+    <literals name="LEFT_EYE_RIGHT_CORNER" documentation="Left eye, right corner."/>
+    <literals name="LEFT_EYE_BOTTOM_BOUNDARY" documentation="Left eye, bottom boundary."/>
+    <literals name="LEFT_EYE_LEFT_CORNER" documentation="Left eye, left corner."/>
+    <literals name="RIGHT_EYE_TOP_BOUNDARY" documentation="Right eye, top boundary."/>
+    <literals name="RIGHT_EYE_RIGHT_CORNER" documentation="Right eye, right corner."/>
+    <literals name="RIGHT_EYE_BOTTOM_BOUNDARY" documentation="Right eye, bottom boundary."/>
+    <literals name="RIGHT_EYE_LEFT_CORNER" documentation="Right eye, left corner."/>
+    <literals name="LEFT_EYEBROW_UPPER_MIDPOINT" documentation="Left eyebrow, upper midpoint."/>
+    <literals name="RIGHT_EYEBROW_UPPER_MIDPOINT" documentation="Right eyebrow, upper midpoint."/>
+    <literals name="LEFT_EAR_TRAGION" documentation="Left ear tragion."/>
+    <literals name="RIGHT_EAR_TRAGION" documentation="Right ear tragion."/>
+    <literals name="LEFT_EYE_PUPIL" documentation="Left eye pupil."/>
+    <literals name="RIGHT_EYE_PUPIL" documentation="Right eye pupil."/>
+    <literals name="FOREHEAD_GLABELLA" documentation="Forehead glabella."/>
+    <literals name="CHIN_GNATHION" documentation="Chin gnathion."/>
+    <literals name="CHIN_LEFT_GONION" documentation="Chin left gonion."/>
+    <literals name="CHIN_RIGHT_GONION" documentation="Chin right gonion."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="underExposedLikelihood" documentation="Under-exposed likelihood.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="blurredLikelihood" documentation="Blurred likelihood.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="headwearLikelihood" documentation="Headwear likelihood.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="sorrowLikelihood" documentation="Sorrow likelihood.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="angerLikelihood" documentation="Anger likelihood.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="surpriseLikelihood" documentation="Surprise likelihood.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="joyLikelihood" documentation="Joy likelihood.">
+    <literals name="UNKNOWN" documentation="Unknown likelihood."/>
+    <literals name="VERY_UNLIKELY" documentation="It is very unlikely that the image belongs to the specified vertical."/>
+    <literals name="UNLIKELY" documentation="It is unlikely that the image belongs to the specified vertical."/>
+    <literals name="POSSIBLE" documentation="It is possible that the image belongs to the specified vertical."/>
+    <literals name="LIKELY" documentation="It is likely that the image belongs to the specified vertical."/>
+    <literals name="VERY_LIKELY" documentation="It is very likely that the image belongs to the specified vertical."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="DetectedBreakTtype" documentation="Detected break type.">
+    <literals name="UNKNOWN" documentation="Unknown break label type."/>
+    <literals name="SPACE" documentation="Regular space."/>
+    <literals name="SURE_SPACE" documentation="Sure space (very wide)."/>
+    <literals name="EOL_SURE_SPACE" documentation="Line-wrapping break."/>
+    <literals name="HYPHEN" documentation="End-line hyphen that is not present in text; does not co-occur with&#xA;`SPACE`, `LEADER_SPACE`, or `LINE_BREAK`."/>
+    <literals name="LINE_BREAK" documentation="Line break that ends a paragraph."/>
+  </types>
+</occi:Extension>

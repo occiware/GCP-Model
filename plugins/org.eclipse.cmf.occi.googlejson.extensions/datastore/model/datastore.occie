@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="datastore" scheme="http://occi/gcpdatastore#" description="Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.&#xA;">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="FilterLink" scheme="http://occi/gcpdatastore#" title="The filter to apply." source="//@kinds[term='query']" target="//@kinds[term='filter']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Query" scheme="http://occi/gcpdatastore#" title="A query for entities.">
+    <attributes name="startCursor" required="true" description="A starting point for the query results. Query cursors are&#xA;returned in query result batches and&#xA;[can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets)." type="//@types.0"/>
+    <attributes name="offset" required="true" description="The number of results to skip. Applies before limit, but after all other&#xA;constraints. Optional. Must be >= 0 if specified." type="//@types.3"/>
+    <attributes name="kind" required="true" description="The kinds to query (if empty, returns entities of all kinds).&#xA;Currently at most 1 kind may be specified." type="//@types.7"/>
+    <attributes name="distinctOn" required="true" description="The properties to make distinct. The query results will contain the first&#xA;result for each distinct combination of values for the given properties&#xA;(if empty, all results are returned)." type="//@types.7"/>
+    <attributes name="order" required="true" description="The order to apply to the query results (if empty, order is unspecified)." type="//@types.7"/>
+    <attributes name="projection" required="true" description="The projection to return. Defaults to returning all properties." type="//@types.7"/>
+    <attributes name="endCursor" required="true" description="An ending point for the query results. Query cursors are&#xA;returned in query result batches and&#xA;[can only be used to limit the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets)." type="//@types.0"/>
+    <attributes name="limit" required="true" description="The maximum number of results to return. Applies after all other&#xA;constraints. Optional.&#xA;Unspecified is interpreted as no limit.&#xA;Must be >= 0 if specified." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReadOnly" scheme="http://occi/gcpdatastore#" title="Options specific to read-only transactions.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="EntityLink" scheme="http://occi/gcpdatastore#" title="The resulting entity." source="//@kinds[term='entityresult']" target="//@kinds[term='entity']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="EntityResult" scheme="http://occi/gcpdatastore#" title="The result of fetching an entity from Datastore.">
+    <attributes name="cursor" required="true" description="A cursor that points to the position after the result entity.&#xA;Set only when the `EntityResult` is part of a `QueryResultBatch` message." type="//@types.0"/>
+    <attributes name="version" required="true" description="The version of the entity, a strictly positive number that monotonically&#xA;increases with changes to the entity.&#xA;&#xA;This field is set for `FULL` entity&#xA;results.&#xA;&#xA;For missing entities in `LookupResponse`, this&#xA;is the version of the snapshot that was used to look up the entity, and it&#xA;is always set except for eventually consistent reads." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ValueEntityLink" scheme="http://occi/gcpdatastore#" title="An entity value.&#xA;&#xA;- May have no key.&#xA;- May have a key with an incomplete key path.&#xA;- May have a reserved/read-only key." source="//@kinds[term='value']" target="//@kinds[term='entity']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LatLngLink" scheme="http://occi/gcpdatastore#" title="A geo point value representing a point on the surface of Earth." source="//@kinds[term='value']" target="//@kinds[term='latlng']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="KeyLink" scheme="http://occi/gcpdatastore#" title="A key value." source="//@kinds[term='value']" target="//@kinds[term='key']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ArrayValueLink" scheme="http://occi/gcpdatastore#" title="An array value.&#xA;Cannot contain another array value.&#xA;A `Value` instance that sets field `array_value` must not set fields&#xA;`meaning` or `exclude_from_indexes`." source="//@kinds[term='value']" target="//@kinds[term='arrayvalue']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Value" scheme="http://occi/gcpdatastore#" title="A message that can hold any of the supported value types and associated&#xA;metadata.">
+    <attributes name="integerValue" required="true" description="An integer value." type="//@types.0"/>
+    <attributes name="stringValue" required="true" description="A UTF-8 encoded string value.&#xA;When `exclude_from_indexes` is false (it is indexed) , may have at most 1500 bytes.&#xA;Otherwise, may be set to at least 1,000,000 bytes." type="//@types.0"/>
+    <attributes name="excludeFromIndexes" required="true" description="If the value should be excluded from all indexes including those defined&#xA;explicitly." type="//@types.6"/>
+    <attributes name="doubleValue" required="true" description="A double value." type="//@types.3"/>
+    <attributes name="timestampValue" required="true" description="A timestamp value.&#xA;When stored in the Datastore, precise only to microseconds;&#xA;any additional precision is rounded down." type="//@types.0"/>
+    <attributes name="booleanValue" required="true" description="A boolean value." type="//@types.6"/>
+    <attributes name="nullValue" required="true" description="A null value." type="//@types.11"/>
+    <attributes name="blobValue" required="true" description="A blob value.&#xA;May have at most 1,000,000 bytes.&#xA;When `exclude_from_indexes` is false, may have at most 1500 bytes.&#xA;In JSON requests, must be base64-encoded." type="//@types.11"/>
+    <attributes name="meaning" required="true" description="The `meaning` field should only be populated for backwards compatibility." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReadWrite" scheme="http://occi/gcpdatastore#" title="Options specific to read / write transactions.">
+    <attributes name="previousTransaction" required="true" description="The transaction identifier of the transaction being retried." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReadOptionsLink" scheme="http://occi/gcpdatastore#" title="The options for this lookup request." source="//@kinds[term='lookuprequest']" target="//@kinds[term='readoptions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LookupRequest" scheme="http://occi/gcpdatastore#" title="The request for Datastore.Lookup.">
+    <attributes name="keys" required="true" description="Keys of entities to look up." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReserveIdsRequest" scheme="http://occi/gcpdatastore#" title="The request for Datastore.ReserveIds.">
+    <attributes name="keys" required="true" description="A list of keys with complete key paths whose numeric IDs should not be&#xA;auto-allocated." type="//@types.7"/>
+    <attributes name="databaseId" required="true" description="If not empty, the ID of the database against which to make the request." type="//@types.11"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Status" scheme="http://occi/gcpdatastore#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.11"/>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PropertyReferenceLink" scheme="http://occi/gcpdatastore#" title="The property to order by." source="//@kinds[term='propertyorder']" target="//@kinds[term='propertyreference']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="PropertyOrder" scheme="http://occi/gcpdatastore#" title="The desired order for a specific property.">
+    <attributes name="direction" required="true" description="The direction to order by. Defaults to `ASCENDING`." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReserveIdsResponse" scheme="http://occi/gcpdatastore#" title="The response for Datastore.ReserveIds.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1EntityFilter" scheme="http://occi/gcpdatastore#" title="Identifies a subset of entities in a project. This is specified as&#xA;combinations of kinds and namespaces (either or both of which may be all, as&#xA;described in the following examples).&#xA;Example usage:&#xA;&#xA;Entire project:&#xA;  kinds=[], namespace_ids=[]&#xA;&#xA;Kinds Foo and Bar in all namespaces:&#xA;  kinds=['Foo', 'Bar'], namespace_ids=[]&#xA;&#xA;Kinds Foo and Bar only in the default namespace:&#xA;  kinds=['Foo', 'Bar'], namespace_ids=['']&#xA;&#xA;Kinds Foo and Bar in both the default and Baz namespaces:&#xA;  kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']&#xA;&#xA;The entire Baz namespace:&#xA;  kinds=[], namespace_ids=['Baz']">
+    <attributes name="namespaceIds" required="true" description="An empty list represents all namespaces. This is the preferred&#xA;usage for projects that don't use namespaces.&#xA;&#xA;An empty string element represents the default namespace. This should be&#xA;used if the project has data in non-default namespaces, but doesn't want to&#xA;include them.&#xA;Each namespace in this list must be unique." type="//@types.7"/>
+    <attributes name="kinds" required="true" description="If empty, then this represents all kinds." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PropertyReference" scheme="http://occi/gcpdatastore#" title="A reference to a property relative to the kind expressions.">
+    <attributes name="name" required="true" description="The name of the property.&#xA;If name includes &quot;.&quot;s, it may be interpreted as a property name path." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ProjectionPropertyReferenceLink" scheme="http://occi/gcpdatastore#" title="The property to project." source="//@kinds[term='projection']" target="//@kinds[term='propertyreference']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Projection" scheme="http://occi/gcpdatastore#" title="A representation of a property in a projection.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MutationEntityLink" scheme="http://occi/gcpdatastore#" title="The entity to update. The entity must already exist.&#xA;Must have a complete key path." source="//@kinds[term='mutation']" target="//@kinds[term='entity']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="MutationEntityLink" scheme="http://occi/gcpdatastore#" title="The entity to upsert. The entity may or may not already exist.&#xA;The entity key's final path element may be incomplete." source="//@kinds[term='mutation']" target="//@kinds[term='entity']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="MutationKeyLink" scheme="http://occi/gcpdatastore#" title="The key of the entity to delete. The entity may or may not already exist.&#xA;Must have a complete key path and must not be reserved/read-only." source="//@kinds[term='mutation']" target="//@kinds[term='key']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="MutationEntityLink" scheme="http://occi/gcpdatastore#" title="The entity to insert. The entity must not already exist.&#xA;The entity key's final path element may be incomplete." source="//@kinds[term='mutation']" target="//@kinds[term='entity']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Mutation" scheme="http://occi/gcpdatastore#" title="A mutation to apply to an entity.">
+    <attributes name="baseVersion" required="true" description="The version of the entity that this mutation is being applied to. If this&#xA;does not match the current version on the server, the mutation conflicts." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReadOptions" scheme="http://occi/gcpdatastore#" title="The options shared by read requests.">
+    <attributes name="transaction" required="true" description="The identifier of the transaction in which to read. A&#xA;transaction identifier is returned by a call to&#xA;Datastore.BeginTransaction." type="//@types.12"/>
+    <attributes name="readConsistency" required="true" description="The non-transactional read consistency to use.&#xA;Cannot be set to `STRONG` for global queries." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RollbackResponse" scheme="http://occi/gcpdatastore#" title="The response for Datastore.Rollback.&#xA;(an empty message).">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MutationResultKeyLink" scheme="http://occi/gcpdatastore#" title="The automatically allocated key.&#xA;Set only when the mutation allocated a key." source="//@kinds[term='mutationresult']" target="//@kinds[term='key']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="MutationResult" scheme="http://occi/gcpdatastore#" title="The result of applying a mutation.">
+    <attributes name="version" required="true" description="The version of the entity on the server after processing the mutation. If&#xA;the mutation doesn't change anything on the server, then the version will&#xA;be the version of the current entity or, if no entity is present, a version&#xA;that is strictly greater than the version of any previous entity and less&#xA;than the version of any possible future entity." type="//@types.13"/>
+    <attributes name="conflictDetected" required="true" description="Whether a conflict was detected for this mutation. Always false when a&#xA;conflict detection strategy field is not set in the mutation." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RollbackRequest" scheme="http://occi/gcpdatastore#" title="The request for Datastore.Rollback.">
+    <attributes name="transaction" required="true" description="The transaction identifier, returned by a call to&#xA;Datastore.BeginTransaction." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1ProgressLink" scheme="http://occi/gcpdatastore#" title="An estimate of the number of entities processed." source="//@kinds[term='googledatastoreadminv1beta1exportentitiesmetadata']" target="//@kinds[term='googledatastoreadminv1beta1progress']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1CommonMetadataLink" scheme="http://occi/gcpdatastore#" title="Metadata common to all Datastore Admin operations." source="//@kinds[term='googledatastoreadminv1beta1exportentitiesmetadata']" target="//@kinds[term='googledatastoreadminv1beta1commonmetadata']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1ExportEntitiesMetadataGoogleDatastoreAdminV1beta1ProgressLink" scheme="http://occi/gcpdatastore#" title="An estimate of the number of bytes processed." source="//@kinds[term='googledatastoreadminv1beta1exportentitiesmetadata']" target="//@kinds[term='googledatastoreadminv1beta1progress']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1EntityFilterLink" scheme="http://occi/gcpdatastore#" title="Description of which entities are being exported." source="//@kinds[term='googledatastoreadminv1beta1exportentitiesmetadata']" target="//@kinds[term='googledatastoreadminv1beta1entityfilter']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1ExportEntitiesMetadata" scheme="http://occi/gcpdatastore#" title="Metadata for ExportEntities operations.">
+    <attributes name="outputUrlPrefix" required="true" description="Location for the export metadata and data files. This will be the same&#xA;value as the&#xA;google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix&#xA;field. The final output location is provided in&#xA;google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CompositeFilter" scheme="http://occi/gcpdatastore#" title="A filter that merges multiple other filters using the given operator.">
+    <attributes name="filters" required="true" description="The list of filters to combine.&#xA;Must contain at least one filter." type="//@types.7"/>
+    <attributes name="op" required="true" description="The operator for combining multiple filters." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AllocateIdsResponse" scheme="http://occi/gcpdatastore#" title="The response for Datastore.AllocateIds.">
+    <attributes name="keys" required="true" description="The keys specified in the request (in the same order), each with&#xA;its key path completed with a newly allocated ID." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="StatusLink" scheme="http://occi/gcpdatastore#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='googlelongrunningoperation']" target="//@kinds[term='status']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GoogleLongrunningOperation" scheme="http://occi/gcpdatastore#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.9"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`." type="//@types.14"/>
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ValueLink" scheme="http://occi/gcpdatastore#" title="The value to compare the property to." source="//@kinds[term='propertyfilter']" target="//@kinds[term='value']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="PropertyFilterPropertyReferenceLink" scheme="http://occi/gcpdatastore#" title="The property to filter by." source="//@kinds[term='propertyfilter']" target="//@kinds[term='propertyreference']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="PropertyFilter" scheme="http://occi/gcpdatastore#" title="A filter on a specific property.">
+    <attributes name="op" required="true" description="The operator to filter by." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CommitResponse" scheme="http://occi/gcpdatastore#" title="The response for Datastore.Commit.">
+    <attributes name="indexUpdates" required="true" description="The number of index entries updated during the commit, or zero if none were&#xA;updated." type="//@types.3"/>
+    <attributes name="mutationResults" required="true" description="The result of performing the mutations.&#xA;The i-th mutation result corresponds to the i-th mutation in the request." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PartitionId" scheme="http://occi/gcpdatastore#" title="A partition ID identifies a grouping of entities. The grouping is always&#xA;by project and namespace, however the namespace ID may be empty.&#xA;&#xA;A partition ID contains several dimensions:&#xA;project ID and namespace ID.&#xA;&#xA;Partition dimensions:&#xA;&#xA;- May be `&quot;&quot;`.&#xA;- Must be valid UTF-8 bytes.&#xA;- Must have values that match regex `[A-Za-z\d\.\-_]{1,100}`&#xA;If the value of any dimension matches regex `__.*__`, the partition is&#xA;reserved/read-only.&#xA;A reserved/read-only partition ID is forbidden in certain documented&#xA;contexts.&#xA;&#xA;Foreign partition IDs (in which the project ID does&#xA;not match the context project ID ) are discouraged.&#xA;Reads and writes of foreign partition IDs may fail if the project is not in an active state.">
+    <attributes name="namespaceId" required="true" description="If not empty, the ID of the namespace to which the entities belong." type="//@types.15"/>
+    <attributes name="projectId" required="true" description="The ID of the project to which the entities belong." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="EntityKeyLink" scheme="http://occi/gcpdatastore#" title="The entity's key.&#xA;&#xA;An entity must have a key, unless otherwise documented (for example,&#xA;an entity in `Value.entity_value` may have no key).&#xA;An entity's kind is its key path's last element's kind,&#xA;or null if it has no key." source="//@kinds[term='entity']" target="//@kinds[term='key']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Entity" scheme="http://occi/gcpdatastore#" title="A Datastore data object.&#xA;&#xA;An entity is limited to 1 megabyte when stored. That _roughly_&#xA;corresponds to a limit of 1 megabyte for the serialized form of this&#xA;message.">
+    <attributes name="properties" required="true" description="The entity's properties.&#xA;The map's keys are property names.&#xA;A property name matching regex `__.*__` is reserved.&#xA;A reserved property name is forbidden in certain documented contexts.&#xA;The name must not contain more than 500 characters.&#xA;The name cannot be `&quot;&quot;`." type="//@types.10"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1Progress" scheme="http://occi/gcpdatastore#" title="Measures the progress of a particular metric.">
+    <attributes name="workEstimated" required="true" description="An estimate of how much work needs to be performed. May be zero if the&#xA;work estimate is unavailable." type="//@types.15"/>
+    <attributes name="workCompleted" required="true" description="The amount of work that has been completed. Note that this may be greater&#xA;than work_estimated." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="QueryResultBatch" scheme="http://occi/gcpdatastore#" title="A batch of results produced by a query.">
+    <attributes name="endCursor" required="true" description="A cursor that points to the position after the last result in the batch." type="//@types.15"/>
+    <attributes name="moreResults" required="true" description="The state of the query after the current batch." type="//@types.16"/>
+    <attributes name="snapshotVersion" required="true" description="The version number of the snapshot this batch was returned from.&#xA;This applies to the range of results from the query's `start_cursor` (or&#xA;the beginning of the query if no cursor was given) to this batch's&#xA;`end_cursor` (not the query's `end_cursor`).&#xA;&#xA;In a single transaction, subsequent query result batches for the same query&#xA;can have a greater snapshot version number. Each batch's snapshot version&#xA;is valid for all preceding batches.&#xA;The value will be zero for eventually consistent queries." type="//@types.16"/>
+    <attributes name="skippedCursor" required="true" description="A cursor that points to the position after the last skipped result.&#xA;Will be set when `skipped_results` != 0." type="//@types.16"/>
+    <attributes name="skippedResults" required="true" description="The number of results skipped, typically because of an offset." type="//@types.3"/>
+    <attributes name="entityResultType" required="true" description="The result type for every entity in `entity_results`." type="//@types.17"/>
+    <attributes name="entityResults" required="true" description="The results for this batch." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PathElement" scheme="http://occi/gcpdatastore#" title="A (kind, ID/name) pair used to construct a key path.&#xA;&#xA;If either name or ID is set, the element is complete.&#xA;If neither is set, the element is incomplete.">
+    <attributes name="name" required="true" description="The name of the entity.&#xA;A name matching regex `__.*__` is reserved/read-only.&#xA;A name must not be more than 1500 bytes when UTF-8 encoded.&#xA;Cannot be `&quot;&quot;`." type="//@types.17"/>
+    <attributes name="kind" required="true" description="The kind of the entity.&#xA;A kind matching regex `__.*__` is reserved/read-only.&#xA;A kind must not contain more than 1500 bytes when UTF-8 encoded.&#xA;Cannot be `&quot;&quot;`." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GqlQueryParameterValueLink" scheme="http://occi/gcpdatastore#" title="A value parameter." source="//@kinds[term='gqlqueryparameter']" target="//@kinds[term='value']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GqlQueryParameter" scheme="http://occi/gcpdatastore#" title="A binding parameter for a GQL query.">
+    <attributes name="cursor" required="true" description="A query cursor. Query cursors are returned in query&#xA;result batches." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GoogleLongrunningListOperationsResponse" scheme="http://occi/gcpdatastore#" title="The response message for Operations.ListOperations.">
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.17"/>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.7"/>
+    <actions name="cancel" scheme="http://occi/gcpdatastore/googlelongrunninglistoperationsresponse/action#" title="Starts asynchronous cancellation on a long-running operation.  The server&#xA;makes a best effort to cancel the operation, but success is not&#xA;guaranteed.  If the server doesn't support this method, it returns&#xA;`google.rpc.Code.UNIMPLEMENTED`.  Clients can use&#xA;Operations.GetOperation or&#xA;other methods to check whether the cancellation succeeded or whether the&#xA;operation completed despite cancellation. On successful cancellation,&#xA;the operation is not deleted; instead, it becomes an operation with&#xA;an Operation.error value with a google.rpc.Status.code of 1,&#xA;corresponding to `Code.CANCELLED`.">
+      <attributes name="name" required="true" description="The name of the operation resource to be cancelled." type="//@types.17"/>
+    </actions>
+    <actions name="delete" scheme="http://occi/gcpdatastore/googlelongrunninglistoperationsresponse/action#" title="Deletes a long-running operation. This method indicates that the client is&#xA;no longer interested in the operation result. It does not cancel the&#xA;operation. If the server doesn't support this method, it returns&#xA;`google.rpc.Code.UNIMPLEMENTED`.">
+      <attributes name="name" required="true" description="The name of the operation resource to be deleted." type="//@types.17"/>
+    </actions>
+    <actions name="get" scheme="http://occi/gcpdatastore/googlelongrunninglistoperationsresponse/action#" title="Gets the latest state of a long-running operation.  Clients can use this&#xA;method to poll the operation result at intervals as recommended by the API&#xA;service.">
+      <attributes name="name" required="true" description="The name of the operation resource." type="//@types.17"/>
+    </actions>
+    <actions name="list" scheme="http://occi/gcpdatastore/googlelongrunninglistoperationsresponse/action#" title="Lists operations that match the specified filter in the request. If the&#xA;server doesn't support this method, it returns `UNIMPLEMENTED`.&#xA;&#xA;NOTE: the `name` binding allows API services to override the binding&#xA;to use different resource name schemes, such as `users/*/operations`. To&#xA;override the binding, API services can add a binding such as&#xA;`&quot;/v1/{name=users/*}/operations&quot;` to their service configuration.&#xA;For backwards compatibility, the default name includes the operations&#xA;collection id, however overriding users must ensure the name binding&#xA;is the parent resource, without the operations collection id.">
+      <attributes name="filter" required="true" description="The standard list filter." type="//@types.17"/>
+      <attributes name="pageToken" required="true" description="The standard list page token." type="//@types.17"/>
+      <attributes name="name" required="true" description="The name of the operation's parent resource." type="//@types.17"/>
+      <attributes name="pageSize" required="true" description="The standard list page size." type="//@types.3"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BeginTransactionResponse" scheme="http://occi/gcpdatastore#" title="The response for Datastore.BeginTransaction.">
+    <attributes name="transaction" required="true" description="The transaction identifier (always present)." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="AllocateIdsRequest" scheme="http://occi/gcpdatastore#" title="The request for Datastore.AllocateIds.">
+    <attributes name="keys" required="true" description="A list of keys with incomplete key paths for which to allocate IDs.&#xA;No key may be reserved/read-only." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="QueryResultBatchLink" scheme="http://occi/gcpdatastore#" title="A batch of query results (always present)." source="//@kinds[term='runqueryresponse']" target="//@kinds[term='queryresultbatch']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="QueryLink" scheme="http://occi/gcpdatastore#" title="The parsed form of the `GqlQuery` from the request, if it was set." source="//@kinds[term='runqueryresponse']" target="//@kinds[term='query']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="RunQueryResponse" scheme="http://occi/gcpdatastore#" title="The response for Datastore.RunQuery.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LookupResponse" scheme="http://occi/gcpdatastore#" title="The response for Datastore.Lookup.">
+    <attributes name="missing" required="true" description="Entities not found as `ResultType.KEY_ONLY` entities. The order of results&#xA;in this field is undefined and has no relation to the order of the keys&#xA;in the input." type="//@types.7"/>
+    <attributes name="found" required="true" description="Entities found as `ResultType.FULL` entities. The order of results in this&#xA;field is undefined and has no relation to the order of the keys in the&#xA;input." type="//@types.7"/>
+    <attributes name="deferred" required="true" description="A list of keys that were not looked up due to resource constraints. The&#xA;order of results in this field is undefined and has no relation to the&#xA;order of the keys in the input." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="TransactionOptionsLink" scheme="http://occi/gcpdatastore#" title="Options for a new transaction." source="//@kinds[term='begintransactionrequest']" target="//@kinds[term='transactionoptions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BeginTransactionRequest" scheme="http://occi/gcpdatastore#" title="The request for Datastore.BeginTransaction.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CommitRequest" scheme="http://occi/gcpdatastore#" title="The request for Datastore.Commit.">
+    <attributes name="transaction" required="true" description="The identifier of the transaction associated with the commit. A&#xA;transaction identifier is returned by a call to&#xA;Datastore.BeginTransaction." type="//@types.17"/>
+    <attributes name="mode" required="true" description="The type of commit to perform. Defaults to `TRANSACTIONAL`." type="//@types.18"/>
+    <attributes name="mutations" required="true" description="The mutations to perform.&#xA;&#xA;When mode is `TRANSACTIONAL`, mutations affecting a single entity are&#xA;applied in order. The following sequences of mutations affecting a single&#xA;entity are not permitted in a single `Commit` request:&#xA;&#xA;- `insert` followed by `insert`&#xA;- `update` followed by `insert`&#xA;- `upsert` followed by `insert`&#xA;- `delete` followed by `update`&#xA;&#xA;When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single&#xA;entity." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="KindExpression" scheme="http://occi/gcpdatastore#" title="A representation of a kind.">
+    <attributes name="name" required="true" description="The name of the kind." type="//@types.18"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LatLng" scheme="http://occi/gcpdatastore#" title="An object representing a latitude/longitude pair. This is expressed as a pair&#xA;of doubles representing degrees latitude and degrees longitude. Unless&#xA;specified otherwise, this must conform to the&#xA;&lt;a href=&quot;http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf&quot;>WGS84&#xA;standard&lt;/a>. Values must be within normalized ranges.&#xA;&#xA;Example of normalization code in Python:&#xA;&#xA;    def NormalizeLongitude(longitude):&#xA;      &quot;&quot;&quot;Wraps decimal degrees longitude to [-180.0, 180.0].&quot;&quot;&quot;&#xA;      q, r = divmod(longitude, 360.0)&#xA;      if r > 180.0 or (r == 180.0 and q &lt;= -1.0):&#xA;        return r - 360.0&#xA;      return r&#xA;&#xA;    def NormalizeLatLng(latitude, longitude):&#xA;      &quot;&quot;&quot;Wraps decimal degrees latitude and longitude to&#xA;      [-90.0, 90.0] and [-180.0, 180.0], respectively.&quot;&quot;&quot;&#xA;      r = latitude % 360.0&#xA;      if r &lt;= 90.0:&#xA;        return r, NormalizeLongitude(longitude)&#xA;      elif r >= 270.0:&#xA;        return r - 360, NormalizeLongitude(longitude)&#xA;      else:&#xA;        return 180 - r, NormalizeLongitude(longitude + 180.0)&#xA;&#xA;    assert 180.0 == NormalizeLongitude(180.0)&#xA;    assert -180.0 == NormalizeLongitude(-180.0)&#xA;    assert -179.0 == NormalizeLongitude(181.0)&#xA;    assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)&#xA;    assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)&#xA;    assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)&#xA;    assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)&#xA;    assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)&#xA;    assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)&#xA;    assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)&#xA;    assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)&#xA;    assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)&#xA;    assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)">
+    <attributes name="latitude" required="true" description="The latitude in degrees. It must be in the range [-90.0, +90.0]." type="//@types.3"/>
+    <attributes name="longitude" required="true" description="The longitude in degrees. It must be in the range [-180.0, +180.0]." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="PartitionIdLink" scheme="http://occi/gcpdatastore#" title="Entities are partitioned into subsets, currently identified by a project&#xA;ID and namespace ID.&#xA;Queries are scoped to a single partition." source="//@kinds[term='key']" target="//@kinds[term='partitionid']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Key" scheme="http://occi/gcpdatastore#" title="A unique identifier for an entity.&#xA;If a key's partition ID or any of its path kinds or names are&#xA;reserved/read-only, the key is reserved/read-only.&#xA;A reserved/read-only key is forbidden in certain documented contexts.">
+    <attributes name="path" required="true" description="The entity path.&#xA;An entity path consists of one or more elements composed of a kind and a&#xA;string or numerical identifier, which identify entities. The first&#xA;element identifies a _root entity_, the second element identifies&#xA;a _child_ of the root entity, the third element identifies a child of the&#xA;second entity, and so forth. The entities identified by all prefixes of&#xA;the path are called the element's _ancestors_.&#xA;&#xA;An entity path is always fully complete: *all* of the entity's ancestors&#xA;are required to be in the path along with the entity identifier itself.&#xA;The only exception is that in some documented cases, the identifier in the&#xA;last path element (for the entity) itself may be omitted. For example,&#xA;the last path element of the key of `Mutation.insert` may have no&#xA;identifier.&#xA;&#xA;A path can never be empty, and a path can have at most 100 elements." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1CommonMetadata" scheme="http://occi/gcpdatastore#" title="Metadata common to all Datastore Admin operations.">
+    <attributes name="startTime" required="true" description="The time that work began on the operation." type="//@types.18"/>
+    <attributes name="labels" required="true" description="The client-assigned labels which were provided when the operation was&#xA;created. May also include additional labels." type="//@types.9"/>
+    <attributes name="endTime" required="true" description="The time the operation ended, either successfully or otherwise." type="//@types.18"/>
+    <attributes name="state" required="true" description="The current state of the Operation." type="//@types.19"/>
+    <attributes name="operationType" required="true" description="The type of the operation. Can be used as a filter in&#xA;ListOperationsRequest." type="//@types.20"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ArrayValue" scheme="http://occi/gcpdatastore#" title="An array value.">
+    <attributes name="values" required="true" description="Values in the array.&#xA;The order of this array may not be preserved if it contains a mix of&#xA;indexed and unindexed values." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1ExportEntitiesResponse" scheme="http://occi/gcpdatastore#" title="The response for&#xA;google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.">
+    <attributes name="outputUrl" required="true" description="Location of the output metadata file. This can be used to begin an import&#xA;into Cloud Datastore (this project or another project). See&#xA;google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url.&#xA;Only present if the operation completed successfully." type="//@types.20"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GqlQuery" scheme="http://occi/gcpdatastore#" title="A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).">
+    <attributes name="queryString" required="true" description="A string of the format described&#xA;[here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference)." type="//@types.20"/>
+    <attributes name="positionalBindings" required="true" description="Numbered binding site @1 references the first numbered parameter,&#xA;effectively using 1-based indexing, rather than the usual 0.&#xA;&#xA;For each binding site numbered i in `query_string`, there must be an i-th&#xA;numbered parameter. The inverse must also be true." type="//@types.7"/>
+    <attributes name="namedBindings" required="true" description="For each non-reserved named binding site in the query string, there must be&#xA;a named parameter with that name, but not necessarily the inverse.&#xA;&#xA;Key must match regex `A-Za-z_$*`, must not match regex&#xA;`__.*__`, and must not be `&quot;&quot;`." type="//@types.10"/>
+    <attributes name="allowLiterals" required="true" description="When false, the query string must not contain any literals and instead must&#xA;bind all values. For example,&#xA;`SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while&#xA;`SELECT * FROM Kind WHERE a = @value` is." type="//@types.6"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="CompositeFilterLink" scheme="http://occi/gcpdatastore#" title="A composite filter." source="//@kinds[term='filter']" target="//@kinds[term='compositefilter']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="PropertyFilterLink" scheme="http://occi/gcpdatastore#" title="A filter on a property." source="//@kinds[term='filter']" target="//@kinds[term='propertyfilter']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="Filter" scheme="http://occi/gcpdatastore#" title="A holder for any type of filter.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RunQueryRequestReadOptionsLink" scheme="http://occi/gcpdatastore#" title="The options for this query." source="//@kinds[term='runqueryrequest']" target="//@kinds[term='readoptions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="RunQueryRequestQueryLink" scheme="http://occi/gcpdatastore#" title="The query to run." source="//@kinds[term='runqueryrequest']" target="//@kinds[term='query']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GqlQueryLink" scheme="http://occi/gcpdatastore#" title="The GQL query to run." source="//@kinds[term='runqueryrequest']" target="//@kinds[term='gqlquery']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="RunQueryRequestPartitionIdLink" scheme="http://occi/gcpdatastore#" title="Entities are partitioned into subsets, identified by a partition ID.&#xA;Queries are scoped to a single partition.&#xA;This partition ID is normalized with the standard default context&#xA;partition ID." source="//@kinds[term='runqueryrequest']" target="//@kinds[term='partitionid']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="RunQueryRequest" scheme="http://occi/gcpdatastore#" title="The request for Datastore.RunQuery.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Empty" scheme="http://occi/gcpdatastore#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ReadOnlyLink" scheme="http://occi/gcpdatastore#" title="The transaction should only allow reads." source="//@kinds[term='transactionoptions']" target="//@kinds[term='readonly']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ReadWriteLink" scheme="http://occi/gcpdatastore#" title="The transaction should allow both reads and writes." source="//@kinds[term='transactionoptions']" target="//@kinds[term='readwrite']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="TransactionOptions" scheme="http://occi/gcpdatastore#" title="Options for beginning a new transaction.&#xA;&#xA;Transactions can be created explicitly with calls to&#xA;Datastore.BeginTransaction or implicitly by setting&#xA;ReadOptions.new_transaction in read requests.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1ImportEntitiesMetadataGoogleDatastoreAdminV1beta1CommonMetadataLink" scheme="http://occi/gcpdatastore#" title="Metadata common to all Datastore Admin operations." source="//@kinds[term='googledatastoreadminv1beta1importentitiesmetadata']" target="//@kinds[term='googledatastoreadminv1beta1commonmetadata']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1ImportEntitiesMetadataGoogleDatastoreAdminV1beta1ProgressLink" scheme="http://occi/gcpdatastore#" title="An estimate of the number of bytes processed." source="//@kinds[term='googledatastoreadminv1beta1importentitiesmetadata']" target="//@kinds[term='googledatastoreadminv1beta1progress']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1ImportEntitiesMetadataGoogleDatastoreAdminV1beta1EntityFilterLink" scheme="http://occi/gcpdatastore#" title="Description of which entities are being imported." source="//@kinds[term='googledatastoreadminv1beta1importentitiesmetadata']" target="//@kinds[term='googledatastoreadminv1beta1entityfilter']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1ImportEntitiesMetadataGoogleDatastoreAdminV1beta1ProgressLink" scheme="http://occi/gcpdatastore#" title="An estimate of the number of entities processed." source="//@kinds[term='googledatastoreadminv1beta1importentitiesmetadata']" target="//@kinds[term='googledatastoreadminv1beta1progress']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="GoogleDatastoreAdminV1beta1ImportEntitiesMetadata" scheme="http://occi/gcpdatastore#" title="Metadata for ImportEntities operations.">
+    <attributes name="inputUrl" required="true" description="The location of the import metadata file. This will be the same value as&#xA;the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url&#xA;field." type="//@types.20"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="nullValue" documentation="A null value.">
+    <literals name="NULL_VALUE" documentation="Null value."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="direction" documentation="The direction to order by. Defaults to `ASCENDING`.">
+    <literals name="DIRECTION_UNSPECIFIED" documentation="Unspecified. This value must not be used."/>
+    <literals name="ASCENDING" documentation="Ascending."/>
+    <literals name="DESCENDING" documentation="Descending."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="readConsistency" documentation="The non-transactional read consistency to use.&#xA;Cannot be set to `STRONG` for global queries.">
+    <literals name="READ_CONSISTENCY_UNSPECIFIED" documentation="Unspecified. This value must not be used."/>
+    <literals name="STRONG" documentation="Strong consistency."/>
+    <literals name="EVENTUAL" documentation="Eventual consistency."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="op" documentation="The operator for combining multiple filters.">
+    <literals name="OPERATOR_UNSPECIFIED" documentation="Unspecified. This value must not be used."/>
+    <literals name="AND" documentation="The results are required to satisfy each of the combined filters."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="PropertyFilterOop" documentation="The operator to filter by.">
+    <literals name="OPERATOR_UNSPECIFIED" documentation="Unspecified. This value must not be used."/>
+    <literals name="LESS_THAN" documentation="Less than."/>
+    <literals name="LESS_THAN_OR_EQUAL" documentation="Less than or equal."/>
+    <literals name="GREATER_THAN" documentation="Greater than."/>
+    <literals name="GREATER_THAN_OR_EQUAL" documentation="Greater than or equal."/>
+    <literals name="EQUAL" documentation="Equal."/>
+    <literals name="HAS_ANCESTOR" documentation="Has ancestor."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="moreResults" documentation="The state of the query after the current batch.">
+    <literals name="MORE_RESULTS_TYPE_UNSPECIFIED" documentation="Unspecified. This value is never used."/>
+    <literals name="NOT_FINISHED" documentation="There may be additional batches to fetch from this query."/>
+    <literals name="MORE_RESULTS_AFTER_LIMIT" documentation="The query is finished, but there may be more results after the limit."/>
+    <literals name="MORE_RESULTS_AFTER_CURSOR" documentation="The query is finished, but there may be more results after the end&#xA;cursor."/>
+    <literals name="NO_MORE_RESULTS" documentation="The query is finished, and there are no more results."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="entityResultType" documentation="The result type for every entity in `entity_results`.">
+    <literals name="RESULT_TYPE_UNSPECIFIED" documentation="Unspecified. This value is never used."/>
+    <literals name="FULL" documentation="The key and properties."/>
+    <literals name="PROJECTION" documentation="A projected subset of properties. The entity may have no key."/>
+    <literals name="KEY_ONLY" documentation="Only the key."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="mode" documentation="The type of commit to perform. Defaults to `TRANSACTIONAL`.">
+    <literals name="MODE_UNSPECIFIED" documentation="Unspecified. This value must not be used."/>
+    <literals name="TRANSACTIONAL" documentation="Transactional: The mutations are either all applied, or none are applied.&#xA;Learn about transactions [here](https://cloud.google.com/datastore/docs/concepts/transactions)."/>
+    <literals name="NON_TRANSACTIONAL" documentation="Non-transactional: The mutations may not apply as all or none."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="state" documentation="The current state of the Operation.">
+    <literals name="STATE_UNSPECIFIED" documentation="Unspecified."/>
+    <literals name="INITIALIZING" documentation="Request is being prepared for processing."/>
+    <literals name="PROCESSING" documentation="Request is actively being processed."/>
+    <literals name="CANCELLING" documentation="Request is in the process of being cancelled after user called&#xA;google.longrunning.Operations.CancelOperation on the operation."/>
+    <literals name="FINALIZING" documentation="Request has been processed and is in its finalization stage."/>
+    <literals name="SUCCESSFUL" documentation="Request has completed successfully."/>
+    <literals name="FAILED" documentation="Request has finished being processed, but encountered an error."/>
+    <literals name="CANCELLED" documentation="Request has finished being cancelled after user called&#xA;google.longrunning.Operations.CancelOperation."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="operationType" documentation="The type of the operation. Can be used as a filter in&#xA;ListOperationsRequest.">
+    <literals name="OPERATION_TYPE_UNSPECIFIED" documentation="Unspecified."/>
+    <literals name="EXPORT_ENTITIES" documentation="ExportEntities."/>
+    <literals name="IMPORT_ENTITIES" documentation="ImportEntities."/>
+  </types>
+</occi:Extension>

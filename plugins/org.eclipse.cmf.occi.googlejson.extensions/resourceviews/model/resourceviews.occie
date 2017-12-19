@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="resourceviews" scheme="http://occi/gcpresourceviews#" description="The Resource View API allows users to create and manage logical sets of Google Compute Engine instances.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="Label" scheme="http://occi/gcpresourceviews#" title="The Label to be applied to the resource views.">
+    <attributes name="key" required="true" description="Key of the label." type="//@types.0"/>
+    <attributes name="value" required="true" description="Value of the label." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListResourceResponseItem" scheme="http://occi/gcpresourceviews#" title="The list response item that contains the resource and end points information.">
+    <attributes name="endpoints" required="true" description="The list of service end points on the resource." type="//@types.9"/>
+    <attributes name="resource" required="true" description="The full URL of the resource." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Operation" scheme="http://occi/gcpresourceviews#" title="An operation resource, used to manage asynchronous API requests.">
+    <attributes name="clientOperationId" required="true" description="[Output only] An optional identifier specified by the client when the mutation was initiated. Must be unique for all operation resources in the project." type="//@types.0"/>
+    <attributes name="creationTimestamp" required="true" description="[Output Only] The time that this operation was requested, in RFC3339 text format." type="//@types.0"/>
+    <attributes name="endTime" required="true" description="[Output Only] The time that this operation was completed, in RFC3339 text format." type="//@types.0"/>
+    <attributes name="error" required="true" description="[Output Only] If errors occurred during processing of this operation, this field will be populated." type="//@types.10"/>
+    <attributes name="httpErrorMessage" required="true" description="[Output only] If operation fails, the HTTP error message returned." type="//@types.0"/>
+    <attributes name="httpErrorStatusCode" required="true" description="[Output only] If operation fails, the HTTP error status code returned." type="//@types.3"/>
+    <attributes name="insertTime" required="true" description="[Output Only] The time that this operation was requested, in RFC3339 text format." type="//@types.0"/>
+    <attributes name="kind" required="true" description="[Output only] Type of the resource." type="//@types.0"/>
+    <attributes name="name" required="true" description="[Output Only] Name of the resource." type="//@types.0"/>
+    <attributes name="operationType" required="true" description="[Output only] Type of the operation. Operations include insert, update, and delete." type="//@types.0"/>
+    <attributes name="progress" required="true" description="[Output only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess at when the operation will be complete. This number should be monotonically increasing as the operation progresses." type="//@types.3"/>
+    <attributes name="region" required="true" description="[Output Only] URL of the region where the operation resides. Only available when performing regional operations." type="//@types.0"/>
+    <attributes name="selfLink" required="true" description="[Output Only] Server-defined fully-qualified URL for this resource." type="//@types.0"/>
+    <attributes name="startTime" required="true" description="[Output Only] The time that this operation was started by the server, in RFC3339 text format." type="//@types.0"/>
+    <attributes name="status" required="true" description="[Output Only] Status of the operation." type="//@types.0"/>
+    <attributes name="statusMessage" required="true" description="[Output Only] An optional textual description of the current status of the operation." type="//@types.0"/>
+    <attributes name="targetId" required="true" description="[Output Only] Unique target ID which identifies a particular incarnation of the target." type="//@types.0"/>
+    <attributes name="targetLink" required="true" description="[Output only] URL of the resource the operation is mutating." type="//@types.0"/>
+    <attributes name="user" required="true" description="[Output Only] User who requested the operation, for example: user@example.com." type="//@types.0"/>
+    <attributes name="warnings" required="true" description="[Output Only] If there are issues with this operation, a warning is returned." type="//@types.7"/>
+    <attributes name="zone" required="true" description="[Output Only] URL of the zone where the operation resides. Only available when performing per-zone operations." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="OperationList" scheme="http://occi/gcpresourceviews#" title="">
+    <attributes name="items" required="true" description="The operation resources." type="//@types.7"/>
+    <attributes name="kind" required="true" description="Type of resource." type="//@types.0"/>
+    <attributes name="nextPageToken" required="true" description="A token used to continue a truncated list request (output only)." type="//@types.0"/>
+    <attributes name="selfLink" required="true" description="Server defined URL for this resource (output only)." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ResourceView" scheme="http://occi/gcpresourceviews#" title="The resource view object.">
+    <attributes name="creationTimestamp" required="true" description="The creation time of the resource view." type="//@types.0"/>
+    <attributes name="description" required="true" description="The detailed description of the resource view." type="//@types.0"/>
+    <attributes name="endpoints" required="true" description="Services endpoint information." type="//@types.7"/>
+    <attributes name="fingerprint" required="true" description="The fingerprint of the service endpoint information." type="//@types.0"/>
+    <attributes name="kind" required="true" description="Type of the resource." type="//@types.0"/>
+    <attributes name="labels" required="true" description="The labels for events." type="//@types.7"/>
+    <attributes name="name" required="true" description="The name of the resource view." type="//@types.0"/>
+    <attributes name="network" required="true" description="The URL of a Compute Engine network to which the resources in the view belong." type="//@types.0"/>
+    <attributes name="resources" required="true" description="A list of all resources in the resource view." type="//@types.7"/>
+    <attributes name="selfLink" required="true" description="[Output Only] A self-link to the resource view." type="//@types.0"/>
+    <attributes name="size" required="true" description="The total number of resources in the resource view." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ServiceEndpoint" scheme="http://occi/gcpresourceviews#" title="The service endpoint that may be started in a VM.">
+    <attributes name="name" required="true" description="The name of the service endpoint." type="//@types.0"/>
+    <attributes name="port" required="true" description="The port of the service endpoint." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ZoneViewsAddResourcesRequest" scheme="http://occi/gcpresourceviews#" title="The request to add resources to the resource view.">
+    <attributes name="resources" required="true" description="The list of resources to be added." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ZoneViewsGetServiceResponse" scheme="http://occi/gcpresourceviews#" title="">
+    <attributes name="endpoints" required="true" description="The service information." type="//@types.7"/>
+    <attributes name="fingerprint" required="true" description="The fingerprint of the service information." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ZoneViewsList" scheme="http://occi/gcpresourceviews#" title="The response to a list request.">
+    <attributes name="items" required="true" description="The result that contains all resource views that meet the criteria." type="//@types.7"/>
+    <attributes name="kind" required="true" description="Type of resource." type="//@types.0"/>
+    <attributes name="nextPageToken" required="true" description="A token used for pagination." type="//@types.0"/>
+    <attributes name="selfLink" required="true" description="Server defined URL for this resource (output only)." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ZoneViewsListResourcesResponse" scheme="http://occi/gcpresourceviews#" title="The response to a list resource request.">
+    <attributes name="items" required="true" description="The formatted JSON that is requested by the user." type="//@types.7"/>
+    <attributes name="network" required="true" description="The URL of a Compute Engine network to which the resources in the view belong." type="//@types.0"/>
+    <attributes name="nextPageToken" required="true" description="A token used for pagination." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ZoneViewsRemoveResourcesRequest" scheme="http://occi/gcpresourceviews#" title="The request to remove resources from the resource view.">
+    <attributes name="resources" required="true" description="The list of resources to be removed." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ZoneViewsSetServiceRequest" scheme="http://occi/gcpresourceviews#" title="">
+    <attributes name="endpoints" required="true" description="The service information to be updated." type="//@types.7"/>
+    <attributes name="fingerprint" required="true" description="Fingerprint of the service information; a hash of the contents. This field is used for optimistic locking when updating the service entries." type="//@types.0"/>
+    <attributes name="resourceName" required="true" description="The name of the resource if user wants to update the service information of the resource." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+</occi:Extension>

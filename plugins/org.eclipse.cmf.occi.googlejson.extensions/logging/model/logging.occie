@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="logging" scheme="http://occi/gcplogging#" description="Writes log entries and manages your Stackdriver Logging configuration.">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <kinds name="ListLogMetricsResponse" scheme="http://occi/gcplogging#" title="Result returned from ListLogMetrics.">
+    <attributes name="metrics" required="true" description="A list of logs-based metrics." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken." type="//@types.0"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MetricDescriptor" scheme="http://occi/gcplogging#" title="Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.">
+    <attributes name="metricKind" required="true" description="Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported." type="//@types.11"/>
+    <attributes name="description" required="true" description="A detailed description of the metric, which can be used in documentation." type="//@types.11"/>
+    <attributes name="displayName" required="true" description="A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &quot;Request count&quot;. This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota." type="//@types.11"/>
+    <attributes name="unit" required="true" description="The unit in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)&#xA;bit bit&#xA;By byte&#xA;s second&#xA;min minute&#xA;h hour&#xA;d dayPrefixes (PREFIX)&#xA;k kilo (10**3)&#xA;M mega (10**6)&#xA;G giga (10**9)&#xA;T tera (10**12)&#xA;P peta (10**15)&#xA;E exa (10**18)&#xA;Z zetta (10**21)&#xA;Y yotta (10**24)&#xA;m milli (10**-3)&#xA;u micro (10**-6)&#xA;n nano (10**-9)&#xA;p pico (10**-12)&#xA;f femto (10**-15)&#xA;a atto (10**-18)&#xA;z zepto (10**-21)&#xA;y yocto (10**-24)&#xA;Ki kibi (2**10)&#xA;Mi mebi (2**20)&#xA;Gi gibi (2**30)&#xA;Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/s.The grammar also includes these connectors:&#xA;/ division (as an infix operator, e.g. 1/s).&#xA;. multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is as follows:&#xA;Expression = Component { &quot;.&quot; Component } { &quot;/&quot; Component } ;&#xA;&#xA;Component = [ PREFIX ] UNIT [ Annotation ]&#xA;          | Annotation&#xA;          | &quot;1&quot;&#xA;          ;&#xA;&#xA;Annotation = &quot;{&quot; NAME &quot;}&quot; ;&#xA;Notes:&#xA;Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s.&#xA;NAME is a sequence of non-blank printable ASCII characters not  containing '{' or '}'." type="//@types.11"/>
+    <attributes name="labels" required="true" description="The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed." type="//@types.7"/>
+    <attributes name="name" required="true" description="The resource name of the metric descriptor." type="//@types.11"/>
+    <attributes name="type" required="true" description="The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined custom metric types have the DNS name custom.googleapis.com. Metric types should use a natural hierarchical grouping. For example:&#xA;&quot;custom.googleapis.com/invoice/paid/amount&quot;&#xA;&quot;appengine.googleapis.com/http/server/response_latencies&quot;&#xA;" type="//@types.11"/>
+    <attributes name="valueType" required="true" description="Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported." type="//@types.12"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LogEntrySourceLocationLink" scheme="http://occi/gcplogging#" title="Optional. Source code location information associated with the log entry, if any." source="//@kinds[term='logentry']" target="//@kinds[term='logentrysourcelocation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="HttpRequestLink" scheme="http://occi/gcplogging#" title="Optional. Information about the HTTP request associated with this log entry, if applicable." source="//@kinds[term='logentry']" target="//@kinds[term='httprequest']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="MonitoredResourceLink" scheme="http://occi/gcplogging#" title="Required. The monitored resource associated with this log entry. Example: a log entry that reports a database error would be associated with the monitored resource designating the particular database that reported the error." source="//@kinds[term='logentry']" target="//@kinds[term='monitoredresource']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LogEntryOperationLink" scheme="http://occi/gcplogging#" title="Optional. Information about an operation associated with the log entry, if applicable." source="//@kinds[term='logentry']" target="//@kinds[term='logentryoperation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LogEntry" scheme="http://occi/gcplogging#" title="An individual entry in a log.">
+    <attributes name="labels" required="true" description="Optional. A set of user-defined (key, value) data that provides additional information about the log entry." type="//@types.9"/>
+    <attributes name="trace" required="true" description="Optional. Resource name of the trace associated with the log entry, if any. If it contains a relative resource name, the name is assumed to be relative to //tracing.googleapis.com. Example: projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824" type="//@types.12"/>
+    <attributes name="severity" required="true" description="Optional. The severity of the log entry. The default value is LogSeverity.DEFAULT." type="//@types.13"/>
+    <attributes name="receiveTimestamp" required="true" description="Output only. The time the log entry was received by Stackdriver Logging." type="//@types.13"/>
+    <attributes name="timestamp" required="true" description="Optional. The time the event described by the log entry occurred. This time is used to compute the log entry's age and to enforce the logs retention period. If this field is omitted in a new log entry, then Stackdriver Logging assigns it the current time.Incoming log entries should have timestamps that are no more than the logs retention period in the past, and no more than 24 hours in the future. See the entries.write API method for more information." type="//@types.13"/>
+    <attributes name="logName" required="true" description="Required. The resource name of the log to which this log entry belongs:&#xA;&quot;projects/[PROJECT_ID]/logs/[LOG_ID]&quot;&#xA;&quot;organizations/[ORGANIZATION_ID]/logs/[LOG_ID]&quot;&#xA;&quot;billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]&quot;&#xA;&quot;folders/[FOLDER_ID]/logs/[LOG_ID]&quot;&#xA;A project number may optionally be used in place of PROJECT_ID. The  project number is translated to its corresponding PROJECT_ID internally  and the log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must be URL-encoded within log_name. Example: &quot;organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity&quot;. [LOG_ID] must be less than 512 characters long and can only include the following characters: upper and lower case alphanumeric characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins with a forward-slash, such as /projects/..., then the log entry is ingested as usual but the forward-slash is removed. Listing the log entry will not show the leading slash and filtering for a log name with a leading slash will never return any results." type="//@types.13"/>
+    <attributes name="jsonPayload" required="true" description="The log entry payload, represented as a structure that is expressed as a JSON object." type="//@types.9"/>
+    <attributes name="insertId" required="true" description="Optional. A unique identifier for the log entry. If you provide a value, then Stackdriver Logging considers other log entries in the same project, with the same timestamp, and with the same insert_id to be duplicates which can be removed. If omitted in new log entries, then Stackdriver Logging assigns its own unique identifier. The insert_id is also used to order log entries that have the same timestamp value." type="//@types.13"/>
+    <attributes name="textPayload" required="true" description="The log entry payload, represented as a Unicode string (UTF-8)." type="//@types.13"/>
+    <attributes name="protoPayload" required="true" description="The log entry payload, represented as a protocol buffer. Some Google Cloud Platform services use this field for their log entry payloads." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="RequestLog" scheme="http://occi/gcplogging#" title="Complete log information about a single HTTP request to an App Engine application.">
+    <attributes name="first" required="true" description="Whether this is the first RequestLog entry for this request. If an active request has several RequestLog entries written to Stackdriver Logging, then this field will be set for one of them." type="//@types.6"/>
+    <attributes name="versionId" required="true" description="Version of the application that handled this request." type="//@types.13"/>
+    <attributes name="moduleId" required="true" description="Module of the application that handled this request." type="//@types.13"/>
+    <attributes name="endTime" required="true" description="Time when the request finished." type="//@types.13"/>
+    <attributes name="userAgent" required="true" description="User agent that made the request." type="//@types.13"/>
+    <attributes name="wasLoadingRequest" required="true" description="Whether this was a loading request for the instance." type="//@types.6"/>
+    <attributes name="sourceReference" required="true" description="Source code for the application that handled this request. There can be more than one source reference per deployed application if source code is distributed among multiple repositories." type="//@types.7"/>
+    <attributes name="responseSize" required="true" description="Size in bytes sent back to client by request." type="//@types.13"/>
+    <attributes name="traceId" required="true" description="Stackdriver Trace identifier for this request." type="//@types.13"/>
+    <attributes name="line" required="true" description="A list of log lines emitted by the application while serving this request." type="//@types.7"/>
+    <attributes name="referrer" required="true" description="Referrer URL of request." type="//@types.13"/>
+    <attributes name="taskQueueName" required="true" description="Queue name of the request, in the case of an offline request." type="//@types.13"/>
+    <attributes name="requestId" required="true" description="Globally unique identifier for a request, which is based on the request start time. Request IDs for requests which started later will compare greater as strings than those for requests which started earlier." type="//@types.13"/>
+    <attributes name="nickname" required="true" description="The logged-in user who made the request.Most likely, this is the part of the user's email before the @ sign. The field value is the same for different requests from the same user, but different users can have similar names. This information is also available to the application via the App Engine Users API.This field will be populated starting with App Engine 1.9.21." type="//@types.13"/>
+    <attributes name="status" required="true" description="HTTP response status code. Example: 200, 404." type="//@types.3"/>
+    <attributes name="resource" required="true" description="Contains the path and query portion of the URL that was requested. For example, if the URL was &quot;http://example.com/app?name=val&quot;, the resource would be &quot;/app?name=val&quot;. The fragment identifier, which is identified by the # character, is not included." type="//@types.13"/>
+    <attributes name="pendingTime" required="true" description="Time this request spent in the pending request queue." type="//@types.13"/>
+    <attributes name="taskName" required="true" description="Task name of the request, in the case of an offline request." type="//@types.13"/>
+    <attributes name="urlMapEntry" required="true" description="File or class that handled the request." type="//@types.13"/>
+    <attributes name="instanceIndex" required="true" description="If the instance processing this request belongs to a manually scaled module, then this is the 0-based index of the instance. Otherwise, this value is -1." type="//@types.3"/>
+    <attributes name="finished" required="true" description="Whether this request is finished or active." type="//@types.6"/>
+    <attributes name="host" required="true" description="Internet host and port number of the resource being requested." type="//@types.13"/>
+    <attributes name="httpVersion" required="true" description="HTTP version of request. Example: &quot;HTTP/1.1&quot;." type="//@types.13"/>
+    <attributes name="startTime" required="true" description="Time when the request started." type="//@types.13"/>
+    <attributes name="latency" required="true" description="Latency of the request." type="//@types.13"/>
+    <attributes name="ip" required="true" description="Origin IP address." type="//@types.13"/>
+    <attributes name="appId" required="true" description="Application that handled this request." type="//@types.13"/>
+    <attributes name="appEngineRelease" required="true" description="App Engine release version." type="//@types.13"/>
+    <attributes name="method" required="true" description="Request method. Example: &quot;GET&quot;, &quot;HEAD&quot;, &quot;PUT&quot;, &quot;POST&quot;, &quot;DELETE&quot;." type="//@types.13"/>
+    <attributes name="cost" required="true" description="An indication of the relative cost of serving this request." type="//@types.3"/>
+    <attributes name="instanceId" required="true" description="An identifier for the instance that handled the request." type="//@types.13"/>
+    <attributes name="megaCycles" required="true" description="Number of CPU megacycles used to process request." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LogExclusion" scheme="http://occi/gcplogging#" title="Specifies a set of log entries that are not to be stored in Stackdriver Logging. If your project receives a large volume of logs, you might be able to use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Audit log entries and log entries from Amazon Web Services are never excluded.">
+    <attributes name="name" required="true" description="Required. A client-assigned identifier, such as &quot;load-balancer-exclusion&quot;. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods." type="//@types.13"/>
+    <attributes name="description" required="true" description="Optional. A description of this exclusion." type="//@types.13"/>
+    <attributes name="disabled" required="true" description="Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can use exclusions.patch to change the value of this field." type="//@types.6"/>
+    <attributes name="filter" required="true" description="Required. An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. For example, the following filter matches 99% of low-severity log entries from load balancers:&#xA;&quot;resource.type=http_load_balancer severity&lt;ERROR sample(insertId, 0.99)&quot;&#xA;" type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListMonitoredResourceDescriptorsResponse" scheme="http://occi/gcplogging#" title="Result returned from ListMonitoredResourceDescriptors.">
+    <attributes name="nextPageToken" required="true" description="If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken." type="//@types.13"/>
+    <attributes name="resourceDescriptors" required="true" description="A list of resource descriptors." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListExclusionsResponse" scheme="http://occi/gcplogging#" title="Result returned from ListExclusions.">
+    <attributes name="exclusions" required="true" description="A list of exclusions." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken." type="//@types.13"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="BucketOptionsLink" scheme="http://occi/gcplogging#" title="Optional. The bucket_options are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket boundaries used to create a histogram of the extracted values." source="//@kinds[term='logmetric']" target="//@kinds[term='bucketoptions']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="MetricDescriptorLink" scheme="http://occi/gcplogging#" title="Optional. The metric descriptor associated with the logs-based metric. If unspecified, it uses a default metric descriptor with a DELTA metric kind, INT64 value type, with no labels and a unit of &quot;1&quot;. Such a metric counts the number of log entries matching the filter expression.The name, type, and description fields in the metric_descriptor are output only, and is constructed using the name and description field in the LogMetric.To create a logs-based metric that records a distribution of log values, a DELTA metric kind with a DISTRIBUTION value type must be used along with a value_extractor expression in the LogMetric.Each label in the metric descriptor must have a matching label name as the key and an extractor expression as the value in the label_extractors map.The metric_kind and value_type fields in the metric_descriptor cannot be updated once initially configured. New labels can be added in the metric_descriptor, but existing labels cannot be modified except for their description." source="//@kinds[term='logmetric']" target="//@kinds[term='metricdescriptor']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LogMetric" scheme="http://occi/gcplogging#" title="Describes a logs-based metric. The value of the metric is the number of log entries that match a logs filter in a given time interval.Logs-based metric can also be used to extract values from logs and create a a distribution of the values. The distribution records the statistics of the extracted values along with an optional histogram of the values as specified by the bucket options.">
+    <attributes name="valueExtractor" required="true" description="Optional. A value_extractor is required when using a distribution logs-based metric to extract the values to record from a log entry. Two functions are supported for value extraction: EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument are:  1. field: The name of the log entry field from which the value is to be  extracted.  2. regex: A regular expression using the Google RE2 syntax  (https://github.com/google/re2/wiki/Syntax) with a single capture  group to extract data from the specified log entry field. The value  of the field is converted to a string before applying the regex.  It is an error to specify a regex that does not include exactly one  capture group.The result of the extraction must be convertible to a double type, as the distribution always records double values. If either the extraction or the conversion to double fails, then those values are not recorded in the distribution.Example: REGEXP_EXTRACT(jsonPayload.request, &quot;.*quantity=(\d+).*&quot;)" type="//@types.13"/>
+    <attributes name="name" required="true" description="Required. The client-assigned metric identifier. Examples: &quot;error_count&quot;, &quot;nginx/requests&quot;.Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.The metric identifier in this field must not be URL-encoded (https://en.wikipedia.org/wiki/Percent-encoding). However, when the metric identifier appears as the [METRIC_ID] part of a metric_name API parameter, then the metric identifier must be URL-encoded. Example: &quot;projects/my-project/metrics/nginx%2Frequests&quot;." type="//@types.13"/>
+    <attributes name="labelExtractors" required="true" description="Optional. A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this map. The syntax of the extractor expression is the same as for the value_extractor field.The extracted value is converted to the type defined in the label descriptor. If the either the extraction or the type conversion fails, the label will have a default value. The default value for a string label is an empty string, for an integer label its 0, and for a boolean label its false.Note that there are upper bounds on the maximum number of labels and the number of active time series that are allowed in a project." type="//@types.9"/>
+    <attributes name="version" required="true" description="Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed." type="//@types.14"/>
+    <attributes name="filter" required="true" description="Required. An advanced logs filter which is used to match log entries. Example:&#xA;&quot;resource.type=gae_app AND severity>=ERROR&quot;&#xA;The maximum length of the filter is 20000 characters." type="//@types.14"/>
+    <attributes name="description" required="true" description="Optional. A description of this metric, which is used in documentation." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LogEntryOperation" scheme="http://occi/gcplogging#" title="Additional information about a potentially long-running operation with which a log entry is associated.">
+    <attributes name="last" required="true" description="Optional. Set this to True if this is the last log entry in the operation." type="//@types.6"/>
+    <attributes name="first" required="true" description="Optional. Set this to True if this is the first log entry in the operation." type="//@types.6"/>
+    <attributes name="producer" required="true" description="Optional. An arbitrary producer identifier. The combination of id and producer must be globally unique. Examples for producer: &quot;MyDivision.MyBigCompany.com&quot;, &quot;github.com/MyProject/MyApplication&quot;." type="//@types.14"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MonitoredResource" scheme="http://occi/gcplogging#" title="An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for &quot;gce_instance&quot; has labels &quot;instance_id&quot; and &quot;zone&quot;:&#xA;{ &quot;type&quot;: &quot;gce_instance&quot;,&#xA;  &quot;labels&quot;: { &quot;instance_id&quot;: &quot;12345678901234&quot;,&#xA;              &quot;zone&quot;: &quot;us-central1-a&quot; }}&#xA;">
+    <attributes name="type" required="true" description="Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance." type="//@types.14"/>
+    <attributes name="labels" required="true" description="Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels &quot;project_id&quot;, &quot;instance_id&quot;, and &quot;zone&quot;." type="//@types.9"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LogSink" scheme="http://occi/gcplogging#" title="Describes a sink used to export log entries to one of the following destinations in any project: a Cloud Storage bucket, a BigQuery dataset, or a Cloud Pub/Sub topic. A logs filter controls which log entries are exported. The sink must be created within a project, organization, billing account, or folder.">
+    <attributes name="includeChildren" required="true" description="Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name:&#xA;logName:(&quot;projects/test-project1/&quot; OR &quot;projects/test-project2/&quot;) AND&#xA;resource.type=gce_instance&#xA;" type="//@types.6"/>
+    <attributes name="filter" required="true" description="Optional. An advanced logs filter. The only exported log entries are those that are in the resource owning the sink and that match the filter. For example:&#xA;logName=&quot;projects/[PROJECT_ID]/logs/[LOG_ID]&quot; AND severity>=ERROR&#xA;" type="//@types.14"/>
+    <attributes name="destination" required="true" description="Required. The export destination:&#xA;&quot;storage.googleapis.com/[GCS_BUCKET]&quot;&#xA;&quot;bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]&quot;&#xA;&quot;pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]&quot;&#xA;The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs With Sinks." type="//@types.14"/>
+    <attributes name="endTime" required="true" description="Deprecated. This field is ignored when creating or updating sinks." type="//@types.14"/>
+    <attributes name="writerIdentity" required="true" description="Output only. An IAM identity&amp;mdash;a service account or group&amp;mdash;under which Stackdriver Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update, based on the setting of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting access for a resource. Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity." type="//@types.14"/>
+    <attributes name="startTime" required="true" description="Deprecated. This field is ignored when creating or updating sinks." type="//@types.14"/>
+    <attributes name="outputVersionFormat" required="true" description="Deprecated. The log entry format to use for this sink's exported log entries. The v2 format is used by default and cannot be changed." type="//@types.15"/>
+    <attributes name="name" required="true" description="Required. The client-assigned sink identifier, unique within the project. Example: &quot;my-syslog-errors-to-pubsub&quot;. Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListLogsResponse" scheme="http://occi/gcplogging#" title="Result returned from ListLogs.">
+    <attributes name="logNames" required="true" description="A list of log names. For example, &quot;projects/my-project/syslog&quot; or &quot;organizations/123/cloudresourcemanager.googleapis.com%2Factivity&quot;." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListSinksResponse" scheme="http://occi/gcplogging#" title="Result returned from ListSinks.">
+    <attributes name="nextPageToken" required="true" description="If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken." type="//@types.15"/>
+    <attributes name="sinks" required="true" description="A list of sinks." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="HttpRequest" scheme="http://occi/gcplogging#" title="A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification. Product-specific logging information MUST be defined in a separate message.">
+    <attributes name="referer" required="true" description="The referer URL of the request, as defined in HTTP/1.1 Header Field Definitions (http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)." type="//@types.15"/>
+    <attributes name="latency" required="true" description="The request processing latency on the server, from the time the request was received until the response was sent." type="//@types.15"/>
+    <attributes name="userAgent" required="true" description="The user agent sent by the client. Example: &quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET CLR 1.0.3705)&quot;." type="//@types.15"/>
+    <attributes name="cacheFillBytes" required="true" description="The number of HTTP response bytes inserted into cache. Set only when a cache fill was attempted." type="//@types.15"/>
+    <attributes name="requestMethod" required="true" description="The request method. Examples: &quot;GET&quot;, &quot;HEAD&quot;, &quot;PUT&quot;, &quot;POST&quot;." type="//@types.15"/>
+    <attributes name="requestSize" required="true" description="The size of the HTTP request message in bytes, including the request headers and the request body." type="//@types.15"/>
+    <attributes name="responseSize" required="true" description="The size of the HTTP response message sent back to the client, in bytes, including the response headers and the response body." type="//@types.15"/>
+    <attributes name="protocol" required="true" description="Protocol used for the request. Examples: &quot;HTTP/1.1&quot;, &quot;HTTP/2&quot;, &quot;websocket&quot;" type="//@types.15"/>
+    <attributes name="requestUrl" required="true" description="The scheme (http, https), the host name, the path and the query portion of the URL that was requested. Example: &quot;http://example.com/some/info?color=red&quot;." type="//@types.15"/>
+    <attributes name="serverIp" required="true" description="The IP address (IPv4 or IPv6) of the origin server that the request was sent to." type="//@types.15"/>
+    <attributes name="remoteIp" required="true" description="The IP address (IPv4 or IPv6) of the client that issued the HTTP request. Examples: &quot;192.168.1.1&quot;, &quot;FE80::0202:B3FF:FE1E:8329&quot;." type="//@types.15"/>
+    <attributes name="cacheLookup" required="true" description="Whether or not a cache lookup was attempted." type="//@types.6"/>
+    <attributes name="cacheHit" required="true" description="Whether or not an entity was served from cache (with or without validation)." type="//@types.6"/>
+    <attributes name="cacheValidatedWithOriginServer" required="true" description="Whether or not the response was validated with the origin server before being served from cache. This field is only meaningful if cache_hit is True." type="//@types.6"/>
+    <attributes name="status" required="true" description="The response code indicating the status of response. Examples: 200, 404." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="MonitoredResourceDescriptor" scheme="http://occi/gcplogging#" title="An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of &quot;gce_instance&quot; and specifies the use of the labels &quot;instance_id&quot; and &quot;zone&quot; to identify particular VM instances.Different APIs can support different monitored resource types. APIs generally provide a list method that returns the monitored resource descriptors used by the API.">
+    <attributes name="labels" required="true" description="Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels &quot;database_id&quot; and &quot;zone&quot;." type="//@types.7"/>
+    <attributes name="name" required="true" description="Optional. The resource name of the monitored resource descriptor: &quot;projects/{project_id}/monitoredResourceDescriptors/{type}&quot; where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format &quot;monitoredResourceDescriptors/{type}&quot;." type="//@types.15"/>
+    <attributes name="description" required="true" description="Optional. A detailed description of the monitored resource type that might be used in documentation." type="//@types.15"/>
+    <attributes name="displayName" required="true" description="Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, &quot;Google Cloud SQL Database&quot;." type="//@types.15"/>
+    <attributes name="type" required="true" description="Required. The monitored resource type. For example, the type &quot;cloudsql_database&quot; represents databases in Google Cloud SQL. The maximum length of this value is 256 characters." type="//@types.15"/>
+    <actions name="list" scheme="http://occi/gcplogging/monitoredresourcedescriptor/action#" title="Lists the descriptors for monitored resource types used by Stackdriver Logging.">
+      <attributes name="pageToken" required="true" description="Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call." type="//@types.15"/>
+      <attributes name="pageSize" required="true" description="Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available." type="//@types.3"/>
+    </actions>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LogEntrySourceLocation" scheme="http://occi/gcplogging#" title="Additional information about the source code location that produced the log entry.">
+    <attributes name="file" required="true" description="Optional. Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name." type="//@types.15"/>
+    <attributes name="function" required="true" description="Optional. Human-readable name of the function or method being invoked, with optional context such as the class or package name. This information may be used in contexts such as the logs viewer, where a file and line number are less meaningful. The format can vary by language. For example: qual.if.ied.Class.method (Java), dir/package.func (Go), function (Python)." type="//@types.15"/>
+    <attributes name="line" required="true" description="Optional. Line within the source file. 1-based; 0 indicates no line number available." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListLogEntriesResponse" scheme="http://occi/gcplogging#" title="Result returned from ListLogEntries.">
+    <attributes name="entries" required="true" description="A list of log entries. If entries is empty, nextPageToken may still be returned, indicating that more entries may exist. See nextPageToken for more information." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.If a value for next_page_token appears and the entries field is empty, it means that the search found no log entries so far but it did not have time to search all the possible log entries. Retry the method with this value for page_token to continue the search. Alternatively, consider speeding up the search by changing your filter to specify a single log name or resource type, or to narrow the time range of the search." type="//@types.15"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceLocationLink" scheme="http://occi/gcplogging#" title="Where in the source code this log message was written." source="//@kinds[term='logline']" target="//@kinds[term='sourcelocation']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LogLine" scheme="http://occi/gcplogging#" title="Application log line emitted while processing a request.">
+    <attributes name="logMessage" required="true" description="App-provided log message." type="//@types.15"/>
+    <attributes name="severity" required="true" description="Severity of this log entry." type="//@types.16"/>
+    <attributes name="time" required="true" description="Approximate time when this log entry was made." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Linear" scheme="http://occi/gcplogging#" title="Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &lt;= i &lt; N-1): offset + (width * i).  Lower bound (1 &lt;= i &lt; N): offset + (width * (i - 1)).">
+    <attributes name="offset" required="true" description="Lower bound of the first bucket." type="//@types.3"/>
+    <attributes name="numFiniteBuckets" required="true" description="Must be greater than 0." type="//@types.3"/>
+    <attributes name="width" required="true" description="Must be greater than 0." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Empty" scheme="http://occi/gcplogging#" title="A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:&#xA;service Foo {&#xA;  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;}&#xA;The JSON representation for Empty is empty JSON object {}.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceLocation" scheme="http://occi/gcplogging#" title="Specifies a location in a source code file.">
+    <attributes name="file" required="true" description="Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name." type="//@types.16"/>
+    <attributes name="functionName" required="true" description="Human-readable name of the function or method being invoked, with optional context such as the class or package name. This information is used in contexts such as the logs viewer, where a file and line number are less meaningful. The format can vary by language. For example: qual.if.ied.Class.method (Java), dir/package.func (Go), function (Python)." type="//@types.16"/>
+    <attributes name="line" required="true" description="Line within the source file." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ListLogEntriesRequest" scheme="http://occi/gcplogging#" title="The parameters to ListLogEntries.">
+    <attributes name="pageToken" required="true" description="Optional. If present, then retrieve the next batch of results from the preceding call to this method. page_token must be the value of next_page_token from the previous response. The values of other method parameters should be identical to those in the previous call." type="//@types.16"/>
+    <attributes name="pageSize" required="true" description="Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of next_page_token in the response indicates that more results might be available." type="//@types.3"/>
+    <attributes name="orderBy" required="true" description="Optional. How the results should be sorted. Presently, the only permitted values are &quot;timestamp asc&quot; (default) and &quot;timestamp desc&quot;. The first option returns entries in order of increasing values of LogEntry.timestamp (oldest first), and the second option returns entries in order of decreasing timestamps (newest first). Entries with equal timestamps are returned in order of their insert_id values." type="//@types.16"/>
+    <attributes name="resourceNames" required="true" description="Required. Names of one or more parent resources from which to retrieve log entries:&#xA;&quot;projects/[PROJECT_ID]&quot;&#xA;&quot;organizations/[ORGANIZATION_ID]&quot;&#xA;&quot;billingAccounts/[BILLING_ACCOUNT_ID]&quot;&#xA;&quot;folders/[FOLDER_ID]&quot;&#xA;Projects listed in the project_ids field are added to this list." type="//@types.7"/>
+    <attributes name="filter" required="true" description="Optional. A filter that chooses which log entries to return. See Advanced Logs Filters. Only log entries that match the filter are returned. An empty filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to return no results. The maximum length of the filter is 20000 characters." type="//@types.16"/>
+    <attributes name="projectIds" required="true" description="Deprecated. Use resource_names instead. One or more project identifiers or project numbers from which to retrieve log entries. Example: &quot;my-project-1A&quot;. If present, these project identifiers are converted to resource name format and added to the list of resources in resource_names." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Explicit" scheme="http://occi/gcplogging#" title="Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &lt;= i &lt; N-1): boundsi  Lower bound (1 &lt;= i &lt; N); boundsi - 1The bounds field must contain at least one element. If bounds has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets.">
+    <attributes name="bounds" required="true" description="The values must be monotonically increasing." type="//@types.7"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="SourceReference" scheme="http://occi/gcplogging#" title="A reference to a particular snapshot of the source tree used to build and deploy an application.">
+    <attributes name="repository" required="true" description="Optional. A URI string identifying the repository. Example: &quot;https://github.com/GoogleCloudPlatform/kubernetes.git&quot;" type="//@types.16"/>
+    <attributes name="revisionId" required="true" description="The canonical and persistent identifier of the deployed revision. Example (git): &quot;0035781c50ec7aa23385dc841529ce8a4b70db1b&quot;" type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="WriteLogEntriesResponse" scheme="http://occi/gcplogging#" title="Result returned from WriteLogEntries. empty">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="Exponential" scheme="http://occi/gcplogging#" title="Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &lt;= i &lt; N-1): scale * (growth_factor ^ i).  Lower bound (1 &lt;= i &lt; N): scale * (growth_factor ^ (i - 1)).">
+    <attributes name="growthFactor" required="true" description="Must be greater than 1." type="//@types.3"/>
+    <attributes name="scale" required="true" description="Must be greater than 0." type="//@types.3"/>
+    <attributes name="numFiniteBuckets" required="true" description="Must be greater than 0." type="//@types.3"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="WriteLogEntriesRequestMonitoredResourceLink" scheme="http://occi/gcplogging#" title="Optional. A default monitored resource object that is assigned to all log entries in entries that do not specify a value for resource. Example:&#xA;{ &quot;type&quot;: &quot;gce_instance&quot;,&#xA;  &quot;labels&quot;: {&#xA;    &quot;zone&quot;: &quot;us-central1-a&quot;, &quot;instance_id&quot;: &quot;00000000000000000000&quot; }}&#xA;See LogEntry." source="//@kinds[term='writelogentriesrequest']" target="//@kinds[term='monitoredresource']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="WriteLogEntriesRequest" scheme="http://occi/gcplogging#" title="The parameters to WriteLogEntries.">
+    <attributes name="partialSuccess" required="true" description="Optional. Whether valid entries should be written even if some other entries fail due to INVALID_ARGUMENT or PERMISSION_DENIED errors. If any entry is not written, then the response status is the error associated with one of the failed entries and the response includes error details keyed by the entries' zero-based index in the entries.write method." type="//@types.6"/>
+    <attributes name="labels" required="true" description="Optional. Default labels that are added to the labels field of all log entries in entries. If a log entry already has a label with the same key as a label in this parameter, then the log entry's label is not changed. See LogEntry." type="//@types.9"/>
+    <attributes name="entries" required="true" description="Required. The log entries to send to Stackdriver Logging. The order of log entries in this list does not matter. Values supplied in this method's log_name, resource, and labels fields are copied into those log entries in this list that do not include values for their corresponding fields. For more information, see the LogEntry type.If the timestamp or insert_id fields are missing in log entries, then this method supplies the current time or a unique identifier, respectively. The supplied values are chosen so that, among the log entries that did not supply their own values, the entries earlier in the list will sort before the entries later in the list. See the entries.list method.Log entries with timestamps that are more than the logs retention period in the past or more than 24 hours in the future might be discarded. Discarding does not return an error.To improve throughput and to avoid exceeding the quota limit for calls to entries.write, you should try to include several log entries in this list, rather than calling this method for each individual log entry." type="//@types.7"/>
+    <attributes name="logName" required="true" description="Optional. A default log resource name that is assigned to all log entries in entries that do not specify a value for log_name:&#xA;&quot;projects/[PROJECT_ID]/logs/[LOG_ID]&quot;&#xA;&quot;organizations/[ORGANIZATION_ID]/logs/[LOG_ID]&quot;&#xA;&quot;billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]&quot;&#xA;&quot;folders/[FOLDER_ID]/logs/[LOG_ID]&quot;&#xA;[LOG_ID] must be URL-encoded. For example, &quot;projects/my-project-id/logs/syslog&quot; or &quot;organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity&quot;. For more information about log names, see LogEntry." type="//@types.16"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="LabelDescriptor" scheme="http://occi/gcplogging#" title="A description of a label.">
+    <attributes name="valueType" required="true" description="The type of data that can be assigned to the label." type="//@types.17"/>
+    <attributes name="key" required="true" description="The label key." type="//@types.17"/>
+    <attributes name="description" required="true" description="A human-readable description for the label." type="//@types.17"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <kinds name="ExplicitLink" scheme="http://occi/gcplogging#" title="The explicit buckets." source="//@kinds[term='bucketoptions']" target="//@kinds[term='explicit']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="LinearLink" scheme="http://occi/gcplogging#" title="The linear bucket." source="//@kinds[term='bucketoptions']" target="//@kinds[term='linear']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ExponentialLink" scheme="http://occi/gcplogging#" title="The exponential buckets." source="//@kinds[term='bucketoptions']" target="//@kinds[term='exponential']">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="BucketOptions" scheme="http://occi/gcplogging#" title="BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.">
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
+  </kinds>
+  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:BooleanType" name="boolean"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:EnumerationType" name="metricKind" documentation="Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.">
+    <literals name="METRIC_KIND_UNSPECIFIED" documentation="Do not use this default value."/>
+    <literals name="GAUGE" documentation="An instantaneous measurement of a value."/>
+    <literals name="DELTA" documentation="The change in a value during a time interval."/>
+    <literals name="CUMULATIVE" documentation="A value accumulated over a time interval. Cumulative measurements in a time series should have the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="valueType" documentation="Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.">
+    <literals name="VALUE_TYPE_UNSPECIFIED" documentation="Do not use this default value."/>
+    <literals name="BOOL" documentation="The value is a boolean. This value type can be used only if the metric kind is GAUGE."/>
+    <literals name="INT64" documentation="The value is a signed 64-bit integer."/>
+    <literals name="DOUBLE" documentation="The value is a double precision floating point number."/>
+    <literals name="STRING" documentation="The value is a text string. This value type can be used only if the metric kind is GAUGE."/>
+    <literals name="DISTRIBUTION" documentation="The value is a Distribution."/>
+    <literals name="MONEY" documentation="The value is money."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="severity" documentation="Optional. The severity of the log entry. The default value is LogSeverity.DEFAULT.">
+    <literals name="DEFAULT" documentation="(0) The log entry has no assigned severity level."/>
+    <literals name="DEBUG" documentation="(100) Debug or trace information."/>
+    <literals name="INFO" documentation="(200) Routine information, such as ongoing status or performance."/>
+    <literals name="NOTICE" documentation="(300) Normal but significant events, such as start up, shut down, or a configuration change."/>
+    <literals name="WARNING" documentation="(400) Warning events might cause problems."/>
+    <literals name="ERROR" documentation="(500) Error events are likely to cause problems."/>
+    <literals name="CRITICAL" documentation="(600) Critical events cause more severe problems or outages."/>
+    <literals name="ALERT" documentation="(700) A person must take an action immediately."/>
+    <literals name="EMERGENCY" documentation="(800) One or more systems are unusable."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="version" documentation="Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.">
+    <literals name="V2" documentation="Stackdriver Logging API v2."/>
+    <literals name="V1" documentation="Stackdriver Logging API v1."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="outputVersionFormat" documentation="Deprecated. The log entry format to use for this sink's exported log entries. The v2 format is used by default and cannot be changed.">
+    <literals name="VERSION_FORMAT_UNSPECIFIED" documentation="An unspecified format version that will default to V2."/>
+    <literals name="V2" documentation="LogEntry version 2 format."/>
+    <literals name="V1" documentation="LogEntry version 1 format."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="LogLineSseverity" documentation="Severity of this log entry.">
+    <literals name="DEFAULT" documentation="(0) The log entry has no assigned severity level."/>
+    <literals name="DEBUG" documentation="(100) Debug or trace information."/>
+    <literals name="INFO" documentation="(200) Routine information, such as ongoing status or performance."/>
+    <literals name="NOTICE" documentation="(300) Normal but significant events, such as start up, shut down, or a configuration change."/>
+    <literals name="WARNING" documentation="(400) Warning events might cause problems."/>
+    <literals name="ERROR" documentation="(500) Error events are likely to cause problems."/>
+    <literals name="CRITICAL" documentation="(600) Critical events cause more severe problems or outages."/>
+    <literals name="ALERT" documentation="(700) A person must take an action immediately."/>
+    <literals name="EMERGENCY" documentation="(800) One or more systems are unusable."/>
+  </types>
+  <types xsi:type="occi:EnumerationType" name="LabelDescriptorVvaluetype" documentation="The type of data that can be assigned to the label.">
+    <literals name="STRING" documentation="A variable-length string. This is the default."/>
+    <literals name="BOOL" documentation="Boolean; true or false."/>
+    <literals name="INT64" documentation="A 64-bit signed integer."/>
+  </types>
+</occi:Extension>
