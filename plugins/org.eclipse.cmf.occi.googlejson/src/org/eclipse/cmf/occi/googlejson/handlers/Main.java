@@ -9,6 +9,7 @@ import org.eclipse.cmf.occi.core.Kind;
 import org.eclipse.cmf.occi.core.util.OcciHelper;
 import org.eclipse.cmf.occi.googlejson.handlers.json.APIBuilder;
 import org.eclipse.cmf.occi.googlejson.handlers.json.data.API;
+import org.eclipse.cmf.occi.googlejson.handlers.json.data.StringToDataType;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -38,6 +39,7 @@ public class Main extends AbstractHandler {
 			apis.add(APIBuilder.buildAPI(jsonFile.getAbsolutePath(), nameOfFile));
 		}
 		for (API api : apis) {
+			StringToDataType.initMap();
 			api.toExtensionOcci();
 		}
 	}
