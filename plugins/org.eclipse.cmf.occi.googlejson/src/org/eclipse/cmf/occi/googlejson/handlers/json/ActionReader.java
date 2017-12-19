@@ -48,7 +48,7 @@ public class ActionReader {
 							}
 							KindData kind = api.getKindDataPerName(nameKind);
 							if (kind != null) {
-								ActionData action = new ActionData(method.getKey(), mapMethod.get("description").getAsString());
+								ActionData action = new ActionData(kind.name, method.getKey(), mapMethod.get("description").getAsString());
 								if (mapMethod.get("parameters") != null) {
 									JsonObject parameters = mapMethod.get("parameters").getAsJsonObject();
 									for (Entry<String, JsonElement> parameter : parameters.entrySet()) {

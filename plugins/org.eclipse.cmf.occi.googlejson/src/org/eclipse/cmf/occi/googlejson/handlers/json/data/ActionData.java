@@ -10,11 +10,13 @@ import org.eclipse.cmf.occi.core.OCCIFactory;
 
 public class ActionData {
 	
+	public final String nameOfKind;
 	public final String id;
 	public final String description;
 	public final List<AttributeData> attributes;
 	
-	public ActionData(String id, String description) {
+	public ActionData(String nameOfKind, String id, String description) {
+		this.nameOfKind = nameOfKind;
 		this.id = id;
 		this.description = description;
 		this.attributes = new ArrayList<AttributeData>();
@@ -25,9 +27,9 @@ public class ActionData {
 		action.setName(this.id);
 		action.setTitle(this.description);
 		for (AttributeData attribute : this.attributes) {
-			action.getAttributes().add(attribute.toAttributeOcci(extension));	
+			action.getAttributes().add(attribute.toAttributeOcci(null, extension));	
 		}
-		action.setScheme(extension.getScheme());
+		action.setScheme(extension.getScheme().split("#")[0] + "/" + this.nameOfKind.toLowerCase() + "/action#");
 		return action;
 	}
 }
