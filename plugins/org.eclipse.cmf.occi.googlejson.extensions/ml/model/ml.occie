@@ -2,36 +2,64 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="ml" scheme="http://occi/gcpml#" description="An API to enable creating and using machine learning models.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="GoogleCloudMlV1__AutoScaling" scheme="http://occi/gcpml#" title="Options for automatically scaling a model.">
-    <attributes name="minNodes" required="true" description="Optional. The minimum number of nodes to allocate for this model. These&#xA;nodes are always up, starting from the time the model is deployed, so the&#xA;cost of operating this model will be at least&#xA;`rate` * `min_nodes` * number of hours since last billing cycle,&#xA;where `rate` is the cost per node-hour as documented in&#xA;[pricing](https://cloud.google.com/ml-engine/pricing#prediction_pricing),&#xA;even if no predictions are performed. There is additional cost for each&#xA;prediction performed.&#xA;&#xA;Unlike manual scaling, if the load gets too heavy for the nodes&#xA;that are up, the service will automatically add nodes to handle the&#xA;increased load as well as scale back as traffic drops, always maintaining&#xA;at least `min_nodes`. You will be charged for the time in which additional&#xA;nodes are used.&#xA;&#xA;If not specified, `min_nodes` defaults to 0, in which case, when traffic&#xA;to a model stops (and after a cool-down period), nodes will be shut down&#xA;and no charges will be incurred until traffic to the model resumes." type="//@types.3"/>
+    <attributes name="minNodes" required="true" description="Optional. The minimum number of nodes to allocate for this model. These&#xA;nodes are always up, starting from the time the model is deployed, so the&#xA;cost of operating this model will be at least&#xA;`rate` * `min_nodes` * number of hours since last billing cycle,&#xA;where `rate` is the cost per node-hour as documented in&#xA;[pricing](https://cloud.google.com/ml-engine/pricing#prediction_pricing),&#xA;even if no predictions are performed. There is additional cost for each&#xA;prediction performed.&#xA;&#xA;Unlike manual scaling, if the load gets too heavy for the nodes&#xA;that are up, the service will automatically add nodes to handle the&#xA;increased load as well as scale back as traffic drops, always maintaining&#xA;at least `min_nodes`. You will be charged for the time in which additional&#xA;nodes are used.&#xA;&#xA;If not specified, `min_nodes` defaults to 0, in which case, when traffic&#xA;to a model stops (and after a cool-down period), nodes will be shut down&#xA;and no charges will be incurred until traffic to the model resumes.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleRpc__Status" scheme="http://occi/gcpml#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
-    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
-    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.0"/>
-    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__ListModelsResponse" scheme="http://occi/gcpml#" title="Response message for the ListModels method.">
-    <attributes name="models" required="true" description="The list of models." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="Optional. Pass this token as the `page_token` field of the request for a&#xA;subsequent call." type="//@types.0"/>
+    <attributes name="models" required="true" description="The list of models." type="//@types.5"/>
+    <attributes name="nextPageToken" required="true" description="Optional. Pass this token as the `page_token` field of the request for a&#xA;subsequent call.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__HyperparameterSpecLink" scheme="http://occi/gcpml#" title="Optional. The set of Hyperparameters to tune." source="//@kinds[term='googlecloudmlv1__traininginput']" target="//@kinds[term='googlecloudmlv1__hyperparameterspec']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__TrainingInput" scheme="http://occi/gcpml#" title="Represents input parameters for a training job.">
-    <attributes name="region" required="true" description="Required. The Google Compute Engine region to run the training job in." type="//@types.0"/>
-    <attributes name="args" required="true" description="Optional. Command line arguments to pass to the program." type="//@types.7"/>
-    <attributes name="workerType" required="true" description="Optional. Specifies the type of virtual machine to use for your training&#xA;job's worker nodes.&#xA;&#xA;The supported values are the same as those described in the entry for&#xA;`masterType`.&#xA;&#xA;This value must be present when `scaleTier` is set to `CUSTOM` and&#xA;`workerCount` is greater than zero." type="//@types.0"/>
-    <attributes name="parameterServerType" required="true" description="Optional. Specifies the type of virtual machine to use for your training&#xA;job's parameter server.&#xA;&#xA;The supported values are the same as those described in the entry for&#xA;`master_type`.&#xA;&#xA;This value must be present when `scaleTier` is set to `CUSTOM` and&#xA;`parameter_server_count` is greater than zero." type="//@types.0"/>
-    <attributes name="scaleTier" required="true" description="Required. Specifies the machine types, the number of replicas for workers&#xA;and parameter servers." type="//@types.11"/>
-    <attributes name="jobDir" required="true" description="Optional. A Google Cloud Storage path in which to store training outputs&#xA;and other data needed for training. This path is passed to your TensorFlow&#xA;program as the 'job_dir' command-line argument. The benefit of specifying&#xA;this field is that Cloud ML validates the path for use in training." type="//@types.11"/>
-    <attributes name="parameterServerCount" required="true" description="Optional. The number of parameter server replicas to use for the training&#xA;job. Each replica in the cluster will be of the type specified in&#xA;`parameter_server_type`.&#xA;&#xA;This value can only be used when `scale_tier` is set to `CUSTOM`.If you&#xA;set this value, you must also set `parameter_server_type`." type="//@types.11"/>
-    <attributes name="packageUris" required="true" description="Required. The Google Cloud Storage location of the packages with&#xA;the training program and any additional dependencies.&#xA;The maximum number of package URIs is 100." type="//@types.7"/>
-    <attributes name="workerCount" required="true" description="Optional. The number of worker replicas to use for the training job. Each&#xA;replica in the cluster will be of the type specified in `worker_type`.&#xA;&#xA;This value can only be used when `scale_tier` is set to `CUSTOM`. If you&#xA;set this value, you must also set `worker_type`." type="//@types.11"/>
-    <attributes name="masterType" required="true" description="Optional. Specifies the type of virtual machine to use for your training&#xA;job's master worker.&#xA;&#xA;The following types are supported:&#xA;&#xA;&lt;dl>&#xA;  &lt;dt>standard&lt;/dt>&#xA;  &lt;dd>&#xA;  A basic machine configuration suitable for training simple models with&#xA;  small to moderate datasets.&#xA;  &lt;/dd>&#xA;  &lt;dt>large_model&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine with a lot of memory, specially suited for parameter servers&#xA;  when your model is large (having many hidden layers or layers with very&#xA;  large numbers of nodes).&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_s&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine suitable for the master and workers of the cluster when your&#xA;  model requires more computation than the standard machine can handle&#xA;  satisfactorily.&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_m&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine with roughly twice the number of cores and roughly double the&#xA;  memory of &lt;code suppresswarning=&quot;true&quot;>complex_model_s&lt;/code>.&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_l&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine with roughly twice the number of cores and roughly double the&#xA;  memory of &lt;code suppresswarning=&quot;true&quot;>complex_model_m&lt;/code>.&#xA;  &lt;/dd>&#xA;  &lt;dt>standard_gpu&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine equivalent to &lt;code suppresswarning=&quot;true&quot;>standard&lt;/code> that&#xA;  also includes a single NVIDIA Tesla K80 GPU. See more about&#xA;  &lt;a href=&quot;/ml-engine/docs/how-tos/using-gpus&quot;>&#xA;  using GPUs for training your model&lt;/a>.&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_m_gpu&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine equivalent to&#xA;  &lt;code suppresswarning=&quot;true&quot;>complex_model_m&lt;/code> that also includes&#xA;  four NVIDIA Tesla K80 GPUs.&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_l_gpu&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine equivalent to&#xA;  &lt;code suppresswarning=&quot;true&quot;>complex_model_l&lt;/code> that also includes&#xA;  eight NVIDIA Tesla K80 GPUs.&#xA;  &lt;/dd>&#xA;  &lt;dt>standard_p100&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine equivalent to &lt;code suppresswarning=&quot;true&quot;>standard&lt;/code> that&#xA;  also includes a single NVIDIA Tesla P100 GPU. The availability of these&#xA;  GPUs is in the Alpha launch stage.&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_m_p100&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine equivalent to&#xA;  &lt;code suppresswarning=&quot;true&quot;>complex_model_m&lt;/code> that also includes&#xA;  four NVIDIA Tesla P100 GPUs. The availability of these GPUs is in&#xA;  the Alpha launch stage.&#xA;  &lt;/dd>&#xA;&lt;/dl>&#xA;&#xA;You must set this value when `scaleTier` is set to `CUSTOM`." type="//@types.11"/>
-    <attributes name="runtimeVersion" required="true" description="Optional. The Google Cloud ML runtime version to use for training.  If not&#xA;set, Google Cloud ML will choose the latest stable version." type="//@types.11"/>
-    <attributes name="pythonModule" required="true" description="Required. The Python module name to run after installing the packages." type="//@types.11"/>
+    <attributes name="region" required="true" description="Required. The Google Compute Engine region to run the training job in.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="args" required="true" description="Optional. Command line arguments to pass to the program." type="//@types.5"/>
+    <attributes name="workerType" required="true" description="Optional. Specifies the type of virtual machine to use for your training&#xA;job's worker nodes.&#xA;&#xA;The supported values are the same as those described in the entry for&#xA;`masterType`.&#xA;&#xA;This value must be present when `scaleTier` is set to `CUSTOM` and&#xA;`workerCount` is greater than zero.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="parameterServerType" required="true" description="Optional. Specifies the type of virtual machine to use for your training&#xA;job's parameter server.&#xA;&#xA;The supported values are the same as those described in the entry for&#xA;`master_type`.&#xA;&#xA;This value must be present when `scaleTier` is set to `CUSTOM` and&#xA;`parameter_server_count` is greater than zero.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="scaleTier" required="true" description="Required. Specifies the machine types, the number of replicas for workers&#xA;and parameter servers.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="jobDir" required="true" description="Optional. A Google Cloud Storage path in which to store training outputs&#xA;and other data needed for training. This path is passed to your TensorFlow&#xA;program as the 'job_dir' command-line argument. The benefit of specifying&#xA;this field is that Cloud ML validates the path for use in training.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="parameterServerCount" required="true" description="Optional. The number of parameter server replicas to use for the training&#xA;job. Each replica in the cluster will be of the type specified in&#xA;`parameter_server_type`.&#xA;&#xA;This value can only be used when `scale_tier` is set to `CUSTOM`.If you&#xA;set this value, you must also set `parameter_server_type`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="packageUris" required="true" description="Required. The Google Cloud Storage location of the packages with&#xA;the training program and any additional dependencies.&#xA;The maximum number of package URIs is 100." type="//@types.5"/>
+    <attributes name="workerCount" required="true" description="Optional. The number of worker replicas to use for the training job. Each&#xA;replica in the cluster will be of the type specified in `worker_type`.&#xA;&#xA;This value can only be used when `scale_tier` is set to `CUSTOM`. If you&#xA;set this value, you must also set `worker_type`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="masterType" required="true" description="Optional. Specifies the type of virtual machine to use for your training&#xA;job's master worker.&#xA;&#xA;The following types are supported:&#xA;&#xA;&lt;dl>&#xA;  &lt;dt>standard&lt;/dt>&#xA;  &lt;dd>&#xA;  A basic machine configuration suitable for training simple models with&#xA;  small to moderate datasets.&#xA;  &lt;/dd>&#xA;  &lt;dt>large_model&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine with a lot of memory, specially suited for parameter servers&#xA;  when your model is large (having many hidden layers or layers with very&#xA;  large numbers of nodes).&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_s&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine suitable for the master and workers of the cluster when your&#xA;  model requires more computation than the standard machine can handle&#xA;  satisfactorily.&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_m&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine with roughly twice the number of cores and roughly double the&#xA;  memory of &lt;code suppresswarning=&quot;true&quot;>complex_model_s&lt;/code>.&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_l&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine with roughly twice the number of cores and roughly double the&#xA;  memory of &lt;code suppresswarning=&quot;true&quot;>complex_model_m&lt;/code>.&#xA;  &lt;/dd>&#xA;  &lt;dt>standard_gpu&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine equivalent to &lt;code suppresswarning=&quot;true&quot;>standard&lt;/code> that&#xA;  also includes a single NVIDIA Tesla K80 GPU. See more about&#xA;  &lt;a href=&quot;/ml-engine/docs/how-tos/using-gpus&quot;>&#xA;  using GPUs for training your model&lt;/a>.&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_m_gpu&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine equivalent to&#xA;  &lt;code suppresswarning=&quot;true&quot;>complex_model_m&lt;/code> that also includes&#xA;  four NVIDIA Tesla K80 GPUs.&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_l_gpu&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine equivalent to&#xA;  &lt;code suppresswarning=&quot;true&quot;>complex_model_l&lt;/code> that also includes&#xA;  eight NVIDIA Tesla K80 GPUs.&#xA;  &lt;/dd>&#xA;  &lt;dt>standard_p100&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine equivalent to &lt;code suppresswarning=&quot;true&quot;>standard&lt;/code> that&#xA;  also includes a single NVIDIA Tesla P100 GPU. The availability of these&#xA;  GPUs is in the Alpha launch stage.&#xA;  &lt;/dd>&#xA;  &lt;dt>complex_model_m_p100&lt;/dt>&#xA;  &lt;dd>&#xA;  A machine equivalent to&#xA;  &lt;code suppresswarning=&quot;true&quot;>complex_model_m&lt;/code> that also includes&#xA;  four NVIDIA Tesla P100 GPUs. The availability of these GPUs is in&#xA;  the Alpha launch stage.&#xA;  &lt;/dd>&#xA;&lt;/dl>&#xA;&#xA;You must set this value when `scaleTier` is set to `CUSTOM`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="runtimeVersion" required="true" description="Optional. The Google Cloud ML runtime version to use for training.  If not&#xA;set, Google Cloud ML will choose the latest stable version.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="pythonModule" required="true" description="Required. The Python module name to run after installing the packages.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__PredictionOutputLink" scheme="http://occi/gcpml#" title="The current prediction job result." source="//@kinds[term='googlecloudmlv1__job']" target="//@kinds[term='googlecloudmlv1__predictionoutput']">
@@ -47,82 +75,132 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__Job" scheme="http://occi/gcpml#" title="Represents a training or prediction job.&#xA;&#xA;Next ID: 16">
-    <attributes name="jobId" required="true" description="Required. The user-specified id of the job." type="//@types.11"/>
-    <attributes name="errorMessage" required="true" description="Output only. The details of a failure or a cancellation." type="//@types.11"/>
-    <attributes name="endTime" required="true" description="Output only. When the job processing was completed." type="//@types.11"/>
-    <attributes name="startTime" required="true" description="Output only. When the job processing was started." type="//@types.11"/>
-    <attributes name="createTime" required="true" description="Output only. When the job was created." type="//@types.11"/>
-    <attributes name="state" required="true" description="Output only. The detailed state of a job." type="//@types.12"/>
+    <attributes name="jobId" required="true" description="Required. The user-specified id of the job.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="errorMessage" required="true" description="Output only. The details of a failure or a cancellation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="endTime" required="true" description="Output only. When the job processing was completed.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="Output only. When the job processing was started.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="createTime" required="true" description="Output only. When the job was created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="state" required="true" description="Output only. The detailed state of a job.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleApi__HttpBody" scheme="http://occi/gcpml#" title="Message that represents an arbitrary HTTP body. It should only be used for&#xA;payload formats that can't be represented as JSON, such as raw binary or&#xA;an HTML page.&#xA;&#xA;&#xA;This message can be used both in streaming and non-streaming API methods in&#xA;the request as well as the response.&#xA;&#xA;It can be used as a top-level request field, which is convenient if one&#xA;wants to extract parameters from either the URL or HTTP template into the&#xA;request fields and also want access to the raw HTTP body.&#xA;&#xA;Example:&#xA;&#xA;    message GetResourceRequest {&#xA;      // A unique request id.&#xA;      string request_id = 1;&#xA;&#xA;      // The raw HTTP body is bound to this field.&#xA;      google.api.HttpBody http_body = 2;&#xA;    }&#xA;&#xA;    service ResourceService {&#xA;      rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);&#xA;      rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;Example with streaming methods:&#xA;&#xA;    service CaldavService {&#xA;      rpc GetCalendar(stream google.api.HttpBody)&#xA;        returns (stream google.api.HttpBody);&#xA;      rpc UpdateCalendar(stream google.api.HttpBody)&#xA;        returns (stream google.api.HttpBody);&#xA;    }&#xA;&#xA;Use of this type only changes how the request and response bodies are&#xA;handled, all other features will continue to work unchanged.">
-    <attributes name="extensions" required="true" description="Application specific response metadata. Must be set in the first response&#xA;for streaming APIs." type="//@types.7"/>
-    <attributes name="data" required="true" description="HTTP body binary data." type="//@types.12"/>
-    <attributes name="contentType" required="true" description="The HTTP Content-Type string representing the content type of the body." type="//@types.12"/>
+    <attributes name="extensions" required="true" description="Application specific response metadata. Must be set in the first response&#xA;for streaming APIs." type="//@types.5"/>
+    <attributes name="data" required="true" description="HTTP body binary data.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="contentType" required="true" description="The HTTP Content-Type string representing the content type of the body.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__GetConfigResponse" scheme="http://occi/gcpml#" title="Returns service account information associated with a project.">
-    <attributes name="serviceAccountProject" required="true" description="The project number for `service_account`." type="//@types.12"/>
-    <attributes name="serviceAccount" required="true" description="The service account Cloud ML uses to access resources in the project." type="//@types.12"/>
+    <attributes name="serviceAccountProject" required="true" description="The project number for `service_account`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="serviceAccount" required="true" description="The service account Cloud ML uses to access resources in the project.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleIamV1__TestIamPermissionsResponse" scheme="http://occi/gcpml#" title="Response message for `TestIamPermissions` method.">
-    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is&#xA;allowed." type="//@types.7"/>
+    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is&#xA;allowed." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricLink" scheme="http://occi/gcpml#" title="The final objective metric seen for this trial." source="//@kinds[term='googlecloudmlv1__hyperparameteroutput']" target="//@kinds[term='googlecloudmlv1_hyperparameteroutput_hyperparametermetric']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__HyperparameterOutput" scheme="http://occi/gcpml#" title="Represents the result of a single hyperparameter tuning trial from a&#xA;training job. The TrainingOutput object that is returned on successful&#xA;completion of a training job with hyperparameter tuning includes a list&#xA;of HyperparameterOutput objects, one for each successful trial.">
-    <attributes name="allMetrics" required="true" description="All recorded object metrics for this trial. This field is not currently&#xA;populated." type="//@types.7"/>
-    <attributes name="hyperparameters" required="true" description="The hyperparameters given to this trial." type="//@types.9"/>
-    <attributes name="trialId" required="true" description="The trial id for these results." type="//@types.12"/>
+    <attributes name="allMetrics" required="true" description="All recorded object metrics for this trial. This field is not currently&#xA;populated." type="//@types.5"/>
+    <attributes name="hyperparameters" required="true" description="The hyperparameters given to this trial." type="//@types.6"/>
+    <attributes name="trialId" required="true" description="The trial id for these results.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleIamV1__PolicyLink" scheme="http://occi/gcpml#" title="REQUIRED: The complete policy to be applied to the `resource`. The size of&#xA;the policy is limited to a few 10s of KB. An empty policy is a&#xA;valid policy but certain Cloud Platform services (such as Projects)&#xA;might reject them." source="//@kinds[term='googleiamv1__setiampolicyrequest']" target="//@kinds[term='googleiamv1__policy']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleIamV1__SetIamPolicyRequest" scheme="http://occi/gcpml#" title="Request message for `SetIamPolicy` method.">
-    <attributes name="updateMask" required="true" description="OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only&#xA;the fields in the mask will be modified. If no mask is provided, the&#xA;following default mask is used:&#xA;paths: &quot;bindings, etag&quot;&#xA;This field is only used by Cloud IAM." type="//@types.12"/>
+    <attributes name="updateMask" required="true" description="OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only&#xA;the fields in the mask will be modified. If no mask is provided, the&#xA;following default mask is used:&#xA;paths: &quot;bindings, etag&quot;&#xA;This field is only used by Cloud IAM.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__PredictionOutput" scheme="http://occi/gcpml#" title="Represents results of a prediction job.">
-    <attributes name="errorCount" required="true" description="The number of data instances which resulted in errors." type="//@types.12"/>
-    <attributes name="outputPath" required="true" description="The output Google Cloud Storage location provided at the job creation time." type="//@types.12"/>
-    <attributes name="nodeHours" required="true" description="Node hours used by the batch prediction job." type="//@types.3"/>
-    <attributes name="predictionCount" required="true" description="The number of generated predictions." type="//@types.12"/>
+    <attributes name="errorCount" required="true" description="The number of data instances which resulted in errors.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="outputPath" required="true" description="The output Google Cloud Storage location provided at the job creation time.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nodeHours" required="true" description="Node hours used by the batch prediction job.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="predictionCount" required="true" description="The number of generated predictions.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleIamV1__Policy" scheme="http://occi/gcpml#" title="Defines an Identity and Access Management (IAM) policy. It is used to&#xA;specify access control policies for Cloud Platform resources.&#xA;&#xA;&#xA;A `Policy` consists of a list of `bindings`. A `Binding` binds a list of&#xA;`members` to a `role`, where the members can be user accounts, Google groups,&#xA;Google domains, and service accounts. A `role` is a named list of permissions&#xA;defined by IAM.&#xA;&#xA;**Example**&#xA;&#xA;    {&#xA;      &quot;bindings&quot;: [&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/owner&quot;,&#xA;          &quot;members&quot;: [&#xA;            &quot;user:mike@example.com&quot;,&#xA;            &quot;group:admins@example.com&quot;,&#xA;            &quot;domain:google.com&quot;,&#xA;            &quot;serviceAccount:my-other-app@appspot.gserviceaccount.com&quot;,&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/viewer&quot;,&#xA;          &quot;members&quot;: [&quot;user:sean@example.com&quot;]&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;For a description of IAM and its features, see the&#xA;[IAM developer's guide](https://cloud.google.com/iam).">
-    <attributes name="version" required="true" description="Version of the `Policy`. The default version is 0." type="//@types.3"/>
-    <attributes name="auditConfigs" required="true" description="Specifies cloud audit logging configuration for this policy." type="//@types.7"/>
-    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`.&#xA;`bindings` with no members will result in an error." type="//@types.7"/>
-    <attributes name="iamOwned" required="true" description="" type="//@types.6"/>
-    <attributes name="etag" required="true" description="`etag` is used for optimistic concurrency control as a way to help&#xA;prevent simultaneous updates of a policy from overwriting each other.&#xA;It is strongly suggested that systems make use of the `etag` in the&#xA;read-modify-write cycle to perform policy updates in order to avoid race&#xA;conditions: An `etag` is returned in the response to `getIamPolicy`, and&#xA;systems are expected to put that etag in the request to `setIamPolicy` to&#xA;ensure that their change will be applied to the same version of the policy.&#xA;&#xA;If no `etag` is provided in the call to `setIamPolicy`, then the existing&#xA;policy is overwritten blindly." type="//@types.12"/>
+    <attributes name="version" required="true" description="Version of the `Policy`. The default version is 0.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="auditConfigs" required="true" description="Specifies cloud audit logging configuration for this policy." type="//@types.5"/>
+    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`.&#xA;`bindings` with no members will result in an error." type="//@types.5"/>
+    <attributes name="iamOwned" required="true" description="">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="etag" required="true" description="`etag` is used for optimistic concurrency control as a way to help&#xA;prevent simultaneous updates of a policy from overwriting each other.&#xA;It is strongly suggested that systems make use of the `etag` in the&#xA;read-modify-write cycle to perform policy updates in order to avoid race&#xA;conditions: An `etag` is returned in the response to `getIamPolicy`, and&#xA;systems are expected to put that etag in the request to `setIamPolicy` to&#xA;ensure that their change will be applied to the same version of the policy.&#xA;&#xA;If no `etag` is provided in the call to `setIamPolicy`, then the existing&#xA;policy is overwritten blindly.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleLongrunning__ListOperationsResponse" scheme="http://occi/gcpml#" title="The response message for Operations.ListOperations.">
-    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.12"/>
-    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__ManualScaling" scheme="http://occi/gcpml#" title="Options for manually scaling a model.">
-    <attributes name="nodes" required="true" description="The number of nodes to allocate for this model. These nodes are always up,&#xA;starting from the time the model is deployed, so the cost of operating&#xA;this model will be proportional to `nodes` * number of hours since&#xA;last billing cycle plus the cost for each prediction performed." type="//@types.3"/>
+    <attributes name="nodes" required="true" description="The number of nodes to allocate for this model. These nodes are always up,&#xA;starting from the time the model is deployed, so the cost of operating&#xA;this model will be proportional to `nodes` * number of hours since&#xA;last billing cycle plus the cost for each prediction performed.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleType__ExprLink" scheme="http://occi/gcpml#" title="The condition that is associated with this binding.&#xA;NOTE: an unsatisfied condition will not allow user access via current&#xA;binding. Different bindings, including their conditions, are examined&#xA;independently.&#xA;This field is GOOGLE_INTERNAL." source="//@kinds[term='googleiamv1__binding']" target="//@kinds[term='googletype__expr']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleIamV1__Binding" scheme="http://occi/gcpml#" title="Associates `members` with a `role`.">
-    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource.&#xA;`members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is&#xA;   on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone&#xA;   who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google&#xA;   account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service&#xA;   account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group.&#xA;   For example, `admins@example.com`.&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the&#xA;   users of that domain. For example, `google.com` or `example.com`.&#xA;&#xA;" type="//@types.7"/>
-    <attributes name="role" required="true" description="Role that is assigned to `members`.&#xA;For example, `roles/viewer`, `roles/editor`, or `roles/owner`.&#xA;Required" type="//@types.12"/>
+    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource.&#xA;`members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is&#xA;   on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone&#xA;   who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google&#xA;   account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service&#xA;   account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group.&#xA;   For example, `admins@example.com`.&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the&#xA;   users of that domain. For example, `google.com` or `example.com`.&#xA;&#xA;" type="//@types.5"/>
+    <attributes name="role" required="true" description="Role that is assigned to `members`.&#xA;For example, `roles/viewer`, `roles/editor`, or `roles/owner`.&#xA;Required">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__TrainingOutput" scheme="http://occi/gcpml#" title="Represents results of a training job. Output only.">
-    <attributes name="trials" required="true" description="Results for individual Hyperparameter trials.&#xA;Only set for hyperparameter tuning jobs." type="//@types.7"/>
-    <attributes name="completedTrialCount" required="true" description="The number of hyperparameter tuning trials that completed successfully.&#xA;Only set for hyperparameter tuning jobs." type="//@types.12"/>
-    <attributes name="isHyperparameterTuningJob" required="true" description="Whether this job is a hyperparameter tuning job." type="//@types.6"/>
-    <attributes name="consumedMLUnits" required="true" description="The amount of ML units consumed by the job." type="//@types.3"/>
+    <attributes name="trials" required="true" description="Results for individual Hyperparameter trials.&#xA;Only set for hyperparameter tuning jobs." type="//@types.5"/>
+    <attributes name="completedTrialCount" required="true" description="The number of hyperparameter tuning trials that completed successfully.&#xA;Only set for hyperparameter tuning jobs.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="isHyperparameterTuningJob" required="true" description="Whether this job is a hyperparameter tuning job.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="consumedMLUnits" required="true" description="The amount of ML units consumed by the job.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleApi__HttpBodyLink" scheme="http://occi/gcpml#" title="&#xA;Required. The prediction request body." source="//@kinds[term='googlecloudmlv1__predictrequest']" target="//@kinds[term='googleapi__httpbody']">
@@ -132,8 +210,12 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric" scheme="http://occi/gcpml#" title="An observed value of a metric.">
-    <attributes name="objectiveValue" required="true" description="The objective value at this training step." type="//@types.3"/>
-    <attributes name="trainingStep" required="true" description="The global training step for this metric." type="//@types.12"/>
+    <attributes name="objectiveValue" required="true" description="The objective value at this training step.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="trainingStep" required="true" description="The global training step for this metric.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__AutoScalingLink" scheme="http://occi/gcpml#" title="Automatically scale the number of nodes used to serve the model in&#xA;response to increases and decreases in traffic. Care should be&#xA;taken to ramp up traffic according to the model's ability to scale&#xA;or you will start seeing increases in latency and 429 response codes." source="//@kinds[term='googlecloudmlv1__version']" target="//@kinds[term='googlecloudmlv1__autoscaling']">
@@ -143,74 +225,150 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__Version" scheme="http://occi/gcpml#" title="Represents a version of the model.&#xA;&#xA;Each version is a trained model deployed in the cloud, ready to handle&#xA;prediction requests. A model can have multiple versions. You can get&#xA;information about all of the versions of a given model by calling&#xA;[projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).&#xA;&#xA;Next ID: 19&#xA;LINT.IfChange">
-    <attributes name="lastUseTime" required="true" description="Output only. The time the version was last used for prediction." type="//@types.12"/>
-    <attributes name="runtimeVersion" required="true" description="Optional. The Google Cloud ML runtime version to use for this deployment.&#xA;If not set, Google Cloud ML will choose a version." type="//@types.12"/>
-    <attributes name="description" required="true" description="Optional. The description specified for the version when it was created." type="//@types.12"/>
-    <attributes name="deploymentUri" required="true" description="Required. The Google Cloud Storage location of the trained model used to&#xA;create the version. See the&#xA;[overview of model&#xA;deployment](/ml-engine/docs/concepts/deployment-overview) for more&#xA;information.&#xA;&#xA;When passing Version to&#xA;[projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.versions/create)&#xA;the model service uses the specified location as the source of the model.&#xA;Once deployed, the model version is hosted by the prediction service, so&#xA;this location is useful only as a historical record.&#xA;The total number of model files can't exceed 1000." type="//@types.12"/>
-    <attributes name="isDefault" required="true" description="Output only. If true, this version will be used to handle prediction&#xA;requests that do not specify a version.&#xA;&#xA;You can change the default version by calling&#xA;[projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault)." type="//@types.6"/>
-    <attributes name="createTime" required="true" description="Output only. The time the version was created." type="//@types.12"/>
-    <attributes name="state" required="true" description="Output only. The state of a version." type="//@types.13"/>
-    <attributes name="name" required="true" description="Required.The name specified for the version when it was created.&#xA;&#xA;The version name must be unique within the model it is created in." type="//@types.13"/>
-    <attributes name="errorMessage" required="true" description="Output only. The details of a failure or a cancellation." type="//@types.13"/>
+    <attributes name="lastUseTime" required="true" description="Output only. The time the version was last used for prediction.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="runtimeVersion" required="true" description="Optional. The Google Cloud ML runtime version to use for this deployment.&#xA;If not set, Google Cloud ML will choose a version.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="Optional. The description specified for the version when it was created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="deploymentUri" required="true" description="Required. The Google Cloud Storage location of the trained model used to&#xA;create the version. See the&#xA;[overview of model&#xA;deployment](/ml-engine/docs/concepts/deployment-overview) for more&#xA;information.&#xA;&#xA;When passing Version to&#xA;[projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.versions/create)&#xA;the model service uses the specified location as the source of the model.&#xA;Once deployed, the model version is hosted by the prediction service, so&#xA;this location is useful only as a historical record.&#xA;The total number of model files can't exceed 1000.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="isDefault" required="true" description="Output only. If true, this version will be used to handle prediction&#xA;requests that do not specify a version.&#xA;&#xA;You can change the default version by calling&#xA;[projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="createTime" required="true" description="Output only. The time the version was created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="state" required="true" description="Output only. The state of a version.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="Required.The name specified for the version when it was created.&#xA;&#xA;The version name must be unique within the model it is created in.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="errorMessage" required="true" description="Output only. The details of a failure or a cancellation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__ParameterSpec" scheme="http://occi/gcpml#" title="Represents a single hyperparameter to optimize.">
-    <attributes name="categoricalValues" required="true" description="Required if type is `CATEGORICAL`. The list of possible categories." type="//@types.7"/>
-    <attributes name="parameterName" required="true" description="Required. The parameter name must be unique amongst all ParameterConfigs in&#xA;a HyperparameterSpec message. E.g., &quot;learning_rate&quot;." type="//@types.13"/>
-    <attributes name="minValue" required="true" description="Required if type is `DOUBLE` or `INTEGER`. This field&#xA;should be unset if type is `CATEGORICAL`. This value should be integers if&#xA;type is INTEGER." type="//@types.3"/>
-    <attributes name="discreteValues" required="true" description="Required if type is `DISCRETE`.&#xA;A list of feasible points.&#xA;The list should be in strictly increasing order. For instance, this&#xA;parameter might have possible settings of 1.5, 2.5, and 4.0. This list&#xA;should not contain more than 1,000 values." type="//@types.7"/>
-    <attributes name="scaleType" required="true" description="Optional. How the parameter should be scaled to the hypercube.&#xA;Leave unset for categorical parameters.&#xA;Some kind of scaling is strongly recommended for real or integral&#xA;parameters (e.g., `UNIT_LINEAR_SCALE`)." type="//@types.14"/>
-    <attributes name="maxValue" required="true" description="Required if typeis `DOUBLE` or `INTEGER`. This field&#xA;should be unset if type is `CATEGORICAL`. This value should be integers if&#xA;type is `INTEGER`." type="//@types.3"/>
-    <attributes name="type" required="true" description="Required. The type of the parameter." type="//@types.15"/>
+    <attributes name="categoricalValues" required="true" description="Required if type is `CATEGORICAL`. The list of possible categories." type="//@types.5"/>
+    <attributes name="parameterName" required="true" description="Required. The parameter name must be unique amongst all ParameterConfigs in&#xA;a HyperparameterSpec message. E.g., &quot;learning_rate&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="minValue" required="true" description="Required if type is `DOUBLE` or `INTEGER`. This field&#xA;should be unset if type is `CATEGORICAL`. This value should be integers if&#xA;type is INTEGER.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="discreteValues" required="true" description="Required if type is `DISCRETE`.&#xA;A list of feasible points.&#xA;The list should be in strictly increasing order. For instance, this&#xA;parameter might have possible settings of 1.5, 2.5, and 4.0. This list&#xA;should not contain more than 1,000 values." type="//@types.5"/>
+    <attributes name="scaleType" required="true" description="Optional. How the parameter should be scaled to the hypercube.&#xA;Leave unset for categorical parameters.&#xA;Some kind of scaling is strongly recommended for real or integral&#xA;parameters (e.g., `UNIT_LINEAR_SCALE`).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="maxValue" required="true" description="Required if typeis `DOUBLE` or `INTEGER`. This field&#xA;should be unset if type is `CATEGORICAL`. This value should be integers if&#xA;type is `INTEGER`.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="type" required="true" description="Required. The type of the parameter.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__PredictionInput" scheme="http://occi/gcpml#" title="Represents input parameters for a prediction job.">
-    <attributes name="region" required="true" description="Required. The Google Compute Engine region to run the prediction job in." type="//@types.15"/>
-    <attributes name="versionName" required="true" description="Use this field if you want to specify a version of the model to use. The&#xA;string is formatted the same way as `model_version`, with the addition&#xA;of the version information:&#xA;&#xA;`&quot;projects/&lt;var>[YOUR_PROJECT]&lt;/var>/models/&lt;var>YOUR_MODEL/versions/&lt;var>[YOUR_VERSION]&lt;/var>&quot;`" type="//@types.15"/>
-    <attributes name="modelName" required="true" description="Use this field if you want to use the default version for the specified&#xA;model. The string must use the following format:&#xA;&#xA;`&quot;projects/&lt;var>[YOUR_PROJECT]&lt;/var>/models/&lt;var>[YOUR_MODEL]&lt;/var>&quot;`" type="//@types.15"/>
-    <attributes name="outputPath" required="true" description="Required. The output Google Cloud Storage location." type="//@types.15"/>
-    <attributes name="uri" required="true" description="Use this field if you want to specify a Google Cloud Storage path for&#xA;the model to use." type="//@types.15"/>
-    <attributes name="maxWorkerCount" required="true" description="Optional. The maximum number of workers to be used for parallel processing.&#xA;Defaults to 10 if not specified." type="//@types.15"/>
-    <attributes name="dataFormat" required="true" description="Required. The format of the input data files." type="//@types.16"/>
-    <attributes name="runtimeVersion" required="true" description="Optional. The Google Cloud ML runtime version to use for this batch&#xA;prediction. If not set, Google Cloud ML will pick the runtime version used&#xA;during the CreateVersion request for this model version, or choose the&#xA;latest stable version when model version information is not available&#xA;such as when the model is specified by uri." type="//@types.16"/>
-    <attributes name="batchSize" required="true" description="Optional. Number of records per batch, defaults to 64.&#xA;The service will buffer batch_size number of records in memory before&#xA;invoking one Tensorflow prediction call internally. So take the record&#xA;size and memory available into consideration when setting this parameter." type="//@types.16"/>
-    <attributes name="inputPaths" required="true" description="Required. The Google Cloud Storage location of the input data files.&#xA;May contain wildcards." type="//@types.7"/>
+    <attributes name="region" required="true" description="Required. The Google Compute Engine region to run the prediction job in.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="versionName" required="true" description="Use this field if you want to specify a version of the model to use. The&#xA;string is formatted the same way as `model_version`, with the addition&#xA;of the version information:&#xA;&#xA;`&quot;projects/&lt;var>[YOUR_PROJECT]&lt;/var>/models/&lt;var>YOUR_MODEL/versions/&lt;var>[YOUR_VERSION]&lt;/var>&quot;`">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="modelName" required="true" description="Use this field if you want to use the default version for the specified&#xA;model. The string must use the following format:&#xA;&#xA;`&quot;projects/&lt;var>[YOUR_PROJECT]&lt;/var>/models/&lt;var>[YOUR_MODEL]&lt;/var>&quot;`">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="outputPath" required="true" description="Required. The output Google Cloud Storage location.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="uri" required="true" description="Use this field if you want to specify a Google Cloud Storage path for&#xA;the model to use.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="maxWorkerCount" required="true" description="Optional. The maximum number of workers to be used for parallel processing.&#xA;Defaults to 10 if not specified.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="dataFormat" required="true" description="Required. The format of the input data files.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="runtimeVersion" required="true" description="Optional. The Google Cloud ML runtime version to use for this batch&#xA;prediction. If not set, Google Cloud ML will pick the runtime version used&#xA;during the CreateVersion request for this model version, or choose the&#xA;latest stable version when model version information is not available&#xA;such as when the model is specified by uri.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="batchSize" required="true" description="Optional. Number of records per batch, defaults to 64.&#xA;The service will buffer batch_size number of records in memory before&#xA;invoking one Tensorflow prediction call internally. So take the record&#xA;size and memory available into consideration when setting this parameter.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="inputPaths" required="true" description="Required. The Google Cloud Storage location of the input data files.&#xA;May contain wildcards." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleIamV1__AuditLogConfig" scheme="http://occi/gcpml#" title="Provides the configuration for logging a type of permissions.&#xA;Example:&#xA;&#xA;    {&#xA;      &quot;audit_log_configs&quot;: [&#xA;        {&#xA;          &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;          &quot;exempted_members&quot;: [&#xA;            &quot;user:foo@gmail.com&quot;&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting&#xA;foo@gmail.com from DATA_READ logging.">
-    <attributes name="exemptedMembers" required="true" description="Specifies the identities that do not cause logging for this type of&#xA;permission.&#xA;Follows the same format of Binding.members." type="//@types.7"/>
-    <attributes name="logType" required="true" description="The log type that this config enables." type="//@types.17"/>
+    <attributes name="exemptedMembers" required="true" description="Specifies the identities that do not cause logging for this type of&#xA;permission.&#xA;Follows the same format of Binding.members." type="//@types.5"/>
+    <attributes name="logType" required="true" description="The log type that this config enables.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__VersionLink" scheme="http://occi/gcpml#" title="Contains the version associated with the operation." source="//@kinds[term='googlecloudmlv1__operationmetadata']" target="//@kinds[term='googlecloudmlv1__version']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__OperationMetadata" scheme="http://occi/gcpml#" title="Represents the metadata of the long-running operation.&#xA;&#xA;Next ID: 9">
-    <attributes name="createTime" required="true" description="The time the operation was submitted." type="//@types.17"/>
-    <attributes name="modelName" required="true" description="Contains the name of the model associated with the operation." type="//@types.17"/>
-    <attributes name="endTime" required="true" description="The time operation processing completed." type="//@types.17"/>
-    <attributes name="operationType" required="true" description="The operation type." type="//@types.18"/>
-    <attributes name="startTime" required="true" description="The time operation processing started." type="//@types.18"/>
-    <attributes name="isCancellationRequested" required="true" description="Indicates whether a request to cancel this operation has been made." type="//@types.6"/>
+    <attributes name="createTime" required="true" description="The time the operation was submitted.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="modelName" required="true" description="Contains the name of the model associated with the operation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="endTime" required="true" description="The time operation processing completed.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="operationType" required="true" description="The operation type.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="The time operation processing started.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="isCancellationRequested" required="true" description="Indicates whether a request to cancel this operation has been made.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleType__Expr" scheme="http://occi/gcpml#" title="Represents an expression text. Example:&#xA;&#xA;    title: &quot;User account presence&quot;&#xA;    description: &quot;Determines whether the request has a user account&quot;&#xA;    expression: &quot;size(request.user) > 0&quot;">
-    <attributes name="description" required="true" description="An optional description of the expression. This is a longer text which&#xA;describes the expression, e.g. when hovered over it in a UI." type="//@types.18"/>
-    <attributes name="expression" required="true" description="Textual representation of an expression in&#xA;Common Expression Language syntax.&#xA;&#xA;The application context of the containing message determines which&#xA;well-known feature set of CEL is supported." type="//@types.18"/>
-    <attributes name="location" required="true" description="An optional string indicating the location of the expression for error&#xA;reporting, e.g. a file name and a position in the file." type="//@types.18"/>
+    <attributes name="description" required="true" description="An optional description of the expression. This is a longer text which&#xA;describes the expression, e.g. when hovered over it in a UI.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="expression" required="true" description="Textual representation of an expression in&#xA;Common Expression Language syntax.&#xA;&#xA;The application context of the containing message determines which&#xA;well-known feature set of CEL is supported.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="locationGCP" required="true" description="An optional string indicating the location of the expression for error&#xA;reporting, e.g. a file name and a position in the file.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__HyperparameterSpec" scheme="http://occi/gcpml#" title="Represents a set of hyperparameters to optimize.">
-    <attributes name="params" required="true" description="Required. The set of parameters to tune." type="//@types.7"/>
-    <attributes name="maxTrials" required="true" description="Optional. How many training trials should be attempted to optimize&#xA;the specified hyperparameters.&#xA;&#xA;Defaults to one." type="//@types.3"/>
-    <attributes name="maxParallelTrials" required="true" description="Optional. The number of training trials to run concurrently.&#xA;You can reduce the time it takes to perform hyperparameter tuning by adding&#xA;trials in parallel. However, each trail only benefits from the information&#xA;gained in completed trials. That means that a trial does not get access to&#xA;the results of trials running at the same time, which could reduce the&#xA;quality of the overall optimization.&#xA;&#xA;Each trial will use the same scale tier and machine types.&#xA;&#xA;Defaults to one." type="//@types.3"/>
-    <attributes name="goal" required="true" description="Required. The type of goal to use for tuning. Available types are&#xA;`MAXIMIZE` and `MINIMIZE`.&#xA;&#xA;Defaults to `MAXIMIZE`." type="//@types.19"/>
-    <attributes name="hyperparameterMetricTag" required="true" description="Optional. The Tensorflow summary tag name to use for optimizing trials. For&#xA;current versions of Tensorflow, this tag name should exactly match what is&#xA;shown in Tensorboard, including all scopes.  For versions of Tensorflow&#xA;prior to 0.12, this should be only the tag passed to tf.Summary.&#xA;By default, &quot;training/hptuning/metric&quot; will be used." type="//@types.19"/>
+    <attributes name="params" required="true" description="Required. The set of parameters to tune." type="//@types.5"/>
+    <attributes name="maxTrials" required="true" description="Optional. How many training trials should be attempted to optimize&#xA;the specified hyperparameters.&#xA;&#xA;Defaults to one.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="maxParallelTrials" required="true" description="Optional. The number of training trials to run concurrently.&#xA;You can reduce the time it takes to perform hyperparameter tuning by adding&#xA;trials in parallel. However, each trail only benefits from the information&#xA;gained in completed trials. That means that a trial does not get access to&#xA;the results of trials running at the same time, which could reduce the&#xA;quality of the overall optimization.&#xA;&#xA;Each trial will use the same scale tier and machine types.&#xA;&#xA;Defaults to one.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="goal" required="true" description="Required. The type of goal to use for tuning. Available types are&#xA;`MAXIMIZE` and `MINIMIZE`.&#xA;&#xA;Defaults to `MAXIMIZE`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="hyperparameterMetricTag" required="true" description="Optional. The Tensorflow summary tag name to use for optimizing trials. For&#xA;current versions of Tensorflow, this tag name should exactly match what is&#xA;shown in Tensorboard, including all scopes.  For versions of Tensorflow&#xA;prior to 0.12, this should be only the tag passed to tf.Summary.&#xA;By default, &quot;training/hptuning/metric&quot; will be used.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__ListJobsResponse" scheme="http://occi/gcpml#" title="Response message for the ListJobs method.">
-    <attributes name="jobs" required="true" description="The list of jobs." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="Optional. Pass this token as the `page_token` field of the request for a&#xA;subsequent call." type="//@types.19"/>
+    <attributes name="jobs" required="true" description="The list of jobs." type="//@types.5"/>
+    <attributes name="nextPageToken" required="true" description="Optional. Pass this token as the `page_token` field of the request for a&#xA;subsequent call.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__SetDefaultVersionRequest" scheme="http://occi/gcpml#" title="Request message for the SetDefaultVersion request.">
@@ -220,55 +378,67 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleLongrunning__Operation" scheme="http://occi/gcpml#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
-    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
-    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.9"/>
-    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`." type="//@types.19"/>
-    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.9"/>
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.6"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleIamV1__AuditConfig" scheme="http://occi/gcpml#" title="Specifies the audit configuration for a service.&#xA;The configuration determines which permission types are logged, and what&#xA;identities, if any, are exempted from logging.&#xA;An AuditConfig must have one or more AuditLogConfigs.&#xA;&#xA;If there are AuditConfigs for both `allServices` and a specific service,&#xA;the union of the two AuditConfigs is used for that service: the log_types&#xA;specified in each AuditConfig are enabled, and the exempted_members in each&#xA;AuditConfig are exempted.&#xA;&#xA;Example Policy with multiple AuditConfigs:&#xA;&#xA;    {&#xA;      &quot;audit_configs&quot;: [&#xA;        {&#xA;          &quot;service&quot;: &quot;allServices&quot;&#xA;          &quot;audit_log_configs&quot;: [&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;              &quot;exempted_members&quot;: [&#xA;                &quot;user:foo@gmail.com&quot;&#xA;              ]&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;ADMIN_READ&quot;,&#xA;            }&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;service&quot;: &quot;fooservice.googleapis.com&quot;&#xA;          &quot;audit_log_configs&quot;: [&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;              &quot;exempted_members&quot;: [&#xA;                &quot;user:bar@gmail.com&quot;&#xA;              ]&#xA;            }&#xA;          ]&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ&#xA;logging. It also exempts foo@gmail.com from DATA_READ logging, and&#xA;bar@gmail.com from DATA_WRITE logging.">
-    <attributes name="exemptedMembers" required="true" description="" type="//@types.7"/>
-    <attributes name="service" required="true" description="Specifies a service that will be enabled for audit logging.&#xA;For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.&#xA;`allServices` is a special value that covers all services." type="//@types.19"/>
-    <attributes name="auditLogConfigs" required="true" description="The configuration for logging of each type of permission.&#xA;Next ID: 4" type="//@types.7"/>
+    <attributes name="exemptedMembers" required="true" description="" type="//@types.5"/>
+    <attributes name="service" required="true" description="Specifies a service that will be enabled for audit logging.&#xA;For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.&#xA;`allServices` is a special value that covers all services.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="auditLogConfigs" required="true" description="The configuration for logging of each type of permission.&#xA;Next ID: 4" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GoogleCloudMlV1__ModelGoogleCloudMlV1__VersionLink" scheme="http://occi/gcpml#" title="Output only. The default version of the model. This version will be used to&#xA;handle prediction requests that do not specify a version.&#xA;&#xA;You can change the default version by calling&#xA;[projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault)." source="//@kinds[term='googlecloudmlv1__model']" target="//@kinds[term='googlecloudmlv1__version']">
+  <kinds name="GoogleCloudMlV1__ModeldefaultVersionGoogleCloudMlV1__VersionLink" scheme="http://occi/gcpml#" title="Output only. The default version of the model. This version will be used to&#xA;handle prediction requests that do not specify a version.&#xA;&#xA;You can change the default version by calling&#xA;[projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault)." source="//@kinds[term='googlecloudmlv1__model']" target="//@kinds[term='googlecloudmlv1__version']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__Model" scheme="http://occi/gcpml#" title="Represents a machine learning solution.&#xA;&#xA;A model can have multiple versions, each of which is a deployed, trained&#xA;model ready to receive prediction requests. The model itself is just a&#xA;container.&#xA;&#xA;Next ID: 8">
-    <attributes name="name" required="true" description="Required. The name specified for the model when it was created.&#xA;&#xA;The model name must be unique within the project it is created in." type="//@types.19"/>
-    <attributes name="description" required="true" description="Optional. The description specified for the model when it was created." type="//@types.19"/>
-    <attributes name="onlinePredictionLogging" required="true" description="Optional. If true, enables StackDriver Logging for online prediction.&#xA;Default is false." type="//@types.6"/>
-    <attributes name="regions" required="true" description="Optional. The list of regions where the model is going to be deployed.&#xA;Currently only one region per model is supported.&#xA;Defaults to 'us-central1' if nothing is set.&#xA;Note:&#xA;*   No matter where a model is deployed, it can always be accessed by&#xA;    users from anywhere, both for online and batch prediction.&#xA;*   The region for a batch prediction job is set by the region field when&#xA;    submitting the batch prediction job and does not take its value from&#xA;    this field." type="//@types.7"/>
+    <attributes name="name" required="true" description="Required. The name specified for the model when it was created.&#xA;&#xA;The model name must be unique within the project it is created in.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="Optional. The description specified for the model when it was created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="onlinePredictionLogging" required="true" description="Optional. If true, enables StackDriver Logging for online prediction.&#xA;Default is false.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="regions" required="true" description="Optional. The list of regions where the model is going to be deployed.&#xA;Currently only one region per model is supported.&#xA;Defaults to 'us-central1' if nothing is set.&#xA;Note:&#xA;*   No matter where a model is deployed, it can always be accessed by&#xA;    users from anywhere, both for online and batch prediction.&#xA;*   The region for a batch prediction job is set by the region field when&#xA;    submitting the batch prediction job and does not take its value from&#xA;    this field." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleProtobuf__Empty" scheme="http://occi/gcpml#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleIamV1__TestIamPermissionsRequest" scheme="http://occi/gcpml#" title="Request message for `TestIamPermissions` method.">
-    <attributes name="permissions" required="true" description="The set of permissions to check for the `resource`. Permissions with&#xA;wildcards (such as '*' or 'storage.*') are not allowed. For more&#xA;information see&#xA;[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)." type="//@types.7"/>
+    <attributes name="permissions" required="true" description="The set of permissions to check for the `resource`. Permissions with&#xA;wildcards (such as '*' or 'storage.*') are not allowed. For more&#xA;information see&#xA;[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__CancelJobRequest" scheme="http://occi/gcpml#" title="Request message for the CancelJob method.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudMlV1__ListVersionsResponse" scheme="http://occi/gcpml#" title="Response message for the ListVersions method.">
-    <attributes name="versions" required="true" description="The list of versions." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="Optional. Pass this token as the `page_token` field of the request for a&#xA;subsequent call." type="//@types.19"/>
+    <attributes name="versions" required="true" description="The list of versions." type="//@types.5"/>
+    <attributes name="nextPageToken" required="true" description="Optional. Pass this token as the `page_token` field of the request for a&#xA;subsequent call.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
-  <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="scaleTier" documentation="Required. Specifies the machine types, the number of replicas for workers&#xA;and parameter servers.">
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EnumerationType" name="Scaletier" documentation="Required. Specifies the machine types, the number of replicas for workers&#xA;and parameter servers.">
     <literals name="BASIC" documentation="A single worker instance. This tier is suitable for learning how to use&#xA;Cloud ML, and for experimenting with new models using small datasets."/>
     <literals name="STANDARD_1" documentation="Many workers and a few parameter servers."/>
     <literals name="PREMIUM_1" documentation="A large number of workers with many parameter servers."/>
@@ -276,7 +446,7 @@
     <literals name="BASIC_TPU" documentation="A single worker instance with a [Cloud TPU](/tpu)"/>
     <literals name="CUSTOM" documentation="The CUSTOM tier is not a set tier, but rather enables you to use your&#xA;own cluster specification. When you use this tier, set values to&#xA;configure your processing cluster according to these guidelines:&#xA;&#xA;*   You _must_ set `TrainingInput.masterType` to specify the type&#xA;    of machine to use for your master node. This is the only required&#xA;    setting.&#xA;&#xA;*   You _may_ set `TrainingInput.workerCount` to specify the number of&#xA;    workers to use. If you specify one or more workers, you _must_ also&#xA;    set `TrainingInput.workerType` to specify the type of machine to use&#xA;    for your worker nodes.&#xA;&#xA;*   You _may_ set `TrainingInput.parameterServerCount` to specify the&#xA;    number of parameter servers to use. If you specify one or more&#xA;    parameter servers, you _must_ also set&#xA;    `TrainingInput.parameterServerType` to specify the type of machine to&#xA;    use for your parameter servers.&#xA;&#xA;Note that all of your workers must use the same machine type, which can&#xA;be different from your parameter server type and master type. Your&#xA;parameter servers must likewise use the same machine type, which can be&#xA;different from your worker type and master type."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="state" documentation="Output only. The detailed state of a job.">
+  <types xsi:type="occi:EnumerationType" name="State" documentation="Output only. The detailed state of a job.">
     <literals name="STATE_UNSPECIFIED" documentation="The job state is unspecified."/>
     <literals name="QUEUED" documentation="The job has been just created and processing has not yet begun."/>
     <literals name="PREPARING" documentation="The service is preparing to run the job."/>
@@ -286,39 +456,39 @@
     <literals name="CANCELLING" documentation="The job is being cancelled.&#xA;`error_message` should describe the reason for the cancellation."/>
     <literals name="CANCELLED" documentation="The job has been cancelled.&#xA;`error_message` should describe the reason for the cancellation."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="GoogleCloudMlV1__VersionSstate" documentation="Output only. The state of a version.">
+  <types xsi:type="occi:EnumerationType" name="GoogleCloudMlV1__VersionState" documentation="Output only. The state of a version.">
     <literals name="UNKNOWN" documentation="The version state is unspecified."/>
     <literals name="READY" documentation="The version is ready for prediction."/>
     <literals name="CREATING" documentation="The version is in the process of creation."/>
     <literals name="FAILED" documentation="The version failed to be created, possibly cancelled.&#xA;`error_message` should contain the details of the failure."/>
     <literals name="DELETING" documentation="The version is in the process of deletion."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="scaleType" documentation="Optional. How the parameter should be scaled to the hypercube.&#xA;Leave unset for categorical parameters.&#xA;Some kind of scaling is strongly recommended for real or integral&#xA;parameters (e.g., `UNIT_LINEAR_SCALE`).">
+  <types xsi:type="occi:EnumerationType" name="Scaletype" documentation="Optional. How the parameter should be scaled to the hypercube.&#xA;Leave unset for categorical parameters.&#xA;Some kind of scaling is strongly recommended for real or integral&#xA;parameters (e.g., `UNIT_LINEAR_SCALE`).">
     <literals name="NONE" documentation="By default, no scaling is applied."/>
     <literals name="UNIT_LINEAR_SCALE" documentation="Scales the feasible space to (0, 1) linearly."/>
     <literals name="UNIT_LOG_SCALE" documentation="Scales the feasible space logarithmically to (0, 1). The entire feasible&#xA;space must be strictly positive."/>
     <literals name="UNIT_REVERSE_LOG_SCALE" documentation="Scales the feasible space &quot;reverse&quot; logarithmically to (0, 1). The result&#xA;is that values close to the top of the feasible space are spread out more&#xA;than points near the bottom. The entire feasible space must be strictly&#xA;positive."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="type" documentation="Required. The type of the parameter.">
+  <types xsi:type="occi:EnumerationType" name="Type" documentation="Required. The type of the parameter.">
     <literals name="PARAMETER_TYPE_UNSPECIFIED" documentation="You must specify a valid type. Using this unspecified type will result in&#xA;an error."/>
     <literals name="DOUBLE" documentation="Type for real-valued parameters."/>
     <literals name="INTEGER" documentation="Type for integral parameters."/>
     <literals name="CATEGORICAL" documentation="The parameter is categorical, with a value chosen from the categories&#xA;field."/>
     <literals name="DISCRETE" documentation="The parameter is real valued, with a fixed set of feasible points. If&#xA;`type==DISCRETE`, feasible_points must be provided, and&#xA;{`min_value`, `max_value`} will be ignored."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="dataFormat" documentation="Required. The format of the input data files.">
+  <types xsi:type="occi:EnumerationType" name="Dataformat" documentation="Required. The format of the input data files.">
     <literals name="DATA_FORMAT_UNSPECIFIED" documentation="Unspecified format."/>
     <literals name="TEXT" documentation="The source file is a text file with instances separated by the&#xA;new-line character."/>
     <literals name="TF_RECORD" documentation="The source file is a TFRecord file."/>
     <literals name="TF_RECORD_GZIP" documentation="The source file is a GZIP-compressed TFRecord file."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="logType" documentation="The log type that this config enables.">
+  <types xsi:type="occi:EnumerationType" name="Logtype" documentation="The log type that this config enables.">
     <literals name="LOG_TYPE_UNSPECIFIED" documentation="Default case. Should never be this."/>
     <literals name="ADMIN_READ" documentation="Admin reads. Example: CloudIAM getIamPolicy"/>
     <literals name="DATA_WRITE" documentation="Data writes. Example: CloudSQL Users create"/>
     <literals name="DATA_READ" documentation="Data reads. Example: CloudSQL Users list"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="operationType" documentation="The operation type.">
+  <types xsi:type="occi:EnumerationType" name="Operationtype" documentation="The operation type.">
     <literals name="OPERATION_TYPE_UNSPECIFIED" documentation="Unspecified operation type."/>
     <literals name="CREATE_VERSION" documentation="An operation to create a new version."/>
     <literals name="DELETE_VERSION" documentation="An operation to delete an existing version."/>
@@ -326,7 +496,7 @@
     <literals name="UPDATE_MODEL" documentation="An operation to update an existing model."/>
     <literals name="UPDATE_VERSION" documentation="An operation to update an existing version."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="goal" documentation="Required. The type of goal to use for tuning. Available types are&#xA;`MAXIMIZE` and `MINIMIZE`.&#xA;&#xA;Defaults to `MAXIMIZE`.">
+  <types xsi:type="occi:EnumerationType" name="Goal" documentation="Required. The type of goal to use for tuning. Available types are&#xA;`MAXIMIZE` and `MINIMIZE`.&#xA;&#xA;Defaults to `MAXIMIZE`.">
     <literals name="GOAL_TYPE_UNSPECIFIED" documentation="Goal Type will default to maximize."/>
     <literals name="MAXIMIZE" documentation="Maximize the goal metric."/>
     <literals name="MINIMIZE" documentation="Minimize the goal metric."/>

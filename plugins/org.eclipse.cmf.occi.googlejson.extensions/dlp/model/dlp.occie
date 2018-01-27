@@ -8,38 +8,60 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CloudStoragePath" scheme="http://occi/gcpdlp#" title="A location in Cloud Storage.">
-    <attributes name="path" required="true" description="The url, in the format of `gs://bucket/&lt;path>`." type="//@types.0"/>
+    <attributes name="path" required="true" description="The url, in the format of `gs://bucket/&lt;path>`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1KAnonymityHistogramBucket" scheme="http://occi/gcpdlp#" title="Histogram bucket of equivalence class sizes in the table.">
-    <attributes name="equivalenceClassSizeLowerBound" required="true" description="Lower bound on the size of the equivalence classes in this bucket." type="//@types.0"/>
-    <attributes name="equivalenceClassSizeUpperBound" required="true" description="Upper bound on the size of the equivalence classes in this bucket." type="//@types.0"/>
-    <attributes name="bucketSize" required="true" description="Total number of records in this bucket." type="//@types.0"/>
-    <attributes name="bucketValues" required="true" description="Sample of equivalence classes in this bucket. The total number of&#xA;classes returned per bucket is capped at 20." type="//@types.7"/>
+    <attributes name="equivalenceClassSizeLowerBound" required="true" description="Lower bound on the size of the equivalence classes in this bucket.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="equivalenceClassSizeUpperBound" required="true" description="Upper bound on the size of the equivalence classes in this bucket.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="bucketSize" required="true" description="Total number of records in this bucket.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="bucketValues" required="true" description="Sample of equivalence classes in this bucket. The total number of&#xA;classes returned per bucket is capped at 20." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InspectOperationResult" scheme="http://occi/gcpdlp#" title="The operational data.">
-    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `inspect/results/{id}`." type="//@types.0"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `inspect/results/{id}`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Range" scheme="http://occi/gcpdlp#" title="Generic half-open interval [start, end)">
-    <attributes name="start" required="true" description="Index of the first character of the range (inclusive)." type="//@types.0"/>
-    <attributes name="end" required="true" description="Index of the last character of the range (exclusive)." type="//@types.0"/>
+    <attributes name="start" required="true" description="Index of the first character of the range (inclusive).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="end" required="true" description="Index of the last character of the range (exclusive).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CategoricalStatsResult" scheme="http://occi/gcpdlp#" title="Result of the categorical stats computation.">
-    <attributes name="valueFrequencyHistogramBuckets" required="true" description="Histogram of value frequencies in the column." type="//@types.7"/>
+    <attributes name="valueFrequencyHistogramBuckets" required="true" description="Histogram of value frequencies in the column." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1LDiversityResult" scheme="http://occi/gcpdlp#" title="Result of the l-diversity computation.">
-    <attributes name="sensitiveValueFrequencyHistogramBuckets" required="true" description="Histogram of l-diversity equivalence class sensitive value frequencies." type="//@types.7"/>
+    <attributes name="sensitiveValueFrequencyHistogramBuckets" required="true" description="Histogram of l-diversity equivalence class sensitive value frequencies." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleTypeTimeOfDay" scheme="http://occi/gcpdlp#" title="Represents a time of day. The date and time zone are either not significant&#xA;or are specified elsewhere. An API may choose to allow leap seconds. Related&#xA;types are google.type.Date and `google.protobuf.Timestamp`.">
-    <attributes name="hours" required="true" description="Hours of day in 24 hour format. Should be from 0 to 23. An API may choose&#xA;to allow the value &quot;24:00:00&quot; for scenarios like business closing time." type="//@types.3"/>
-    <attributes name="nanos" required="true" description="Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999." type="//@types.3"/>
-    <attributes name="seconds" required="true" description="Seconds of minutes of the time. Must normally be from 0 to 59. An API may&#xA;allow the value 60 if it allows leap-seconds." type="//@types.3"/>
-    <attributes name="minutes" required="true" description="Minutes of hour of day. Must be from 0 to 59." type="//@types.3"/>
+    <attributes name="hours" required="true" description="Hours of day in 24 hour format. Should be from 0 to 23. An API may choose&#xA;to allow the value &quot;24:00:00&quot; for scenarios like business closing time.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="nanos" required="true" description="Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="seconds" required="true" description="Seconds of minutes of the time. Must normally be from 0 to 59. An API may&#xA;allow the value 60 if it allows leap-seconds.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="minutes" required="true" description="Minutes of hour of day. Must be from 0 to 59.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1RecordTransformationsLink" scheme="http://occi/gcpdlp#" title="Treat the dataset as structured. Transformations can be applied to&#xA;specific locations within structured datasets, such as transforming&#xA;a column within a table." source="//@kinds[term='googleprivacydlpv2beta1deidentifyconfig']" target="//@kinds[term='googleprivacydlpv2beta1recordtransformations']">
@@ -55,7 +77,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1LDiversityConfig" scheme="http://occi/gcpdlp#" title="l-diversity metric, used for analysis of reidentification risk.">
-    <attributes name="quasiIds" required="true" description="Set of quasi-identifiers indicating how equivalence classes are&#xA;defined for the l-diversity computation. When multiple fields are&#xA;specified, they are considered a single composite key." type="//@types.7"/>
+    <attributes name="quasiIds" required="true" description="Set of quasi-identifiers indicating how equivalence classes are&#xA;defined for the l-diversity computation. When multiple fields are&#xA;specified, they are considered a single composite key." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1DatastoreOptionsLink" scheme="http://occi/gcpdlp#" title="Google Cloud Datastore options specification." source="//@kinds[term='googleprivacydlpv2beta1storageconfig']" target="//@kinds[term='googleprivacydlpv2beta1datastoreoptions']">
@@ -74,11 +96,13 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1BigQueryOptions" scheme="http://occi/gcpdlp#" title="Options defining BigQuery table and row identifiers.">
-    <attributes name="identifyingFields" required="true" description="References to fields uniquely identifying rows within the table.&#xA;Nested fields in the format, like `person.birthdate.year`, are allowed." type="//@types.7"/>
+    <attributes name="identifyingFields" required="true" description="References to fields uniquely identifying rows within the table.&#xA;Nested fields in the format, like `person.birthdate.year`, are allowed." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1OperationConfig" scheme="http://occi/gcpdlp#" title="Additional configuration for inspect long running operations.">
-    <attributes name="maxItemFindings" required="true" description="Max number of findings per file, Datastore entity, or database row." type="//@types.0"/>
+    <attributes name="maxItemFindings" required="true" description="Max number of findings per file, Datastore entity, or database row.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1NumericalStatsConfigLink" scheme="http://occi/gcpdlp#" title="" source="//@kinds[term='googleprivacydlpv2beta1privacymetric']" target="//@kinds[term='googleprivacydlpv2beta1numericalstatsconfig']">
@@ -100,24 +124,32 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ReplaceConfig" scheme="http://occi/gcpdlp#" title="">
-    <attributes name="replaceWith" required="true" description="Content replacing sensitive information of given type. Max 256 chars." type="//@types.0"/>
+    <attributes name="replaceWith" required="true" description="Content replacing sensitive information of given type. Max 256 chars.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1LDiversityEquivalenceClass" scheme="http://occi/gcpdlp#" title="The set of columns' values that share the same l-diversity value.">
-    <attributes name="equivalenceClassSize" required="true" description="Size of the k-anonymity equivalence class." type="//@types.0"/>
-    <attributes name="quasiIdsValues" required="true" description="Quasi-identifier values defining the k-anonymity equivalence&#xA;class. The order is always the same as the original request." type="//@types.7"/>
-    <attributes name="numDistinctSensitiveValues" required="true" description="Number of distinct sensitive values in this equivalence class." type="//@types.0"/>
-    <attributes name="topSensitiveValues" required="true" description="Estimated frequencies of top sensitive values." type="//@types.7"/>
+    <attributes name="equivalenceClassSize" required="true" description="Size of the k-anonymity equivalence class.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="quasiIdsValues" required="true" description="Quasi-identifier values defining the k-anonymity equivalence&#xA;class. The order is always the same as the original request." type="//@types.5"/>
+    <attributes name="numDistinctSensitiveValues" required="true" description="Number of distinct sensitive values in this equivalence class.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="topSensitiveValues" required="true" description="Estimated frequencies of top sensitive values." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1NumericalStatsConfigGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Field to compute numerical stats on. Supported types are&#xA;integer, float, date, datetime, timestamp, time." source="//@kinds[term='googleprivacydlpv2beta1numericalstatsconfig']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
+  <kinds name="GooglePrivacyDlpV2beta1NumericalStatsConfigfieldGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Field to compute numerical stats on. Supported types are&#xA;integer, float, date, datetime, timestamp, time." source="//@kinds[term='googleprivacydlpv2beta1numericalstatsconfig']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1NumericalStatsConfig" scheme="http://occi/gcpdlp#" title="Compute numerical stats over an individual column, including&#xA;min, max, and quantiles.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1TimePartConfig" scheme="http://occi/gcpdlp#" title="For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a&#xA;portion of the value.">
-    <attributes name="partToExtract" required="true" description="" type="//@types.11"/>
+    <attributes name="partToExtract" required="true" description="">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ExpressionsLink" scheme="http://occi/gcpdlp#" title="" source="//@kinds[term='googleprivacydlpv2beta1recordcondition']" target="//@kinds[term='googleprivacydlpv2beta1expressions']">
@@ -127,27 +159,33 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1DeidentificationSummary" scheme="http://occi/gcpdlp#" title="High level summary of deidentification.">
-    <attributes name="transformedBytes" required="true" description="Total size in bytes that were transformed in some way." type="//@types.11"/>
-    <attributes name="transformationSummaries" required="true" description="Transformations applied to the dataset." type="//@types.7"/>
+    <attributes name="transformedBytes" required="true" description="Total size in bytes that were transformed in some way.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="transformationSummaries" required="true" description="Transformations applied to the dataset." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ListInfoTypesResponse" scheme="http://occi/gcpdlp#" title="Response to the ListInfoTypes request.">
-    <attributes name="infoTypes" required="true" description="Set of sensitive info types belonging to a category." type="//@types.7"/>
+    <attributes name="infoTypes" required="true" description="Set of sensitive info types belonging to a category." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CloudStorageKey" scheme="http://occi/gcpdlp#" title="Record key for a finding in a Cloud Storage file.">
-    <attributes name="filePath" required="true" description="Path to the file." type="//@types.11"/>
-    <attributes name="startOffset" required="true" description="Byte offset of the referenced data in the file." type="//@types.11"/>
+    <attributes name="filePath" required="true" description="Path to the file.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startOffset" required="true" description="Byte offset of the referenced data in the file.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Minimum value appearing in the column." source="//@kinds[term='googleprivacydlpv2beta1numericalstatsresult']" target="//@kinds[term='googleprivacydlpv2beta1value']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1NumericalStatsResultGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Maximum value appearing in the column." source="//@kinds[term='googleprivacydlpv2beta1numericalstatsresult']" target="//@kinds[term='googleprivacydlpv2beta1value']">
+  <kinds name="GooglePrivacyDlpV2beta1NumericalStatsResultmaxValueGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Maximum value appearing in the column." source="//@kinds[term='googleprivacydlpv2beta1numericalstatsresult']" target="//@kinds[term='googleprivacydlpv2beta1value']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1NumericalStatsResult" scheme="http://occi/gcpdlp#" title="Result of the numerical stats computation.">
-    <attributes name="quantileValues" required="true" description="List of 99 values that partition the set of field values into 100 equal&#xA;sized buckets." type="//@types.7"/>
+    <attributes name="quantileValues" required="true" description="List of 99 values that partition the set of field values into 100 equal&#xA;sized buckets." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1WordListLink" scheme="http://occi/gcpdlp#" title="List of words or phrases to search for." source="//@kinds[term='googleprivacydlpv2beta1dictionary']" target="//@kinds[term='googleprivacydlpv2beta1wordlist']">
@@ -163,22 +201,30 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1DatastoreOptions" scheme="http://occi/gcpdlp#" title="Options defining a data set within Google Cloud Datastore.">
-    <attributes name="projection" required="true" description="Properties to scan. If none are specified, all properties will be scanned&#xA;by default." type="//@types.7"/>
+    <attributes name="projection" required="true" description="Properties to scan. If none are specified, all properties will be scanned&#xA;by default." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1RecordTransformations" scheme="http://occi/gcpdlp#" title="A type of transformation that is applied over structured data such as a&#xA;table.">
-    <attributes name="recordSuppressions" required="true" description="Configuration defining which records get suppressed entirely. Records that&#xA;match any suppression rule are omitted from the output [optional]." type="//@types.7"/>
-    <attributes name="fieldTransformations" required="true" description="Transform the record by applying various field transformations." type="//@types.7"/>
+    <attributes name="recordSuppressions" required="true" description="Configuration defining which records get suppressed entirely. Records that&#xA;match any suppression rule are omitted from the output [optional]." type="//@types.5"/>
+    <attributes name="fieldTransformations" required="true" description="Transform the record by applying various field transformations." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InspectConfig" scheme="http://occi/gcpdlp#" title="Configuration description of the scanning process.&#xA;When used with redactContent only info_types and min_likelihood are currently&#xA;used.">
-    <attributes name="infoTypeLimits" required="true" description="Configuration of findings limit given for specified info types." type="//@types.7"/>
-    <attributes name="maxFindings" required="true" description="Limits the number of findings per content item or long running operation." type="//@types.3"/>
-    <attributes name="infoTypes" required="true" description="Restricts what info_types to look for. The values must correspond to&#xA;InfoType values returned by ListInfoTypes or found in documentation.&#xA;Empty info_types runs all enabled detectors." type="//@types.7"/>
-    <attributes name="includeQuote" required="true" description="When true, a contextual quote from the data that triggered a finding is&#xA;included in the response; see Finding.quote." type="//@types.6"/>
-    <attributes name="customInfoTypes" required="true" description="Custom info types provided by the user." type="//@types.7"/>
-    <attributes name="excludeTypes" required="true" description="When true, excludes type information of the findings." type="//@types.6"/>
-    <attributes name="minLikelihood" required="true" description="Only returns findings equal or above this threshold." type="//@types.12"/>
+    <attributes name="infoTypeLimits" required="true" description="Configuration of findings limit given for specified info types." type="//@types.5"/>
+    <attributes name="maxFindings" required="true" description="Limits the number of findings per content item or long running operation.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="infoTypes" required="true" description="Restricts what info_types to look for. The values must correspond to&#xA;InfoType values returned by ListInfoTypes or found in documentation.&#xA;Empty info_types runs all enabled detectors." type="//@types.5"/>
+    <attributes name="includeQuote" required="true" description="When true, a contextual quote from the data that triggered a finding is&#xA;included in the response; see Finding.quote.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="customInfoTypes" required="true" description="Custom info types provided by the user." type="//@types.5"/>
+    <attributes name="excludeTypes" required="true" description="When true, excludes type information of the findings.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="minLikelihood" required="true" description="Only returns findings equal or above this threshold.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1PropertyReferenceLink" scheme="http://occi/gcpdlp#" title="The property to project." source="//@kinds[term='googleprivacydlpv2beta1projection']" target="//@kinds[term='googleprivacydlpv2beta1propertyreference']">
@@ -196,46 +242,54 @@
   <kinds name="GooglePrivacyDlpV2beta1CryptoHashConfig" scheme="http://occi/gcpdlp#" title="Pseudonymization method that generates surrogates via cryptographic hashing.&#xA;Uses SHA-256.&#xA;Outputs a 32 byte digest as an uppercase hex string&#xA;(for example, 41D1567F7F99F1DC2A5FAB886DEE5BEE).&#xA;Currently, only string and integer values can be hashed.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1KeyGooglePrivacyDlpV2beta1PartitionIdLink" scheme="http://occi/gcpdlp#" title="Entities are partitioned into subsets, currently identified by a project&#xA;ID and namespace ID.&#xA;Queries are scoped to a single partition." source="//@kinds[term='googleprivacydlpv2beta1key']" target="//@kinds[term='googleprivacydlpv2beta1partitionid']">
+  <kinds name="GooglePrivacyDlpV2beta1KeypartitionIdGooglePrivacyDlpV2beta1PartitionIdLink" scheme="http://occi/gcpdlp#" title="Entities are partitioned into subsets, currently identified by a project&#xA;ID and namespace ID.&#xA;Queries are scoped to a single partition." source="//@kinds[term='googleprivacydlpv2beta1key']" target="//@kinds[term='googleprivacydlpv2beta1partitionid']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Key" scheme="http://occi/gcpdlp#" title="A unique identifier for a Datastore entity.&#xA;If a key's partition ID or any of its path kinds or names are&#xA;reserved/read-only, the key is reserved/read-only.&#xA;A reserved/read-only key is forbidden in certain documented contexts.">
-    <attributes name="path" required="true" description="The entity path.&#xA;An entity path consists of one or more elements composed of a kind and a&#xA;string or numerical identifier, which identify entities. The first&#xA;element identifies a _root entity_, the second element identifies&#xA;a _child_ of the root entity, the third element identifies a child of the&#xA;second entity, and so forth. The entities identified by all prefixes of&#xA;the path are called the element's _ancestors_.&#xA;&#xA;A path can never be empty, and a path can have at most 100 elements." type="//@types.7"/>
+    <attributes name="path" required="true" description="The entity path.&#xA;An entity path consists of one or more elements composed of a kind and a&#xA;string or numerical identifier, which identify entities. The first&#xA;element identifies a _root entity_, the second element identifies&#xA;a _child_ of the root entity, the third element identifies a child of the&#xA;second entity, and so forth. The entities identified by all prefixes of&#xA;the path are called the element's _ancestors_.&#xA;&#xA;A path can never be empty, and a path can have at most 100 elements." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InspectConfigLink" scheme="http://occi/gcpdlp#" title="Configuration for the inspector." source="//@kinds[term='googleprivacydlpv2beta1inspectcontentrequest']" target="//@kinds[term='googleprivacydlpv2beta1inspectconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InspectContentRequest" scheme="http://occi/gcpdlp#" title="Request to search for potentially sensitive info in a list of items.">
-    <attributes name="items" required="true" description="The list of items to inspect. Items in a single request are&#xA;considered &quot;related&quot; unless inspect_config.independent_inputs is true.&#xA;Up to 100 are allowed per request." type="//@types.7"/>
+    <attributes name="items" required="true" description="The list of items to inspect. Items in a single request are&#xA;considered &quot;related&quot; unless inspect_config.independent_inputs is true.&#xA;Up to 100 are allowed per request." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleTypeDate" scheme="http://occi/gcpdlp#" title="Represents a whole calendar date, e.g. date of birth. The time of day and&#xA;time zone are either specified elsewhere or are not significant. The date&#xA;is relative to the Proleptic Gregorian Calendar. The day may be 0 to&#xA;represent a year and month where the day is not significant, e.g. credit card&#xA;expiration date. The year may be 0 to represent a month and day independent&#xA;of year, e.g. anniversary date. Related types are google.type.TimeOfDay&#xA;and `google.protobuf.Timestamp`.">
-    <attributes name="month" required="true" description="Month of year. Must be from 1 to 12." type="//@types.3"/>
-    <attributes name="year" required="true" description="Year of date. Must be from 1 to 9999, or 0 if specifying a date without&#xA;a year." type="//@types.3"/>
-    <attributes name="day" required="true" description="Day of month. Must be from 1 to 31 and valid for the year and month, or 0&#xA;if specifying a year/month where the day is not significant." type="//@types.3"/>
+    <attributes name="month" required="true" description="Month of year. Must be from 1 to 12.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="year" required="true" description="Year of date. Must be from 1 to 9999, or 0 if specifying a date without&#xA;a year.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="day" required="true" description="Day of month. Must be from 1 to 31 and valid for the year and month, or 0&#xA;if specifying a year/month where the day is not significant.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig" scheme="http://occi/gcpdlp#" title="Replace each matching finding with the name of the info_type.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1ImageRedactionConfigGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="Only one per info_type should be provided per request. If not&#xA;specified, and redact_all_text is false, the DLP API will redact all&#xA;text that it matches against all info_types that are found, but not&#xA;specified in another ImageRedactionConfig." source="//@kinds[term='googleprivacydlpv2beta1imageredactionconfig']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
+  <kinds name="GooglePrivacyDlpV2beta1ImageRedactionConfiginfoTypeGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="Only one per info_type should be provided per request. If not&#xA;specified, and redact_all_text is false, the DLP API will redact all&#xA;text that it matches against all info_types that are found, but not&#xA;specified in another ImageRedactionConfig." source="//@kinds[term='googleprivacydlpv2beta1imageredactionconfig']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ColorLink" scheme="http://occi/gcpdlp#" title="The color to use when redacting content from an image. If not specified,&#xA;the default is black." source="//@kinds[term='googleprivacydlpv2beta1imageredactionconfig']" target="//@kinds[term='googleprivacydlpv2beta1color']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ImageRedactionConfig" scheme="http://occi/gcpdlp#" title="Configuration for determining how redaction of images should occur.">
-    <attributes name="redactAllText" required="true" description="If true, all text found in the image, regardless whether it matches an&#xA;info_type, is redacted." type="//@types.6"/>
+    <attributes name="redactAllText" required="true" description="If true, all text found in the image, regardless whether it matches an&#xA;info_type, is redacted.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1RangeLink" scheme="http://occi/gcpdlp#" title="Character offsets within a content item, included when content type&#xA;is a text. Default charset assumed to be UTF-8." source="//@kinds[term='googleprivacydlpv2beta1location']" target="//@kinds[term='googleprivacydlpv2beta1range']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1LocationGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Field id of the field containing the finding." source="//@kinds[term='googleprivacydlpv2beta1location']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
+  <kinds name="GooglePrivacyDlpV2beta1LocationfieldIdGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Field id of the field containing the finding." source="//@kinds[term='googleprivacydlpv2beta1location']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1LocationGooglePrivacyDlpV2beta1RangeLink" scheme="http://occi/gcpdlp#" title="Zero-based byte offsets within a content item." source="//@kinds[term='googleprivacydlpv2beta1location']" target="//@kinds[term='googleprivacydlpv2beta1range']">
+  <kinds name="GooglePrivacyDlpV2beta1LocationbyteRangeGooglePrivacyDlpV2beta1RangeLink" scheme="http://occi/gcpdlp#" title="Zero-based byte offsets within a content item." source="//@kinds[term='googleprivacydlpv2beta1location']" target="//@kinds[term='googleprivacydlpv2beta1range']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1RecordKeyLink" scheme="http://occi/gcpdlp#" title="Key of the finding." source="//@kinds[term='googleprivacydlpv2beta1location']" target="//@kinds[term='googleprivacydlpv2beta1recordkey']">
@@ -245,7 +299,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Location" scheme="http://occi/gcpdlp#" title="Specifies the location of a finding within its source item.">
-    <attributes name="imageBoxes" required="true" description="Location within an image's pixels." type="//@types.7"/>
+    <attributes name="imageBoxes" required="true" description="Location within an image's pixels." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1RecordConditionLink" scheme="http://occi/gcpdlp#" title="" source="//@kinds[term='googleprivacydlpv2beta1recordsuppression']" target="//@kinds[term='googleprivacydlpv2beta1recordcondition']">
@@ -255,22 +309,28 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InfoTypeDescription" scheme="http://occi/gcpdlp#" title="Description of the information type (infoType).">
-    <attributes name="name" required="true" description="Internal name of the infoType." type="//@types.12"/>
-    <attributes name="displayName" required="true" description="Human readable form of the infoType name." type="//@types.12"/>
-    <attributes name="categories" required="true" description="List of categories this infoType belongs to." type="//@types.7"/>
+    <attributes name="name" required="true" description="Internal name of the infoType.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="displayName" required="true" description="Human readable form of the infoType name.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="categories" required="true" description="List of categories this infoType belongs to." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1EntityIdGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Composite key indicating which field contains the entity identifier." source="//@kinds[term='googleprivacydlpv2beta1entityid']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
+  <kinds name="GooglePrivacyDlpV2beta1EntityIdfieldGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Composite key indicating which field contains the entity identifier." source="//@kinds[term='googleprivacydlpv2beta1entityid']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1EntityId" scheme="http://occi/gcpdlp#" title="An entity in a dataset is a field or set of fields that correspond to a&#xA;single person. For example, in medical records the `EntityId` might be&#xA;a patient identifier, or for financial records it might be an account&#xA;identifier. This message is used when generalizations or analysis must be&#xA;consistent across multiple rows pertaining to the same entity.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1UnwrappedCryptoKey" scheme="http://occi/gcpdlp#" title="Using raw keys is prone to security risks due to accidentally&#xA;leaking the key. Choose another type of key if possible.">
-    <attributes name="key" required="true" description="The AES 128/192/256 bit key. [required]" type="//@types.12"/>
+    <attributes name="key" required="true" description="The AES 128/192/256 bit key. [required]">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1CustomInfoTypeGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="Info type configuration. All custom info types must have configurations&#xA;that do not conflict with built-in info types or other custom info types." source="//@kinds[term='googleprivacydlpv2beta1custominfotype']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
+  <kinds name="GooglePrivacyDlpV2beta1CustomInfoTypeinfoTypeGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="Info type configuration. All custom info types must have configurations&#xA;that do not conflict with built-in info types or other custom info types." source="//@kinds[term='googleprivacydlpv2beta1custominfotype']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1DictionaryLink" scheme="http://occi/gcpdlp#" title="Dictionary-based custom info type." source="//@kinds[term='googleprivacydlpv2beta1custominfotype']" target="//@kinds[term='googleprivacydlpv2beta1dictionary']">
@@ -280,52 +340,76 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleRpcStatus" scheme="http://occi/gcpdlp#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
-    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.12"/>
-    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
-    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.5"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1PathElement" scheme="http://occi/gcpdlp#" title="A (kind, ID/name) pair used to construct a key path.&#xA;&#xA;If either name or ID is set, the element is complete.&#xA;If neither is set, the element is incomplete.">
-    <attributes name="name" required="true" description="The name of the entity.&#xA;A name matching regex `__.*__` is reserved/read-only.&#xA;A name must not be more than 1500 bytes when UTF-8 encoded.&#xA;Cannot be `&quot;&quot;`." type="//@types.12"/>
-    <attributes name="kind" required="true" description="The kind of the entity.&#xA;A kind matching regex `__.*__` is reserved/read-only.&#xA;A kind must not contain more than 1500 bytes when UTF-8 encoded.&#xA;Cannot be `&quot;&quot;`." type="//@types.12"/>
+    <attributes name="name" required="true" description="The name of the entity.&#xA;A name matching regex `__.*__` is reserved/read-only.&#xA;A name must not be more than 1500 bytes when UTF-8 encoded.&#xA;Cannot be `&quot;&quot;`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="kindGCP" required="true" description="The kind of the entity.&#xA;A kind matching regex `__.*__` is reserved/read-only.&#xA;A kind must not contain more than 1500 bytes when UTF-8 encoded.&#xA;Cannot be `&quot;&quot;`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1BigQueryTable" scheme="http://occi/gcpdlp#" title="Message defining the location of a BigQuery table. A table is uniquely&#xA;identified  by its project_id, dataset_id, and table_name. Within a query&#xA;a table is often referenced with a string in the format of:&#xA;`&lt;project_id>:&lt;dataset_id>.&lt;table_id>` or&#xA;`&lt;project_id>.&lt;dataset_id>.&lt;table_id>`.">
-    <attributes name="tableId" required="true" description="Name of the table." type="//@types.12"/>
-    <attributes name="projectId" required="true" description="The Google Cloud Platform project ID of the project containing the table.&#xA;If omitted, project ID is inferred from the API call." type="//@types.12"/>
-    <attributes name="datasetId" required="true" description="Dataset ID of the table." type="//@types.12"/>
+    <attributes name="tableId" required="true" description="Name of the table.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="projectId" required="true" description="The Google Cloud Platform project ID of the project containing the table.&#xA;If omitted, project ID is inferred from the API call.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="datasetId" required="true" description="Dataset ID of the table.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1SummaryResult" scheme="http://occi/gcpdlp#" title="A collection that informs the user the number of times a particular&#xA;`TransformationResultCode` and error details occurred.">
-    <attributes name="details" required="true" description="A place for warnings or errors to show up if a transformation didn't&#xA;work as expected." type="//@types.12"/>
-    <attributes name="count" required="true" description="" type="//@types.12"/>
-    <attributes name="code" required="true" description="" type="//@types.13"/>
+    <attributes name="details" required="true" description="A place for warnings or errors to show up if a transformation didn't&#xA;work as expected.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="count" required="true" description="">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="code" required="true" description="">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InfoTypeTransformations" scheme="http://occi/gcpdlp#" title="A type of transformation that will scan unstructured text and&#xA;apply various `PrimitiveTransformation`s to each finding, where the&#xA;transformation is applied to only values that were identified as a specific&#xA;info_type.">
-    <attributes name="transformations" required="true" description="Transformation for each info type. Cannot specify more than one&#xA;for a given info type. [required]" type="//@types.7"/>
+    <attributes name="transformations" required="true" description="Transformation for each info type. Cannot specify more than one&#xA;for a given info type. [required]" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ListRootCategoriesResponse" scheme="http://occi/gcpdlp#" title="Response for ListRootCategories request.">
-    <attributes name="categories" required="true" description="List of all into type categories supported by the API." type="//@types.7"/>
+    <attributes name="categories" required="true" description="List of all into type categories supported by the API." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1KindExpression" scheme="http://occi/gcpdlp#" title="A representation of a Datastore kind.">
-    <attributes name="name" required="true" description="The name of the kind." type="//@types.13"/>
+    <attributes name="name" required="true" description="The name of the kind.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1FileSet" scheme="http://occi/gcpdlp#" title="Set of files to scan.">
-    <attributes name="url" required="true" description="The url, in the format `gs://&lt;bucket>/&lt;path>`. Trailing wildcard in the&#xA;path is allowed." type="//@types.13"/>
+    <attributes name="url" required="true" description="The url, in the format `gs://&lt;bucket>/&lt;path>`. Trailing wildcard in the&#xA;path is allowed.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1PrimitiveTransformationLink" scheme="http://occi/gcpdlp#" title="Primitive transformation to apply to the info type. [required]" source="//@kinds[term='googleprivacydlpv2beta1infotypetransformation']" target="//@kinds[term='googleprivacydlpv2beta1primitivetransformation']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InfoTypeTransformation" scheme="http://occi/gcpdlp#" title="A transformation to apply to text that is identified as a specific&#xA;info_type.">
-    <attributes name="infoTypes" required="true" description="Info types to apply the transformation to. Empty list will match all&#xA;available info types for this transformation." type="//@types.7"/>
+    <attributes name="infoTypes" required="true" description="Info types to apply the transformation to. Empty list will match all&#xA;available info types for this transformation." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequestGooglePrivacyDlpV2beta1BigQueryTableLink" scheme="http://occi/gcpdlp#" title="Input dataset to compute metrics over." source="//@kinds[term='googleprivacydlpv2beta1analyzedatasourceriskrequest']" target="//@kinds[term='googleprivacydlpv2beta1bigquerytable']">
+  <kinds name="GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequestsourceTableGooglePrivacyDlpV2beta1BigQueryTableLink" scheme="http://occi/gcpdlp#" title="Input dataset to compute metrics over." source="//@kinds[term='googleprivacydlpv2beta1analyzedatasourceriskrequest']" target="//@kinds[term='googleprivacydlpv2beta1bigquerytable']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1PrivacyMetricLink" scheme="http://occi/gcpdlp#" title="Privacy metric to compute." source="//@kinds[term='googleprivacydlpv2beta1analyzedatasourceriskrequest']" target="//@kinds[term='googleprivacydlpv2beta1privacymetric']">
@@ -335,30 +419,38 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1KAnonymityResult" scheme="http://occi/gcpdlp#" title="Result of the k-anonymity computation.">
-    <attributes name="equivalenceClassHistogramBuckets" required="true" description="Histogram of k-anonymity equivalence classes." type="//@types.7"/>
+    <attributes name="equivalenceClassHistogramBuckets" required="true" description="Histogram of k-anonymity equivalence classes." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1BucketGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Upper bound of the range, exclusive; type must match min." source="//@kinds[term='googleprivacydlpv2beta1bucket']" target="//@kinds[term='googleprivacydlpv2beta1value']">
+  <kinds name="GooglePrivacyDlpV2beta1BucketmaxGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Upper bound of the range, exclusive; type must match min." source="//@kinds[term='googleprivacydlpv2beta1bucket']" target="//@kinds[term='googleprivacydlpv2beta1value']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1BucketGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Replacement value for this bucket. If not provided&#xA;the default behavior will be to hyphenate the min-max range." source="//@kinds[term='googleprivacydlpv2beta1bucket']" target="//@kinds[term='googleprivacydlpv2beta1value']">
+  <kinds name="GooglePrivacyDlpV2beta1BucketreplacementValueGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Replacement value for this bucket. If not provided&#xA;the default behavior will be to hyphenate the min-max range." source="//@kinds[term='googleprivacydlpv2beta1bucket']" target="//@kinds[term='googleprivacydlpv2beta1value']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1BucketGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Lower bound of the range, inclusive. Type should be the same as max if&#xA;used." source="//@kinds[term='googleprivacydlpv2beta1bucket']" target="//@kinds[term='googleprivacydlpv2beta1value']">
+  <kinds name="GooglePrivacyDlpV2beta1BucketminGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Lower bound of the range, inclusive. Type should be the same as max if&#xA;used." source="//@kinds[term='googleprivacydlpv2beta1bucket']" target="//@kinds[term='googleprivacydlpv2beta1value']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Bucket" scheme="http://occi/gcpdlp#" title="Buckets represented as ranges, along with replacement values. Ranges must&#xA;be non-overlapping.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket" scheme="http://occi/gcpdlp#" title="Histogram bucket of value frequencies in the column.">
-    <attributes name="valueFrequencyUpperBound" required="true" description="Upper bound on the value frequency of the values in this bucket." type="//@types.13"/>
-    <attributes name="valueFrequencyLowerBound" required="true" description="Lower bound on the value frequency of the values in this bucket." type="//@types.13"/>
-    <attributes name="bucketValues" required="true" description="Sample of value frequencies in this bucket. The total number of&#xA;values returned per bucket is capped at 20." type="//@types.7"/>
-    <attributes name="bucketSize" required="true" description="Total number of records in this bucket." type="//@types.13"/>
+    <attributes name="valueFrequencyUpperBound" required="true" description="Upper bound on the value frequency of the values in this bucket.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="valueFrequencyLowerBound" required="true" description="Lower bound on the value frequency of the values in this bucket.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="bucketValues" required="true" description="Sample of value frequencies in this bucket. The total number of&#xA;values returned per bucket is capped at 20." type="//@types.5"/>
+    <attributes name="bucketSize" required="true" description="Total number of records in this bucket.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1TableLocation" scheme="http://occi/gcpdlp#" title="Location of a finding within a `ContentItem.Table`.">
-    <attributes name="rowIndex" required="true" description="The zero-based index of the row where the finding is located." type="//@types.13"/>
+    <attributes name="rowIndex" required="true" description="The zero-based index of the row where the finding is located.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1KeyLink" scheme="http://occi/gcpdlp#" title="Datastore entity key." source="//@kinds[term='googleprivacydlpv2beta1datastorekey']" target="//@kinds[term='googleprivacydlpv2beta1key']">
@@ -371,7 +463,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1KAnonymityConfig" scheme="http://occi/gcpdlp#" title="k-anonymity metric, used for analysis of reidentification risk.">
-    <attributes name="quasiIds" required="true" description="Set of fields to compute k-anonymity over. When multiple fields are&#xA;specified, they are considered a single composite key. Structs and&#xA;repeated data types are not supported; however, nested fields are&#xA;supported so long as they are not structs themselves or nested within&#xA;a repeated field." type="//@types.7"/>
+    <attributes name="quasiIds" required="true" description="Set of fields to compute k-anonymity over. When multiple fields are&#xA;specified, they are considered a single composite key. Structs and&#xA;repeated data types are not supported; however, nested fields are&#xA;supported so long as they are not structs themselves or nested within&#xA;a repeated field." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1DatastoreKeyLink" scheme="http://occi/gcpdlp#" title="" source="//@kinds[term='googleprivacydlpv2beta1recordkey']" target="//@kinds[term='googleprivacydlpv2beta1datastorekey']">
@@ -386,26 +478,36 @@
   <kinds name="GooglePrivacyDlpV2beta1DeidentifyConfigLink" scheme="http://occi/gcpdlp#" title="Configuration for the de-identification of the list of content items." source="//@kinds[term='googleprivacydlpv2beta1deidentifycontentrequest']" target="//@kinds[term='googleprivacydlpv2beta1deidentifyconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1DeidentifyContentRequestGooglePrivacyDlpV2beta1InspectConfigLink" scheme="http://occi/gcpdlp#" title="Configuration for the inspector." source="//@kinds[term='googleprivacydlpv2beta1deidentifycontentrequest']" target="//@kinds[term='googleprivacydlpv2beta1inspectconfig']">
+  <kinds name="GooglePrivacyDlpV2beta1DeidentifyContentRequestinspectConfigGooglePrivacyDlpV2beta1InspectConfigLink" scheme="http://occi/gcpdlp#" title="Configuration for the inspector." source="//@kinds[term='googleprivacydlpv2beta1deidentifycontentrequest']" target="//@kinds[term='googleprivacydlpv2beta1inspectconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1DeidentifyContentRequest" scheme="http://occi/gcpdlp#" title="Request to de-identify a list of items.">
-    <attributes name="items" required="true" description="The list of items to inspect. Up to 100 are allowed per request.&#xA;All items will be treated as text/*." type="//@types.7"/>
+    <attributes name="items" required="true" description="The list of items to inspect. Up to 100 are allowed per request.&#xA;All items will be treated as text/*." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InspectResult" scheme="http://occi/gcpdlp#" title="All the findings for a single scanned item.">
-    <attributes name="findingsTruncated" required="true" description="If true, then this item might have more findings than were returned,&#xA;and the findings returned are an arbitrary subset of all findings.&#xA;The findings list might be truncated because the input items were too&#xA;large, or because the server reached the maximum amount of resources&#xA;allowed for a single API call. For best results, divide the input into&#xA;smaller batches." type="//@types.6"/>
-    <attributes name="findings" required="true" description="List of findings for an item." type="//@types.7"/>
+    <attributes name="findingsTruncated" required="true" description="If true, then this item might have more findings than were returned,&#xA;and the findings returned are an arbitrary subset of all findings.&#xA;The findings list might be truncated because the input items were too&#xA;large, or because the server reached the maximum amount of resources&#xA;allowed for a single API call. For best results, divide the input into&#xA;smaller batches.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="findings" required="true" description="List of findings for an item." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ImageLocation" scheme="http://occi/gcpdlp#" title="Bounding box encompassing detected text within an image.">
-    <attributes name="height" required="true" description="Height of the bounding box in pixels." type="//@types.3"/>
-    <attributes name="top" required="true" description="Top coordinate of the bounding box. (0,0) is upper left." type="//@types.3"/>
-    <attributes name="left" required="true" description="Left coordinate of the bounding box. (0,0) is upper left." type="//@types.3"/>
-    <attributes name="width" required="true" description="Width of the bounding box in pixels." type="//@types.3"/>
+    <attributes name="height" required="true" description="Height of the bounding box in pixels.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="top" required="true" description="Top coordinate of the bounding box. (0,0) is upper left.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="left" required="true" description="Left coordinate of the bounding box. (0,0) is upper left.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="width" required="true" description="Width of the bounding box in pixels.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1ReplaceValueConfigGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Value to replace it with." source="//@kinds[term='googleprivacydlpv2beta1replacevalueconfig']" target="//@kinds[term='googleprivacydlpv2beta1value']">
+  <kinds name="GooglePrivacyDlpV2beta1ReplaceValueConfignewValueGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Value to replace it with." source="//@kinds[term='googleprivacydlpv2beta1replacevalueconfig']" target="//@kinds[term='googleprivacydlpv2beta1value']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ReplaceValueConfig" scheme="http://occi/gcpdlp#" title="Replace each input value with a given `Value`.">
@@ -415,46 +517,68 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ContentItem" scheme="http://occi/gcpdlp#" title="Container structure for the content to inspect.">
-    <attributes name="data" required="true" description="Content data to inspect or redact." type="//@types.13"/>
-    <attributes name="type" required="true" description="Type of the content, as defined in Content-Type HTTP header.&#xA;Supported types are: all &quot;text&quot; types, octet streams, PNG images,&#xA;JPEG images." type="//@types.13"/>
-    <attributes name="value" required="true" description="String data to inspect or redact." type="//@types.13"/>
+    <attributes name="data" required="true" description="Content data to inspect or redact.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="type" required="true" description="Type of the content, as defined in Content-Type HTTP header.&#xA;Supported types are: all &quot;text&quot; types, octet streams, PNG images,&#xA;JPEG images.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="value" required="true" description="String data to inspect or redact.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfigGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="A context may be used for higher security since the same&#xA;identifier in two different contexts likely will be given a distinct&#xA;surrogate. The principle is that the likeliness is inversely related&#xA;to the ratio of the number of distinct identifiers per context over the&#xA;number of possible surrogates: As long as this ratio is small, the&#xA;likehood is large.&#xA;&#xA;If the context is not set, a default tweak will be used.&#xA;If the context is set but:&#xA;&#xA;1. there is no record present when transforming a given value or&#xA;1. the field is not present when transforming a given value,&#xA;&#xA;a default tweak will be used.&#xA;&#xA;Note that case (1) is expected when an `InfoTypeTransformation` is&#xA;applied to both structured and non-structured `ContentItem`s.&#xA;Currently, the referenced field may be of value type integer or string.&#xA;&#xA;The tweak is constructed as a sequence of bytes in big endian byte order&#xA;such that:&#xA;&#xA;- a 64 bit integer is encoded followed by a single byte of value 1&#xA;- a string is encoded in UTF-8 format followed by a single byte of value 2&#xA;&#xA;This is also known as the 'tweak', as in tweakable encryption." source="//@kinds[term='googleprivacydlpv2beta1cryptoreplaceffxfpeconfig']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
+  <kinds name="GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfigcontextGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="A context may be used for higher security since the same&#xA;identifier in two different contexts likely will be given a distinct&#xA;surrogate. The principle is that the likeliness is inversely related&#xA;to the ratio of the number of distinct identifiers per context over the&#xA;number of possible surrogates: As long as this ratio is small, the&#xA;likehood is large.&#xA;&#xA;If the context is not set, a default tweak will be used.&#xA;If the context is set but:&#xA;&#xA;1. there is no record present when transforming a given value or&#xA;1. the field is not present when transforming a given value,&#xA;&#xA;a default tweak will be used.&#xA;&#xA;Note that case (1) is expected when an `InfoTypeTransformation` is&#xA;applied to both structured and non-structured `ContentItem`s.&#xA;Currently, the referenced field may be of value type integer or string.&#xA;&#xA;The tweak is constructed as a sequence of bytes in big endian byte order&#xA;such that:&#xA;&#xA;- a 64 bit integer is encoded followed by a single byte of value 1&#xA;- a string is encoded in UTF-8 format followed by a single byte of value 2&#xA;&#xA;This is also known as the 'tweak', as in tweakable encryption." source="//@kinds[term='googleprivacydlpv2beta1cryptoreplaceffxfpeconfig']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfigGooglePrivacyDlpV2beta1CryptoKeyLink" scheme="http://occi/gcpdlp#" title="The key used by the encryption algorithm. [required]" source="//@kinds[term='googleprivacydlpv2beta1cryptoreplaceffxfpeconfig']" target="//@kinds[term='googleprivacydlpv2beta1cryptokey']">
+  <kinds name="GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfigcryptoKeyGooglePrivacyDlpV2beta1CryptoKeyLink" scheme="http://occi/gcpdlp#" title="The key used by the encryption algorithm. [required]" source="//@kinds[term='googleprivacydlpv2beta1cryptoreplaceffxfpeconfig']" target="//@kinds[term='googleprivacydlpv2beta1cryptokey']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig" scheme="http://occi/gcpdlp#" title="Replaces an identifier with an surrogate using FPE with the FFX&#xA;mode of operation.&#xA;The identifier must be representable by the US-ASCII character set.&#xA;For a given crypto key and context, the same identifier will be&#xA;replaced with the same surrogate.&#xA;Note that a given identifier must be either the empty string or be at&#xA;least two characters long.">
-    <attributes name="customAlphabet" required="true" description="This is supported by mapping these to the alphanumeric characters&#xA;that the FFX mode natively supports. This happens before/after&#xA;encryption/decryption.&#xA;Each character listed must appear only once.&#xA;Number of characters must be in the range [2, 62].&#xA;This must be encoded as ASCII.&#xA;The order of characters does not matter." type="//@types.13"/>
-    <attributes name="commonAlphabet" required="true" description="" type="//@types.14"/>
-    <attributes name="radix" required="true" description="The native way to select the alphabet. Must be in the range [2, 62]." type="//@types.3"/>
+    <attributes name="customAlphabet" required="true" description="This is supported by mapping these to the alphanumeric characters&#xA;that the FFX mode natively supports. This happens before/after&#xA;encryption/decryption.&#xA;Each character listed must appear only once.&#xA;Number of characters must be in the range [2, 62].&#xA;This must be encoded as ASCII.&#xA;The order of characters does not matter.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="commonAlphabet" required="true" description="">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="radix" required="true" description="The native way to select the alphabet. Must be in the range [2, 62].">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Color" scheme="http://occi/gcpdlp#" title="Represents a color in the RGB color space.">
-    <attributes name="red" required="true" description="The amount of red in the color as a value in the interval [0, 1]." type="//@types.3"/>
-    <attributes name="green" required="true" description="The amount of green in the color as a value in the interval [0, 1]." type="//@types.3"/>
-    <attributes name="blue" required="true" description="The amount of blue in the color as a value in the interval [0, 1]." type="//@types.3"/>
+    <attributes name="red" required="true" description="The amount of red in the color as a value in the interval [0, 1].">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="green" required="true" description="The amount of green in the color as a value in the interval [0, 1].">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="blue" required="true" description="The amount of blue in the color as a value in the interval [0, 1].">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1ValueFrequencyGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="A value contained in the field in question." source="//@kinds[term='googleprivacydlpv2beta1valuefrequency']" target="//@kinds[term='googleprivacydlpv2beta1value']">
+  <kinds name="GooglePrivacyDlpV2beta1ValueFrequencyvalueGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="A value contained in the field in question." source="//@kinds[term='googleprivacydlpv2beta1valuefrequency']" target="//@kinds[term='googleprivacydlpv2beta1value']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ValueFrequency" scheme="http://occi/gcpdlp#" title="A value of a field, including its frequency.">
-    <attributes name="count" required="true" description="How many times the value is contained in the field." type="//@types.14"/>
+    <attributes name="count" required="true" description="How many times the value is contained in the field.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Table" scheme="http://occi/gcpdlp#" title="Structured content to inspect. Up to 50,000 `Value`s per request allowed.">
-    <attributes name="rows" required="true" description="" type="//@types.7"/>
-    <attributes name="headers" required="true" description="" type="//@types.7"/>
+    <attributes name="rows" required="true" description="" type="//@types.5"/>
+    <attributes name="headers" required="true" description="" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1InfoTypeLimitGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="Type of information the findings limit applies to. Only one limit per&#xA;info_type should be provided. If InfoTypeLimit does not have an&#xA;info_type, the DLP API applies the limit against all info_types that are&#xA;found but not specified in another InfoTypeLimit." source="//@kinds[term='googleprivacydlpv2beta1infotypelimit']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
+  <kinds name="GooglePrivacyDlpV2beta1InfoTypeLimitinfoTypeGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="Type of information the findings limit applies to. Only one limit per&#xA;info_type should be provided. If InfoTypeLimit does not have an&#xA;info_type, the DLP API applies the limit against all info_types that are&#xA;found but not specified in another InfoTypeLimit." source="//@kinds[term='googleprivacydlpv2beta1infotypelimit']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InfoTypeLimit" scheme="http://occi/gcpdlp#" title="Max findings configuration per info type, per content item or long running&#xA;operation.">
-    <attributes name="maxFindings" required="true" description="Max findings limit for the given infoType." type="//@types.3"/>
+    <attributes name="maxFindings" required="true" description="Max findings limit for the given infoType.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1UnwrappedCryptoKeyLink" scheme="http://occi/gcpdlp#" title="" source="//@kinds[term='googleprivacydlpv2beta1cryptokey']" target="//@kinds[term='googleprivacydlpv2beta1unwrappedcryptokey']">
@@ -470,10 +594,16 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1LDiversityHistogramBucket" scheme="http://occi/gcpdlp#" title="Histogram bucket of sensitive value frequencies in the table.">
-    <attributes name="sensitiveValueFrequencyUpperBound" required="true" description="Upper bound on the sensitive value frequencies of the equivalence&#xA;classes in this bucket." type="//@types.14"/>
-    <attributes name="sensitiveValueFrequencyLowerBound" required="true" description="Lower bound on the sensitive value frequencies of the equivalence&#xA;classes in this bucket." type="//@types.14"/>
-    <attributes name="bucketValues" required="true" description="Sample of equivalence classes in this bucket. The total number of&#xA;classes returned per bucket is capped at 20." type="//@types.7"/>
-    <attributes name="bucketSize" required="true" description="Total number of records in this bucket." type="//@types.14"/>
+    <attributes name="sensitiveValueFrequencyUpperBound" required="true" description="Upper bound on the sensitive value frequencies of the equivalence&#xA;classes in this bucket.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="sensitiveValueFrequencyLowerBound" required="true" description="Lower bound on the sensitive value frequencies of the equivalence&#xA;classes in this bucket.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="bucketValues" required="true" description="Sample of equivalence classes in this bucket. The total number of&#xA;classes returned per bucket is capped at 20." type="//@types.5"/>
+    <attributes name="bucketSize" required="true" description="Total number of records in this bucket.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleTypeDateLink" scheme="http://occi/gcpdlp#" title="" source="//@kinds[term='googleprivacydlpv2beta1value']" target="//@kinds[term='googletypedate']">
@@ -483,78 +613,104 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Value" scheme="http://occi/gcpdlp#" title="Set of primitive values supported by the system.">
-    <attributes name="timestampValue" required="true" description="" type="//@types.14"/>
-    <attributes name="booleanValue" required="true" description="" type="//@types.6"/>
-    <attributes name="floatValue" required="true" description="" type="//@types.3"/>
-    <attributes name="integerValue" required="true" description="" type="//@types.14"/>
-    <attributes name="stringValue" required="true" description="" type="//@types.14"/>
+    <attributes name="timestampValue" required="true" description="">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="booleanValue" required="true" description="">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="floatValue" required="true" description="">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="integerValue" required="true" description="">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="stringValue" required="true" description="">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1ConditionGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Value to compare against. [Required, except for `EXISTS` tests.]" source="//@kinds[term='googleprivacydlpv2beta1condition']" target="//@kinds[term='googleprivacydlpv2beta1value']">
+  <kinds name="GooglePrivacyDlpV2beta1ConditionvalueGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Value to compare against. [Required, except for `EXISTS` tests.]" source="//@kinds[term='googleprivacydlpv2beta1condition']" target="//@kinds[term='googleprivacydlpv2beta1value']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1ConditionGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Field within the record this condition is evaluated against. [required]" source="//@kinds[term='googleprivacydlpv2beta1condition']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
+  <kinds name="GooglePrivacyDlpV2beta1ConditionfieldGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Field within the record this condition is evaluated against. [required]" source="//@kinds[term='googleprivacydlpv2beta1condition']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Condition" scheme="http://occi/gcpdlp#" title="The field type of `value` and `field` do not need to match to be&#xA;considered equal, but not all comparisons are possible.&#xA;&#xA;A `value` of type:&#xA;&#xA;- `string` can be compared against all other types&#xA;- `boolean` can only be compared against other booleans&#xA;- `integer` can be compared against doubles or a string if the string value&#xA;can be parsed as an integer.&#xA;- `double` can be compared against integers or a string if the string can&#xA;be parsed as a double.&#xA;- `Timestamp` can be compared against strings in RFC 3339 date string&#xA;format.&#xA;- `TimeOfDay` can be compared against timestamps and strings in the format&#xA;of 'HH:mm:ss'.&#xA;&#xA;If we fail to compare do to type mismatch, a warning will be given and&#xA;the condition will evaluate to false.">
-    <attributes name="operator" required="true" description="Operator used to compare the field or info type to the value. [required]" type="//@types.15"/>
+    <attributes name="operator" required="true" description="Operator used to compare the field or info type to the value. [required]">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1PartitionId" scheme="http://occi/gcpdlp#" title="Datastore partition ID.&#xA;A partition ID identifies a grouping of entities. The grouping is always&#xA;by project and namespace, however the namespace ID may be empty.&#xA;&#xA;A partition ID contains several dimensions:&#xA;project ID and namespace ID.">
-    <attributes name="namespaceId" required="true" description="If not empty, the ID of the namespace to which the entities belong." type="//@types.15"/>
-    <attributes name="projectId" required="true" description="The ID of the project to which the entities belong." type="//@types.15"/>
+    <attributes name="namespaceId" required="true" description="If not empty, the ID of the namespace to which the entities belong.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="projectId" required="true" description="The ID of the project to which the entities belong.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InspectContentResponse" scheme="http://occi/gcpdlp#" title="Results of inspecting a list of items.">
-    <attributes name="results" required="true" description="Each content_item from the request has a result in this list, in the&#xA;same order as the request." type="//@types.7"/>
+    <attributes name="results" required="true" description="Each content_item from the request has a result in this list, in the&#xA;same order as the request." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1RedactContentRequestGooglePrivacyDlpV2beta1InspectConfigLink" scheme="http://occi/gcpdlp#" title="Configuration for the inspector." source="//@kinds[term='googleprivacydlpv2beta1redactcontentrequest']" target="//@kinds[term='googleprivacydlpv2beta1inspectconfig']">
+  <kinds name="GooglePrivacyDlpV2beta1RedactContentRequestinspectConfigGooglePrivacyDlpV2beta1InspectConfigLink" scheme="http://occi/gcpdlp#" title="Configuration for the inspector." source="//@kinds[term='googleprivacydlpv2beta1redactcontentrequest']" target="//@kinds[term='googleprivacydlpv2beta1inspectconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1RedactContentRequest" scheme="http://occi/gcpdlp#" title="Request to search for potentially sensitive info in a list of items&#xA;and replace it with a default or provided content.">
-    <attributes name="items" required="true" description="The list of items to inspect. Up to 100 are allowed per request." type="//@types.7"/>
-    <attributes name="replaceConfigs" required="true" description="The strings to replace findings text findings with. Must specify at least&#xA;one of these or one ImageRedactionConfig if redacting images." type="//@types.7"/>
-    <attributes name="imageRedactionConfigs" required="true" description="The configuration for specifying what content to redact from images." type="//@types.7"/>
+    <attributes name="items" required="true" description="The list of items to inspect. Up to 100 are allowed per request." type="//@types.5"/>
+    <attributes name="replaceConfigs" required="true" description="The strings to replace findings text findings with. Must specify at least&#xA;one of these or one ImageRedactionConfig if redacting images." type="//@types.5"/>
+    <attributes name="imageRedactionConfigs" required="true" description="The configuration for specifying what content to redact from images." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1WordList" scheme="http://occi/gcpdlp#" title="Message defining a list of words or phrases to search for in the data.">
-    <attributes name="words" required="true" description="Words or phrases defining the dictionary. The dictionary must contain&#xA;at least one phrase and every phrase must contain at least 2 characters&#xA;that are letters or digits. [required]" type="//@types.7"/>
+    <attributes name="words" required="true" description="Words or phrases defining the dictionary. The dictionary must contain&#xA;at least one phrase and every phrase must contain at least 2 characters&#xA;that are letters or digits. [required]" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1FieldId" scheme="http://occi/gcpdlp#" title="General identifier of a data field in a storage service.">
-    <attributes name="columnName" required="true" description="Name describing the field." type="//@types.15"/>
+    <attributes name="columnName" required="true" description="Name describing the field.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1TransformationSummaryGooglePrivacyDlpV2beta1PrimitiveTransformationLink" scheme="http://occi/gcpdlp#" title="The specific transformation these stats apply to." source="//@kinds[term='googleprivacydlpv2beta1transformationsummary']" target="//@kinds[term='googleprivacydlpv2beta1primitivetransformation']">
+  <kinds name="GooglePrivacyDlpV2beta1TransformationSummarytransformationGooglePrivacyDlpV2beta1PrimitiveTransformationLink" scheme="http://occi/gcpdlp#" title="The specific transformation these stats apply to." source="//@kinds[term='googleprivacydlpv2beta1transformationsummary']" target="//@kinds[term='googleprivacydlpv2beta1primitivetransformation']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1TransformationSummaryGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Set if the transformation was limited to a specific FieldId." source="//@kinds[term='googleprivacydlpv2beta1transformationsummary']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
+  <kinds name="GooglePrivacyDlpV2beta1TransformationSummaryfieldGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Set if the transformation was limited to a specific FieldId." source="//@kinds[term='googleprivacydlpv2beta1transformationsummary']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1RecordSuppressionLink" scheme="http://occi/gcpdlp#" title="The specific suppression option these stats apply to." source="//@kinds[term='googleprivacydlpv2beta1transformationsummary']" target="//@kinds[term='googleprivacydlpv2beta1recordsuppression']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1TransformationSummaryGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="Set if the transformation was limited to a specific info_type." source="//@kinds[term='googleprivacydlpv2beta1transformationsummary']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
+  <kinds name="GooglePrivacyDlpV2beta1TransformationSummaryinfoTypeGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="Set if the transformation was limited to a specific info_type." source="//@kinds[term='googleprivacydlpv2beta1transformationsummary']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1TransformationSummary" scheme="http://occi/gcpdlp#" title="Summary of a single tranformation.">
-    <attributes name="results" required="true" description="" type="//@types.7"/>
-    <attributes name="fieldTransformations" required="true" description="The field transformation that was applied. This list will contain&#xA;multiple only in the case of errors." type="//@types.7"/>
+    <attributes name="results" required="true" description="" type="//@types.5"/>
+    <attributes name="fieldTransformations" required="true" description="The field transformation that was applied. This list will contain&#xA;multiple only in the case of errors." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleLongrunningCancelOperationRequest" scheme="http://occi/gcpdlp#" title="The request message for Operations.CancelOperation.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CharacterMaskConfig" scheme="http://occi/gcpdlp#" title="Partially mask a string by replacing a given number of characters with a&#xA;fixed character. Masking can start from the beginning or end of the string.&#xA;This can be used on data of any type (numbers, longs, and so on) and when&#xA;de-identifying structured data we'll attempt to preserve the original data's&#xA;type. (This allows you to take a long like 123 and modify it to a string like&#xA;**3.">
-    <attributes name="maskingCharacter" required="true" description="Character to mask the sensitive values&amp;mdash;for example, &quot;*&quot; for an&#xA;alphabetic string such as name, or &quot;0&quot; for a numeric string such as ZIP&#xA;code or credit card number. String must have length 1. If not supplied, we&#xA;will default to &quot;*&quot; for strings, 0 for digits." type="//@types.15"/>
-    <attributes name="reverseOrder" required="true" description="Mask characters in reverse order. For example, if `masking_character` is&#xA;'0', number_to_mask is 14, and `reverse_order` is false, then&#xA;1234-5678-9012-3456 -> 00000000000000-3456&#xA;If `masking_character` is '*', `number_to_mask` is 3, and `reverse_order`&#xA;is true, then 12345 -> 12***" type="//@types.6"/>
-    <attributes name="numberToMask" required="true" description="Number of characters to mask. If not set, all matching chars will be&#xA;masked. Skipped characters do not count towards this tally." type="//@types.3"/>
-    <attributes name="charactersToIgnore" required="true" description="When masking a string, items in this list will be skipped when replacing.&#xA;For example, if your string is 555-555-5555 and you ask us to skip `-` and&#xA;mask 5 chars with * we would produce ***-*55-5555." type="//@types.7"/>
+    <attributes name="maskingCharacter" required="true" description="Character to mask the sensitive values&amp;mdash;for example, &quot;*&quot; for an&#xA;alphabetic string such as name, or &quot;0&quot; for a numeric string such as ZIP&#xA;code or credit card number. String must have length 1. If not supplied, we&#xA;will default to &quot;*&quot; for strings, 0 for digits.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="reverseOrder" required="true" description="Mask characters in reverse order. For example, if `masking_character` is&#xA;'0', number_to_mask is 14, and `reverse_order` is false, then&#xA;1234-5678-9012-3456 -> 00000000000000-3456&#xA;If `masking_character` is '*', `number_to_mask` is 3, and `reverse_order`&#xA;is true, then 12345 -> 12***">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="numberToMask" required="true" description="Number of characters to mask. If not set, all matching chars will be&#xA;masked. Skipped characters do not count towards this tally.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="charactersToIgnore" required="true" description="When masking a string, items in this list will be skipped when replacing.&#xA;For example, if your string is 555-555-5555 and you ask us to skip `-` and&#xA;mask 5 chars with * we would produce ***-*55-5555." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1TransientCryptoKey" scheme="http://occi/gcpdlp#" title="Use this to have a random data crypto key generated.&#xA;It will be discarded after the operation/request finishes.">
-    <attributes name="name" required="true" description="Name of the key. [required]&#xA;This is an arbitrary string used to differentiate different keys.&#xA;A unique key is generated per name: two separate `TransientCryptoKey`&#xA;protos share the same generated key if their names are the same.&#xA;When the data crypto key is generated, this name is not used in any way&#xA;(repeating the api call will result in a different key being generated)." type="//@types.15"/>
+    <attributes name="name" required="true" description="Name of the key. [required]&#xA;This is an arbitrary string used to differentiate different keys.&#xA;A unique key is generated per name: two separate `TransientCryptoKey`&#xA;protos share the same generated key if their names are the same.&#xA;When the data crypto key is generated, this name is not used in any way&#xA;(repeating the api call will result in a different key being generated).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1StorageConfigLink" scheme="http://occi/gcpdlp#" title="Specification of the data set to process." source="//@kinds[term='googleprivacydlpv2beta1createinspectoperationrequest']" target="//@kinds[term='googleprivacydlpv2beta1storageconfig']">
@@ -566,111 +722,139 @@
   <kinds name="GooglePrivacyDlpV2beta1OperationConfigLink" scheme="http://occi/gcpdlp#" title="Additional configuration settings for long running operations." source="//@kinds[term='googleprivacydlpv2beta1createinspectoperationrequest']" target="//@kinds[term='googleprivacydlpv2beta1operationconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1CreateInspectOperationRequestGooglePrivacyDlpV2beta1InspectConfigLink" scheme="http://occi/gcpdlp#" title="Configuration for the inspector." source="//@kinds[term='googleprivacydlpv2beta1createinspectoperationrequest']" target="//@kinds[term='googleprivacydlpv2beta1inspectconfig']">
+  <kinds name="GooglePrivacyDlpV2beta1CreateInspectOperationRequestinspectConfigGooglePrivacyDlpV2beta1InspectConfigLink" scheme="http://occi/gcpdlp#" title="Configuration for the inspector." source="//@kinds[term='googleprivacydlpv2beta1createinspectoperationrequest']" target="//@kinds[term='googleprivacydlpv2beta1inspectconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CreateInspectOperationRequest" scheme="http://occi/gcpdlp#" title="Request for scheduling a scan of a data subset from a Google Platform data&#xA;repository.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1RedactContentResponse" scheme="http://occi/gcpdlp#" title="Results of redacting a list of items.">
-    <attributes name="items" required="true" description="The redacted content." type="//@types.7"/>
+    <attributes name="items" required="true" description="The redacted content." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1InfoTypeStatisticsGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="The type of finding this stat is for." source="//@kinds[term='googleprivacydlpv2beta1infotypestatistics']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
+  <kinds name="GooglePrivacyDlpV2beta1InfoTypeStatisticsinfoTypeGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="The type of finding this stat is for." source="//@kinds[term='googleprivacydlpv2beta1infotypestatistics']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InfoTypeStatistics" scheme="http://occi/gcpdlp#" title="Statistics regarding a specific InfoType.">
-    <attributes name="count" required="true" description="Number of findings for this info type." type="//@types.15"/>
+    <attributes name="count" required="true" description="Number of findings for this info type.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1PropertyReference" scheme="http://occi/gcpdlp#" title="A reference to a property relative to the Datastore kind expressions.">
-    <attributes name="name" required="true" description="The name of the property.&#xA;If name includes &quot;.&quot;s, it may be interpreted as a property name path." type="//@types.15"/>
+    <attributes name="name" required="true" description="The name of the property.&#xA;If name includes &quot;.&quot;s, it may be interpreted as a property name path.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1FieldTransformationGooglePrivacyDlpV2beta1PrimitiveTransformationLink" scheme="http://occi/gcpdlp#" title="Apply the transformation to the entire field." source="//@kinds[term='googleprivacydlpv2beta1fieldtransformation']" target="//@kinds[term='googleprivacydlpv2beta1primitivetransformation']">
+  <kinds name="GooglePrivacyDlpV2beta1FieldTransformationprimitiveTransformationGooglePrivacyDlpV2beta1PrimitiveTransformationLink" scheme="http://occi/gcpdlp#" title="Apply the transformation to the entire field." source="//@kinds[term='googleprivacydlpv2beta1fieldtransformation']" target="//@kinds[term='googleprivacydlpv2beta1primitivetransformation']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1FieldTransformationGooglePrivacyDlpV2beta1RecordConditionLink" scheme="http://occi/gcpdlp#" title="Only apply the transformation if the condition evaluates to true for the&#xA;given `RecordCondition`. The conditions are allowed to reference fields&#xA;that are not used in the actual transformation. [optional]&#xA;&#xA;Example Use Cases:&#xA;&#xA;- Apply a different bucket transformation to an age column if the zip code&#xA;column for the same record is within a specific range.&#xA;- Redact a field if the date of birth field is greater than 85." source="//@kinds[term='googleprivacydlpv2beta1fieldtransformation']" target="//@kinds[term='googleprivacydlpv2beta1recordcondition']">
+  <kinds name="GooglePrivacyDlpV2beta1FieldTransformationconditionGooglePrivacyDlpV2beta1RecordConditionLink" scheme="http://occi/gcpdlp#" title="Only apply the transformation if the condition evaluates to true for the&#xA;given `RecordCondition`. The conditions are allowed to reference fields&#xA;that are not used in the actual transformation. [optional]&#xA;&#xA;Example Use Cases:&#xA;&#xA;- Apply a different bucket transformation to an age column if the zip code&#xA;column for the same record is within a specific range.&#xA;- Redact a field if the date of birth field is greater than 85." source="//@kinds[term='googleprivacydlpv2beta1fieldtransformation']" target="//@kinds[term='googleprivacydlpv2beta1recordcondition']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1FieldTransformationGooglePrivacyDlpV2beta1InfoTypeTransformationsLink" scheme="http://occi/gcpdlp#" title="Treat the contents of the field as free text, and selectively&#xA;transform content that matches an `InfoType`." source="//@kinds[term='googleprivacydlpv2beta1fieldtransformation']" target="//@kinds[term='googleprivacydlpv2beta1infotypetransformations']">
+  <kinds name="GooglePrivacyDlpV2beta1FieldTransformationinfoTypeTransformationsGooglePrivacyDlpV2beta1InfoTypeTransformationsLink" scheme="http://occi/gcpdlp#" title="Treat the contents of the field as free text, and selectively&#xA;transform content that matches an `InfoType`." source="//@kinds[term='googleprivacydlpv2beta1fieldtransformation']" target="//@kinds[term='googleprivacydlpv2beta1infotypetransformations']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1FieldTransformation" scheme="http://occi/gcpdlp#" title="The transformation to apply to the field.">
-    <attributes name="fields" required="true" description="Input field(s) to apply the transformation to. [required]" type="//@types.7"/>
+    <attributes name="fields" required="true" description="Input field(s) to apply the transformation to. [required]" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CloudStoragePathLink" scheme="http://occi/gcpdlp#" title="The path to a Google Cloud Storage location to store output.&#xA;The bucket must already exist and&#xA;the Google APIs service account for DLP must have write permission to&#xA;write to the given bucket.&#xA;Results are split over multiple csv files with each file name matching&#xA;the pattern &quot;[operation_id]_[count].csv&quot;, for example&#xA;`3094877188788974909_1.csv`. The `operation_id` matches the&#xA;identifier for the Operation, and the `count` is a counter used for&#xA;tracking the number of files written.&#xA;&#xA;The CSV file(s) contain the following columns regardless of storage type&#xA;scanned:&#xA;- id&#xA;- info_type&#xA;- likelihood&#xA;- byte size of finding&#xA;- quote&#xA;- timestamp&#xA;&#xA;For Cloud Storage the next columns are:&#xA;&#xA;- file_path&#xA;- start_offset&#xA;&#xA;For Cloud Datastore the next columns are:&#xA;&#xA;- project_id&#xA;- namespace_id&#xA;- path&#xA;- column_name&#xA;- offset&#xA;&#xA;For BigQuery the next columns are:&#xA;&#xA;- row_number&#xA;- project_id&#xA;- dataset_id&#xA;- table_id" source="//@kinds[term='googleprivacydlpv2beta1outputstorageconfig']" target="//@kinds[term='googleprivacydlpv2beta1cloudstoragepath']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1OutputStorageConfigGooglePrivacyDlpV2beta1BigQueryTableLink" scheme="http://occi/gcpdlp#" title="Store findings in a new table in the dataset." source="//@kinds[term='googleprivacydlpv2beta1outputstorageconfig']" target="//@kinds[term='googleprivacydlpv2beta1bigquerytable']">
+  <kinds name="GooglePrivacyDlpV2beta1OutputStorageConfigtableGooglePrivacyDlpV2beta1BigQueryTableLink" scheme="http://occi/gcpdlp#" title="Store findings in a new table in the dataset." source="//@kinds[term='googleprivacydlpv2beta1outputstorageconfig']" target="//@kinds[term='googleprivacydlpv2beta1bigquerytable']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1OutputStorageConfig" scheme="http://occi/gcpdlp#" title="Cloud repository for storing output.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1BucketingConfig" scheme="http://occi/gcpdlp#" title="Generalization function that buckets values based on ranges. The ranges and&#xA;replacement values are dynamically provided by the user for custom behavior,&#xA;such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH&#xA;This can be used on&#xA;data of type: number, long, string, timestamp.&#xA;If the bound `Value` type differs from the type of data being transformed, we&#xA;will first attempt converting the type of the data to be transformed to match&#xA;the type of the bound before comparing.">
-    <attributes name="buckets" required="true" description="" type="//@types.7"/>
+    <attributes name="buckets" required="true" description="" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1DeidentifyContentResponse" scheme="http://occi/gcpdlp#" title="Results of de-identifying a list of items.">
-    <attributes name="summaries" required="true" description="A review of the transformations that took place for each item." type="//@types.7"/>
-    <attributes name="items" required="true" description="" type="//@types.7"/>
+    <attributes name="summaries" required="true" description="A review of the transformations that took place for each item." type="//@types.5"/>
+    <attributes name="items" required="true" description="" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass" scheme="http://occi/gcpdlp#" title="The set of columns' values that share the same k-anonymity value.">
-    <attributes name="quasiIdsValues" required="true" description="Set of values defining the equivalence class. One value per&#xA;quasi-identifier column in the original KAnonymity metric message.&#xA;The order is always the same as the original request." type="//@types.7"/>
-    <attributes name="equivalenceClassSize" required="true" description="Size of the equivalence class, for example number of rows with the&#xA;above set of values." type="//@types.15"/>
+    <attributes name="quasiIdsValues" required="true" description="Set of values defining the equivalence class. One value per&#xA;quasi-identifier column in the original KAnonymity metric message.&#xA;The order is always the same as the original request." type="//@types.5"/>
+    <attributes name="equivalenceClassSize" required="true" description="Size of the equivalence class, for example number of rows with the&#xA;above set of values.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleRpcStatusLink" scheme="http://occi/gcpdlp#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='googlelongrunningoperation']" target="//@kinds[term='googlerpcstatus']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleLongrunningOperation" scheme="http://occi/gcpdlp#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
-    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
-    <attributes name="response" required="true" description="This field will contain an InspectOperationResult object for `inspect.operations.create` or a RiskAnalysisOperationResult object for `dataSource.analyze`." type="//@types.9"/>
-    <attributes name="name" required="true" description="The server-assigned name. The `name` should have the format of `inspect/operations/&lt;identifier>`." type="//@types.15"/>
-    <attributes name="metadata" required="true" description="This field will contain an InspectOperationMetadata object for `inspect.operations.create` or a RiskAnalysisOperationMetadata object for `dataSource.analyze`.  This will always be returned with the Operation." type="//@types.9"/>
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="response" required="true" description="This field will contain an InspectOperationResult object for `inspect.operations.create` or a RiskAnalysisOperationResult object for `dataSource.analyze`." type="//@types.6"/>
+    <attributes name="name" required="true" description="The server-assigned name. The `name` should have the format of `inspect/operations/&lt;identifier>`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="metadata" required="true" description="This field will contain an InspectOperationMetadata object for `inspect.operations.create` or a RiskAnalysisOperationMetadata object for `dataSource.analyze`.  This will always be returned with the Operation." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1KmsWrappedCryptoKey" scheme="http://occi/gcpdlp#" title="Include to use an existing data crypto key wrapped by KMS.&#xA;Authorization requires the following IAM permissions when sending a request&#xA;to perform a crypto transformation using a kms-wrapped crypto key:&#xA;dlp.kms.encrypt">
-    <attributes name="wrappedKey" required="true" description="The wrapped data crypto key. [required]" type="//@types.15"/>
-    <attributes name="cryptoKeyName" required="true" description="The resource name of the KMS CryptoKey to use for unwrapping. [required]" type="//@types.15"/>
+    <attributes name="wrappedKey" required="true" description="The wrapped data crypto key. [required]">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="cryptoKeyName" required="true" description="The resource name of the KMS CryptoKey to use for unwrapping. [required]">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1InspectOperationMetadataGooglePrivacyDlpV2beta1StorageConfigLink" scheme="http://occi/gcpdlp#" title="The storage config used to create the Operation." source="//@kinds[term='googleprivacydlpv2beta1inspectoperationmetadata']" target="//@kinds[term='googleprivacydlpv2beta1storageconfig']">
+  <kinds name="GooglePrivacyDlpV2beta1InspectOperationMetadatarequestStorageConfigGooglePrivacyDlpV2beta1StorageConfigLink" scheme="http://occi/gcpdlp#" title="The storage config used to create the Operation." source="//@kinds[term='googleprivacydlpv2beta1inspectoperationmetadata']" target="//@kinds[term='googleprivacydlpv2beta1storageconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1InspectOperationMetadataGooglePrivacyDlpV2beta1InspectConfigLink" scheme="http://occi/gcpdlp#" title="The inspect config used to create the Operation." source="//@kinds[term='googleprivacydlpv2beta1inspectoperationmetadata']" target="//@kinds[term='googleprivacydlpv2beta1inspectconfig']">
+  <kinds name="GooglePrivacyDlpV2beta1InspectOperationMetadatarequestInspectConfigGooglePrivacyDlpV2beta1InspectConfigLink" scheme="http://occi/gcpdlp#" title="The inspect config used to create the Operation." source="//@kinds[term='googleprivacydlpv2beta1inspectoperationmetadata']" target="//@kinds[term='googleprivacydlpv2beta1inspectconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1InspectOperationMetadataGooglePrivacyDlpV2beta1OutputStorageConfigLink" scheme="http://occi/gcpdlp#" title="Optional location to store findings." source="//@kinds[term='googleprivacydlpv2beta1inspectoperationmetadata']" target="//@kinds[term='googleprivacydlpv2beta1outputstorageconfig']">
+  <kinds name="GooglePrivacyDlpV2beta1InspectOperationMetadatarequestOutputConfigGooglePrivacyDlpV2beta1OutputStorageConfigLink" scheme="http://occi/gcpdlp#" title="Optional location to store findings." source="//@kinds[term='googleprivacydlpv2beta1inspectoperationmetadata']" target="//@kinds[term='googleprivacydlpv2beta1outputstorageconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InspectOperationMetadata" scheme="http://occi/gcpdlp#" title="Metadata returned within GetOperation for an inspect request.">
-    <attributes name="processedBytes" required="true" description="Total size in bytes that were processed." type="//@types.15"/>
-    <attributes name="infoTypeStats" required="true" description="" type="//@types.7"/>
-    <attributes name="totalEstimatedBytes" required="true" description="Estimate of the number of bytes to process." type="//@types.15"/>
-    <attributes name="createTime" required="true" description="The time which this request was started." type="//@types.15"/>
+    <attributes name="processedBytes" required="true" description="Total size in bytes that were processed.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="infoTypeStats" required="true" description="" type="//@types.5"/>
+    <attributes name="totalEstimatedBytes" required="true" description="Estimate of the number of bytes to process.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="createTime" required="true" description="The time which this request was started.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InfoType" scheme="http://occi/gcpdlp#" title="Type of information detected by the API.">
-    <attributes name="name" required="true" description="Name of the information type." type="//@types.15"/>
+    <attributes name="name" required="true" description="Name of the information type.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1FixedSizeBucketingConfigGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Upper bound value of buckets. All values greater than upper_bound are&#xA;grouped together into a single bucket; for example if `upper_bound` = 89,&#xA;then all values greater than 89 are replaced with the value &#xe2;&#x20ac;&#x153;89+&#xe2;&#x20ac;&#xfffd;.&#xA;[Required]." source="//@kinds[term='googleprivacydlpv2beta1fixedsizebucketingconfig']" target="//@kinds[term='googleprivacydlpv2beta1value']">
+  <kinds name="GooglePrivacyDlpV2beta1FixedSizeBucketingConfigupperBoundGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Upper bound value of buckets. All values greater than upper_bound are&#xA;grouped together into a single bucket; for example if `upper_bound` = 89,&#xA;then all values greater than 89 are replaced with the value &#xe2;&#x20ac;&#x153;89+&#xe2;&#x20ac;&#xfffd;.&#xA;[Required]." source="//@kinds[term='googleprivacydlpv2beta1fixedsizebucketingconfig']" target="//@kinds[term='googleprivacydlpv2beta1value']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1FixedSizeBucketingConfigGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Lower bound value of buckets. All values less than `lower_bound` are&#xA;grouped together into a single bucket; for example if `lower_bound` = 10,&#xA;then all values less than 10 are replaced with the value &#xe2;&#x20ac;&#x153;-10&#xe2;&#x20ac;&#xfffd;. [Required]." source="//@kinds[term='googleprivacydlpv2beta1fixedsizebucketingconfig']" target="//@kinds[term='googleprivacydlpv2beta1value']">
+  <kinds name="GooglePrivacyDlpV2beta1FixedSizeBucketingConfiglowerBoundGooglePrivacyDlpV2beta1ValueLink" scheme="http://occi/gcpdlp#" title="Lower bound value of buckets. All values less than `lower_bound` are&#xA;grouped together into a single bucket; for example if `lower_bound` = 10,&#xA;then all values less than 10 are replaced with the value &#xe2;&#x20ac;&#x153;-10&#xe2;&#x20ac;&#xfffd;. [Required]." source="//@kinds[term='googleprivacydlpv2beta1fixedsizebucketingconfig']" target="//@kinds[term='googleprivacydlpv2beta1value']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1FixedSizeBucketingConfig" scheme="http://occi/gcpdlp#" title="Buckets values based on fixed size ranges. The&#xA;Bucketing transformation can provide all of this functionality,&#xA;but requires more configuration. This message is provided as a convenience to&#xA;the user for simple bucketing strategies.&#xA;The resulting value will be a hyphenated string of&#xA;lower_bound-upper_bound.&#xA;This can be used on data of type: double, long.&#xA;If the bound Value type differs from the type of data&#xA;being transformed, we will first attempt converting the type of the data to&#xA;be transformed to match the type of the bound before comparing.">
-    <attributes name="bucketSize" required="true" description="Size of each bucket (except for minimum and maximum buckets). So if&#xA;`lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the&#xA;following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,&#xA;60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works. [Required]." type="//@types.3"/>
+    <attributes name="bucketSize" required="true" description="Size of each bucket (except for minimum and maximum buckets). So if&#xA;`lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the&#xA;following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,&#xA;60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works. [Required].">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CharsToIgnore" scheme="http://occi/gcpdlp#" title="Characters to skip when doing deidentification of a value. These will be left&#xA;alone and skipped.">
-    <attributes name="charactersToSkip" required="true" description="" type="//@types.15"/>
-    <attributes name="commonCharactersToIgnore" required="true" description="" type="//@types.16"/>
+    <attributes name="charactersToSkip" required="true" description="">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="commonCharactersToIgnore" required="true" description="">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CategoricalStatsResultLink" scheme="http://occi/gcpdlp#" title="" source="//@kinds[term='googleprivacydlpv2beta1riskanalysisoperationresult']" target="//@kinds[term='googleprivacydlpv2beta1categoricalstatsresult']">
@@ -689,12 +873,16 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CategoryDescription" scheme="http://occi/gcpdlp#" title="Info Type Category description.">
-    <attributes name="name" required="true" description="Internal name of the category." type="//@types.16"/>
-    <attributes name="displayName" required="true" description="Human readable form of the category name." type="//@types.16"/>
+    <attributes name="name" required="true" description="Internal name of the category.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="displayName" required="true" description="Human readable form of the category name.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Conditions" scheme="http://occi/gcpdlp#" title="">
-    <attributes name="conditions" required="true" description="" type="//@types.7"/>
+    <attributes name="conditions" required="true" description="" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CryptoHashConfigLink" scheme="http://occi/gcpdlp#" title="" source="//@kinds[term='googleprivacydlpv2beta1primitivetransformation']" target="//@kinds[term='googleprivacydlpv2beta1cryptohashconfig']">
@@ -727,48 +915,60 @@
   <kinds name="GooglePrivacyDlpV2beta1PrimitiveTransformation" scheme="http://occi/gcpdlp#" title="A rule for transforming a value.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1CategoricalStatsConfigGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Field to compute categorical stats on. All column types are&#xA;supported except for arrays and structs. However, it may be more&#xA;informative to use NumericalStats when the field type is supported,&#xA;depending on the data." source="//@kinds[term='googleprivacydlpv2beta1categoricalstatsconfig']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
+  <kinds name="GooglePrivacyDlpV2beta1CategoricalStatsConfigfieldGooglePrivacyDlpV2beta1FieldIdLink" scheme="http://occi/gcpdlp#" title="Field to compute categorical stats on. All column types are&#xA;supported except for arrays and structs. However, it may be more&#xA;informative to use NumericalStats when the field type is supported,&#xA;depending on the data." source="//@kinds[term='googleprivacydlpv2beta1categoricalstatsconfig']" target="//@kinds[term='googleprivacydlpv2beta1fieldid']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1CategoricalStatsConfig" scheme="http://occi/gcpdlp#" title="Compute numerical stats over an individual column, including&#xA;number of distinct values and value count distribution.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1FindingGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="The specific type of info the string might be." source="//@kinds[term='googleprivacydlpv2beta1finding']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
+  <kinds name="GooglePrivacyDlpV2beta1FindinginfoTypeGooglePrivacyDlpV2beta1InfoTypeLink" scheme="http://occi/gcpdlp#" title="The specific type of info the string might be." source="//@kinds[term='googleprivacydlpv2beta1finding']" target="//@kinds[term='googleprivacydlpv2beta1infotype']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1LocationLink" scheme="http://occi/gcpdlp#" title="Location of the info found." source="//@kinds[term='googleprivacydlpv2beta1finding']" target="//@kinds[term='googleprivacydlpv2beta1location']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Finding" scheme="http://occi/gcpdlp#" title="Container structure describing a single finding within a string or image.">
-    <attributes name="likelihood" required="true" description="Estimate of how likely it is that the info_type is correct." type="//@types.17"/>
-    <attributes name="createTime" required="true" description="Timestamp when finding was detected." type="//@types.17"/>
-    <attributes name="quote" required="true" description="The specific string that may be potentially sensitive info." type="//@types.17"/>
+    <attributes name="likelihood" required="true" description="Estimate of how likely it is that the info_type is correct.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="createTime" required="true" description="Timestamp when finding was detected.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="quote" required="true" description="The specific string that may be potentially sensitive info.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadataGooglePrivacyDlpV2beta1PrivacyMetricLink" scheme="http://occi/gcpdlp#" title="Privacy metric to compute." source="//@kinds[term='googleprivacydlpv2beta1riskanalysisoperationmetadata']" target="//@kinds[term='googleprivacydlpv2beta1privacymetric']">
+  <kinds name="GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadatarequestedPrivacyMetricGooglePrivacyDlpV2beta1PrivacyMetricLink" scheme="http://occi/gcpdlp#" title="Privacy metric to compute." source="//@kinds[term='googleprivacydlpv2beta1riskanalysisoperationmetadata']" target="//@kinds[term='googleprivacydlpv2beta1privacymetric']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadataGooglePrivacyDlpV2beta1BigQueryTableLink" scheme="http://occi/gcpdlp#" title="Input dataset to compute metrics over." source="//@kinds[term='googleprivacydlpv2beta1riskanalysisoperationmetadata']" target="//@kinds[term='googleprivacydlpv2beta1bigquerytable']">
+  <kinds name="GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadatarequestedSourceTableGooglePrivacyDlpV2beta1BigQueryTableLink" scheme="http://occi/gcpdlp#" title="Input dataset to compute metrics over." source="//@kinds[term='googleprivacydlpv2beta1riskanalysisoperationmetadata']" target="//@kinds[term='googleprivacydlpv2beta1bigquerytable']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata" scheme="http://occi/gcpdlp#" title="Metadata returned within the&#xA;[`riskAnalysis.operations.get`](/dlp/docs/reference/rest/v2beta1/riskAnalysis.operations/get)&#xA;for risk analysis.">
-    <attributes name="createTime" required="true" description="The time which this request was started." type="//@types.17"/>
+    <attributes name="createTime" required="true" description="The time which this request was started.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleLongrunningListOperationsResponse" scheme="http://occi/gcpdlp#" title="The response message for Operations.ListOperations.">
-    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.17"/>
-    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Row" scheme="http://occi/gcpdlp#" title="">
-    <attributes name="values" required="true" description="" type="//@types.7"/>
+    <attributes name="values" required="true" description="" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1InspectResultLink" scheme="http://occi/gcpdlp#" title="The results." source="//@kinds[term='googleprivacydlpv2beta1listinspectfindingsresponse']" target="//@kinds[term='googleprivacydlpv2beta1inspectresult']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1ListInspectFindingsResponse" scheme="http://occi/gcpdlp#" title="Response to the ListInspectFindings request.">
-    <attributes name="nextPageToken" required="true" description="If not empty, indicates that there may be more results that match the&#xA;request; this value should be passed in a new `ListInspectFindingsRequest`." type="//@types.17"/>
+    <attributes name="nextPageToken" required="true" description="If not empty, indicates that there may be more results that match the&#xA;request; this value should be passed in a new `ListInspectFindingsRequest`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleProtobufEmpty" scheme="http://occi/gcpdlp#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
@@ -778,21 +978,21 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GooglePrivacyDlpV2beta1Expressions" scheme="http://occi/gcpdlp#" title="A collection of expressions">
-    <attributes name="logicalOperator" required="true" description="The operator to apply to the result of conditions. Default and currently&#xA;only supported value is `AND`." type="//@types.18"/>
+    <attributes name="logicalOperator" required="true" description="The operator to apply to the result of conditions. Default and currently&#xA;only supported value is `AND`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
-  <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="partToExtract" documentation="">
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EnumerationType" name="Parttoextract" documentation="">
     <literals name="TIME_PART_UNSPECIFIED" documentation=""/>
     <literals name="YEAR" documentation="[000-9999]"/>
     <literals name="MONTH" documentation="[1-12]"/>
@@ -801,7 +1001,7 @@
     <literals name="WEEK_OF_YEAR" documentation="[1-52]"/>
     <literals name="HOUR_OF_DAY" documentation="[0-24]"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="minLikelihood" documentation="Only returns findings equal or above this threshold.">
+  <types xsi:type="occi:EnumerationType" name="Minlikelihood" documentation="Only returns findings equal or above this threshold.">
     <literals name="LIKELIHOOD_UNSPECIFIED" documentation="Default value; information with all likelihoods is included."/>
     <literals name="VERY_UNLIKELY" documentation="Few matching elements."/>
     <literals name="UNLIKELY" documentation=""/>
@@ -809,19 +1009,19 @@
     <literals name="LIKELY" documentation=""/>
     <literals name="VERY_LIKELY" documentation="Many matching elements."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="GooglePrivacyDlpV2beta1SummaryResultCcode" documentation="">
+  <types xsi:type="occi:EnumerationType" name="GooglePrivacyDlpV2beta1SummaryResultCode" documentation="">
     <literals name="TRANSFORMATION_RESULT_CODE_UNSPECIFIED" documentation=""/>
     <literals name="SUCCESS" documentation=""/>
     <literals name="ERROR" documentation=""/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="commonAlphabet" documentation="">
+  <types xsi:type="occi:EnumerationType" name="Commonalphabet" documentation="">
     <literals name="FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED" documentation=""/>
     <literals name="NUMERIC" documentation="[0-9] (radix of 10)"/>
     <literals name="HEXADECIMAL" documentation="[0-9A-F] (radix of 16)"/>
     <literals name="UPPER_CASE_ALPHA_NUMERIC" documentation="[0-9A-Z] (radix of 36)"/>
     <literals name="ALPHA_NUMERIC" documentation="[0-9A-Za-z] (radix of 62)"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="operator" documentation="Operator used to compare the field or info type to the value. [required]">
+  <types xsi:type="occi:EnumerationType" name="Operator" documentation="Operator used to compare the field or info type to the value. [required]">
     <literals name="RELATIONAL_OPERATOR_UNSPECIFIED" documentation=""/>
     <literals name="EQUAL_TO" documentation="Equal."/>
     <literals name="NOT_EQUAL_TO" documentation="Not equal to."/>
@@ -831,7 +1031,7 @@
     <literals name="LESS_THAN_OR_EQUALS" documentation="Less than or equals."/>
     <literals name="EXISTS" documentation="Exists"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="commonCharactersToIgnore" documentation="">
+  <types xsi:type="occi:EnumerationType" name="Commoncharacterstoignore" documentation="">
     <literals name="CHARACTER_GROUP_UNSPECIFIED" documentation=""/>
     <literals name="NUMERIC" documentation="0-9"/>
     <literals name="ALPHA_UPPER_CASE" documentation="A-Z"/>
@@ -839,7 +1039,7 @@
     <literals name="PUNCTUATION" documentation="US Punctuation, one of !&quot;#$%&amp;'()*+,-./:;&lt;=>?@[\]^_`{|}~"/>
     <literals name="WHITESPACE" documentation="Whitespace character, one of [ \t\n\x0B\f\r]"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="likelihood" documentation="Estimate of how likely it is that the info_type is correct.">
+  <types xsi:type="occi:EnumerationType" name="Likelihood" documentation="Estimate of how likely it is that the info_type is correct.">
     <literals name="LIKELIHOOD_UNSPECIFIED" documentation="Default value; information with all likelihoods is included."/>
     <literals name="VERY_UNLIKELY" documentation="Few matching elements."/>
     <literals name="UNLIKELY" documentation=""/>
@@ -847,7 +1047,7 @@
     <literals name="LIKELY" documentation=""/>
     <literals name="VERY_LIKELY" documentation="Many matching elements."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="logicalOperator" documentation="The operator to apply to the result of conditions. Default and currently&#xA;only supported value is `AND`.">
+  <types xsi:type="occi:EnumerationType" name="Logicaloperator" documentation="The operator to apply to the result of conditions. Default and currently&#xA;only supported value is `AND`.">
     <literals name="LOGICAL_OPERATOR_UNSPECIFIED" documentation=""/>
     <literals name="AND" documentation=""/>
   </types>

@@ -1,0 +1,64 @@
+/**
+ * Copyright (c) 2015-2017 Obeo, Inria
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 	
+ * Contributors:
+ * - William Piers <william.piers@obeo.fr>
+ * - Philippe Merle <philippe.merle@inria.fr>
+ * - Faiez Zalila <faiez.zalila@inria.fr>
+ */
+package appengine;
+
+import org.eclipse.cmf.occi.core.Resource;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Batchupdateingressrulesrequest</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Request message for Firewall.BatchUpdateIngressRules.
+ * <!-- end-model-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link appengine.Batchupdateingressrulesrequest#getIngressRules <em>Ingress Rules</em>}</li>
+ * </ul>
+ *
+ * @see appengine.AppenginePackage#getBatchupdateingressrulesrequest()
+ * @model
+ * @generated
+ */
+public interface Batchupdateingressrulesrequest extends Resource {
+	/**
+	 * Returns the value of the '<em><b>Ingress Rules</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of FirewallRules to replace the existing set.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Ingress Rules</em>' containment reference.
+	 * @see #setIngressRules(array)
+	 * @see appengine.AppenginePackage#getBatchupdateingressrulesrequest_IngressRules()
+	 * @model containment="true" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Batchupdateingressrulesrequest!ingressRules'"
+	 * @generated
+	 */
+	array getIngressRules();
+
+	/**
+	 * Sets the value of the '{@link appengine.Batchupdateingressrulesrequest#getIngressRules <em>Ingress Rules</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ingress Rules</em>' containment reference.
+	 * @see #getIngressRules()
+	 * @generated
+	 */
+	void setIngressRules(array value);
+
+} // Batchupdateingressrulesrequest

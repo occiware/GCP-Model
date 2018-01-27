@@ -2,109 +2,179 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="cloudresourcemanager" scheme="http://occi/gcpcloudresourcemanager#" description="The Google Cloud Resource Manager API provides methods for creating, reading, and updating project metadata.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="AuditConfig" scheme="http://occi/gcpcloudresourcemanager#" title="Specifies the audit configuration for a service.&#xA;The configuration determines which permission types are logged, and what&#xA;identities, if any, are exempted from logging.&#xA;An AuditConfig must have one or more AuditLogConfigs.&#xA;&#xA;If there are AuditConfigs for both `allServices` and a specific service,&#xA;the union of the two AuditConfigs is used for that service: the log_types&#xA;specified in each AuditConfig are enabled, and the exempted_members in each&#xA;AuditConfig are exempted.&#xA;&#xA;Example Policy with multiple AuditConfigs:&#xA;&#xA;    {&#xA;      &quot;audit_configs&quot;: [&#xA;        {&#xA;          &quot;service&quot;: &quot;allServices&quot;&#xA;          &quot;audit_log_configs&quot;: [&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;              &quot;exempted_members&quot;: [&#xA;                &quot;user:foo@gmail.com&quot;&#xA;              ]&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;ADMIN_READ&quot;,&#xA;            }&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;service&quot;: &quot;fooservice.googleapis.com&quot;&#xA;          &quot;audit_log_configs&quot;: [&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;            },&#xA;            {&#xA;              &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;              &quot;exempted_members&quot;: [&#xA;                &quot;user:bar@gmail.com&quot;&#xA;              ]&#xA;            }&#xA;          ]&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ&#xA;logging. It also exempts foo@gmail.com from DATA_READ logging, and&#xA;bar@gmail.com from DATA_WRITE logging.">
-    <attributes name="service" required="true" description="Specifies a service that will be enabled for audit logging.&#xA;For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.&#xA;`allServices` is a special value that covers all services." type="//@types.0"/>
-    <attributes name="auditLogConfigs" required="true" description="The configuration for logging of each type of permission.&#xA;Next ID: 4" type="//@types.7"/>
+    <attributes name="service" required="true" description="Specifies a service that will be enabled for audit logging.&#xA;For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.&#xA;`allServices` is a special value that covers all services.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="auditLogConfigs" required="true" description="The configuration for logging of each type of permission.&#xA;Next ID: 4" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="StatusLink" scheme="http://occi/gcpcloudresourcemanager#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='operation']" target="//@kinds[term='status']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Operation" scheme="http://occi/gcpcloudresourcemanager#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
-    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
-    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.9"/>
-    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`." type="//@types.0"/>
-    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.9"/>
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.6"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListFoldersResponse" scheme="http://occi/gcpcloudresourcemanager#" title="The ListFolders response message.">
-    <attributes name="folders" required="true" description="A possibly paginated list of Folders that are direct descendants of&#xA;the specified parent resource." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="A pagination token returned from a previous call to `ListFolders`&#xA;that indicates from where listing should continue.&#xA;This field is optional." type="//@types.0"/>
+    <attributes name="folders" required="true" description="A possibly paginated list of Folders that are direct descendants of&#xA;the specified parent resource." type="//@types.5"/>
+    <attributes name="nextPageToken" required="true" description="A pagination token returned from a previous call to `ListFolders`&#xA;that indicates from where listing should continue.&#xA;This field is optional.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="MoveFolderRequest" scheme="http://occi/gcpcloudresourcemanager#" title="The MoveFolder request message.">
-    <attributes name="destinationParent" required="true" description="The resource name of the Folder or Organization to reparent&#xA;the folder under.&#xA;Must be of the form `folders/{folder_id}` or `organizations/{org_id}`." type="//@types.0"/>
+    <attributes name="destinationParent" required="true" description="The resource name of the Folder or Organization to reparent&#xA;the folder under.&#xA;Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PolicyLink" scheme="http://occi/gcpcloudresourcemanager#" title="REQUIRED: The complete policy to be applied to the `resource`. The size of&#xA;the policy is limited to a few 10s of KB. An empty policy is a&#xA;valid policy but certain Cloud Platform services (such as Projects)&#xA;might reject them." source="//@kinds[term='setiampolicyrequest']" target="//@kinds[term='policy']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="SetIamPolicyRequest" scheme="http://occi/gcpcloudresourcemanager#" title="Request message for `SetIamPolicy` method.">
-    <attributes name="updateMask" required="true" description="OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only&#xA;the fields in the mask will be modified. If no mask is provided, the&#xA;following default mask is used:&#xA;paths: &quot;bindings, etag&quot;&#xA;This field is only used by Cloud IAM." type="//@types.0"/>
+    <attributes name="updateMask" required="true" description="OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only&#xA;the fields in the mask will be modified. If no mask is provided, the&#xA;following default mask is used:&#xA;paths: &quot;bindings, etag&quot;&#xA;This field is only used by Cloud IAM.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SearchFoldersResponse" scheme="http://occi/gcpcloudresourcemanager#" title="The response message for searching folders.">
-    <attributes name="folders" required="true" description="A possibly paginated folder search results.&#xA;the specified parent resource." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="A pagination token returned from a previous call to `SearchFolders`&#xA;that indicates from where searching should continue.&#xA;This field is optional." type="//@types.0"/>
+    <attributes name="folders" required="true" description="A possibly paginated folder search results.&#xA;the specified parent resource." type="//@types.5"/>
+    <attributes name="nextPageToken" required="true" description="A pagination token returned from a previous call to `SearchFolders`&#xA;that indicates from where searching should continue.&#xA;This field is optional.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Status" scheme="http://occi/gcpcloudresourcemanager#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
-    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
-    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
-    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.0"/>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.5"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Binding" scheme="http://occi/gcpcloudresourcemanager#" title="Associates `members` with a `role`.">
-    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource.&#xA;`members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is&#xA;   on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone&#xA;   who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google&#xA;   account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service&#xA;   account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group.&#xA;   For example, `admins@example.com`.&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the&#xA;   users of that domain. For example, `google.com` or `example.com`.&#xA;&#xA;" type="//@types.7"/>
-    <attributes name="role" required="true" description="Role that is assigned to `members`.&#xA;For example, `roles/viewer`, `roles/editor`, or `roles/owner`.&#xA;Required" type="//@types.0"/>
+    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource.&#xA;`members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is&#xA;   on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone&#xA;   who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google&#xA;   account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service&#xA;   account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group.&#xA;   For example, `admins@example.com`.&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the&#xA;   users of that domain. For example, `google.com` or `example.com`.&#xA;&#xA;" type="//@types.5"/>
+    <attributes name="role" required="true" description="Role that is assigned to `members`.&#xA;For example, `roles/viewer`, `roles/editor`, or `roles/owner`.&#xA;Required">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SearchFoldersRequest" scheme="http://occi/gcpcloudresourcemanager#" title="The request message for searching folders.">
-    <attributes name="query" required="true" description="Search criteria used to select the Folders to return.&#xA;If no search criteria is specified then all accessible folders will be&#xA;returned.&#xA;&#xA;Query expressions can be used to restrict results based upon displayName,&#xA;lifecycleState and parent, where the operators `=`, `NOT`, `AND` and `OR`&#xA;can be used along with the suffix wildcard symbol `*`.&#xA;&#xA;Some example queries are:&#xA;|Query|Description|&#xA;|------|-----------|&#xA;|displayName=Test*|Folders whose display name starts with &quot;Test&quot;.|&#xA;|lifecycleState=ACTIVE|Folders whose lifecycleState is ACTIVE.|&#xA;|parent=folders/123|Folders whose parent is &quot;folders/123&quot;.|&#xA;|parent=folders/123 AND lifecycleState=ACTIVE|Active folders whose&#xA;parent is &quot;folders/123&quot;.|" type="//@types.0"/>
-    <attributes name="pageToken" required="true" description="A pagination token returned from a previous call to `SearchFolders`&#xA;that indicates from where search should continue.&#xA;This field is optional." type="//@types.0"/>
-    <attributes name="pageSize" required="true" description="The maximum number of folders to return in the response.&#xA;This field is optional." type="//@types.3"/>
+    <attributes name="query" required="true" description="Search criteria used to select the Folders to return.&#xA;If no search criteria is specified then all accessible folders will be&#xA;returned.&#xA;&#xA;Query expressions can be used to restrict results based upon displayName,&#xA;lifecycleState and parent, where the operators `=`, `NOT`, `AND` and `OR`&#xA;can be used along with the suffix wildcard symbol `*`.&#xA;&#xA;Some example queries are:&#xA;|Query|Description|&#xA;|------|-----------|&#xA;|displayName=Test*|Folders whose display name starts with &quot;Test&quot;.|&#xA;|lifecycleState=ACTIVE|Folders whose lifecycleState is ACTIVE.|&#xA;|parent=folders/123|Folders whose parent is &quot;folders/123&quot;.|&#xA;|parent=folders/123 AND lifecycleState=ACTIVE|Active folders whose&#xA;parent is &quot;folders/123&quot;.|">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="pageToken" required="true" description="A pagination token returned from a previous call to `SearchFolders`&#xA;that indicates from where search should continue.&#xA;This field is optional.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="pageSize" required="true" description="The maximum number of folders to return in the response.&#xA;This field is optional.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Folder" scheme="http://occi/gcpcloudresourcemanager#" title="A Folder in an Organization's resource hierarchy, used to&#xA;organize that Organization's resources.">
-    <attributes name="name" required="true" description="Output only. The resource name of the Folder.&#xA;Its format is `folders/{folder_id}`, for example: &quot;folders/1234&quot;." type="//@types.0"/>
-    <attributes name="displayName" required="true" description="The folder&#xe2;&#x20ac;&#x2122;s display name.&#xA;A folder&#xe2;&#x20ac;&#x2122;s display name must be unique amongst its siblings, e.g.&#xA;no two folders with the same parent can share the same display name.&#xA;The display name must start and end with a letter or digit, may contain&#xA;letters, digits, spaces, hyphens and underscores and can be no longer&#xA;than 30 characters. This is captured by the regular expression:&#xA;[\p{L}\p{N}]({\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?." type="//@types.0"/>
-    <attributes name="parent" required="true" description="The Folder&#xe2;&#x20ac;&#x2122;s parent's resource name.&#xA;Updates to the folder's parent must be performed via [MoveFolders]." type="//@types.0"/>
-    <attributes name="createTime" required="true" description="Output only. Timestamp when the Folder was created. Assigned by the server." type="//@types.0"/>
-    <attributes name="lifecycleState" required="true" description="Output only.  The lifecycle state of the folder.&#xA;Updates to the lifecycle_state must be performed via&#xA;[DeleteFolder] and [UndeleteFolder]." type="//@types.11"/>
+    <attributes name="name" required="true" description="Output only. The resource name of the Folder.&#xA;Its format is `folders/{folder_id}`, for example: &quot;folders/1234&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="displayName" required="true" description="The folder&#xe2;&#x20ac;&#x2122;s display name.&#xA;A folder&#xe2;&#x20ac;&#x2122;s display name must be unique amongst its siblings, e.g.&#xA;no two folders with the same parent can share the same display name.&#xA;The display name must start and end with a letter or digit, may contain&#xA;letters, digits, spaces, hyphens and underscores and can be no longer&#xA;than 30 characters. This is captured by the regular expression:&#xA;[\p{L}\p{N}]({\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="parent" required="true" description="The Folder&#xe2;&#x20ac;&#x2122;s parent's resource name.&#xA;Updates to the folder's parent must be performed via [MoveFolders].">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="createTime" required="true" description="Output only. Timestamp when the Folder was created. Assigned by the server.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="lifecycleState" required="true" description="Output only.  The lifecycle state of the folder.&#xA;Updates to the lifecycle_state must be performed via&#xA;[DeleteFolder] and [UndeleteFolder].">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="testIamPermissions" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Returns permissions that a caller has on the specified Folder.&#xA;The `resource` field should be the Folder's resource name,&#xA;e.g. &quot;folders/1234&quot;.&#xA;&#xA;There are no permissions required for making this API call.">
-      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy detail is being requested.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.11"/>
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy detail is being requested.&#xA;See the operation documentation for the appropriate value for this field.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="delete" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Requests deletion of a Folder. The Folder is moved into the&#xA;[DELETE_REQUESTED] state immediately, and is deleted approximately 30 days&#xA;later. This method may only be called on an empty Folder in the [ACTIVE]&#xA;state, where a Folder is empty if it doesn't contain any Folders or&#xA;Projects in the [ACTIVE] state.&#xA;The caller must have `resourcemanager.folders.delete` permission on the&#xA;identified folder.">
-      <attributes name="name" required="true" description="the resource name of the Folder to be deleted.&#xA;Must be of the form `folders/{folder_id}`." type="//@types.11"/>
+      <attributes name="name" required="true" description="the resource name of the Folder to be deleted.&#xA;Must be of the form `folders/{folder_id}`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Lists the Folders that are direct descendants of supplied parent resource.&#xA;List provides a strongly consistent view of the Folders underneath&#xA;the specified parent resource.&#xA;List returns Folders sorted based upon the (ascending) lexical ordering&#xA;of their display_name.&#xA;The caller must have `resourcemanager.folders.list` permission on the&#xA;identified parent.">
-      <attributes name="parent" required="true" description="The resource name of the Organization or Folder whose Folders are&#xA;being listed.&#xA;Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.&#xA;Access to this method is controlled by checking the&#xA;`resourcemanager.folders.list` permission on the `parent`." type="//@types.11"/>
-      <attributes name="showDeleted" required="true" description="Controls whether Folders in the [DELETE_REQUESTED} state should&#xA;be returned." type="//@types.6"/>
-      <attributes name="pageToken" required="true" description="A pagination token returned from a previous call to `ListFolders`&#xA;that indicates where this listing should continue from.&#xA;This field is optional." type="//@types.11"/>
-      <attributes name="pageSize" required="true" description="The maximum number of Folders to return in the response.&#xA;This field is optional." type="//@types.3"/>
+      <attributes name="parent" required="true" description="The resource name of the Organization or Folder whose Folders are&#xA;being listed.&#xA;Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.&#xA;Access to this method is controlled by checking the&#xA;`resourcemanager.folders.list` permission on the `parent`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="showDeleted" required="true" description="Controls whether Folders in the [DELETE_REQUESTED} state should&#xA;be returned.">
+        <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="A pagination token returned from a previous call to `ListFolders`&#xA;that indicates where this listing should continue from.&#xA;This field is optional.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageSize" required="true" description="The maximum number of Folders to return in the response.&#xA;This field is optional.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
     </actions>
     <actions name="setIamPolicy" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Sets the access control policy on a Folder, replacing any existing policy.&#xA;The `resource` field should be the Folder's resource name, e.g.&#xA;&quot;folders/1234&quot;.&#xA;The caller must have `resourcemanager.folders.setIamPolicy` permission&#xA;on the identified folder.">
-      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being specified.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.11"/>
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being specified.&#xA;See the operation documentation for the appropriate value for this field.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="create" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Creates a Folder in the resource hierarchy.&#xA;Returns an Operation which can be used to track the progress of the&#xA;folder creation workflow.&#xA;Upon success the Operation.response field will be populated with the&#xA;created Folder.&#xA;&#xA;In order to succeed, the addition of this new Folder must not violate&#xA;the Folder naming, height or fanout constraints.&#xA;+ The Folder's display_name must be distinct from all other Folder's that&#xA;share its parent.&#xA;+ The addition of the Folder must not cause the active Folder hierarchy&#xA;to exceed a height of 4. Note, the full active + deleted Folder hierarchy&#xA;is allowed to reach a height of 8; this provides additional headroom when&#xA;moving folders that contain deleted folders.&#xA;+ The addition of the Folder must not cause the total number of Folders&#xA;under its parent to exceed 100.&#xA;&#xA;If the operation fails due to a folder constraint violation,&#xA;a PreconditionFailure explaining the violation will be returned.&#xA;If the failure occurs synchronously then the PreconditionFailure&#xA;will be returned via the Status.details field and if it occurs&#xA;asynchronously then the PreconditionFailure will be returned&#xA;via the the Operation.error field.&#xA;&#xA;The caller must have `resourcemanager.folders.create` permission on the&#xA;identified parent.">
-      <attributes name="parent" required="true" description="The resource name of the new Folder's parent.&#xA;Must be of the form `folders/{folder_id}` or `organizations/{org_id}`." type="//@types.11"/>
+      <attributes name="parent" required="true" description="The resource name of the new Folder's parent.&#xA;Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="getIamPolicy" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Gets the access control policy for a Folder. The returned policy may be&#xA;empty if no such policy or resource exists. The `resource` field should&#xA;be the Folder's resource name, e.g. &quot;folders/1234&quot;.&#xA;The caller must have `resourcemanager.folders.getIamPolicy` permission&#xA;on the identified folder.">
-      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being requested.&#xA;See the operation documentation for the appropriate value for this field." type="//@types.11"/>
+      <attributes name="resource" required="true" description="REQUIRED: The resource for which the policy is being requested.&#xA;See the operation documentation for the appropriate value for this field.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="search" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Search for folders that match specific filter criteria.&#xA;Search provides an eventually consistent view of the folders a user has&#xA;access to which meet the specified filter criteria.&#xA;&#xA;This will only return folders on which the caller has the&#xA;permission `resourcemanager.folders.get`."/>
     <actions name="undelete" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Cancels the deletion request for a Folder. This method may only be&#xA;called on a Folder in the [DELETE_REQUESTED] state.&#xA;In order to succeed, the Folder's parent must be in the [ACTIVE] state.&#xA;In addition, reintroducing the folder into the tree must not violate&#xA;folder naming, height and fanout constraints described in the&#xA;[CreateFolder] documentation.&#xA;The caller must have `resourcemanager.folders.undelete` permission on the&#xA;identified folder.">
-      <attributes name="name" required="true" description="The resource name of the Folder to undelete.&#xA;Must be of the form `folders/{folder_id}`." type="//@types.11"/>
+      <attributes name="name" required="true" description="The resource name of the Folder to undelete.&#xA;Must be of the form `folders/{folder_id}`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Retrieves a Folder identified by the supplied resource name.&#xA;Valid Folder resource names have the format `folders/{folder_id}`&#xA;(for example, `folders/1234`).&#xA;The caller must have `resourcemanager.folders.get` permission on the&#xA;identified folder.">
-      <attributes name="name" required="true" description="The resource name of the Folder to retrieve.&#xA;Must be of the form `folders/{folder_id}`." type="//@types.11"/>
+      <attributes name="name" required="true" description="The resource name of the Folder to retrieve.&#xA;Must be of the form `folders/{folder_id}`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="patch" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Updates a Folder, changing its display_name.&#xA;Changes to the folder display_name will be rejected if they violate either&#xA;the display_name formatting rules or naming constraints described in&#xA;the [CreateFolder] documentation.&#xA;+ The Folder's display name must start and end with a letter or digit,&#xA;may contain letters, digits, spaces, hyphens and underscores and can be&#xA;no longer than 30 characters. This is captured by the regular expression:&#xA;[\p{L}\p{N}]({\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?.&#xA;The caller must have `resourcemanager.folders.update` permission on the&#xA;identified folder.&#xA;&#xA;If the update fails due to the unique name constraint then a&#xA;PreconditionFailure explaining this violation will be returned&#xA;in the Status.details field.">
-      <attributes name="updateMask" required="true" description="Fields to be updated.&#xA;Only the `display_name` can be updated." type="//@types.11"/>
-      <attributes name="name" required="true" description="Output only. The resource name of the Folder.&#xA;Its format is `folders/{folder_id}`, for example: &quot;folders/1234&quot;." type="//@types.11"/>
+      <attributes name="updateMask" required="true" description="Fields to be updated.&#xA;Only the `display_name` can be updated.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="name" required="true" description="Output only. The resource name of the Folder.&#xA;Its format is `folders/{folder_id}`, for example: &quot;folders/1234&quot;.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="move" scheme="http://occi/gcpcloudresourcemanager/folder/action#" title="Moves a Folder under a new resource parent.&#xA;Returns an Operation which can be used to track the progress of the&#xA;folder move workflow.&#xA;Upon success the Operation.response field will be populated with the&#xA;moved Folder.&#xA;Upon failure, a FolderOperationError categorizing the failure cause will&#xA;be returned - if the failure occurs synchronously then the&#xA;FolderOperationError will be returned via the Status.details field&#xA;and if it occurs asynchronously then the FolderOperation will be returned&#xA;via the the Operation.error field.&#xA;In addition, the Operation.metadata field will be populated with a&#xA;FolderOperation message as an aid to stateless clients.&#xA;Folder moves will be rejected if they violate either the naming, height&#xA;or fanout constraints described in the [CreateFolder] documentation.&#xA;The caller must have `resourcemanager.folders.move` permission on the&#xA;folder's current and proposed new parent.">
-      <attributes name="name" required="true" description="The resource name of the Folder to move.&#xA;Must be of the form folders/{folder_id}" type="//@types.11"/>
+      <attributes name="name" required="true" description="The resource name of the Folder to move.&#xA;Must be of the form folders/{folder_id}">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ProjectCreationStatus" scheme="http://occi/gcpcloudresourcemanager#" title="A status object which is used as the `metadata` field for the Operation&#xA;returned by CreateProject. It provides insight for when significant phases of&#xA;Project creation have completed.">
-    <attributes name="gettable" required="true" description="True if the project can be retrieved using GetProject. No other operations&#xA;on the project are guaranteed to work until the project creation is&#xA;complete." type="//@types.6"/>
-    <attributes name="createTime" required="true" description="Creation time of the project creation workflow." type="//@types.11"/>
-    <attributes name="ready" required="true" description="True if the project creation process is complete." type="//@types.6"/>
+    <attributes name="gettable" required="true" description="True if the project can be retrieved using GetProject. No other operations&#xA;on the project are guaranteed to work until the project creation is&#xA;complete.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="createTime" required="true" description="Creation time of the project creation workflow.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="ready" required="true" description="True if the project creation process is complete.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TestIamPermissionsResponse" scheme="http://occi/gcpcloudresourcemanager#" title="Response message for `TestIamPermissions` method.">
-    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is&#xA;allowed." type="//@types.7"/>
+    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is&#xA;allowed." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GetIamPolicyRequest" scheme="http://occi/gcpcloudresourcemanager#" title="Request message for `GetIamPolicy` method.">
@@ -114,55 +184,69 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AuditLogConfig" scheme="http://occi/gcpcloudresourcemanager#" title="Provides the configuration for logging a type of permissions.&#xA;Example:&#xA;&#xA;    {&#xA;      &quot;audit_log_configs&quot;: [&#xA;        {&#xA;          &quot;log_type&quot;: &quot;DATA_READ&quot;,&#xA;          &quot;exempted_members&quot;: [&#xA;            &quot;user:foo@gmail.com&quot;&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;log_type&quot;: &quot;DATA_WRITE&quot;,&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting&#xA;foo@gmail.com from DATA_READ logging.">
-    <attributes name="exemptedMembers" required="true" description="Specifies the identities that do not cause logging for this type of&#xA;permission.&#xA;Follows the same format of Binding.members." type="//@types.7"/>
-    <attributes name="logType" required="true" description="The log type that this config enables." type="//@types.12"/>
+    <attributes name="exemptedMembers" required="true" description="Specifies the identities that do not cause logging for this type of&#xA;permission.&#xA;Follows the same format of Binding.members." type="//@types.5"/>
+    <attributes name="logType" required="true" description="The log type that this config enables.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TestIamPermissionsRequest" scheme="http://occi/gcpcloudresourcemanager#" title="Request message for `TestIamPermissions` method.">
-    <attributes name="permissions" required="true" description="The set of permissions to check for the `resource`. Permissions with&#xA;wildcards (such as '*' or 'storage.*') are not allowed. For more&#xA;information see&#xA;[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)." type="//@types.7"/>
+    <attributes name="permissions" required="true" description="The set of permissions to check for the `resource`. Permissions with&#xA;wildcards (such as '*' or 'storage.*') are not allowed. For more&#xA;information see&#xA;[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="FolderOperationError" scheme="http://occi/gcpcloudresourcemanager#" title="A classification of the Folder Operation error.">
-    <attributes name="errorMessageId" required="true" description="The type of operation error experienced." type="//@types.13"/>
+    <attributes name="errorMessageId" required="true" description="The type of operation error experienced.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="FolderOperation" scheme="http://occi/gcpcloudresourcemanager#" title="Metadata describing a long running folder operation">
-    <attributes name="sourceParent" required="true" description="The resource name of the folder's parent.&#xA;Only applicable when the operation_type is MOVE." type="//@types.13"/>
-    <attributes name="displayName" required="true" description="The display name of the folder." type="//@types.13"/>
-    <attributes name="destinationParent" required="true" description="The resource name of the folder or organization we are either creating&#xA;the folder under or moving the folder to." type="//@types.13"/>
-    <attributes name="operationType" required="true" description="The type of this operation." type="//@types.14"/>
+    <attributes name="sourceParent" required="true" description="The resource name of the folder's parent.&#xA;Only applicable when the operation_type is MOVE.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="displayName" required="true" description="The display name of the folder.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="destinationParent" required="true" description="The resource name of the folder or organization we are either creating&#xA;the folder under or moving the folder to.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="operationType" required="true" description="The type of this operation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Policy" scheme="http://occi/gcpcloudresourcemanager#" title="Defines an Identity and Access Management (IAM) policy. It is used to&#xA;specify access control policies for Cloud Platform resources.&#xA;&#xA;&#xA;A `Policy` consists of a list of `bindings`. A `Binding` binds a list of&#xA;`members` to a `role`, where the members can be user accounts, Google groups,&#xA;Google domains, and service accounts. A `role` is a named list of permissions&#xA;defined by IAM.&#xA;&#xA;**Example**&#xA;&#xA;    {&#xA;      &quot;bindings&quot;: [&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/owner&quot;,&#xA;          &quot;members&quot;: [&#xA;            &quot;user:mike@example.com&quot;,&#xA;            &quot;group:admins@example.com&quot;,&#xA;            &quot;domain:google.com&quot;,&#xA;            &quot;serviceAccount:my-other-app@appspot.gserviceaccount.com&quot;,&#xA;          ]&#xA;        },&#xA;        {&#xA;          &quot;role&quot;: &quot;roles/viewer&quot;,&#xA;          &quot;members&quot;: [&quot;user:sean@example.com&quot;]&#xA;        }&#xA;      ]&#xA;    }&#xA;&#xA;For a description of IAM and its features, see the&#xA;[IAM developer's guide](https://cloud.google.com/iam).">
-    <attributes name="etag" required="true" description="`etag` is used for optimistic concurrency control as a way to help&#xA;prevent simultaneous updates of a policy from overwriting each other.&#xA;It is strongly suggested that systems make use of the `etag` in the&#xA;read-modify-write cycle to perform policy updates in order to avoid race&#xA;conditions: An `etag` is returned in the response to `getIamPolicy`, and&#xA;systems are expected to put that etag in the request to `setIamPolicy` to&#xA;ensure that their change will be applied to the same version of the policy.&#xA;&#xA;If no `etag` is provided in the call to `setIamPolicy`, then the existing&#xA;policy is overwritten blindly." type="//@types.14"/>
-    <attributes name="version" required="true" description="Version of the `Policy`. The default version is 0." type="//@types.3"/>
-    <attributes name="auditConfigs" required="true" description="Specifies cloud audit logging configuration for this policy." type="//@types.7"/>
-    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`.&#xA;`bindings` with no members will result in an error." type="//@types.7"/>
+    <attributes name="etag" required="true" description="`etag` is used for optimistic concurrency control as a way to help&#xA;prevent simultaneous updates of a policy from overwriting each other.&#xA;It is strongly suggested that systems make use of the `etag` in the&#xA;read-modify-write cycle to perform policy updates in order to avoid race&#xA;conditions: An `etag` is returned in the response to `getIamPolicy`, and&#xA;systems are expected to put that etag in the request to `setIamPolicy` to&#xA;ensure that their change will be applied to the same version of the policy.&#xA;&#xA;If no `etag` is provided in the call to `setIamPolicy`, then the existing&#xA;policy is overwritten blindly.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="version" required="true" description="Version of the `Policy`. The default version is 0.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="auditConfigs" required="true" description="Specifies cloud audit logging configuration for this policy." type="//@types.5"/>
+    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`.&#xA;`bindings` with no members will result in an error." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
-  <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="lifecycleState" documentation="Output only.  The lifecycle state of the folder.&#xA;Updates to the lifecycle_state must be performed via&#xA;[DeleteFolder] and [UndeleteFolder].">
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EnumerationType" name="Lifecyclestate" documentation="Output only.  The lifecycle state of the folder.&#xA;Updates to the lifecycle_state must be performed via&#xA;[DeleteFolder] and [UndeleteFolder].">
     <literals name="LIFECYCLE_STATE_UNSPECIFIED" documentation="Unspecified state."/>
     <literals name="ACTIVE" documentation="The normal and active state."/>
     <literals name="DELETE_REQUESTED" documentation="The folder has been marked for deletion by the user."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="logType" documentation="The log type that this config enables.">
+  <types xsi:type="occi:EnumerationType" name="Logtype" documentation="The log type that this config enables.">
     <literals name="LOG_TYPE_UNSPECIFIED" documentation="Default case. Should never be this."/>
     <literals name="ADMIN_READ" documentation="Admin reads. Example: CloudIAM getIamPolicy"/>
     <literals name="DATA_WRITE" documentation="Data writes. Example: CloudSQL Users create"/>
     <literals name="DATA_READ" documentation="Data reads. Example: CloudSQL Users list"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="errorMessageId" documentation="The type of operation error experienced.">
+  <types xsi:type="occi:EnumerationType" name="Errormessageid" documentation="The type of operation error experienced.">
     <literals name="ERROR_TYPE_UNSPECIFIED" documentation="The error type was unrecognized or unspecified."/>
     <literals name="ACTIVE_FOLDER_HEIGHT_VIOLATION" documentation="The attempted action would violate the max folder depth constraint."/>
     <literals name="MAX_CHILD_FOLDERS_VIOLATION" documentation="The attempted action would violate the max child folders constraint."/>
@@ -174,7 +258,7 @@
     <literals name="FOLDER_TO_DELETE_NON_EMPTY_VIOLATION" documentation="The folder the caller is trying to delete contains active resources."/>
     <literals name="DELETED_FOLDER_HEIGHT_VIOLATION" documentation="The attempted action would violate the max deleted folder depth&#xA;constraint."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="operationType" documentation="The type of this operation.">
+  <types xsi:type="occi:EnumerationType" name="Operationtype" documentation="The type of this operation.">
     <literals name="OPERATION_TYPE_UNSPECIFIED" documentation="Operation type not specified."/>
     <literals name="CREATE" documentation="A create folder operation."/>
     <literals name="MOVE" documentation="A move folder operation."/>

@@ -5,12 +5,18 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Link" scheme="http://occi/gcpcloudtrace#" title="A pointer from the current span to another span in the same trace or in a&#xA;different trace. For example, this can be used in batching operations,&#xA;where a single batch handler processes multiple requests from different&#xA;traces or when the handler receives a request from a different project.">
-    <attributes name="type" required="true" description="The relationship of the current span relative to the linked span." type="//@types.11"/>
-    <attributes name="traceId" required="true" description="`TRACE_ID` identifies a trace within a project." type="//@types.11"/>
-    <attributes name="spanId" required="true" description="`SPAN_ID` identifies a span within a trace." type="//@types.11"/>
+    <attributes name="type" required="true" description="The relationship of the current span relative to the linked span.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="traceId" required="true" description="`TRACE_ID` identifies a trace within a project.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="spanId" required="true" description="`SPAN_ID` identifies a span within a trace.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="AnnotationAttributesLink" scheme="http://occi/gcpcloudtrace#" title="A set of attributes on the annotation. There is a limit of 4 attributes&#xA;per Annotation." source="//@kinds[term='annotation']" target="//@kinds[term='attributes']">
+  <kinds name="AnnotationattributesAttributesLink" scheme="http://occi/gcpcloudtrace#" title="A set of attributes on the annotation. There is a limit of 4 attributes&#xA;per Annotation." source="//@kinds[term='annotation']" target="//@kinds[term='attributes']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="TruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="A user-supplied message describing the event. The maximum length for&#xA;the description is 256 bytes." source="//@kinds[term='annotation']" target="//@kinds[term='truncatablestring']">
@@ -20,33 +26,43 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="StackFrames" scheme="http://occi/gcpcloudtrace#" title="A collection of stack frames, which can be truncated.">
-    <attributes name="droppedFramesCount" required="true" description="The number of stack frames that were dropped because there&#xA;were too many stack frames.&#xA;If this value is 0, then no stack frames were dropped." type="//@types.3"/>
-    <attributes name="frame" required="true" description="Stack frames in this call stack." type="//@types.7"/>
+    <attributes name="droppedFramesCount" required="true" description="The number of stack frames that were dropped because there&#xA;were too many stack frames.&#xA;If this value is 0, then no stack frames were dropped.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="frame" required="true" description="Stack frames in this call stack." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TimeEvents" scheme="http://occi/gcpcloudtrace#" title="A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation&#xA;on the span, consisting of either user-supplied key:value pairs, or&#xA;details of a message sent/received between Spans.">
-    <attributes name="droppedAnnotationsCount" required="true" description="The number of dropped annotations in all the included time events.&#xA;If the value is 0, then no annotations were dropped." type="//@types.3"/>
-    <attributes name="droppedMessageEventsCount" required="true" description="The number of dropped message events in all the included time events.&#xA;If the value is 0, then no message events were dropped." type="//@types.3"/>
-    <attributes name="timeEvent" required="true" description="A collection of `TimeEvent`s." type="//@types.7"/>
+    <attributes name="droppedAnnotationsCount" required="true" description="The number of dropped annotations in all the included time events.&#xA;If the value is 0, then no annotations were dropped.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="droppedMessageEventsCount" required="true" description="The number of dropped message events in all the included time events.&#xA;If the value is 0, then no message events were dropped.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="timeEvent" required="true" description="A collection of `TimeEvent`s." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="ModuleTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="A unique identifier for the module, usually a hash of its&#xA;contents (up to 128 bytes)." source="//@kinds[term='module']" target="//@kinds[term='truncatablestring']">
+  <kinds name="ModulebuildIdTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="A unique identifier for the module, usually a hash of its&#xA;contents (up to 128 bytes)." source="//@kinds[term='module']" target="//@kinds[term='truncatablestring']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="ModuleTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="For example: main binary, kernel modules, and dynamic libraries&#xA;such as libc.so, sharedlib.so (up to 256 bytes)." source="//@kinds[term='module']" target="//@kinds[term='truncatablestring']">
+  <kinds name="ModulemoduleTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="For example: main binary, kernel modules, and dynamic libraries&#xA;such as libc.so, sharedlib.so (up to 256 bytes)." source="//@kinds[term='module']" target="//@kinds[term='truncatablestring']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Module" scheme="http://occi/gcpcloudtrace#" title="Binary module.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Status" scheme="http://occi/gcpcloudtrace#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
-    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
-    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.11"/>
-    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="BatchWriteSpansRequest" scheme="http://occi/gcpcloudtrace#" title="The request message for the `BatchWriteSpans` method.">
-    <attributes name="spans" required="true" description="A collection of spans." type="//@types.7"/>
+    <attributes name="spans" required="true" description="A collection of spans." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Empty" scheme="http://occi/gcpcloudtrace#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
@@ -58,7 +74,7 @@
   <kinds name="LinksLink" scheme="http://occi/gcpcloudtrace#" title="A maximum of 128 links are allowed per Span." source="//@kinds[term='span']" target="//@kinds[term='links']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="SpanAttributesLink" scheme="http://occi/gcpcloudtrace#" title="A set of attributes on the span. There is a limit of 32 attributes per&#xA;span." source="//@kinds[term='span']" target="//@kinds[term='attributes']">
+  <kinds name="SpanattributesAttributesLink" scheme="http://occi/gcpcloudtrace#" title="A set of attributes on the span. There is a limit of 32 attributes per&#xA;span." source="//@kinds[term='span']" target="//@kinds[term='attributes']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="StatusLink" scheme="http://occi/gcpcloudtrace#" title="An optional final status for this span." source="//@kinds[term='span']" target="//@kinds[term='status']">
@@ -67,50 +83,80 @@
   <kinds name="StackTraceLink" scheme="http://occi/gcpcloudtrace#" title="Stack trace captured at the start of the span." source="//@kinds[term='span']" target="//@kinds[term='stacktrace']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="SpanTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="A description of the span's operation (up to 128 bytes).&#xA;Stackdriver Trace displays the description in the&#xA;{% dynamic print site_values.console_name %}.&#xA;For example, the display name can be a qualified method name or a file name&#xA;and a line number where the operation is called. A best practice is to use&#xA;the same display name within an application and at the same call point.&#xA;This makes it easier to correlate spans in different traces." source="//@kinds[term='span']" target="//@kinds[term='truncatablestring']">
+  <kinds name="SpandisplayNameTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="A description of the span's operation (up to 128 bytes).&#xA;Stackdriver Trace displays the description in the&#xA;{% dynamic print site_values.console_name %}.&#xA;For example, the display name can be a qualified method name or a file name&#xA;and a line number where the operation is called. A best practice is to use&#xA;the same display name within an application and at the same call point.&#xA;This makes it easier to correlate spans in different traces." source="//@kinds[term='span']" target="//@kinds[term='truncatablestring']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Span" scheme="http://occi/gcpcloudtrace#" title="A span represents a single operation within a trace. Spans can be&#xA;nested to form a trace tree. Often, a trace contains a root span&#xA;that describes the end-to-end latency, and one or more subspans for&#xA;its sub-operations. A trace can also contain multiple root spans,&#xA;or none at all. Spans do not need to be contiguous&amp;mdash;there may be&#xA;gaps or overlaps between spans in a trace.">
-    <attributes name="spanId" required="true" description="The [SPAN_ID] portion of the span's resource name." type="//@types.11"/>
-    <attributes name="childSpanCount" required="true" description="An optional number of child spans that were generated while this span&#xA;was active. If set, allows implementation to detect missing child spans." type="//@types.3"/>
-    <attributes name="sameProcessAsParentSpan" required="true" description="A highly recommended but not required flag that identifies when a trace&#xA;crosses a process boundary. True when the parent_span belongs to the&#xA;same process as the current span." type="//@types.6"/>
-    <attributes name="name" required="true" description="The resource name of the span in the following format:&#xA;&#xA;    projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project.&#xA;[SPAN_ID] is a unique identifier for a span within a trace,&#xA;assigned when the span is created." type="//@types.11"/>
-    <attributes name="parentSpanId" required="true" description="The [SPAN_ID] of this span's parent span. If this is a root span,&#xA;then this field must be empty." type="//@types.11"/>
-    <attributes name="endTime" required="true" description="The end time of the span. On the client side, this is the time kept by&#xA;the local machine where the span execution ends. On the server side, this&#xA;is the time when the server application handler stops running." type="//@types.11"/>
-    <attributes name="startTime" required="true" description="The start time of the span. On the client side, this is the time kept by&#xA;the local machine where the span execution starts. On the server side, this&#xA;is the time when the server's application handler starts running." type="//@types.11"/>
+    <attributes name="spanId" required="true" description="The [SPAN_ID] portion of the span's resource name.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="childSpanCount" required="true" description="An optional number of child spans that were generated while this span&#xA;was active. If set, allows implementation to detect missing child spans.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="sameProcessAsParentSpan" required="true" description="A highly recommended but not required flag that identifies when a trace&#xA;crosses a process boundary. True when the parent_span belongs to the&#xA;same process as the current span.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="name" required="true" description="The resource name of the span in the following format:&#xA;&#xA;    projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project.&#xA;[SPAN_ID] is a unique identifier for a span within a trace,&#xA;assigned when the span is created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="parentSpanId" required="true" description="The [SPAN_ID] of this span's parent span. If this is a root span,&#xA;then this field must be empty.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="endTime" required="true" description="The end time of the span. On the client side, this is the time kept by&#xA;the local machine where the span execution ends. On the server side, this&#xA;is the time when the server application handler stops running.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="The start time of the span. On the client side, this is the time kept by&#xA;the local machine where the span execution starts. On the server side, this&#xA;is the time when the server's application handler starts running.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="create" scheme="http://occi/gcpcloudtrace/span/action#" title="Creates a new Span.">
-      <attributes name="name" required="true" description="The resource name of the span in the following format:&#xA;&#xA;    projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project.&#xA;[SPAN_ID] is a unique identifier for a span within a trace,&#xA;assigned when the span is created." type="//@types.11"/>
+      <attributes name="name" required="true" description="The resource name of the span in the following format:&#xA;&#xA;    projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project.&#xA;[SPAN_ID] is a unique identifier for a span within a trace,&#xA;assigned when the span is created.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="AttributeValueTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="A string up to 256 bytes long." source="//@kinds[term='attributevalue']" target="//@kinds[term='truncatablestring']">
+  <kinds name="AttributeValuestringValueTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="A string up to 256 bytes long." source="//@kinds[term='attributevalue']" target="//@kinds[term='truncatablestring']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="AttributeValue" scheme="http://occi/gcpcloudtrace#" title="The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.">
-    <attributes name="boolValue" required="true" description="A Boolean value represented by `true` or `false`." type="//@types.6"/>
-    <attributes name="intValue" required="true" description="A 64-bit signed integer." type="//@types.11"/>
+    <attributes name="boolValue" required="true" description="A Boolean value represented by `true` or `false`.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="intValue" required="true" description="A 64-bit signed integer.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Attributes" scheme="http://occi/gcpcloudtrace#" title="A set of attributes, each in the format `[KEY]:[VALUE]`.">
-    <attributes name="droppedAttributesCount" required="true" description="The number of attributes that were discarded. Attributes can be discarded&#xA;because their keys are too long or because there are too many attributes.&#xA;If this value is 0 then all attributes are valid." type="//@types.3"/>
-    <attributes name="attributeMap" required="true" description="The set of attributes. Each attribute's key can be up to 128 bytes&#xA;long. The value can be a string up to 256 bytes, an integer, or the&#xA;Boolean values `true` and `false`. For example:&#xA;&#xA;    &quot;/instance_id&quot;: &quot;my-instance&quot;&#xA;    &quot;/http/user_agent&quot;: &quot;&quot;&#xA;    &quot;/http/request_bytes&quot;: 300&#xA;    &quot;abc.com/myattribute&quot;: true" type="//@types.10"/>
+    <attributes name="droppedAttributesCount" required="true" description="The number of attributes that were discarded. Attributes can be discarded&#xA;because their keys are too long or because there are too many attributes.&#xA;If this value is 0 then all attributes are valid.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="attributeMap" required="true" description="The set of attributes. Each attribute's key can be up to 128 bytes&#xA;long. The value can be a string up to 256 bytes, an integer, or the&#xA;Boolean values `true` and `false`. For example:&#xA;&#xA;    &quot;/instance_id&quot;: &quot;my-instance&quot;&#xA;    &quot;/http/user_agent&quot;: &quot;&quot;&#xA;    &quot;/http/request_bytes&quot;: 300&#xA;    &quot;abc.com/myattribute&quot;: true" type="//@types.3"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Links" scheme="http://occi/gcpcloudtrace#" title="A collection of links, which are references from this span to a span&#xA;in the same or different trace.">
-    <attributes name="link" required="true" description="A collection of links." type="//@types.7"/>
-    <attributes name="droppedLinksCount" required="true" description="The number of dropped links after the maximum size was enforced. If&#xA;this value is 0, then no links were dropped." type="//@types.3"/>
+    <attributes name="link" required="true" description="A collection of links." type="//@types.5"/>
+    <attributes name="droppedLinksCount" required="true" description="The number of dropped links after the maximum size was enforced. If&#xA;this value is 0, then no links were dropped.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TruncatableString" scheme="http://occi/gcpcloudtrace#" title="Represents a string that might be shortened to a specified length.">
-    <attributes name="truncatedByteCount" required="true" description="The number of bytes removed from the original string. If this&#xA;value is 0, then the string was not shortened." type="//@types.3"/>
-    <attributes name="value" required="true" description="The shortened string. For example, if the original string was 500&#xA;bytes long and the limit of the string was 128 bytes, then this&#xA;value contains the first 128 bytes of the 500-byte string. Note that&#xA;truncation always happens on the character boundary, to ensure that&#xA;truncated string is still valid UTF8. In case of multi-byte characters,&#xA;size of truncated string can be less than truncation limit." type="//@types.11"/>
+    <attributes name="truncatedByteCount" required="true" description="The number of bytes removed from the original string. If this&#xA;value is 0, then the string was not shortened.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="value" required="true" description="The shortened string. For example, if the original string was 500&#xA;bytes long and the limit of the string was 128 bytes, then this&#xA;value contains the first 128 bytes of the 500-byte string. Note that&#xA;truncation always happens on the character boundary, to ensure that&#xA;truncated string is still valid UTF8. In case of multi-byte characters,&#xA;size of truncated string can be less than truncation limit.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="StackFramesLink" scheme="http://occi/gcpcloudtrace#" title="Stack frames in this stack trace. A maximum of 128 frames are allowed." source="//@kinds[term='stacktrace']" target="//@kinds[term='stackframes']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="StackTrace" scheme="http://occi/gcpcloudtrace#" title="A call stack appearing in a trace.">
-    <attributes name="stackTraceHashId" required="true" description="The hash ID is used to conserve network bandwidth for duplicate&#xA;stack traces within a single trace.&#xA;&#xA;Often multiple spans will have identical stack traces.&#xA;The first occurrence of a stack trace should contain both the&#xA;`stackFrame` content and a value in `stackTraceHashId`.&#xA;&#xA;Subsequent spans within the same request can refer&#xA;to that stack trace by only setting `stackTraceHashId`." type="//@types.11"/>
+    <attributes name="stackTraceHashId" required="true" description="The hash ID is used to conserve network bandwidth for duplicate&#xA;stack traces within a single trace.&#xA;&#xA;Often multiple spans will have identical stack traces.&#xA;The first occurrence of a stack trace should contain both the&#xA;`stackFrame` content and a value in `stackTraceHashId`.&#xA;&#xA;Subsequent spans within the same request can refer&#xA;to that stack trace by only setting `stackTraceHashId`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AnnotationLink" scheme="http://occi/gcpcloudtrace#" title="Text annotation with a set of attributes." source="//@kinds[term='timeevent']" target="//@kinds[term='annotation']">
@@ -120,52 +166,62 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="TimeEvent" scheme="http://occi/gcpcloudtrace#" title="A time-stamped annotation or message event in the Span.">
-    <attributes name="time" required="true" description="The timestamp indicating the time the event occurred." type="//@types.11"/>
+    <attributes name="time" required="true" description="The timestamp indicating the time the event occurred.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="MessageEvent" scheme="http://occi/gcpcloudtrace#" title="An event describing a message sent/received between Spans.">
-    <attributes name="type" required="true" description="Type of MessageEvent. Indicates whether the message was sent or&#xA;received." type="//@types.12"/>
-    <attributes name="compressedSizeBytes" required="true" description="The number of compressed bytes sent or received. If missing assumed to&#xA;be the same size as uncompressed." type="//@types.12"/>
-    <attributes name="uncompressedSizeBytes" required="true" description="The number of uncompressed bytes sent or received." type="//@types.12"/>
+    <attributes name="type" required="true" description="Type of MessageEvent. Indicates whether the message was sent or&#xA;received.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="compressedSizeBytes" required="true" description="The number of compressed bytes sent or received. If missing assumed to&#xA;be the same size as uncompressed.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="uncompressedSizeBytes" required="true" description="The number of uncompressed bytes sent or received.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="StackFrameTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="The version of the deployed source code (up to 128 bytes)." source="//@kinds[term='stackframe']" target="//@kinds[term='truncatablestring']">
+  <kinds name="StackFramesourceVersionTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="The version of the deployed source code (up to 128 bytes)." source="//@kinds[term='stackframe']" target="//@kinds[term='truncatablestring']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="StackFrameTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="An un-mangled function name, if `function_name` is&#xA;[mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can&#xA;be fully-qualified (up to 1024 bytes)." source="//@kinds[term='stackframe']" target="//@kinds[term='truncatablestring']">
+  <kinds name="StackFrameoriginalFunctionNameTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="An un-mangled function name, if `function_name` is&#xA;[mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can&#xA;be fully-qualified (up to 1024 bytes)." source="//@kinds[term='stackframe']" target="//@kinds[term='truncatablestring']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="StackFrameTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="The fully-qualified name that uniquely identifies the function or&#xA;method that is active in this frame (up to 1024 bytes)." source="//@kinds[term='stackframe']" target="//@kinds[term='truncatablestring']">
+  <kinds name="StackFramefunctionNameTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="The fully-qualified name that uniquely identifies the function or&#xA;method that is active in this frame (up to 1024 bytes)." source="//@kinds[term='stackframe']" target="//@kinds[term='truncatablestring']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="ModuleLink" scheme="http://occi/gcpcloudtrace#" title="The binary module from where the code was loaded." source="//@kinds[term='stackframe']" target="//@kinds[term='module']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="StackFrameTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="The name of the source file where the function call appears (up to 256&#xA;bytes)." source="//@kinds[term='stackframe']" target="//@kinds[term='truncatablestring']">
+  <kinds name="StackFramefileNameTruncatableStringLink" scheme="http://occi/gcpcloudtrace#" title="The name of the source file where the function call appears (up to 256&#xA;bytes)." source="//@kinds[term='stackframe']" target="//@kinds[term='truncatablestring']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="StackFrame" scheme="http://occi/gcpcloudtrace#" title="Represents a single stack frame in a stack trace.">
-    <attributes name="lineNumber" required="true" description="The line number in `file_name` where the function call appears." type="//@types.12"/>
-    <attributes name="columnNumber" required="true" description="The column number where the function call appears, if available.&#xA;This is important in JavaScript because of its anonymous functions." type="//@types.12"/>
+    <attributes name="lineNumber" required="true" description="The line number in `file_name` where the function call appears.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="columnNumber" required="true" description="The column number where the function call appears, if available.&#xA;This is important in JavaScript because of its anonymous functions.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
-  <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="type" documentation="The relationship of the current span relative to the linked span.">
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EnumerationType" name="Type" documentation="The relationship of the current span relative to the linked span.">
     <literals name="TYPE_UNSPECIFIED" documentation="The relationship of the two spans is unknown."/>
     <literals name="CHILD_LINKED_SPAN" documentation="The linked span is a child of the current span."/>
     <literals name="PARENT_LINKED_SPAN" documentation="The linked span is a parent of the current span."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="MessageEventTtype" documentation="Type of MessageEvent. Indicates whether the message was sent or&#xA;received.">
+  <types xsi:type="occi:EnumerationType" name="MessageEventType" documentation="Type of MessageEvent. Indicates whether the message was sent or&#xA;received.">
     <literals name="TYPE_UNSPECIFIED" documentation="Unknown event type."/>
     <literals name="SENT" documentation="Indicates a sent message."/>
     <literals name="RECEIVED" documentation="Indicates a received message."/>

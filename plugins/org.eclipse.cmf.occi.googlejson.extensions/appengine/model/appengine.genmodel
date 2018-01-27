@@ -1,0 +1,1640 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015-2017 Obeo, Inria&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#x9;&#xA;Contributors:&#xA;- William Piers &lt;william.piers@obeo.fr>&#xA;- Philippe Merle &lt;philippe.merle@inria.fr>&#xA;- Faiez Zalila &lt;faiez.zalila@inria.fr>" modelDirectory="/appengine/src-gen" editDirectory="/appengine.edit/src-gen" editorDirectory="/appengine.editor/src-gen" modelPluginID="appengine" modelName="Appengine" testsDirectory="/appengine.tests/src" complianceLevel="8.0" copyrightFields="false" editPluginID="appengine.edit" editorPluginID="appengine.editor" testsPluginID="appengine.tests" operationReflection="true">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+  </genAnnotations>
+  <foreignModel>appengine.ecore</foreignModel>
+  <genPackages prefix="Appengine" disposableProviderFactory="true" loadInitialization="true" literalsInterface="false">
+    <ecorePackage href="appengine.ecore#/"/>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//Action"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Action/UNSPECIFIED_ACTION"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Action/ALLOW"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Action/DENY"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//Errorcode"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Errorcode/ERROR_CODE_UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Errorcode/ERROR_CODE_DEFAULT"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Errorcode/ERROR_CODE_OVER_QUOTA"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Errorcode/ERROR_CODE_DOS_API_DENIAL"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Errorcode/ERROR_CODE_TIMEOUT"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//Servingstatus"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Servingstatus/UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Servingstatus/SERVING"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Servingstatus/USER_DISABLED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Servingstatus/SYSTEM_DISABLED"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//Availability"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Availability/UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Availability/RESIDENT"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Availability/DYNAMIC"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//VersionServingstatus"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//VersionServingstatus/SERVING_STATUS_UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//VersionServingstatus/SERVING"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//VersionServingstatus/STOPPED"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//Shardby"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Shardby/UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Shardby/COOKIE"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Shardby/IP"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Shardby/RANDOM"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//Type"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Type/RECORD_TYPE_UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Type/A"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Type/AAAA"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Type/CNAME"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//Redirecthttpresponsecode"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Redirecthttpresponsecode/REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Redirecthttpresponsecode/REDIRECT_HTTP_RESPONSE_CODE_301"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Redirecthttpresponsecode/REDIRECT_HTTP_RESPONSE_CODE_302"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Redirecthttpresponsecode/REDIRECT_HTTP_RESPONSE_CODE_303"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Redirecthttpresponsecode/REDIRECT_HTTP_RESPONSE_CODE_307"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//Securitylevel"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Securitylevel/SECURE_UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Securitylevel/SECURE_DEFAULT"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Securitylevel/SECURE_NEVER"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Securitylevel/SECURE_OPTIONAL"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Securitylevel/SECURE_ALWAYS"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//Authfailaction"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Authfailaction/AUTH_FAIL_ACTION_UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Authfailaction/AUTH_FAIL_ACTION_REDIRECT"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Authfailaction/AUTH_FAIL_ACTION_UNAUTHORIZED"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//Login"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Login/LOGIN_UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Login/LOGIN_OPTIONAL"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Login/LOGIN_ADMIN"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//Login/LOGIN_REQUIRED"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//ApiConfigHandlerSecuritylevel"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerSecuritylevel/SECURE_UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerSecuritylevel/SECURE_DEFAULT"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerSecuritylevel/SECURE_NEVER"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerSecuritylevel/SECURE_OPTIONAL"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerSecuritylevel/SECURE_ALWAYS"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//ApiConfigHandlerAuthfailaction"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerAuthfailaction/AUTH_FAIL_ACTION_UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerAuthfailaction/AUTH_FAIL_ACTION_REDIRECT"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerAuthfailaction/AUTH_FAIL_ACTION_UNAUTHORIZED"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="appengine.ecore#//ApiConfigHandlerLogin"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerLogin/LOGIN_UNSPECIFIED"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerLogin/LOGIN_OPTIONAL"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerLogin/LOGIN_ADMIN"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="appengine.ecore#//ApiConfigHandlerLogin/LOGIN_REQUIRED"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genDataTypes>
+      <ecoreDataType href="appengine.ecore#//byte"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="appengine.ecore#//double"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="appengine.ecore#//float"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="appengine.ecore#//any"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="appengine.ecore#//long"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="appengine.ecore#//short"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="appengine.ecore#//map"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="appengine.ecore#//object"/>
+    </genDataTypes>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//array"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//array/values"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Cpuutilization"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Cpuutilization/aggregationWindowLength"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Cpuutilization/targetUtilization"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Status"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Status/details"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Status/code"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Status/message"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Identityawareproxy"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Identityawareproxy/oauth2ClientSecret"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Identityawareproxy/oauth2ClientId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Identityawareproxy/oauth2ClientSecretSha256"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Identityawareproxy/enabled"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Manualscaling"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Manualscaling/instances"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Locationmetadata"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Locationmetadata/flexibleEnvironmentAvailable"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Locationmetadata/standardEnvironmentAvailable"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Trafficsplitlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Service"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Service/name"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Service/delete"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/delete/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/delete/servicesId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Service/list"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/list/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/list/pageToken"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/list/pageSize"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Service/get"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/get/servicesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/get/appsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Service/patch"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/patch/updateMask"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/patch/servicesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/patch/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Service/patch/migrateTraffic"/>
+        </genParameters>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Listoperationsresponse"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Listoperationsresponse/nextPageToken"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Listoperationsresponse/operations"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Operationmetadata"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadata/user"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadata/target"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadata/method"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadata/endTime"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadata/operationType"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadata/insertTime"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Firewallrule"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Firewallrule/sourceRange"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Firewallrule/priority"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Firewallrule/action"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Firewallrule/description"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Firewallrule/get"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/get/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/get/ingressRulesId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Firewallrule/patch"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/patch/updateMask"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/patch/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/patch/ingressRulesId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Firewallrule/batchupdate"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/batchupdate/appsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Firewallrule/delete"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/delete/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/delete/ingressRulesId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Firewallrule/list"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/list/pageSize"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/list/matchingAddress"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/list/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/list/pageToken"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Firewallrule/create"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Firewallrule/create/appsId"/>
+        </genParameters>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Listauthorizedcertificatesresponse"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Listauthorizedcertificatesresponse/certificates"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Listauthorizedcertificatesresponse/nextPageToken"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Featuresettings"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Featuresettings/splitHealthChecks"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Errorhandler"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Errorhandler/errorCode"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Errorhandler/mimeType"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Errorhandler/staticFile"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Sslsettings"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Sslsettings/certificateId"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Operationmetadatav1"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Operationmetadatav1/warning"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1/insertTime"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1/target"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1/user"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1/ephemeralMessage"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1/method"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1/endTime"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Featuresettingslink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Identityawareproxylink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Application"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Application/dispatchRules"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Application/gcrDomain"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Application/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Application/defaultCookieExpiration"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Application/locationId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Application/servingStatus"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Application/defaultHostname"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Application/authDomain"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Application/codeBucket"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Application/defaultBucket"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Application/repair"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Application/repair/appsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Application/get"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Application/get/appsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Application/patch"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Application/patch/updateMask"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Application/patch/appsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Application/create"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Network"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Network/name"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Network/forwardedPorts"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Network/instanceTag"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Network/subnetworkName"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Instance"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/averageLatency"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/memoryUsage"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/vmIp"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/availability"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/vmStatus"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/errors"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/startTime"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/vmDebugEnabled"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/requests"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/appEngineRelease"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/vmName"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/qps"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/vmId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/vmZoneName"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Instance/name"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Instance/list"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/list/servicesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/list/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/list/pageToken"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/list/pageSize"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/list/versionsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Instance/get"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/get/servicesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/get/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/get/instancesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/get/versionsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Instance/debug"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/debug/servicesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/debug/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/debug/instancesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/debug/versionsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Instance/delete"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/delete/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/delete/instancesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/delete/versionsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Instance/delete/servicesId"/>
+        </genParameters>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Livenesscheck"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Livenesscheck/failureThreshold"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Livenesscheck/timeout"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Livenesscheck/initialDelay"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Livenesscheck/path"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Livenesscheck/host"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Livenesscheck/successThreshold"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Livenesscheck/checkInterval"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Batchupdateingressrulesrequest"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Batchupdateingressrulesrequest/ingressRules"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Networkutilization"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Networkutilization/targetSentPacketsPerSecond"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Networkutilization/targetReceivedBytesPerSecond"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Networkutilization/targetReceivedPacketsPerSecond"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Networkutilization/targetSentBytesPerSecond"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Location"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Location/metadata"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Location/labels"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Location/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Location/locationId"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Location/list"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Location/list/pageSize"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Location/list/filter"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Location/list/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Location/list/pageToken"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Location/get"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Location/get/locationsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Location/get/appsId"/>
+        </genParameters>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Healthcheck"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Healthcheck/timeout"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Healthcheck/unhealthyThreshold"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Healthcheck/disableHealthCheck"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Healthcheck/host"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Healthcheck/healthyThreshold"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Healthcheck/restartThreshold"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Healthcheck/checkInterval"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Readinesscheck"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Readinesscheck/path"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Readinesscheck/host"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Readinesscheck/successThreshold"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Readinesscheck/checkInterval"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Readinesscheck/failureThreshold"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Readinesscheck/timeout"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Readinesscheck/appStartTimeout"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Debuginstancerequest"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Debuginstancerequest/sshKey"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Operationmetadatav1beta5"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta5/insertTime"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta5/endTime"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta5/user"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta5/target"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta5/method"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Automaticscalinglink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Healthchecklink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Readinesschecklink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Manualscalinglink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Apiconfighandlerlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Endpointsapiservicelink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Deploymentlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Resourceslink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Basicscalinglink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Livenesschecklink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Networklink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Version"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/env"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Version/handlers"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/diskUsageBytes"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/threadsafe"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/vm"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/versionUrl"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/instanceClass"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/servingStatus"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/runtimeApiVersion"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/createTime"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Version/inboundServices"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Version/errorHandlers"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/defaultExpiration"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Version/libraries"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/nobuildFilesRegex"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/runtime"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/createdBy"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/envVariables"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Version/betaSettings"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Version/delete"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/delete/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/delete/versionsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/delete/servicesId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Version/list"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/list/pageSize"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/list/view"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/list/servicesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/list/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/list/pageToken"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Version/get"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/get/versionsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/get/view"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/get/servicesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/get/appsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Version/patch"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/patch/updateMask"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/patch/servicesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/patch/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/patch/versionsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Version/create"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/create/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Version/create/servicesId"/>
+        </genParameters>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Repairapplicationrequest"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Certificaterawdata"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Certificaterawdata/publicCertificate"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Certificaterawdata/privateKey"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Fileinfo"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Fileinfo/sourceUrl"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Fileinfo/sha1Sum"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Fileinfo/mimeType"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Scripthandler"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Scripthandler/scriptPath"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Operationmetadataexperimental"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadataexperimental/user"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadataexperimental/target"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadataexperimental/method"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadataexperimental/insertTime"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadataexperimental/endTime"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Authorizeddomain"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Authorizeddomain/name"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Authorizeddomain/list"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizeddomain/list/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizeddomain/list/pageToken"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizeddomain/list/pageSize"/>
+        </genParameters>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Trafficsplit"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Trafficsplit/shardBy"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Trafficsplit/allocations"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Operationmetadatav1beta"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta/user"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta/target"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta/ephemeralMessage"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta/method"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta/endTime"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Operationmetadatav1beta/warning"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1beta/insertTime"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Listservicesresponse"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Listservicesresponse/services"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Listservicesresponse/nextPageToken"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Listingressrulesresponse"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Listingressrulesresponse/nextPageToken"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Listingressrulesresponse/ingressRules"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Resources"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Resources/volumes"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Resources/diskGb"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Resources/cpu"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Resources/memoryGb"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Zipinfolink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Containerinfolink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Deployment"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Deployment/files"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Batchupdateingressrulesresponse"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Batchupdateingressrulesresponse/ingressRules"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Volume"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Volume/volumeType"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Volume/sizeGb"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Volume/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Listinstancesresponse"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Listinstancesresponse/instances"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Listinstancesresponse/nextPageToken"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Listdomainmappingsresponse"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Listdomainmappingsresponse/nextPageToken"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Listdomainmappingsresponse/domainMappings"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Operationmetadatav1alpha"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1alpha/endTime"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Operationmetadatav1alpha/warning"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1alpha/insertTime"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1alpha/user"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1alpha/target"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1alpha/ephemeralMessage"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operationmetadatav1alpha/method"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Urldispatchrule"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Urldispatchrule/domain"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Urldispatchrule/service"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Urldispatchrule/path"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Listversionsresponse"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Listversionsresponse/nextPageToken"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Listversionsresponse/versions"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Listauthorizeddomainsresponse"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Listauthorizeddomainsresponse/domains"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Listauthorizeddomainsresponse/nextPageToken"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Empty"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Apiendpointhandler"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Apiendpointhandler/scriptPath"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Sslsettingslink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Domainmapping"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Domainmapping/resourceRecords"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Domainmapping/name"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Domainmapping/delete"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/delete/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/delete/domainMappingsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Domainmapping/list"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/list/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/list/pageToken"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/list/pageSize"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Domainmapping/get"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/get/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/get/domainMappingsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Domainmapping/patch"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/patch/updateMask"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/patch/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/patch/domainMappingsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Domainmapping/create"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Domainmapping/create/appsId"/>
+        </genParameters>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Requestutilizationlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Networkutilizationlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Cpuutilizationlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Diskutilizationlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Automaticscaling"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Automaticscaling/minPendingLatency"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Automaticscaling/maxIdleInstances"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Automaticscaling/minIdleInstances"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Automaticscaling/maxTotalInstances"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Automaticscaling/minTotalInstances"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Automaticscaling/maxConcurrentRequests"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Automaticscaling/coolDownPeriod"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Automaticscaling/maxPendingLatency"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Zipinfo"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Zipinfo/sourceUrl"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Zipinfo/filesCount"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Certificaterawdatalink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Authorizedcertificate"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Authorizedcertificate/domainMappingsCount"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Authorizedcertificate/domainNames"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Authorizedcertificate/displayName"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Authorizedcertificate/visibleDomainMappings"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Authorizedcertificate/expireTime"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Authorizedcertificate/name"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Authorizedcertificate/delete"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/delete/authorizedCertificatesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/delete/appsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Authorizedcertificate/list"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/list/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/list/pageToken"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/list/pageSize"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/list/view"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Authorizedcertificate/get"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/get/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/get/view"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/get/authorizedCertificatesId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Authorizedcertificate/patch"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/patch/authorizedCertificatesId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/patch/updateMask"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/patch/appsId"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Authorizedcertificate/create"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Authorizedcertificate/create/appsId"/>
+        </genParameters>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Resourcerecord"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Resourcerecord/type"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Resourcerecord/rrdata"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Resourcerecord/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Library"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Library/version"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Library/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Listlocationsresponse"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Listlocationsresponse/nextPageToken"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="appengine.ecore#//Listlocationsresponse/locations"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Containerinfo"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Containerinfo/image"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Requestutilization"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Requestutilization/targetRequestCountPerSecond"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Requestutilization/targetConcurrentRequests"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Apiendpointhandlerlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Staticfileshandlerlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Scripthandlerlink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Urlmap"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Urlmap/redirectHttpResponseCode"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Urlmap/securityLevel"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Urlmap/authFailAction"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Urlmap/urlRegex"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Urlmap/login"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Endpointsapiservice"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Endpointsapiservice/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Endpointsapiservice/configId"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Statuslink"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Operation"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operation/response"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operation/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operation/metadata"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Operation/done"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Operation/list"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Operation/list/filter"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Operation/list/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Operation/list/pageToken"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Operation/list/pageSize"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="appengine.ecore#//Operation/get"/>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Operation/get/appsId"/>
+        </genParameters>
+        <genParameters>
+          <ecoreParameter href="appengine.ecore#//Operation/get/operationsId"/>
+        </genParameters>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Apiconfighandler"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Apiconfighandler/securityLevel"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Apiconfighandler/authFailAction"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Apiconfighandler/script"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Apiconfighandler/login"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Apiconfighandler/url"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Staticfileshandler"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Staticfileshandler/applicationReadable"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Staticfileshandler/httpHeaders"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Staticfileshandler/uploadPathRegex"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Staticfileshandler/path"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Staticfileshandler/mimeType"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Staticfileshandler/requireMatchingFile"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Staticfileshandler/expiration"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Basicscaling"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Basicscaling/maxInstances"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Basicscaling/idleTimeout"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="appengine.ecore#//Diskutilization"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Diskutilization/targetWriteBytesPerSecond"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Diskutilization/targetReadBytesPerSecond"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Diskutilization/targetReadOpsPerSecond"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="appengine.ecore#//Diskutilization/targetWriteOpsPerSecond"/>
+      </genFeatures>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="platform:/plugin/org.eclipse.cmf.occi.core/model/OCCI.genmodel#//occi"/>
+</genmodel:GenModel>

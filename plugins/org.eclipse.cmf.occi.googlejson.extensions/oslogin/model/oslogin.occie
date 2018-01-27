@@ -2,25 +2,43 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="oslogin" scheme="http://occi/gcposlogin#" description="Manages OS login configuration for Directory API users.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="LoginProfile" scheme="http://occi/gcposlogin#" title="The Directory API profile information used for logging in to a virtual&#xA;machine on Google Compute Engine.">
-    <attributes name="posixAccounts" required="true" description="The list of POSIX accounts associated with the Directory API user." type="//@types.7"/>
-    <attributes name="name" required="true" description="A unique user ID for identifying the user." type="//@types.0"/>
-    <attributes name="suspended" required="true" description="Indicates if the user is suspended." type="//@types.6"/>
-    <attributes name="sshPublicKeys" required="true" description="A map from SSH public key fingerprint to the associated key object." type="//@types.10"/>
+    <attributes name="posixAccounts" required="true" description="The list of POSIX accounts associated with the Directory API user." type="//@types.5"/>
+    <attributes name="name" required="true" description="A unique user ID for identifying the user.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="suspended" required="true" description="Indicates if the user is suspended.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="sshPublicKeys" required="true" description="A map from SSH public key fingerprint to the associated key object." type="//@types.3"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SshPublicKey" scheme="http://occi/gcposlogin#" title="The SSH public key information associated with a Directory API User.">
-    <attributes name="fingerprint" required="true" description="The SHA-256 fingerprint of the SSH public key.&#xA;Output only." type="//@types.0"/>
-    <attributes name="key" required="true" description="Public key text in SSH format, defined by&#xA;&lt;a href=&quot;https://www.ietf.org/rfc/rfc4253.txt&quot; target=&quot;_blank&quot;>RFC4253&lt;/a>&#xA;section 6.6." type="//@types.0"/>
-    <attributes name="expirationTimeUsec" required="true" description="An expiration time in microseconds since epoch." type="//@types.0"/>
+    <attributes name="fingerprint" required="true" description="The SHA-256 fingerprint of the SSH public key.&#xA;Output only.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="key" required="true" description="Public key text in SSH format, defined by&#xA;&lt;a href=&quot;https://www.ietf.org/rfc/rfc4253.txt&quot; target=&quot;_blank&quot;>RFC4253&lt;/a>&#xA;section 6.6.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="expirationTimeUsec" required="true" description="An expiration time in microseconds since epoch.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="delete" scheme="http://occi/gcposlogin/sshpublickey/action#" title="Deletes an SSH public key.">
-      <attributes name="name" required="true" description="The fingerprint of the public key to update. Public keys are identified by&#xA;their SHA-256 fingerprint. The fingerprint of the public key is in format&#xA;`users/{user}/sshPublicKeys/{fingerprint}`." type="//@types.0"/>
+      <attributes name="name" required="true" description="The fingerprint of the public key to update. Public keys are identified by&#xA;their SHA-256 fingerprint. The fingerprint of the public key is in format&#xA;`users/{user}/sshPublicKeys/{fingerprint}`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="patch" scheme="http://occi/gcposlogin/sshpublickey/action#" title="Updates an SSH public key and returns the profile information. This method&#xA;supports patch semantics.">
-      <attributes name="updateMask" required="true" description="Mask to control which fields get updated. Updates all if not present." type="//@types.0"/>
-      <attributes name="name" required="true" description="The fingerprint of the public key to update. Public keys are identified by&#xA;their SHA-256 fingerprint. The fingerprint of the public key is in format&#xA;`users/{user}/sshPublicKeys/{fingerprint}`." type="//@types.0"/>
+      <attributes name="updateMask" required="true" description="Mask to control which fields get updated. Updates all if not present.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="name" required="true" description="The fingerprint of the public key to update. Public keys are identified by&#xA;their SHA-256 fingerprint. The fingerprint of the public key is in format&#xA;`users/{user}/sshPublicKeys/{fingerprint}`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcposlogin/sshpublickey/action#" title="Retrieves an SSH public key.">
-      <attributes name="name" required="true" description="The fingerprint of the public key to retrieve. Public keys are identified&#xA;by their SHA-256 fingerprint. The fingerprint of the public key is in&#xA;format `users/{user}/sshPublicKeys/{fingerprint}`." type="//@types.0"/>
+      <attributes name="name" required="true" description="The fingerprint of the public key to retrieve. Public keys are identified&#xA;by their SHA-256 fingerprint. The fingerprint of the public key is in&#xA;format `users/{user}/sshPublicKeys/{fingerprint}`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
@@ -34,25 +52,39 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PosixAccount" scheme="http://occi/gcposlogin#" title="The POSIX account information associated with a Directory API User.">
-    <attributes name="gid" required="true" description="The default group ID." type="//@types.0"/>
-    <attributes name="uid" required="true" description="The user ID." type="//@types.0"/>
-    <attributes name="username" required="true" description="The username of the POSIX account." type="//@types.0"/>
-    <attributes name="shell" required="true" description="The path to the logic shell for this account." type="//@types.0"/>
-    <attributes name="homeDirectory" required="true" description="The path to the home directory for this account." type="//@types.0"/>
-    <attributes name="gecos" required="true" description="The GECOS (user information) entry for this account." type="//@types.0"/>
-    <attributes name="systemId" required="true" description="System identifier for which account the username or uid applies to.&#xA;By default, the empty value is used." type="//@types.0"/>
-    <attributes name="primary" required="true" description="Only one POSIX account can be marked as primary." type="//@types.6"/>
+    <attributes name="gid" required="true" description="The default group ID.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="uid" required="true" description="The user ID.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="username" required="true" description="The username of the POSIX account.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="shell" required="true" description="The path to the logic shell for this account.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="homeDirectory" required="true" description="The path to the home directory for this account.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="gecos" required="true" description="The GECOS (user information) entry for this account.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="systemId" required="true" description="System identifier for which account the username or uid applies to.&#xA;By default, the empty value is used.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="primary" required="true" description="Only one POSIX account can be marked as primary.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
-  <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
 </occi:Extension>

@@ -2,8 +2,12 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="language" scheme="http://occi/gcplanguage#" description="Provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, entity sentiment analysis, and text annotations.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="DependencyEdge" scheme="http://occi/gcplanguage#" title="Represents dependency parse tree information for a token. (For more&#xA;information on dependency labels, see&#xA;http://www.aclweb.org/anthology/P13-2017">
-    <attributes name="label" required="true" description="The parse label for the token." type="//@types.11"/>
-    <attributes name="headTokenIndex" required="true" description="Represents the head of this token in the dependency tree.&#xA;This is the index of the token which has an arc going to this token.&#xA;The index is the position of the token in the array of tokens returned&#xA;by the API method. If this token is a root token, then the&#xA;`head_token_index` is its own index." type="//@types.3"/>
+    <attributes name="label" required="true" description="The parse label for the token.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="headTokenIndex" required="true" description="Represents the head of this token in the dependency tree.&#xA;This is the index of the token which has an arc going to this token.&#xA;The index is the position of the token in the array of tokens returned&#xA;by the API method. If this token is a root token, then the&#xA;`head_token_index` is its own index.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PartOfSpeechLink" scheme="http://occi/gcplanguage#" title="Parts of speech tag for this token." source="//@kinds[term='token']" target="//@kinds[term='partofspeech']">
@@ -16,51 +20,79 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Token" scheme="http://occi/gcplanguage#" title="Represents the smallest syntactic building block of the text.">
-    <attributes name="lemma" required="true" description="[Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token." type="//@types.11"/>
+    <attributes name="lemma" required="true" description="[Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TextSpan" scheme="http://occi/gcplanguage#" title="Represents an output piece of text.">
-    <attributes name="beginOffset" required="true" description="The API calculates the beginning offset of the content in the original&#xA;document according to the EncodingType specified in the API request." type="//@types.3"/>
-    <attributes name="content" required="true" description="The content of the output text." type="//@types.11"/>
+    <attributes name="beginOffset" required="true" description="The API calculates the beginning offset of the content in the original&#xA;document according to the EncodingType specified in the API request.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="content" required="true" description="The content of the output text.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Status" scheme="http://occi/gcplanguage#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
-    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
-    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.11"/>
-    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Features" scheme="http://occi/gcplanguage#" title="All available features for sentiment, syntax, and semantic analysis.&#xA;Setting each one to true will enable that specific analysis for the input.">
-    <attributes name="extractEntitySentiment" required="true" description="Extract entities and their associated sentiment." type="//@types.6"/>
-    <attributes name="extractDocumentSentiment" required="true" description="Extract document-level sentiment." type="//@types.6"/>
-    <attributes name="extractSyntax" required="true" description="Extract syntax information." type="//@types.6"/>
-    <attributes name="extractEntities" required="true" description="Extract entities." type="//@types.6"/>
+    <attributes name="extractEntitySentiment" required="true" description="Extract entities and their associated sentiment.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="extractDocumentSentiment" required="true" description="Extract document-level sentiment.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="extractSyntax" required="true" description="Extract syntax information.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="extractEntities" required="true" description="Extract entities.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="EntityMentionTextSpanLink" scheme="http://occi/gcplanguage#" title="The mention text." source="//@kinds[term='entitymention']" target="//@kinds[term='textspan']">
+  <kinds name="EntityMentiontextTextSpanLink" scheme="http://occi/gcplanguage#" title="The mention text." source="//@kinds[term='entitymention']" target="//@kinds[term='textspan']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="SentimentLink" scheme="http://occi/gcplanguage#" title="For calls to AnalyzeEntitySentiment or if&#xA;AnnotateTextRequest.Features.extract_entity_sentiment is set to&#xA;true, this field will contain the sentiment expressed for this mention of&#xA;the entity in the provided document." source="//@kinds[term='entitymention']" target="//@kinds[term='sentiment']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="EntityMention" scheme="http://occi/gcplanguage#" title="Represents a mention for an entity in the text. Currently, proper noun&#xA;mentions are supported.">
-    <attributes name="type" required="true" description="The type of the entity mention." type="//@types.12"/>
+    <attributes name="type" required="true" description="The type of the entity mention.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="SentenceSentimentLink" scheme="http://occi/gcplanguage#" title="For calls to AnalyzeSentiment or if&#xA;AnnotateTextRequest.Features.extract_document_sentiment is set to&#xA;true, this field will contain the sentiment for the sentence." source="//@kinds[term='sentence']" target="//@kinds[term='sentiment']">
+  <kinds name="SentencesentimentSentimentLink" scheme="http://occi/gcplanguage#" title="For calls to AnalyzeSentiment or if&#xA;AnnotateTextRequest.Features.extract_document_sentiment is set to&#xA;true, this field will contain the sentiment for the sentence." source="//@kinds[term='sentence']" target="//@kinds[term='sentiment']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="SentenceTextSpanLink" scheme="http://occi/gcplanguage#" title="The sentence text." source="//@kinds[term='sentence']" target="//@kinds[term='textspan']">
+  <kinds name="SentencetextTextSpanLink" scheme="http://occi/gcplanguage#" title="The sentence text." source="//@kinds[term='sentence']" target="//@kinds[term='textspan']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Sentence" scheme="http://occi/gcplanguage#" title="Represents a sentence in the input document.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Document" scheme="http://occi/gcplanguage#" title="################################################################ #&#xA;&#xA;Represents the input to API methods.">
-    <attributes name="language" required="true" description="The language of the document (if not specified, the language is&#xA;automatically detected). Both ISO and BCP-47 language codes are&#xA;accepted.&lt;br>&#xA;[Language Support](/natural-language/docs/languages)&#xA;lists currently supported languages for each API method.&#xA;If the language (either specified by the caller or automatically detected)&#xA;is not supported by the called API method, an `INVALID_ARGUMENT` error&#xA;is returned." type="//@types.12"/>
-    <attributes name="content" required="true" description="The content of the input in string format." type="//@types.12"/>
-    <attributes name="type" required="true" description="Required. If the type is not set or is `TYPE_UNSPECIFIED`,&#xA;returns an `INVALID_ARGUMENT` error." type="//@types.13"/>
-    <attributes name="gcsContentUri" required="true" description="The Google Cloud Storage URI where the file content is located.&#xA;This URI must be of the form: gs://bucket_name/object_name. For more&#xA;details, see https://cloud.google.com/storage/docs/reference-uris.&#xA;NOTE: Cloud Storage object versioning is not supported." type="//@types.13"/>
+    <attributes name="language" required="true" description="The language of the document (if not specified, the language is&#xA;automatically detected). Both ISO and BCP-47 language codes are&#xA;accepted.&lt;br>&#xA;[Language Support](/natural-language/docs/languages)&#xA;lists currently supported languages for each API method.&#xA;If the language (either specified by the caller or automatically detected)&#xA;is not supported by the called API method, an `INVALID_ARGUMENT` error&#xA;is returned.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="content" required="true" description="The content of the input in string format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="type" required="true" description="Required. If the type is not set or is `TYPE_UNSPECIFIED`,&#xA;returns an `INVALID_ARGUMENT` error.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="gcsContentUri" required="true" description="The Google Cloud Storage URI where the file content is located.&#xA;This URI must be of the form: gs://bucket_name/object_name. For more&#xA;details, see https://cloud.google.com/storage/docs/reference-uris.&#xA;NOTE: Cloud Storage object versioning is not supported.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="annotateText" scheme="http://occi/gcplanguage/document/action#" title="A convenience method that provides all the features that analyzeSentiment,&#xA;analyzeEntities, and analyzeSyntax provide in one call."/>
     <actions name="analyzeEntitySentiment" scheme="http://occi/gcplanguage/document/action#" title="Finds entities, similar to AnalyzeEntities in the text and analyzes&#xA;sentiment associated with each entity and its mentions."/>
     <actions name="analyzeEntities" scheme="http://occi/gcplanguage/document/action#" title="Finds named entities (currently proper names and common nouns) in the text&#xA;along with entity types, salience, mentions for each entity, and&#xA;other properties."/>
@@ -69,120 +101,172 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Sentiment" scheme="http://occi/gcplanguage#" title="Represents the feeling associated with the entire text or entities in&#xA;the text.">
-    <attributes name="score" required="true" description="Sentiment score between -1.0 (negative sentiment) and 1.0&#xA;(positive sentiment)." type="//@types.3"/>
-    <attributes name="magnitude" required="true" description="A non-negative number in the [0, +inf) range, which represents&#xA;the absolute magnitude of sentiment regardless of score (positive or&#xA;negative)." type="//@types.3"/>
+    <attributes name="score" required="true" description="Sentiment score between -1.0 (negative sentiment) and 1.0&#xA;(positive sentiment).">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="magnitude" required="true" description="A non-negative number in the [0, +inf) range, which represents&#xA;the absolute magnitude of sentiment regardless of score (positive or&#xA;negative).">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="DocumentLink" scheme="http://occi/gcplanguage#" title="Input document." source="//@kinds[term='analyzeentitiesrequest']" target="//@kinds[term='document']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="AnalyzeEntitiesRequest" scheme="http://occi/gcplanguage#" title="The entity analysis request message.">
-    <attributes name="encodingType" required="true" description="The encoding type used by the API to calculate offsets." type="//@types.14"/>
+    <attributes name="encodingType" required="true" description="The encoding type used by the API to calculate offsets.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AnalyzeEntitySentimentResponse" scheme="http://occi/gcplanguage#" title="The entity-level sentiment analysis response message.">
-    <attributes name="language" required="true" description="The language of the text, which will be the same as the language specified&#xA;in the request or, if not specified, the automatically-detected language.&#xA;See Document.language field for more details." type="//@types.14"/>
-    <attributes name="entities" required="true" description="The recognized entities in the input document with associated sentiments." type="//@types.7"/>
+    <attributes name="language" required="true" description="The language of the text, which will be the same as the language specified&#xA;in the request or, if not specified, the automatically-detected language.&#xA;See Document.language field for more details.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="entities" required="true" description="The recognized entities in the input document with associated sentiments." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="AnalyzeEntitySentimentRequestDocumentLink" scheme="http://occi/gcplanguage#" title="Input document." source="//@kinds[term='analyzeentitysentimentrequest']" target="//@kinds[term='document']">
+  <kinds name="AnalyzeEntitySentimentRequestdocumentDocumentLink" scheme="http://occi/gcplanguage#" title="Input document." source="//@kinds[term='analyzeentitysentimentrequest']" target="//@kinds[term='document']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="AnalyzeEntitySentimentRequest" scheme="http://occi/gcplanguage#" title="The entity-level sentiment analysis request message.">
-    <attributes name="encodingType" required="true" description="The encoding type used by the API to calculate offsets." type="//@types.15"/>
+    <attributes name="encodingType" required="true" description="The encoding type used by the API to calculate offsets.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PartOfSpeech" scheme="http://occi/gcplanguage#" title="Represents part of speech information for a token. Parts of speech&#xA;are as defined in&#xA;http://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf">
-    <attributes name="form" required="true" description="The grammatical form." type="//@types.16"/>
-    <attributes name="number" required="true" description="The grammatical number." type="//@types.17"/>
-    <attributes name="voice" required="true" description="The grammatical voice." type="//@types.18"/>
-    <attributes name="aspect" required="true" description="The grammatical aspect." type="//@types.19"/>
-    <attributes name="mood" required="true" description="The grammatical mood." type="//@types.20"/>
-    <attributes name="tag" required="true" description="The part of speech tag." type="//@types.21"/>
-    <attributes name="gender" required="true" description="The grammatical gender." type="//@types.22"/>
-    <attributes name="person" required="true" description="The grammatical person." type="//@types.23"/>
-    <attributes name="proper" required="true" description="The grammatical properness." type="//@types.24"/>
-    <attributes name="case" required="true" description="The grammatical case." type="//@types.25"/>
-    <attributes name="tense" required="true" description="The grammatical tense." type="//@types.26"/>
-    <attributes name="reciprocity" required="true" description="The grammatical reciprocity." type="//@types.27"/>
+    <attributes name="form" required="true" description="The grammatical form.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="number" required="true" description="The grammatical number.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="voice" required="true" description="The grammatical voice.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="aspect" required="true" description="The grammatical aspect.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="mood" required="true" description="The grammatical mood.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="tag" required="true" description="The part of speech tag.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="gender" required="true" description="The grammatical gender.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="person" required="true" description="The grammatical person.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="proper" required="true" description="The grammatical properness.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="case" required="true" description="The grammatical case.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="tense" required="true" description="The grammatical tense.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="reciprocity" required="true" description="The grammatical reciprocity.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="AnalyzeSyntaxRequestDocumentLink" scheme="http://occi/gcplanguage#" title="Input document." source="//@kinds[term='analyzesyntaxrequest']" target="//@kinds[term='document']">
+  <kinds name="AnalyzeSyntaxRequestdocumentDocumentLink" scheme="http://occi/gcplanguage#" title="Input document." source="//@kinds[term='analyzesyntaxrequest']" target="//@kinds[term='document']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="AnalyzeSyntaxRequest" scheme="http://occi/gcplanguage#" title="The syntax analysis request message.">
-    <attributes name="encodingType" required="true" description="The encoding type used by the API to calculate offsets." type="//@types.28"/>
+    <attributes name="encodingType" required="true" description="The encoding type used by the API to calculate offsets.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="AnalyzeSentimentResponseSentimentLink" scheme="http://occi/gcplanguage#" title="The overall sentiment of the input document." source="//@kinds[term='analyzesentimentresponse']" target="//@kinds[term='sentiment']">
+  <kinds name="AnalyzeSentimentResponsedocumentSentimentSentimentLink" scheme="http://occi/gcplanguage#" title="The overall sentiment of the input document." source="//@kinds[term='analyzesentimentresponse']" target="//@kinds[term='sentiment']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="AnalyzeSentimentResponse" scheme="http://occi/gcplanguage#" title="The sentiment analysis response message.">
-    <attributes name="language" required="true" description="The language of the text, which will be the same as the language specified&#xA;in the request or, if not specified, the automatically-detected language.&#xA;See Document.language field for more details." type="//@types.28"/>
-    <attributes name="sentences" required="true" description="The sentiment for all the sentences in the document." type="//@types.7"/>
+    <attributes name="language" required="true" description="The language of the text, which will be the same as the language specified&#xA;in the request or, if not specified, the automatically-detected language.&#xA;See Document.language field for more details.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="sentences" required="true" description="The sentiment for all the sentences in the document." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AnalyzeEntitiesResponse" scheme="http://occi/gcplanguage#" title="The entity analysis response message.">
-    <attributes name="entities" required="true" description="The recognized entities in the input document." type="//@types.7"/>
-    <attributes name="language" required="true" description="The language of the text, which will be the same as the language specified&#xA;in the request or, if not specified, the automatically-detected language.&#xA;See Document.language field for more details." type="//@types.28"/>
+    <attributes name="entities" required="true" description="The recognized entities in the input document." type="//@types.5"/>
+    <attributes name="language" required="true" description="The language of the text, which will be the same as the language specified&#xA;in the request or, if not specified, the automatically-detected language.&#xA;See Document.language field for more details.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AnalyzeSyntaxResponse" scheme="http://occi/gcplanguage#" title="The syntax analysis response message.">
-    <attributes name="language" required="true" description="The language of the text, which will be the same as the language specified&#xA;in the request or, if not specified, the automatically-detected language.&#xA;See Document.language field for more details." type="//@types.28"/>
-    <attributes name="sentences" required="true" description="Sentences in the input document." type="//@types.7"/>
-    <attributes name="tokens" required="true" description="Tokens, along with their syntactic information, in the input document." type="//@types.7"/>
+    <attributes name="language" required="true" description="The language of the text, which will be the same as the language specified&#xA;in the request or, if not specified, the automatically-detected language.&#xA;See Document.language field for more details.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="sentences" required="true" description="Sentences in the input document." type="//@types.5"/>
+    <attributes name="tokens" required="true" description="Tokens, along with their syntactic information, in the input document." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="EntitySentimentLink" scheme="http://occi/gcplanguage#" title="For calls to AnalyzeEntitySentiment or if&#xA;AnnotateTextRequest.Features.extract_entity_sentiment is set to&#xA;true, this field will contain the aggregate sentiment expressed for this&#xA;entity in the provided document." source="//@kinds[term='entity']" target="//@kinds[term='sentiment']">
+  <kinds name="EntitysentimentSentimentLink" scheme="http://occi/gcplanguage#" title="For calls to AnalyzeEntitySentiment or if&#xA;AnnotateTextRequest.Features.extract_entity_sentiment is set to&#xA;true, this field will contain the aggregate sentiment expressed for this&#xA;entity in the provided document." source="//@kinds[term='entity']" target="//@kinds[term='sentiment']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Entity" scheme="http://occi/gcplanguage#" title="Represents a phrase in the text that is a known entity, such as&#xA;a person, an organization, or location. The API associates information, such&#xA;as salience and mentions, with entities.">
-    <attributes name="name" required="true" description="The representative name for the entity." type="//@types.28"/>
-    <attributes name="salience" required="true" description="The salience score associated with the entity in the [0, 1.0] range.&#xA;&#xA;The salience score for an entity provides information about the&#xA;importance or centrality of that entity to the entire document text.&#xA;Scores closer to 0 are less salient, while scores closer to 1.0 are highly&#xA;salient." type="//@types.3"/>
-    <attributes name="type" required="true" description="The entity type." type="//@types.29"/>
-    <attributes name="metadata" required="true" description="Metadata associated with the entity.&#xA;&#xA;Currently, Wikipedia URLs and Knowledge Graph MIDs are provided, if&#xA;available. The associated keys are &quot;wikipedia_url&quot; and &quot;mid&quot;, respectively." type="//@types.9"/>
-    <attributes name="mentions" required="true" description="The mentions of this entity in the input document. The API currently&#xA;supports proper noun mentions." type="//@types.7"/>
+    <attributes name="name" required="true" description="The representative name for the entity.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="salience" required="true" description="The salience score associated with the entity in the [0, 1.0] range.&#xA;&#xA;The salience score for an entity provides information about the&#xA;importance or centrality of that entity to the entire document text.&#xA;Scores closer to 0 are less salient, while scores closer to 1.0 are highly&#xA;salient.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="type" required="true" description="The entity type.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="metadata" required="true" description="Metadata associated with the entity.&#xA;&#xA;Currently, Wikipedia URLs and Knowledge Graph MIDs are provided, if&#xA;available. The associated keys are &quot;wikipedia_url&quot; and &quot;mid&quot;, respectively." type="//@types.6"/>
+    <attributes name="mentions" required="true" description="The mentions of this entity in the input document. The API currently&#xA;supports proper noun mentions." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="AnnotateTextRequestDocumentLink" scheme="http://occi/gcplanguage#" title="Input document." source="//@kinds[term='annotatetextrequest']" target="//@kinds[term='document']">
+  <kinds name="AnnotateTextRequestdocumentDocumentLink" scheme="http://occi/gcplanguage#" title="Input document." source="//@kinds[term='annotatetextrequest']" target="//@kinds[term='document']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="FeaturesLink" scheme="http://occi/gcplanguage#" title="The enabled features." source="//@kinds[term='annotatetextrequest']" target="//@kinds[term='features']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="AnnotateTextRequest" scheme="http://occi/gcplanguage#" title="The request message for the text annotation API, which can perform multiple&#xA;analysis types (sentiment, entities, and syntax) in one call.">
-    <attributes name="encodingType" required="true" description="The encoding type used by the API to calculate offsets." type="//@types.30"/>
+    <attributes name="encodingType" required="true" description="The encoding type used by the API to calculate offsets.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="AnnotateTextResponseSentimentLink" scheme="http://occi/gcplanguage#" title="The overall sentiment for the document. Populated if the user enables&#xA;AnnotateTextRequest.Features.extract_document_sentiment." source="//@kinds[term='annotatetextresponse']" target="//@kinds[term='sentiment']">
+  <kinds name="AnnotateTextResponsedocumentSentimentSentimentLink" scheme="http://occi/gcplanguage#" title="The overall sentiment for the document. Populated if the user enables&#xA;AnnotateTextRequest.Features.extract_document_sentiment." source="//@kinds[term='annotatetextresponse']" target="//@kinds[term='sentiment']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="AnnotateTextResponse" scheme="http://occi/gcplanguage#" title="The text annotations response message.">
-    <attributes name="entities" required="true" description="Entities, along with their semantic information, in the input document.&#xA;Populated if the user enables&#xA;AnnotateTextRequest.Features.extract_entities." type="//@types.7"/>
-    <attributes name="language" required="true" description="The language of the text, which will be the same as the language specified&#xA;in the request or, if not specified, the automatically-detected language.&#xA;See Document.language field for more details." type="//@types.30"/>
-    <attributes name="sentences" required="true" description="Sentences in the input document. Populated if the user enables&#xA;AnnotateTextRequest.Features.extract_syntax." type="//@types.7"/>
-    <attributes name="tokens" required="true" description="Tokens, along with their syntactic information, in the input document.&#xA;Populated if the user enables&#xA;AnnotateTextRequest.Features.extract_syntax." type="//@types.7"/>
+    <attributes name="entities" required="true" description="Entities, along with their semantic information, in the input document.&#xA;Populated if the user enables&#xA;AnnotateTextRequest.Features.extract_entities." type="//@types.5"/>
+    <attributes name="language" required="true" description="The language of the text, which will be the same as the language specified&#xA;in the request or, if not specified, the automatically-detected language.&#xA;See Document.language field for more details.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="sentences" required="true" description="Sentences in the input document. Populated if the user enables&#xA;AnnotateTextRequest.Features.extract_syntax." type="//@types.5"/>
+    <attributes name="tokens" required="true" description="Tokens, along with their syntactic information, in the input document.&#xA;Populated if the user enables&#xA;AnnotateTextRequest.Features.extract_syntax." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="AnalyzeSentimentRequestDocumentLink" scheme="http://occi/gcplanguage#" title="Input document." source="//@kinds[term='analyzesentimentrequest']" target="//@kinds[term='document']">
+  <kinds name="AnalyzeSentimentRequestdocumentDocumentLink" scheme="http://occi/gcplanguage#" title="Input document." source="//@kinds[term='analyzesentimentrequest']" target="//@kinds[term='document']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="AnalyzeSentimentRequest" scheme="http://occi/gcplanguage#" title="The sentiment analysis request message.">
-    <attributes name="encodingType" required="true" description="The encoding type used by the API to calculate sentence offsets." type="//@types.31"/>
+    <attributes name="encodingType" required="true" description="The encoding type used by the API to calculate sentence offsets.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
-  <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="label" documentation="The parse label for the token.">
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EnumerationType" name="Label" documentation="The parse label for the token.">
     <literals name="UNKNOWN" documentation="Unknown"/>
     <literals name="ABBREV" documentation="Abbreviation modifier"/>
     <literals name="ACOMP" documentation="Adjectival complement"/>
@@ -267,29 +351,29 @@
     <literals name="MES" documentation="Measure"/>
     <literals name="NCOMP" documentation="Nominal complement of a noun"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="type" documentation="The type of the entity mention.">
+  <types xsi:type="occi:EnumerationType" name="Type" documentation="The type of the entity mention.">
     <literals name="TYPE_UNKNOWN" documentation="Unknown"/>
     <literals name="PROPER" documentation="Proper name"/>
     <literals name="COMMON" documentation="Common noun (or noun compound)"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="DocumentTtype" documentation="Required. If the type is not set or is `TYPE_UNSPECIFIED`,&#xA;returns an `INVALID_ARGUMENT` error.">
+  <types xsi:type="occi:EnumerationType" name="DocumentType" documentation="Required. If the type is not set or is `TYPE_UNSPECIFIED`,&#xA;returns an `INVALID_ARGUMENT` error.">
     <literals name="TYPE_UNSPECIFIED" documentation="The content type is not specified."/>
     <literals name="PLAIN_TEXT" documentation="Plain text"/>
     <literals name="HTML" documentation="HTML"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="encodingType" documentation="The encoding type used by the API to calculate offsets.">
+  <types xsi:type="occi:EnumerationType" name="Encodingtype" documentation="The encoding type used by the API to calculate offsets.">
     <literals name="NONE" documentation="If `EncodingType` is not specified, encoding-dependent information (such as&#xA;`begin_offset`) will be set at `-1`."/>
     <literals name="UTF8" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-8 encoding of the input. C++ and Go are examples of languages&#xA;that use this encoding natively."/>
     <literals name="UTF16" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-16 encoding of the input. Java and Javascript are examples of&#xA;languages that use this encoding natively."/>
     <literals name="UTF32" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-32 encoding of the input. Python is an example of a language&#xA;that uses this encoding natively."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="AnalyzeEntitySentimentRequestEencodingtype" documentation="The encoding type used by the API to calculate offsets.">
+  <types xsi:type="occi:EnumerationType" name="AnalyzeEntitySentimentRequestEncodingtype" documentation="The encoding type used by the API to calculate offsets.">
     <literals name="NONE" documentation="If `EncodingType` is not specified, encoding-dependent information (such as&#xA;`begin_offset`) will be set at `-1`."/>
     <literals name="UTF8" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-8 encoding of the input. C++ and Go are examples of languages&#xA;that use this encoding natively."/>
     <literals name="UTF16" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-16 encoding of the input. Java and Javascript are examples of&#xA;languages that use this encoding natively."/>
     <literals name="UTF32" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-32 encoding of the input. Python is an example of a language&#xA;that uses this encoding natively."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="form" documentation="The grammatical form.">
+  <types xsi:type="occi:EnumerationType" name="Form" documentation="The grammatical form.">
     <literals name="FORM_UNKNOWN" documentation="Form is not applicable in the analyzed language or is not predicted."/>
     <literals name="ADNOMIAL" documentation="Adnomial"/>
     <literals name="AUXILIARY" documentation="Auxiliary"/>
@@ -303,25 +387,25 @@
     <literals name="ORDER" documentation="Order form"/>
     <literals name="SPECIFIC" documentation="Specific form"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="number" documentation="The grammatical number.">
+  <types xsi:type="occi:EnumerationType" name="Number" documentation="The grammatical number.">
     <literals name="NUMBER_UNKNOWN" documentation="Number is not applicable in the analyzed language or is not predicted."/>
     <literals name="SINGULAR" documentation="Singular"/>
     <literals name="PLURAL" documentation="Plural"/>
     <literals name="DUAL" documentation="Dual"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="voice" documentation="The grammatical voice.">
+  <types xsi:type="occi:EnumerationType" name="Voice" documentation="The grammatical voice.">
     <literals name="VOICE_UNKNOWN" documentation="Voice is not applicable in the analyzed language or is not predicted."/>
     <literals name="ACTIVE" documentation="Active"/>
     <literals name="CAUSATIVE" documentation="Causative"/>
     <literals name="PASSIVE" documentation="Passive"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="aspect" documentation="The grammatical aspect.">
+  <types xsi:type="occi:EnumerationType" name="Aspect" documentation="The grammatical aspect.">
     <literals name="ASPECT_UNKNOWN" documentation="Aspect is not applicable in the analyzed language or is not predicted."/>
     <literals name="PERFECTIVE" documentation="Perfective"/>
     <literals name="IMPERFECTIVE" documentation="Imperfective"/>
     <literals name="PROGRESSIVE" documentation="Progressive"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="mood" documentation="The grammatical mood.">
+  <types xsi:type="occi:EnumerationType" name="Mood" documentation="The grammatical mood.">
     <literals name="MOOD_UNKNOWN" documentation="Mood is not applicable in the analyzed language or is not predicted."/>
     <literals name="CONDITIONAL_MOOD" documentation="Conditional"/>
     <literals name="IMPERATIVE" documentation="Imperative"/>
@@ -330,7 +414,7 @@
     <literals name="JUSSIVE" documentation="Jussive"/>
     <literals name="SUBJUNCTIVE" documentation="Subjunctive"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="tag" documentation="The part of speech tag.">
+  <types xsi:type="occi:EnumerationType" name="Tag" documentation="The part of speech tag.">
     <literals name="UNKNOWN" documentation="Unknown"/>
     <literals name="ADJ" documentation="Adjective"/>
     <literals name="ADP" documentation="Adposition (preposition and postposition)"/>
@@ -346,25 +430,25 @@
     <literals name="X" documentation="Other: foreign words, typos, abbreviations"/>
     <literals name="AFFIX" documentation="Affix"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="gender" documentation="The grammatical gender.">
+  <types xsi:type="occi:EnumerationType" name="Gender" documentation="The grammatical gender.">
     <literals name="GENDER_UNKNOWN" documentation="Gender is not applicable in the analyzed language or is not predicted."/>
     <literals name="FEMININE" documentation="Feminine"/>
     <literals name="MASCULINE" documentation="Masculine"/>
     <literals name="NEUTER" documentation="Neuter"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="person" documentation="The grammatical person.">
+  <types xsi:type="occi:EnumerationType" name="Person" documentation="The grammatical person.">
     <literals name="PERSON_UNKNOWN" documentation="Person is not applicable in the analyzed language or is not predicted."/>
     <literals name="FIRST" documentation="First"/>
     <literals name="SECOND" documentation="Second"/>
     <literals name="THIRD" documentation="Third"/>
     <literals name="REFLEXIVE_PERSON" documentation="Reflexive"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="proper" documentation="The grammatical properness.">
+  <types xsi:type="occi:EnumerationType" name="Proper" documentation="The grammatical properness.">
     <literals name="PROPER_UNKNOWN" documentation="Proper is not applicable in the analyzed language or is not predicted."/>
     <literals name="PROPER" documentation="Proper"/>
     <literals name="NOT_PROPER" documentation="Not proper"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="case" documentation="The grammatical case.">
+  <types xsi:type="occi:EnumerationType" name="Case" documentation="The grammatical case.">
     <literals name="CASE_UNKNOWN" documentation="Case is not applicable in the analyzed language or is not predicted."/>
     <literals name="ACCUSATIVE" documentation="Accusative"/>
     <literals name="ADVERBIAL" documentation="Adverbial"/>
@@ -381,7 +465,7 @@
     <literals name="RELATIVE_CASE" documentation="Relative"/>
     <literals name="VOCATIVE" documentation="Vocative"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="tense" documentation="The grammatical tense.">
+  <types xsi:type="occi:EnumerationType" name="Tense" documentation="The grammatical tense.">
     <literals name="TENSE_UNKNOWN" documentation="Tense is not applicable in the analyzed language or is not predicted."/>
     <literals name="CONDITIONAL_TENSE" documentation="Conditional"/>
     <literals name="FUTURE" documentation="Future"/>
@@ -390,18 +474,18 @@
     <literals name="IMPERFECT" documentation="Imperfect"/>
     <literals name="PLUPERFECT" documentation="Pluperfect"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="reciprocity" documentation="The grammatical reciprocity.">
+  <types xsi:type="occi:EnumerationType" name="Reciprocity" documentation="The grammatical reciprocity.">
     <literals name="RECIPROCITY_UNKNOWN" documentation="Reciprocity is not applicable in the analyzed language or is not&#xA;predicted."/>
     <literals name="RECIPROCAL" documentation="Reciprocal"/>
     <literals name="NON_RECIPROCAL" documentation="Non-reciprocal"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="AnalyzeSyntaxRequestEencodingtype" documentation="The encoding type used by the API to calculate offsets.">
+  <types xsi:type="occi:EnumerationType" name="AnalyzeSyntaxRequestEncodingtype" documentation="The encoding type used by the API to calculate offsets.">
     <literals name="NONE" documentation="If `EncodingType` is not specified, encoding-dependent information (such as&#xA;`begin_offset`) will be set at `-1`."/>
     <literals name="UTF8" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-8 encoding of the input. C++ and Go are examples of languages&#xA;that use this encoding natively."/>
     <literals name="UTF16" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-16 encoding of the input. Java and Javascript are examples of&#xA;languages that use this encoding natively."/>
     <literals name="UTF32" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-32 encoding of the input. Python is an example of a language&#xA;that uses this encoding natively."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="EntityTtype" documentation="The entity type.">
+  <types xsi:type="occi:EnumerationType" name="EntityType" documentation="The entity type.">
     <literals name="UNKNOWN" documentation="Unknown"/>
     <literals name="PERSON" documentation="Person"/>
     <literals name="LOCATION" documentation="Location"/>
@@ -411,13 +495,13 @@
     <literals name="CONSUMER_GOOD" documentation="Consumer goods"/>
     <literals name="OTHER" documentation="Other types"/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="AnnotateTextRequestEencodingtype" documentation="The encoding type used by the API to calculate offsets.">
+  <types xsi:type="occi:EnumerationType" name="AnnotateTextRequestEncodingtype" documentation="The encoding type used by the API to calculate offsets.">
     <literals name="NONE" documentation="If `EncodingType` is not specified, encoding-dependent information (such as&#xA;`begin_offset`) will be set at `-1`."/>
     <literals name="UTF8" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-8 encoding of the input. C++ and Go are examples of languages&#xA;that use this encoding natively."/>
     <literals name="UTF16" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-16 encoding of the input. Java and Javascript are examples of&#xA;languages that use this encoding natively."/>
     <literals name="UTF32" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-32 encoding of the input. Python is an example of a language&#xA;that uses this encoding natively."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="AnalyzeSentimentRequestEencodingtype" documentation="The encoding type used by the API to calculate sentence offsets.">
+  <types xsi:type="occi:EnumerationType" name="AnalyzeSentimentRequestEncodingtype" documentation="The encoding type used by the API to calculate sentence offsets.">
     <literals name="NONE" documentation="If `EncodingType` is not specified, encoding-dependent information (such as&#xA;`begin_offset`) will be set at `-1`."/>
     <literals name="UTF8" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-8 encoding of the input. C++ and Go are examples of languages&#xA;that use this encoding natively."/>
     <literals name="UTF16" documentation="Encoding-dependent information (such as `begin_offset`) is calculated based&#xA;on the UTF-16 encoding of the input. Java and Javascript are examples of&#xA;languages that use this encoding natively."/>

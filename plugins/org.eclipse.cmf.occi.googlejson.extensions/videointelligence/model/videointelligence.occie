@@ -2,225 +2,339 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="videointelligence" scheme="http://occi/gcpvideointelligence#" description="Cloud Video Intelligence API.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="GoogleCloudVideointelligenceV1beta1_SafeSearchAnnotation" scheme="http://occi/gcpvideointelligence#" title="Safe search annotation (based on per-frame visual signals only).&#xA;If no unsafe content has been detected in a frame, no annotations&#xA;are present for that frame. If only some types of unsafe content&#xA;have been detected in a frame, the likelihood is set to `UNKNOWN`&#xA;for all other types of unsafe content.">
-    <attributes name="racy" required="true" description="Likelihood of racy content." type="//@types.11"/>
-    <attributes name="timeOffset" required="true" description="Video time offset in microseconds." type="//@types.11"/>
-    <attributes name="spoof" required="true" description="Likelihood that an obvious modification was made to the original&#xA;version to make it appear funny or offensive." type="//@types.12"/>
-    <attributes name="violent" required="true" description="Likelihood of violent content." type="//@types.13"/>
-    <attributes name="medical" required="true" description="Likelihood of medical content." type="//@types.14"/>
-    <attributes name="adult" required="true" description="Likelihood of adult content." type="//@types.15"/>
+    <attributes name="racy" required="true" description="Likelihood of racy content.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="timeOffset" required="true" description="Video time offset in microseconds.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="spoof" required="true" description="Likelihood that an obvious modification was made to the original&#xA;version to make it appear funny or offensive.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="violent" required="true" description="Likelihood of violent content.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="medical" required="true" description="Likelihood of medical content.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="adult" required="true" description="Likelihood of adult content.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_AnnotateVideoProgress" scheme="http://occi/gcpvideointelligence#" title="Video annotation progress. Included in the `metadata`&#xA;field of the `Operation` returned by the `GetOperation`&#xA;call of the `google::longrunning::Operations` service.">
-    <attributes name="annotationProgress" required="true" description="Progress metadata for all videos specified in `AnnotateVideoRequest`." type="//@types.7"/>
+    <attributes name="annotationProgress" required="true" description="Progress metadata for all videos specified in `AnnotateVideoRequest`." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_Entity" scheme="http://occi/gcpvideointelligence#" title="Detected entity from video analysis.">
-    <attributes name="entityId" required="true" description="Opaque entity ID. Some IDs may be available in&#xA;[Google Knowledge Graph Search&#xA;API](https://developers.google.com/knowledge-graph/)." type="//@types.15"/>
-    <attributes name="description" required="true" description="Textual description, e.g. `Fixed-gear bicycle`." type="//@types.15"/>
-    <attributes name="languageCode" required="true" description="Language code for `description` in BCP-47 format." type="//@types.15"/>
+    <attributes name="entityId" required="true" description="Opaque entity ID. Some IDs may be available in&#xA;[Google Knowledge Graph Search&#xA;API](https://developers.google.com/knowledge-graph/).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="Textual description, e.g. `Fixed-gear bicycle`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="languageCode" required="true" description="Language code for `description` in BCP-47 format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_VideoSegment" scheme="http://occi/gcpvideointelligence#" title="Video segment.">
-    <attributes name="endTimeOffset" required="true" description="Time-offset, relative to the beginning of the video,&#xA;corresponding to the end of the segment (inclusive)." type="//@types.15"/>
-    <attributes name="startTimeOffset" required="true" description="Time-offset, relative to the beginning of the video,&#xA;corresponding to the start of the segment (inclusive)." type="//@types.15"/>
+    <attributes name="endTimeOffset" required="true" description="Time-offset, relative to the beginning of the video,&#xA;corresponding to the end of the segment (inclusive).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTimeOffset" required="true" description="Time-offset, relative to the beginning of the video,&#xA;corresponding to the start of the segment (inclusive).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleRpc_StatusLink" scheme="http://occi/gcpvideointelligence#" title="If set, indicates an error. Note that for a single `AnnotateVideoRequest`&#xA;some videos may succeed and some may fail." source="//@kinds[term='googlecloudvideointelligencev1_videoannotationresults']" target="//@kinds[term='googlerpc_status']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1_VideoAnnotationResults" scheme="http://occi/gcpvideointelligence#" title="Annotation results for a single video.">
-    <attributes name="shotAnnotations" required="true" description="Shot annotations. Each shot is represented as a video segment." type="//@types.7"/>
-    <attributes name="safeSearchAnnotations" required="true" description="Safe search annotations." type="//@types.7"/>
-    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/)." type="//@types.15"/>
-    <attributes name="labelAnnotations" required="true" description="Label annotations. There is exactly one element for each unique label." type="//@types.7"/>
+    <attributes name="shotAnnotations" required="true" description="Shot annotations. Each shot is represented as a video segment." type="//@types.5"/>
+    <attributes name="safeSearchAnnotations" required="true" description="Safe search annotations." type="//@types.5"/>
+    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="labelAnnotations" required="true" description="Label annotations. There is exactly one element for each unique label." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1_VideoSegmentLink" scheme="http://occi/gcpvideointelligence#" title="Video segment. Unset for video-level labels.&#xA;Set to a frame timestamp for frame-level labels.&#xA;Otherwise, corresponds to one of `AnnotateSpec.segments`&#xA;(if specified) or to shot boundaries (if requested)." source="//@kinds[term='googlecloudvideointelligencev1_labellocation']" target="//@kinds[term='googlecloudvideointelligencev1_videosegment']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1_LabelLocation" scheme="http://occi/gcpvideointelligence#" title="Label location.">
-    <attributes name="level" required="true" description="Label level." type="//@types.16"/>
-    <attributes name="confidence" required="true" description="Confidence that the label is accurate. Range: [0, 1]." type="//@types.3"/>
+    <attributes name="level" required="true" description="Label level.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="confidence" required="true" description="Confidence that the label is accurate. Range: [0, 1].">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_AnnotateVideoResponse" scheme="http://occi/gcpvideointelligence#" title="Video annotation response. Included in the `response`&#xA;field of the `Operation` returned by the `GetOperation`&#xA;call of the `google::longrunning::Operations` service.">
-    <attributes name="annotationResults" required="true" description="Annotation results for all videos specified in `AnnotateVideoRequest`." type="//@types.7"/>
+    <attributes name="annotationResults" required="true" description="Annotation results for all videos specified in `AnnotateVideoRequest`." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_LabelAnnotation" scheme="http://occi/gcpvideointelligence#" title="Label annotation.">
-    <attributes name="description" required="true" description="Textual description, e.g. `Fixed-gear bicycle`." type="//@types.16"/>
-    <attributes name="locations" required="true" description="Where the label was detected and with what confidence." type="//@types.7"/>
-    <attributes name="languageCode" required="true" description="Language code for `description` in BCP-47 format." type="//@types.16"/>
+    <attributes name="description" required="true" description="Textual description, e.g. `Fixed-gear bicycle`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="locations" required="true" description="Where the label was detected and with what confidence." type="//@types.5"/>
+    <attributes name="languageCode" required="true" description="Language code for `description` in BCP-47 format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_VideoContext" scheme="http://occi/gcpvideointelligence#" title="Video context and/or feature-specific parameters.">
-    <attributes name="shotChangeDetectionModel" required="true" description="Model to use for shot change detection.&#xA;Supported values: &quot;latest&quot; and &quot;stable&quot; (the default)." type="//@types.16"/>
-    <attributes name="stationaryCamera" required="true" description="Whether the video has been shot from a stationary (i.e. non-moving) camera.&#xA;When set to true, might improve detection accuracy for moving objects." type="//@types.6"/>
-    <attributes name="labelDetectionMode" required="true" description="If label detection has been requested, what labels should be detected&#xA;in addition to video-level labels or segment-level labels. If unspecified,&#xA;defaults to `SHOT_MODE`." type="//@types.17"/>
-    <attributes name="safeSearchDetectionModel" required="true" description="Model to use for safe search detection.&#xA;Supported values: &quot;latest&quot; and &quot;stable&quot; (the default)." type="//@types.17"/>
-    <attributes name="segments" required="true" description="Video segments to annotate. The segments may overlap and are not required&#xA;to be contiguous or span the whole video. If unspecified, each video&#xA;is treated as a single segment." type="//@types.7"/>
-    <attributes name="labelDetectionModel" required="true" description="Model to use for label detection.&#xA;Supported values: &quot;latest&quot; and &quot;stable&quot; (the default)." type="//@types.17"/>
+    <attributes name="shotChangeDetectionModel" required="true" description="Model to use for shot change detection.&#xA;Supported values: &quot;latest&quot; and &quot;stable&quot; (the default).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="stationaryCamera" required="true" description="Whether the video has been shot from a stationary (i.e. non-moving) camera.&#xA;When set to true, might improve detection accuracy for moving objects.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="labelDetectionMode" required="true" description="If label detection has been requested, what labels should be detected&#xA;in addition to video-level labels or segment-level labels. If unspecified,&#xA;defaults to `SHOT_MODE`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="safeSearchDetectionModel" required="true" description="Model to use for safe search detection.&#xA;Supported values: &quot;latest&quot; and &quot;stable&quot; (the default).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="segments" required="true" description="Video segments to annotate. The segments may overlap and are not required&#xA;to be contiguous or span the whole video. If unspecified, each video&#xA;is treated as a single segment." type="//@types.5"/>
+    <attributes name="labelDetectionModel" required="true" description="Model to use for label detection.&#xA;Supported values: &quot;latest&quot; and &quot;stable&quot; (the default).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1_LabelAnnotation" scheme="http://occi/gcpvideointelligence#" title="Label annotation.">
-    <attributes name="locations" required="true" description="Where the label was detected and with what confidence." type="//@types.7"/>
-    <attributes name="languageCode" required="true" description="Language code for `description` in BCP-47 format." type="//@types.17"/>
-    <attributes name="description" required="true" description="Textual description, e.g. `Fixed-gear bicycle`." type="//@types.17"/>
+    <attributes name="locations" required="true" description="Where the label was detected and with what confidence." type="//@types.5"/>
+    <attributes name="languageCode" required="true" description="Language code for `description` in BCP-47 format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="Textual description, e.g. `Fixed-gear bicycle`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleRpc_Status" scheme="http://occi/gcpvideointelligence#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
-    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
-    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
-    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.17"/>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.5"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1_VideoSegment" scheme="http://occi/gcpvideointelligence#" title="Video segment.">
-    <attributes name="endTime" required="true" description="Time-offset, relative to the beginning of the video,&#xA;corresponding to the end of the segment (inclusive)." type="//@types.17"/>
-    <attributes name="startTime" required="true" description="Time-offset, relative to the beginning of the video,&#xA;corresponding to the start of the segment (inclusive)." type="//@types.17"/>
+    <attributes name="endTime" required="true" description="Time-offset, relative to the beginning of the video,&#xA;corresponding to the end of the segment (inclusive).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="Time-offset, relative to the beginning of the video,&#xA;corresponding to the start of the segment (inclusive).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GoogleCloudVideointelligenceV1beta2_VideoAnnotationResultsGoogleRpc_StatusLink" scheme="http://occi/gcpvideointelligence#" title="If set, indicates an error. Note that for a single `AnnotateVideoRequest`&#xA;some videos may succeed and some may fail." source="//@kinds[term='googlecloudvideointelligencev1beta2_videoannotationresults']" target="//@kinds[term='googlerpc_status']">
+  <kinds name="GoogleCloudVideointelligenceV1beta2_VideoAnnotationResultserrorGoogleRpc_StatusLink" scheme="http://occi/gcpvideointelligence#" title="If set, indicates an error. Note that for a single `AnnotateVideoRequest`&#xA;some videos may succeed and some may fail." source="//@kinds[term='googlecloudvideointelligencev1beta2_videoannotationresults']" target="//@kinds[term='googlerpc_status']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_ExplicitContentAnnotationLink" scheme="http://occi/gcpvideointelligence#" title="Explicit content annotation." source="//@kinds[term='googlecloudvideointelligencev1beta2_videoannotationresults']" target="//@kinds[term='googlecloudvideointelligencev1beta2_explicitcontentannotation']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_VideoAnnotationResults" scheme="http://occi/gcpvideointelligence#" title="Annotation results for a single video.">
-    <attributes name="shotAnnotations" required="true" description="Shot annotations. Each shot is represented as a video segment." type="//@types.7"/>
-    <attributes name="shotLabelAnnotations" required="true" description="Label annotations on shot level.&#xA;There is exactly one element for each unique label." type="//@types.7"/>
-    <attributes name="frameLabelAnnotations" required="true" description="Label annotations on frame level.&#xA;There is exactly one element for each unique label." type="//@types.7"/>
-    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/)." type="//@types.17"/>
-    <attributes name="segmentLabelAnnotations" required="true" description="Label annotations on video level or user specified segment level.&#xA;There is exactly one element for each unique label." type="//@types.7"/>
+    <attributes name="shotAnnotations" required="true" description="Shot annotations. Each shot is represented as a video segment." type="//@types.5"/>
+    <attributes name="shotLabelAnnotations" required="true" description="Label annotations on shot level.&#xA;There is exactly one element for each unique label." type="//@types.5"/>
+    <attributes name="frameLabelAnnotations" required="true" description="Label annotations on frame level.&#xA;There is exactly one element for each unique label." type="//@types.5"/>
+    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="segmentLabelAnnotations" required="true" description="Label annotations on video level or user specified segment level.&#xA;There is exactly one element for each unique label." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_ExplicitContentAnnotation" scheme="http://occi/gcpvideointelligence#" title="Explicit content annotation (based on per-frame visual signals only).&#xA;If no explicit content has been detected in a frame, no annotations are&#xA;present for that frame.">
-    <attributes name="frames" required="true" description="All video frames where explicit content was detected." type="//@types.7"/>
+    <attributes name="frames" required="true" description="All video frames where explicit content was detected." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_VideoSegmentLink" scheme="http://occi/gcpvideointelligence#" title="Video segment. Set to [-1, -1] for video-level labels.&#xA;Set to [timestamp, timestamp] for frame-level labels.&#xA;Otherwise, corresponds to one of `AnnotateSpec.segments`&#xA;(if specified) or to shot boundaries (if requested)." source="//@kinds[term='googlecloudvideointelligencev1beta1_labellocation']" target="//@kinds[term='googlecloudvideointelligencev1beta1_videosegment']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_LabelLocation" scheme="http://occi/gcpvideointelligence#" title="Label location.">
-    <attributes name="level" required="true" description="Label level." type="//@types.18"/>
-    <attributes name="confidence" required="true" description="Confidence that the label is accurate. Range: [0, 1]." type="//@types.3"/>
+    <attributes name="level" required="true" description="Label level.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="confidence" required="true" description="Confidence that the label is accurate. Range: [0, 1].">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_LabelFrame" scheme="http://occi/gcpvideointelligence#" title="Video frame level annotation results for label detection.">
-    <attributes name="confidence" required="true" description="Confidence that the label is accurate. Range: [0, 1]." type="//@types.3"/>
-    <attributes name="timeOffset" required="true" description="Time-offset, relative to the beginning of the video, corresponding to the&#xA;video frame for this location." type="//@types.18"/>
+    <attributes name="confidence" required="true" description="Confidence that the label is accurate. Range: [0, 1].">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="timeOffset" required="true" description="Time-offset, relative to the beginning of the video, corresponding to the&#xA;video frame for this location.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_AnnotateVideoProgress" scheme="http://occi/gcpvideointelligence#" title="Video annotation progress. Included in the `metadata`&#xA;field of the `Operation` returned by the `GetOperation`&#xA;call of the `google::longrunning::Operations` service.">
-    <attributes name="annotationProgress" required="true" description="Progress metadata for all videos specified in `AnnotateVideoRequest`." type="//@types.7"/>
+    <attributes name="annotationProgress" required="true" description="Progress metadata for all videos specified in `AnnotateVideoRequest`." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1_VideoAnnotationProgress" scheme="http://occi/gcpvideointelligence#" title="Annotation progress for a single video.">
-    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/)." type="//@types.18"/>
-    <attributes name="progressPercent" required="true" description="Approximate percentage processed thus far.&#xA;Guaranteed to be 100 when fully processed." type="//@types.3"/>
-    <attributes name="updateTime" required="true" description="Time of the most recent update." type="//@types.18"/>
-    <attributes name="startTime" required="true" description="Time when the request was received." type="//@types.18"/>
+    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="progressPercent" required="true" description="Approximate percentage processed thus far.&#xA;Guaranteed to be 100 when fully processed.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="updateTime" required="true" description="Time of the most recent update.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="Time when the request was received.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1_AnnotateVideoProgress" scheme="http://occi/gcpvideointelligence#" title="Video annotation progress. Included in the `metadata`&#xA;field of the `Operation` returned by the `GetOperation`&#xA;call of the `google::longrunning::Operations` service.">
-    <attributes name="annotationProgress" required="true" description="Progress metadata for all videos specified in `AnnotateVideoRequest`." type="//@types.7"/>
+    <attributes name="annotationProgress" required="true" description="Progress metadata for all videos specified in `AnnotateVideoRequest`." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GoogleLongrunning_OperationGoogleRpc_StatusLink" scheme="http://occi/gcpvideointelligence#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='googlelongrunning_operation']" target="//@kinds[term='googlerpc_status']">
+  <kinds name="GoogleLongrunning_OperationerrorGoogleRpc_StatusLink" scheme="http://occi/gcpvideointelligence#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='googlelongrunning_operation']" target="//@kinds[term='googlerpc_status']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleLongrunning_Operation" scheme="http://occi/gcpvideointelligence#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
-    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.9"/>
-    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`." type="//@types.18"/>
-    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.9"/>
-    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.6"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.6"/>
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="GoogleCloudVideointelligenceV1beta1_VideoAnnotationResultsGoogleRpc_StatusLink" scheme="http://occi/gcpvideointelligence#" title="If set, indicates an error. Note that for a single `AnnotateVideoRequest`&#xA;some videos may succeed and some may fail." source="//@kinds[term='googlecloudvideointelligencev1beta1_videoannotationresults']" target="//@kinds[term='googlerpc_status']">
+  <kinds name="GoogleCloudVideointelligenceV1beta1_VideoAnnotationResultserrorGoogleRpc_StatusLink" scheme="http://occi/gcpvideointelligence#" title="If set, indicates an error. Note that for a single `AnnotateVideoRequest`&#xA;some videos may succeed and some may fail." source="//@kinds[term='googlecloudvideointelligencev1beta1_videoannotationresults']" target="//@kinds[term='googlerpc_status']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_VideoAnnotationResults" scheme="http://occi/gcpvideointelligence#" title="Annotation results for a single video.">
-    <attributes name="shotAnnotations" required="true" description="Shot annotations. Each shot is represented as a video segment." type="//@types.7"/>
-    <attributes name="safeSearchAnnotations" required="true" description="Safe search annotations." type="//@types.7"/>
-    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/)." type="//@types.18"/>
-    <attributes name="labelAnnotations" required="true" description="Label annotations. There is exactly one element for each unique label." type="//@types.7"/>
+    <attributes name="shotAnnotations" required="true" description="Shot annotations. Each shot is represented as a video segment." type="//@types.5"/>
+    <attributes name="safeSearchAnnotations" required="true" description="Safe search annotations." type="//@types.5"/>
+    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="labelAnnotations" required="true" description="Label annotations. There is exactly one element for each unique label." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_VideoAnnotationProgress" scheme="http://occi/gcpvideointelligence#" title="Annotation progress for a single video.">
-    <attributes name="progressPercent" required="true" description="Approximate percentage processed thus far.&#xA;Guaranteed to be 100 when fully processed." type="//@types.3"/>
-    <attributes name="updateTime" required="true" description="Time of the most recent update." type="//@types.18"/>
-    <attributes name="startTime" required="true" description="Time when the request was received." type="//@types.18"/>
-    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/)." type="//@types.18"/>
+    <attributes name="progressPercent" required="true" description="Approximate percentage processed thus far.&#xA;Guaranteed to be 100 when fully processed.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="updateTime" required="true" description="Time of the most recent update.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="Time when the request was received.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1_AnnotateVideoResponse" scheme="http://occi/gcpvideointelligence#" title="Video annotation response. Included in the `response`&#xA;field of the `Operation` returned by the `GetOperation`&#xA;call of the `google::longrunning::Operations` service.">
-    <attributes name="annotationResults" required="true" description="Annotation results for all videos specified in `AnnotateVideoRequest`." type="//@types.7"/>
+    <attributes name="annotationResults" required="true" description="Annotation results for all videos specified in `AnnotateVideoRequest`." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_AnnotateVideoResponse" scheme="http://occi/gcpvideointelligence#" title="Video annotation response. Included in the `response`&#xA;field of the `Operation` returned by the `GetOperation`&#xA;call of the `google::longrunning::Operations` service.">
-    <attributes name="annotationResults" required="true" description="Annotation results for all videos specified in `AnnotateVideoRequest`." type="//@types.7"/>
+    <attributes name="annotationResults" required="true" description="Annotation results for all videos specified in `AnnotateVideoRequest`." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_VideoAnnotationProgress" scheme="http://occi/gcpvideointelligence#" title="Annotation progress for a single video.">
-    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/)." type="//@types.18"/>
-    <attributes name="progressPercent" required="true" description="Approximate percentage processed thus far.&#xA;Guaranteed to be 100 when fully processed." type="//@types.3"/>
-    <attributes name="updateTime" required="true" description="Time of the most recent update." type="//@types.18"/>
-    <attributes name="startTime" required="true" description="Time when the request was received." type="//@types.18"/>
+    <attributes name="inputUri" required="true" description="Video file location in&#xA;[Google Cloud Storage](https://cloud.google.com/storage/).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="progressPercent" required="true" description="Approximate percentage processed thus far.&#xA;Guaranteed to be 100 when fully processed.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="updateTime" required="true" description="Time of the most recent update.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="Time when the request was received.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_ExplicitContentFrame" scheme="http://occi/gcpvideointelligence#" title="Video frame level annotation results for explicit content.">
-    <attributes name="timeOffset" required="true" description="Time-offset, relative to the beginning of the video, corresponding to the&#xA;video frame for this location." type="//@types.18"/>
-    <attributes name="pornographyLikelihood" required="true" description="Likelihood of the pornography content.." type="//@types.19"/>
+    <attributes name="timeOffset" required="true" description="Time-offset, relative to the beginning of the video, corresponding to the&#xA;video frame for this location.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="pornographyLikelihood" required="true" description="Likelihood of the pornography content..">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_VideoContextLink" scheme="http://occi/gcpvideointelligence#" title="Additional video context and/or feature-specific parameters." source="//@kinds[term='googlecloudvideointelligencev1beta1_annotatevideorequest']" target="//@kinds[term='googlecloudvideointelligencev1beta1_videocontext']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_AnnotateVideoRequest" scheme="http://occi/gcpvideointelligence#" title="Video annotation request.">
-    <attributes name="inputUri" required="true" description="Input video location. Currently, only&#xA;[Google Cloud Storage](https://cloud.google.com/storage/) URIs are&#xA;supported, which must be specified in the following format:&#xA;`gs://bucket-id/object-id` (other URI formats return&#xA;google.rpc.Code.INVALID_ARGUMENT). For more information, see&#xA;[Request URIs](/storage/docs/reference-uris).&#xA;A video URI may include wildcards in `object-id`, and thus identify&#xA;multiple videos. Supported wildcards: '*' to match 0 or more characters;&#xA;'?' to match 1 character. If unset, the input video should be embedded&#xA;in the request as `input_content`. If set, `input_content` should be unset." type="//@types.19"/>
-    <attributes name="inputContent" required="true" description="The video data bytes. Encoding: base64. If unset, the input video(s)&#xA;should be specified via `input_uri`. If set, `input_uri` should be unset." type="//@types.19"/>
-    <attributes name="features" required="true" description="Requested video annotation features." type="//@types.7"/>
-    <attributes name="outputUri" required="true" description="Optional location where the output (in JSON format) should be stored.&#xA;Currently, only [Google Cloud Storage](https://cloud.google.com/storage/)&#xA;URIs are supported, which must be specified in the following format:&#xA;`gs://bucket-id/object-id` (other URI formats return&#xA;google.rpc.Code.INVALID_ARGUMENT). For more information, see&#xA;[Request URIs](/storage/docs/reference-uris)." type="//@types.19"/>
-    <attributes name="locationId" required="true" description="Optional cloud region where annotation should take place. Supported cloud&#xA;regions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region&#xA;is specified, a region will be determined based on video file location." type="//@types.19"/>
+    <attributes name="inputUri" required="true" description="Input video location. Currently, only&#xA;[Google Cloud Storage](https://cloud.google.com/storage/) URIs are&#xA;supported, which must be specified in the following format:&#xA;`gs://bucket-id/object-id` (other URI formats return&#xA;google.rpc.Code.INVALID_ARGUMENT). For more information, see&#xA;[Request URIs](/storage/docs/reference-uris).&#xA;A video URI may include wildcards in `object-id`, and thus identify&#xA;multiple videos. Supported wildcards: '*' to match 0 or more characters;&#xA;'?' to match 1 character. If unset, the input video should be embedded&#xA;in the request as `input_content`. If set, `input_content` should be unset.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="inputContent" required="true" description="The video data bytes. Encoding: base64. If unset, the input video(s)&#xA;should be specified via `input_uri`. If set, `input_uri` should be unset.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="features" required="true" description="Requested video annotation features." type="//@types.5"/>
+    <attributes name="outputUri" required="true" description="Optional location where the output (in JSON format) should be stored.&#xA;Currently, only [Google Cloud Storage](https://cloud.google.com/storage/)&#xA;URIs are supported, which must be specified in the following format:&#xA;`gs://bucket-id/object-id` (other URI formats return&#xA;google.rpc.Code.INVALID_ARGUMENT). For more information, see&#xA;[Request URIs](/storage/docs/reference-uris).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="locationId" required="true" description="Optional cloud region where annotation should take place. Supported cloud&#xA;regions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region&#xA;is specified, a region will be determined based on video file location.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta1_VideoSegment" scheme="http://occi/gcpvideointelligence#" title="Video segment.">
-    <attributes name="endTimeOffset" required="true" description="End offset in microseconds (inclusive). Unset means 0." type="//@types.19"/>
-    <attributes name="startTimeOffset" required="true" description="Start offset in microseconds (inclusive). Unset means 0." type="//@types.19"/>
+    <attributes name="endTimeOffset" required="true" description="End offset in microseconds (inclusive). Unset means 0.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTimeOffset" required="true" description="Start offset in microseconds (inclusive). Unset means 0.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_VideoSegmentLink" scheme="http://occi/gcpvideointelligence#" title="Video segment where a label was detected." source="//@kinds[term='googlecloudvideointelligencev1beta2_labelsegment']" target="//@kinds[term='googlecloudvideointelligencev1beta2_videosegment']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_LabelSegment" scheme="http://occi/gcpvideointelligence#" title="Video segment level annotation results for label detection.">
-    <attributes name="confidence" required="true" description="Confidence that the label is accurate. Range: [0, 1]." type="//@types.3"/>
+    <attributes name="confidence" required="true" description="Confidence that the label is accurate. Range: [0, 1].">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1_SafeSearchAnnotation" scheme="http://occi/gcpvideointelligence#" title="Safe search annotation (based on per-frame visual signals only).&#xA;If no unsafe content has been detected in a frame, no annotations&#xA;are present for that frame.">
-    <attributes name="time" required="true" description="Time-offset, relative to the beginning of the video,&#xA;corresponding to the video frame for this annotation." type="//@types.19"/>
-    <attributes name="adult" required="true" description="Likelihood of adult content." type="//@types.20"/>
+    <attributes name="time" required="true" description="Time-offset, relative to the beginning of the video,&#xA;corresponding to the video frame for this annotation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="adult" required="true" description="Likelihood of adult content.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_EntityLink" scheme="http://occi/gcpvideointelligence#" title="Detected entity." source="//@kinds[term='googlecloudvideointelligencev1beta2_labelannotation']" target="//@kinds[term='googlecloudvideointelligencev1beta2_entity']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GoogleCloudVideointelligenceV1beta2_LabelAnnotation" scheme="http://occi/gcpvideointelligence#" title="Label annotation.">
-    <attributes name="frames" required="true" description="All video frames where a label was detected." type="//@types.7"/>
-    <attributes name="segments" required="true" description="All video segments where a label was detected." type="//@types.7"/>
-    <attributes name="categoryEntities" required="true" description="Common categories for the detected entity.&#xA;E.g. when the label is `Terrier` the category is likely `dog`. And in some&#xA;cases there might be more than one categories e.g. `Terrier` could also be&#xA;a `pet`." type="//@types.7"/>
+    <attributes name="frames" required="true" description="All video frames where a label was detected." type="//@types.5"/>
+    <attributes name="segments" required="true" description="All video segments where a label was detected." type="//@types.5"/>
+    <attributes name="categoryEntities" required="true" description="Common categories for the detected entity.&#xA;E.g. when the label is `Terrier` the category is likely `dog`. And in some&#xA;cases there might be more than one categories e.g. `Terrier` could also be&#xA;a `pet`." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
-  <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="racy" documentation="Likelihood of racy content.">
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EnumerationType" name="Racy" documentation="Likelihood of racy content.">
     <literals name="UNKNOWN" documentation="Unknown likelihood."/>
     <literals name="VERY_UNLIKELY" documentation="Very unlikely."/>
     <literals name="UNLIKELY" documentation="Unlikely."/>
@@ -228,7 +342,7 @@
     <literals name="LIKELY" documentation="Likely."/>
     <literals name="VERY_LIKELY" documentation="Very likely."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="spoof" documentation="Likelihood that an obvious modification was made to the original&#xA;version to make it appear funny or offensive.">
+  <types xsi:type="occi:EnumerationType" name="Spoof" documentation="Likelihood that an obvious modification was made to the original&#xA;version to make it appear funny or offensive.">
     <literals name="UNKNOWN" documentation="Unknown likelihood."/>
     <literals name="VERY_UNLIKELY" documentation="Very unlikely."/>
     <literals name="UNLIKELY" documentation="Unlikely."/>
@@ -236,7 +350,7 @@
     <literals name="LIKELY" documentation="Likely."/>
     <literals name="VERY_LIKELY" documentation="Very likely."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="violent" documentation="Likelihood of violent content.">
+  <types xsi:type="occi:EnumerationType" name="Violent" documentation="Likelihood of violent content.">
     <literals name="UNKNOWN" documentation="Unknown likelihood."/>
     <literals name="VERY_UNLIKELY" documentation="Very unlikely."/>
     <literals name="UNLIKELY" documentation="Unlikely."/>
@@ -244,7 +358,7 @@
     <literals name="LIKELY" documentation="Likely."/>
     <literals name="VERY_LIKELY" documentation="Very likely."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="medical" documentation="Likelihood of medical content.">
+  <types xsi:type="occi:EnumerationType" name="Medical" documentation="Likelihood of medical content.">
     <literals name="UNKNOWN" documentation="Unknown likelihood."/>
     <literals name="VERY_UNLIKELY" documentation="Very unlikely."/>
     <literals name="UNLIKELY" documentation="Unlikely."/>
@@ -252,7 +366,7 @@
     <literals name="LIKELY" documentation="Likely."/>
     <literals name="VERY_LIKELY" documentation="Very likely."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="adult" documentation="Likelihood of adult content.">
+  <types xsi:type="occi:EnumerationType" name="Adult" documentation="Likelihood of adult content.">
     <literals name="UNKNOWN" documentation="Unknown likelihood."/>
     <literals name="VERY_UNLIKELY" documentation="Very unlikely."/>
     <literals name="UNLIKELY" documentation="Unlikely."/>
@@ -260,27 +374,27 @@
     <literals name="LIKELY" documentation="Likely."/>
     <literals name="VERY_LIKELY" documentation="Very likely."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="level" documentation="Label level.">
+  <types xsi:type="occi:EnumerationType" name="Level" documentation="Label level.">
     <literals name="LABEL_LEVEL_UNSPECIFIED" documentation="Unspecified."/>
     <literals name="VIDEO_LEVEL" documentation="Video-level. Corresponds to the whole video."/>
     <literals name="SEGMENT_LEVEL" documentation="Segment-level. Corresponds to one of `AnnotateSpec.segments`."/>
     <literals name="SHOT_LEVEL" documentation="Shot-level. Corresponds to a single shot (i.e. a series of frames&#xA;without a major camera position or background change)."/>
     <literals name="FRAME_LEVEL" documentation="Frame-level. Corresponds to a single video frame."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="labelDetectionMode" documentation="If label detection has been requested, what labels should be detected&#xA;in addition to video-level labels or segment-level labels. If unspecified,&#xA;defaults to `SHOT_MODE`.">
+  <types xsi:type="occi:EnumerationType" name="Labeldetectionmode" documentation="If label detection has been requested, what labels should be detected&#xA;in addition to video-level labels or segment-level labels. If unspecified,&#xA;defaults to `SHOT_MODE`.">
     <literals name="LABEL_DETECTION_MODE_UNSPECIFIED" documentation="Unspecified."/>
     <literals name="SHOT_MODE" documentation="Detect shot-level labels."/>
     <literals name="FRAME_MODE" documentation="Detect frame-level labels."/>
     <literals name="SHOT_AND_FRAME_MODE" documentation="Detect both shot-level and frame-level labels."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="GoogleCloudVideointelligenceV1beta1_LabelLocationLlevel" documentation="Label level.">
+  <types xsi:type="occi:EnumerationType" name="GoogleCloudVideointelligenceV1beta1_LabelLocationLevel" documentation="Label level.">
     <literals name="LABEL_LEVEL_UNSPECIFIED" documentation="Unspecified."/>
     <literals name="VIDEO_LEVEL" documentation="Video-level. Corresponds to the whole video."/>
     <literals name="SEGMENT_LEVEL" documentation="Segment-level. Corresponds to one of `AnnotateSpec.segments`."/>
     <literals name="SHOT_LEVEL" documentation="Shot-level. Corresponds to a single shot (i.e. a series of frames&#xA;without a major camera position or background change)."/>
     <literals name="FRAME_LEVEL" documentation="Frame-level. Corresponds to a single video frame."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="pornographyLikelihood" documentation="Likelihood of the pornography content..">
+  <types xsi:type="occi:EnumerationType" name="Pornographylikelihood" documentation="Likelihood of the pornography content..">
     <literals name="LIKELIHOOD_UNSPECIFIED" documentation="Unspecified likelihood."/>
     <literals name="VERY_UNLIKELY" documentation="Very unlikely."/>
     <literals name="UNLIKELY" documentation="Unlikely."/>
@@ -288,7 +402,7 @@
     <literals name="LIKELY" documentation="Likely."/>
     <literals name="VERY_LIKELY" documentation="Very likely."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="GoogleCloudVideointelligenceV1_SafeSearchAnnotationAadult" documentation="Likelihood of adult content.">
+  <types xsi:type="occi:EnumerationType" name="GoogleCloudVideointelligenceV1_SafeSearchAnnotationAdult" documentation="Likelihood of adult content.">
     <literals name="UNKNOWN" documentation="Unknown likelihood."/>
     <literals name="VERY_UNLIKELY" documentation="Very unlikely."/>
     <literals name="UNLIKELY" documentation="Unlikely."/>

@@ -2,52 +2,94 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="monitoring" scheme="http://occi/gcpmonitoring#" description="Manages your Stackdriver Monitoring data and configurations. Most projects must be associated with a Stackdriver account, with a few exceptions as noted on the individual method pages.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="Status" scheme="http://occi/gcpmonitoring#" title="The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). The error model is designed to be:&#xA;Simple to use and understand for most users&#xA;Flexible enough to meet unexpected needsOverviewThe Status message contains three pieces of data: error code, error message, and error details. The error code should be an enum value of google.rpc.Code, but it may accept additional error codes if needed. The error message should be a developer-facing English message that helps developers understand and resolve the error. If a localized user-facing error message is needed, put the localized message in the error details or localize it in the client. The optional error details may contain arbitrary information about the error. There is a predefined set of error detail types in the package google.rpc that can be used for common error conditions.Language mappingThe Status message is the logical representation of the error model, but it is not necessarily the actual wire format. When the Status message is exposed in different client libraries and different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some error codes in C.Other usesThe error model and the Status message can be used in a variety of environments, either with or without APIs, to provide a consistent developer experience across different environments.Example uses of this error model include:&#xA;Partial errors. If a service needs to return partial errors to the client, it may embed the Status in the normal response to indicate the partial errors.&#xA;Workflow errors. A typical workflow has multiple steps. Each step may have a Status message for error reporting.&#xA;Batch operations. If a client uses batch request and batch response, the Status message should be used directly inside batch response, one for each error sub-response.&#xA;Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of those operations should be represented directly using the Status message.&#xA;Logging. If some API errors are stored in logs, the message Status could be used directly after any stripping needed for security/privacy reasons.">
-    <attributes name="details" required="true" description="A list of messages that carry the error details. There is a common set of message types for APIs to use." type="//@types.7"/>
-    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
-    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client." type="//@types.0"/>
+    <attributes name="details" required="true" description="A list of messages that carry the error details. There is a common set of message types for APIs to use." type="//@types.5"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TypedValueLink" scheme="http://occi/gcpmonitoring#" title="The measurement value." source="//@kinds[term='collectdvalue']" target="//@kinds[term='typedvalue']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="CollectdValue" scheme="http://occi/gcpmonitoring#" title="A single data point from a collectd-based plugin.">
-    <attributes name="dataSourceName" required="true" description="The data source for the collectd value. For example there are two data sources for network measurements: &quot;rx&quot; and &quot;tx&quot;." type="//@types.0"/>
-    <attributes name="dataSourceType" required="true" description="The type of measurement." type="//@types.11"/>
+    <attributes name="dataSourceName" required="true" description="The data source for the collectd value. For example there are two data sources for network measurements: &quot;rx&quot; and &quot;tx&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="dataSourceType" required="true" description="The type of measurement.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="MetricDescriptor" scheme="http://occi/gcpmonitoring#" title="Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.">
-    <attributes name="metricKind" required="true" description="Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported." type="//@types.12"/>
-    <attributes name="displayName" required="true" description="A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &quot;Request count&quot;. This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota." type="//@types.12"/>
-    <attributes name="description" required="true" description="A detailed description of the metric, which can be used in documentation." type="//@types.12"/>
-    <attributes name="unit" required="true" description="The unit in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)&#xA;bit bit&#xA;By byte&#xA;s second&#xA;min minute&#xA;h hour&#xA;d dayPrefixes (PREFIX)&#xA;k kilo (10**3)&#xA;M mega (10**6)&#xA;G giga (10**9)&#xA;T tera (10**12)&#xA;P peta (10**15)&#xA;E exa (10**18)&#xA;Z zetta (10**21)&#xA;Y yotta (10**24)&#xA;m milli (10**-3)&#xA;u micro (10**-6)&#xA;n nano (10**-9)&#xA;p pico (10**-12)&#xA;f femto (10**-15)&#xA;a atto (10**-18)&#xA;z zepto (10**-21)&#xA;y yocto (10**-24)&#xA;Ki kibi (2**10)&#xA;Mi mebi (2**20)&#xA;Gi gibi (2**30)&#xA;Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/s.The grammar also includes these connectors:&#xA;/ division (as an infix operator, e.g. 1/s).&#xA;. multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is as follows:&#xA;Expression = Component { &quot;.&quot; Component } { &quot;/&quot; Component } ;&#xA;&#xA;Component = [ PREFIX ] UNIT [ Annotation ]&#xA;          | Annotation&#xA;          | &quot;1&quot;&#xA;          ;&#xA;&#xA;Annotation = &quot;{&quot; NAME &quot;}&quot; ;&#xA;Notes:&#xA;Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s.&#xA;NAME is a sequence of non-blank printable ASCII characters not  containing '{' or '}'." type="//@types.12"/>
-    <attributes name="labels" required="true" description="The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed." type="//@types.7"/>
-    <attributes name="name" required="true" description="The resource name of the metric descriptor." type="//@types.12"/>
-    <attributes name="type" required="true" description="The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined custom metric types have the DNS name custom.googleapis.com. Metric types should use a natural hierarchical grouping. For example:&#xA;&quot;custom.googleapis.com/invoice/paid/amount&quot;&#xA;&quot;appengine.googleapis.com/http/server/response_latencies&quot;&#xA;" type="//@types.12"/>
-    <attributes name="valueType" required="true" description="Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported." type="//@types.13"/>
+    <attributes name="metricKind" required="true" description="Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="displayName" required="true" description="A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &quot;Request count&quot;. This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="A detailed description of the metric, which can be used in documentation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="unit" required="true" description="The unit in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)&#xA;bit bit&#xA;By byte&#xA;s second&#xA;min minute&#xA;h hour&#xA;d dayPrefixes (PREFIX)&#xA;k kilo (10**3)&#xA;M mega (10**6)&#xA;G giga (10**9)&#xA;T tera (10**12)&#xA;P peta (10**15)&#xA;E exa (10**18)&#xA;Z zetta (10**21)&#xA;Y yotta (10**24)&#xA;m milli (10**-3)&#xA;u micro (10**-6)&#xA;n nano (10**-9)&#xA;p pico (10**-12)&#xA;f femto (10**-15)&#xA;a atto (10**-18)&#xA;z zepto (10**-21)&#xA;y yocto (10**-24)&#xA;Ki kibi (2**10)&#xA;Mi mebi (2**20)&#xA;Gi gibi (2**30)&#xA;Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/s.The grammar also includes these connectors:&#xA;/ division (as an infix operator, e.g. 1/s).&#xA;. multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is as follows:&#xA;Expression = Component { &quot;.&quot; Component } { &quot;/&quot; Component } ;&#xA;&#xA;Component = [ PREFIX ] UNIT [ Annotation ]&#xA;          | Annotation&#xA;          | &quot;1&quot;&#xA;          ;&#xA;&#xA;Annotation = &quot;{&quot; NAME &quot;}&quot; ;&#xA;Notes:&#xA;Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s.&#xA;NAME is a sequence of non-blank printable ASCII characters not  containing '{' or '}'.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="labels" required="true" description="The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed." type="//@types.5"/>
+    <attributes name="name" required="true" description="The resource name of the metric descriptor.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="type" required="true" description="The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined custom metric types have the DNS name custom.googleapis.com. Metric types should use a natural hierarchical grouping. For example:&#xA;&quot;custom.googleapis.com/invoice/paid/amount&quot;&#xA;&quot;appengine.googleapis.com/http/server/response_latencies&quot;&#xA;">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="valueType" required="true" description="Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="delete" scheme="http://occi/gcpmonitoring/metricdescriptor/action#" title="Deletes a metric descriptor. Only user-created custom metrics can be deleted.">
-      <attributes name="name" required="true" description="The metric descriptor on which to execute the request. The format is &quot;projects/{project_id_or_number}/metricDescriptors/{metric_id}&quot;. An example of {metric_id} is: &quot;custom.googleapis.com/my_test_metric&quot;." type="//@types.13"/>
+      <attributes name="name" required="true" description="The metric descriptor on which to execute the request. The format is &quot;projects/{project_id_or_number}/metricDescriptors/{metric_id}&quot;. An example of {metric_id} is: &quot;custom.googleapis.com/my_test_metric&quot;.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpmonitoring/metricdescriptor/action#" title="Lists metric descriptors that match a filter. This method does not require a Stackdriver account.">
-      <attributes name="name" required="true" description="The project on which to execute the request. The format is &quot;projects/{project_id_or_number}&quot;." type="//@types.13"/>
-      <attributes name="pageToken" required="true" description="If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return additional results from the previous method call." type="//@types.13"/>
-      <attributes name="pageSize" required="true" description="A positive number that is the maximum number of results to return." type="//@types.3"/>
-      <attributes name="filter" required="true" description="If this field is empty, all custom and system-defined metric descriptors are returned. Otherwise, the filter specifies which metric descriptors are to be returned. For example, the following filter matches all custom metrics:&#xA;metric.type = starts_with(&quot;custom.googleapis.com/&quot;)&#xA;" type="//@types.13"/>
+      <attributes name="name" required="true" description="The project on which to execute the request. The format is &quot;projects/{project_id_or_number}&quot;.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return additional results from the previous method call.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageSize" required="true" description="A positive number that is the maximum number of results to return.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
+      <attributes name="filter" required="true" description="If this field is empty, all custom and system-defined metric descriptors are returned. Otherwise, the filter specifies which metric descriptors are to be returned. For example, the following filter matches all custom metrics:&#xA;metric.type = starts_with(&quot;custom.googleapis.com/&quot;)&#xA;">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpmonitoring/metricdescriptor/action#" title="Gets a single metric descriptor. This method does not require a Stackdriver account.">
-      <attributes name="name" required="true" description="The metric descriptor on which to execute the request. The format is &quot;projects/{project_id_or_number}/metricDescriptors/{metric_id}&quot;. An example value of {metric_id} is &quot;compute.googleapis.com/instance/disk/read_bytes_count&quot;." type="//@types.13"/>
+      <attributes name="name" required="true" description="The metric descriptor on which to execute the request. The format is &quot;projects/{project_id_or_number}/metricDescriptors/{metric_id}&quot;. An example value of {metric_id} is &quot;compute.googleapis.com/instance/disk/read_bytes_count&quot;.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="create" scheme="http://occi/gcpmonitoring/metricdescriptor/action#" title="Creates a new metric descriptor. User-created metric descriptors define custom metrics.">
-      <attributes name="name" required="true" description="The project on which to execute the request. The format is &quot;projects/{project_id_or_number}&quot;." type="//@types.13"/>
+      <attributes name="name" required="true" description="The project on which to execute the request. The format is &quot;projects/{project_id_or_number}&quot;.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SourceContext" scheme="http://occi/gcpmonitoring#" title="SourceContext represents information about the source of a protobuf element, like the file in which it is defined.">
-    <attributes name="fileName" required="true" description="The path-qualified name of the .proto file that contained the associated protobuf element. For example: &quot;google/protobuf/source_context.proto&quot;." type="//@types.13"/>
+    <attributes name="fileName" required="true" description="The path-qualified name of the .proto file that contained the associated protobuf element. For example: &quot;google/protobuf/source_context.proto&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Range" scheme="http://occi/gcpmonitoring#" title="The range of the population values.">
-    <attributes name="min" required="true" description="The minimum of the population values." type="//@types.3"/>
-    <attributes name="max" required="true" description="The maximum of the population values." type="//@types.3"/>
+    <attributes name="min" required="true" description="The minimum of the population values.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="max" required="true" description="The maximum of the population values.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="HttpCheckLink" scheme="http://occi/gcpmonitoring#" title="Contains information needed to make an HTTP or HTTPS check." source="//@kinds[term='uptimecheckconfig']" target="//@kinds[term='httpcheck']">
@@ -63,71 +105,111 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="UptimeCheckConfig" scheme="http://occi/gcpmonitoring#" title="This message configures which resources and services to monitor for availability.">
-    <attributes name="timeout" required="true" description="The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required." type="//@types.13"/>
-    <attributes name="period" required="true" description="How often the uptime check is performed. Currently, only 1, 5, 10, and 15 minutes are supported. Required." type="//@types.13"/>
-    <attributes name="name" required="true" description="A unique resource name for this UptimeCheckConfig. The format is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when creating the uptime check configuration; on create, the resource name is assigned by the server and included in the response." type="//@types.13"/>
-    <attributes name="selectedRegions" required="true" description="The list of regions from which the check will be run. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions." type="//@types.7"/>
-    <attributes name="displayName" required="true" description="A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Account in order to make it easier to identify; however, uniqueness is not enforced. Required." type="//@types.13"/>
-    <attributes name="contentMatchers" required="true" description="The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required." type="//@types.7"/>
+    <attributes name="timeout" required="true" description="The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="period" required="true" description="How often the uptime check is performed. Currently, only 1, 5, 10, and 15 minutes are supported. Required.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="A unique resource name for this UptimeCheckConfig. The format is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when creating the uptime check configuration; on create, the resource name is assigned by the server and included in the response.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="selectedRegions" required="true" description="The list of regions from which the check will be run. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions." type="//@types.5"/>
+    <attributes name="displayName" required="true" description="A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Account in order to make it easier to identify; however, uniqueness is not enforced. Required.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="contentMatchers" required="true" description="The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required." type="//@types.5"/>
     <actions name="list" scheme="http://occi/gcpmonitoring/uptimecheckconfig/action#" title="Lists the existing valid uptime check configurations for the project, leaving out any invalid configurations.">
-      <attributes name="pageToken" required="true" description="If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return more results from the previous method call." type="//@types.13"/>
-      <attributes name="pageSize" required="true" description="The maximum number of results to return in a single response. The server may further constrain the maximum number of results returned in a single page. If the page_size is &lt;=0, the server will decide the number of results to be returned." type="//@types.3"/>
-      <attributes name="parent" required="true" description="The project whose uptime check configurations are listed. The format isprojects/[PROJECT_ID]." type="//@types.13"/>
+      <attributes name="pageToken" required="true" description="If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return more results from the previous method call.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageSize" required="true" description="The maximum number of results to return in a single response. The server may further constrain the maximum number of results returned in a single page. If the page_size is &lt;=0, the server will decide the number of results to be returned.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
+      <attributes name="parent" required="true" description="The project whose uptime check configurations are listed. The format isprojects/[PROJECT_ID].">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpmonitoring/uptimecheckconfig/action#" title="Gets a single uptime check configuration.">
-      <attributes name="name" required="true" description="The uptime check configuration to retrieve. The format isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]." type="//@types.13"/>
+      <attributes name="name" required="true" description="The uptime check configuration to retrieve. The format isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="patch" scheme="http://occi/gcpmonitoring/uptimecheckconfig/action#" title="Updates an uptime check configuration. You can either replace the entire configuration with a new one or replace only certain fields in the current configuration by specifying the fields to be updated via &quot;updateMask&quot;. Returns the updated configuration.">
-      <attributes name="updateMask" required="true" description="Optional. If present, only the listed fields in the current uptime check configuration are updated with values from the new configuration. If this field is empty, then the current configuration is completely replaced with the new configuration." type="//@types.13"/>
-      <attributes name="name1" required="true" description="The uptime check configuration to update. The format isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]." type="//@types.13"/>
-      <attributes name="name" required="true" description="A unique resource name for this UptimeCheckConfig. The format is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when creating the uptime check configuration; on create, the resource name is assigned by the server and included in the response." type="//@types.13"/>
+      <attributes name="updateMask" required="true" description="Optional. If present, only the listed fields in the current uptime check configuration are updated with values from the new configuration. If this field is empty, then the current configuration is completely replaced with the new configuration.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="name1" required="true" description="The uptime check configuration to update. The format isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="name" required="true" description="A unique resource name for this UptimeCheckConfig. The format is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when creating the uptime check configuration; on create, the resource name is assigned by the server and included in the response.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="create" scheme="http://occi/gcpmonitoring/uptimecheckconfig/action#" title="Creates a new uptime check configuration.">
-      <attributes name="parent" required="true" description="The project in which to create the uptime check. The format is:projects/[PROJECT_ID]." type="//@types.13"/>
+      <attributes name="parent" required="true" description="The project in which to create the uptime check. The format is:projects/[PROJECT_ID].">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="delete" scheme="http://occi/gcpmonitoring/uptimecheckconfig/action#" title="Deletes an uptime check configuration. Note that this method will fail if the uptime check configuration is referenced by an alert policy or other dependent configs that would be rendered invalid by the deletion.">
-      <attributes name="name" required="true" description="The uptime check configuration to delete. The format isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]." type="//@types.13"/>
+      <attributes name="name" required="true" description="The uptime check configuration to delete. The format isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListGroupsResponse" scheme="http://occi/gcpmonitoring#" title="The ListGroups response.">
-    <attributes name="nextPageToken" required="true" description="If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as pageToken in the next call to this method." type="//@types.13"/>
-    <attributes name="group" required="true" description="The groups that match the specified filters." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as pageToken in the next call to this method.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="group" required="true" description="The groups that match the specified filters." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="CreateCollectdTimeSeriesRequestMonitoredResourceLink" scheme="http://occi/gcpmonitoring#" title="The monitored resource associated with the time series." source="//@kinds[term='createcollectdtimeseriesrequest']" target="//@kinds[term='monitoredresource']">
+  <kinds name="CreateCollectdTimeSeriesRequestresourceMonitoredResourceLink" scheme="http://occi/gcpmonitoring#" title="The monitored resource associated with the time series." source="//@kinds[term='createcollectdtimeseriesrequest']" target="//@kinds[term='monitoredresource']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="CreateCollectdTimeSeriesRequest" scheme="http://occi/gcpmonitoring#" title="The CreateCollectdTimeSeries request.">
-    <attributes name="collectdPayloads" required="true" description="The collectd payloads representing the time series data. You must not include more than a single point for each time series, so no two payloads can have the same values for all of the fields plugin, plugin_instance, type, and type_instance." type="//@types.7"/>
-    <attributes name="collectdVersion" required="true" description="The version of collectd that collected the data. Example: &quot;5.3.0-192.el6&quot;." type="//@types.13"/>
+    <attributes name="collectdPayloads" required="true" description="The collectd payloads representing the time series data. You must not include more than a single point for each time series, so no two payloads can have the same values for all of the fields plugin, plugin_instance, type, and type_instance." type="//@types.5"/>
+    <attributes name="collectdVersion" required="true" description="The version of collectd that collected the data. Example: &quot;5.3.0-192.el6&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListGroupMembersResponse" scheme="http://occi/gcpmonitoring#" title="The ListGroupMembers response.">
-    <attributes name="members" required="true" description="A set of monitored resources in the group." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as pageToken in the next call to this method." type="//@types.13"/>
-    <attributes name="totalSize" required="true" description="The total number of elements matching this request." type="//@types.3"/>
+    <attributes name="members" required="true" description="A set of monitored resources in the group." type="//@types.5"/>
+    <attributes name="nextPageToken" required="true" description="If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as pageToken in the next call to this method.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="totalSize" required="true" description="The total number of elements matching this request.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListMonitoredResourceDescriptorsResponse" scheme="http://occi/gcpmonitoring#" title="The ListMonitoredResourceDescriptors response.">
-    <attributes name="resourceDescriptors" required="true" description="The monitored resource descriptors that are available to this project and that match filter, if present." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as pageToken in the next call to this method." type="//@types.13"/>
+    <attributes name="resourceDescriptors" required="true" description="The monitored resource descriptors that are available to this project and that match filter, if present." type="//@types.5"/>
+    <attributes name="nextPageToken" required="true" description="If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as pageToken in the next call to this method.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="TimeSeriesMonitoredResourceLink" scheme="http://occi/gcpmonitoring#" title="The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data." source="//@kinds[term='timeseries']" target="//@kinds[term='monitoredresource']">
+  <kinds name="TimeSeriesresourceMonitoredResourceLink" scheme="http://occi/gcpmonitoring#" title="The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data." source="//@kinds[term='timeseries']" target="//@kinds[term='monitoredresource']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="MetricLink" scheme="http://occi/gcpmonitoring#" title="The associated metric. A fully-specified metric used to identify the time series." source="//@kinds[term='timeseries']" target="//@kinds[term='metric']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="TimeSeries" scheme="http://occi/gcpmonitoring#" title="A collection of data points that describes the time-varying values of a metric. A time series is identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both listing and creating time series.">
-    <attributes name="valueType" required="true" description="The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the type of the data in the points field." type="//@types.14"/>
-    <attributes name="metricKind" required="true" description="The metric kind of the time series. When listing time series, this metric kind might be different from the metric kind of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the metric kind of the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies the metric kind of the new descriptor and must be either GAUGE (the default) or CUMULATIVE." type="//@types.15"/>
-    <attributes name="points" required="true" description="The data points of this time series. When listing time series, the order of the points is specified by the list method.When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION." type="//@types.7"/>
+    <attributes name="valueType" required="true" description="The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the type of the data in the points field.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="metricKind" required="true" description="The metric kind of the time series. When listing time series, this metric kind might be different from the metric kind of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the metric kind of the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies the metric kind of the new descriptor and must be either GAUGE (the default) or CUMULATIVE.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="points" required="true" description="The data points of this time series. When listing time series, the order of the points is specified by the list method.When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="CreateTimeSeriesRequest" scheme="http://occi/gcpmonitoring#" title="The CreateTimeSeries request.">
-    <attributes name="timeSeries" required="true" description="The new data to be added to a list of time series. Adds at most one data point to each of several time series. The new data point must be more recent than any other point in its time series. Each TimeSeries value must fully specify a unique time series by supplying all label values for the metric and the monitored resource." type="//@types.7"/>
+    <attributes name="timeSeries" required="true" description="The new data to be added to a list of time series. Adds at most one data point to each of several time series. The new data point must be more recent than any other point in its time series. Each TimeSeries value must fully specify a unique time series by supplying all label values for the metric and the monitored resource." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="RangeLink" scheme="http://occi/gcpmonitoring#" title="If specified, contains the range of the population values. The field must not be present if the count is zero. This field is presently ignored by the Stackdriver Monitoring API v3." source="//@kinds[term='distribution']" target="//@kinds[term='range']">
@@ -137,44 +219,74 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Distribution" scheme="http://occi/gcpmonitoring#" title="Distribution contains summary statistics for a population of values. It optionally contains a histogram representing the distribution of those values across a set of buckets.The summary statistics are the count, mean, sum of the squared deviation from the mean, the minimum, and the maximum of the set of population of values. The histogram is based on a sequence of buckets and gives a count of values that fall into each bucket. The boundaries of the buckets are given either explicitly or by formulas for buckets of fixed or exponentially increasing widths.Although it is not forbidden, it is generally a bad idea to include non-finite values (infinities or NaNs) in the population of values, as this will render the mean and sum_of_squared_deviation fields meaningless.">
-    <attributes name="count" required="true" description="The number of values in the population. Must be non-negative. This value must equal the sum of the values in bucket_counts if a histogram is provided." type="//@types.15"/>
-    <attributes name="mean" required="true" description="The arithmetic mean of the values in the population. If count is zero then this field must be zero." type="//@types.3"/>
-    <attributes name="bucketCounts" required="true" description="Required in the Stackdriver Monitoring API v3. The values for each bucket specified in bucket_options. The sum of the values in bucketCounts must equal the value in the count field of the Distribution object. The order of the bucket counts follows the numbering schemes described for the three bucket types. The underflow bucket has number 0; the finite buckets, if any, have numbers 1 through N-2; and the overflow bucket has number N-1. The size of bucket_counts must not be greater than N. If the size is less than N, then the remaining buckets are assigned values of zero." type="//@types.7"/>
-    <attributes name="sumOfSquaredDeviation" required="true" description="The sum of squared deviations from the mean of the values in the population. For values x_i this is:&#xA;Sum[i=1..n]((x_i - mean)^2)&#xA;Knuth, &quot;The Art of Computer Programming&quot;, Vol. 2, page 323, 3rd edition describes Welford's method for accumulating this sum in one pass.If count is zero then this field must be zero." type="//@types.3"/>
+    <attributes name="count" required="true" description="The number of values in the population. Must be non-negative. This value must equal the sum of the values in bucket_counts if a histogram is provided.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="mean" required="true" description="The arithmetic mean of the values in the population. If count is zero then this field must be zero.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="bucketCounts" required="true" description="Required in the Stackdriver Monitoring API v3. The values for each bucket specified in bucket_options. The sum of the values in bucketCounts must equal the value in the count field of the Distribution object. The order of the bucket counts follows the numbering schemes described for the three bucket types. The underflow bucket has number 0; the finite buckets, if any, have numbers 1 through N-2; and the overflow bucket has number N-1. The size of bucket_counts must not be greater than N. If the size is less than N, then the remaining buckets are assigned values of zero." type="//@types.5"/>
+    <attributes name="sumOfSquaredDeviation" required="true" description="The sum of squared deviations from the mean of the values in the population. For values x_i this is:&#xA;Sum[i=1..n]((x_i - mean)^2)&#xA;Knuth, &quot;The Art of Computer Programming&quot;, Vol. 2, page 323, 3rd edition describes Welford's method for accumulating this sum in one pass.If count is zero then this field must be zero.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="MonitoredResource" scheme="http://occi/gcpmonitoring#" title="An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for &quot;gce_instance&quot; has labels &quot;instance_id&quot; and &quot;zone&quot;:&#xA;{ &quot;type&quot;: &quot;gce_instance&quot;,&#xA;  &quot;labels&quot;: { &quot;instance_id&quot;: &quot;12345678901234&quot;,&#xA;              &quot;zone&quot;: &quot;us-central1-a&quot; }}&#xA;">
-    <attributes name="type" required="true" description="Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance." type="//@types.15"/>
-    <attributes name="labels" required="true" description="Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels &quot;project_id&quot;, &quot;instance_id&quot;, and &quot;zone&quot;." type="//@types.9"/>
+    <attributes name="type" required="true" description="Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="labels" required="true" description="Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels &quot;project_id&quot;, &quot;instance_id&quot;, and &quot;zone&quot;." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListMetricDescriptorsResponse" scheme="http://occi/gcpmonitoring#" title="The ListMetricDescriptors response.">
-    <attributes name="metricDescriptors" required="true" description="The metric descriptors that are available to the project and that match the value of filter, if present." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as pageToken in the next call to this method." type="//@types.15"/>
+    <attributes name="metricDescriptors" required="true" description="The metric descriptors that are available to the project and that match the value of filter, if present." type="//@types.5"/>
+    <attributes name="nextPageToken" required="true" description="If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as pageToken in the next call to this method.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="StatusLink" scheme="http://occi/gcpmonitoring#" title="Records the error status for the payload. If this field is present, the partial errors for nested values won't be populated." source="//@kinds[term='collectdpayloaderror']" target="//@kinds[term='status']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="CollectdPayloadError" scheme="http://occi/gcpmonitoring#" title="Describes the error status for payloads that were not written.">
-    <attributes name="index" required="true" description="The zero-based index in CreateCollectdTimeSeriesRequest.collectd_payloads." type="//@types.3"/>
-    <attributes name="valueErrors" required="true" description="Records the error status for values that were not written due to an error.Failed payloads for which nothing is written will not include partial value errors." type="//@types.7"/>
+    <attributes name="index" required="true" description="The zero-based index in CreateCollectdTimeSeriesRequest.collectd_payloads.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="valueErrors" required="true" description="Records the error status for values that were not written due to an error.Failed payloads for which nothing is written will not include partial value errors." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="MonitoredResourceDescriptor" scheme="http://occi/gcpmonitoring#" title="An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of &quot;gce_instance&quot; and specifies the use of the labels &quot;instance_id&quot; and &quot;zone&quot; to identify particular VM instances.Different APIs can support different monitored resource types. APIs generally provide a list method that returns the monitored resource descriptors used by the API.">
-    <attributes name="type" required="true" description="Required. The monitored resource type. For example, the type &quot;cloudsql_database&quot; represents databases in Google Cloud SQL. The maximum length of this value is 256 characters." type="//@types.15"/>
-    <attributes name="labels" required="true" description="Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels &quot;database_id&quot; and &quot;zone&quot;." type="//@types.7"/>
-    <attributes name="name" required="true" description="Optional. The resource name of the monitored resource descriptor: &quot;projects/{project_id}/monitoredResourceDescriptors/{type}&quot; where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format &quot;monitoredResourceDescriptors/{type}&quot;." type="//@types.15"/>
-    <attributes name="displayName" required="true" description="Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, &quot;Google Cloud SQL Database&quot;." type="//@types.15"/>
-    <attributes name="description" required="true" description="Optional. A detailed description of the monitored resource type that might be used in documentation." type="//@types.15"/>
+    <attributes name="type" required="true" description="Required. The monitored resource type. For example, the type &quot;cloudsql_database&quot; represents databases in Google Cloud SQL. The maximum length of this value is 256 characters.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="labels" required="true" description="Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels &quot;database_id&quot; and &quot;zone&quot;." type="//@types.5"/>
+    <attributes name="name" required="true" description="Optional. The resource name of the monitored resource descriptor: &quot;projects/{project_id}/monitoredResourceDescriptors/{type}&quot; where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format &quot;monitoredResourceDescriptors/{type}&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="displayName" required="true" description="Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, &quot;Google Cloud SQL Database&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="Optional. A detailed description of the monitored resource type that might be used in documentation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="list" scheme="http://occi/gcpmonitoring/monitoredresourcedescriptor/action#" title="Lists monitored resource descriptors that match a filter. This method does not require a Stackdriver account.">
-      <attributes name="filter" required="true" description="An optional filter describing the descriptors to be returned. The filter can reference the descriptor's type and labels. For example, the following filter returns only Google Compute Engine descriptors that have an id label:&#xA;resource.type = starts_with(&quot;gce_&quot;) AND resource.label:id&#xA;" type="//@types.15"/>
-      <attributes name="name" required="true" description="The project on which to execute the request. The format is &quot;projects/{project_id_or_number}&quot;." type="//@types.15"/>
-      <attributes name="pageToken" required="true" description="If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return additional results from the previous method call." type="//@types.15"/>
-      <attributes name="pageSize" required="true" description="A positive number that is the maximum number of results to return." type="//@types.3"/>
+      <attributes name="filter" required="true" description="An optional filter describing the descriptors to be returned. The filter can reference the descriptor's type and labels. For example, the following filter returns only Google Compute Engine descriptors that have an id label:&#xA;resource.type = starts_with(&quot;gce_&quot;) AND resource.label:id&#xA;">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="name" required="true" description="The project on which to execute the request. The format is &quot;projects/{project_id_or_number}&quot;.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return additional results from the previous method call.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageSize" required="true" description="A positive number that is the maximum number of results to return.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpmonitoring/monitoredresourcedescriptor/action#" title="Gets a single monitored resource descriptor. This method does not require a Stackdriver account.">
-      <attributes name="name" required="true" description="The monitored resource descriptor to get. The format is &quot;projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}&quot;. The {resource_type} is a predefined type, such as cloudsql_database." type="//@types.15"/>
+      <attributes name="name" required="true" description="The monitored resource descriptor to get. The format is &quot;projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}&quot;. The {resource_type} is a predefined type, such as cloudsql_database.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
@@ -182,178 +294,310 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="TypedValue" scheme="http://occi/gcpmonitoring#" title="A single strongly-typed value.">
-    <attributes name="doubleValue" required="true" description="A 64-bit double-precision floating-point number. Its magnitude is approximately &amp;plusmn;10&lt;sup>&amp;plusmn;300&lt;/sup> and it has 16 significant digits of precision." type="//@types.3"/>
-    <attributes name="int64Value" required="true" description="A 64-bit integer. Its range is approximately &amp;plusmn;9.2x10&lt;sup>18&lt;/sup>." type="//@types.15"/>
-    <attributes name="boolValue" required="true" description="A Boolean value: true or false." type="//@types.6"/>
-    <attributes name="stringValue" required="true" description="A variable-length string value." type="//@types.15"/>
+    <attributes name="doubleValue" required="true" description="A 64-bit double-precision floating-point number. Its magnitude is approximately &amp;plusmn;10&lt;sup>&amp;plusmn;300&lt;/sup> and it has 16 significant digits of precision.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="int64Value" required="true" description="A 64-bit integer. Its range is approximately &amp;plusmn;9.2x10&lt;sup>18&lt;/sup>.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="boolValue" required="true" description="A Boolean value: true or false.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="stringValue" required="true" description="A variable-length string value.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ResourceGroup" scheme="http://occi/gcpmonitoring#" title="The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored.">
-    <attributes name="resourceType" required="true" description="The resource type of the group members." type="//@types.16"/>
-    <attributes name="groupId" required="true" description="The group of resources being monitored. Should be only the group_id, not projects/&lt;project_id>/groups/&lt;group_id>." type="//@types.16"/>
+    <attributes name="resourceType" required="true" description="The resource type of the group members.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="groupId" required="true" description="The group of resources being monitored. Should be only the group_id, not projects/&lt;project_id>/groups/&lt;group_id>.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="CollectdValueErrorStatusLink" scheme="http://occi/gcpmonitoring#" title="Records the error status for the value." source="//@kinds[term='collectdvalueerror']" target="//@kinds[term='status']">
+  <kinds name="CollectdValueErrorerrorStatusLink" scheme="http://occi/gcpmonitoring#" title="Records the error status for the value." source="//@kinds[term='collectdvalueerror']" target="//@kinds[term='status']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="CollectdValueError" scheme="http://occi/gcpmonitoring#" title="Describes the error status for values that were not written.">
-    <attributes name="index" required="true" description="The zero-based index in CollectdPayload.values within the parent CreateCollectdTimeSeriesRequest.collectd_payloads." type="//@types.3"/>
+    <attributes name="index" required="true" description="The zero-based index in CollectdPayload.values within the parent CreateCollectdTimeSeriesRequest.collectd_payloads.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="UptimeCheckIp" scheme="http://occi/gcpmonitoring#" title="Contains the region, location, and list of IP addresses where checkers in the location run from.">
-    <attributes name="ipAddress" required="true" description="The IP address from which the uptime check originates. This is a full IP address (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not rely on the IP addresses being in IPv4 format indefinitely and should support interpreting this field in either IPv4 or IPv6 format." type="//@types.16"/>
-    <attributes name="region" required="true" description="A broad region category in which the IP address is located." type="//@types.17"/>
-    <attributes name="location" required="true" description="A more specific location within the region that typically encodes a particular city/town/metro (and its containing state/province or country) within the broader umbrella region category." type="//@types.17"/>
+    <attributes name="ipAddress" required="true" description="The IP address from which the uptime check originates. This is a full IP address (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not rely on the IP addresses being in IPv4 format indefinitely and should support interpreting this field in either IPv4 or IPv6 format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="region" required="true" description="A broad region category in which the IP address is located.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="locationGCP" required="true" description="A more specific location within the region that typically encodes a particular city/town/metro (and its containing state/province or country) within the broader umbrella region category.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="list" scheme="http://occi/gcpmonitoring/uptimecheckip/action#" title="Returns the list of IPs that checkers run from">
-      <attributes name="pageToken" required="true" description="If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return more results from the previous method call. NOTE: this field is not yet implemented" type="//@types.17"/>
-      <attributes name="pageSize" required="true" description="The maximum number of results to return in a single response. The server may further constrain the maximum number of results returned in a single page. If the page_size is &lt;=0, the server will decide the number of results to be returned. NOTE: this field is not yet implemented" type="//@types.3"/>
+      <attributes name="pageToken" required="true" description="If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return more results from the previous method call. NOTE: this field is not yet implemented">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageSize" required="true" description="The maximum number of results to return in a single response. The server may further constrain the maximum number of results returned in a single page. If the page_size is &lt;=0, the server will decide the number of results to be returned. NOTE: this field is not yet implemented">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="CollectdPayload" scheme="http://occi/gcpmonitoring#" title="A collection of data points sent from a collectd-based plugin. See the collectd documentation for more information.">
-    <attributes name="type" required="true" description="The measurement type. Example: &quot;memory&quot;." type="//@types.17"/>
-    <attributes name="metadata" required="true" description="The measurement metadata. Example: &quot;process_id&quot; -> 12345" type="//@types.10"/>
-    <attributes name="plugin" required="true" description="The name of the plugin. Example: &quot;disk&quot;." type="//@types.17"/>
-    <attributes name="pluginInstance" required="true" description="The instance name of the plugin Example: &quot;hdcl&quot;." type="//@types.17"/>
-    <attributes name="endTime" required="true" description="The end time of the interval." type="//@types.17"/>
-    <attributes name="startTime" required="true" description="The start time of the interval." type="//@types.17"/>
-    <attributes name="values" required="true" description="The measured values during this time interval. Each value must have a different dataSourceName." type="//@types.7"/>
-    <attributes name="typeInstance" required="true" description="The measurement type instance. Example: &quot;used&quot;." type="//@types.17"/>
+    <attributes name="type" required="true" description="The measurement type. Example: &quot;memory&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="metadata" required="true" description="The measurement metadata. Example: &quot;process_id&quot; -> 12345" type="//@types.3"/>
+    <attributes name="plugin" required="true" description="The name of the plugin. Example: &quot;disk&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="pluginInstance" required="true" description="The instance name of the plugin Example: &quot;hdcl&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="endTime" required="true" description="The end time of the interval.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="The start time of the interval.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="values" required="true" description="The measured values during this time interval. Each value must have a different dataSourceName." type="//@types.5"/>
+    <attributes name="typeInstance" required="true" description="The measurement type instance. Example: &quot;used&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="CreateCollectdTimeSeriesResponse" scheme="http://occi/gcpmonitoring#" title="The CreateCollectdTimeSeries response.">
-    <attributes name="payloadErrors" required="true" description="Records the error status for points that were not written due to an error.Failed requests for which nothing is written will return an error response instead." type="//@types.7"/>
+    <attributes name="payloadErrors" required="true" description="Records the error status for points that were not written due to an error.Failed requests for which nothing is written will return an error response instead." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Linear" scheme="http://occi/gcpmonitoring#" title="Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &lt;= i &lt; N-1): offset + (width * i).  Lower bound (1 &lt;= i &lt; N): offset + (width * (i - 1)).">
-    <attributes name="offset" required="true" description="Lower bound of the first bucket." type="//@types.3"/>
-    <attributes name="numFiniteBuckets" required="true" description="Must be greater than 0." type="//@types.3"/>
-    <attributes name="width" required="true" description="Must be greater than 0." type="//@types.3"/>
+    <attributes name="offset" required="true" description="Lower bound of the first bucket.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="numFiniteBuckets" required="true" description="Must be greater than 0.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="width" required="true" description="Must be greater than 0.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Empty" scheme="http://occi/gcpmonitoring#" title="A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:&#xA;service Foo {&#xA;  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;}&#xA;The JSON representation for Empty is empty JSON object {}.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ContentMatcher" scheme="http://occi/gcpmonitoring#" title="Used to perform string matching. Currently, this matches on the exact content. In the future, it can be expanded to allow for regular expressions and more complex matching.">
-    <attributes name="content" required="true" description="String content to match" type="//@types.17"/>
+    <attributes name="content" required="true" description="String content to match">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Option" scheme="http://occi/gcpmonitoring#" title="A protocol buffer option, which can be attached to a message, field, enumeration, etc.">
-    <attributes name="name" required="true" description="The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, &quot;map_entry&quot;. For custom options, it should be the fully-qualified name. For example, &quot;google.api.http&quot;." type="//@types.17"/>
-    <attributes name="value" required="true" description="The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type." type="//@types.9"/>
+    <attributes name="name" required="true" description="The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, &quot;map_entry&quot;. For custom options, it should be the fully-qualified name. For example, &quot;google.api.http&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="value" required="true" description="The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TcpCheck" scheme="http://occi/gcpmonitoring#" title="Information required for a TCP uptime check request.">
-    <attributes name="port" required="true" description="The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL. Required." type="//@types.3"/>
+    <attributes name="port" required="true" description="The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL. Required.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Explicit" scheme="http://occi/gcpmonitoring#" title="Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &lt;= i &lt; N-1): boundsi  Lower bound (1 &lt;= i &lt; N); boundsi - 1The bounds field must contain at least one element. If bounds has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets.">
-    <attributes name="bounds" required="true" description="The values must be monotonically increasing." type="//@types.7"/>
+    <attributes name="bounds" required="true" description="The values must be monotonically increasing." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TimeInterval" scheme="http://occi/gcpmonitoring#" title="A time interval extending just after a start time through an end time. If the start time is the same as the end time, then the interval represents a single point in time.">
-    <attributes name="endTime" required="true" description="Required. The end of the time interval." type="//@types.17"/>
-    <attributes name="startTime" required="true" description="Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time." type="//@types.17"/>
+    <attributes name="endTime" required="true" description="Required. The end of the time interval.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListUptimeCheckIpsResponse" scheme="http://occi/gcpmonitoring#" title="The protocol for the ListUptimeCheckIps response.">
-    <attributes name="uptimeCheckIps" required="true" description="The returned list of IP addresses (including region and location) that the checkers run from." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="This field represents the pagination token to retrieve the next page of results. If the value is empty, it means no further results for the request. To retrieve the next page of results, the value of the next_page_token is passed to the subsequent List method call (in the request message's page_token field). NOTE: this field is not yet implemented" type="//@types.17"/>
+    <attributes name="uptimeCheckIps" required="true" description="The returned list of IP addresses (including region and location) that the checkers run from." type="//@types.5"/>
+    <attributes name="nextPageToken" required="true" description="This field represents the pagination token to retrieve the next page of results. If the value is empty, it means no further results for the request. To retrieve the next page of results, the value of the next_page_token is passed to the subsequent List method call (in the request message's page_token field). NOTE: this field is not yet implemented">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Exponential" scheme="http://occi/gcpmonitoring#" title="Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &lt;= i &lt; N-1): scale * (growth_factor ^ i).  Lower bound (1 &lt;= i &lt; N): scale * (growth_factor ^ (i - 1)).">
-    <attributes name="growthFactor" required="true" description="Must be greater than 1." type="//@types.3"/>
-    <attributes name="scale" required="true" description="Must be greater than 0." type="//@types.3"/>
-    <attributes name="numFiniteBuckets" required="true" description="Must be greater than 0." type="//@types.3"/>
+    <attributes name="growthFactor" required="true" description="Must be greater than 1.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="scale" required="true" description="Must be greater than 0.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="numFiniteBuckets" required="true" description="Must be greater than 0.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TimeIntervalLink" scheme="http://occi/gcpmonitoring#" title="The time interval to which the data point applies. For GAUGE metrics, only the end time of the interval is used. For DELTA metrics, the start and end time should specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For CUMULATIVE metrics, the start and end time should specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points." source="//@kinds[term='point']" target="//@kinds[term='timeinterval']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="PointTypedValueLink" scheme="http://occi/gcpmonitoring#" title="The value of the data point." source="//@kinds[term='point']" target="//@kinds[term='typedvalue']">
+  <kinds name="PointvalueTypedValueLink" scheme="http://occi/gcpmonitoring#" title="The value of the data point." source="//@kinds[term='point']" target="//@kinds[term='typedvalue']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Point" scheme="http://occi/gcpmonitoring#" title="A single data point in a time series.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Metric" scheme="http://occi/gcpmonitoring#" title="A specific metric, identified by specifying values for all of the labels of a MetricDescriptor.">
-    <attributes name="type" required="true" description="An existing metric type, see google.api.MetricDescriptor. For example, custom.googleapis.com/invoice/paid/amount." type="//@types.17"/>
-    <attributes name="labels" required="true" description="The set of label values that uniquely identify this metric. All labels listed in the MetricDescriptor must be assigned values." type="//@types.9"/>
+    <attributes name="type" required="true" description="An existing metric type, see google.api.MetricDescriptor. For example, custom.googleapis.com/invoice/paid/amount.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="labels" required="true" description="The set of label values that uniquely identify this metric. All labels listed in the MetricDescriptor must be assigned values." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListUptimeCheckConfigsResponse" scheme="http://occi/gcpmonitoring#" title="The protocol for the ListUptimeCheckConfigs response.">
-    <attributes name="uptimeCheckConfigs" required="true" description="The returned uptime check configurations." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="This field represents the pagination token to retrieve the next page of results. If the value is empty, it means no further results for the request. To retrieve the next page of results, the value of the next_page_token is passed to the subsequent List method call (in the request message's page_token field)." type="//@types.17"/>
+    <attributes name="uptimeCheckConfigs" required="true" description="The returned uptime check configurations." type="//@types.5"/>
+    <attributes name="nextPageToken" required="true" description="This field represents the pagination token to retrieve the next page of results. If the value is empty, it means no further results for the request. To retrieve the next page of results, the value of the next_page_token is passed to the subsequent List method call (in the request message's page_token field).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Field" scheme="http://occi/gcpmonitoring#" title="A single field of a message type.">
-    <attributes name="defaultValue" required="true" description="The string value of the default value of this field. Proto2 syntax only." type="//@types.17"/>
-    <attributes name="name" required="true" description="The field name." type="//@types.17"/>
-    <attributes name="typeUrl" required="true" description="The field type URL, without the scheme, for message or enumeration types. Example: &quot;type.googleapis.com/google.protobuf.Timestamp&quot;." type="//@types.17"/>
-    <attributes name="number" required="true" description="The field number." type="//@types.3"/>
-    <attributes name="kind" required="true" description="The field type." type="//@types.18"/>
-    <attributes name="jsonName" required="true" description="The field JSON name." type="//@types.18"/>
-    <attributes name="options" required="true" description="The protocol buffer options." type="//@types.7"/>
-    <attributes name="oneofIndex" required="true" description="The index of the field type in Type.oneofs, for message or enumeration types. The first type has index 1; zero means the type is not in the list." type="//@types.3"/>
-    <attributes name="packed" required="true" description="Whether to use alternative packed wire representation." type="//@types.6"/>
-    <attributes name="cardinality" required="true" description="The field cardinality." type="//@types.19"/>
+    <attributes name="defaultValue" required="true" description="The string value of the default value of this field. Proto2 syntax only.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="The field name.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="typeUrl" required="true" description="The field type URL, without the scheme, for message or enumeration types. Example: &quot;type.googleapis.com/google.protobuf.Timestamp&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="number" required="true" description="The field number.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="kindGCP" required="true" description="The field type.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="jsonName" required="true" description="The field JSON name.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="options" required="true" description="The protocol buffer options." type="//@types.5"/>
+    <attributes name="oneofIndex" required="true" description="The index of the field type in Type.oneofs, for message or enumeration types. The first type has index 1; zero means the type is not in the list.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="packed" required="true" description="Whether to use alternative packed wire representation.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="cardinality" required="true" description="The field cardinality.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="LabelDescriptor" scheme="http://occi/gcpmonitoring#" title="A description of a label.">
-    <attributes name="valueType" required="true" description="The type of data that can be assigned to the label." type="//@types.20"/>
-    <attributes name="key" required="true" description="The label key." type="//@types.20"/>
-    <attributes name="description" required="true" description="A human-readable description for the label." type="//@types.20"/>
+    <attributes name="valueType" required="true" description="The type of data that can be assigned to the label.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="key" required="true" description="The label key.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="A human-readable description for the label.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListTimeSeriesResponse" scheme="http://occi/gcpmonitoring#" title="The ListTimeSeries response.">
-    <attributes name="nextPageToken" required="true" description="If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as pageToken in the next call to this method." type="//@types.20"/>
-    <attributes name="timeSeries" required="true" description="One or more time series that match the filter included in the request." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as pageToken in the next call to this method.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="timeSeries" required="true" description="One or more time series that match the filter included in the request." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SourceContextLink" scheme="http://occi/gcpmonitoring#" title="The source context." source="//@kinds[term='type']" target="//@kinds[term='sourcecontext']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Type" scheme="http://occi/gcpmonitoring#" title="A protocol buffer message type.">
-    <attributes name="options" required="true" description="The protocol buffer options." type="//@types.7"/>
-    <attributes name="fields" required="true" description="The list of fields." type="//@types.7"/>
-    <attributes name="name" required="true" description="The fully qualified message name." type="//@types.20"/>
-    <attributes name="oneofs" required="true" description="The list of types appearing in oneof definitions in this type." type="//@types.7"/>
-    <attributes name="syntax" required="true" description="The source syntax." type="//@types.21"/>
+    <attributes name="options" required="true" description="The protocol buffer options." type="//@types.5"/>
+    <attributes name="fields" required="true" description="The list of fields." type="//@types.5"/>
+    <attributes name="name" required="true" description="The fully qualified message name.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="oneofs" required="true" description="The list of types appearing in oneof definitions in this type." type="//@types.5"/>
+    <attributes name="syntax" required="true" description="The source syntax.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Group" scheme="http://occi/gcpmonitoring#" title="The description of a dynamic collection of monitored resources. Each group has a filter that is matched against monitored resources and their associated metadata. If a group's filter matches an available monitored resource, then that resource is a member of that group. Groups can contain any number of monitored resources, and each monitored resource can be a member of any number of groups.Groups can be nested in parent-child hierarchies. The parentName field identifies an optional parent for each group. If a group has a parent, then the only monitored resources available to be matched by the group's filter are the resources contained in the parent group. In other words, a group contains the monitored resources that match its filter and the filters of all the group's ancestors. A group without a parent can contain any monitored resource.For example, consider an infrastructure running a set of instances with two user-defined tags: &quot;environment&quot; and &quot;role&quot;. A parent group has a filter, environment=&quot;production&quot;. A child of that parent group has a filter, role=&quot;transcoder&quot;. The parent group contains all instances in the production environment, regardless of their roles. The child group contains instances that have the transcoder role and are in the production environment.The monitored resources contained in a group can change at any moment, depending on what resources exist and what filters are associated with the group and its ancestors.">
-    <attributes name="name" required="true" description="Output only. The name of this group. The format is &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique {group_id} that is generated automatically." type="//@types.21"/>
-    <attributes name="parentName" required="true" description="The name of the group's parent, if it has one. The format is &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. For groups with no parent, parentName is the empty string, &quot;&quot;." type="//@types.21"/>
-    <attributes name="displayName" required="true" description="A user-assigned name for this group, used only for display purposes." type="//@types.21"/>
-    <attributes name="isCluster" required="true" description="If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters." type="//@types.6"/>
-    <attributes name="filter" required="true" description="The filter used to determine which monitored resources belong to this group." type="//@types.21"/>
+    <attributes name="name" required="true" description="Output only. The name of this group. The format is &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique {group_id} that is generated automatically.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="parentName" required="true" description="The name of the group's parent, if it has one. The format is &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. For groups with no parent, parentName is the empty string, &quot;&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="displayName" required="true" description="A user-assigned name for this group, used only for display purposes.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="isCluster" required="true" description="If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="filter" required="true" description="The filter used to determine which monitored resources belong to this group.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="list" scheme="http://occi/gcpmonitoring/group/action#" title="Lists the existing groups.">
-      <attributes name="descendantsOfGroup" required="true" description="A group name: &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. Returns the descendants of the specified group. This is a superset of the results returned by the childrenOfGroup filter, and includes children-of-children, and so forth." type="//@types.21"/>
-      <attributes name="pageToken" required="true" description="If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return additional results from the previous method call." type="//@types.21"/>
-      <attributes name="pageSize" required="true" description="A positive number that is the maximum number of results to return." type="//@types.3"/>
-      <attributes name="ancestorsOfGroup" required="true" description="A group name: &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. Returns groups that are ancestors of the specified group. The groups are returned in order, starting with the immediate parent and ending with the most distant ancestor. If the specified group has no immediate parent, the results are empty." type="//@types.21"/>
-      <attributes name="name" required="true" description="The project whose groups are to be listed. The format is &quot;projects/{project_id_or_number}&quot;." type="//@types.21"/>
-      <attributes name="childrenOfGroup" required="true" description="A group name: &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. Returns groups whose parentName field contains the group name. If no groups have this parent, the results are empty." type="//@types.21"/>
+      <attributes name="descendantsOfGroup" required="true" description="A group name: &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. Returns the descendants of the specified group. This is a superset of the results returned by the childrenOfGroup filter, and includes children-of-children, and so forth.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="If this field is not empty then it must contain the nextPageToken value returned by a previous call to this method. Using this field causes the method to return additional results from the previous method call.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageSize" required="true" description="A positive number that is the maximum number of results to return.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
+      <attributes name="ancestorsOfGroup" required="true" description="A group name: &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. Returns groups that are ancestors of the specified group. The groups are returned in order, starting with the immediate parent and ending with the most distant ancestor. If the specified group has no immediate parent, the results are empty.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="name" required="true" description="The project whose groups are to be listed. The format is &quot;projects/{project_id_or_number}&quot;.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="childrenOfGroup" required="true" description="A group name: &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. Returns groups whose parentName field contains the group name. If no groups have this parent, the results are empty.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpmonitoring/group/action#" title="Gets a single group.">
-      <attributes name="name" required="true" description="The group to retrieve. The format is &quot;projects/{project_id_or_number}/groups/{group_id}&quot;." type="//@types.21"/>
+      <attributes name="name" required="true" description="The group to retrieve. The format is &quot;projects/{project_id_or_number}/groups/{group_id}&quot;.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="update" scheme="http://occi/gcpmonitoring/group/action#" title="Updates an existing group. You can change any group attributes except name.">
-      <attributes name="name" required="true" description="Output only. The name of this group. The format is &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique {group_id} that is generated automatically." type="//@types.21"/>
-      <attributes name="validateOnly" required="true" description="If true, validate this request but do not update the existing group." type="//@types.6"/>
+      <attributes name="name" required="true" description="Output only. The name of this group. The format is &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique {group_id} that is generated automatically.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="validateOnly" required="true" description="If true, validate this request but do not update the existing group.">
+        <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+      </attributes>
     </actions>
     <actions name="create" scheme="http://occi/gcpmonitoring/group/action#" title="Creates a new group.">
-      <attributes name="name" required="true" description="The project in which to create the group. The format is &quot;projects/{project_id_or_number}&quot;." type="//@types.21"/>
-      <attributes name="validateOnly" required="true" description="If true, validate this request but do not create the group." type="//@types.6"/>
+      <attributes name="name" required="true" description="The project in which to create the group. The format is &quot;projects/{project_id_or_number}&quot;.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="validateOnly" required="true" description="If true, validate this request but do not create the group.">
+        <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+      </attributes>
     </actions>
     <actions name="delete" scheme="http://occi/gcpmonitoring/group/action#" title="Deletes an existing group.">
-      <attributes name="name" required="true" description="The group to delete. The format is &quot;projects/{project_id_or_number}/groups/{group_id}&quot;." type="//@types.21"/>
+      <attributes name="name" required="true" description="The group to delete. The format is &quot;projects/{project_id_or_number}/groups/{group_id}&quot;.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="BasicAuthentication" scheme="http://occi/gcpmonitoring#" title="A type of authentication to perform against the specified resource or URL that uses username and password. Currently, only Basic authentication is supported in Uptime Monitoring.">
-    <attributes name="password" required="true" description="The password to authenticate." type="//@types.21"/>
-    <attributes name="username" required="true" description="The username to authenticate." type="//@types.21"/>
+    <attributes name="password" required="true" description="The password to authenticate.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="username" required="true" description="The username to authenticate.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ExponentialLink" scheme="http://occi/gcpmonitoring#" title="The exponential buckets." source="//@kinds[term='bucketoptions']" target="//@kinds[term='exponential']">
@@ -372,38 +616,44 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="HttpCheck" scheme="http://occi/gcpmonitoring#" title="Information involved in an HTTP/HTTPS uptime check request.">
-    <attributes name="useSsl" required="true" description="If true, use HTTPS instead of HTTP to run the check." type="//@types.6"/>
-    <attributes name="maskHeaders" required="true" description="Boolean specifiying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******." type="//@types.6"/>
-    <attributes name="port" required="true" description="The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL)." type="//@types.3"/>
-    <attributes name="headers" required="true" description="The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second." type="//@types.9"/>
-    <attributes name="path" required="true" description="The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to &quot;/&quot;)." type="//@types.21"/>
+    <attributes name="useSsl" required="true" description="If true, use HTTPS instead of HTTP to run the check.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="maskHeaders" required="true" description="Boolean specifiying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="port" required="true" description="The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="headers" required="true" description="The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second." type="//@types.6"/>
+    <attributes name="path" required="true" description="The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to &quot;/&quot;).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
-  <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="dataSourceType" documentation="The type of measurement.">
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EnumerationType" name="Datasourcetype" documentation="The type of measurement.">
     <literals name="UNSPECIFIED_DATA_SOURCE_TYPE" documentation="An unspecified data source type. This corresponds to google.api.MetricDescriptor.MetricKind.METRIC_KIND_UNSPECIFIED."/>
     <literals name="GAUGE" documentation="An instantaneous measurement of a varying quantity. This corresponds to google.api.MetricDescriptor.MetricKind.GAUGE."/>
     <literals name="COUNTER" documentation="A cumulative value over time. This corresponds to google.api.MetricDescriptor.MetricKind.CUMULATIVE."/>
     <literals name="DERIVE" documentation="A rate of change of the measurement."/>
     <literals name="ABSOLUTE" documentation="An amount of change since the last measurement interval. This corresponds to google.api.MetricDescriptor.MetricKind.DELTA."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="metricKind" documentation="Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.">
+  <types xsi:type="occi:EnumerationType" name="Metrickind" documentation="Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.">
     <literals name="METRIC_KIND_UNSPECIFIED" documentation="Do not use this default value."/>
     <literals name="GAUGE" documentation="An instantaneous measurement of a value."/>
     <literals name="DELTA" documentation="The change in a value during a time interval."/>
     <literals name="CUMULATIVE" documentation="A value accumulated over a time interval. Cumulative measurements in a time series should have the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="valueType" documentation="Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.">
+  <types xsi:type="occi:EnumerationType" name="Valuetype" documentation="Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.">
     <literals name="VALUE_TYPE_UNSPECIFIED" documentation="Do not use this default value."/>
     <literals name="BOOL" documentation="The value is a boolean. This value type can be used only if the metric kind is GAUGE."/>
     <literals name="INT64" documentation="The value is a signed 64-bit integer."/>
@@ -412,7 +662,7 @@
     <literals name="DISTRIBUTION" documentation="The value is a Distribution."/>
     <literals name="MONEY" documentation="The value is money."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="TimeSeriesVvaluetype" documentation="The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the type of the data in the points field.">
+  <types xsi:type="occi:EnumerationType" name="TimeSeriesValuetype" documentation="The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the type of the data in the points field.">
     <literals name="VALUE_TYPE_UNSPECIFIED" documentation="Do not use this default value."/>
     <literals name="BOOL" documentation="The value is a boolean. This value type can be used only if the metric kind is GAUGE."/>
     <literals name="INT64" documentation="The value is a signed 64-bit integer."/>
@@ -421,25 +671,25 @@
     <literals name="DISTRIBUTION" documentation="The value is a Distribution."/>
     <literals name="MONEY" documentation="The value is money."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="TimeSeriesMmetrickind" documentation="The metric kind of the time series. When listing time series, this metric kind might be different from the metric kind of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the metric kind of the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies the metric kind of the new descriptor and must be either GAUGE (the default) or CUMULATIVE.">
+  <types xsi:type="occi:EnumerationType" name="TimeSeriesMetrickind" documentation="The metric kind of the time series. When listing time series, this metric kind might be different from the metric kind of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the metric kind of the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies the metric kind of the new descriptor and must be either GAUGE (the default) or CUMULATIVE.">
     <literals name="METRIC_KIND_UNSPECIFIED" documentation="Do not use this default value."/>
     <literals name="GAUGE" documentation="An instantaneous measurement of a value."/>
     <literals name="DELTA" documentation="The change in a value during a time interval."/>
     <literals name="CUMULATIVE" documentation="A value accumulated over a time interval. Cumulative measurements in a time series should have the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="resourceType" documentation="The resource type of the group members.">
+  <types xsi:type="occi:EnumerationType" name="Resourcetype" documentation="The resource type of the group members.">
     <literals name="RESOURCE_TYPE_UNSPECIFIED" documentation="Default value (not valid)."/>
     <literals name="INSTANCE" documentation="A group of instances (could be either GCE or AWS_EC2)."/>
     <literals name="AWS_ELB_LOAD_BALANCER" documentation="A group of AWS load balancers."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="region" documentation="A broad region category in which the IP address is located.">
+  <types xsi:type="occi:EnumerationType" name="Region" documentation="A broad region category in which the IP address is located.">
     <literals name="REGION_UNSPECIFIED" documentation="Default value if no region is specified. Will result in uptime checks running from all regions."/>
     <literals name="USA" documentation="Allows checks to run from locations within the United States of America."/>
     <literals name="EUROPE" documentation="Allows checks to run from locations within the continent of Europe."/>
     <literals name="SOUTH_AMERICA" documentation="Allows checks to run from locations within the continent of South America."/>
     <literals name="ASIA_PACIFIC" documentation="Allows checks to run from locations within the Asia Pacific area (ex: Singapore)."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="kind" documentation="The field type.">
+  <types xsi:type="occi:EnumerationType" name="Kind" documentation="The field type.">
     <literals name="TYPE_UNKNOWN" documentation="Field type unknown."/>
     <literals name="TYPE_DOUBLE" documentation="Field type double."/>
     <literals name="TYPE_FLOAT" documentation="Field type float."/>
@@ -460,18 +710,18 @@
     <literals name="TYPE_SINT32" documentation="Field type sint32."/>
     <literals name="TYPE_SINT64" documentation="Field type sint64."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="cardinality" documentation="The field cardinality.">
+  <types xsi:type="occi:EnumerationType" name="Cardinality" documentation="The field cardinality.">
     <literals name="CARDINALITY_UNKNOWN" documentation="For fields with unknown cardinality."/>
     <literals name="CARDINALITY_OPTIONAL" documentation="For optional fields."/>
     <literals name="CARDINALITY_REQUIRED" documentation="For required fields. Proto2 syntax only."/>
     <literals name="CARDINALITY_REPEATED" documentation="For repeated fields."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="LabelDescriptorVvaluetype" documentation="The type of data that can be assigned to the label.">
+  <types xsi:type="occi:EnumerationType" name="LabelDescriptorValuetype" documentation="The type of data that can be assigned to the label.">
     <literals name="STRING" documentation="A variable-length string. This is the default."/>
     <literals name="BOOL" documentation="Boolean; true or false."/>
     <literals name="INT64" documentation="A 64-bit signed integer."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="syntax" documentation="The source syntax.">
+  <types xsi:type="occi:EnumerationType" name="Syntax" documentation="The source syntax.">
     <literals name="SYNTAX_PROTO2" documentation="Syntax proto2."/>
     <literals name="SYNTAX_PROTO3" documentation="Syntax proto3."/>
   </types>

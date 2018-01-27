@@ -2,15 +2,19 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="container" scheme="http://occi/gcpcontainer#" description="The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="SetLocationsRequest" scheme="http://occi/gcpcontainer#" title="SetLocationsRequest sets the locations of the cluster.">
-    <attributes name="locations" required="true" description="The desired list of Google Compute Engine&#xA;[locations](/compute/docs/zones#available) in which the cluster's nodes&#xA;should be located. Changing the locations a cluster is in will result&#xA;in nodes being either created or removed from the cluster, depending on&#xA;whether locations are being added or removed.&#xA;&#xA;This list must always include the cluster's primary zone." type="//@types.7"/>
+    <attributes name="locations" required="true" description="The desired list of Google Compute Engine&#xA;[locations](/compute/docs/zones#available) in which the cluster's nodes&#xA;should be located. Changing the locations a cluster is in will result&#xA;in nodes being either created or removed from the cluster, depending on&#xA;whether locations are being added or removed.&#xA;&#xA;This list must always include the cluster's primary zone." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SetNodePoolSizeRequest" scheme="http://occi/gcpcontainer#" title="SetNodePoolSizeRequest sets the size a node&#xA;pool.">
-    <attributes name="nodeCount" required="true" description="The desired node count for the pool." type="//@types.3"/>
+    <attributes name="nodeCount" required="true" description="The desired node count for the pool.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="NetworkPolicyConfig" scheme="http://occi/gcpcontainer#" title="Configuration for NetworkPolicy. This only tracks whether the addon&#xA;is enabled or not on the Master, it does not track whether network policy&#xA;is enabled for the nodes.">
-    <attributes name="disabled" required="true" description="Whether NetworkPolicy is enabled for this cluster." type="//@types.6"/>
+    <attributes name="disabled" required="true" description="Whether NetworkPolicy is enabled for this cluster.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ClusterUpdateLink" scheme="http://occi/gcpcontainer#" title="A description of the update." source="//@kinds[term='updateclusterrequest']" target="//@kinds[term='clusterupdate']">
@@ -44,115 +48,259 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Cluster" scheme="http://occi/gcpcontainer#" title="A Google Container Engine cluster.">
-    <attributes name="network" required="true" description="The name of the Google Compute Engine&#xA;[network](/compute/docs/networks-and-firewalls#networks) to which the&#xA;cluster is connected. If left unspecified, the `default` network&#xA;will be used." type="//@types.0"/>
-    <attributes name="labelFingerprint" required="true" description="The fingerprint of the set of labels for this cluster." type="//@types.0"/>
-    <attributes name="zone" required="true" description="[Output only] The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.0"/>
-    <attributes name="expireTime" required="true" description="[Output only] The time the cluster will be automatically&#xA;deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format." type="//@types.0"/>
-    <attributes name="nodeIpv4CidrSize" required="true" description="[Output only] The size of the address space on each node for hosting&#xA;containers. This is provisioned from within the `container_ipv4_cidr`&#xA;range." type="//@types.3"/>
-    <attributes name="loggingService" required="true" description="The logging service the cluster should use to write logs.&#xA;Currently available options:&#xA;&#xA;* `logging.googleapis.com` - the Google Cloud Logging service.&#xA;* `none` - no logs will be exported from the cluster.&#xA;* if left as an empty string,`logging.googleapis.com` will be used." type="//@types.0"/>
-    <attributes name="statusMessage" required="true" description="[Output only] Additional information about the current status of this&#xA;cluster, if available." type="//@types.0"/>
-    <attributes name="currentMasterVersion" required="true" description="[Output only] The current software version of the master endpoint." type="//@types.0"/>
-    <attributes name="status" required="true" description="[Output only] The current status of this cluster." type="//@types.11"/>
-    <attributes name="subnetwork" required="true" description="The name of the Google Compute Engine&#xA;[subnetwork](/compute/docs/subnetworks) to which the&#xA;cluster is connected." type="//@types.11"/>
-    <attributes name="currentNodeVersion" required="true" description="[Output only] The current version of the node software components.&#xA;If they are currently at multiple versions because they're in the process&#xA;of being upgraded, this reflects the minimum version of all nodes." type="//@types.11"/>
-    <attributes name="resourceLabels" required="true" description="The resource labels for the cluster to use to annotate any related&#xA;Google Compute Engine resources." type="//@types.9"/>
-    <attributes name="name" required="true" description="The name of this cluster. The name must be unique within this project&#xA;and zone, and can be up to 40 characters with the following restrictions:&#xA;&#xA;* Lowercase letters, numbers, and hyphens only.&#xA;* Must start with a letter.&#xA;* Must end with a number or a letter." type="//@types.11"/>
-    <attributes name="initialClusterVersion" required="true" description="The initial Kubernetes version for this cluster.  Valid versions are those&#xA;found in validMasterVersions returned by getServerConfig.  The version can&#xA;be upgraded over time; such upgrades are reflected in&#xA;currentMasterVersion and currentNodeVersion." type="//@types.11"/>
-    <attributes name="endpoint" required="true" description="[Output only] The IP address of this cluster's master endpoint.&#xA;The endpoint can be accessed from the internet at&#xA;`https://username:password@endpoint/`.&#xA;&#xA;See the `masterAuth` property of this resource for username and&#xA;password information." type="//@types.11"/>
-    <attributes name="createTime" required="true" description="[Output only] The time the cluster was created, in&#xA;[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format." type="//@types.11"/>
-    <attributes name="clusterIpv4Cidr" required="true" description="The IP address range of the container pods in this cluster, in&#xA;[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)&#xA;notation (e.g. `10.96.0.0/14`). Leave blank to have&#xA;one automatically chosen or specify a `/14` block in `10.0.0.0/8`." type="//@types.11"/>
-    <attributes name="initialNodeCount" required="true" description="The number of nodes to create in this cluster. You must ensure that your&#xA;Compute Engine &lt;a href=&quot;/compute/docs/resource-quotas&quot;>resource quota&lt;/a>&#xA;is sufficient for this number of instances. You must also have available&#xA;firewall and routes quota.&#xA;For requests, this field should only be used in lieu of a&#xA;&quot;node_pool&quot; object, since this configuration (along with the&#xA;&quot;node_config&quot;) will be used to create a &quot;NodePool&quot; object with an&#xA;auto-generated name. Do not use this and a node_pool at the same time." type="//@types.3"/>
-    <attributes name="selfLink" required="true" description="[Output only] Server-defined URL for the resource." type="//@types.11"/>
-    <attributes name="locations" required="true" description="The list of Google Compute Engine&#xA;[locations](/compute/docs/zones#available) in which the cluster's nodes&#xA;should be located." type="//@types.7"/>
-    <attributes name="nodePools" required="true" description="The node pools associated with this cluster.&#xA;This field should not be set if &quot;node_config&quot; or &quot;initial_node_count&quot; are&#xA;specified." type="//@types.7"/>
-    <attributes name="instanceGroupUrls" required="true" description="[Output only] The resource URLs of [instance&#xA;groups](/compute/docs/instance-groups/) associated with this&#xA;cluster." type="//@types.7"/>
-    <attributes name="servicesIpv4Cidr" required="true" description="[Output only] The IP address range of the Kubernetes services in&#xA;this cluster, in&#xA;[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)&#xA;notation (e.g. `1.2.3.4/29`). Service addresses are&#xA;typically put in the last `/16` from the container CIDR." type="//@types.11"/>
-    <attributes name="enableKubernetesAlpha" required="true" description="Kubernetes alpha features are enabled on this cluster. This includes alpha&#xA;API groups (e.g. v1alpha1) and features that may not be production ready in&#xA;the kubernetes version of the master and nodes.&#xA;The cluster has no SLA for uptime and master/node upgrades are disabled.&#xA;Alpha enabled clusters are automatically deleted thirty days after&#xA;creation." type="//@types.6"/>
-    <attributes name="description" required="true" description="An optional description of this cluster." type="//@types.11"/>
-    <attributes name="currentNodeCount" required="true" description="[Output only] The number of nodes currently in the cluster." type="//@types.3"/>
-    <attributes name="monitoringService" required="true" description="The monitoring service the cluster should use to write metrics.&#xA;Currently available options:&#xA;&#xA;* `monitoring.googleapis.com` - the Google Cloud Monitoring service.&#xA;* `none` - no metrics will be exported from the cluster.&#xA;* if left as an empty string, `monitoring.googleapis.com` will be used." type="//@types.11"/>
+    <attributes name="network" required="true" description="The name of the Google Compute Engine&#xA;[network](/compute/docs/networks-and-firewalls#networks) to which the&#xA;cluster is connected. If left unspecified, the `default` network&#xA;will be used.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="labelFingerprint" required="true" description="The fingerprint of the set of labels for this cluster.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="zone" required="true" description="[Output only] The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="expireTime" required="true" description="[Output only] The time the cluster will be automatically&#xA;deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nodeIpv4CidrSize" required="true" description="[Output only] The size of the address space on each node for hosting&#xA;containers. This is provisioned from within the `container_ipv4_cidr`&#xA;range.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="loggingService" required="true" description="The logging service the cluster should use to write logs.&#xA;Currently available options:&#xA;&#xA;* `logging.googleapis.com` - the Google Cloud Logging service.&#xA;* `none` - no logs will be exported from the cluster.&#xA;* if left as an empty string,`logging.googleapis.com` will be used.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="statusMessage" required="true" description="[Output only] Additional information about the current status of this&#xA;cluster, if available.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="currentMasterVersion" required="true" description="[Output only] The current software version of the master endpoint.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="status" required="true" description="[Output only] The current status of this cluster.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="subnetwork" required="true" description="The name of the Google Compute Engine&#xA;[subnetwork](/compute/docs/subnetworks) to which the&#xA;cluster is connected.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="currentNodeVersion" required="true" description="[Output only] The current version of the node software components.&#xA;If they are currently at multiple versions because they're in the process&#xA;of being upgraded, this reflects the minimum version of all nodes.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="resourceLabels" required="true" description="The resource labels for the cluster to use to annotate any related&#xA;Google Compute Engine resources." type="//@types.6"/>
+    <attributes name="name" required="true" description="The name of this cluster. The name must be unique within this project&#xA;and zone, and can be up to 40 characters with the following restrictions:&#xA;&#xA;* Lowercase letters, numbers, and hyphens only.&#xA;* Must start with a letter.&#xA;* Must end with a number or a letter.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="initialClusterVersion" required="true" description="The initial Kubernetes version for this cluster.  Valid versions are those&#xA;found in validMasterVersions returned by getServerConfig.  The version can&#xA;be upgraded over time; such upgrades are reflected in&#xA;currentMasterVersion and currentNodeVersion.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="endpoint" required="true" description="[Output only] The IP address of this cluster's master endpoint.&#xA;The endpoint can be accessed from the internet at&#xA;`https://username:password@endpoint/`.&#xA;&#xA;See the `masterAuth` property of this resource for username and&#xA;password information.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="createTime" required="true" description="[Output only] The time the cluster was created, in&#xA;[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="clusterIpv4Cidr" required="true" description="The IP address range of the container pods in this cluster, in&#xA;[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)&#xA;notation (e.g. `10.96.0.0/14`). Leave blank to have&#xA;one automatically chosen or specify a `/14` block in `10.0.0.0/8`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="initialNodeCount" required="true" description="The number of nodes to create in this cluster. You must ensure that your&#xA;Compute Engine &lt;a href=&quot;/compute/docs/resource-quotas&quot;>resource quota&lt;/a>&#xA;is sufficient for this number of instances. You must also have available&#xA;firewall and routes quota.&#xA;For requests, this field should only be used in lieu of a&#xA;&quot;node_pool&quot; object, since this configuration (along with the&#xA;&quot;node_config&quot;) will be used to create a &quot;NodePool&quot; object with an&#xA;auto-generated name. Do not use this and a node_pool at the same time.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="selfLink" required="true" description="[Output only] Server-defined URL for the resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="locations" required="true" description="The list of Google Compute Engine&#xA;[locations](/compute/docs/zones#available) in which the cluster's nodes&#xA;should be located." type="//@types.5"/>
+    <attributes name="nodePools" required="true" description="The node pools associated with this cluster.&#xA;This field should not be set if &quot;node_config&quot; or &quot;initial_node_count&quot; are&#xA;specified." type="//@types.5"/>
+    <attributes name="instanceGroupUrls" required="true" description="[Output only] The resource URLs of [instance&#xA;groups](/compute/docs/instance-groups/) associated with this&#xA;cluster." type="//@types.5"/>
+    <attributes name="servicesIpv4Cidr" required="true" description="[Output only] The IP address range of the Kubernetes services in&#xA;this cluster, in&#xA;[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)&#xA;notation (e.g. `1.2.3.4/29`). Service addresses are&#xA;typically put in the last `/16` from the container CIDR.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="enableKubernetesAlpha" required="true" description="Kubernetes alpha features are enabled on this cluster. This includes alpha&#xA;API groups (e.g. v1alpha1) and features that may not be production ready in&#xA;the kubernetes version of the master and nodes.&#xA;The cluster has no SLA for uptime and master/node upgrades are disabled.&#xA;Alpha enabled clusters are automatically deleted thirty days after&#xA;creation.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="description" required="true" description="An optional description of this cluster.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="currentNodeCount" required="true" description="[Output only] The number of nodes currently in the cluster.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="monitoringService" required="true" description="The monitoring service the cluster should use to write metrics.&#xA;Currently available options:&#xA;&#xA;* `monitoring.googleapis.com` - the Google Cloud Monitoring service.&#xA;* `none` - no metrics will be exported from the cluster.&#xA;* if left as an empty string, `monitoring.googleapis.com` will be used.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="create" scheme="http://occi/gcpcontainer/cluster/action#" title="Creates a cluster, consisting of the specified number and type of Google&#xA;Compute Engine instances.&#xA;&#xA;By default, the cluster is created in the project's&#xA;[default network](/compute/docs/networks-and-firewalls#networks).&#xA;&#xA;One firewall is added for the cluster. After cluster creation,&#xA;the cluster creates routes for each node to allow the containers&#xA;on that node to communicate with all other instances in the&#xA;cluster.&#xA;&#xA;Finally, an entry is added to the project's global metadata indicating&#xA;which CIDR range is being used by the cluster.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="resourceLabels" scheme="http://occi/gcpcontainer/cluster/action#" title="Sets labels on a cluster.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="completeIpRotation" scheme="http://occi/gcpcontainer/cluster/action#" title="Completes master IP rotation.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpcontainer/cluster/action#" title="Gets the details of a specific cluster.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to retrieve." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to retrieve.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="legacyAbac" scheme="http://occi/gcpcontainer/cluster/action#" title="Enables or disables the ABAC authorization mechanism on a cluster.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to update." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to update.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="setNetworkPolicy" scheme="http://occi/gcpcontainer/cluster/action#" title="Enables/Disables Network Policy for a cluster.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="startIpRotation" scheme="http://occi/gcpcontainer/cluster/action#" title="Start master IP rotation.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="addons" scheme="http://occi/gcpcontainer/cluster/action#" title="Sets the addons of a specific cluster.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="setMaintenancePolicy" scheme="http://occi/gcpcontainer/cluster/action#" title="Sets the maintenance policy for a cluster.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to update." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to update.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="delete" scheme="http://occi/gcpcontainer/cluster/action#" title="Deletes the cluster, including the Kubernetes endpoint and all worker&#xA;nodes.&#xA;&#xA;Firewalls and routes that were configured during cluster creation&#xA;are also deleted.&#xA;&#xA;Other Google Compute Engine resources that might be in use by the cluster&#xA;(e.g. load balancer resources) will not be deleted if they weren't present&#xA;at the initial create time.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to delete." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to delete.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="locations" scheme="http://occi/gcpcontainer/cluster/action#" title="Sets the locations of a specific cluster.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="update" scheme="http://occi/gcpcontainer/cluster/action#" title="Updates the settings of a specific cluster.">
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade." type="//@types.11"/>
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="monitoring" scheme="http://occi/gcpcontainer/cluster/action#" title="Sets the monitoring service of a specific cluster.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="master" scheme="http://occi/gcpcontainer/cluster/action#" title="Updates the master of a specific cluster.">
-      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade." type="//@types.11"/>
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
+      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="setMasterAuth" scheme="http://occi/gcpcontainer/cluster/action#" title="Used to set master auth materials. Currently supports :-&#xA;Changing the admin password of a specific cluster.&#xA;This can be either via password generation or explicitly set the password.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="logging" scheme="http://occi/gcpcontainer/cluster/action#" title="Sets the logging service of a specific cluster.">
-      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade." type="//@types.11"/>
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.11"/>
+      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpcontainer/cluster/action#" title="Lists all clusters owned by a project in either the specified zone or all&#xA;zones.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.11"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides, or &quot;-&quot; for all zones." type="//@types.11"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides, or &quot;-&quot; for all zones.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
@@ -166,16 +314,30 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="MasterAuth" scheme="http://occi/gcpcontainer#" title="The authentication information for accessing the master endpoint.&#xA;Authentication can be done using HTTP basic auth or using client&#xA;certificates.">
-    <attributes name="clusterCaCertificate" required="true" description="[Output only] Base64-encoded public certificate that is the root of&#xA;trust for the cluster." type="//@types.11"/>
-    <attributes name="clientCertificate" required="true" description="[Output only] Base64-encoded public certificate used by clients to&#xA;authenticate to the cluster endpoint." type="//@types.11"/>
-    <attributes name="username" required="true" description="The username to use for HTTP basic authentication to the master endpoint.&#xA;For clusters v1.6.0 and later, you can disable basic authentication by&#xA;providing an empty username." type="//@types.11"/>
-    <attributes name="password" required="true" description="The password to use for HTTP basic authentication to the master endpoint.&#xA;Because the master endpoint is open to the Internet, you should create a&#xA;strong password.  If a password is provided for cluster creation, username&#xA;must be non-empty." type="//@types.11"/>
-    <attributes name="clientKey" required="true" description="[Output only] Base64-encoded private key used by clients to authenticate&#xA;to the cluster endpoint." type="//@types.11"/>
+    <attributes name="clusterCaCertificate" required="true" description="[Output only] Base64-encoded public certificate that is the root of&#xA;trust for the cluster.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="clientCertificate" required="true" description="[Output only] Base64-encoded public certificate used by clients to&#xA;authenticate to the cluster endpoint.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="username" required="true" description="The username to use for HTTP basic authentication to the master endpoint.&#xA;For clusters v1.6.0 and later, you can disable basic authentication by&#xA;providing an empty username.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="password" required="true" description="The password to use for HTTP basic authentication to the master endpoint.&#xA;Because the master endpoint is open to the Internet, you should create a&#xA;strong password.  If a password is provided for cluster creation, username&#xA;must be non-empty.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="clientKey" required="true" description="[Output only] Base64-encoded private key used by clients to authenticate&#xA;to the cluster endpoint.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="DailyMaintenanceWindow" scheme="http://occi/gcpcontainer#" title="Time window specified for daily maintenance operations.">
-    <attributes name="duration" required="true" description="[Output only] Duration of the time window, automatically chosen to be&#xA;smallest possible in the given scenario.&#xA;Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)&#xA;format &quot;PTnHnMnS&quot;." type="//@types.11"/>
-    <attributes name="startTime" required="true" description="Time within the maintenance window to start the maintenance operations.&#xA;Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)&#xA;format &quot;HH:MM&#xe2;&#x20ac;&#xfffd;, where HH : [00-23] and MM : [00-59] GMT." type="//@types.11"/>
+    <attributes name="duration" required="true" description="[Output only] Duration of the time window, automatically chosen to be&#xA;smallest possible in the given scenario.&#xA;Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)&#xA;format &quot;PTnHnMnS&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="Time within the maintenance window to start the maintenance operations.&#xA;Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)&#xA;format &quot;HH:MM&#xe2;&#x20ac;&#xfffd;, where HH : [00-23] and MM : [00-59] GMT.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="MaintenanceWindowLink" scheme="http://occi/gcpcontainer#" title="Specifies the maintenance window in which maintenance may be performed." source="//@kinds[term='maintenancepolicy']" target="//@kinds[term='maintenancewindow']">
@@ -185,14 +347,18 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ClientCertificateConfig" scheme="http://occi/gcpcontainer#" title="Configuration for client certificates on the cluster.">
-    <attributes name="issueClientCertificate" required="true" description="Issue a client certificate." type="//@types.6"/>
+    <attributes name="issueClientCertificate" required="true" description="Issue a client certificate.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SetLoggingServiceRequest" scheme="http://occi/gcpcontainer#" title="SetLoggingServiceRequest sets the logging service of a cluster.">
-    <attributes name="loggingService" required="true" description="The logging service the cluster should use to write metrics.&#xA;Currently available options:&#xA;&#xA;* &quot;logging.googleapis.com&quot; - the Google Cloud Logging service&#xA;* &quot;none&quot; - no metrics will be exported from the cluster" type="//@types.11"/>
+    <attributes name="loggingService" required="true" description="The logging service the cluster should use to write metrics.&#xA;Currently available options:&#xA;&#xA;* &quot;logging.googleapis.com&quot; - the Google Cloud Logging service&#xA;* &quot;none&quot; - no metrics will be exported from the cluster">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="SetMaintenancePolicyRequestMaintenancePolicyLink" scheme="http://occi/gcpcontainer#" title="The maintenance policy to be set for the cluster. An empty field&#xA;clears the existing maintenance policy." source="//@kinds[term='setmaintenancepolicyrequest']" target="//@kinds[term='maintenancepolicy']">
+  <kinds name="SetMaintenancePolicyRequestmaintenancePolicyMaintenancePolicyLink" scheme="http://occi/gcpcontainer#" title="The maintenance policy to be set for the cluster. An empty field&#xA;clears the existing maintenance policy." source="//@kinds[term='setmaintenancepolicyrequest']" target="//@kinds[term='maintenancepolicy']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="SetMaintenancePolicyRequest" scheme="http://occi/gcpcontainer#" title="SetMaintenancePolicyRequest sets the maintenance policy for a cluster.">
@@ -202,7 +368,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListNodePoolsResponse" scheme="http://occi/gcpcontainer#" title="ListNodePoolsResponse is the result of ListNodePoolsRequest.">
-    <attributes name="nodePools" required="true" description="A list of node pools for a cluster." type="//@types.7"/>
+    <attributes name="nodePools" required="true" description="A list of node pools for a cluster." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="CompleteIPRotationRequest" scheme="http://occi/gcpcontainer#" title="CompleteIPRotationRequest moves the cluster master back into single-IP mode.">
@@ -212,11 +378,13 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SetLabelsRequest" scheme="http://occi/gcpcontainer#" title="SetLabelsRequest sets the Google Cloud Platform labels on a Google Container&#xA;Engine cluster, which will in turn set them for Google Compute Engine&#xA;resources used by that cluster">
-    <attributes name="resourceLabels" required="true" description="The labels to set for that cluster." type="//@types.9"/>
-    <attributes name="labelFingerprint" required="true" description="The fingerprint of the previous set of labels for this resource,&#xA;used to detect conflicts. The fingerprint is initially generated by&#xA;Container Engine and changes after every request to modify or update&#xA;labels. You must always provide an up-to-date fingerprint hash when&#xA;updating or changing labels. Make a &lt;code>get()&lt;/code> request to the&#xA;resource to get the latest fingerprint." type="//@types.11"/>
+    <attributes name="resourceLabels" required="true" description="The labels to set for that cluster." type="//@types.6"/>
+    <attributes name="labelFingerprint" required="true" description="The fingerprint of the previous set of labels for this resource,&#xA;used to detect conflicts. The fingerprint is initially generated by&#xA;Container Engine and changes after every request to modify or update&#xA;labels. You must always provide an up-to-date fingerprint hash when&#xA;updating or changing labels. Make a &lt;code>get()&lt;/code> request to the&#xA;resource to get the latest fingerprint.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="NodePoolNodeConfigLink" scheme="http://occi/gcpcontainer#" title="The node configuration of the pool." source="//@kinds[term='nodepool']" target="//@kinds[term='nodeconfig']">
+  <kinds name="NodePoolconfigNodeConfigLink" scheme="http://occi/gcpcontainer#" title="The node configuration of the pool." source="//@kinds[term='nodepool']" target="//@kinds[term='nodeconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="NodePoolAutoscalingLink" scheme="http://occi/gcpcontainer#" title="Autoscaler configuration for this NodePool. Autoscaler is enabled&#xA;only if a valid configuration is present." source="//@kinds[term='nodepool']" target="//@kinds[term='nodepoolautoscaling']">
@@ -226,64 +394,144 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="NodePool" scheme="http://occi/gcpcontainer#" title="NodePool contains the name and configuration for a cluster's node pool.&#xA;Node pools are a set of nodes (i.e. VM's), with a common configuration and&#xA;specification, under the control of the cluster master. They may have a set&#xA;of Kubernetes labels applied to them, which may be used to reference them&#xA;during pod scheduling. They may also be resized up or down, to accommodate&#xA;the workload.">
-    <attributes name="status" required="true" description="[Output only] The status of the nodes in this pool instance." type="//@types.12"/>
-    <attributes name="statusMessage" required="true" description="[Output only] Additional information about the current status of this&#xA;node pool instance, if available." type="//@types.12"/>
-    <attributes name="name" required="true" description="The name of the node pool." type="//@types.12"/>
-    <attributes name="initialNodeCount" required="true" description="The initial node count for the pool. You must ensure that your&#xA;Compute Engine &lt;a href=&quot;/compute/docs/resource-quotas&quot;>resource quota&lt;/a>&#xA;is sufficient for this number of instances. You must also have available&#xA;firewall and routes quota." type="//@types.3"/>
-    <attributes name="selfLink" required="true" description="[Output only] Server-defined URL for the resource." type="//@types.12"/>
-    <attributes name="instanceGroupUrls" required="true" description="[Output only] The resource URLs of [instance&#xA;groups](/compute/docs/instance-groups/) associated with this&#xA;node pool." type="//@types.7"/>
-    <attributes name="version" required="true" description="[Output only] The version of the Kubernetes of this node." type="//@types.12"/>
+    <attributes name="status" required="true" description="[Output only] The status of the nodes in this pool instance.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="statusMessage" required="true" description="[Output only] Additional information about the current status of this&#xA;node pool instance, if available.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="The name of the node pool.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="initialNodeCount" required="true" description="The initial node count for the pool. You must ensure that your&#xA;Compute Engine &lt;a href=&quot;/compute/docs/resource-quotas&quot;>resource quota&lt;/a>&#xA;is sufficient for this number of instances. You must also have available&#xA;firewall and routes quota.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="selfLink" required="true" description="[Output only] Server-defined URL for the resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="instanceGroupUrls" required="true" description="[Output only] The resource URLs of [instance&#xA;groups](/compute/docs/instance-groups/) associated with this&#xA;node pool." type="//@types.5"/>
+    <attributes name="version" required="true" description="[Output only] The version of the Kubernetes of this node.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="setSize" scheme="http://occi/gcpcontainer/nodepool/action#" title="Sets the size of a specific node pool.">
-      <attributes name="clusterId" required="true" description="The name of the cluster to update." type="//@types.12"/>
-      <attributes name="nodePoolId" required="true" description="The name of the node pool to update." type="//@types.12"/>
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.12"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.12"/>
+      <attributes name="clusterId" required="true" description="The name of the cluster to update.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="nodePoolId" required="true" description="The name of the node pool to update.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="setManagement" scheme="http://occi/gcpcontainer/nodepool/action#" title="Sets the NodeManagement options for a node pool.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.12"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.12"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to update." type="//@types.12"/>
-      <attributes name="nodePoolId" required="true" description="The name of the node pool to update." type="//@types.12"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to update.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="nodePoolId" required="true" description="The name of the node pool to update.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="delete" scheme="http://occi/gcpcontainer/nodepool/action#" title="Deletes a node pool from a cluster.">
-      <attributes name="clusterId" required="true" description="The name of the cluster." type="//@types.12"/>
-      <attributes name="nodePoolId" required="true" description="The name of the node pool to delete." type="//@types.12"/>
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber)." type="//@types.12"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.12"/>
+      <attributes name="clusterId" required="true" description="The name of the cluster.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="nodePoolId" required="true" description="The name of the node pool to delete.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpcontainer/nodepool/action#" title="Lists the node pools for a cluster.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber)." type="//@types.12"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.12"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster." type="//@types.12"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="rollback" scheme="http://occi/gcpcontainer/nodepool/action#" title="Roll back the previously Aborted or Failed NodePool upgrade.&#xA;This will be an no-op if the last upgrade successfully completed.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.12"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.12"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to rollback." type="//@types.12"/>
-      <attributes name="nodePoolId" required="true" description="The name of the node pool to rollback." type="//@types.12"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to rollback.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="nodePoolId" required="true" description="The name of the node pool to rollback.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="create" scheme="http://occi/gcpcontainer/nodepool/action#" title="Creates a node pool for a cluster.">
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.12"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster." type="//@types.12"/>
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber)." type="//@types.12"/>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="autoscaling" scheme="http://occi/gcpcontainer/nodepool/action#" title="Sets the autoscaling settings of a specific node pool.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.12"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.12"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade." type="//@types.12"/>
-      <attributes name="nodePoolId" required="true" description="The name of the node pool to upgrade." type="//@types.12"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="nodePoolId" required="true" description="The name of the node pool to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpcontainer/nodepool/action#" title="Retrieves the node pool requested.">
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.12"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster." type="//@types.12"/>
-      <attributes name="nodePoolId" required="true" description="The name of the node pool." type="//@types.12"/>
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber)." type="//@types.12"/>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="nodePoolId" required="true" description="The name of the node pool.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://developers.google.com/console/help/new/#projectnumber).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="update" scheme="http://occi/gcpcontainer/nodepool/action#" title="Updates the version and/or image type of a specific node pool.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.12"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.12"/>
-      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade." type="//@types.12"/>
-      <attributes name="nodePoolId" required="true" description="The name of the node pool to upgrade." type="//@types.12"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="clusterId" required="true" description="The name of the cluster to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="nodePoolId" required="true" description="The name of the node pool to upgrade.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
@@ -291,41 +539,83 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="NodeManagement" scheme="http://occi/gcpcontainer#" title="NodeManagement defines the set of node management services turned on for the&#xA;node pool.">
-    <attributes name="autoRepair" required="true" description="A flag that specifies whether the node auto-repair is enabled for the node&#xA;pool. If enabled, the nodes in this node pool will be monitored and, if&#xA;they fail health checks too many times, an automatic repair action will be&#xA;triggered." type="//@types.6"/>
-    <attributes name="autoUpgrade" required="true" description="A flag that specifies whether node auto-upgrade is enabled for the node&#xA;pool. If enabled, node auto-upgrade helps keep the nodes in your node pool&#xA;up to date with the latest release version of Kubernetes." type="//@types.6"/>
+    <attributes name="autoRepair" required="true" description="A flag that specifies whether the node auto-repair is enabled for the node&#xA;pool. If enabled, the nodes in this node pool will be monitored and, if&#xA;they fail health checks too many times, an automatic repair action will be&#xA;triggered.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="autoUpgrade" required="true" description="A flag that specifies whether node auto-upgrade is enabled for the node&#xA;pool. If enabled, node auto-upgrade helps keep the nodes in your node pool&#xA;up to date with the latest release version of Kubernetes.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="CancelOperationRequest" scheme="http://occi/gcpcontainer#" title="CancelOperationRequest cancels a single operation.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="KubernetesDashboard" scheme="http://occi/gcpcontainer#" title="Configuration for the Kubernetes Dashboard.">
-    <attributes name="disabled" required="true" description="Whether the Kubernetes Dashboard is enabled for this cluster." type="//@types.6"/>
+    <attributes name="disabled" required="true" description="Whether the Kubernetes Dashboard is enabled for this cluster.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Operation" scheme="http://occi/gcpcontainer#" title="This operation resource represents operations that may have happened or are&#xA;happening on the cluster. All fields are output only.">
-    <attributes name="selfLink" required="true" description="Server-defined URL for the resource." type="//@types.12"/>
-    <attributes name="detail" required="true" description="Detailed operation progress, if available." type="//@types.12"/>
-    <attributes name="targetLink" required="true" description="Server-defined URL for the target of the operation." type="//@types.12"/>
-    <attributes name="endTime" required="true" description="[Output only] The time the operation completed, in&#xA;[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format." type="//@types.12"/>
-    <attributes name="operationType" required="true" description="The operation type." type="//@types.13"/>
-    <attributes name="startTime" required="true" description="[Output only] The time the operation started, in&#xA;[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format." type="//@types.13"/>
-    <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the operation&#xA;is taking place." type="//@types.13"/>
-    <attributes name="status" required="true" description="The current status of the operation." type="//@types.14"/>
-    <attributes name="name" required="true" description="The server-assigned ID for the operation." type="//@types.14"/>
-    <attributes name="statusMessage" required="true" description="If an error has occurred, a textual description of the error." type="//@types.14"/>
+    <attributes name="selfLink" required="true" description="Server-defined URL for the resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="detail" required="true" description="Detailed operation progress, if available.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="targetLink" required="true" description="Server-defined URL for the target of the operation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="endTime" required="true" description="[Output only] The time the operation completed, in&#xA;[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="operationType" required="true" description="The operation type.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="[Output only] The time the operation started, in&#xA;[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the operation&#xA;is taking place.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="status" required="true" description="The current status of the operation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="The server-assigned ID for the operation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="statusMessage" required="true" description="If an error has occurred, a textual description of the error.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="cancel" scheme="http://occi/gcpcontainer/operation/action#" title="Cancels the specified operation.">
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the operation resides." type="//@types.14"/>
-      <attributes name="operationId" required="true" description="The server-assigned `name` of the operation." type="//@types.14"/>
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.14"/>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the operation resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="operationId" required="true" description="The server-assigned `name` of the operation.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpcontainer/operation/action#" title="Gets the specified operation.">
-      <attributes name="operationId" required="true" description="The server-assigned `name` of the operation." type="//@types.14"/>
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.14"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides." type="//@types.14"/>
+      <attributes name="operationId" required="true" description="The server-assigned `name` of the operation.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine&#xA;[zone](/compute/docs/zones#available) in which the cluster&#xA;resides.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpcontainer/operation/action#" title="Lists all operations in a project in a specific zone or all zones.">
-      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840)." type="//@types.14"/>
-      <attributes name="zone" required="true" description="The name of the Google Compute Engine [zone](/compute/docs/zones#available)&#xA;to return operations for, or `-` for all zones." type="//@types.14"/>
+      <attributes name="projectId" required="true" description="The Google Developers Console [project ID or project&#xA;number](https://support.google.com/cloud/answer/6158840).">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="zone" required="true" description="The name of the Google Compute Engine [zone](/compute/docs/zones#available)&#xA;to return operations for, or `-` for all zones.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
@@ -339,132 +629,212 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="NetworkPolicy" scheme="http://occi/gcpcontainer#" title="Configuration options for the NetworkPolicy feature.&#xA;https://kubernetes.io/docs/concepts/services-networking/networkpolicies/">
-    <attributes name="enabled" required="true" description="Whether network policy is enabled on the cluster." type="//@types.6"/>
-    <attributes name="provider" required="true" description="The selected network policy provider." type="//@types.15"/>
+    <attributes name="enabled" required="true" description="Whether network policy is enabled on the cluster.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="provider" required="true" description="The selected network policy provider.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="UpdateMasterRequest" scheme="http://occi/gcpcontainer#" title="UpdateMasterRequest updates the master of the cluster.">
-    <attributes name="masterVersion" required="true" description="The Kubernetes version to change the master to. The only valid value is the&#xA;latest supported version. Use &quot;-&quot; to have the server automatically select&#xA;the latest version." type="//@types.15"/>
+    <attributes name="masterVersion" required="true" description="The Kubernetes version to change the master to. The only valid value is the&#xA;latest supported version. Use &quot;-&quot; to have the server automatically select&#xA;the latest version.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListOperationsResponse" scheme="http://occi/gcpcontainer#" title="ListOperationsResponse is the result of ListOperationsRequest.">
-    <attributes name="operations" required="true" description="A list of operations in the project in the specified zone." type="//@types.7"/>
-    <attributes name="missingZones" required="true" description="If any zones are listed here, the list of operations returned&#xA;may be missing the operations from those zones." type="//@types.7"/>
+    <attributes name="operations" required="true" description="A list of operations in the project in the specified zone." type="//@types.5"/>
+    <attributes name="missingZones" required="true" description="If any zones are listed here, the list of operations returned&#xA;may be missing the operations from those zones." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="CidrBlock" scheme="http://occi/gcpcontainer#" title="CidrBlock contains an optional name and one CIDR block.">
-    <attributes name="displayName" required="true" description="display_name is an optional field for users to identify CIDR blocks." type="//@types.15"/>
-    <attributes name="cidrBlock" required="true" description="cidr_block must be specified in CIDR notation." type="//@types.15"/>
+    <attributes name="displayName" required="true" description="display_name is an optional field for users to identify CIDR blocks.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="cidrBlock" required="true" description="cidr_block must be specified in CIDR notation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SetMonitoringServiceRequest" scheme="http://occi/gcpcontainer#" title="SetMonitoringServiceRequest sets the monitoring service of a cluster.">
-    <attributes name="monitoringService" required="true" description="The monitoring service the cluster should use to write metrics.&#xA;Currently available options:&#xA;&#xA;* &quot;monitoring.googleapis.com&quot; - the Google Cloud Monitoring service&#xA;* &quot;none&quot; - no metrics will be exported from the cluster" type="//@types.15"/>
+    <attributes name="monitoringService" required="true" description="The monitoring service the cluster should use to write metrics.&#xA;Currently available options:&#xA;&#xA;* &quot;monitoring.googleapis.com&quot; - the Google Cloud Monitoring service&#xA;* &quot;none&quot; - no metrics will be exported from the cluster">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ServerConfig" scheme="http://occi/gcpcontainer#" title="Container Engine service configuration.">
-    <attributes name="validMasterVersions" required="true" description="List of valid master versions." type="//@types.7"/>
-    <attributes name="defaultImageType" required="true" description="Default image type." type="//@types.15"/>
-    <attributes name="defaultClusterVersion" required="true" description="Version of Kubernetes the service deploys by default." type="//@types.15"/>
-    <attributes name="validImageTypes" required="true" description="List of valid image types." type="//@types.7"/>
-    <attributes name="validNodeVersions" required="true" description="List of valid node upgrade target versions." type="//@types.7"/>
+    <attributes name="validMasterVersions" required="true" description="List of valid master versions." type="//@types.5"/>
+    <attributes name="defaultImageType" required="true" description="Default image type.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="defaultClusterVersion" required="true" description="Version of Kubernetes the service deploys by default.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="validImageTypes" required="true" description="List of valid image types." type="//@types.5"/>
+    <attributes name="validNodeVersions" required="true" description="List of valid node upgrade target versions." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="NodeConfig" scheme="http://occi/gcpcontainer#" title="Parameters that describe the nodes in a cluster.">
-    <attributes name="tags" required="true" description="The list of instance tags applied to all nodes. Tags are used to identify&#xA;valid sources or targets for network firewalls and are specified by&#xA;the client during cluster or node pool creation. Each tag within the list&#xA;must comply with RFC1035." type="//@types.7"/>
-    <attributes name="serviceAccount" required="true" description="The Google Cloud Platform Service Account to be used by the node VMs. If&#xA;no Service Account is specified, the &quot;default&quot; service account is used." type="//@types.15"/>
-    <attributes name="imageType" required="true" description="The image type to use for this node. Note that for a given image type,&#xA;the latest version of it will be used." type="//@types.15"/>
-    <attributes name="oauthScopes" required="true" description="The set of Google API scopes to be made available on all of the&#xA;node VMs under the &quot;default&quot; service account.&#xA;&#xA;The following scopes are recommended, but not required, and by default are&#xA;not included:&#xA;&#xA;* `https://www.googleapis.com/auth/compute` is required for mounting&#xA;persistent storage on your nodes.&#xA;* `https://www.googleapis.com/auth/devstorage.read_only` is required for&#xA;communicating with **gcr.io**&#xA;(the [Google Container Registry](/container-registry/)).&#xA;&#xA;If unspecified, no scopes are added, unless Cloud Logging or Cloud&#xA;Monitoring are enabled, in which case their required scopes will be added." type="//@types.7"/>
-    <attributes name="labels" required="true" description="The map of Kubernetes labels (key/value pairs) to be applied to each node.&#xA;These will added in addition to any default label(s) that&#xA;Kubernetes may apply to the node.&#xA;In case of conflict in label keys, the applied set may differ depending on&#xA;the Kubernetes version -- it's best to assume the behavior is undefined&#xA;and conflicts should be avoided.&#xA;For more information, including usage and the valid values, see:&#xA;https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/" type="//@types.9"/>
-    <attributes name="diskSizeGb" required="true" description="Size of the disk attached to each node, specified in GB.&#xA;The smallest allowed disk size is 10GB.&#xA;&#xA;If unspecified, the default disk size is 100GB." type="//@types.3"/>
-    <attributes name="accelerators" required="true" description="A list of hardware accelerators to be attached to each node.&#xA;See https://cloud.google.com/compute/docs/gpus for more information about&#xA;support for GPUs." type="//@types.7"/>
-    <attributes name="machineType" required="true" description="The name of a Google Compute Engine [machine&#xA;type](/compute/docs/machine-types) (e.g.&#xA;`n1-standard-1`).&#xA;&#xA;If unspecified, the default machine type is&#xA;`n1-standard-1`." type="//@types.15"/>
-    <attributes name="minCpuPlatform" required="true" description="Minimum CPU platform to be used by this instance. The instance may be&#xA;scheduled on the specified or newer CPU platform. Applicable values are the&#xA;friendly names of CPU platforms, such as&#xA;&lt;code>minCpuPlatform: &amp;quot;Intel Haswell&amp;quot;&lt;/code> or&#xA;&lt;code>minCpuPlatform: &amp;quot;Intel Sandy Bridge&amp;quot;&lt;/code>. For more&#xA;information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)" type="//@types.15"/>
-    <attributes name="preemptible" required="true" description="Whether the nodes are created as preemptible VM instances. See:&#xA;https://cloud.google.com/compute/docs/instances/preemptible for more&#xA;information about preemptible VM instances." type="//@types.6"/>
-    <attributes name="localSsdCount" required="true" description="The number of local SSD disks to be attached to the node.&#xA;&#xA;The limit for this value is dependant upon the maximum number of&#xA;disks available on a machine per zone. See:&#xA;https://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits&#xA;for more information." type="//@types.3"/>
-    <attributes name="metadata" required="true" description="The metadata key/value pairs assigned to instances in the cluster.&#xA;&#xA;Keys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes&#xA;in length. These are reflected as part of a URL in the metadata server.&#xA;Additionally, to avoid ambiguity, keys must not conflict with any other&#xA;metadata keys for the project or be one of the four reserved keys:&#xA;&quot;instance-template&quot;, &quot;kube-env&quot;, &quot;startup-script&quot;, and &quot;user-data&quot;&#xA;&#xA;Values are free-form strings, and only have meaning as interpreted by&#xA;the image running in the instance. The only restriction placed on them is&#xA;that each value's size must be less than or equal to 32 KB.&#xA;&#xA;The total size of all keys and values must be less than 512 KB." type="//@types.9"/>
+    <attributes name="tags" required="true" description="The list of instance tags applied to all nodes. Tags are used to identify&#xA;valid sources or targets for network firewalls and are specified by&#xA;the client during cluster or node pool creation. Each tag within the list&#xA;must comply with RFC1035." type="//@types.5"/>
+    <attributes name="serviceAccount" required="true" description="The Google Cloud Platform Service Account to be used by the node VMs. If&#xA;no Service Account is specified, the &quot;default&quot; service account is used.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="imageType" required="true" description="The image type to use for this node. Note that for a given image type,&#xA;the latest version of it will be used.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="oauthScopes" required="true" description="The set of Google API scopes to be made available on all of the&#xA;node VMs under the &quot;default&quot; service account.&#xA;&#xA;The following scopes are recommended, but not required, and by default are&#xA;not included:&#xA;&#xA;* `https://www.googleapis.com/auth/compute` is required for mounting&#xA;persistent storage on your nodes.&#xA;* `https://www.googleapis.com/auth/devstorage.read_only` is required for&#xA;communicating with **gcr.io**&#xA;(the [Google Container Registry](/container-registry/)).&#xA;&#xA;If unspecified, no scopes are added, unless Cloud Logging or Cloud&#xA;Monitoring are enabled, in which case their required scopes will be added." type="//@types.5"/>
+    <attributes name="labels" required="true" description="The map of Kubernetes labels (key/value pairs) to be applied to each node.&#xA;These will added in addition to any default label(s) that&#xA;Kubernetes may apply to the node.&#xA;In case of conflict in label keys, the applied set may differ depending on&#xA;the Kubernetes version -- it's best to assume the behavior is undefined&#xA;and conflicts should be avoided.&#xA;For more information, including usage and the valid values, see:&#xA;https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/" type="//@types.6"/>
+    <attributes name="diskSizeGb" required="true" description="Size of the disk attached to each node, specified in GB.&#xA;The smallest allowed disk size is 10GB.&#xA;&#xA;If unspecified, the default disk size is 100GB.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="accelerators" required="true" description="A list of hardware accelerators to be attached to each node.&#xA;See https://cloud.google.com/compute/docs/gpus for more information about&#xA;support for GPUs." type="//@types.5"/>
+    <attributes name="machineType" required="true" description="The name of a Google Compute Engine [machine&#xA;type](/compute/docs/machine-types) (e.g.&#xA;`n1-standard-1`).&#xA;&#xA;If unspecified, the default machine type is&#xA;`n1-standard-1`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="minCpuPlatform" required="true" description="Minimum CPU platform to be used by this instance. The instance may be&#xA;scheduled on the specified or newer CPU platform. Applicable values are the&#xA;friendly names of CPU platforms, such as&#xA;&lt;code>minCpuPlatform: &amp;quot;Intel Haswell&amp;quot;&lt;/code> or&#xA;&lt;code>minCpuPlatform: &amp;quot;Intel Sandy Bridge&amp;quot;&lt;/code>. For more&#xA;information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="preemptible" required="true" description="Whether the nodes are created as preemptible VM instances. See:&#xA;https://cloud.google.com/compute/docs/instances/preemptible for more&#xA;information about preemptible VM instances.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="localSsdCount" required="true" description="The number of local SSD disks to be attached to the node.&#xA;&#xA;The limit for this value is dependant upon the maximum number of&#xA;disks available on a machine per zone. See:&#xA;https://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits&#xA;for more information.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="metadata" required="true" description="The metadata key/value pairs assigned to instances in the cluster.&#xA;&#xA;Keys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes&#xA;in length. These are reflected as part of a URL in the metadata server.&#xA;Additionally, to avoid ambiguity, keys must not conflict with any other&#xA;metadata keys for the project or be one of the four reserved keys:&#xA;&quot;instance-template&quot;, &quot;kube-env&quot;, &quot;startup-script&quot;, and &quot;user-data&quot;&#xA;&#xA;Values are free-form strings, and only have meaning as interpreted by&#xA;the image running in the instance. The only restriction placed on them is&#xA;that each value's size must be less than or equal to 32 KB.&#xA;&#xA;The total size of all keys and values must be less than 512 KB." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AutoUpgradeOptions" scheme="http://occi/gcpcontainer#" title="AutoUpgradeOptions defines the set of options for the user to control how&#xA;the Auto Upgrades will proceed.">
-    <attributes name="description" required="true" description="[Output only] This field is set when upgrades are about to commence&#xA;with the description of the upgrade." type="//@types.15"/>
-    <attributes name="autoUpgradeStartTime" required="true" description="[Output only] This field is set when upgrades are about to commence&#xA;with the approximate start time for the upgrades, in&#xA;[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format." type="//@types.15"/>
+    <attributes name="description" required="true" description="[Output only] This field is set when upgrades are about to commence&#xA;with the description of the upgrade.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="autoUpgradeStartTime" required="true" description="[Output only] This field is set when upgrades are about to commence&#xA;with the approximate start time for the upgrades, in&#xA;[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListClustersResponse" scheme="http://occi/gcpcontainer#" title="ListClustersResponse is the result of ListClustersRequest.">
-    <attributes name="clusters" required="true" description="A list of clusters in the project in the specified zone, or&#xA;across all ones." type="//@types.7"/>
-    <attributes name="missingZones" required="true" description="If any zones are listed here, the list of clusters returned&#xA;may be missing those zones." type="//@types.7"/>
+    <attributes name="clusters" required="true" description="A list of clusters in the project in the specified zone, or&#xA;across all ones." type="//@types.5"/>
+    <attributes name="missingZones" required="true" description="If any zones are listed here, the list of clusters returned&#xA;may be missing those zones." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="HttpLoadBalancing" scheme="http://occi/gcpcontainer#" title="Configuration options for the HTTP (L7) load balancing controller addon,&#xA;which makes it easy to set up HTTP load balancers for services in a cluster.">
-    <attributes name="disabled" required="true" description="Whether the HTTP Load Balancing controller is enabled in the cluster.&#xA;When enabled, it runs a small pod in the cluster that manages the load&#xA;balancers." type="//@types.6"/>
+    <attributes name="disabled" required="true" description="Whether the HTTP Load Balancing controller is enabled in the cluster.&#xA;When enabled, it runs a small pod in the cluster that manages the load&#xA;balancers.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="SetNetworkPolicyRequestNetworkPolicyLink" scheme="http://occi/gcpcontainer#" title="Configuration options for the NetworkPolicy feature." source="//@kinds[term='setnetworkpolicyrequest']" target="//@kinds[term='networkpolicy']">
+  <kinds name="SetNetworkPolicyRequestnetworkPolicyNetworkPolicyLink" scheme="http://occi/gcpcontainer#" title="Configuration options for the NetworkPolicy feature." source="//@kinds[term='setnetworkpolicyrequest']" target="//@kinds[term='networkpolicy']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="SetNetworkPolicyRequest" scheme="http://occi/gcpcontainer#" title="SetNetworkPolicyRequest enables/disables network policy for a cluster.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="NodePoolAutoscaling" scheme="http://occi/gcpcontainer#" title="NodePoolAutoscaling contains information required by cluster autoscaler to&#xA;adjust the size of the node pool to the current cluster usage.">
-    <attributes name="minNodeCount" required="true" description="Minimum number of nodes in the NodePool. Must be >= 1 and &lt;=&#xA;max_node_count." type="//@types.3"/>
-    <attributes name="enabled" required="true" description="Is autoscaling enabled for this node pool." type="//@types.6"/>
-    <attributes name="maxNodeCount" required="true" description="Maximum number of nodes in the NodePool. Must be >= min_node_count. There&#xA;has to enough quota to scale up the cluster." type="//@types.3"/>
+    <attributes name="minNodeCount" required="true" description="Minimum number of nodes in the NodePool. Must be >= 1 and &lt;=&#xA;max_node_count.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="enabled" required="true" description="Is autoscaling enabled for this node pool.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="maxNodeCount" required="true" description="Maximum number of nodes in the NodePool. Must be >= min_node_count. There&#xA;has to enough quota to scale up the cluster.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="SetMasterAuthRequestMasterAuthLink" scheme="http://occi/gcpcontainer#" title="A description of the update." source="//@kinds[term='setmasterauthrequest']" target="//@kinds[term='masterauth']">
+  <kinds name="SetMasterAuthRequestupdateMasterAuthLink" scheme="http://occi/gcpcontainer#" title="A description of the update." source="//@kinds[term='setmasterauthrequest']" target="//@kinds[term='masterauth']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="SetMasterAuthRequest" scheme="http://occi/gcpcontainer#" title="SetMasterAuthRequest updates the admin password of a cluster.">
-    <attributes name="action" required="true" description="The exact form of action to be taken on the master auth." type="//@types.16"/>
+    <attributes name="action" required="true" description="The exact form of action to be taken on the master auth.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="IPAllocationPolicy" scheme="http://occi/gcpcontainer#" title="Configuration for controlling how IPs are allocated in the cluster.">
-    <attributes name="servicesIpv4CidrBlock" required="true" description="The IP address range of the services IPs in this cluster. If blank, a range&#xA;will be automatically chosen with the default size.&#xA;&#xA;This field is only applicable when `use_ip_aliases` is true.&#xA;&#xA;Set to blank to have a range chosen with the default size.&#xA;&#xA;Set to /netmask (e.g. `/14`) to have a range chosen with a specific&#xA;netmask.&#xA;&#xA;Set to a&#xA;[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)&#xA;notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.&#xA;`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range&#xA;to use." type="//@types.16"/>
-    <attributes name="subnetworkName" required="true" description="A custom subnetwork name to be used if `create_subnetwork` is true.  If&#xA;this field is empty, then an automatic name will be chosen for the new&#xA;subnetwork." type="//@types.16"/>
-    <attributes name="clusterIpv4Cidr" required="true" description="This field is deprecated, use cluster_ipv4_cidr_block." type="//@types.16"/>
-    <attributes name="nodeIpv4Cidr" required="true" description="This field is deprecated, use node_ipv4_cidr_block." type="//@types.16"/>
-    <attributes name="clusterIpv4CidrBlock" required="true" description="The IP address range for the cluster pod IPs. If this field is set, then&#xA;`cluster.cluster_ipv4_cidr` must be left blank.&#xA;&#xA;This field is only applicable when `use_ip_aliases` is true.&#xA;&#xA;Set to blank to have a range chosen with the default size.&#xA;&#xA;Set to /netmask (e.g. `/14`) to have a range chosen with a specific&#xA;netmask.&#xA;&#xA;Set to a&#xA;[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)&#xA;notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.&#xA;`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range&#xA;to use." type="//@types.16"/>
-    <attributes name="clusterSecondaryRangeName" required="true" description="The name of the secondary range to be used for the cluster CIDR&#xA;block.  The secondary range will be used for pod IP&#xA;addresses. This must be an existing secondary range associated&#xA;with the cluster subnetwork.&#xA;&#xA;This field is only applicable with use_ip_aliases is true and&#xA;create_subnetwork is false." type="//@types.16"/>
-    <attributes name="nodeIpv4CidrBlock" required="true" description="The IP address range of the instance IPs in this cluster.&#xA;&#xA;This is applicable only if `create_subnetwork` is true.&#xA;&#xA;Set to blank to have a range chosen with the default size.&#xA;&#xA;Set to /netmask (e.g. `/14`) to have a range chosen with a specific&#xA;netmask.&#xA;&#xA;Set to a&#xA;[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)&#xA;notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.&#xA;`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range&#xA;to use." type="//@types.16"/>
-    <attributes name="servicesIpv4Cidr" required="true" description="This field is deprecated, use services_ipv4_cidr_block." type="//@types.16"/>
-    <attributes name="servicesSecondaryRangeName" required="true" description="The name of the secondary range to be used as for the services&#xA;CIDR block.  The secondary range will be used for service&#xA;ClusterIPs. This must be an existing secondary range associated&#xA;with the cluster subnetwork.&#xA;&#xA;This field is only applicable with use_ip_aliases is true and&#xA;create_subnetwork is false." type="//@types.16"/>
-    <attributes name="useIpAliases" required="true" description="Whether alias IPs will be used for pod IPs in the cluster." type="//@types.6"/>
-    <attributes name="createSubnetwork" required="true" description="Whether a new subnetwork will be created automatically for the cluster.&#xA;&#xA;This field is only applicable when `use_ip_aliases` is true." type="//@types.6"/>
+    <attributes name="servicesIpv4CidrBlock" required="true" description="The IP address range of the services IPs in this cluster. If blank, a range&#xA;will be automatically chosen with the default size.&#xA;&#xA;This field is only applicable when `use_ip_aliases` is true.&#xA;&#xA;Set to blank to have a range chosen with the default size.&#xA;&#xA;Set to /netmask (e.g. `/14`) to have a range chosen with a specific&#xA;netmask.&#xA;&#xA;Set to a&#xA;[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)&#xA;notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.&#xA;`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range&#xA;to use.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="subnetworkName" required="true" description="A custom subnetwork name to be used if `create_subnetwork` is true.  If&#xA;this field is empty, then an automatic name will be chosen for the new&#xA;subnetwork.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="clusterIpv4Cidr" required="true" description="This field is deprecated, use cluster_ipv4_cidr_block.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nodeIpv4Cidr" required="true" description="This field is deprecated, use node_ipv4_cidr_block.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="clusterIpv4CidrBlock" required="true" description="The IP address range for the cluster pod IPs. If this field is set, then&#xA;`cluster.cluster_ipv4_cidr` must be left blank.&#xA;&#xA;This field is only applicable when `use_ip_aliases` is true.&#xA;&#xA;Set to blank to have a range chosen with the default size.&#xA;&#xA;Set to /netmask (e.g. `/14`) to have a range chosen with a specific&#xA;netmask.&#xA;&#xA;Set to a&#xA;[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)&#xA;notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.&#xA;`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range&#xA;to use.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="clusterSecondaryRangeName" required="true" description="The name of the secondary range to be used for the cluster CIDR&#xA;block.  The secondary range will be used for pod IP&#xA;addresses. This must be an existing secondary range associated&#xA;with the cluster subnetwork.&#xA;&#xA;This field is only applicable with use_ip_aliases is true and&#xA;create_subnetwork is false.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nodeIpv4CidrBlock" required="true" description="The IP address range of the instance IPs in this cluster.&#xA;&#xA;This is applicable only if `create_subnetwork` is true.&#xA;&#xA;Set to blank to have a range chosen with the default size.&#xA;&#xA;Set to /netmask (e.g. `/14`) to have a range chosen with a specific&#xA;netmask.&#xA;&#xA;Set to a&#xA;[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)&#xA;notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.&#xA;`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range&#xA;to use.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="servicesIpv4Cidr" required="true" description="This field is deprecated, use services_ipv4_cidr_block.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="servicesSecondaryRangeName" required="true" description="The name of the secondary range to be used as for the services&#xA;CIDR block.  The secondary range will be used for service&#xA;ClusterIPs. This must be an existing secondary range associated&#xA;with the cluster subnetwork.&#xA;&#xA;This field is only applicable with use_ip_aliases is true and&#xA;create_subnetwork is false.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="useIpAliases" required="true" description="Whether alias IPs will be used for pod IPs in the cluster.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
+    <attributes name="createSubnetwork" required="true" description="Whether a new subnetwork will be created automatically for the cluster.&#xA;&#xA;This field is only applicable when `use_ip_aliases` is true.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="ClusterUpdateMasterAuthorizedNetworksConfigLink" scheme="http://occi/gcpcontainer#" title="Master authorized networks is a Beta feature.&#xA;The desired configuration options for master authorized networks feature." source="//@kinds[term='clusterupdate']" target="//@kinds[term='masterauthorizednetworksconfig']">
+  <kinds name="ClusterUpdatedesiredMasterAuthorizedNetworksConfigMasterAuthorizedNetworksConfigLink" scheme="http://occi/gcpcontainer#" title="Master authorized networks is a Beta feature.&#xA;The desired configuration options for master authorized networks feature." source="//@kinds[term='clusterupdate']" target="//@kinds[term='masterauthorizednetworksconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="ClusterUpdateNodePoolAutoscalingLink" scheme="http://occi/gcpcontainer#" title="Autoscaler configuration for the node pool specified in&#xA;desired_node_pool_id. If there is only one pool in the&#xA;cluster and desired_node_pool_id is not provided then&#xA;the change applies to that single node pool." source="//@kinds[term='clusterupdate']" target="//@kinds[term='nodepoolautoscaling']">
+  <kinds name="ClusterUpdatedesiredNodePoolAutoscalingNodePoolAutoscalingLink" scheme="http://occi/gcpcontainer#" title="Autoscaler configuration for the node pool specified in&#xA;desired_node_pool_id. If there is only one pool in the&#xA;cluster and desired_node_pool_id is not provided then&#xA;the change applies to that single node pool." source="//@kinds[term='clusterupdate']" target="//@kinds[term='nodepoolautoscaling']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="ClusterUpdateAddonsConfigLink" scheme="http://occi/gcpcontainer#" title="Configurations for the various addons available to run in the cluster." source="//@kinds[term='clusterupdate']" target="//@kinds[term='addonsconfig']">
+  <kinds name="ClusterUpdatedesiredAddonsConfigAddonsConfigLink" scheme="http://occi/gcpcontainer#" title="Configurations for the various addons available to run in the cluster." source="//@kinds[term='clusterupdate']" target="//@kinds[term='addonsconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="ClusterUpdate" scheme="http://occi/gcpcontainer#" title="ClusterUpdate describes an update to the cluster. Exactly one update can&#xA;be applied to a cluster with each request, so at most one field can be&#xA;provided.">
-    <attributes name="desiredNodePoolId" required="true" description="The node pool to be upgraded. This field is mandatory if&#xA;&quot;desired_node_version&quot;, &quot;desired_image_family&quot; or&#xA;&quot;desired_node_pool_autoscaling&quot; is specified and there is more than one&#xA;node pool on the cluster." type="//@types.16"/>
-    <attributes name="desiredNodeVersion" required="true" description="The Kubernetes version to change the nodes to (typically an&#xA;upgrade). Use `-` to upgrade to the latest version supported by&#xA;the server." type="//@types.16"/>
-    <attributes name="desiredMasterVersion" required="true" description="The Kubernetes version to change the master to. The only valid value is the&#xA;latest supported version. Use &quot;-&quot; to have the server automatically select&#xA;the latest version." type="//@types.16"/>
-    <attributes name="desiredLocations" required="true" description="The desired list of Google Compute Engine&#xA;[locations](/compute/docs/zones#available) in which the cluster's nodes&#xA;should be located. Changing the locations a cluster is in will result&#xA;in nodes being either created or removed from the cluster, depending on&#xA;whether locations are being added or removed.&#xA;&#xA;This list must always include the cluster's primary zone." type="//@types.7"/>
-    <attributes name="desiredMonitoringService" required="true" description="The monitoring service the cluster should use to write metrics.&#xA;Currently available options:&#xA;&#xA;* &quot;monitoring.googleapis.com&quot; - the Google Cloud Monitoring service&#xA;* &quot;none&quot; - no metrics will be exported from the cluster" type="//@types.16"/>
-    <attributes name="desiredImageType" required="true" description="The desired image type for the node pool.&#xA;NOTE: Set the &quot;desired_node_pool&quot; field as well." type="//@types.16"/>
+    <attributes name="desiredNodePoolId" required="true" description="The node pool to be upgraded. This field is mandatory if&#xA;&quot;desired_node_version&quot;, &quot;desired_image_family&quot; or&#xA;&quot;desired_node_pool_autoscaling&quot; is specified and there is more than one&#xA;node pool on the cluster.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="desiredNodeVersion" required="true" description="The Kubernetes version to change the nodes to (typically an&#xA;upgrade). Use `-` to upgrade to the latest version supported by&#xA;the server.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="desiredMasterVersion" required="true" description="The Kubernetes version to change the master to. The only valid value is the&#xA;latest supported version. Use &quot;-&quot; to have the server automatically select&#xA;the latest version.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="desiredLocations" required="true" description="The desired list of Google Compute Engine&#xA;[locations](/compute/docs/zones#available) in which the cluster's nodes&#xA;should be located. Changing the locations a cluster is in will result&#xA;in nodes being either created or removed from the cluster, depending on&#xA;whether locations are being added or removed.&#xA;&#xA;This list must always include the cluster's primary zone." type="//@types.5"/>
+    <attributes name="desiredMonitoringService" required="true" description="The monitoring service the cluster should use to write metrics.&#xA;Currently available options:&#xA;&#xA;* &quot;monitoring.googleapis.com&quot; - the Google Cloud Monitoring service&#xA;* &quot;none&quot; - no metrics will be exported from the cluster">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="desiredImageType" required="true" description="The desired image type for the node pool.&#xA;NOTE: Set the &quot;desired_node_pool&quot; field as well.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="HorizontalPodAutoscaling" scheme="http://occi/gcpcontainer#" title="Configuration options for the horizontal pod autoscaling feature, which&#xA;increases or decreases the number of replica pods a replication controller&#xA;has based on the resource usage of the existing pods.">
-    <attributes name="disabled" required="true" description="Whether the Horizontal Pod Autoscaling feature is enabled in the cluster.&#xA;When enabled, it ensures that a Heapster pod is running in the cluster,&#xA;which is also used by the Cloud Monitoring service." type="//@types.6"/>
+    <attributes name="disabled" required="true" description="Whether the Horizontal Pod Autoscaling feature is enabled in the cluster.&#xA;When enabled, it ensures that a Heapster pod is running in the cluster,&#xA;which is also used by the Cloud Monitoring service.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="SetNodePoolManagementRequestNodeManagementLink" scheme="http://occi/gcpcontainer#" title="NodeManagement configuration for the node pool." source="//@kinds[term='setnodepoolmanagementrequest']" target="//@kinds[term='nodemanagement']">
+  <kinds name="SetNodePoolManagementRequestmanagementNodeManagementLink" scheme="http://occi/gcpcontainer#" title="NodeManagement configuration for the node pool." source="//@kinds[term='setnodepoolmanagementrequest']" target="//@kinds[term='nodemanagement']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="SetNodePoolManagementRequest" scheme="http://occi/gcpcontainer#" title="SetNodePoolManagementRequest sets the node management properties of a node&#xA;pool.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="MasterAuthorizedNetworksConfig" scheme="http://occi/gcpcontainer#" title="Master authorized networks is a Beta feature.&#xA;Configuration options for the master authorized networks feature. Enabled&#xA;master authorized networks will disallow all external traffic to access&#xA;Kubernetes master through HTTPS except traffic from the given CIDR blocks,&#xA;Google Compute Engine Public IPs and Google Prod IPs.">
-    <attributes name="cidrBlocks" required="true" description="cidr_blocks define up to 10 external networks that could access&#xA;Kubernetes master through HTTPS." type="//@types.7"/>
-    <attributes name="enabled" required="true" description="Whether or not master authorized networks is enabled." type="//@types.6"/>
+    <attributes name="cidrBlocks" required="true" description="cidr_blocks define up to 10 external networks that could access&#xA;Kubernetes master through HTTPS." type="//@types.5"/>
+    <attributes name="enabled" required="true" description="Whether or not master authorized networks is enabled.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="SetNodePoolAutoscalingRequestNodePoolAutoscalingLink" scheme="http://occi/gcpcontainer#" title="Autoscaling configuration for the node pool." source="//@kinds[term='setnodepoolautoscalingrequest']" target="//@kinds[term='nodepoolautoscaling']">
+  <kinds name="SetNodePoolAutoscalingRequestautoscalingNodePoolAutoscalingLink" scheme="http://occi/gcpcontainer#" title="Autoscaling configuration for the node pool." source="//@kinds[term='setnodepoolautoscalingrequest']" target="//@kinds[term='nodepoolautoscaling']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="SetNodePoolAutoscalingRequest" scheme="http://occi/gcpcontainer#" title="SetNodePoolAutoscalingRequest sets the autoscaler settings of a node pool.">
@@ -477,27 +847,39 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="LegacyAbac" scheme="http://occi/gcpcontainer#" title="Configuration for the legacy Attribute Based Access Control authorization&#xA;mode.">
-    <attributes name="enabled" required="true" description="Whether the ABAC authorizer is enabled for this cluster. When enabled,&#xA;identities in the system, including service accounts, nodes, and&#xA;controllers, will have statically granted permissions beyond those&#xA;provided by the RBAC configuration or IAM." type="//@types.6"/>
+    <attributes name="enabled" required="true" description="Whether the ABAC authorizer is enabled for this cluster. When enabled,&#xA;identities in the system, including service accounts, nodes, and&#xA;controllers, will have statically granted permissions beyond those&#xA;provided by the RBAC configuration or IAM.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AcceleratorConfig" scheme="http://occi/gcpcontainer#" title="AcceleratorConfig represents a Hardware Accelerator request.">
-    <attributes name="acceleratorType" required="true" description="The accelerator type resource name. List of supported accelerators&#xA;[here](/compute/docs/gpus/#Introduction)" type="//@types.16"/>
-    <attributes name="acceleratorCount" required="true" description="The number of the accelerator cards exposed to an instance." type="//@types.16"/>
+    <attributes name="acceleratorType" required="true" description="The accelerator type resource name. List of supported accelerators&#xA;[here](/compute/docs/gpus/#Introduction)">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="acceleratorCount" required="true" description="The number of the accelerator cards exposed to an instance.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="UpdateNodePoolRequest" scheme="http://occi/gcpcontainer#" title="UpdateNodePoolRequests update a node pool's image and/or version.">
-    <attributes name="nodeVersion" required="true" description="The Kubernetes version to change the nodes to (typically an&#xA;upgrade). Use `-` to upgrade to the latest version supported by&#xA;the server." type="//@types.16"/>
-    <attributes name="imageType" required="true" description="The desired image type for the node pool." type="//@types.16"/>
+    <attributes name="nodeVersion" required="true" description="The Kubernetes version to change the nodes to (typically an&#xA;upgrade). Use `-` to upgrade to the latest version supported by&#xA;the server.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="imageType" required="true" description="The desired image type for the node pool.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="SetAddonsConfigRequestAddonsConfigLink" scheme="http://occi/gcpcontainer#" title="The desired configurations for the various addons available to run in the&#xA;cluster." source="//@kinds[term='setaddonsconfigrequest']" target="//@kinds[term='addonsconfig']">
+  <kinds name="SetAddonsConfigRequestaddonsConfigAddonsConfigLink" scheme="http://occi/gcpcontainer#" title="The desired configurations for the various addons available to run in the&#xA;cluster." source="//@kinds[term='setaddonsconfigrequest']" target="//@kinds[term='addonsconfig']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="SetAddonsConfigRequest" scheme="http://occi/gcpcontainer#" title="SetAddonsConfigRequest sets the addons associated with the cluster.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SetLegacyAbacRequest" scheme="http://occi/gcpcontainer#" title="SetLegacyAbacRequest enables or disables the ABAC authorization mechanism for&#xA;a cluster.">
-    <attributes name="enabled" required="true" description="Whether ABAC authorization will be enabled in the cluster." type="//@types.6"/>
+    <attributes name="enabled" required="true" description="Whether ABAC authorization will be enabled in the cluster.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="KubernetesDashboardLink" scheme="http://occi/gcpcontainer#" title="Configuration for the Kubernetes Dashboard." source="//@kinds[term='addonsconfig']" target="//@kinds[term='kubernetesdashboard']">
@@ -515,18 +897,16 @@
   <kinds name="AddonsConfig" scheme="http://occi/gcpcontainer#" title="Configuration for the addons that can be automatically spun up in the&#xA;cluster, enabling additional functionality.">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
+  <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
-  <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="status" documentation="[Output only] The current status of this cluster.">
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:EnumerationType" name="Status" documentation="[Output only] The current status of this cluster.">
     <literals name="STATUS_UNSPECIFIED" documentation="Not set."/>
     <literals name="PROVISIONING" documentation="The PROVISIONING state indicates the cluster is being created."/>
     <literals name="RUNNING" documentation="The RUNNING state indicates the cluster has been created and is fully&#xA;usable."/>
@@ -534,7 +914,7 @@
     <literals name="STOPPING" documentation="The STOPPING state indicates the cluster is being deleted."/>
     <literals name="ERROR" documentation="The ERROR state indicates the cluster may be unusable. Details&#xA;can be found in the `statusMessage` field."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="NodePoolSstatus" documentation="[Output only] The status of the nodes in this pool instance.">
+  <types xsi:type="occi:EnumerationType" name="NodePoolStatus" documentation="[Output only] The status of the nodes in this pool instance.">
     <literals name="STATUS_UNSPECIFIED" documentation="Not set."/>
     <literals name="PROVISIONING" documentation="The PROVISIONING state indicates the node pool is being created."/>
     <literals name="RUNNING" documentation="The RUNNING state indicates the node pool has been created&#xA;and is fully usable."/>
@@ -543,7 +923,7 @@
     <literals name="STOPPING" documentation="The STOPPING state indicates the node pool is being deleted."/>
     <literals name="ERROR" documentation="The ERROR state indicates the node pool may be unusable. Details&#xA;can be found in the `statusMessage` field."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="operationType" documentation="The operation type.">
+  <types xsi:type="occi:EnumerationType" name="Operationtype" documentation="The operation type.">
     <literals name="TYPE_UNSPECIFIED" documentation="Not set."/>
     <literals name="CREATE_CLUSTER" documentation="Cluster create."/>
     <literals name="DELETE_CLUSTER" documentation="Cluster delete."/>
@@ -562,18 +942,18 @@
     <literals name="SET_NETWORK_POLICY" documentation="Updates network policy for a cluster."/>
     <literals name="SET_MAINTENANCE_POLICY" documentation="Set the maintenance policy."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="OperationSstatus" documentation="The current status of the operation.">
+  <types xsi:type="occi:EnumerationType" name="OperationStatus" documentation="The current status of the operation.">
     <literals name="STATUS_UNSPECIFIED" documentation="Not set."/>
     <literals name="PENDING" documentation="The operation has been created."/>
     <literals name="RUNNING" documentation="The operation is currently running."/>
     <literals name="DONE" documentation="The operation is done, either cancelled or completed."/>
     <literals name="ABORTING" documentation="The operation is aborting."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="provider" documentation="The selected network policy provider.">
+  <types xsi:type="occi:EnumerationType" name="Provider" documentation="The selected network policy provider.">
     <literals name="PROVIDER_UNSPECIFIED" documentation="Not set"/>
     <literals name="CALICO" documentation="Tigera (Calico Felix)."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="action" documentation="The exact form of action to be taken on the master auth.">
+  <types xsi:type="occi:EnumerationType" name="Action" documentation="The exact form of action to be taken on the master auth.">
     <literals name="UNKNOWN" documentation="Operation is unknown and will error out."/>
     <literals name="SET_PASSWORD" documentation="Set the password to a user generated value."/>
     <literals name="GENERATE_PASSWORD" documentation="Generate a new password and set it to that."/>

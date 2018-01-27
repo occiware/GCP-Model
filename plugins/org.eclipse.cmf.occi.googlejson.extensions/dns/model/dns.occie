@@ -2,125 +2,231 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="dns" scheme="http://occi/gcpdns#" description="Configures and serves authoritative DNS records.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="Change" scheme="http://occi/gcpdns#" title="An atomic update to a collection of ResourceRecordSets.">
-    <attributes name="additions" required="true" description="Which ResourceRecordSets to add?" type="//@types.7"/>
-    <attributes name="deletions" required="true" description="Which ResourceRecordSets to remove? Must match existing data exactly." type="//@types.7"/>
-    <attributes name="kind" required="true" description="Identifies what kind of resource this is. Value: the fixed string &quot;dns#change&quot;." type="//@types.0"/>
-    <attributes name="startTime" required="true" description="The time that this operation was started by the server (output only). This is in RFC3339 text format." type="//@types.0"/>
-    <attributes name="status" required="true" description="Status of the operation (output only)." type="//@types.11"/>
+    <attributes name="additions" required="true" description="Which ResourceRecordSets to add?" type="//@types.2"/>
+    <attributes name="deletions" required="true" description="Which ResourceRecordSets to remove? Must match existing data exactly." type="//@types.2"/>
+    <attributes name="kindGCP" required="true" description="Identifies what kind of resource this is. Value: the fixed string &quot;dns#change&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="The time that this operation was started by the server (output only). This is in RFC3339 text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="status" required="true" description="Status of the operation (output only).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="create" scheme="http://occi/gcpdns/change/action#" title="Atomically update the ResourceRecordSet collection.">
-      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id." type="//@types.11"/>
-      <attributes name="project" required="true" description="Identifies the project addressed by this request." type="//@types.11"/>
+      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Identifies the project addressed by this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpdns/change/action#" title="Fetch the representation of an existing Change.">
-      <attributes name="changeId" required="true" description="The identifier of the requested change, from a previous ResourceRecordSetsChangeResponse." type="//@types.11"/>
-      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id." type="//@types.11"/>
-      <attributes name="project" required="true" description="Identifies the project addressed by this request." type="//@types.11"/>
+      <attributes name="changeId" required="true" description="The identifier of the requested change, from a previous ResourceRecordSetsChangeResponse.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Identifies the project addressed by this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpdns/change/action#" title="Enumerate Changes to a ResourceRecordSet collection.">
-      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id." type="//@types.11"/>
-      <attributes name="maxResults" required="true" description="Optional. Maximum number of results to be returned. If unspecified, the server will decide how many results to return." type="//@types.3"/>
-      <attributes name="pageToken" required="true" description="Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request." type="//@types.11"/>
-      <attributes name="project" required="true" description="Identifies the project addressed by this request." type="//@types.11"/>
-      <attributes name="sortBy" required="true" description="Sorting criterion. The only supported value is change sequence." type="//@types.12"/>
-      <attributes name="sortOrder" required="true" description="Sorting order direction: 'ascending' or 'descending'." type="//@types.12"/>
+      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="maxResults" required="true" description="Optional. Maximum number of results to be returned. If unspecified, the server will decide how many results to return.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Identifies the project addressed by this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="sortBy" required="true" description="Sorting criterion. The only supported value is change sequence.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="sortOrder" required="true" description="Sorting order direction: 'ascending' or 'descending'.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ChangesListResponse" scheme="http://occi/gcpdns#" title="The response to a request to enumerate Changes to a ResourceRecordSets collection.">
-    <attributes name="changes" required="true" description="The requested changes." type="//@types.7"/>
-    <attributes name="kind" required="true" description="Type of resource." type="//@types.12"/>
-    <attributes name="nextPageToken" required="true" description="The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.&#xA;&#xA;In this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a &quot;snapshot&quot; of collections larger than the maximum page size." type="//@types.12"/>
+    <attributes name="changes" required="true" description="The requested changes." type="//@types.2"/>
+    <attributes name="kindGCP" required="true" description="Type of resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nextPageToken" required="true" description="The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.&#xA;&#xA;In this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a &quot;snapshot&quot; of collections larger than the maximum page size.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ManagedZone" scheme="http://occi/gcpdns#" title="A zone is a subtree of the DNS namespace under one administrative responsibility. A ManagedZone is a resource that represents a DNS zone hosted by the Cloud DNS service.">
-    <attributes name="creationTime" required="true" description="The time that this resource was created on the server. This is in RFC3339 text format. Output only." type="//@types.12"/>
-    <attributes name="description" required="true" description="A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function." type="//@types.12"/>
-    <attributes name="dnsName" required="true" description="The DNS name of this managed zone, for instance &quot;example.com.&quot;." type="//@types.12"/>
-    <attributes name="kind" required="true" description="Identifies what kind of resource this is. Value: the fixed string &quot;dns#managedZone&quot;." type="//@types.12"/>
-    <attributes name="name" required="true" description="User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes." type="//@types.12"/>
-    <attributes name="nameServerSet" required="true" description="Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset." type="//@types.12"/>
-    <attributes name="nameServers" required="true" description="Delegate your managed_zone to these virtual name servers; defined by the server (output only)" type="//@types.7"/>
+    <attributes name="creationTime" required="true" description="The time that this resource was created on the server. This is in RFC3339 text format. Output only.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="dnsName" required="true" description="The DNS name of this managed zone, for instance &quot;example.com.&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="kindGCP" required="true" description="Identifies what kind of resource this is. Value: the fixed string &quot;dns#managedZone&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nameServerSet" required="true" description="Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nameServers" required="true" description="Delegate your managed_zone to these virtual name servers; defined by the server (output only)" type="//@types.2"/>
     <actions name="create" scheme="http://occi/gcpdns/managedzone/action#" title="Create a new ManagedZone.">
-      <attributes name="project" required="true" description="Identifies the project addressed by this request." type="//@types.12"/>
+      <attributes name="project" required="true" description="Identifies the project addressed by this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="delete" scheme="http://occi/gcpdns/managedzone/action#" title="Delete a previously created ManagedZone.">
-      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id." type="//@types.12"/>
-      <attributes name="project" required="true" description="Identifies the project addressed by this request." type="//@types.12"/>
+      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Identifies the project addressed by this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpdns/managedzone/action#" title="Fetch the representation of an existing ManagedZone.">
-      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id." type="//@types.12"/>
-      <attributes name="project" required="true" description="Identifies the project addressed by this request." type="//@types.12"/>
+      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Identifies the project addressed by this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpdns/managedzone/action#" title="Enumerate ManagedZones that have been created but not yet deleted.">
-      <attributes name="dnsName" required="true" description="Restricts the list to return only zones with this domain name." type="//@types.12"/>
-      <attributes name="maxResults" required="true" description="Optional. Maximum number of results to be returned. If unspecified, the server will decide how many results to return." type="//@types.3"/>
-      <attributes name="pageToken" required="true" description="Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request." type="//@types.12"/>
-      <attributes name="project" required="true" description="Identifies the project addressed by this request." type="//@types.12"/>
+      <attributes name="dnsName" required="true" description="Restricts the list to return only zones with this domain name.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="maxResults" required="true" description="Optional. Maximum number of results to be returned. If unspecified, the server will decide how many results to return.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Identifies the project addressed by this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ManagedZonesListResponse" scheme="http://occi/gcpdns#" title="">
-    <attributes name="kind" required="true" description="Type of resource." type="//@types.12"/>
-    <attributes name="managedZones" required="true" description="The managed zone resources." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your page token.&#xA;&#xA;In this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a collection larger than the maximum page size." type="//@types.12"/>
+    <attributes name="kindGCP" required="true" description="Type of resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="managedZones" required="true" description="The managed zone resources." type="//@types.2"/>
+    <attributes name="nextPageToken" required="true" description="The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your page token.&#xA;&#xA;In this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a collection larger than the maximum page size.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="QuotaLink" scheme="http://occi/gcpdns#" title="Quotas assigned to this project (output only)." source="//@kinds[term='project']" target="//@kinds[term='quota']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Project" scheme="http://occi/gcpdns#" title="A project resource. The project is a top level container for resources including Cloud DNS ManagedZones. Projects can be created only in the APIs console.">
-    <attributes name="kind" required="true" description="Identifies what kind of resource this is. Value: the fixed string &quot;dns#project&quot;." type="//@types.12"/>
-    <attributes name="number" required="true" description="Unique numeric identifier for the resource; defined by the server (output only)." type="//@types.12"/>
+    <attributes name="kindGCP" required="true" description="Identifies what kind of resource this is. Value: the fixed string &quot;dns#project&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="number" required="true" description="Unique numeric identifier for the resource; defined by the server (output only).">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Quota" scheme="http://occi/gcpdns#" title="Limits associated with a Project.">
-    <attributes name="kind" required="true" description="Identifies what kind of resource this is. Value: the fixed string &quot;dns#quota&quot;." type="//@types.12"/>
-    <attributes name="managedZones" required="true" description="Maximum allowed number of managed zones in the project." type="//@types.3"/>
-    <attributes name="resourceRecordsPerRrset" required="true" description="Maximum allowed number of ResourceRecords per ResourceRecordSet." type="//@types.3"/>
-    <attributes name="rrsetAdditionsPerChange" required="true" description="Maximum allowed number of ResourceRecordSets to add per ChangesCreateRequest." type="//@types.3"/>
-    <attributes name="rrsetDeletionsPerChange" required="true" description="Maximum allowed number of ResourceRecordSets to delete per ChangesCreateRequest." type="//@types.3"/>
-    <attributes name="rrsetsPerManagedZone" required="true" description="Maximum allowed number of ResourceRecordSets per zone in the project." type="//@types.3"/>
-    <attributes name="totalRrdataSizePerChange" required="true" description="Maximum allowed size for total rrdata in one ChangesCreateRequest in bytes." type="//@types.3"/>
+    <attributes name="kindGCP" required="true" description="Identifies what kind of resource this is. Value: the fixed string &quot;dns#quota&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="managedZones" required="true" description="Maximum allowed number of managed zones in the project.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="resourceRecordsPerRrset" required="true" description="Maximum allowed number of ResourceRecords per ResourceRecordSet.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="rrsetAdditionsPerChange" required="true" description="Maximum allowed number of ResourceRecordSets to add per ChangesCreateRequest.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="rrsetDeletionsPerChange" required="true" description="Maximum allowed number of ResourceRecordSets to delete per ChangesCreateRequest.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="rrsetsPerManagedZone" required="true" description="Maximum allowed number of ResourceRecordSets per zone in the project.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="totalRrdataSizePerChange" required="true" description="Maximum allowed size for total rrdata in one ChangesCreateRequest in bytes.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ResourceRecordSet" scheme="http://occi/gcpdns#" title="A unit of data that will be returned by the DNS servers.">
-    <attributes name="kind" required="true" description="Identifies what kind of resource this is. Value: the fixed string &quot;dns#resourceRecordSet&quot;." type="//@types.12"/>
-    <attributes name="name" required="true" description="For example, www.example.com." type="//@types.12"/>
-    <attributes name="rrdatas" required="true" description="As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)." type="//@types.7"/>
-    <attributes name="ttl" required="true" description="Number of seconds that this ResourceRecordSet can be cached by resolvers." type="//@types.3"/>
-    <attributes name="type" required="true" description="The identifier of a supported record type, for example, A, AAAA, MX, TXT, and so on." type="//@types.12"/>
+    <attributes name="kindGCP" required="true" description="Identifies what kind of resource this is. Value: the fixed string &quot;dns#resourceRecordSet&quot;.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="For example, www.example.com.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="rrdatas" required="true" description="As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)." type="//@types.2"/>
+    <attributes name="ttl" required="true" description="Number of seconds that this ResourceRecordSet can be cached by resolvers.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="type" required="true" description="The identifier of a supported record type, for example, A, AAAA, MX, TXT, and so on.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="list" scheme="http://occi/gcpdns/resourcerecordset/action#" title="Enumerate ResourceRecordSets that have been created but not yet deleted.">
-      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id." type="//@types.12"/>
-      <attributes name="maxResults" required="true" description="Optional. Maximum number of results to be returned. If unspecified, the server will decide how many results to return." type="//@types.3"/>
-      <attributes name="name" required="true" description="Restricts the list to return only records with this fully qualified domain name." type="//@types.12"/>
-      <attributes name="pageToken" required="true" description="Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request." type="//@types.12"/>
-      <attributes name="project" required="true" description="Identifies the project addressed by this request." type="//@types.12"/>
-      <attributes name="type" required="true" description="Restricts the list to return only records of this type. If present, the &quot;name&quot; parameter must also be present." type="//@types.12"/>
+      <attributes name="managedZone" required="true" description="Identifies the managed zone addressed by this request. Can be the managed zone name or id.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="maxResults" required="true" description="Optional. Maximum number of results to be returned. If unspecified, the server will decide how many results to return.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
+      <attributes name="name" required="true" description="Restricts the list to return only records with this fully qualified domain name.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Identifies the project addressed by this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="type" required="true" description="Restricts the list to return only records of this type. If present, the &quot;name&quot; parameter must also be present.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ResourceRecordSetsListResponse" scheme="http://occi/gcpdns#" title="">
-    <attributes name="kind" required="true" description="Type of resource." type="//@types.12"/>
-    <attributes name="nextPageToken" required="true" description="The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.&#xA;&#xA;In this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a collection larger than the maximum page size." type="//@types.12"/>
-    <attributes name="rrsets" required="true" description="The resource record set resources." type="//@types.7"/>
+    <attributes name="kindGCP" required="true" description="Type of resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nextPageToken" required="true" description="The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.&#xA;&#xA;In this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a collection larger than the maximum page size.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="rrsets" required="true" description="The resource record set resources." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
-  <types xsi:type="occi:NumericType" name="byte"/>
-  <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
   <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="status" documentation="Status of the operation (output only).">
+  <types xsi:type="occi:EnumerationType" name="Status" documentation="Status of the operation (output only).">
     <literals name="done" documentation=""/>
     <literals name="pending" documentation=""/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="sortBy" documentation="Sorting criterion. The only supported value is change sequence.">
+  <types xsi:type="occi:EnumerationType" name="Sortby" documentation="Sorting criterion. The only supported value is change sequence.">
     <literals name="changeSequence" documentation=""/>
   </types>
 </occi:Extension>

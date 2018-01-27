@@ -2,64 +2,112 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="clouduseraccounts" scheme="http://occi/gcpclouduseraccounts#" description="Creates and manages users and groups for accessing Google Compute Engine virtual machines.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="AuthorizedKeysView" scheme="http://occi/gcpclouduseraccounts#" title="A list of authorized public keys for a user account.">
-    <attributes name="keys" required="true" description="[Output Only] The list of authorized public keys in SSH format." type="//@types.7"/>
-    <attributes name="sudoer" required="true" description="[Output Only] Whether the user has the ability to elevate on the instance that requested the authorized keys." type="//@types.6"/>
+    <attributes name="keys" required="true" description="[Output Only] The list of authorized public keys in SSH format." type="//@types.2"/>
+    <attributes name="sudoer" required="true" description="[Output Only] Whether the user has the ability to elevate on the instance that requested the authorized keys.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Group" scheme="http://occi/gcpclouduseraccounts#" title="A Group resource.">
-    <attributes name="creationTimestamp" required="true" description="[Output Only] Creation timestamp in RFC3339 text format." type="//@types.0"/>
-    <attributes name="description" required="true" description="An optional textual description of the resource; provided by the client when the resource is created." type="//@types.0"/>
-    <attributes name="kind" required="true" description="[Output Only] Type of the resource. Always clouduseraccounts#group for groups." type="//@types.0"/>
-    <attributes name="members" required="true" description="[Output Only] A list of URLs to User resources who belong to the group. Users may only be members of groups in the same project." type="//@types.7"/>
-    <attributes name="name" required="true" description="Name of the resource; provided by the client when the resource is created." type="//@types.0"/>
-    <attributes name="selfLink" required="true" description="[Output Only] Server defined URL for the resource." type="//@types.0"/>
+    <attributes name="creationTimestamp" required="true" description="[Output Only] Creation timestamp in RFC3339 text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="An optional textual description of the resource; provided by the client when the resource is created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="kindGCP" required="true" description="[Output Only] Type of the resource. Always clouduseraccounts#group for groups.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="members" required="true" description="[Output Only] A list of URLs to User resources who belong to the group. Users may only be members of groups in the same project." type="//@types.2"/>
+    <attributes name="name" required="true" description="Name of the resource; provided by the client when the resource is created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="selfLink" required="true" description="[Output Only] Server defined URL for the resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="addMember" scheme="http://occi/gcpclouduseraccounts/group/action#" title="Adds users to the specified group.">
-      <attributes name="groupName" required="true" description="Name of the group for this request." type="//@types.0"/>
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.0"/>
+      <attributes name="groupName" required="true" description="Name of the group for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="delete" scheme="http://occi/gcpclouduseraccounts/group/action#" title="Deletes the specified Group resource.">
-      <attributes name="groupName" required="true" description="Name of the Group resource to delete." type="//@types.0"/>
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.0"/>
+      <attributes name="groupName" required="true" description="Name of the Group resource to delete.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpclouduseraccounts/group/action#" title="Returns the specified Group resource.">
-      <attributes name="groupName" required="true" description="Name of the Group resource to return." type="//@types.0"/>
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.0"/>
+      <attributes name="groupName" required="true" description="Name of the Group resource to return.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="insert" scheme="http://occi/gcpclouduseraccounts/group/action#" title="Creates a Group resource in the specified project using the data included in the request.">
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.0"/>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpclouduseraccounts/group/action#" title="Retrieves the list of groups contained within the specified project.">
-      <attributes name="filter" required="true" description="Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.&#xA;&#xA;The field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.&#xA;&#xA;For example, to filter for instances that do not have a name of example-instance, you would use filter=name ne example-instance.&#xA;&#xA;Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. In particular, use filtering on nested fields to take advantage of instance labels to organize and filter results based on label values.&#xA;&#xA;The Beta API also supports filtering on multiple expressions by providing each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters." type="//@types.0"/>
-      <attributes name="maxResults" required="true" description="The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests." type="//@types.3"/>
-      <attributes name="orderBy" required="true" description="Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.&#xA;&#xA;You can also sort results in descending order based on the creation timestamp using orderBy=&quot;creationTimestamp desc&quot;. This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.&#xA;&#xA;Currently, only sorting by name or creationTimestamp desc is supported." type="//@types.0"/>
-      <attributes name="pageToken" required="true" description="Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results." type="//@types.0"/>
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.0"/>
+      <attributes name="filter" required="true" description="Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.&#xA;&#xA;The field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.&#xA;&#xA;For example, to filter for instances that do not have a name of example-instance, you would use filter=name ne example-instance.&#xA;&#xA;Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. In particular, use filtering on nested fields to take advantage of instance labels to organize and filter results based on label values.&#xA;&#xA;The Beta API also supports filtering on multiple expressions by providing each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="maxResults" required="true" description="The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
+      <attributes name="orderBy" required="true" description="Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.&#xA;&#xA;You can also sort results in descending order based on the creation timestamp using orderBy=&quot;creationTimestamp desc&quot;. This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.&#xA;&#xA;Currently, only sorting by name or creationTimestamp desc is supported.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="removeMember" scheme="http://occi/gcpclouduseraccounts/group/action#" title="Removes users from the specified group.">
-      <attributes name="groupName" required="true" description="Name of the group for this request." type="//@types.0"/>
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.0"/>
+      <attributes name="groupName" required="true" description="Name of the group for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GroupList" scheme="http://occi/gcpclouduseraccounts#" title="">
-    <attributes name="items" required="true" description="[Output Only] A list of Group resources." type="//@types.7"/>
-    <attributes name="kind" required="true" description="[Output Only] Type of resource. Always clouduseraccounts#groupList for lists of groups." type="//@types.0"/>
-    <attributes name="nextPageToken" required="true" description="[Output Only] A token used to continue a truncated list request." type="//@types.0"/>
-    <attributes name="selfLink" required="true" description="[Output Only] Server defined URL for this resource." type="//@types.0"/>
+    <attributes name="items" required="true" description="[Output Only] A list of Group resources." type="//@types.2"/>
+    <attributes name="kindGCP" required="true" description="[Output Only] Type of resource. Always clouduseraccounts#groupList for lists of groups.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nextPageToken" required="true" description="[Output Only] A token used to continue a truncated list request.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="selfLink" required="true" description="[Output Only] Server defined URL for this resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GroupsAddMemberRequest" scheme="http://occi/gcpclouduseraccounts#" title="">
-    <attributes name="users" required="true" description="Fully-qualified URLs of the User resources to add." type="//@types.7"/>
+    <attributes name="users" required="true" description="Fully-qualified URLs of the User resources to add." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GroupsRemoveMemberRequest" scheme="http://occi/gcpclouduseraccounts#" title="">
-    <attributes name="users" required="true" description="Fully-qualified URLs of the User resources to remove." type="//@types.7"/>
+    <attributes name="users" required="true" description="Fully-qualified URLs of the User resources to remove." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="LinuxAccountViews" scheme="http://occi/gcpclouduseraccounts#" title="A list of all Linux accounts for this project. This API is only used by Compute Engine virtual machines to get information about user accounts for a project or instance. Linux resources are read-only views into users and groups managed by the Compute Engine Accounts API.">
-    <attributes name="groupViews" required="true" description="[Output Only] A list of all groups within a project." type="//@types.7"/>
-    <attributes name="kind" required="true" description="[Output Only] Type of the resource. Always clouduseraccounts#linuxAccountViews for Linux resources." type="//@types.0"/>
-    <attributes name="userViews" required="true" description="[Output Only] A list of all users within a project." type="//@types.7"/>
+    <attributes name="groupViews" required="true" description="[Output Only] A list of all groups within a project." type="//@types.2"/>
+    <attributes name="kindGCP" required="true" description="[Output Only] Type of the resource. Always clouduseraccounts#linuxAccountViews for Linux resources.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="userViews" required="true" description="[Output Only] A list of all users within a project." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AuthorizedKeysViewLink" scheme="http://occi/gcpclouduseraccounts#" title="[Output Only] A list of authorized public keys for a user." source="//@kinds[term='linuxgetauthorizedkeysviewresponse']" target="//@kinds[term='authorizedkeysview']">
@@ -75,117 +123,235 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="LinuxGroupView" scheme="http://occi/gcpclouduseraccounts#" title="A detailed view of a Linux group.">
-    <attributes name="gid" required="true" description="[Output Only] The Group ID." type="//@types.3"/>
-    <attributes name="groupName" required="true" description="[Output Only] Group name." type="//@types.0"/>
-    <attributes name="members" required="true" description="[Output Only] List of user accounts that belong to the group." type="//@types.7"/>
+    <attributes name="gid" required="true" description="[Output Only] The Group ID.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="groupName" required="true" description="[Output Only] Group name.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="members" required="true" description="[Output Only] List of user accounts that belong to the group." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="LinuxUserView" scheme="http://occi/gcpclouduseraccounts#" title="A detailed view of a Linux user account.">
-    <attributes name="gecos" required="true" description="[Output Only] The GECOS (user information) entry for this account." type="//@types.0"/>
-    <attributes name="gid" required="true" description="[Output Only] User's default group ID." type="//@types.3"/>
-    <attributes name="homeDirectory" required="true" description="[Output Only] The path to the home directory for this account." type="//@types.0"/>
-    <attributes name="shell" required="true" description="[Output Only] The path to the login shell for this account." type="//@types.0"/>
-    <attributes name="uid" required="true" description="[Output Only] User ID." type="//@types.3"/>
-    <attributes name="username" required="true" description="[Output Only] The username of the account." type="//@types.0"/>
+    <attributes name="gecos" required="true" description="[Output Only] The GECOS (user information) entry for this account.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="gid" required="true" description="[Output Only] User's default group ID.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="homeDirectory" required="true" description="[Output Only] The path to the home directory for this account.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="shell" required="true" description="[Output Only] The path to the login shell for this account.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="uid" required="true" description="[Output Only] User ID.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="username" required="true" description="[Output Only] The username of the account.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Operation" scheme="http://occi/gcpclouduseraccounts#" title="An Operation resource, used to manage asynchronous API requests.">
-    <attributes name="clientOperationId" required="true" description="[Output Only] Reserved for future use." type="//@types.0"/>
-    <attributes name="creationTimestamp" required="true" description="[Output Only] Creation timestamp in RFC3339 text format." type="//@types.0"/>
-    <attributes name="description" required="true" description="[Output Only] A textual description of the operation, which is set when the operation is created." type="//@types.0"/>
-    <attributes name="endTime" required="true" description="[Output Only] The time that this operation was completed. This value is in RFC3339 text format." type="//@types.0"/>
-    <attributes name="error" required="true" description="[Output Only] If errors are generated during processing of the operation, this field will be populated." type="//@types.10"/>
-    <attributes name="httpErrorMessage" required="true" description="[Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as NOT FOUND." type="//@types.0"/>
-    <attributes name="httpErrorStatusCode" required="true" description="[Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a 404 means the resource was not found." type="//@types.3"/>
-    <attributes name="insertTime" required="true" description="[Output Only] The time that this operation was requested. This value is in RFC3339 text format." type="//@types.0"/>
-    <attributes name="kind" required="true" description="[Output Only] Type of the resource. Always compute#operation for Operation resources." type="//@types.0"/>
-    <attributes name="name" required="true" description="[Output Only] Name of the resource." type="//@types.0"/>
-    <attributes name="operationType" required="true" description="[Output Only] The type of operation, such as insert, update, or delete, and so on." type="//@types.0"/>
-    <attributes name="progress" required="true" description="[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses." type="//@types.3"/>
-    <attributes name="region" required="true" description="[Output Only] The URL of the region where the operation resides. Only available when performing regional operations." type="//@types.0"/>
-    <attributes name="selfLink" required="true" description="[Output Only] Server-defined URL for the resource." type="//@types.0"/>
-    <attributes name="startTime" required="true" description="[Output Only] The time that this operation was started by the server. This value is in RFC3339 text format." type="//@types.0"/>
-    <attributes name="status" required="true" description="[Output Only] The status of the operation, which can be one of the following: PENDING, RUNNING, or DONE." type="//@types.11"/>
-    <attributes name="statusMessage" required="true" description="[Output Only] An optional textual description of the current status of the operation." type="//@types.11"/>
-    <attributes name="targetId" required="true" description="[Output Only] The unique target ID, which identifies a specific incarnation of the target resource." type="//@types.11"/>
-    <attributes name="targetLink" required="true" description="[Output Only] The URL of the resource that the operation modifies." type="//@types.11"/>
-    <attributes name="user" required="true" description="[Output Only] User who requested the operation, for example: user@example.com." type="//@types.11"/>
-    <attributes name="warnings" required="true" description="[Output Only] If warning messages are generated during processing of the operation, this field will be populated." type="//@types.7"/>
-    <attributes name="zone" required="true" description="[Output Only] The URL of the zone where the operation resides. Only available when performing per-zone operations." type="//@types.11"/>
+    <attributes name="clientOperationId" required="true" description="[Output Only] Reserved for future use.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="creationTimestamp" required="true" description="[Output Only] Creation timestamp in RFC3339 text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="[Output Only] A textual description of the operation, which is set when the operation is created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="endTime" required="true" description="[Output Only] The time that this operation was completed. This value is in RFC3339 text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="error" required="true" description="[Output Only] If errors are generated during processing of the operation, this field will be populated." type="//@types.8"/>
+    <attributes name="httpErrorMessage" required="true" description="[Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as NOT FOUND.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="httpErrorStatusCode" required="true" description="[Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a 404 means the resource was not found.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="insertTime" required="true" description="[Output Only] The time that this operation was requested. This value is in RFC3339 text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="kindGCP" required="true" description="[Output Only] Type of the resource. Always compute#operation for Operation resources.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="[Output Only] Name of the resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="operationType" required="true" description="[Output Only] The type of operation, such as insert, update, or delete, and so on.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="progress" required="true" description="[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="region" required="true" description="[Output Only] The URL of the region where the operation resides. Only available when performing regional operations.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="selfLink" required="true" description="[Output Only] Server-defined URL for the resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="startTime" required="true" description="[Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="status" required="true" description="[Output Only] The status of the operation, which can be one of the following: PENDING, RUNNING, or DONE.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="statusMessage" required="true" description="[Output Only] An optional textual description of the current status of the operation.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="targetId" required="true" description="[Output Only] The unique target ID, which identifies a specific incarnation of the target resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="targetLink" required="true" description="[Output Only] The URL of the resource that the operation modifies.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="user" required="true" description="[Output Only] User who requested the operation, for example: user@example.com.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="warnings" required="true" description="[Output Only] If warning messages are generated during processing of the operation, this field will be populated." type="//@types.2"/>
+    <attributes name="zone" required="true" description="[Output Only] The URL of the zone where the operation resides. Only available when performing per-zone operations.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="OperationList" scheme="http://occi/gcpclouduseraccounts#" title="Contains a list of Operation resources.">
-    <attributes name="items" required="true" description="[Output Only] A list of Operation resources." type="//@types.7"/>
-    <attributes name="kind" required="true" description="[Output Only] Type of resource. Always compute#operations for Operations resource." type="//@types.11"/>
-    <attributes name="nextPageToken" required="true" description="[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results." type="//@types.11"/>
-    <attributes name="selfLink" required="true" description="[Output Only] Server-defined URL for this resource." type="//@types.11"/>
+    <attributes name="items" required="true" description="[Output Only] A list of Operation resources." type="//@types.2"/>
+    <attributes name="kindGCP" required="true" description="[Output Only] Type of resource. Always compute#operations for Operations resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nextPageToken" required="true" description="[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="selfLink" required="true" description="[Output Only] Server-defined URL for this resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PublicKey" scheme="http://occi/gcpclouduseraccounts#" title="A public key for authenticating to guests.">
-    <attributes name="creationTimestamp" required="true" description="[Output Only] Creation timestamp in RFC3339 text format." type="//@types.11"/>
-    <attributes name="description" required="true" description="An optional textual description of the resource; provided by the client when the resource is created." type="//@types.11"/>
-    <attributes name="expirationTimestamp" required="true" description="Optional expiration timestamp. If provided, the timestamp must be in RFC3339 text format. If not provided, the public key never expires." type="//@types.11"/>
-    <attributes name="fingerprint" required="true" description="[Output Only] The fingerprint of the key is defined by RFC4716 to be the MD5 digest of the public key." type="//@types.11"/>
-    <attributes name="key" required="true" description="Public key text in SSH format, defined by RFC4253 section 6.6." type="//@types.11"/>
+    <attributes name="creationTimestamp" required="true" description="[Output Only] Creation timestamp in RFC3339 text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="An optional textual description of the resource; provided by the client when the resource is created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="expirationTimestamp" required="true" description="Optional expiration timestamp. If provided, the timestamp must be in RFC3339 text format. If not provided, the public key never expires.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="fingerprint" required="true" description="[Output Only] The fingerprint of the key is defined by RFC4716 to be the MD5 digest of the public key.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="key" required="true" description="Public key text in SSH format, defined by RFC4253 section 6.6.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="User" scheme="http://occi/gcpclouduseraccounts#" title="A User resource.">
-    <attributes name="creationTimestamp" required="true" description="[Output Only] Creation timestamp in RFC3339 text format." type="//@types.11"/>
-    <attributes name="description" required="true" description="An optional textual description of the resource; provided by the client when the resource is created." type="//@types.11"/>
-    <attributes name="groups" required="true" description="[Output Only] A list of URLs to Group resources who contain the user. Users are only members of groups in the same project." type="//@types.7"/>
-    <attributes name="kind" required="true" description="[Output Only] Type of the resource. Always clouduseraccounts#user for users." type="//@types.11"/>
-    <attributes name="name" required="true" description="Name of the resource; provided by the client when the resource is created." type="//@types.11"/>
-    <attributes name="owner" required="true" description="Email address of account's owner. This account will be validated to make sure it exists. The email can belong to any domain, but it must be tied to a Google account." type="//@types.11"/>
-    <attributes name="publicKeys" required="true" description="[Output Only] Public keys that this user may use to login." type="//@types.7"/>
-    <attributes name="selfLink" required="true" description="[Output Only] Server defined URL for the resource." type="//@types.11"/>
+    <attributes name="creationTimestamp" required="true" description="[Output Only] Creation timestamp in RFC3339 text format.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="description" required="true" description="An optional textual description of the resource; provided by the client when the resource is created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="groups" required="true" description="[Output Only] A list of URLs to Group resources who contain the user. Users are only members of groups in the same project." type="//@types.2"/>
+    <attributes name="kindGCP" required="true" description="[Output Only] Type of the resource. Always clouduseraccounts#user for users.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="Name of the resource; provided by the client when the resource is created.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="owner" required="true" description="Email address of account's owner. This account will be validated to make sure it exists. The email can belong to any domain, but it must be tied to a Google account.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="publicKeys" required="true" description="[Output Only] Public keys that this user may use to login." type="//@types.2"/>
+    <attributes name="selfLink" required="true" description="[Output Only] Server defined URL for the resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="addPublicKey" scheme="http://occi/gcpclouduseraccounts/user/action#" title="Adds a public key to the specified User resource with the data included in the request.">
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.11"/>
-      <attributes name="user" required="true" description="Name of the user for this request." type="//@types.11"/>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="user" required="true" description="Name of the user for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="delete" scheme="http://occi/gcpclouduseraccounts/user/action#" title="Deletes the specified User resource.">
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.11"/>
-      <attributes name="user" required="true" description="Name of the user resource to delete." type="//@types.11"/>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="user" required="true" description="Name of the user resource to delete.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpclouduseraccounts/user/action#" title="Returns the specified User resource.">
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.11"/>
-      <attributes name="user" required="true" description="Name of the user resource to return." type="//@types.11"/>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="user" required="true" description="Name of the user resource to return.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="insert" scheme="http://occi/gcpclouduseraccounts/user/action#" title="Creates a User resource in the specified project using the data included in the request.">
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.11"/>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpclouduseraccounts/user/action#" title="Retrieves a list of users contained within the specified project.">
-      <attributes name="filter" required="true" description="Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.&#xA;&#xA;The field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.&#xA;&#xA;For example, to filter for instances that do not have a name of example-instance, you would use filter=name ne example-instance.&#xA;&#xA;Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. In particular, use filtering on nested fields to take advantage of instance labels to organize and filter results based on label values.&#xA;&#xA;The Beta API also supports filtering on multiple expressions by providing each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters." type="//@types.11"/>
-      <attributes name="maxResults" required="true" description="The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests." type="//@types.3"/>
-      <attributes name="orderBy" required="true" description="Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.&#xA;&#xA;You can also sort results in descending order based on the creation timestamp using orderBy=&quot;creationTimestamp desc&quot;. This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.&#xA;&#xA;Currently, only sorting by name or creationTimestamp desc is supported." type="//@types.11"/>
-      <attributes name="pageToken" required="true" description="Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results." type="//@types.11"/>
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.11"/>
+      <attributes name="filter" required="true" description="Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.&#xA;&#xA;The field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.&#xA;&#xA;For example, to filter for instances that do not have a name of example-instance, you would use filter=name ne example-instance.&#xA;&#xA;Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. In particular, use filtering on nested fields to take advantage of instance labels to organize and filter results based on label values.&#xA;&#xA;The Beta API also supports filtering on multiple expressions by providing each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="maxResults" required="true" description="The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
+      <attributes name="orderBy" required="true" description="Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.&#xA;&#xA;You can also sort results in descending order based on the creation timestamp using orderBy=&quot;creationTimestamp desc&quot;. This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.&#xA;&#xA;Currently, only sorting by name or creationTimestamp desc is supported.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="removePublicKey" scheme="http://occi/gcpclouduseraccounts/user/action#" title="Removes the specified public key from the user.">
-      <attributes name="fingerprint" required="true" description="The fingerprint of the public key to delete. Public keys are identified by their fingerprint, which is defined by RFC4716 to be the MD5 digest of the public key." type="//@types.11"/>
-      <attributes name="project" required="true" description="Project ID for this request." type="//@types.11"/>
-      <attributes name="user" required="true" description="Name of the user for this request." type="//@types.11"/>
+      <attributes name="fingerprint" required="true" description="The fingerprint of the public key to delete. Public keys are identified by their fingerprint, which is defined by RFC4716 to be the MD5 digest of the public key.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="project" required="true" description="Project ID for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="user" required="true" description="Name of the user for this request.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="UserList" scheme="http://occi/gcpclouduseraccounts#" title="">
-    <attributes name="items" required="true" description="[Output Only] A list of User resources." type="//@types.7"/>
-    <attributes name="kind" required="true" description="[Output Only] Type of resource. Always clouduseraccounts#userList for lists of users." type="//@types.11"/>
-    <attributes name="nextPageToken" required="true" description="[Output Only] A token used to continue a truncated list request." type="//@types.11"/>
-    <attributes name="selfLink" required="true" description="[Output Only] Server defined URL for this resource." type="//@types.11"/>
+    <attributes name="items" required="true" description="[Output Only] A list of User resources." type="//@types.2"/>
+    <attributes name="kindGCP" required="true" description="[Output Only] Type of resource. Always clouduseraccounts#userList for lists of users.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="nextPageToken" required="true" description="[Output Only] A token used to continue a truncated list request.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="selfLink" required="true" description="[Output Only] Server defined URL for this resource.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
-  <types xsi:type="occi:NumericType" name="byte"/>
-  <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
   <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="status" documentation="[Output Only] The status of the operation, which can be one of the following: PENDING, RUNNING, or DONE.">
+  <types xsi:type="occi:EnumerationType" name="Status" documentation="[Output Only] The status of the operation, which can be one of the following: PENDING, RUNNING, or DONE.">
     <literals name="DONE" documentation=""/>
     <literals name="PENDING" documentation=""/>
     <literals name="RUNNING" documentation=""/>

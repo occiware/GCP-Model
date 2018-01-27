@@ -5,8 +5,12 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="UpdateClusterMetadata" scheme="http://occi/gcpbigtableadmin#" title="The metadata for the Operation returned by UpdateCluster.">
-    <attributes name="finishTime" required="true" description="The time at which the operation failed or was completed successfully." type="//@types.0"/>
-    <attributes name="requestTime" required="true" description="The time at which the original request was received." type="//@types.0"/>
+    <attributes name="finishTime" required="true" description="The time at which the operation failed or was completed successfully.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="requestTime" required="true" description="The time at which the original request was received.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Empty" scheme="http://occi/gcpbigtableadmin#" title="A generic empty message that you can re-use to avoid defining duplicated&#xA;empty messages in your APIs. A typical example is to use it as the request&#xA;or the response type of an API method. For instance:&#xA;&#xA;    service Foo {&#xA;      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;    }&#xA;&#xA;The JSON representation for `Empty` is empty JSON object `{}`.">
@@ -16,96 +20,152 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="CreateTableRequest" scheme="http://occi/gcpbigtableadmin#" title="Request message for&#xA;google.bigtable.admin.v2.BigtableTableAdmin.CreateTable">
-    <attributes name="initialSplits" required="true" description="The optional list of row keys that will be used to initially split the&#xA;table into several tablets (tablets are similar to HBase regions).&#xA;Given two split keys, `s1` and `s2`, three tablets will be created,&#xA;spanning the key ranges: `[, s1), [s1, s2), [s2, )`.&#xA;&#xA;Example:&#xA;&#xA;* Row keys := `[&quot;a&quot;, &quot;apple&quot;, &quot;custom&quot;, &quot;customer_1&quot;, &quot;customer_2&quot;,`&#xA;               `&quot;other&quot;, &quot;zz&quot;]`&#xA;* initial_split_keys := `[&quot;apple&quot;, &quot;customer_1&quot;, &quot;customer_2&quot;, &quot;other&quot;]`&#xA;* Key assignment:&#xA;    - Tablet 1 `[, apple)                => {&quot;a&quot;}.`&#xA;    - Tablet 2 `[apple, customer_1)      => {&quot;apple&quot;, &quot;custom&quot;}.`&#xA;    - Tablet 3 `[customer_1, customer_2) => {&quot;customer_1&quot;}.`&#xA;    - Tablet 4 `[customer_2, other)      => {&quot;customer_2&quot;}.`&#xA;    - Tablet 5 `[other, )                => {&quot;other&quot;, &quot;zz&quot;}.`" type="//@types.7"/>
-    <attributes name="tableId" required="true" description="The name by which the new table should be referred to within the parent&#xA;instance, e.g., `foobar` rather than `&lt;parent>/tables/foobar`." type="//@types.0"/>
+    <attributes name="initialSplits" required="true" description="The optional list of row keys that will be used to initially split the&#xA;table into several tablets (tablets are similar to HBase regions).&#xA;Given two split keys, `s1` and `s2`, three tablets will be created,&#xA;spanning the key ranges: `[, s1), [s1, s2), [s2, )`.&#xA;&#xA;Example:&#xA;&#xA;* Row keys := `[&quot;a&quot;, &quot;apple&quot;, &quot;custom&quot;, &quot;customer_1&quot;, &quot;customer_2&quot;,`&#xA;               `&quot;other&quot;, &quot;zz&quot;]`&#xA;* initial_split_keys := `[&quot;apple&quot;, &quot;customer_1&quot;, &quot;customer_2&quot;, &quot;other&quot;]`&#xA;* Key assignment:&#xA;    - Tablet 1 `[, apple)                => {&quot;a&quot;}.`&#xA;    - Tablet 2 `[apple, customer_1)      => {&quot;apple&quot;, &quot;custom&quot;}.`&#xA;    - Tablet 3 `[customer_1, customer_2) => {&quot;customer_1&quot;}.`&#xA;    - Tablet 4 `[customer_2, other)      => {&quot;customer_2&quot;}.`&#xA;    - Tablet 5 `[other, )                => {&quot;other&quot;, &quot;zz&quot;}.`" type="//@types.2"/>
+    <attributes name="tableId" required="true" description="The name by which the new table should be referred to within the parent&#xA;instance, e.g., `foobar` rather than `&lt;parent>/tables/foobar`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="CreateClusterRequestClusterLink" scheme="http://occi/gcpbigtableadmin#" title="The cluster to be created.&#xA;Fields marked `OutputOnly` must be left blank." source="//@kinds[term='createclusterrequest']" target="//@kinds[term='cluster']">
+  <kinds name="CreateClusterRequestclusterClusterLink" scheme="http://occi/gcpbigtableadmin#" title="The cluster to be created.&#xA;Fields marked `OutputOnly` must be left blank." source="//@kinds[term='createclusterrequest']" target="//@kinds[term='cluster']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="CreateClusterRequest" scheme="http://occi/gcpbigtableadmin#" title="Request message for BigtableInstanceAdmin.CreateCluster.">
-    <attributes name="clusterId" required="true" description="The ID to be used when referring to the new cluster within its instance,&#xA;e.g., just `mycluster` rather than&#xA;`projects/myproject/instances/myinstance/clusters/mycluster`." type="//@types.0"/>
-    <attributes name="parent" required="true" description="The unique name of the instance in which to create the new cluster.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>`." type="//@types.0"/>
+    <attributes name="clusterId" required="true" description="The ID to be used when referring to the new cluster within its instance,&#xA;e.g., just `mycluster` rather than&#xA;`projects/myproject/instances/myinstance/clusters/mycluster`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="parent" required="true" description="The unique name of the instance in which to create the new cluster.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="InstanceLink" scheme="http://occi/gcpbigtableadmin#" title="The instance to create.&#xA;Fields marked `OutputOnly` must be left blank." source="//@kinds[term='createinstancerequest']" target="//@kinds[term='instance']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="CreateInstanceRequest" scheme="http://occi/gcpbigtableadmin#" title="Request message for BigtableInstanceAdmin.CreateInstance.">
-    <attributes name="parent" required="true" description="The unique name of the project in which to create the new instance.&#xA;Values are of the form `projects/&lt;project>`." type="//@types.0"/>
-    <attributes name="instanceId" required="true" description="The ID to be used when referring to the new instance within its project,&#xA;e.g., just `myinstance` rather than&#xA;`projects/myproject/instances/myinstance`." type="//@types.0"/>
-    <attributes name="clusters" required="true" description="The clusters to be created within the instance, mapped by desired&#xA;cluster ID, e.g., just `mycluster` rather than&#xA;`projects/myproject/instances/myinstance/clusters/mycluster`.&#xA;Fields marked `OutputOnly` must be left blank.&#xA;Currently exactly one cluster must be specified." type="//@types.10"/>
+    <attributes name="parent" required="true" description="The unique name of the project in which to create the new instance.&#xA;Values are of the form `projects/&lt;project>`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="instanceId" required="true" description="The ID to be used when referring to the new instance within its project,&#xA;e.g., just `myinstance` rather than&#xA;`projects/myproject/instances/myinstance`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="clusters" required="true" description="The clusters to be created within the instance, mapped by desired&#xA;cluster ID, e.g., just `mycluster` rather than&#xA;`projects/myproject/instances/myinstance/clusters/mycluster`.&#xA;Fields marked `OutputOnly` must be left blank.&#xA;Currently exactly one cluster must be specified." type="//@types.8"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Table" scheme="http://occi/gcpbigtableadmin#" title="A collection of user data indexed by row, column, and timestamp.&#xA;Each table is served using the resources of its parent cluster.">
-    <attributes name="granularity" required="true" description="(`CreationOnly`)&#xA;The granularity (e.g. `MILLIS`, `MICROS`) at which timestamps are stored in&#xA;this table. Timestamps not matching the granularity will be rejected.&#xA;If unspecified at creation time, the value will be set to `MILLIS`.&#xA;Views: `SCHEMA_VIEW`, `FULL`" type="//@types.11"/>
-    <attributes name="columnFamilies" required="true" description="(`CreationOnly`)&#xA;The column families configured for this table, mapped by column family ID.&#xA;Views: `SCHEMA_VIEW`, `FULL`" type="//@types.10"/>
-    <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the table. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/_a-zA-Z0-9*`.&#xA;Views: `NAME_ONLY`, `SCHEMA_VIEW`, `FULL`" type="//@types.11"/>
+    <attributes name="granularity" required="true" description="(`CreationOnly`)&#xA;The granularity (e.g. `MILLIS`, `MICROS`) at which timestamps are stored in&#xA;this table. Timestamps not matching the granularity will be rejected.&#xA;If unspecified at creation time, the value will be set to `MILLIS`.&#xA;Views: `SCHEMA_VIEW`, `FULL`">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="columnFamilies" required="true" description="(`CreationOnly`)&#xA;The column families configured for this table, mapped by column family ID.&#xA;Views: `SCHEMA_VIEW`, `FULL`" type="//@types.8"/>
+    <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the table. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/_a-zA-Z0-9*`.&#xA;Views: `NAME_ONLY`, `SCHEMA_VIEW`, `FULL`">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="delete" scheme="http://occi/gcpbigtableadmin/table/action#" title="Permanently deletes a specified table and all of its data.">
-      <attributes name="name" required="true" description="The unique name of the table to be deleted.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/&lt;table>`." type="//@types.11"/>
+      <attributes name="name" required="true" description="The unique name of the table to be deleted.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/&lt;table>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpbigtableadmin/table/action#" title="Lists all tables served from a specified instance.">
-      <attributes name="pageToken" required="true" description="The value of `next_page_token` returned by a previous call." type="//@types.11"/>
-      <attributes name="view" required="true" description="The view to be applied to the returned tables' fields.&#xA;Defaults to `NAME_ONLY` if unspecified; no others are currently supported." type="//@types.11"/>
-      <attributes name="parent" required="true" description="The unique name of the instance for which tables should be listed.&#xA;Values are of the form `projects/&lt;project>/instances/&lt;instance>`." type="//@types.11"/>
+      <attributes name="pageToken" required="true" description="The value of `next_page_token` returned by a previous call.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="view" required="true" description="The view to be applied to the returned tables' fields.&#xA;Defaults to `NAME_ONLY` if unspecified; no others are currently supported.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="parent" required="true" description="The unique name of the instance for which tables should be listed.&#xA;Values are of the form `projects/&lt;project>/instances/&lt;instance>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="dropRowRange" scheme="http://occi/gcpbigtableadmin/table/action#" title="Permanently drop/delete a row range from a specified table. The request can&#xA;specify whether to delete all rows in a table, or only those that match a&#xA;particular prefix.">
-      <attributes name="name" required="true" description="The unique name of the table on which to drop a range of rows.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/&lt;table>`." type="//@types.11"/>
+      <attributes name="name" required="true" description="The unique name of the table on which to drop a range of rows.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/&lt;table>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="create" scheme="http://occi/gcpbigtableadmin/table/action#" title="Creates a new table in the specified instance.&#xA;The table can be created with a full set of initial column families,&#xA;specified in the request.">
-      <attributes name="parent" required="true" description="The unique name of the instance in which to create the table.&#xA;Values are of the form `projects/&lt;project>/instances/&lt;instance>`." type="//@types.11"/>
+      <attributes name="parent" required="true" description="The unique name of the instance in which to create the table.&#xA;Values are of the form `projects/&lt;project>/instances/&lt;instance>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="modifyColumnFamilies" scheme="http://occi/gcpbigtableadmin/table/action#" title="Performs a series of column family modifications on the specified table.&#xA;Either all or none of the modifications will occur before this method&#xA;returns, but data requests received prior to that point may see a table&#xA;where only some modifications have taken effect.">
-      <attributes name="name" required="true" description="The unique name of the table whose families should be modified.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/&lt;table>`." type="//@types.11"/>
+      <attributes name="name" required="true" description="The unique name of the table whose families should be modified.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/&lt;table>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpbigtableadmin/table/action#" title="Gets metadata information about the specified table.">
-      <attributes name="name" required="true" description="The unique name of the requested table.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/&lt;table>`." type="//@types.11"/>
-      <attributes name="view" required="true" description="The view to be applied to the returned table's fields.&#xA;Defaults to `SCHEMA_VIEW` if unspecified." type="//@types.11"/>
+      <attributes name="name" required="true" description="The unique name of the requested table.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/&lt;table>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="view" required="true" description="The view to be applied to the returned table's fields.&#xA;Defaults to `SCHEMA_VIEW` if unspecified.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Intersection" scheme="http://occi/gcpbigtableadmin#" title="A GcRule which deletes cells matching all of the given rules.">
-    <attributes name="rules" required="true" description="Only delete cells which would be deleted by every element of `rules`." type="//@types.7"/>
+    <attributes name="rules" required="true" description="Only delete cells which would be deleted by every element of `rules`." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Split" scheme="http://occi/gcpbigtableadmin#" title="An initial split point for a newly created table.">
-    <attributes name="key" required="true" description="Row key to use as an initial tablet boundary." type="//@types.11"/>
+    <attributes name="key" required="true" description="Row key to use as an initial tablet boundary.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Union" scheme="http://occi/gcpbigtableadmin#" title="A GcRule which deletes cells matching any of the given rules.">
-    <attributes name="rules" required="true" description="Delete cells which would be deleted by any element of `rules`." type="//@types.7"/>
+    <attributes name="rules" required="true" description="Delete cells which would be deleted by any element of `rules`." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="CreateInstanceRequestLink" scheme="http://occi/gcpbigtableadmin#" title="The request that prompted the initiation of this CreateInstance operation." source="//@kinds[term='createinstancemetadata']" target="//@kinds[term='createinstancerequest']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="CreateInstanceMetadata" scheme="http://occi/gcpbigtableadmin#" title="The metadata for the Operation returned by CreateInstance.">
-    <attributes name="finishTime" required="true" description="The time at which the operation failed or was completed successfully." type="//@types.11"/>
-    <attributes name="requestTime" required="true" description="The time at which the original request was received." type="//@types.11"/>
+    <attributes name="finishTime" required="true" description="The time at which the operation failed or was completed successfully.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="requestTime" required="true" description="The time at which the original request was received.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="StatusLink" scheme="http://occi/gcpbigtableadmin#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='operation']" target="//@kinds[term='status']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Operation" scheme="http://occi/gcpbigtableadmin#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
-    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.9"/>
-    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`." type="//@types.11"/>
-    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.9"/>
-    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available." type="//@types.6"/>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.3"/>
+    <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.3"/>
+    <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <actions name="cancel" scheme="http://occi/gcpbigtableadmin/operation/action#" title="Starts asynchronous cancellation on a long-running operation.  The server&#xA;makes a best effort to cancel the operation, but success is not&#xA;guaranteed.  If the server doesn't support this method, it returns&#xA;`google.rpc.Code.UNIMPLEMENTED`.  Clients can use&#xA;Operations.GetOperation or&#xA;other methods to check whether the cancellation succeeded or whether the&#xA;operation completed despite cancellation. On successful cancellation,&#xA;the operation is not deleted; instead, it becomes an operation with&#xA;an Operation.error value with a google.rpc.Status.code of 1,&#xA;corresponding to `Code.CANCELLED`.">
-      <attributes name="name" required="true" description="The name of the operation resource to be cancelled." type="//@types.11"/>
+      <attributes name="name" required="true" description="The name of the operation resource to be cancelled.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="delete" scheme="http://occi/gcpbigtableadmin/operation/action#" title="Deletes a long-running operation. This method indicates that the client is&#xA;no longer interested in the operation result. It does not cancel the&#xA;operation. If the server doesn't support this method, it returns&#xA;`google.rpc.Code.UNIMPLEMENTED`.">
-      <attributes name="name" required="true" description="The name of the operation resource to be deleted." type="//@types.11"/>
+      <attributes name="name" required="true" description="The name of the operation resource to be deleted.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpbigtableadmin/operation/action#" title="Gets the latest state of a long-running operation.  Clients can use this&#xA;method to poll the operation result at intervals as recommended by the API&#xA;service.">
-      <attributes name="name" required="true" description="The name of the operation resource." type="//@types.11"/>
+      <attributes name="name" required="true" description="The name of the operation resource.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpbigtableadmin/operation/action#" title="Lists operations that match the specified filter in the request. If the&#xA;server doesn't support this method, it returns `UNIMPLEMENTED`.&#xA;&#xA;NOTE: the `name` binding allows API services to override the binding&#xA;to use different resource name schemes, such as `users/*/operations`. To&#xA;override the binding, API services can add a binding such as&#xA;`&quot;/v1/{name=users/*}/operations&quot;` to their service configuration.&#xA;For backwards compatibility, the default name includes the operations&#xA;collection id, however overriding users must ensure the name binding&#xA;is the parent resource, without the operations collection id.">
-      <attributes name="filter" required="true" description="The standard list filter." type="//@types.11"/>
-      <attributes name="pageToken" required="true" description="The standard list page token." type="//@types.11"/>
-      <attributes name="name" required="true" description="The name of the operation's parent resource." type="//@types.11"/>
-      <attributes name="pageSize" required="true" description="The standard list page size." type="//@types.3"/>
+      <attributes name="filter" required="true" description="The standard list filter.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="The standard list page token.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="name" required="true" description="The name of the operation's parent resource.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageSize" required="true" description="The standard list page size.">
+        <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
@@ -119,48 +179,82 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="CreateClusterMetadata" scheme="http://occi/gcpbigtableadmin#" title="The metadata for the Operation returned by CreateCluster.">
-    <attributes name="finishTime" required="true" description="The time at which the operation failed or was completed successfully." type="//@types.11"/>
-    <attributes name="requestTime" required="true" description="The time at which the original request was received." type="//@types.11"/>
+    <attributes name="finishTime" required="true" description="The time at which the operation failed or was completed successfully.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="requestTime" required="true" description="The time at which the original request was received.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Status" scheme="http://occi/gcpbigtableadmin#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
-    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.7"/>
-    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code." type="//@types.3"/>
-    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client." type="//@types.11"/>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.2"/>
+    <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Cluster" scheme="http://occi/gcpbigtableadmin#" title="A resizable group of nodes in a particular cloud location, capable&#xA;of serving all Tables in the parent&#xA;Instance.">
-    <attributes name="location" required="true" description="(`CreationOnly`)&#xA;The location where this cluster's nodes and storage reside. For best&#xA;performance, clients should be located as close as possible to this cluster.&#xA;Currently only zones are supported, so values should be of the form&#xA;`projects/&lt;project>/locations/&lt;zone>`." type="//@types.11"/>
-    <attributes name="state" required="true" description="(`OutputOnly`)&#xA;The current state of the cluster." type="//@types.12"/>
-    <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the cluster. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/clusters/a-z*`." type="//@types.12"/>
-    <attributes name="defaultStorageType" required="true" description="(`CreationOnly`)&#xA;The type of storage used by this cluster to serve its&#xA;parent instance's tables, unless explicitly overridden." type="//@types.13"/>
-    <attributes name="serveNodes" required="true" description="The number of nodes allocated to this cluster. More nodes enable higher&#xA;throughput and more consistent performance." type="//@types.3"/>
+    <attributes name="locationGCP" required="true" description="(`CreationOnly`)&#xA;The location where this cluster's nodes and storage reside. For best&#xA;performance, clients should be located as close as possible to this cluster.&#xA;Currently only zones are supported, so values should be of the form&#xA;`projects/&lt;project>/locations/&lt;zone>`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="state" required="true" description="(`OutputOnly`)&#xA;The current state of the cluster.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the cluster. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/clusters/a-z*`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="defaultStorageType" required="true" description="(`CreationOnly`)&#xA;The type of storage used by this cluster to serve its&#xA;parent instance's tables, unless explicitly overridden.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="serveNodes" required="true" description="The number of nodes allocated to this cluster. More nodes enable higher&#xA;throughput and more consistent performance.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
     <actions name="delete" scheme="http://occi/gcpbigtableadmin/cluster/action#" title="Deletes a cluster from an instance.">
-      <attributes name="name" required="true" description="The unique name of the cluster to be deleted. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/clusters/&lt;cluster>`." type="//@types.13"/>
+      <attributes name="name" required="true" description="The unique name of the cluster to be deleted. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/clusters/&lt;cluster>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="list" scheme="http://occi/gcpbigtableadmin/cluster/action#" title="Lists information about clusters in an instance.">
-      <attributes name="pageToken" required="true" description="The value of `next_page_token` returned by a previous call." type="//@types.13"/>
-      <attributes name="parent" required="true" description="The unique name of the instance for which a list of clusters is requested.&#xA;Values are of the form `projects/&lt;project>/instances/&lt;instance>`.&#xA;Use `&lt;instance> = '-'` to list Clusters for all Instances in a project,&#xA;e.g., `projects/myproject/instances/-`." type="//@types.13"/>
+      <attributes name="pageToken" required="true" description="The value of `next_page_token` returned by a previous call.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="parent" required="true" description="The unique name of the instance for which a list of clusters is requested.&#xA;Values are of the form `projects/&lt;project>/instances/&lt;instance>`.&#xA;Use `&lt;instance> = '-'` to list Clusters for all Instances in a project,&#xA;e.g., `projects/myproject/instances/-`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpbigtableadmin/cluster/action#" title="Gets information about a cluster.">
-      <attributes name="name" required="true" description="The unique name of the requested cluster. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/clusters/&lt;cluster>`." type="//@types.13"/>
+      <attributes name="name" required="true" description="The unique name of the requested cluster. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/clusters/&lt;cluster>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="update" scheme="http://occi/gcpbigtableadmin/cluster/action#" title="Updates a cluster within an instance.">
-      <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the cluster. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/clusters/a-z*`." type="//@types.13"/>
+      <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the cluster. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/clusters/a-z*`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="create" scheme="http://occi/gcpbigtableadmin/cluster/action#" title="Creates a cluster within an instance.">
-      <attributes name="clusterId" required="true" description="The ID to be used when referring to the new cluster within its instance,&#xA;e.g., just `mycluster` rather than&#xA;`projects/myproject/instances/myinstance/clusters/mycluster`." type="//@types.13"/>
-      <attributes name="parent" required="true" description="The unique name of the instance in which to create the new cluster.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>`." type="//@types.13"/>
+      <attributes name="clusterId" required="true" description="The ID to be used when referring to the new cluster within its instance,&#xA;e.g., just `mycluster` rather than&#xA;`projects/myproject/instances/myinstance/clusters/mycluster`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="parent" required="true" description="The unique name of the instance in which to create the new cluster.&#xA;Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListOperationsResponse" scheme="http://occi/gcpbigtableadmin#" title="The response message for Operations.ListOperations.">
-    <attributes name="nextPageToken" required="true" description="The standard List next-page token." type="//@types.13"/>
-    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="The standard List next-page token.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ModifyColumnFamiliesRequest" scheme="http://occi/gcpbigtableadmin#" title="Request message for&#xA;google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies">
-    <attributes name="modifications" required="true" description="Modifications to be atomically applied to the specified table's families.&#xA;Entries are applied in order, meaning that earlier modifications can be&#xA;masked by later ones (in the case of repeated updates to the same family,&#xA;for example)." type="//@types.7"/>
+    <attributes name="modifications" required="true" description="Modifications to be atomically applied to the specified table's families.&#xA;Entries are applied in order, meaning that earlier modifications can be&#xA;masked by later ones (in the case of repeated updates to the same family,&#xA;for example)." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="IntersectionLink" scheme="http://occi/gcpbigtableadmin#" title="Delete cells that would be deleted by every nested rule." source="//@kinds[term='gcrule']" target="//@kinds[term='intersection']">
@@ -170,98 +264,132 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="GcRule" scheme="http://occi/gcpbigtableadmin#" title="Rule for determining which cells to delete during garbage collection.">
-    <attributes name="maxNumVersions" required="true" description="Delete all cells in a column except the most recent N." type="//@types.3"/>
-    <attributes name="maxAge" required="true" description="Delete cells in a column older than the given age.&#xA;Values must be at least one millisecond, and will be truncated to&#xA;microsecond granularity." type="//@types.13"/>
+    <attributes name="maxNumVersions" required="true" description="Delete all cells in a column except the most recent N.">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <attributes name="maxAge" required="true" description="Delete cells in a column older than the given age.&#xA;Values must be at least one millisecond, and will be truncated to&#xA;microsecond granularity.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListClustersResponse" scheme="http://occi/gcpbigtableadmin#" title="Response message for BigtableInstanceAdmin.ListClusters.">
-    <attributes name="nextPageToken" required="true" description="Set if not all clusters could be returned in a single response.&#xA;Pass this value to `page_token` in another request to get the next&#xA;page of results." type="//@types.13"/>
-    <attributes name="failedLocations" required="true" description="Locations from which Cluster information could not be retrieved,&#xA;due to an outage or some other transient condition.&#xA;Clusters from these locations may be missing from `clusters`,&#xA;or may only have partial information returned." type="//@types.7"/>
-    <attributes name="clusters" required="true" description="The list of requested clusters." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="Set if not all clusters could be returned in a single response.&#xA;Pass this value to `page_token` in another request to get the next&#xA;page of results.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="failedLocations" required="true" description="Locations from which Cluster information could not be retrieved,&#xA;due to an outage or some other transient condition.&#xA;Clusters from these locations may be missing from `clusters`,&#xA;or may only have partial information returned." type="//@types.2"/>
+    <attributes name="clusters" required="true" description="The list of requested clusters." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListInstancesResponse" scheme="http://occi/gcpbigtableadmin#" title="Response message for BigtableInstanceAdmin.ListInstances.">
-    <attributes name="instances" required="true" description="The list of requested instances." type="//@types.7"/>
-    <attributes name="nextPageToken" required="true" description="Set if not all instances could be returned in a single response.&#xA;Pass this value to `page_token` in another request to get the next&#xA;page of results." type="//@types.13"/>
-    <attributes name="failedLocations" required="true" description="Locations from which Instance information could not be retrieved,&#xA;due to an outage or some other transient condition.&#xA;Instances whose Clusters are all in one of the failed locations&#xA;may be missing from `instances`, and Instances with at least one&#xA;Cluster in a failed location may only have partial information returned." type="//@types.7"/>
+    <attributes name="instances" required="true" description="The list of requested instances." type="//@types.2"/>
+    <attributes name="nextPageToken" required="true" description="Set if not all instances could be returned in a single response.&#xA;Pass this value to `page_token` in another request to get the next&#xA;page of results.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="failedLocations" required="true" description="Locations from which Instance information could not be retrieved,&#xA;due to an outage or some other transient condition.&#xA;Instances whose Clusters are all in one of the failed locations&#xA;may be missing from `instances`, and Instances with at least one&#xA;Cluster in a failed location may only have partial information returned." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="DropRowRangeRequest" scheme="http://occi/gcpbigtableadmin#" title="Request message for&#xA;google.bigtable.admin.v2.BigtableTableAdmin.DropRowRange">
-    <attributes name="rowKeyPrefix" required="true" description="Delete all rows that start with this row key prefix. Prefix cannot be&#xA;zero length." type="//@types.13"/>
-    <attributes name="deleteAllDataFromTable" required="true" description="Delete all rows in the table. Setting this to false is a no-op." type="//@types.6"/>
+    <attributes name="rowKeyPrefix" required="true" description="Delete all rows that start with this row key prefix. Prefix cannot be&#xA;zero length.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="deleteAllDataFromTable" required="true" description="Delete all rows in the table. Setting this to false is a no-op.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Instance" scheme="http://occi/gcpbigtableadmin#" title="A collection of Bigtable Tables and&#xA;the resources that serve them.&#xA;All tables in an instance are served from a single&#xA;Cluster.">
-    <attributes name="state" required="true" description="(`OutputOnly`)&#xA;The current state of the instance." type="//@types.14"/>
-    <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the instance. Values are of the form&#xA;`projects/&lt;project>/instances/a-z+[a-z0-9]`." type="//@types.14"/>
-    <attributes name="displayName" required="true" description="The descriptive name for this instance as it appears in UIs.&#xA;Can be changed at any time, but should be kept globally unique&#xA;to avoid confusion." type="//@types.14"/>
-    <attributes name="type" required="true" description="The type of the instance. Defaults to `PRODUCTION`." type="//@types.15"/>
+    <attributes name="state" required="true" description="(`OutputOnly`)&#xA;The current state of the instance.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the instance. Values are of the form&#xA;`projects/&lt;project>/instances/a-z+[a-z0-9]`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="displayName" required="true" description="The descriptive name for this instance as it appears in UIs.&#xA;Can be changed at any time, but should be kept globally unique&#xA;to avoid confusion.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="type" required="true" description="The type of the instance. Defaults to `PRODUCTION`.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="list" scheme="http://occi/gcpbigtableadmin/instance/action#" title="Lists information about instances in a project.">
-      <attributes name="parent" required="true" description="The unique name of the project for which a list of instances is requested.&#xA;Values are of the form `projects/&lt;project>`." type="//@types.15"/>
-      <attributes name="pageToken" required="true" description="The value of `next_page_token` returned by a previous call." type="//@types.15"/>
+      <attributes name="parent" required="true" description="The unique name of the project for which a list of instances is requested.&#xA;Values are of the form `projects/&lt;project>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
+      <attributes name="pageToken" required="true" description="The value of `next_page_token` returned by a previous call.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="get" scheme="http://occi/gcpbigtableadmin/instance/action#" title="Gets information about an instance.">
-      <attributes name="name" required="true" description="The unique name of the requested instance. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>`." type="//@types.15"/>
+      <attributes name="name" required="true" description="The unique name of the requested instance. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="update" scheme="http://occi/gcpbigtableadmin/instance/action#" title="Updates an instance within a project.">
-      <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the instance. Values are of the form&#xA;`projects/&lt;project>/instances/a-z+[a-z0-9]`." type="//@types.15"/>
+      <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the instance. Values are of the form&#xA;`projects/&lt;project>/instances/a-z+[a-z0-9]`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="create" scheme="http://occi/gcpbigtableadmin/instance/action#" title="Create an instance within a project.">
-      <attributes name="parent" required="true" description="The unique name of the project in which to create the new instance.&#xA;Values are of the form `projects/&lt;project>`." type="//@types.15"/>
+      <attributes name="parent" required="true" description="The unique name of the project in which to create the new instance.&#xA;Values are of the form `projects/&lt;project>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <actions name="delete" scheme="http://occi/gcpbigtableadmin/instance/action#" title="Delete an instance from a project.">
-      <attributes name="name" required="true" description="The unique name of the instance to be deleted.&#xA;Values are of the form `projects/&lt;project>/instances/&lt;instance>`." type="//@types.15"/>
+      <attributes name="name" required="true" description="The unique name of the instance to be deleted.&#xA;Values are of the form `projects/&lt;project>/instances/&lt;instance>`.">
+        <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+      </attributes>
     </actions>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListTablesResponse" scheme="http://occi/gcpbigtableadmin#" title="Response message for&#xA;google.bigtable.admin.v2.BigtableTableAdmin.ListTables">
-    <attributes name="nextPageToken" required="true" description="Set if not all tables could be returned in a single response.&#xA;Pass this value to `page_token` in another request to get the next&#xA;page of results." type="//@types.15"/>
-    <attributes name="tables" required="true" description="The tables present in the requested instance." type="//@types.7"/>
+    <attributes name="nextPageToken" required="true" description="Set if not all tables could be returned in a single response.&#xA;Pass this value to `page_token` in another request to get the next&#xA;page of results.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="tables" required="true" description="The tables present in the requested instance." type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ColumnFamilyLink" scheme="http://occi/gcpbigtableadmin#" title="Update an existing column family to the specified schema, or fail&#xA;if no column family exists with the given ID." source="//@kinds[term='modification']" target="//@kinds[term='columnfamily']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
-  <kinds name="ModificationColumnFamilyLink" scheme="http://occi/gcpbigtableadmin#" title="Create a new column family with the specified schema, or fail if&#xA;one already exists with the given ID." source="//@kinds[term='modification']" target="//@kinds[term='columnfamily']">
+  <kinds name="ModificationcreateColumnFamilyLink" scheme="http://occi/gcpbigtableadmin#" title="Create a new column family with the specified schema, or fail if&#xA;one already exists with the given ID." source="//@kinds[term='modification']" target="//@kinds[term='columnfamily']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Modification" scheme="http://occi/gcpbigtableadmin#" title="A create, update, or delete of a particular column family.">
-    <attributes name="drop" required="true" description="Drop (delete) the column family with the given ID, or fail if no such&#xA;family exists." type="//@types.6"/>
+    <attributes name="drop" required="true" description="Drop (delete) the column family with the given ID, or fail if no such&#xA;family exists.">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <types xsi:type="occi:StringType" name="string"/>
-  <types xsi:type="occi:NumericType" name="byte"/>
-  <types xsi:type="occi:NumericType" name="double" type="Double"/>
-  <types xsi:type="occi:NumericType" name="integer" type="Integer"/>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
   <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:BooleanType" name="boolean"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.10"/>
-  <types xsi:type="occi:NumericType" name="short" type="Short"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
   <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
+  <types xsi:type="occi:NumericType" name="byte"/>
+  <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="short" type="Short"/>
   <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
-  <types xsi:type="occi:EnumerationType" name="granularity" documentation="(`CreationOnly`)&#xA;The granularity (e.g. `MILLIS`, `MICROS`) at which timestamps are stored in&#xA;this table. Timestamps not matching the granularity will be rejected.&#xA;If unspecified at creation time, the value will be set to `MILLIS`.&#xA;Views: `SCHEMA_VIEW`, `FULL`">
+  <types xsi:type="occi:EnumerationType" name="Granularity" documentation="(`CreationOnly`)&#xA;The granularity (e.g. `MILLIS`, `MICROS`) at which timestamps are stored in&#xA;this table. Timestamps not matching the granularity will be rejected.&#xA;If unspecified at creation time, the value will be set to `MILLIS`.&#xA;Views: `SCHEMA_VIEW`, `FULL`">
     <literals name="TIMESTAMP_GRANULARITY_UNSPECIFIED" documentation="The user did not specify a granularity. Should not be returned.&#xA;When specified during table creation, MILLIS will be used."/>
     <literals name="MILLIS" documentation="The table keeps data versioned at a granularity of 1ms."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="state" documentation="(`OutputOnly`)&#xA;The current state of the cluster.">
+  <types xsi:type="occi:EnumerationType" name="State" documentation="(`OutputOnly`)&#xA;The current state of the cluster.">
     <literals name="STATE_NOT_KNOWN" documentation="The state of the cluster could not be determined."/>
     <literals name="READY" documentation="The cluster has been successfully created and is ready to serve requests."/>
     <literals name="CREATING" documentation="The cluster is currently being created, and may be destroyed&#xA;if the creation process encounters an error.&#xA;A cluster may not be able to serve requests while being created."/>
     <literals name="RESIZING" documentation="The cluster is currently being resized, and may revert to its previous&#xA;node count if the process encounters an error.&#xA;A cluster is still capable of serving requests while being resized,&#xA;but may exhibit performance as if its number of allocated nodes is&#xA;between the starting and requested states."/>
     <literals name="DISABLED" documentation="The cluster has no backing nodes. The data (tables) still&#xA;exist, but no operations can be performed on the cluster."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="defaultStorageType" documentation="(`CreationOnly`)&#xA;The type of storage used by this cluster to serve its&#xA;parent instance's tables, unless explicitly overridden.">
+  <types xsi:type="occi:EnumerationType" name="Defaultstoragetype" documentation="(`CreationOnly`)&#xA;The type of storage used by this cluster to serve its&#xA;parent instance's tables, unless explicitly overridden.">
     <literals name="STORAGE_TYPE_UNSPECIFIED" documentation="The user did not specify a storage type."/>
     <literals name="SSD" documentation="Flash (SSD) storage should be used."/>
     <literals name="HDD" documentation="Magnetic drive (HDD) storage should be used."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="InstanceSstate" documentation="(`OutputOnly`)&#xA;The current state of the instance.">
+  <types xsi:type="occi:EnumerationType" name="InstanceState" documentation="(`OutputOnly`)&#xA;The current state of the instance.">
     <literals name="STATE_NOT_KNOWN" documentation="The state of the instance could not be determined."/>
     <literals name="READY" documentation="The instance has been successfully created and can serve requests&#xA;to its tables."/>
     <literals name="CREATING" documentation="The instance is currently being created, and may be destroyed&#xA;if the creation process encounters an error."/>
   </types>
-  <types xsi:type="occi:EnumerationType" name="type" documentation="The type of the instance. Defaults to `PRODUCTION`.">
+  <types xsi:type="occi:EnumerationType" name="Type" documentation="The type of the instance. Defaults to `PRODUCTION`.">
     <literals name="TYPE_UNSPECIFIED" documentation="The type of the instance is unspecified. If set when creating an&#xA;instance, a `PRODUCTION` instance will be created. If set when updating&#xA;an instance, the type will be left unchanged."/>
     <literals name="PRODUCTION" documentation="An instance meant for production use. `serve_nodes` must be set&#xA;on the cluster."/>
     <literals name="DEVELOPMENT" documentation="The instance is meant for development and testing purposes only; it has&#xA;no performance or uptime guarantees and is not covered by SLA.&#xA;After a development instance is created, it can be upgraded by&#xA;updating the instance to type `PRODUCTION`. An instance created&#xA;as a production instance cannot be changed to a development instance.&#xA;When creating a development instance, `serve_nodes` on the cluster must&#xA;not be set."/>
