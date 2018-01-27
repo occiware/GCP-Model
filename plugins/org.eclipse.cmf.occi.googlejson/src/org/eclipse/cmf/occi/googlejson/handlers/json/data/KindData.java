@@ -3,6 +3,7 @@ package org.eclipse.cmf.occi.googlejson.handlers.json.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.cmf.occi.core.Action;
 import org.eclipse.cmf.occi.core.Attribute;
 import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.Kind;
@@ -41,7 +42,22 @@ public class KindData {
     		}
     	}
     	for (ActionData action : this.actions) {
-    		kind.getActions().add(action.toActionOcci(extension));
+    		Action occiAction = action.toActionOcci(extension);
+    		boolean actionAdded = false;
+    		// TODO: process of actions
+    		// Because of the way we process actions, sometimes they are duplicated
+    		// see BigQueryDataTransferServiceAPI for instance.
+    		// the Kind DataSources is used two times in the definition of actions
+    		// see line 390 and line 944, dataSources in under different packages
+    		for (Action existingAction : kind.getActions()) {
+    			if (existingAction.getName().equals(occiAction.getName())) {
+    				actionAdded = true; 
+    				break;
+    			}
+    		}
+    		if (!actionAdded) {
+    			kind.getActions().add(occiAction);
+    		}
     	}
     	return kind;
     }
