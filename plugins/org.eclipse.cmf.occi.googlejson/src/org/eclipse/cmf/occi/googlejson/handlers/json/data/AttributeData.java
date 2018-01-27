@@ -1,5 +1,6 @@
 package org.eclipse.cmf.occi.googlejson.handlers.json.data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +63,18 @@ public class AttributeData {
 		return false;
 	}
 
+	// TODO: find a way to understand this:
+		// It seems that inside Resource and Entity (from OCCI),
+		// there are two attributes: kind and location
+		// but when we use getAttribute we don't have them in the returned list
+	
+	private static final List<String> PROHIBITED_NAME = new ArrayList<>();
+	
+	static {
+		PROHIBITED_NAME.add("kind");
+		PROHIBITED_NAME.add("location");
+	}
+	
 	public Attribute toAttributeOcci(Kind kind, Extension extension) {
 		if (shouldSkip(kind)) {
 			return null;
@@ -69,14 +82,20 @@ public class AttributeData {
 		
 		final Attribute attribute = OCCIFactory.eINSTANCE.createAttribute();
 		
-		attribute.setName(this.name.replaceAll("_", "."));
+		String correctName = this.name.replaceAll("_", ".");
+		// TODO make sure that is the correct way
+		if (PROHIBITED_NAME.contains(correctName)) { // in case of prohibited name,
+			correctName += "GCP";  // we add the suffix GCP
+		}
+		attribute.setName(correctName);
+		
 		attribute.setDescription(this.description);
 
 		if (this.isAnotherKind && StringToDataType.map.get(this.type) == null) {
 			Kind kindLink = OCCIFactory.eINSTANCE.createKind();
 			try {
 				OcciHelper.getKindByTerm(extension, this.type.toLowerCase() + "link");
-				kindLink.setName(kind.getName() + this.type + "Link");
+				kindLink.setName(kind.getName() + this.name + this.type + "Link");
 			} catch (Exception e) {
 				kindLink.setName(this.type + "Link");
 			}
@@ -85,9 +104,9 @@ public class AttributeData {
 					OcciHelper.getKindByTerm(OcciHelper.loadExtension("http://schemas.ogf.org/occi/core#"), "link")
 			);
 			kindLink.setScheme(extension.getScheme());
-			kindLink.setSource(kind);
+			kindLink.getSource().add(kind);
 			try {
-				kindLink.setTarget(OcciHelper.getKindByTerm(extension, this.type.toLowerCase()));	
+				kindLink.getTarget().add(OcciHelper.getKindByTerm(extension, this.type.toLowerCase()));	
 			} catch (Exception ignored) {
 				linkKindToTermOfTarget.put(kindLink, this.type.toLowerCase());
 			}
@@ -103,12 +122,12 @@ public class AttributeData {
 			if (this.enums != null) {
 				EnumerationType enumType = OCCIFactory.eINSTANCE.createEnumerationType();
 				boolean nameHasBeenSet = false;
+				String correctedName = this.name.replaceAll("_", ".");
+				correctedName = Character.toUpperCase(correctedName.charAt(0)) + correctedName.substring(1).toLowerCase();
 				for (Kind otherKind : extension.getKinds()) {
 					for (Attribute attributeOfKind : otherKind.getAttributes()) {
 						if (attributeOfKind.getName().equals(this.name.replaceAll("_", "."))) {
-							String correctedName = this.name.replaceAll("_", ".");
-							enumType.setName((kind == null ? "" : kind.getName()) +
-									Character.toUpperCase(correctedName.charAt(0)) + correctedName.substring(0).toLowerCase());
+							enumType.setName((kind == null ? "" : kind.getName()) + correctedName);
 							nameHasBeenSet = true;
 							break;
 						}
@@ -118,16 +137,15 @@ public class AttributeData {
 					}
 				}
 				if (!nameHasBeenSet) {
-					enumType.setName(this.name.replaceAll("_", "."));
+					enumType.setName(correctedName);
 				}
 				enumType.setDocumentation(this.description);
 				for (EnumField field : this.enums) {
 					enumType.getLiterals().add(field.toOcci(enumType));
 				}
-				StringToDataType.map.put(this.type, enumType);
+				StringToDataType.map.put(enumType.getName(), enumType);
 				extension.getTypes().add(enumType);
 			}
-
 			attribute.setType(StringToDataType.map.get(this.type));
 			attribute.setMutable(true);
 			attribute.setRequired(true);
