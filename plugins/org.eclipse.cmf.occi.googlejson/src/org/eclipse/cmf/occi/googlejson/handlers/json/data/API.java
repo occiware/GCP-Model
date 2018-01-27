@@ -11,6 +11,8 @@ import org.eclipse.cmf.occi.core.Kind;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.util.OcciHelper;
 import org.eclipse.cmf.occi.core.util.OcciRegistry;
+import org.eclipse.cmf.occi.googlejson.handlers.Main;
+import org.eclipse.core.internal.resources.ResourceException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -66,7 +68,9 @@ public class API {
 		extension.setScheme("http://occi/gcp" + this.name + "#");
 		extension.setName(this.name);
 		for (String key : StringToDataType.map.keySet()) {
-			extension.getTypes().add(StringToDataType.map.get(key));
+			if (!Main.coreExtensionTypes.contains(StringToDataType.map.get(key))) {
+				extension.getTypes().add(StringToDataType.map.get(key));
+			}
 		}
 		for (KindData kind : this.kinds) {
 			for (AttributeData attribute : kind.attributes) {
@@ -80,7 +84,7 @@ public class API {
 		// post process for setting target of Links...
 		
 		for (Kind kind : AttributeData.linkKindToTermOfTarget.keySet()) {
-			kind.setTarget(OcciHelper.getKindByTerm(extension, AttributeData.linkKindToTermOfTarget.get(kind)));
+			kind.getTarget().add(OcciHelper.getKindByTerm(extension, AttributeData.linkKindToTermOfTarget.get(kind)));
 		}
 		AttributeData.linkKindToTermOfTarget.clear();
 
@@ -101,7 +105,11 @@ public class API {
 			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 			IProject project = root.getProject(this.nameByJSON);
 			if (project.exists()) { // delete the existing version to rebuild it
-				project.delete(true, progressMonitor);
+				try {
+					project.delete(true, progressMonitor);	
+				} catch (org.eclipse.core.internal.resources.ResourceException e) {
+					// skip in case of exception
+				}
 			}
 			project = ModelingProjectManager.INSTANCE.createNewModelingProject(this.nameByJSON,
 					new Path("/C:/Users/schallit/workspace-gcp/plugins/org.eclipse.cmf.occi.googlejson.extensions/" + this.nameByJSON)
