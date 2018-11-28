@@ -47,7 +47,6 @@ public interface Requestutilization extends Resource {
 	 * @see #setTargetRequestCountPerSecond(Integer)
 	 * @see appengine.AppenginePackage#getRequestutilization_TargetRequestCountPerSecond()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Requestutilization!targetRequestCountPerSecond'"
 	 * @generated
 	 */
 	Integer getTargetRequestCountPerSecond();
@@ -73,7 +72,6 @@ public interface Requestutilization extends Resource {
 	 * @see #setTargetConcurrentRequests(Integer)
 	 * @see appengine.AppenginePackage#getRequestutilization_TargetConcurrentRequests()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Requestutilization!targetConcurrentRequests'"
 	 * @generated
 	 */
 	Integer getTargetConcurrentRequests();

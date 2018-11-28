@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015-2017 Obeo, Inria&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#x9;&#xA;Contributors:&#xA;- William Piers &lt;william.piers@obeo.fr>&#xA;- Philippe Merle &lt;philippe.merle@inria.fr>&#xA;- Faiez Zalila &lt;faiez.zalila@inria.fr>" modelDirectory="/appengine/src-gen" editDirectory="/appengine.edit/src-gen" editorDirectory="/appengine.editor/src-gen" modelPluginID="appengine" modelName="Appengine" testsDirectory="/appengine.tests/src" complianceLevel="8.0" copyrightFields="false" editPluginID="appengine.edit" editorPluginID="appengine.editor" testsPluginID="appengine.tests" operationReflection="true">
-  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
-    <details key="Use Delegates" value="false"/>
-  </genAnnotations>
   <foreignModel>appengine.ecore</foreignModel>
-  <genPackages prefix="Appengine" disposableProviderFactory="true" loadInitialization="true" literalsInterface="false">
+  <genPackages prefix="Appengine" disposableProviderFactory="true" literalsInterface="false">
     <ecorePackage href="appengine.ecore#/"/>
     <genEnums typeSafeEnumCompatible="false">
       <ecoreEnum href="appengine.ecore#//Action"/>
@@ -214,28 +211,28 @@
       </genEnumLiterals>
     </genEnums>
     <genDataTypes>
+      <ecoreDataType href="appengine.ecore#//float"/>
+    </genDataTypes>
+    <genDataTypes>
       <ecoreDataType href="appengine.ecore#//byte"/>
     </genDataTypes>
     <genDataTypes>
       <ecoreDataType href="appengine.ecore#//double"/>
     </genDataTypes>
     <genDataTypes>
-      <ecoreDataType href="appengine.ecore#//float"/>
-    </genDataTypes>
-    <genDataTypes>
-      <ecoreDataType href="appengine.ecore#//any"/>
+      <ecoreDataType href="appengine.ecore#//object"/>
     </genDataTypes>
     <genDataTypes>
       <ecoreDataType href="appengine.ecore#//long"/>
     </genDataTypes>
     <genDataTypes>
-      <ecoreDataType href="appengine.ecore#//short"/>
-    </genDataTypes>
-    <genDataTypes>
       <ecoreDataType href="appengine.ecore#//map"/>
     </genDataTypes>
     <genDataTypes>
-      <ecoreDataType href="appengine.ecore#//object"/>
+      <ecoreDataType href="appengine.ecore#//any"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="appengine.ecore#//short"/>
     </genDataTypes>
     <genClasses>
       <ecoreClass href="appengine.ecore#//array"/>

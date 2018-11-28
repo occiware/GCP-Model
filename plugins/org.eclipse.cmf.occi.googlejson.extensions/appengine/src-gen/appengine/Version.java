@@ -67,7 +67,6 @@ public interface Version extends Resource {
 	 * @see #setEnv(String)
 	 * @see appengine.AppenginePackage#getVersion_Env()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!env'"
 	 * @generated
 	 */
 	String getEnv();
@@ -93,7 +92,6 @@ public interface Version extends Resource {
 	 * @see #setHandlers(array)
 	 * @see appengine.AppenginePackage#getVersion_Handlers()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!handlers'"
 	 * @generated
 	 */
 	array getHandlers();
@@ -119,7 +117,6 @@ public interface Version extends Resource {
 	 * @see #setDiskUsageBytes(String)
 	 * @see appengine.AppenginePackage#getVersion_DiskUsageBytes()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!diskUsageBytes'"
 	 * @generated
 	 */
 	String getDiskUsageBytes();
@@ -145,7 +142,6 @@ public interface Version extends Resource {
 	 * @see #setThreadsafe(boolean)
 	 * @see appengine.AppenginePackage#getVersion_Threadsafe()
 	 * @model dataType="org.eclipse.cmf.occi.core.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!threadsafe'"
 	 * @generated
 	 */
 	boolean isThreadsafe();
@@ -171,7 +167,6 @@ public interface Version extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getVersion_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!name'"
 	 * @generated
 	 */
 	String getName();
@@ -197,7 +192,6 @@ public interface Version extends Resource {
 	 * @see #setVm(boolean)
 	 * @see appengine.AppenginePackage#getVersion_Vm()
 	 * @model dataType="org.eclipse.cmf.occi.core.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!vm'"
 	 * @generated
 	 */
 	boolean isVm();
@@ -223,7 +217,6 @@ public interface Version extends Resource {
 	 * @see #setVersionUrl(String)
 	 * @see appengine.AppenginePackage#getVersion_VersionUrl()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!versionUrl'"
 	 * @generated
 	 */
 	String getVersionUrl();
@@ -251,7 +244,6 @@ public interface Version extends Resource {
 	 * @see #setInstanceClass(String)
 	 * @see appengine.AppenginePackage#getVersion_InstanceClass()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!instanceClass'"
 	 * @generated
 	 */
 	String getInstanceClass();
@@ -277,7 +269,6 @@ public interface Version extends Resource {
 	 * @see #setServingStatus(String)
 	 * @see appengine.AppenginePackage#getVersion_ServingStatus()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!servingStatus'"
 	 * @generated
 	 */
 	String getServingStatus();
@@ -303,7 +294,6 @@ public interface Version extends Resource {
 	 * @see #setRuntimeApiVersion(String)
 	 * @see appengine.AppenginePackage#getVersion_RuntimeApiVersion()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!runtimeApiVersion'"
 	 * @generated
 	 */
 	String getRuntimeApiVersion();
@@ -329,7 +319,6 @@ public interface Version extends Resource {
 	 * @see #setCreateTime(String)
 	 * @see appengine.AppenginePackage#getVersion_CreateTime()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!createTime'"
 	 * @generated
 	 */
 	String getCreateTime();
@@ -355,7 +344,6 @@ public interface Version extends Resource {
 	 * @see #setInboundServices(array)
 	 * @see appengine.AppenginePackage#getVersion_InboundServices()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!inboundServices'"
 	 * @generated
 	 */
 	array getInboundServices();
@@ -381,7 +369,6 @@ public interface Version extends Resource {
 	 * @see #setErrorHandlers(array)
 	 * @see appengine.AppenginePackage#getVersion_ErrorHandlers()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!errorHandlers'"
 	 * @generated
 	 */
 	array getErrorHandlers();
@@ -407,7 +394,6 @@ public interface Version extends Resource {
 	 * @see #setDefaultExpiration(String)
 	 * @see appengine.AppenginePackage#getVersion_DefaultExpiration()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!defaultExpiration'"
 	 * @generated
 	 */
 	String getDefaultExpiration();
@@ -433,7 +419,6 @@ public interface Version extends Resource {
 	 * @see #setLibraries(array)
 	 * @see appengine.AppenginePackage#getVersion_Libraries()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!libraries'"
 	 * @generated
 	 */
 	array getLibraries();
@@ -459,7 +444,6 @@ public interface Version extends Resource {
 	 * @see #setNobuildFilesRegex(String)
 	 * @see appengine.AppenginePackage#getVersion_NobuildFilesRegex()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!nobuildFilesRegex'"
 	 * @generated
 	 */
 	String getNobuildFilesRegex();
@@ -485,7 +469,6 @@ public interface Version extends Resource {
 	 * @see #setRuntime(String)
 	 * @see appengine.AppenginePackage#getVersion_Runtime()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!runtime'"
 	 * @generated
 	 */
 	String getRuntime();
@@ -511,7 +494,6 @@ public interface Version extends Resource {
 	 * @see #setCreatedBy(String)
 	 * @see appengine.AppenginePackage#getVersion_CreatedBy()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!createdBy'"
 	 * @generated
 	 */
 	String getCreatedBy();
@@ -537,7 +519,6 @@ public interface Version extends Resource {
 	 * @see #setEnvVariables(Map)
 	 * @see appengine.AppenginePackage#getVersion_EnvVariables()
 	 * @model dataType="appengine.map" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!envVariables'"
 	 * @generated
 	 */
 	Map getEnvVariables();
@@ -563,7 +544,6 @@ public interface Version extends Resource {
 	 * @see #setBetaSettings(Map)
 	 * @see appengine.AppenginePackage#getVersion_BetaSettings()
 	 * @model dataType="appengine.map" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!betaSettings'"
 	 * @generated
 	 */
 	Map getBetaSettings();
@@ -588,7 +568,6 @@ public interface Version extends Resource {
 	 * @param servicesId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" versionsIdDataType="org.eclipse.cmf.occi.core.String" versionsIdRequired="true" servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!delete(String,String,String)'"
 	 * @generated
 	 */
 	void delete(String appsId, String versionsId, String servicesId);
@@ -605,7 +584,6 @@ public interface Version extends Resource {
 	 * @param pageToken Continuation token for fetching the next page of results.
 	 * <!-- end-model-doc -->
 	 * @model pageSizeDataType="org.eclipse.cmf.occi.core.Integer" pageSizeRequired="true" viewDataType="org.eclipse.cmf.occi.core.String" viewRequired="true" servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" pageTokenDataType="org.eclipse.cmf.occi.core.String" pageTokenRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!list(Integer,String,String,String,String)'"
 	 * @generated
 	 */
 	void list(Integer pageSize, String view, String servicesId, String appsId, String pageToken);
@@ -621,7 +599,6 @@ public interface Version extends Resource {
 	 * @param appsId Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.
 	 * <!-- end-model-doc -->
 	 * @model versionsIdDataType="org.eclipse.cmf.occi.core.String" versionsIdRequired="true" viewDataType="org.eclipse.cmf.occi.core.String" viewRequired="true" servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!get(String,String,String,String)'"
 	 * @generated
 	 */
 	void get(String versionsId, String view, String servicesId, String appsId);
@@ -645,7 +622,6 @@ public interface Version extends Resource {
 	 * @param versionsId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model updateMaskDataType="org.eclipse.cmf.occi.core.String" updateMaskRequired="true" servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" versionsIdDataType="org.eclipse.cmf.occi.core.String" versionsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!patch(String,String,String,String)'"
 	 * @generated
 	 */
 	void patch(String updateMask, String servicesId, String appsId, String versionsId);
@@ -659,7 +635,6 @@ public interface Version extends Resource {
 	 * @param servicesId Part of `parent`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!create(String,String)'"
 	 * @generated
 	 */
 	void create(String appsId, String servicesId);

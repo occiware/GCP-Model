@@ -106,8 +106,10 @@ public class AuthorizeddomainImpl extends ResourceImpl implements Authorizeddoma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void list(final String appsId, final String pageToken, final Integer pageSize) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizeddomain!list(String,String,Integer)
+	public void list(String appsId, String pageToken, Integer pageSize) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

@@ -18,6 +18,7 @@ import java.util.Map;
 
 import org.eclipse.cmf.occi.core.util.OCCIValidator;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 
@@ -52,428 +53,12 @@ public class AppengineValidator extends EObjectValidator {
 	public static final String DIAGNOSTIC_SOURCE = "appengine";
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Trafficsplitlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TRAFFICSPLITLINK__SOURCE_CONSTRAINT = 1;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Trafficsplitlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TRAFFICSPLITLINK__TARGET_CONSTRAINT = 2;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Featuresettingslink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int FEATURESETTINGSLINK__SOURCE_CONSTRAINT = 3;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Featuresettingslink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int FEATURESETTINGSLINK__TARGET_CONSTRAINT = 4;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Identityawareproxylink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int IDENTITYAWAREPROXYLINK__SOURCE_CONSTRAINT = 5;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Identityawareproxylink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int IDENTITYAWAREPROXYLINK__TARGET_CONSTRAINT = 6;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Automaticscalinglink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int AUTOMATICSCALINGLINK__SOURCE_CONSTRAINT = 7;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Automaticscalinglink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int AUTOMATICSCALINGLINK__TARGET_CONSTRAINT = 8;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Healthchecklink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int HEALTHCHECKLINK__SOURCE_CONSTRAINT = 9;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Healthchecklink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int HEALTHCHECKLINK__TARGET_CONSTRAINT = 10;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Readinesschecklink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int READINESSCHECKLINK__SOURCE_CONSTRAINT = 11;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Readinesschecklink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int READINESSCHECKLINK__TARGET_CONSTRAINT = 12;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Manualscalinglink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int MANUALSCALINGLINK__SOURCE_CONSTRAINT = 13;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Manualscalinglink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int MANUALSCALINGLINK__TARGET_CONSTRAINT = 14;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Apiconfighandlerlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int APICONFIGHANDLERLINK__SOURCE_CONSTRAINT = 15;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Apiconfighandlerlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int APICONFIGHANDLERLINK__TARGET_CONSTRAINT = 16;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Endpointsapiservicelink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int ENDPOINTSAPISERVICELINK__SOURCE_CONSTRAINT = 17;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Endpointsapiservicelink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int ENDPOINTSAPISERVICELINK__TARGET_CONSTRAINT = 18;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Deploymentlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int DEPLOYMENTLINK__SOURCE_CONSTRAINT = 19;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Deploymentlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int DEPLOYMENTLINK__TARGET_CONSTRAINT = 20;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Resourceslink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int RESOURCESLINK__SOURCE_CONSTRAINT = 21;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Resourceslink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int RESOURCESLINK__TARGET_CONSTRAINT = 22;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Basicscalinglink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int BASICSCALINGLINK__SOURCE_CONSTRAINT = 23;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Basicscalinglink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int BASICSCALINGLINK__TARGET_CONSTRAINT = 24;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Livenesschecklink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int LIVENESSCHECKLINK__SOURCE_CONSTRAINT = 25;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Livenesschecklink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int LIVENESSCHECKLINK__TARGET_CONSTRAINT = 26;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Networklink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int NETWORKLINK__SOURCE_CONSTRAINT = 27;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Networklink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int NETWORKLINK__TARGET_CONSTRAINT = 28;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Zipinfolink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int ZIPINFOLINK__SOURCE_CONSTRAINT = 29;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Zipinfolink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int ZIPINFOLINK__TARGET_CONSTRAINT = 30;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Containerinfolink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CONTAINERINFOLINK__SOURCE_CONSTRAINT = 31;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Containerinfolink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CONTAINERINFOLINK__TARGET_CONSTRAINT = 32;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Sslsettingslink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int SSLSETTINGSLINK__SOURCE_CONSTRAINT = 33;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Sslsettingslink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int SSLSETTINGSLINK__TARGET_CONSTRAINT = 34;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Requestutilizationlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int REQUESTUTILIZATIONLINK__SOURCE_CONSTRAINT = 35;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Requestutilizationlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int REQUESTUTILIZATIONLINK__TARGET_CONSTRAINT = 36;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Networkutilizationlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int NETWORKUTILIZATIONLINK__SOURCE_CONSTRAINT = 37;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Networkutilizationlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int NETWORKUTILIZATIONLINK__TARGET_CONSTRAINT = 38;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Cpuutilizationlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CPUUTILIZATIONLINK__SOURCE_CONSTRAINT = 39;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Cpuutilizationlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CPUUTILIZATIONLINK__TARGET_CONSTRAINT = 40;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Diskutilizationlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int DISKUTILIZATIONLINK__SOURCE_CONSTRAINT = 41;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Diskutilizationlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int DISKUTILIZATIONLINK__TARGET_CONSTRAINT = 42;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Certificaterawdatalink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CERTIFICATERAWDATALINK__SOURCE_CONSTRAINT = 43;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Certificaterawdatalink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int CERTIFICATERAWDATALINK__TARGET_CONSTRAINT = 44;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Apiendpointhandlerlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int APIENDPOINTHANDLERLINK__SOURCE_CONSTRAINT = 45;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Apiendpointhandlerlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int APIENDPOINTHANDLERLINK__TARGET_CONSTRAINT = 46;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Staticfileshandlerlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int STATICFILESHANDLERLINK__SOURCE_CONSTRAINT = 47;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Staticfileshandlerlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int STATICFILESHANDLERLINK__TARGET_CONSTRAINT = 48;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Scripthandlerlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int SCRIPTHANDLERLINK__SOURCE_CONSTRAINT = 49;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Scripthandlerlink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int SCRIPTHANDLERLINK__TARGET_CONSTRAINT = 50;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Source Constraint' of 'Statuslink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int STATUSLINK__SOURCE_CONSTRAINT = 51;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Statuslink'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int STATUSLINK__TARGET_CONSTRAINT = 52;
-
-	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 52;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 0;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -732,22 +317,22 @@ public class AppengineValidator extends EObjectValidator {
 				return validateApiConfigHandlerAuthfailaction((ApiConfigHandlerAuthfailaction)value, diagnostics, context);
 			case AppenginePackage.API_CONFIG_HANDLER_LOGIN:
 				return validateApiConfigHandlerLogin((ApiConfigHandlerLogin)value, diagnostics, context);
+			case AppenginePackage.FLOAT:
+				return validatefloat((Float)value, diagnostics, context);
 			case AppenginePackage.BYTE:
 				return validatebyte((Byte)value, diagnostics, context);
 			case AppenginePackage.DOUBLE:
 				return validatedouble((Double)value, diagnostics, context);
-			case AppenginePackage.FLOAT:
-				return validatefloat((Float)value, diagnostics, context);
-			case AppenginePackage.ANY:
-				return validateany(value, diagnostics, context);
-			case AppenginePackage.LONG:
-				return validatelong((Long)value, diagnostics, context);
-			case AppenginePackage.SHORT:
-				return validateshort((Short)value, diagnostics, context);
-			case AppenginePackage.MAP:
-				return validatemap((Map)value, diagnostics, context);
 			case AppenginePackage.OBJECT:
 				return validateobject(value, diagnostics, context);
+			case AppenginePackage.LONG:
+				return validatelong((Long)value, diagnostics, context);
+			case AppenginePackage.MAP:
+				return validatemap((Map)value, diagnostics, context);
+			case AppenginePackage.ANY:
+				return validateany(value, diagnostics, context);
+			case AppenginePackage.SHORT:
+				return validateshort((Short)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -899,20 +484,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(trafficsplitlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(trafficsplitlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(trafficsplitlink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTrafficsplitlink_targetConstraint(trafficsplitlink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateTrafficsplitlink_sourceConstraint(trafficsplitlink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTrafficsplitlink_targetConstraint(trafficsplitlink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Trafficsplitlink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Trafficsplitlink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTrafficsplitlink_targetConstraint(Trafficsplitlink trafficsplitlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return trafficsplitlink.targetConstraint(diagnostics, context);
-	}
+	protected static final String TRAFFICSPLITLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Service)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Trafficsplitlink</em>'.
@@ -921,7 +504,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTrafficsplitlink_sourceConstraint(Trafficsplitlink trafficsplitlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return trafficsplitlink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getTrafficsplitlink(),
+				 trafficsplitlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 TRAFFICSPLITLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Trafficsplitlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TRAFFICSPLITLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Trafficsplit)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Trafficsplitlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTrafficsplitlink_targetConstraint(Trafficsplitlink trafficsplitlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getTrafficsplitlink(),
+				 trafficsplitlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 TRAFFICSPLITLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1153,20 +776,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(featuresettingslink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(featuresettingslink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(featuresettingslink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateFeaturesettingslink_targetConstraint(featuresettingslink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateFeaturesettingslink_sourceConstraint(featuresettingslink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateFeaturesettingslink_targetConstraint(featuresettingslink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Featuresettingslink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Featuresettingslink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFeaturesettingslink_targetConstraint(Featuresettingslink featuresettingslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return featuresettingslink.targetConstraint(diagnostics, context);
-	}
+	protected static final String FEATURESETTINGSLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Application)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Featuresettingslink</em>'.
@@ -1175,7 +796,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateFeaturesettingslink_sourceConstraint(Featuresettingslink featuresettingslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return featuresettingslink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getFeaturesettingslink(),
+				 featuresettingslink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 FEATURESETTINGSLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Featuresettingslink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String FEATURESETTINGSLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Featuresettings)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Featuresettingslink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateFeaturesettingslink_targetConstraint(Featuresettingslink featuresettingslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getFeaturesettingslink(),
+				 featuresettingslink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 FEATURESETTINGSLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1200,20 +861,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(identityawareproxylink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(identityawareproxylink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(identityawareproxylink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateIdentityawareproxylink_targetConstraint(identityawareproxylink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIdentityawareproxylink_sourceConstraint(identityawareproxylink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateIdentityawareproxylink_targetConstraint(identityawareproxylink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Identityawareproxylink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Identityawareproxylink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateIdentityawareproxylink_targetConstraint(Identityawareproxylink identityawareproxylink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return identityawareproxylink.targetConstraint(diagnostics, context);
-	}
+	protected static final String IDENTITYAWAREPROXYLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Application)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Identityawareproxylink</em>'.
@@ -1222,7 +881,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateIdentityawareproxylink_sourceConstraint(Identityawareproxylink identityawareproxylink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return identityawareproxylink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getIdentityawareproxylink(),
+				 identityawareproxylink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 IDENTITYAWAREPROXYLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Identityawareproxylink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String IDENTITYAWAREPROXYLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Identityawareproxy)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Identityawareproxylink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIdentityawareproxylink_targetConstraint(Identityawareproxylink identityawareproxylink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getIdentityawareproxylink(),
+				 identityawareproxylink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 IDENTITYAWAREPROXYLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1500,20 +1199,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(automaticscalinglink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(automaticscalinglink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(automaticscalinglink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateAutomaticscalinglink_targetConstraint(automaticscalinglink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateAutomaticscalinglink_sourceConstraint(automaticscalinglink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateAutomaticscalinglink_targetConstraint(automaticscalinglink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Automaticscalinglink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Automaticscalinglink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAutomaticscalinglink_targetConstraint(Automaticscalinglink automaticscalinglink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return automaticscalinglink.targetConstraint(diagnostics, context);
-	}
+	protected static final String AUTOMATICSCALINGLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Automaticscalinglink</em>'.
@@ -1522,7 +1219,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAutomaticscalinglink_sourceConstraint(Automaticscalinglink automaticscalinglink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return automaticscalinglink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getAutomaticscalinglink(),
+				 automaticscalinglink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 AUTOMATICSCALINGLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Automaticscalinglink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String AUTOMATICSCALINGLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Automaticscaling)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Automaticscalinglink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAutomaticscalinglink_targetConstraint(Automaticscalinglink automaticscalinglink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getAutomaticscalinglink(),
+				 automaticscalinglink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 AUTOMATICSCALINGLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1547,20 +1284,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(healthchecklink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(healthchecklink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(healthchecklink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateHealthchecklink_targetConstraint(healthchecklink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHealthchecklink_sourceConstraint(healthchecklink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHealthchecklink_targetConstraint(healthchecklink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Healthchecklink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Healthchecklink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateHealthchecklink_targetConstraint(Healthchecklink healthchecklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return healthchecklink.targetConstraint(diagnostics, context);
-	}
+	protected static final String HEALTHCHECKLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Healthchecklink</em>'.
@@ -1569,7 +1304,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateHealthchecklink_sourceConstraint(Healthchecklink healthchecklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return healthchecklink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getHealthchecklink(),
+				 healthchecklink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 HEALTHCHECKLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Healthchecklink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String HEALTHCHECKLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Healthcheck)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Healthchecklink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHealthchecklink_targetConstraint(Healthchecklink healthchecklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getHealthchecklink(),
+				 healthchecklink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 HEALTHCHECKLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1594,20 +1369,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(readinesschecklink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(readinesschecklink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(readinesschecklink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateReadinesschecklink_targetConstraint(readinesschecklink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateReadinesschecklink_sourceConstraint(readinesschecklink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateReadinesschecklink_targetConstraint(readinesschecklink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Readinesschecklink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Readinesschecklink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateReadinesschecklink_targetConstraint(Readinesschecklink readinesschecklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return readinesschecklink.targetConstraint(diagnostics, context);
-	}
+	protected static final String READINESSCHECKLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Readinesschecklink</em>'.
@@ -1616,7 +1389,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateReadinesschecklink_sourceConstraint(Readinesschecklink readinesschecklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return readinesschecklink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getReadinesschecklink(),
+				 readinesschecklink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 READINESSCHECKLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Readinesschecklink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String READINESSCHECKLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Readinesscheck)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Readinesschecklink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateReadinesschecklink_targetConstraint(Readinesschecklink readinesschecklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getReadinesschecklink(),
+				 readinesschecklink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 READINESSCHECKLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1641,20 +1454,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(manualscalinglink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(manualscalinglink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(manualscalinglink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateManualscalinglink_targetConstraint(manualscalinglink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateManualscalinglink_sourceConstraint(manualscalinglink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateManualscalinglink_targetConstraint(manualscalinglink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Manualscalinglink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Manualscalinglink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateManualscalinglink_targetConstraint(Manualscalinglink manualscalinglink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return manualscalinglink.targetConstraint(diagnostics, context);
-	}
+	protected static final String MANUALSCALINGLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Manualscalinglink</em>'.
@@ -1663,7 +1474,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateManualscalinglink_sourceConstraint(Manualscalinglink manualscalinglink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return manualscalinglink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getManualscalinglink(),
+				 manualscalinglink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 MANUALSCALINGLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Manualscalinglink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String MANUALSCALINGLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Manualscaling)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Manualscalinglink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateManualscalinglink_targetConstraint(Manualscalinglink manualscalinglink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getManualscalinglink(),
+				 manualscalinglink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 MANUALSCALINGLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1688,20 +1539,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(apiconfighandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(apiconfighandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(apiconfighandlerlink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateApiconfighandlerlink_targetConstraint(apiconfighandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateApiconfighandlerlink_sourceConstraint(apiconfighandlerlink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateApiconfighandlerlink_targetConstraint(apiconfighandlerlink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Apiconfighandlerlink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Apiconfighandlerlink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateApiconfighandlerlink_targetConstraint(Apiconfighandlerlink apiconfighandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return apiconfighandlerlink.targetConstraint(diagnostics, context);
-	}
+	protected static final String APICONFIGHANDLERLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Apiconfighandlerlink</em>'.
@@ -1710,7 +1559,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateApiconfighandlerlink_sourceConstraint(Apiconfighandlerlink apiconfighandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return apiconfighandlerlink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getApiconfighandlerlink(),
+				 apiconfighandlerlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 APICONFIGHANDLERLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Apiconfighandlerlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String APICONFIGHANDLERLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Apiconfighandler)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Apiconfighandlerlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateApiconfighandlerlink_targetConstraint(Apiconfighandlerlink apiconfighandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getApiconfighandlerlink(),
+				 apiconfighandlerlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 APICONFIGHANDLERLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1735,20 +1624,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(endpointsapiservicelink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(endpointsapiservicelink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(endpointsapiservicelink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateEndpointsapiservicelink_targetConstraint(endpointsapiservicelink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateEndpointsapiservicelink_sourceConstraint(endpointsapiservicelink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEndpointsapiservicelink_targetConstraint(endpointsapiservicelink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Endpointsapiservicelink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Endpointsapiservicelink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEndpointsapiservicelink_targetConstraint(Endpointsapiservicelink endpointsapiservicelink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return endpointsapiservicelink.targetConstraint(diagnostics, context);
-	}
+	protected static final String ENDPOINTSAPISERVICELINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Endpointsapiservicelink</em>'.
@@ -1757,7 +1644,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEndpointsapiservicelink_sourceConstraint(Endpointsapiservicelink endpointsapiservicelink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return endpointsapiservicelink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getEndpointsapiservicelink(),
+				 endpointsapiservicelink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 ENDPOINTSAPISERVICELINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Endpointsapiservicelink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ENDPOINTSAPISERVICELINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Endpointsapiservice)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Endpointsapiservicelink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEndpointsapiservicelink_targetConstraint(Endpointsapiservicelink endpointsapiservicelink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getEndpointsapiservicelink(),
+				 endpointsapiservicelink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 ENDPOINTSAPISERVICELINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1782,20 +1709,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(deploymentlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(deploymentlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(deploymentlink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateDeploymentlink_targetConstraint(deploymentlink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateDeploymentlink_sourceConstraint(deploymentlink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDeploymentlink_targetConstraint(deploymentlink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Deploymentlink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Deploymentlink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDeploymentlink_targetConstraint(Deploymentlink deploymentlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return deploymentlink.targetConstraint(diagnostics, context);
-	}
+	protected static final String DEPLOYMENTLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Deploymentlink</em>'.
@@ -1804,7 +1729,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDeploymentlink_sourceConstraint(Deploymentlink deploymentlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return deploymentlink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getDeploymentlink(),
+				 deploymentlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 DEPLOYMENTLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Deploymentlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String DEPLOYMENTLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Deployment)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Deploymentlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDeploymentlink_targetConstraint(Deploymentlink deploymentlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getDeploymentlink(),
+				 deploymentlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 DEPLOYMENTLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1829,20 +1794,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(resourceslink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(resourceslink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(resourceslink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateResourceslink_targetConstraint(resourceslink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateResourceslink_sourceConstraint(resourceslink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateResourceslink_targetConstraint(resourceslink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Resourceslink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Resourceslink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateResourceslink_targetConstraint(Resourceslink resourceslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return resourceslink.targetConstraint(diagnostics, context);
-	}
+	protected static final String RESOURCESLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Resourceslink</em>'.
@@ -1851,7 +1814,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateResourceslink_sourceConstraint(Resourceslink resourceslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return resourceslink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getResourceslink(),
+				 resourceslink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 RESOURCESLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Resourceslink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String RESOURCESLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Resources)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Resourceslink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateResourceslink_targetConstraint(Resourceslink resourceslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getResourceslink(),
+				 resourceslink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 RESOURCESLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1876,20 +1879,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(basicscalinglink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(basicscalinglink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(basicscalinglink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateBasicscalinglink_targetConstraint(basicscalinglink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateBasicscalinglink_sourceConstraint(basicscalinglink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateBasicscalinglink_targetConstraint(basicscalinglink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Basicscalinglink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Basicscalinglink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBasicscalinglink_targetConstraint(Basicscalinglink basicscalinglink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return basicscalinglink.targetConstraint(diagnostics, context);
-	}
+	protected static final String BASICSCALINGLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Basicscalinglink</em>'.
@@ -1898,7 +1899,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateBasicscalinglink_sourceConstraint(Basicscalinglink basicscalinglink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return basicscalinglink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getBasicscalinglink(),
+				 basicscalinglink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 BASICSCALINGLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Basicscalinglink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String BASICSCALINGLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Basicscaling)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Basicscalinglink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateBasicscalinglink_targetConstraint(Basicscalinglink basicscalinglink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getBasicscalinglink(),
+				 basicscalinglink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 BASICSCALINGLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1923,20 +1964,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(livenesschecklink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(livenesschecklink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(livenesschecklink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateLivenesschecklink_targetConstraint(livenesschecklink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateLivenesschecklink_sourceConstraint(livenesschecklink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateLivenesschecklink_targetConstraint(livenesschecklink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Livenesschecklink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Livenesschecklink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateLivenesschecklink_targetConstraint(Livenesschecklink livenesschecklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return livenesschecklink.targetConstraint(diagnostics, context);
-	}
+	protected static final String LIVENESSCHECKLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Livenesschecklink</em>'.
@@ -1945,7 +1984,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLivenesschecklink_sourceConstraint(Livenesschecklink livenesschecklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return livenesschecklink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getLivenesschecklink(),
+				 livenesschecklink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 LIVENESSCHECKLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Livenesschecklink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String LIVENESSCHECKLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Livenesscheck)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Livenesschecklink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateLivenesschecklink_targetConstraint(Livenesschecklink livenesschecklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getLivenesschecklink(),
+				 livenesschecklink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 LIVENESSCHECKLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1970,20 +2049,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(networklink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(networklink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(networklink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateNetworklink_targetConstraint(networklink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateNetworklink_sourceConstraint(networklink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNetworklink_targetConstraint(networklink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Networklink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Networklink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNetworklink_targetConstraint(Networklink networklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return networklink.targetConstraint(diagnostics, context);
-	}
+	protected static final String NETWORKLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Version)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Networklink</em>'.
@@ -1992,7 +2069,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNetworklink_sourceConstraint(Networklink networklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return networklink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getNetworklink(),
+				 networklink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 NETWORKLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Networklink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String NETWORKLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Network)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Networklink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNetworklink_targetConstraint(Networklink networklink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getNetworklink(),
+				 networklink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 NETWORKLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -2293,20 +2410,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(zipinfolink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(zipinfolink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(zipinfolink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateZipinfolink_targetConstraint(zipinfolink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateZipinfolink_sourceConstraint(zipinfolink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateZipinfolink_targetConstraint(zipinfolink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Zipinfolink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Zipinfolink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateZipinfolink_targetConstraint(Zipinfolink zipinfolink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return zipinfolink.targetConstraint(diagnostics, context);
-	}
+	protected static final String ZIPINFOLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Deployment)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Zipinfolink</em>'.
@@ -2315,7 +2430,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateZipinfolink_sourceConstraint(Zipinfolink zipinfolink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return zipinfolink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getZipinfolink(),
+				 zipinfolink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 ZIPINFOLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Zipinfolink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ZIPINFOLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Zipinfo)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Zipinfolink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateZipinfolink_targetConstraint(Zipinfolink zipinfolink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getZipinfolink(),
+				 zipinfolink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 ZIPINFOLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -2340,20 +2495,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(containerinfolink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(containerinfolink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(containerinfolink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateContainerinfolink_targetConstraint(containerinfolink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateContainerinfolink_sourceConstraint(containerinfolink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateContainerinfolink_targetConstraint(containerinfolink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Containerinfolink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Containerinfolink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateContainerinfolink_targetConstraint(Containerinfolink containerinfolink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return containerinfolink.targetConstraint(diagnostics, context);
-	}
+	protected static final String CONTAINERINFOLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Deployment)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Containerinfolink</em>'.
@@ -2362,7 +2515,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContainerinfolink_sourceConstraint(Containerinfolink containerinfolink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return containerinfolink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getContainerinfolink(),
+				 containerinfolink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 CONTAINERINFOLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Containerinfolink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String CONTAINERINFOLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Containerinfo)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Containerinfolink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContainerinfolink_targetConstraint(Containerinfolink containerinfolink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getContainerinfolink(),
+				 containerinfolink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 CONTAINERINFOLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -2640,20 +2833,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(sslsettingslink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(sslsettingslink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(sslsettingslink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateSslsettingslink_targetConstraint(sslsettingslink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSslsettingslink_sourceConstraint(sslsettingslink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateSslsettingslink_targetConstraint(sslsettingslink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Sslsettingslink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Sslsettingslink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSslsettingslink_targetConstraint(Sslsettingslink sslsettingslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return sslsettingslink.targetConstraint(diagnostics, context);
-	}
+	protected static final String SSLSETTINGSLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Domainmapping)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Sslsettingslink</em>'.
@@ -2662,7 +2853,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSslsettingslink_sourceConstraint(Sslsettingslink sslsettingslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return sslsettingslink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getSslsettingslink(),
+				 sslsettingslink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 SSLSETTINGSLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Sslsettingslink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String SSLSETTINGSLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Sslsettings)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Sslsettingslink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSslsettingslink_targetConstraint(Sslsettingslink sslsettingslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getSslsettingslink(),
+				 sslsettingslink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 SSLSETTINGSLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -2710,20 +2941,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(requestutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(requestutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(requestutilizationlink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateRequestutilizationlink_targetConstraint(requestutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateRequestutilizationlink_sourceConstraint(requestutilizationlink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateRequestutilizationlink_targetConstraint(requestutilizationlink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Requestutilizationlink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Requestutilizationlink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRequestutilizationlink_targetConstraint(Requestutilizationlink requestutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return requestutilizationlink.targetConstraint(diagnostics, context);
-	}
+	protected static final String REQUESTUTILIZATIONLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Automaticscaling)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Requestutilizationlink</em>'.
@@ -2732,7 +2961,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateRequestutilizationlink_sourceConstraint(Requestutilizationlink requestutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return requestutilizationlink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getRequestutilizationlink(),
+				 requestutilizationlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 REQUESTUTILIZATIONLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Requestutilizationlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUESTUTILIZATIONLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Requestutilization)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Requestutilizationlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequestutilizationlink_targetConstraint(Requestutilizationlink requestutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getRequestutilizationlink(),
+				 requestutilizationlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 REQUESTUTILIZATIONLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -2757,20 +3026,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(networkutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(networkutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(networkutilizationlink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateNetworkutilizationlink_targetConstraint(networkutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateNetworkutilizationlink_sourceConstraint(networkutilizationlink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNetworkutilizationlink_targetConstraint(networkutilizationlink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Networkutilizationlink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Networkutilizationlink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNetworkutilizationlink_targetConstraint(Networkutilizationlink networkutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return networkutilizationlink.targetConstraint(diagnostics, context);
-	}
+	protected static final String NETWORKUTILIZATIONLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Automaticscaling)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Networkutilizationlink</em>'.
@@ -2779,7 +3046,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNetworkutilizationlink_sourceConstraint(Networkutilizationlink networkutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return networkutilizationlink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getNetworkutilizationlink(),
+				 networkutilizationlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 NETWORKUTILIZATIONLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Networkutilizationlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String NETWORKUTILIZATIONLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Networkutilization)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Networkutilizationlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNetworkutilizationlink_targetConstraint(Networkutilizationlink networkutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getNetworkutilizationlink(),
+				 networkutilizationlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 NETWORKUTILIZATIONLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -2804,20 +3111,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(cpuutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(cpuutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(cpuutilizationlink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateCpuutilizationlink_targetConstraint(cpuutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateCpuutilizationlink_sourceConstraint(cpuutilizationlink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCpuutilizationlink_targetConstraint(cpuutilizationlink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Cpuutilizationlink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Cpuutilizationlink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCpuutilizationlink_targetConstraint(Cpuutilizationlink cpuutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return cpuutilizationlink.targetConstraint(diagnostics, context);
-	}
+	protected static final String CPUUTILIZATIONLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Automaticscaling)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Cpuutilizationlink</em>'.
@@ -2826,7 +3131,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCpuutilizationlink_sourceConstraint(Cpuutilizationlink cpuutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return cpuutilizationlink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getCpuutilizationlink(),
+				 cpuutilizationlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 CPUUTILIZATIONLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Cpuutilizationlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String CPUUTILIZATIONLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Cpuutilization)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Cpuutilizationlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCpuutilizationlink_targetConstraint(Cpuutilizationlink cpuutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getCpuutilizationlink(),
+				 cpuutilizationlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 CPUUTILIZATIONLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -2851,20 +3196,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(diskutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(diskutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(diskutilizationlink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateDiskutilizationlink_targetConstraint(diskutilizationlink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateDiskutilizationlink_sourceConstraint(diskutilizationlink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDiskutilizationlink_targetConstraint(diskutilizationlink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Diskutilizationlink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Diskutilizationlink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDiskutilizationlink_targetConstraint(Diskutilizationlink diskutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return diskutilizationlink.targetConstraint(diagnostics, context);
-	}
+	protected static final String DISKUTILIZATIONLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Automaticscaling)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Diskutilizationlink</em>'.
@@ -2873,7 +3216,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiskutilizationlink_sourceConstraint(Diskutilizationlink diskutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return diskutilizationlink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getDiskutilizationlink(),
+				 diskutilizationlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 DISKUTILIZATIONLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Diskutilizationlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String DISKUTILIZATIONLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Diskutilization)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Diskutilizationlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiskutilizationlink_targetConstraint(Diskutilizationlink diskutilizationlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getDiskutilizationlink(),
+				 diskutilizationlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 DISKUTILIZATIONLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -2944,20 +3327,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(certificaterawdatalink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(certificaterawdatalink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(certificaterawdatalink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateCertificaterawdatalink_targetConstraint(certificaterawdatalink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateCertificaterawdatalink_sourceConstraint(certificaterawdatalink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCertificaterawdatalink_targetConstraint(certificaterawdatalink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Certificaterawdatalink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Certificaterawdatalink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCertificaterawdatalink_targetConstraint(Certificaterawdatalink certificaterawdatalink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return certificaterawdatalink.targetConstraint(diagnostics, context);
-	}
+	protected static final String CERTIFICATERAWDATALINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Authorizedcertificate)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Certificaterawdatalink</em>'.
@@ -2966,7 +3347,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCertificaterawdatalink_sourceConstraint(Certificaterawdatalink certificaterawdatalink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return certificaterawdatalink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getCertificaterawdatalink(),
+				 certificaterawdatalink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 CERTIFICATERAWDATALINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Certificaterawdatalink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String CERTIFICATERAWDATALINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Certificaterawdata)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Certificaterawdatalink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCertificaterawdatalink_targetConstraint(Certificaterawdatalink certificaterawdatalink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getCertificaterawdatalink(),
+				 certificaterawdatalink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 CERTIFICATERAWDATALINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -3129,20 +3550,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(apiendpointhandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(apiendpointhandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(apiendpointhandlerlink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateApiendpointhandlerlink_targetConstraint(apiendpointhandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateApiendpointhandlerlink_sourceConstraint(apiendpointhandlerlink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateApiendpointhandlerlink_targetConstraint(apiendpointhandlerlink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Apiendpointhandlerlink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Apiendpointhandlerlink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateApiendpointhandlerlink_targetConstraint(Apiendpointhandlerlink apiendpointhandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return apiendpointhandlerlink.targetConstraint(diagnostics, context);
-	}
+	protected static final String APIENDPOINTHANDLERLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Urlmap)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Apiendpointhandlerlink</em>'.
@@ -3151,7 +3570,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateApiendpointhandlerlink_sourceConstraint(Apiendpointhandlerlink apiendpointhandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return apiendpointhandlerlink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getApiendpointhandlerlink(),
+				 apiendpointhandlerlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 APIENDPOINTHANDLERLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Apiendpointhandlerlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String APIENDPOINTHANDLERLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Apiendpointhandler)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Apiendpointhandlerlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateApiendpointhandlerlink_targetConstraint(Apiendpointhandlerlink apiendpointhandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getApiendpointhandlerlink(),
+				 apiendpointhandlerlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 APIENDPOINTHANDLERLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -3176,20 +3635,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(staticfileshandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(staticfileshandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(staticfileshandlerlink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateStaticfileshandlerlink_targetConstraint(staticfileshandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateStaticfileshandlerlink_sourceConstraint(staticfileshandlerlink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateStaticfileshandlerlink_targetConstraint(staticfileshandlerlink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Staticfileshandlerlink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Staticfileshandlerlink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStaticfileshandlerlink_targetConstraint(Staticfileshandlerlink staticfileshandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return staticfileshandlerlink.targetConstraint(diagnostics, context);
-	}
+	protected static final String STATICFILESHANDLERLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Urlmap)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Staticfileshandlerlink</em>'.
@@ -3198,7 +3655,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateStaticfileshandlerlink_sourceConstraint(Staticfileshandlerlink staticfileshandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return staticfileshandlerlink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getStaticfileshandlerlink(),
+				 staticfileshandlerlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 STATICFILESHANDLERLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Staticfileshandlerlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String STATICFILESHANDLERLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Staticfileshandler)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Staticfileshandlerlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStaticfileshandlerlink_targetConstraint(Staticfileshandlerlink staticfileshandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getStaticfileshandlerlink(),
+				 staticfileshandlerlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 STATICFILESHANDLERLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -3223,20 +3720,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(scripthandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(scripthandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(scripthandlerlink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateScripthandlerlink_targetConstraint(scripthandlerlink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateScripthandlerlink_sourceConstraint(scripthandlerlink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateScripthandlerlink_targetConstraint(scripthandlerlink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Scripthandlerlink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Scripthandlerlink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateScripthandlerlink_targetConstraint(Scripthandlerlink scripthandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return scripthandlerlink.targetConstraint(diagnostics, context);
-	}
+	protected static final String SCRIPTHANDLERLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Urlmap)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Scripthandlerlink</em>'.
@@ -3245,7 +3740,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateScripthandlerlink_sourceConstraint(Scripthandlerlink scripthandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return scripthandlerlink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getScripthandlerlink(),
+				 scripthandlerlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 SCRIPTHANDLERLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Scripthandlerlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String SCRIPTHANDLERLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Scripthandler)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Scripthandlerlink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateScripthandlerlink_targetConstraint(Scripthandlerlink scripthandlerlink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getScripthandlerlink(),
+				 scripthandlerlink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 SCRIPTHANDLERLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -3316,20 +3851,18 @@ public class AppengineValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(statuslink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(statuslink, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(statuslink, diagnostics, context);
-		if (result || diagnostics != null) result &= validateStatuslink_targetConstraint(statuslink, diagnostics, context);
 		if (result || diagnostics != null) result &= validateStatuslink_sourceConstraint(statuslink, diagnostics, context);
+		if (result || diagnostics != null) result &= validateStatuslink_targetConstraint(statuslink, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Statuslink</em>'.
+	 * The cached validation expression for the sourceConstraint constraint of '<em>Statuslink</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStatuslink_targetConstraint(Statuslink statuslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return statuslink.targetConstraint(diagnostics, context);
-	}
+	protected static final String STATUSLINK__SOURCE_CONSTRAINT__EEXPRESSION = "self.source.oclIsKindOf(appengine::Operation)";
 
 	/**
 	 * Validates the sourceConstraint constraint of '<em>Statuslink</em>'.
@@ -3338,7 +3871,47 @@ public class AppengineValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateStatuslink_sourceConstraint(Statuslink statuslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return statuslink.sourceConstraint(diagnostics, context);
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getStatuslink(),
+				 statuslink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "sourceConstraint",
+				 STATUSLINK__SOURCE_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
+	}
+
+	/**
+	 * The cached validation expression for the targetConstraint constraint of '<em>Statuslink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String STATUSLINK__TARGET_CONSTRAINT__EEXPRESSION = "self.target.oclIsKindOf(appengine::Status)";
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Statuslink</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStatuslink_targetConstraint(Statuslink statuslink, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(AppenginePackage.eINSTANCE.getStatuslink(),
+				 statuslink,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "targetConstraint",
+				 STATUSLINK__TARGET_CONSTRAINT__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -3587,6 +4160,15 @@ public class AppengineValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validatefloat(Float float_, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validatebyte(Byte byte_, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
@@ -3605,16 +4187,7 @@ public class AppengineValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatefloat(Float float_, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateany(Object any, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateobject(Object object, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -3632,15 +4205,6 @@ public class AppengineValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateshort(Short short_, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validatemap(Map map, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
@@ -3650,7 +4214,16 @@ public class AppengineValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateobject(Object object, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateany(Object any, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateshort(Short short_, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

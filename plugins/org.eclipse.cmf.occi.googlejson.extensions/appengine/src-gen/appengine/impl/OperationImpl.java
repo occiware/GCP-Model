@@ -234,8 +234,10 @@ public class OperationImpl extends ResourceImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void list(final String filter, final String appsId, final String pageToken, final Integer pageSize) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operation!list(String,String,String,Integer)
+	public void list(String filter, String appsId, String pageToken, Integer pageSize) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -243,8 +245,10 @@ public class OperationImpl extends ResourceImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void get(final String appsId, final String operationsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operation!get(String,String)
+	public void get(String appsId, String operationsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

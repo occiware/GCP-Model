@@ -60,7 +60,6 @@ public interface Instance extends Resource {
 	 * @see #setAverageLatency(Integer)
 	 * @see appengine.AppenginePackage#getInstance_AverageLatency()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!averageLatency'"
 	 * @generated
 	 */
 	Integer getAverageLatency();
@@ -86,7 +85,6 @@ public interface Instance extends Resource {
 	 * @see #setMemoryUsage(String)
 	 * @see appengine.AppenginePackage#getInstance_MemoryUsage()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!memoryUsage'"
 	 * @generated
 	 */
 	String getMemoryUsage();
@@ -112,7 +110,6 @@ public interface Instance extends Resource {
 	 * @see #setVmIp(String)
 	 * @see appengine.AppenginePackage#getInstance_VmIp()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!vmIp'"
 	 * @generated
 	 */
 	String getVmIp();
@@ -138,7 +135,6 @@ public interface Instance extends Resource {
 	 * @see #setAvailability(String)
 	 * @see appengine.AppenginePackage#getInstance_Availability()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!availability'"
 	 * @generated
 	 */
 	String getAvailability();
@@ -164,7 +160,6 @@ public interface Instance extends Resource {
 	 * @see #setVmStatus(String)
 	 * @see appengine.AppenginePackage#getInstance_VmStatus()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!vmStatus'"
 	 * @generated
 	 */
 	String getVmStatus();
@@ -190,7 +185,6 @@ public interface Instance extends Resource {
 	 * @see #setErrors(Integer)
 	 * @see appengine.AppenginePackage#getInstance_Errors()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!errors'"
 	 * @generated
 	 */
 	Integer getErrors();
@@ -216,7 +210,6 @@ public interface Instance extends Resource {
 	 * @see #setStartTime(String)
 	 * @see appengine.AppenginePackage#getInstance_StartTime()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!startTime'"
 	 * @generated
 	 */
 	String getStartTime();
@@ -242,7 +235,6 @@ public interface Instance extends Resource {
 	 * @see #setVmDebugEnabled(boolean)
 	 * @see appengine.AppenginePackage#getInstance_VmDebugEnabled()
 	 * @model dataType="org.eclipse.cmf.occi.core.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!vmDebugEnabled'"
 	 * @generated
 	 */
 	boolean isVmDebugEnabled();
@@ -268,7 +260,6 @@ public interface Instance extends Resource {
 	 * @see #setRequests(Integer)
 	 * @see appengine.AppenginePackage#getInstance_Requests()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!requests'"
 	 * @generated
 	 */
 	Integer getRequests();
@@ -294,7 +285,6 @@ public interface Instance extends Resource {
 	 * @see #setAppEngineRelease(String)
 	 * @see appengine.AppenginePackage#getInstance_AppEngineRelease()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!appEngineRelease'"
 	 * @generated
 	 */
 	String getAppEngineRelease();
@@ -320,7 +310,6 @@ public interface Instance extends Resource {
 	 * @see #setVmName(String)
 	 * @see appengine.AppenginePackage#getInstance_VmName()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!vmName'"
 	 * @generated
 	 */
 	String getVmName();
@@ -346,7 +335,6 @@ public interface Instance extends Resource {
 	 * @see #setQps(Integer)
 	 * @see appengine.AppenginePackage#getInstance_Qps()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!qps'"
 	 * @generated
 	 */
 	Integer getQps();
@@ -372,7 +360,6 @@ public interface Instance extends Resource {
 	 * @see #setVmId(String)
 	 * @see appengine.AppenginePackage#getInstance_VmId()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!vmId'"
 	 * @generated
 	 */
 	String getVmId();
@@ -398,7 +385,6 @@ public interface Instance extends Resource {
 	 * @see #setVmZoneName(String)
 	 * @see appengine.AppenginePackage#getInstance_VmZoneName()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!vmZoneName'"
 	 * @generated
 	 */
 	String getVmZoneName();
@@ -424,7 +410,6 @@ public interface Instance extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getInstance_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!name'"
 	 * @generated
 	 */
 	String getName();
@@ -451,7 +436,6 @@ public interface Instance extends Resource {
 	 * @param versionsId Part of `parent`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" pageTokenDataType="org.eclipse.cmf.occi.core.String" pageTokenRequired="true" pageSizeDataType="org.eclipse.cmf.occi.core.Integer" pageSizeRequired="true" versionsIdDataType="org.eclipse.cmf.occi.core.String" versionsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!list(String,String,String,Integer,String)'"
 	 * @generated
 	 */
 	void list(String servicesId, String appsId, String pageToken, Integer pageSize, String versionsId);
@@ -467,7 +451,6 @@ public interface Instance extends Resource {
 	 * @param versionsId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" instancesIdDataType="org.eclipse.cmf.occi.core.String" instancesIdRequired="true" versionsIdDataType="org.eclipse.cmf.occi.core.String" versionsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!get(String,String,String,String)'"
 	 * @generated
 	 */
 	void get(String servicesId, String appsId, String instancesId, String versionsId);
@@ -483,7 +466,6 @@ public interface Instance extends Resource {
 	 * @param versionsId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" instancesIdDataType="org.eclipse.cmf.occi.core.String" instancesIdRequired="true" versionsIdDataType="org.eclipse.cmf.occi.core.String" versionsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!debug(String,String,String,String)'"
 	 * @generated
 	 */
 	void debug(String servicesId, String appsId, String instancesId, String versionsId);
@@ -499,7 +481,6 @@ public interface Instance extends Resource {
 	 * @param servicesId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" instancesIdDataType="org.eclipse.cmf.occi.core.String" instancesIdRequired="true" versionsIdDataType="org.eclipse.cmf.occi.core.String" versionsIdRequired="true" servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!delete(String,String,String,String)'"
 	 * @generated
 	 */
 	void delete(String appsId, String instancesId, String versionsId, String servicesId);

@@ -47,7 +47,6 @@ public interface Listversionsresponse extends Resource {
 	 * @see #setNextPageToken(String)
 	 * @see appengine.AppenginePackage#getListversionsresponse_NextPageToken()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listversionsresponse!nextPageToken'"
 	 * @generated
 	 */
 	String getNextPageToken();
@@ -73,7 +72,6 @@ public interface Listversionsresponse extends Resource {
 	 * @see #setVersions(array)
 	 * @see appengine.AppenginePackage#getListversionsresponse_Versions()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listversionsresponse!versions'"
 	 * @generated
 	 */
 	array getVersions();

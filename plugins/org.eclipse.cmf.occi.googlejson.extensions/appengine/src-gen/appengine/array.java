@@ -45,7 +45,6 @@ public interface array extends EObject {
 	 * @return the value of the '<em>Values</em>' attribute list.
 	 * @see appengine.AppenginePackage#getarray_Values()
 	 * @model unique="false" dataType="appengine.object"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!array!values'"
 	 * @generated
 	 */
 	EList<Object> getValues();

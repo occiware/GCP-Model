@@ -49,7 +49,6 @@ public interface Identityawareproxy extends Resource {
 	 * @see #setOauth2ClientSecret(String)
 	 * @see appengine.AppenginePackage#getIdentityawareproxy_Oauth2ClientSecret()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Identityawareproxy!oauth2ClientSecret'"
 	 * @generated
 	 */
 	String getOauth2ClientSecret();
@@ -75,7 +74,6 @@ public interface Identityawareproxy extends Resource {
 	 * @see #setOauth2ClientId(String)
 	 * @see appengine.AppenginePackage#getIdentityawareproxy_Oauth2ClientId()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Identityawareproxy!oauth2ClientId'"
 	 * @generated
 	 */
 	String getOauth2ClientId();
@@ -101,7 +99,6 @@ public interface Identityawareproxy extends Resource {
 	 * @see #setOauth2ClientSecretSha256(String)
 	 * @see appengine.AppenginePackage#getIdentityawareproxy_Oauth2ClientSecretSha256()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Identityawareproxy!oauth2ClientSecretSha256'"
 	 * @generated
 	 */
 	String getOauth2ClientSecretSha256();
@@ -127,7 +124,6 @@ public interface Identityawareproxy extends Resource {
 	 * @see #setEnabled(boolean)
 	 * @see appengine.AppenginePackage#getIdentityawareproxy_Enabled()
 	 * @model dataType="org.eclipse.cmf.occi.core.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Identityawareproxy!enabled'"
 	 * @generated
 	 */
 	boolean isEnabled();

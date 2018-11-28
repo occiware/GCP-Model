@@ -6,6 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.ui,
  org.jsoup;bundle-version="1.7.2",
  org.eclipse.emf.ecore,
- org.eclipse.cmf.occi.core,
- com.google.gson;bundle-version="2.2.4"
+ org.eclipse.cmf.occi.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: gson-2.2.4.jar,
+ .

@@ -46,7 +46,6 @@ public interface Service extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getService_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Service!name'"
 	 * @generated
 	 */
 	String getName();
@@ -70,7 +69,6 @@ public interface Service extends Resource {
 	 * @param servicesId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Service!delete(String,String)'"
 	 * @generated
 	 */
 	void delete(String appsId, String servicesId);
@@ -85,7 +83,6 @@ public interface Service extends Resource {
 	 * @param pageSize Maximum results to return per page.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" pageTokenDataType="org.eclipse.cmf.occi.core.String" pageTokenRequired="true" pageSizeDataType="org.eclipse.cmf.occi.core.Integer" pageSizeRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Service!list(String,String,Integer)'"
 	 * @generated
 	 */
 	void list(String appsId, String pageToken, Integer pageSize);
@@ -99,7 +96,6 @@ public interface Service extends Resource {
 	 * @param appsId Part of `name`. Name of the resource requested. Example: apps/myapp/services/default.
 	 * <!-- end-model-doc -->
 	 * @model servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Service!get(String,String)'"
 	 * @generated
 	 */
 	void get(String servicesId, String appsId);
@@ -115,7 +111,6 @@ public interface Service extends Resource {
 	 * @param migrateTraffic Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#inboundservicetype) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#automaticscaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#shardby) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
 	 * <!-- end-model-doc -->
 	 * @model updateMaskDataType="org.eclipse.cmf.occi.core.String" updateMaskRequired="true" servicesIdDataType="org.eclipse.cmf.occi.core.String" servicesIdRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" migrateTrafficDataType="org.eclipse.cmf.occi.core.Boolean" migrateTrafficRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Service!patch(String,String,String,Boolean)'"
 	 * @generated
 	 */
 	void patch(String updateMask, String servicesId, String appsId, boolean migrateTraffic);

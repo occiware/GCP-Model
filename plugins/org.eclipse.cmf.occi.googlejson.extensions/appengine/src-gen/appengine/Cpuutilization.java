@@ -47,7 +47,6 @@ public interface Cpuutilization extends Resource {
 	 * @see #setAggregationWindowLength(String)
 	 * @see appengine.AppenginePackage#getCpuutilization_AggregationWindowLength()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Cpuutilization!aggregationWindowLength'"
 	 * @generated
 	 */
 	String getAggregationWindowLength();
@@ -73,7 +72,6 @@ public interface Cpuutilization extends Resource {
 	 * @see #setTargetUtilization(Integer)
 	 * @see appengine.AppenginePackage#getCpuutilization_TargetUtilization()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Cpuutilization!targetUtilization'"
 	 * @generated
 	 */
 	Integer getTargetUtilization();

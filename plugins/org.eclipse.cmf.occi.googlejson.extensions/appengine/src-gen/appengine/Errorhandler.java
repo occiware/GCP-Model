@@ -48,7 +48,6 @@ public interface Errorhandler extends Resource {
 	 * @see #setErrorCode(String)
 	 * @see appengine.AppenginePackage#getErrorhandler_ErrorCode()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Errorhandler!errorCode'"
 	 * @generated
 	 */
 	String getErrorCode();
@@ -74,7 +73,6 @@ public interface Errorhandler extends Resource {
 	 * @see #setMimeType(String)
 	 * @see appengine.AppenginePackage#getErrorhandler_MimeType()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Errorhandler!mimeType'"
 	 * @generated
 	 */
 	String getMimeType();
@@ -100,7 +98,6 @@ public interface Errorhandler extends Resource {
 	 * @see #setStaticFile(String)
 	 * @see appengine.AppenginePackage#getErrorhandler_StaticFile()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Errorhandler!staticFile'"
 	 * @generated
 	 */
 	String getStaticFile();

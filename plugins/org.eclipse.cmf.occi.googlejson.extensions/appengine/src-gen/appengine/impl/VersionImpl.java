@@ -957,8 +957,10 @@ public class VersionImpl extends ResourceImpl implements Version {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void delete(final String appsId, final String versionsId, final String servicesId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!delete(String,String,String)
+	public void delete(String appsId, String versionsId, String servicesId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -966,8 +968,10 @@ public class VersionImpl extends ResourceImpl implements Version {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void list(final Integer pageSize, final String view, final String servicesId, final String appsId, final String pageToken) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!list(Integer,String,String,String,String)
+	public void list(Integer pageSize, String view, String servicesId, String appsId, String pageToken) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -975,8 +979,10 @@ public class VersionImpl extends ResourceImpl implements Version {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void get(final String versionsId, final String view, final String servicesId, final String appsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!get(String,String,String,String)
+	public void get(String versionsId, String view, String servicesId, String appsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -984,8 +990,10 @@ public class VersionImpl extends ResourceImpl implements Version {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void patch(final String updateMask, final String servicesId, final String appsId, final String versionsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!patch(String,String,String,String)
+	public void patch(String updateMask, String servicesId, String appsId, String versionsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -993,8 +1001,10 @@ public class VersionImpl extends ResourceImpl implements Version {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void create(final String appsId, final String servicesId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Version!create(String,String)
+	public void create(String appsId, String servicesId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

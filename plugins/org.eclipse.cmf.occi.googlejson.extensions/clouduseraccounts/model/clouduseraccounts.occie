@@ -2,7 +2,7 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="clouduseraccounts" scheme="http://occi/gcpclouduseraccounts#" description="Creates and manages users and groups for accessing Google Compute Engine virtual machines.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="AuthorizedKeysView" scheme="http://occi/gcpclouduseraccounts#" title="A list of authorized public keys for a user account.">
-    <attributes name="keys" required="true" description="[Output Only] The list of authorized public keys in SSH format." type="//@types.2"/>
+    <attributes name="keys" required="true" description="[Output Only] The list of authorized public keys in SSH format." type="//@types.5"/>
     <attributes name="sudoer" required="true" description="[Output Only] Whether the user has the ability to elevate on the instance that requested the authorized keys.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -18,7 +18,7 @@
     <attributes name="kindGCP" required="true" description="[Output Only] Type of the resource. Always clouduseraccounts#group for groups.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="members" required="true" description="[Output Only] A list of URLs to User resources who belong to the group. Users may only be members of groups in the same project." type="//@types.2"/>
+    <attributes name="members" required="true" description="[Output Only] A list of URLs to User resources who belong to the group. Users may only be members of groups in the same project." type="//@types.5"/>
     <attributes name="name" required="true" description="Name of the resource; provided by the client when the resource is created.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -82,7 +82,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GroupList" scheme="http://occi/gcpclouduseraccounts#" title="">
-    <attributes name="items" required="true" description="[Output Only] A list of Group resources." type="//@types.2"/>
+    <attributes name="items" required="true" description="[Output Only] A list of Group resources." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="[Output Only] Type of resource. Always clouduseraccounts#groupList for lists of groups.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -95,19 +95,19 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GroupsAddMemberRequest" scheme="http://occi/gcpclouduseraccounts#" title="">
-    <attributes name="users" required="true" description="Fully-qualified URLs of the User resources to add." type="//@types.2"/>
+    <attributes name="users" required="true" description="Fully-qualified URLs of the User resources to add." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GroupsRemoveMemberRequest" scheme="http://occi/gcpclouduseraccounts#" title="">
-    <attributes name="users" required="true" description="Fully-qualified URLs of the User resources to remove." type="//@types.2"/>
+    <attributes name="users" required="true" description="Fully-qualified URLs of the User resources to remove." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="LinuxAccountViews" scheme="http://occi/gcpclouduseraccounts#" title="A list of all Linux accounts for this project. This API is only used by Compute Engine virtual machines to get information about user accounts for a project or instance. Linux resources are read-only views into users and groups managed by the Compute Engine Accounts API.">
-    <attributes name="groupViews" required="true" description="[Output Only] A list of all groups within a project." type="//@types.2"/>
+    <attributes name="groupViews" required="true" description="[Output Only] A list of all groups within a project." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="[Output Only] Type of the resource. Always clouduseraccounts#linuxAccountViews for Linux resources.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="userViews" required="true" description="[Output Only] A list of all users within a project." type="//@types.2"/>
+    <attributes name="userViews" required="true" description="[Output Only] A list of all users within a project." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AuthorizedKeysViewLink" scheme="http://occi/gcpclouduseraccounts#" title="[Output Only] A list of authorized public keys for a user." source="//@kinds[term='linuxgetauthorizedkeysviewresponse']" target="//@kinds[term='authorizedkeysview']">
@@ -129,7 +129,7 @@
     <attributes name="groupName" required="true" description="[Output Only] Group name.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="members" required="true" description="[Output Only] List of user accounts that belong to the group." type="//@types.2"/>
+    <attributes name="members" required="true" description="[Output Only] List of user accounts that belong to the group." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="LinuxUserView" scheme="http://occi/gcpclouduseraccounts#" title="A detailed view of a Linux user account.">
@@ -166,7 +166,7 @@
     <attributes name="endTime" required="true" description="[Output Only] The time that this operation was completed. This value is in RFC3339 text format.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="error" required="true" description="[Output Only] If errors are generated during processing of the operation, this field will be populated." type="//@types.8"/>
+    <attributes name="error" required="true" description="[Output Only] If errors are generated during processing of the operation, this field will be populated." type="//@types.3"/>
     <attributes name="httpErrorMessage" required="true" description="[Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as NOT FOUND.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -212,14 +212,14 @@
     <attributes name="user" required="true" description="[Output Only] User who requested the operation, for example: user@example.com.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="warnings" required="true" description="[Output Only] If warning messages are generated during processing of the operation, this field will be populated." type="//@types.2"/>
+    <attributes name="warnings" required="true" description="[Output Only] If warning messages are generated during processing of the operation, this field will be populated." type="//@types.5"/>
     <attributes name="zone" required="true" description="[Output Only] The URL of the zone where the operation resides. Only available when performing per-zone operations.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="OperationList" scheme="http://occi/gcpclouduseraccounts#" title="Contains a list of Operation resources.">
-    <attributes name="items" required="true" description="[Output Only] A list of Operation resources." type="//@types.2"/>
+    <attributes name="items" required="true" description="[Output Only] A list of Operation resources." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="[Output Only] Type of resource. Always compute#operations for Operations resource.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -256,7 +256,7 @@
     <attributes name="description" required="true" description="An optional textual description of the resource; provided by the client when the resource is created.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="groups" required="true" description="[Output Only] A list of URLs to Group resources who contain the user. Users are only members of groups in the same project." type="//@types.2"/>
+    <attributes name="groups" required="true" description="[Output Only] A list of URLs to Group resources who contain the user. Users are only members of groups in the same project." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="[Output Only] Type of the resource. Always clouduseraccounts#user for users.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -266,7 +266,7 @@
     <attributes name="owner" required="true" description="Email address of account's owner. This account will be validated to make sure it exists. The email can belong to any domain, but it must be tied to a Google account.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="publicKeys" required="true" description="[Output Only] Public keys that this user may use to login." type="//@types.2"/>
+    <attributes name="publicKeys" required="true" description="[Output Only] Public keys that this user may use to login." type="//@types.5"/>
     <attributes name="selfLink" required="true" description="[Output Only] Server defined URL for the resource.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -330,7 +330,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="UserList" scheme="http://occi/gcpclouduseraccounts#" title="">
-    <attributes name="items" required="true" description="[Output Only] A list of User resources." type="//@types.2"/>
+    <attributes name="items" required="true" description="[Output Only] A list of User resources." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="[Output Only] Type of resource. Always clouduseraccounts#userList for lists of users.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -343,14 +343,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:EnumerationType" name="Status" documentation="[Output Only] The status of the operation, which can be one of the following: PENDING, RUNNING, or DONE.">
     <literals name="DONE" documentation=""/>
     <literals name="PENDING" documentation=""/>

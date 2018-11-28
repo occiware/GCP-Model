@@ -55,7 +55,6 @@ public interface Application extends Resource {
 	 * @see #setDispatchRules(array)
 	 * @see appengine.AppenginePackage#getApplication_DispatchRules()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!dispatchRules'"
 	 * @generated
 	 */
 	array getDispatchRules();
@@ -81,7 +80,6 @@ public interface Application extends Resource {
 	 * @see #setGcrDomain(String)
 	 * @see appengine.AppenginePackage#getApplication_GcrDomain()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!gcrDomain'"
 	 * @generated
 	 */
 	String getGcrDomain();
@@ -107,7 +105,6 @@ public interface Application extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getApplication_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!name'"
 	 * @generated
 	 */
 	String getName();
@@ -133,7 +130,6 @@ public interface Application extends Resource {
 	 * @see #setDefaultCookieExpiration(String)
 	 * @see appengine.AppenginePackage#getApplication_DefaultCookieExpiration()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!defaultCookieExpiration'"
 	 * @generated
 	 */
 	String getDefaultCookieExpiration();
@@ -159,7 +155,6 @@ public interface Application extends Resource {
 	 * @see #setLocationId(String)
 	 * @see appengine.AppenginePackage#getApplication_LocationId()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!locationId'"
 	 * @generated
 	 */
 	String getLocationId();
@@ -185,7 +180,6 @@ public interface Application extends Resource {
 	 * @see #setServingStatus(String)
 	 * @see appengine.AppenginePackage#getApplication_ServingStatus()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!servingStatus'"
 	 * @generated
 	 */
 	String getServingStatus();
@@ -211,7 +205,6 @@ public interface Application extends Resource {
 	 * @see #setDefaultHostname(String)
 	 * @see appengine.AppenginePackage#getApplication_DefaultHostname()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!defaultHostname'"
 	 * @generated
 	 */
 	String getDefaultHostname();
@@ -237,7 +230,6 @@ public interface Application extends Resource {
 	 * @see #setAuthDomain(String)
 	 * @see appengine.AppenginePackage#getApplication_AuthDomain()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!authDomain'"
 	 * @generated
 	 */
 	String getAuthDomain();
@@ -263,7 +255,6 @@ public interface Application extends Resource {
 	 * @see #setCodeBucket(String)
 	 * @see appengine.AppenginePackage#getApplication_CodeBucket()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!codeBucket'"
 	 * @generated
 	 */
 	String getCodeBucket();
@@ -289,7 +280,6 @@ public interface Application extends Resource {
 	 * @see #setDefaultBucket(String)
 	 * @see appengine.AppenginePackage#getApplication_DefaultBucket()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!defaultBucket'"
 	 * @generated
 	 */
 	String getDefaultBucket();
@@ -312,7 +302,6 @@ public interface Application extends Resource {
 	 * @param appsId Part of `name`. Name of the application to repair. Example: apps/myapp
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!repair(String)'"
 	 * @generated
 	 */
 	void repair(String appsId);
@@ -325,7 +314,6 @@ public interface Application extends Resource {
 	 * @param appsId Part of `name`. Name of the Application resource to get. Example: apps/myapp.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!get(String)'"
 	 * @generated
 	 */
 	void get(String appsId);
@@ -341,7 +329,6 @@ public interface Application extends Resource {
 	 * @param appsId Part of `name`. Name of the Application resource to update. Example: apps/myapp.
 	 * <!-- end-model-doc -->
 	 * @model updateMaskDataType="org.eclipse.cmf.occi.core.String" updateMaskRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!patch(String,String)'"
 	 * @generated
 	 */
 	void patch(String updateMask, String appsId);
@@ -354,7 +341,7 @@ public interface Application extends Resource {
 	 * id - The ID of the target Cloud Platform project.
 	 * location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/python/console/).
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!create()'"
+	 * @model
 	 * @generated
 	 */
 	void create();

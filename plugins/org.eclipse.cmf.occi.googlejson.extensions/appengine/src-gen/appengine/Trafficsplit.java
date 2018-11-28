@@ -49,7 +49,6 @@ public interface Trafficsplit extends Resource {
 	 * @see #setShardBy(String)
 	 * @see appengine.AppenginePackage#getTrafficsplit_ShardBy()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Trafficsplit!shardBy'"
 	 * @generated
 	 */
 	String getShardBy();
@@ -75,7 +74,6 @@ public interface Trafficsplit extends Resource {
 	 * @see #setAllocations(Map)
 	 * @see appengine.AppenginePackage#getTrafficsplit_Allocations()
 	 * @model dataType="appengine.map" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Trafficsplit!allocations'"
 	 * @generated
 	 */
 	Map getAllocations();

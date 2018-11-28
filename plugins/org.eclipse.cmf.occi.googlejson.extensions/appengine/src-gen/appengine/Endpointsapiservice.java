@@ -47,7 +47,6 @@ public interface Endpointsapiservice extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getEndpointsapiservice_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Endpointsapiservice!name'"
 	 * @generated
 	 */
 	String getName();
@@ -73,7 +72,6 @@ public interface Endpointsapiservice extends Resource {
 	 * @see #setConfigId(String)
 	 * @see appengine.AppenginePackage#getEndpointsapiservice_ConfigId()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Endpointsapiservice!configId'"
 	 * @generated
 	 */
 	String getConfigId();

@@ -46,7 +46,6 @@ public interface Batchupdateingressrulesresponse extends Resource {
 	 * @see #setIngressRules(array)
 	 * @see appengine.AppenginePackage#getBatchupdateingressrulesresponse_IngressRules()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Batchupdateingressrulesresponse!ingressRules'"
 	 * @generated
 	 */
 	array getIngressRules();

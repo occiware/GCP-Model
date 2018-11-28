@@ -51,7 +51,6 @@ public interface Operation extends Resource {
 	 * @see #setResponse(Map)
 	 * @see appengine.AppenginePackage#getOperation_Response()
 	 * @model dataType="appengine.map" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operation!response'"
 	 * @generated
 	 */
 	Map getResponse();
@@ -77,7 +76,6 @@ public interface Operation extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getOperation_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operation!name'"
 	 * @generated
 	 */
 	String getName();
@@ -103,7 +101,6 @@ public interface Operation extends Resource {
 	 * @see #setMetadata(Map)
 	 * @see appengine.AppenginePackage#getOperation_Metadata()
 	 * @model dataType="appengine.map" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operation!metadata'"
 	 * @generated
 	 */
 	Map getMetadata();
@@ -129,7 +126,6 @@ public interface Operation extends Resource {
 	 * @see #setDone(boolean)
 	 * @see appengine.AppenginePackage#getOperation_Done()
 	 * @model dataType="org.eclipse.cmf.occi.core.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operation!done'"
 	 * @generated
 	 */
 	boolean isDone();
@@ -155,7 +151,6 @@ public interface Operation extends Resource {
 	 * @param pageSize The standard list page size.
 	 * <!-- end-model-doc -->
 	 * @model filterDataType="org.eclipse.cmf.occi.core.String" filterRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" pageTokenDataType="org.eclipse.cmf.occi.core.String" pageTokenRequired="true" pageSizeDataType="org.eclipse.cmf.occi.core.Integer" pageSizeRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operation!list(String,String,String,Integer)'"
 	 * @generated
 	 */
 	void list(String filter, String appsId, String pageToken, Integer pageSize);
@@ -169,7 +164,6 @@ public interface Operation extends Resource {
 	 * @param operationsId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" operationsIdDataType="org.eclipse.cmf.occi.core.String" operationsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operation!get(String,String)'"
 	 * @generated
 	 */
 	void get(String appsId, String operationsId);

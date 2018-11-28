@@ -9,18 +9,18 @@
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="occi" value="http://schemas.ogf.org/occi/core/ecore"/>
   </eAnnotations>
+  <eClassifiers xsi:type="ecore:EDataType" name="float" instanceClassName="java.lang.Float"/>
   <eClassifiers xsi:type="ecore:EDataType" name="byte" instanceClassName="java.lang.Byte"/>
   <eClassifiers xsi:type="ecore:EDataType" name="double" instanceClassName="java.lang.Double"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="float" instanceClassName="java.lang.Float"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="any" instanceClassName="java.lang.Object"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="object" instanceClassName="java.lang.Object"/>
   <eClassifiers xsi:type="ecore:EDataType" name="long" instanceClassName="java.lang.Long"/>
   <eClassifiers xsi:type="ecore:EClass" name="array">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
         upperBound="-1" eType="#//object"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="short" instanceClassName="java.lang.Short"/>
   <eClassifiers xsi:type="ecore:EDataType" name="map" instanceClassName="java.util.Map"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="object" instanceClassName="java.lang.Object"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="any" instanceClassName="java.lang.Object"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="short" instanceClassName="java.lang.Short"/>
   <eClassifiers xsi:type="ecore:EEnum" name="Action">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The action to take on matched requests."/>

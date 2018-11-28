@@ -46,7 +46,6 @@ public interface Scripthandler extends Resource {
 	 * @see #setScriptPath(String)
 	 * @see appengine.AppenginePackage#getScripthandler_ScriptPath()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Scripthandler!scriptPath'"
 	 * @generated
 	 */
 	String getScriptPath();

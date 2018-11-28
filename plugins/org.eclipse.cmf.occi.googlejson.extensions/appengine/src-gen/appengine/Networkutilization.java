@@ -49,7 +49,6 @@ public interface Networkutilization extends Resource {
 	 * @see #setTargetSentPacketsPerSecond(Integer)
 	 * @see appengine.AppenginePackage#getNetworkutilization_TargetSentPacketsPerSecond()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Networkutilization!targetSentPacketsPerSecond'"
 	 * @generated
 	 */
 	Integer getTargetSentPacketsPerSecond();
@@ -75,7 +74,6 @@ public interface Networkutilization extends Resource {
 	 * @see #setTargetReceivedBytesPerSecond(Integer)
 	 * @see appengine.AppenginePackage#getNetworkutilization_TargetReceivedBytesPerSecond()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Networkutilization!targetReceivedBytesPerSecond'"
 	 * @generated
 	 */
 	Integer getTargetReceivedBytesPerSecond();
@@ -101,7 +99,6 @@ public interface Networkutilization extends Resource {
 	 * @see #setTargetReceivedPacketsPerSecond(Integer)
 	 * @see appengine.AppenginePackage#getNetworkutilization_TargetReceivedPacketsPerSecond()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Networkutilization!targetReceivedPacketsPerSecond'"
 	 * @generated
 	 */
 	Integer getTargetReceivedPacketsPerSecond();
@@ -127,7 +124,6 @@ public interface Networkutilization extends Resource {
 	 * @see #setTargetSentBytesPerSecond(Integer)
 	 * @see appengine.AppenginePackage#getNetworkutilization_TargetSentBytesPerSecond()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Networkutilization!targetSentBytesPerSecond'"
 	 * @generated
 	 */
 	Integer getTargetSentBytesPerSecond();

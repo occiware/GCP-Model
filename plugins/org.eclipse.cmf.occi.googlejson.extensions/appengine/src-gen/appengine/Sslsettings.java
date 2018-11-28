@@ -46,7 +46,6 @@ public interface Sslsettings extends Resource {
 	 * @see #setCertificateId(String)
 	 * @see appengine.AppenginePackage#getSslsettings_CertificateId()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Sslsettings!certificateId'"
 	 * @generated
 	 */
 	String getCertificateId();

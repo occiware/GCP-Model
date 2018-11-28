@@ -23,7 +23,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="BigtableColumnFamily" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="columns" required="true" description="[Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field." type="//@types.2"/>
+    <attributes name="columns" required="true" description="[Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field." type="//@types.5"/>
     <attributes name="encoding" required="true" description="[Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -39,7 +39,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="BigtableOptions" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="columnFamilies" required="true" description="[Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable." type="//@types.2"/>
+    <attributes name="columnFamilies" required="true" description="[Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable." type="//@types.5"/>
     <attributes name="ignoreUnspecifiedColumnFamilies" required="true" description="[Optional] If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -73,7 +73,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Dataset" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="access" required="true" description="[Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;" type="//@types.2"/>
+    <attributes name="access" required="true" description="[Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;" type="//@types.5"/>
     <attributes name="creationTime" required="true" description="[Output-only] The time when this dataset was created, in milliseconds since the epoch.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -92,7 +92,7 @@
     <attributes name="kindGCP" required="true" description="[Output-only] The resource type.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="labels" required="true" description="The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Labeling Datasets for more information." type="//@types.3"/>
+    <attributes name="labels" required="true" description="The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Labeling Datasets for more information." type="//@types.6"/>
     <attributes name="lastModifiedTime" required="true" description="[Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -162,7 +162,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="DatasetList" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="datasets" required="true" description="An array of the dataset resources in the project. Each resource contains basic information. For full information about a particular dataset resource, use the Datasets: get method. This property is omitted when there are no datasets in the project." type="//@types.2"/>
+    <attributes name="datasets" required="true" description="An array of the dataset resources in the project. Each resource contains basic information. For full information about a particular dataset resource, use the Datasets: get method. This property is omitted when there are no datasets in the project." type="//@types.5"/>
     <attributes name="etag" required="true" description="A hash value of the results page. You can use this property to determine if the page has changed since the last request.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -247,7 +247,7 @@
     <attributes name="status" required="true" description="Current status for the stage.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="steps" required="true" description="List of operations within the stage in dependency order (approximately chronological)." type="//@types.2"/>
+    <attributes name="steps" required="true" description="List of operations within the stage in dependency order (approximately chronological)." type="//@types.5"/>
     <attributes name="waitMsAvg" required="true" description="Milliseconds the average shard spent waiting to be scheduled.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -278,7 +278,7 @@
     <attributes name="kindGCP" required="true" description="Machine-readable operation type.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="substeps" required="true" description="Human-readable stage descriptions." type="//@types.2"/>
+    <attributes name="substeps" required="true" description="Human-readable stage descriptions." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="BigtableOptionsLink" scheme="http://occi/gcpbigquery#" title="[Optional] Additional options if sourceFormat is set to BIGTABLE." source="//@kinds[term='externaldataconfiguration']" target="//@kinds[term='bigtableoptions']">
@@ -309,7 +309,7 @@
     <attributes name="sourceFormat" required="true" description="[Required] The data format. For CSV files, specify &quot;CSV&quot;. For Google sheets, specify &quot;GOOGLE_SHEETS&quot;. For newline-delimited JSON, specify &quot;NEWLINE_DELIMITED_JSON&quot;. For Avro files, specify &quot;AVRO&quot;. For Google Cloud Datastore backups, specify &quot;DATASTORE_BACKUP&quot;. [Beta] For Google Cloud Bigtable, specify &quot;BIGTABLE&quot;.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="sourceUris" required="true" description="[Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed." type="//@types.2"/>
+    <attributes name="sourceUris" required="true" description="[Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="JobReferenceLink" scheme="http://occi/gcpbigquery#" title="Reference to the BigQuery Job that was created to run the query. This field will be present even if the original request timed out, in which case GetQueryResults can be used to read the results once the query has completed. Since this API only returns the first page of results, subsequent pages can be fetched via the same mechanism (GetQueryResults)." source="//@kinds[term='getqueryresultsresponse']" target="//@kinds[term='jobreference']">
@@ -322,7 +322,7 @@
     <attributes name="cacheHit" required="true" description="Whether the query result was fetched from the query cache.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="errors" required="true" description="[Output-only] The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful." type="//@types.2"/>
+    <attributes name="errors" required="true" description="[Output-only] The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful." type="//@types.5"/>
     <attributes name="etag" required="true" description="A hash of this response.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -338,7 +338,7 @@
     <attributes name="pageToken" required="true" description="A token used for paging results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="rows" required="true" description="An object with as many results as can be contained within the maximum permitted reply size. To get any additional rows, you can call GetQueryResults and specify the jobReference returned above. Present only when the query completes successfully." type="//@types.2"/>
+    <attributes name="rows" required="true" description="An object with as many results as can be contained within the maximum permitted reply size. To get any additional rows, you can call GetQueryResults and specify the jobReference returned above. Present only when the query completes successfully." type="//@types.5"/>
     <attributes name="totalBytesProcessed" required="true" description="The total number of bytes processed for this query.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -480,7 +480,7 @@
     <attributes name="dryRun" required="true" description="[Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="labels" required="true" description="[Experimental] The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key." type="//@types.3"/>
+    <attributes name="labels" required="true" description="[Experimental] The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TableReferenceLink" scheme="http://occi/gcpbigquery#" title="[Required] A reference to the table being exported." source="//@kinds[term='jobconfigurationextract']" target="//@kinds[term='tablereference']">
@@ -496,7 +496,7 @@
     <attributes name="destinationUri" required="true" description="[Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as necessary. The fully-qualified Google Cloud Storage URI where the extracted table should be written.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="destinationUris" required="true" description="[Pick one] A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written." type="//@types.2"/>
+    <attributes name="destinationUris" required="true" description="[Pick one] A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written." type="//@types.5"/>
     <attributes name="fieldDelimiter" required="true" description="[Optional] Delimiter to use between fields in the exported data. Default is ','">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -545,7 +545,7 @@
     <attributes name="nullMarker" required="true" description="[Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify &quot;\N&quot;, BigQuery interprets &quot;\N&quot; as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="projectionFields" required="true" description="If sourceFormat is set to &quot;DATASTORE_BACKUP&quot;, indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result." type="//@types.2"/>
+    <attributes name="projectionFields" required="true" description="If sourceFormat is set to &quot;DATASTORE_BACKUP&quot;, indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result." type="//@types.5"/>
     <attributes name="quote" required="true" description="[Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('&quot;'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -555,14 +555,14 @@
     <attributes name="schemaInlineFormat" required="true" description="[Deprecated] The format of the schemaInline property.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="schemaUpdateOptions" required="true" description="Allows the schema of the desitination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable." type="//@types.2"/>
+    <attributes name="schemaUpdateOptions" required="true" description="Allows the schema of the desitination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable." type="//@types.5"/>
     <attributes name="skipLeadingRows" required="true" description="[Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <attributes name="sourceFormat" required="true" description="[Optional] The format of the data files. For CSV files, specify &quot;CSV&quot;. For datastore backups, specify &quot;DATASTORE_BACKUP&quot;. For newline-delimited JSON, specify &quot;NEWLINE_DELIMITED_JSON&quot;. For Avro, specify &quot;AVRO&quot;. The default value is CSV.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="sourceUris" required="true" description="[Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed." type="//@types.2"/>
+    <attributes name="sourceUris" required="true" description="[Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed." type="//@types.5"/>
     <attributes name="writeDisposition" required="true" description="[Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -608,16 +608,16 @@
     <attributes name="query" required="true" description="[Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="queryParameters" required="true" description="Query parameters for standard SQL queries." type="//@types.2"/>
-    <attributes name="schemaUpdateOptions" required="true" description="Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable." type="//@types.2"/>
-    <attributes name="tableDefinitions" required="true" description="[Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table." type="//@types.8"/>
+    <attributes name="queryParameters" required="true" description="Query parameters for standard SQL queries." type="//@types.5"/>
+    <attributes name="schemaUpdateOptions" required="true" description="Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable." type="//@types.5"/>
+    <attributes name="tableDefinitions" required="true" description="[Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table." type="//@types.3"/>
     <attributes name="useLegacySql" required="true" description="Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
     <attributes name="useQueryCache" required="true" description="[Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="userDefinedFunctionResources" required="true" description="Describes user-defined function resources used in the query." type="//@types.2"/>
+    <attributes name="userDefinedFunctionResources" required="true" description="Describes user-defined function resources used in the query." type="//@types.5"/>
     <attributes name="writeDisposition" required="true" description="[Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -636,7 +636,7 @@
     <attributes name="createDisposition" required="true" description="[Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="sourceTables" required="true" description="[Pick one] Source tables to copy." type="//@types.2"/>
+    <attributes name="sourceTables" required="true" description="[Pick one] Source tables to copy." type="//@types.5"/>
     <attributes name="writeDisposition" required="true" description="[Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -646,7 +646,7 @@
     <attributes name="etag" required="true" description="A hash of this page of results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="jobs" required="true" description="List of jobs that were requested." type="//@types.2"/>
+    <attributes name="jobs" required="true" description="List of jobs that were requested." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="The resource type of the response.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -701,8 +701,8 @@
     <attributes name="numDmlAffectedRows" required="true" description="[Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="queryPlan" required="true" description="[Output-only] Describes execution plan for the query." type="//@types.2"/>
-    <attributes name="referencedTables" required="true" description="[Output-only, Experimental] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list." type="//@types.2"/>
+    <attributes name="queryPlan" required="true" description="[Output-only] Describes execution plan for the query." type="//@types.5"/>
+    <attributes name="referencedTables" required="true" description="[Output-only, Experimental] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list." type="//@types.5"/>
     <attributes name="statementType" required="true" description="[Output-only, Experimental] The type of query statement, if valid.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -715,7 +715,7 @@
     <attributes name="totalSlotMs" required="true" description="[Output-only] Slot-milliseconds for the job.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="undeclaredQueryParameters" required="true" description="[Output-only, Experimental] Standard SQL only: list of undeclared query parameters detected during a dry run validation." type="//@types.2"/>
+    <attributes name="undeclaredQueryParameters" required="true" description="[Output-only, Experimental] Standard SQL only: list of undeclared query parameters detected during a dry run validation." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="JobStatistics3" scheme="http://occi/gcpbigquery#" title="">
@@ -737,14 +737,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="JobStatistics4" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="destinationUriFileCounts" required="true" description="[Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field." type="//@types.2"/>
+    <attributes name="destinationUriFileCounts" required="true" description="[Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ErrorProtoLink" scheme="http://occi/gcpbigquery#" title="[Output-only] Final error result of the job. If present, indicates that the job has completed and was unsuccessful." source="//@kinds[term='jobstatus']" target="//@kinds[term='errorproto']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="JobStatus" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="errors" required="true" description="[Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful." type="//@types.2"/>
+    <attributes name="errors" required="true" description="[Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful." type="//@types.5"/>
     <attributes name="state" required="true" description="[Output-only] Running state of the job.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -766,7 +766,7 @@
     <attributes name="nextPageToken" required="true" description="A token to request the next page of results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="projects" required="true" description="Projects to which you have at least READ access." type="//@types.2"/>
+    <attributes name="projects" required="true" description="Projects to which you have at least READ access." type="//@types.5"/>
     <attributes name="totalItems" required="true" description="The total number of projects in the list.">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
@@ -794,15 +794,15 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="QueryParameterType" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="structTypes" required="true" description="[Optional] The types of the fields of this struct, in order, if this is a struct." type="//@types.2"/>
+    <attributes name="structTypes" required="true" description="[Optional] The types of the fields of this struct, in order, if this is a struct." type="//@types.5"/>
     <attributes name="type" required="true" description="[Required] The top level type of this field.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="QueryParameterValue" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="arrayValues" required="true" description="[Optional] The array values, if this is an array type." type="//@types.2"/>
-    <attributes name="structValues" required="true" description="[Optional] The struct field values, in order of the struct type's declaration." type="//@types.8"/>
+    <attributes name="arrayValues" required="true" description="[Optional] The array values, if this is an array type." type="//@types.5"/>
+    <attributes name="structValues" required="true" description="[Optional] The struct field values, in order of the struct type's declaration." type="//@types.3"/>
     <attributes name="value" required="true" description="[Optional] The value of this value, if a simple scalar type.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -830,7 +830,7 @@
     <attributes name="query" required="true" description="[Required] A query string, following the BigQuery query syntax, of the query to execute. Example: &quot;SELECT count(f1) FROM [myProjectId:myDatasetId.myTableId]&quot;.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="queryParameters" required="true" description="Query parameters for Standard SQL queries." type="//@types.2"/>
+    <attributes name="queryParameters" required="true" description="Query parameters for Standard SQL queries." type="//@types.5"/>
     <attributes name="timeoutMs" required="true" description="[Optional] How long to wait for the query to complete, in milliseconds, before the request times out and returns. Note that this is only a timeout for the request, not the query. If the query takes longer to run than the timeout value, the call returns without any results and with the 'jobComplete' flag set to false. You can call GetQueryResults() to wait for the query to complete and read the results. The default value is 10000 milliseconds (10 seconds).">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
@@ -852,7 +852,7 @@
     <attributes name="cacheHit" required="true" description="Whether the query result was fetched from the query cache.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="errors" required="true" description="[Output-only] The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful." type="//@types.2"/>
+    <attributes name="errors" required="true" description="[Output-only] The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful." type="//@types.5"/>
     <attributes name="jobComplete" required="true" description="Whether the query has completed or not. If rows or totalRows are present, this will always be true. If this is false, totalRows will not be available.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -865,7 +865,7 @@
     <attributes name="pageToken" required="true" description="A token used for paging results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="rows" required="true" description="An object with as many results as can be contained within the maximum permitted reply size. To get any additional rows, you can call GetQueryResults and specify the jobReference returned above." type="//@types.2"/>
+    <attributes name="rows" required="true" description="An object with as many results as can be contained within the maximum permitted reply size. To get any additional rows, you can call GetQueryResults and specify the jobReference returned above." type="//@types.5"/>
     <attributes name="totalBytesProcessed" required="true" description="The total number of bytes processed for this query. If this query was a dry run, this is the number of bytes that would be processed if the query were run.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -926,7 +926,7 @@
     <attributes name="kindGCP" required="true" description="[Output-only] The type of the resource.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="labels" required="true" description="[Experimental] The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key." type="//@types.3"/>
+    <attributes name="labels" required="true" description="[Experimental] The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key." type="//@types.6"/>
     <attributes name="lastModifiedTime" required="true" description="[Output-only] The time when this table was last modified, in milliseconds since the epoch.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -1020,7 +1020,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TableCell" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="v" required="true" description="" type="//@types.6"/>
+    <attributes name="v" required="true" description="" type="//@types.7"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TableDataInsertAllRequest" scheme="http://occi/gcpbigquery#" title="">
@@ -1030,7 +1030,7 @@
     <attributes name="kindGCP" required="true" description="The resource type of the response.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="rows" required="true" description="The rows to insert." type="//@types.2"/>
+    <attributes name="rows" required="true" description="The rows to insert." type="//@types.5"/>
     <attributes name="skipInvalidRows" required="true" description="[Optional] Insert all valid rows of a request, even if invalid rows exist. The default value is false, which causes the entire request to fail if any invalid rows exist.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -1040,7 +1040,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TableDataInsertAllResponse" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="insertErrors" required="true" description="An array of errors for rows that were not inserted." type="//@types.2"/>
+    <attributes name="insertErrors" required="true" description="An array of errors for rows that were not inserted." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="The resource type of the response.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -1056,7 +1056,7 @@
     <attributes name="pageToken" required="true" description="A token used for paging results. Providing this token instead of the startIndex parameter can help you retrieve stable results when an underlying table is changing.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="rows" required="true" description="Rows of results." type="//@types.2"/>
+    <attributes name="rows" required="true" description="Rows of results." type="//@types.5"/>
     <attributes name="totalRows" required="true" description="The total number of rows in the complete table.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -1100,7 +1100,7 @@
     <attributes name="description" required="true" description="[Optional] The field description. The maximum length is 1,024 characters.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="fields" required="true" description="[Optional] Describes the nested schema fields if the type property is set to RECORD." type="//@types.2"/>
+    <attributes name="fields" required="true" description="[Optional] Describes the nested schema fields if the type property is set to RECORD." type="//@types.5"/>
     <attributes name="mode" required="true" description="[Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -1122,7 +1122,7 @@
     <attributes name="nextPageToken" required="true" description="A token to request the next page of results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="tables" required="true" description="Tables in the requested dataset." type="//@types.2"/>
+    <attributes name="tables" required="true" description="Tables in the requested dataset." type="//@types.5"/>
     <attributes name="totalItems" required="true" description="The total number of tables in the dataset.">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
@@ -1141,11 +1141,11 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TableRow" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="f" required="true" description="Represents a single row in the result set, consisting of one or more fields." type="//@types.2"/>
+    <attributes name="f" required="true" description="Represents a single row in the result set, consisting of one or more fields." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TableSchema" scheme="http://occi/gcpbigquery#" title="">
-    <attributes name="fields" required="true" description="Describes the fields in a table." type="//@types.2"/>
+    <attributes name="fields" required="true" description="Describes the fields in a table." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TimePartitioning" scheme="http://occi/gcpbigquery#" title="">
@@ -1176,18 +1176,18 @@
     <attributes name="useLegacySql" required="true" description="Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="userDefinedFunctionResources" required="true" description="Describes user-defined function resources used in the query." type="//@types.2"/>
+    <attributes name="userDefinedFunctionResources" required="true" description="Describes user-defined function resources used in the query." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:EnumerationType" name="Projection" documentation="Restrict information returned to a set of selected fields">
     <literals name="full" documentation="Includes all job data"/>
     <literals name="minimal" documentation="Does not include the job configuration"/>

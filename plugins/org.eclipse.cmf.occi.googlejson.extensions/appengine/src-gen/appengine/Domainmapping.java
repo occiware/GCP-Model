@@ -47,7 +47,6 @@ public interface Domainmapping extends Resource {
 	 * @see #setResourceRecords(array)
 	 * @see appengine.AppenginePackage#getDomainmapping_ResourceRecords()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!resourceRecords'"
 	 * @generated
 	 */
 	array getResourceRecords();
@@ -73,7 +72,6 @@ public interface Domainmapping extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getDomainmapping_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!name'"
 	 * @generated
 	 */
 	String getName();
@@ -97,7 +95,6 @@ public interface Domainmapping extends Resource {
 	 * @param domainMappingsId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" domainMappingsIdDataType="org.eclipse.cmf.occi.core.String" domainMappingsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!delete(String,String)'"
 	 * @generated
 	 */
 	void delete(String appsId, String domainMappingsId);
@@ -112,7 +109,6 @@ public interface Domainmapping extends Resource {
 	 * @param pageSize Maximum results to return per page.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" pageTokenDataType="org.eclipse.cmf.occi.core.String" pageTokenRequired="true" pageSizeDataType="org.eclipse.cmf.occi.core.Integer" pageSizeRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!list(String,String,Integer)'"
 	 * @generated
 	 */
 	void list(String appsId, String pageToken, Integer pageSize);
@@ -126,7 +122,6 @@ public interface Domainmapping extends Resource {
 	 * @param domainMappingsId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" domainMappingsIdDataType="org.eclipse.cmf.occi.core.String" domainMappingsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!get(String,String)'"
 	 * @generated
 	 */
 	void get(String appsId, String domainMappingsId);
@@ -141,7 +136,6 @@ public interface Domainmapping extends Resource {
 	 * @param domainMappingsId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model updateMaskDataType="org.eclipse.cmf.occi.core.String" updateMaskRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" domainMappingsIdDataType="org.eclipse.cmf.occi.core.String" domainMappingsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!patch(String,String,String)'"
 	 * @generated
 	 */
 	void patch(String updateMask, String appsId, String domainMappingsId);
@@ -154,7 +148,6 @@ public interface Domainmapping extends Resource {
 	 * @param appsId Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!create(String)'"
 	 * @generated
 	 */
 	void create(String appsId);

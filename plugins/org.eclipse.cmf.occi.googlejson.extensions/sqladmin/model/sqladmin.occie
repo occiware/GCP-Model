@@ -112,7 +112,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="BackupRunsListResponse" scheme="http://occi/gcpsqladmin#" title="Backup run list results.">
-    <attributes name="items" required="true" description="A list of backup runs in reverse chronological order of the enqueued time." type="//@types.2"/>
+    <attributes name="items" required="true" description="A list of backup runs in reverse chronological order of the enqueued time." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="This is always sql#backupRunsList.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -269,14 +269,14 @@
     <attributes name="etag" required="true" description="HTTP 1.1 Entity tag for the resource.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="failoverReplica" required="true" description="The name and status of the failover replica. This property is applicable only to Second Generation instances." type="//@types.8"/>
+    <attributes name="failoverReplica" required="true" description="The name and status of the failover replica. This property is applicable only to Second Generation instances." type="//@types.3"/>
     <attributes name="gceZone" required="true" description="The GCE zone that the instance is serving from. In case when the instance is failed over to standby zone, this value may be different with what user specified in the settings.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="instanceType" required="true" description="The instance type. This can be one of the following.&#xA;CLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating from a master.&#xA;ON_PREMISES_INSTANCE: An instance running on the customer's premises.&#xA;READ_REPLICA_INSTANCE: A Cloud SQL instance configured as a read-replica.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="ipAddresses" required="true" description="The assigned IP addresses for the instance." type="//@types.2"/>
+    <attributes name="ipAddresses" required="true" description="The assigned IP addresses for the instance." type="//@types.5"/>
     <attributes name="ipv6Address" required="true" description="The IPv6 address assigned to the instance. This property is applicable only to First Generation instances.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -298,7 +298,7 @@
     <attributes name="region" required="true" description="The geographical region. Can be us-central (FIRST_GEN instances only), us-central1 (SECOND_GEN instances only), asia-east1 or europe-west1. Defaults to us-central or us-central1 depending on the instance type (First Generation or Second Generation). The region can not be changed after instance creation.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="replicaNames" required="true" description="The replicas of the instance." type="//@types.2"/>
+    <attributes name="replicaNames" required="true" description="The replicas of the instance." type="//@types.5"/>
     <attributes name="selfLink" required="true" description="The URI of this resource.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -308,11 +308,11 @@
     <attributes name="state" required="true" description="The current serving state of the Cloud SQL instance. This can be one of the following.&#xA;RUNNABLE: The instance is running, or is ready to run when accessed.&#xA;SUSPENDED: The instance is not available, for example due to problems with billing.&#xA;PENDING_CREATE: The instance is being created.&#xA;MAINTENANCE: The instance is down for maintenance.&#xA;FAILED: The instance creation failed.&#xA;UNKNOWN_STATE: The state of the instance is unknown.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="suspensionReason" required="true" description="If the instance state is SUSPENDED, the reason for the suspension." type="//@types.2"/>
+    <attributes name="suspensionReason" required="true" description="If the instance state is SUSPENDED, the reason for the suspension." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="DatabasesListResponse" scheme="http://occi/gcpsqladmin#" title="Database list response.">
-    <attributes name="items" required="true" description="List of database resources in the instance." type="//@types.2"/>
+    <attributes name="items" required="true" description="List of database resources in the instance." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="This is always sql#databasesList.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -361,15 +361,15 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ExportContext" scheme="http://occi/gcpsqladmin#" title="Database instance export context.">
-    <attributes name="csvExportOptions" required="true" description="Options for exporting data as CSV." type="//@types.8"/>
-    <attributes name="databases" required="true" description="Databases (for example, guestbook) from which the export is made. If fileType is SQL and no database is specified, all databases are exported. If fileType is CSV, you can optionally specify at most one database to export. If csvExportOptions.selectQuery also specifies the database, this field will be ignored." type="//@types.2"/>
+    <attributes name="csvExportOptions" required="true" description="Options for exporting data as CSV." type="//@types.3"/>
+    <attributes name="databases" required="true" description="Databases (for example, guestbook) from which the export is made. If fileType is SQL and no database is specified, all databases are exported. If fileType is CSV, you can optionally specify at most one database to export. If csvExportOptions.selectQuery also specifies the database, this field will be ignored." type="//@types.5"/>
     <attributes name="fileType" required="true" description="The file type for the specified uri.&#xA;SQL: The file contains SQL statements.&#xA;CSV: The file contains CSV data.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="kindGCP" required="true" description="This is always sql#exportContext.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="sqlExportOptions" required="true" description="Options for exporting data as SQL statements." type="//@types.8"/>
+    <attributes name="sqlExportOptions" required="true" description="Options for exporting data as SQL statements." type="//@types.3"/>
     <attributes name="uri" required="true" description="The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form gs://bucketName/fileName. If the file already exists, the operation fails. If fileType is SQL and the filename ends with .gz, the contents are compressed.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -385,8 +385,8 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Flag" scheme="http://occi/gcpsqladmin#" title="A Google Cloud SQL service flag resource.">
-    <attributes name="allowedStringValues" required="true" description="For STRING flags, a list of strings that the value can be set to." type="//@types.2"/>
-    <attributes name="appliesTo" required="true" description="The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or MYSQL_5_7. MYSQL_5_7 is applicable only to Second Generation instances." type="//@types.2"/>
+    <attributes name="allowedStringValues" required="true" description="For STRING flags, a list of strings that the value can be set to." type="//@types.5"/>
+    <attributes name="appliesTo" required="true" description="The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or MYSQL_5_7. MYSQL_5_7 is applicable only to Second Generation instances." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="This is always sql#flag.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -413,14 +413,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="FlagsListResponse" scheme="http://occi/gcpsqladmin#" title="Flags list response.">
-    <attributes name="items" required="true" description="List of flags." type="//@types.2"/>
+    <attributes name="items" required="true" description="List of flags." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="This is always sql#flagsList.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ImportContext" scheme="http://occi/gcpsqladmin#" title="Database instance import context.">
-    <attributes name="csvImportOptions" required="true" description="Options for importing data as CSV." type="//@types.8"/>
+    <attributes name="csvImportOptions" required="true" description="Options for importing data as CSV." type="//@types.3"/>
     <attributes name="database" required="true" description="The database (for example, guestbook) to which the import is made. If fileType is SQL and no database is specified, it is assumed that the database is specified in the file to be imported. If fileType is CSV, it must be specified.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -469,7 +469,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="InstancesListResponse" scheme="http://occi/gcpsqladmin#" title="Database instances list response.">
-    <attributes name="items" required="true" description="List of database instance resources." type="//@types.2"/>
+    <attributes name="items" required="true" description="List of database instance resources." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="This is always sql#instancesList.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -491,7 +491,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="IpConfiguration" scheme="http://occi/gcpsqladmin#" title="IP Management configuration.">
-    <attributes name="authorizedNetworks" required="true" description="The list of external networks that are allowed to connect to the instance using the IP. In CIDR notation, also known as 'slash' notation (e.g. 192.168.100.0/24)." type="//@types.2"/>
+    <attributes name="authorizedNetworks" required="true" description="The list of external networks that are allowed to connect to the instance using the IP. In CIDR notation, also known as 'slash' notation (e.g. 192.168.100.0/24)." type="//@types.5"/>
     <attributes name="ipv4Enabled" required="true" description="Whether the instance should be assigned an IP address or not.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -667,14 +667,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="OperationErrors" scheme="http://occi/gcpsqladmin#" title="Database instance operation errors list wrapper.">
-    <attributes name="errors" required="true" description="The list of errors encountered while processing this operation." type="//@types.2"/>
+    <attributes name="errors" required="true" description="The list of errors encountered while processing this operation." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="This is always sql#operationErrors.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="OperationsListResponse" scheme="http://occi/gcpsqladmin#" title="Database instance list operations response.">
-    <attributes name="items" required="true" description="List of operation resources." type="//@types.2"/>
+    <attributes name="items" required="true" description="List of operation resources." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="This is always sql#operationsList.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -723,7 +723,7 @@
     <attributes name="activationPolicy" required="true" description="The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. The activation policy cannot be updated together with other settings for Second Generation instances. Valid values:&#xA;ALWAYS: The instance is on; it is not deactivated by inactivity.&#xA;NEVER: The instance is off; it is not activated, even if a connection request arrives.&#xA;ON_DEMAND: The instance responds to incoming requests, and turns itself off when not in use. Instances with PER_USE pricing turn off after 15 minutes of inactivity. Instances with PER_PACKAGE pricing turn off after 12 hours of inactivity.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="authorizedGaeApplications" required="true" description="The App Engine app IDs that can access this instance. This property is only applicable to First Generation instances." type="//@types.2"/>
+    <attributes name="authorizedGaeApplications" required="true" description="The App Engine app IDs that can access this instance. This property is only applicable to First Generation instances." type="//@types.5"/>
     <attributes name="availabilityType" required="true" description="Reserved for future use.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -736,7 +736,7 @@
     <attributes name="dataDiskType" required="true" description="The type of data disk. Only supported for Second Generation instances. The default type is PD_SSD. Applies only to Second Generation instances.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="databaseFlags" required="true" description="The database flags passed to the instance at startup." type="//@types.2"/>
+    <attributes name="databaseFlags" required="true" description="The database flags passed to the instance at startup." type="//@types.5"/>
     <attributes name="databaseReplicationEnabled" required="true" description="Configuration specific to read replica instances. Indicates whether replication is enabled or not.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -761,7 +761,7 @@
     <attributes name="tier" required="true" description="The tier of service for this instance, for example D1, D2. For more information, see pricing.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="userLabels" required="true" description="User-provided labels, represented as a dictionary where each label is a single key value pair." type="//@types.3"/>
+    <attributes name="userLabels" required="true" description="User-provided labels, represented as a dictionary where each label is a single key value pair." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SslCert" scheme="http://occi/gcpsqladmin#" title="SslCerts Resource">
@@ -877,7 +877,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SslCertsListResponse" scheme="http://occi/gcpsqladmin#" title="SslCerts list response.">
-    <attributes name="items" required="true" description="List of client certificates for the instance." type="//@types.2"/>
+    <attributes name="items" required="true" description="List of client certificates for the instance." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="This is always sql#sslCertsList.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -893,7 +893,7 @@
     <attributes name="kindGCP" required="true" description="This is always sql#tier.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="region" required="true" description="The applicable regions for this tier." type="//@types.2"/>
+    <attributes name="region" required="true" description="The applicable regions for this tier." type="//@types.5"/>
     <attributes name="tier" required="true" description="An identifier for the service tier, for example D1, D2 etc. For related information, see Pricing.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -905,7 +905,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TiersListResponse" scheme="http://occi/gcpsqladmin#" title="Tiers list response.">
-    <attributes name="items" required="true" description="List of tiers." type="//@types.2"/>
+    <attributes name="items" required="true" description="List of tiers." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="This is always sql#tiersList.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -989,7 +989,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="UsersListResponse" scheme="http://occi/gcpsqladmin#" title="User list response.">
-    <attributes name="items" required="true" description="List of user resources in the instance." type="//@types.2"/>
+    <attributes name="items" required="true" description="List of user resources in the instance." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="This is always sql#usersList.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -999,12 +999,12 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
 </occi:Extension>

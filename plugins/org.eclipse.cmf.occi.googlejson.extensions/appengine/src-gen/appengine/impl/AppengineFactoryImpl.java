@@ -201,22 +201,22 @@ public class AppengineFactoryImpl extends EFactoryImpl implements AppengineFacto
 				return createApiConfigHandlerAuthfailactionFromString(eDataType, initialValue);
 			case AppenginePackage.API_CONFIG_HANDLER_LOGIN:
 				return createApiConfigHandlerLoginFromString(eDataType, initialValue);
+			case AppenginePackage.FLOAT:
+				return createfloatFromString(eDataType, initialValue);
 			case AppenginePackage.BYTE:
 				return createbyteFromString(eDataType, initialValue);
 			case AppenginePackage.DOUBLE:
 				return createdoubleFromString(eDataType, initialValue);
-			case AppenginePackage.FLOAT:
-				return createfloatFromString(eDataType, initialValue);
-			case AppenginePackage.ANY:
-				return createanyFromString(eDataType, initialValue);
-			case AppenginePackage.LONG:
-				return createlongFromString(eDataType, initialValue);
-			case AppenginePackage.SHORT:
-				return createshortFromString(eDataType, initialValue);
-			case AppenginePackage.MAP:
-				return createmapFromString(eDataType, initialValue);
 			case AppenginePackage.OBJECT:
 				return createobjectFromString(eDataType, initialValue);
+			case AppenginePackage.LONG:
+				return createlongFromString(eDataType, initialValue);
+			case AppenginePackage.MAP:
+				return createmapFromString(eDataType, initialValue);
+			case AppenginePackage.ANY:
+				return createanyFromString(eDataType, initialValue);
+			case AppenginePackage.SHORT:
+				return createshortFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -258,22 +258,22 @@ public class AppengineFactoryImpl extends EFactoryImpl implements AppengineFacto
 				return convertApiConfigHandlerAuthfailactionToString(eDataType, instanceValue);
 			case AppenginePackage.API_CONFIG_HANDLER_LOGIN:
 				return convertApiConfigHandlerLoginToString(eDataType, instanceValue);
+			case AppenginePackage.FLOAT:
+				return convertfloatToString(eDataType, instanceValue);
 			case AppenginePackage.BYTE:
 				return convertbyteToString(eDataType, instanceValue);
 			case AppenginePackage.DOUBLE:
 				return convertdoubleToString(eDataType, instanceValue);
-			case AppenginePackage.FLOAT:
-				return convertfloatToString(eDataType, instanceValue);
-			case AppenginePackage.ANY:
-				return convertanyToString(eDataType, instanceValue);
-			case AppenginePackage.LONG:
-				return convertlongToString(eDataType, instanceValue);
-			case AppenginePackage.SHORT:
-				return convertshortToString(eDataType, instanceValue);
-			case AppenginePackage.MAP:
-				return convertmapToString(eDataType, instanceValue);
 			case AppenginePackage.OBJECT:
 				return convertobjectToString(eDataType, instanceValue);
+			case AppenginePackage.LONG:
+				return convertlongToString(eDataType, instanceValue);
+			case AppenginePackage.MAP:
+				return convertmapToString(eDataType, instanceValue);
+			case AppenginePackage.ANY:
+				return convertanyToString(eDataType, instanceValue);
+			case AppenginePackage.SHORT:
+				return convertshortToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -1474,6 +1474,24 @@ public class AppengineFactoryImpl extends EFactoryImpl implements AppengineFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Float createfloatFromString(EDataType eDataType, String initialValue) {
+		return (Float)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertfloatToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Byte createbyteFromString(EDataType eDataType, String initialValue) {
 		return (Byte)super.createFromString(eDataType, initialValue);
 	}
@@ -1510,25 +1528,7 @@ public class AppengineFactoryImpl extends EFactoryImpl implements AppengineFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Float createfloatFromString(EDataType eDataType, String initialValue) {
-		return (Float)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertfloatToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object createanyFromString(EDataType eDataType, String initialValue) {
+	public Object createobjectFromString(EDataType eDataType, String initialValue) {
 		return super.createFromString(eDataType, initialValue);
 	}
 
@@ -1537,7 +1537,7 @@ public class AppengineFactoryImpl extends EFactoryImpl implements AppengineFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertanyToString(EDataType eDataType, Object instanceValue) {
+	public String convertobjectToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -1564,24 +1564,6 @@ public class AppengineFactoryImpl extends EFactoryImpl implements AppengineFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Short createshortFromString(EDataType eDataType, String initialValue) {
-		return (Short)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertshortToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Map createmapFromString(EDataType eDataType, String initialValue) {
 		return (Map)super.createFromString(eDataType, initialValue);
 	}
@@ -1600,7 +1582,7 @@ public class AppengineFactoryImpl extends EFactoryImpl implements AppengineFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object createobjectFromString(EDataType eDataType, String initialValue) {
+	public Object createanyFromString(EDataType eDataType, String initialValue) {
 		return super.createFromString(eDataType, initialValue);
 	}
 
@@ -1609,7 +1591,25 @@ public class AppengineFactoryImpl extends EFactoryImpl implements AppengineFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertobjectToString(EDataType eDataType, Object instanceValue) {
+	public String convertanyToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Short createshortFromString(EDataType eDataType, String initialValue) {
+		return (Short)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertshortToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

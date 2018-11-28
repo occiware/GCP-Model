@@ -2,7 +2,7 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="pubsub" scheme="http://occi/gcppubsub#" description="Provides reliable, many-to-many, asynchronous messaging between applications.&#xA;">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="PublishResponse" scheme="http://occi/gcppubsub#" title="Response for the `Publish` method.">
-    <attributes name="messageIds" required="true" description="The server-assigned ID of each published message, in the same order as&#xA;the messages in the request. IDs are guaranteed to be unique within&#xA;the topic." type="//@types.2"/>
+    <attributes name="messageIds" required="true" description="The server-assigned ID of each published message, in the same order as&#xA;the messages in the request. IDs are guaranteed to be unique within&#xA;the topic." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PushConfigLink" scheme="http://occi/gcppubsub#" title="If push delivery is used with this subscription, this field is&#xA;used to configure it. An empty `pushConfig` signifies that the subscriber&#xA;will pull and ack messages using API methods." source="//@kinds[term='subscription']" target="//@kinds[term='pushconfig']">
@@ -82,7 +82,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TestIamPermissionsRequest" scheme="http://occi/gcppubsub#" title="Request message for `TestIamPermissions` method.">
-    <attributes name="permissions" required="true" description="The set of permissions to check for the `resource`. Permissions with&#xA;wildcards (such as '*' or 'storage.*') are not allowed. For more&#xA;information see&#xA;[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)." type="//@types.2"/>
+    <attributes name="permissions" required="true" description="The set of permissions to check for the `resource`. Permissions with&#xA;wildcards (such as '*' or 'storage.*') are not allowed. For more&#xA;information see&#xA;[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Topic" scheme="http://occi/gcppubsub#" title="A topic resource.">
@@ -144,14 +144,14 @@
     <attributes name="version" required="true" description="Version of the `Policy`. The default version is 0.">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
-    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`.&#xA;`bindings` with no members will result in an error." type="//@types.2"/>
+    <attributes name="bindings" required="true" description="Associates a list of `members` to a `role`.&#xA;`bindings` with no members will result in an error." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ModifyAckDeadlineRequest" scheme="http://occi/gcppubsub#" title="Request for the ModifyAckDeadline method.">
     <attributes name="ackDeadlineSeconds" required="true" description="The new ack deadline with respect to the time this request was sent to&#xA;the Pub/Sub system. For example, if the value is 10, the new&#xA;ack deadline will expire 10 seconds after the `ModifyAckDeadline` call&#xA;was made. Specifying zero may immediately make the message available for&#xA;another pull request.&#xA;The minimum deadline you can specify is 0 seconds.&#xA;The maximum deadline you can specify is 600 seconds (10 minutes).">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
-    <attributes name="ackIds" required="true" description="List of acknowledgment IDs." type="//@types.2"/>
+    <attributes name="ackIds" required="true" description="List of acknowledgment IDs." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PolicyLink" scheme="http://occi/gcppubsub#" title="REQUIRED: The complete policy to be applied to the `resource`. The size of&#xA;the policy is limited to a few 10s of KB. An empty policy is a&#xA;valid policy but certain Cloud Platform services (such as Projects)&#xA;might reject them." source="//@kinds[term='setiampolicyrequest']" target="//@kinds[term='policy']">
@@ -173,21 +173,21 @@
     <attributes name="messageId" required="true" description="ID of this message, assigned by the server when the message is published.&#xA;Guaranteed to be unique within the topic. This value may be read by a&#xA;subscriber that receives a `PubsubMessage` via a `Pull` call or a push&#xA;delivery. It must not be populated by the publisher in a `Publish` call.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="attributes" required="true" description="Optional attributes for this message." type="//@types.3"/>
+    <attributes name="attributes" required="true" description="Optional attributes for this message." type="//@types.6"/>
     <attributes name="publishTime" required="true" description="The time at which the message was published, populated by the server when&#xA;it receives the `Publish` call. It must not be populated by the&#xA;publisher in a `Publish` call.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Binding" scheme="http://occi/gcppubsub#" title="Associates `members` with a `role`.">
-    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource.&#xA;`members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is&#xA;   on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone&#xA;   who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google&#xA;   account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service&#xA;   account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group.&#xA;   For example, `admins@example.com`.&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the&#xA;   users of that domain. For example, `google.com` or `example.com`.&#xA;&#xA;" type="//@types.2"/>
+    <attributes name="members" required="true" description="Specifies the identities requesting access for a Cloud Platform resource.&#xA;`members` can have the following values:&#xA;&#xA;* `allUsers`: A special identifier that represents anyone who is&#xA;   on the internet; with or without a Google account.&#xA;&#xA;* `allAuthenticatedUsers`: A special identifier that represents anyone&#xA;   who is authenticated with a Google account or a service account.&#xA;&#xA;* `user:{emailid}`: An email address that represents a specific Google&#xA;   account. For example, `alice@gmail.com` or `joe@example.com`.&#xA;&#xA;&#xA;* `serviceAccount:{emailid}`: An email address that represents a service&#xA;   account. For example, `my-other-app@appspot.gserviceaccount.com`.&#xA;&#xA;* `group:{emailid}`: An email address that represents a Google group.&#xA;   For example, `admins@example.com`.&#xA;&#xA;&#xA;* `domain:{domain}`: A Google Apps domain name that represents all the&#xA;   users of that domain. For example, `google.com` or `example.com`.&#xA;&#xA;" type="//@types.5"/>
     <attributes name="role" required="true" description="Role that is assigned to `members`.&#xA;For example, `roles/viewer`, `roles/editor`, or `roles/owner`.&#xA;Required">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListTopicsResponse" scheme="http://occi/gcppubsub#" title="Response for the `ListTopics` method.">
-    <attributes name="topics" required="true" description="The resulting topics." type="//@types.2"/>
+    <attributes name="topics" required="true" description="The resulting topics." type="//@types.5"/>
     <attributes name="nextPageToken" required="true" description="If not empty, indicates that there may be more topics that match the&#xA;request; this value should be passed in a new `ListTopicsRequest`.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -197,18 +197,18 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AcknowledgeRequest" scheme="http://occi/gcppubsub#" title="Request for the Acknowledge method.">
-    <attributes name="ackIds" required="true" description="The acknowledgment ID for the messages being acknowledged that was returned&#xA;by the Pub/Sub system in the `Pull` response. Must not be empty." type="//@types.2"/>
+    <attributes name="ackIds" required="true" description="The acknowledgment ID for the messages being acknowledged that was returned&#xA;by the Pub/Sub system in the `Pull` response. Must not be empty." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListTopicSubscriptionsResponse" scheme="http://occi/gcppubsub#" title="Response for the `ListTopicSubscriptions` method.">
     <attributes name="nextPageToken" required="true" description="If not empty, indicates that there may be more subscriptions that match&#xA;the request; this value should be passed in a new&#xA;`ListTopicSubscriptionsRequest` to get more subscriptions.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="subscriptions" required="true" description="The names of the subscriptions that match the request." type="//@types.2"/>
+    <attributes name="subscriptions" required="true" description="The names of the subscriptions that match the request." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PullResponse" scheme="http://occi/gcppubsub#" title="Response for the `Pull` method.">
-    <attributes name="receivedMessages" required="true" description="Received Pub/Sub messages. The Pub/Sub system will return zero messages if&#xA;there are no more available in the backlog. The Pub/Sub system may return&#xA;fewer than the `maxMessages` requested even if there are more messages&#xA;available in the backlog." type="//@types.2"/>
+    <attributes name="receivedMessages" required="true" description="Received Pub/Sub messages. The Pub/Sub system will return zero messages if&#xA;there are no more available in the backlog. The Pub/Sub system may return&#xA;fewer than the `maxMessages` requested even if there are more messages&#xA;available in the backlog." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PubsubMessageLink" scheme="http://occi/gcppubsub#" title="The message." source="//@kinds[term='receivedmessage']" target="//@kinds[term='pubsubmessage']">
@@ -221,14 +221,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PushConfig" scheme="http://occi/gcppubsub#" title="Configuration for a push delivery endpoint.">
-    <attributes name="attributes" required="true" description="Endpoint configuration attributes.&#xA;&#xA;Every endpoint has a set of API supported attributes that can be used to&#xA;control different aspects of the message delivery.&#xA;&#xA;The currently supported attribute is `x-goog-version`, which you can&#xA;use to change the format of the pushed message. This attribute&#xA;indicates the version of the data expected by the endpoint. This&#xA;controls the shape of the pushed message (i.e., its fields and metadata).&#xA;The endpoint version is based on the version of the Pub/Sub API.&#xA;&#xA;If not present during the `CreateSubscription` call, it will default to&#xA;the version of the API used to make such call. If not present during a&#xA;`ModifyPushConfig` call, its value will not be changed. `GetSubscription`&#xA;calls will always return a valid version, even if the subscription was&#xA;created without this attribute.&#xA;&#xA;The possible values for this attribute are:&#xA;&#xA;* `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.&#xA;* `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API." type="//@types.3"/>
+    <attributes name="attributes" required="true" description="Endpoint configuration attributes.&#xA;&#xA;Every endpoint has a set of API supported attributes that can be used to&#xA;control different aspects of the message delivery.&#xA;&#xA;The currently supported attribute is `x-goog-version`, which you can&#xA;use to change the format of the pushed message. This attribute&#xA;indicates the version of the data expected by the endpoint. This&#xA;controls the shape of the pushed message (i.e., its fields and metadata).&#xA;The endpoint version is based on the version of the Pub/Sub API.&#xA;&#xA;If not present during the `CreateSubscription` call, it will default to&#xA;the version of the API used to make such call. If not present during a&#xA;`ModifyPushConfig` call, its value will not be changed. `GetSubscription`&#xA;calls will always return a valid version, even if the subscription was&#xA;created without this attribute.&#xA;&#xA;The possible values for this attribute are:&#xA;&#xA;* `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.&#xA;* `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API." type="//@types.6"/>
     <attributes name="pushEndpoint" required="true" description="A URL locating the endpoint to which messages should be pushed.&#xA;For example, a Webhook endpoint might use &quot;https://example.com/push&quot;.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TestIamPermissionsResponse" scheme="http://occi/gcppubsub#" title="Response message for `TestIamPermissions` method.">
-    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is&#xA;allowed." type="//@types.2"/>
+    <attributes name="permissions" required="true" description="A subset of `TestPermissionsRequest.permissions` that the caller is&#xA;allowed." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PullRequest" scheme="http://occi/gcppubsub#" title="Request for the `Pull` method.">
@@ -244,20 +244,20 @@
     <attributes name="nextPageToken" required="true" description="If not empty, indicates that there may be more subscriptions that match&#xA;the request; this value should be passed in a new&#xA;`ListSubscriptionsRequest` to get more subscriptions.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="subscriptions" required="true" description="The subscriptions that match the request." type="//@types.2"/>
+    <attributes name="subscriptions" required="true" description="The subscriptions that match the request." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="PublishRequest" scheme="http://occi/gcppubsub#" title="Request for the Publish method.">
-    <attributes name="messages" required="true" description="The messages to publish." type="//@types.2"/>
+    <attributes name="messages" required="true" description="The messages to publish." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
 </occi:Extension>

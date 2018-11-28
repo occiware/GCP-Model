@@ -47,7 +47,6 @@ public interface Listauthorizeddomainsresponse extends Resource {
 	 * @see #setDomains(array)
 	 * @see appengine.AppenginePackage#getListauthorizeddomainsresponse_Domains()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listauthorizeddomainsresponse!domains'"
 	 * @generated
 	 */
 	array getDomains();
@@ -73,7 +72,6 @@ public interface Listauthorizeddomainsresponse extends Resource {
 	 * @see #setNextPageToken(String)
 	 * @see appengine.AppenginePackage#getListauthorizeddomainsresponse_NextPageToken()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listauthorizeddomainsresponse!nextPageToken'"
 	 * @generated
 	 */
 	String getNextPageToken();

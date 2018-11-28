@@ -47,7 +47,6 @@ public interface Library extends Resource {
 	 * @see #setVersion(String)
 	 * @see appengine.AppenginePackage#getLibrary_Version()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Library!version'"
 	 * @generated
 	 */
 	String getVersion();
@@ -73,7 +72,6 @@ public interface Library extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getLibrary_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Library!name'"
 	 * @generated
 	 */
 	String getName();

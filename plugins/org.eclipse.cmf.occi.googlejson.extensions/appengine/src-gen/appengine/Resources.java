@@ -49,7 +49,6 @@ public interface Resources extends Resource {
 	 * @see #setVolumes(array)
 	 * @see appengine.AppenginePackage#getResources_Volumes()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Resources!volumes'"
 	 * @generated
 	 */
 	array getVolumes();
@@ -75,7 +74,6 @@ public interface Resources extends Resource {
 	 * @see #setDiskGb(Integer)
 	 * @see appengine.AppenginePackage#getResources_DiskGb()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Resources!diskGb'"
 	 * @generated
 	 */
 	Integer getDiskGb();
@@ -101,7 +99,6 @@ public interface Resources extends Resource {
 	 * @see #setCpu(Integer)
 	 * @see appengine.AppenginePackage#getResources_Cpu()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Resources!cpu'"
 	 * @generated
 	 */
 	Integer getCpu();
@@ -127,7 +124,6 @@ public interface Resources extends Resource {
 	 * @see #setMemoryGb(Integer)
 	 * @see appengine.AppenginePackage#getResources_MemoryGb()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Resources!memoryGb'"
 	 * @generated
 	 */
 	Integer getMemoryGb();

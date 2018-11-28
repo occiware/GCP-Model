@@ -52,7 +52,6 @@ public interface Operationmetadatav1alpha extends Resource {
 	 * @see #setEndTime(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1alpha_EndTime()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1alpha!endTime'"
 	 * @generated
 	 */
 	String getEndTime();
@@ -78,7 +77,6 @@ public interface Operationmetadatav1alpha extends Resource {
 	 * @see #setWarning(array)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1alpha_Warning()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1alpha!warning'"
 	 * @generated
 	 */
 	array getWarning();
@@ -104,7 +102,6 @@ public interface Operationmetadatav1alpha extends Resource {
 	 * @see #setInsertTime(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1alpha_InsertTime()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1alpha!insertTime'"
 	 * @generated
 	 */
 	String getInsertTime();
@@ -130,7 +127,6 @@ public interface Operationmetadatav1alpha extends Resource {
 	 * @see #setUser(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1alpha_User()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1alpha!user'"
 	 * @generated
 	 */
 	String getUser();
@@ -156,7 +152,6 @@ public interface Operationmetadatav1alpha extends Resource {
 	 * @see #setTarget(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1alpha_Target()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1alpha!target'"
 	 * @generated
 	 */
 	String getTarget();
@@ -182,7 +177,6 @@ public interface Operationmetadatav1alpha extends Resource {
 	 * @see #setEphemeralMessage(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1alpha_EphemeralMessage()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1alpha!ephemeralMessage'"
 	 * @generated
 	 */
 	String getEphemeralMessage();
@@ -208,7 +202,6 @@ public interface Operationmetadatav1alpha extends Resource {
 	 * @see #setMethod(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1alpha_Method()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1alpha!method'"
 	 * @generated
 	 */
 	String getMethod();

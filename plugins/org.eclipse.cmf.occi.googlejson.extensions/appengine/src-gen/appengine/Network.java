@@ -49,7 +49,6 @@ public interface Network extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getNetwork_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Network!name'"
 	 * @generated
 	 */
 	String getName();
@@ -75,7 +74,6 @@ public interface Network extends Resource {
 	 * @see #setForwardedPorts(array)
 	 * @see appengine.AppenginePackage#getNetwork_ForwardedPorts()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Network!forwardedPorts'"
 	 * @generated
 	 */
 	array getForwardedPorts();
@@ -101,7 +99,6 @@ public interface Network extends Resource {
 	 * @see #setInstanceTag(String)
 	 * @see appengine.AppenginePackage#getNetwork_InstanceTag()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Network!instanceTag'"
 	 * @generated
 	 */
 	String getInstanceTag();
@@ -130,7 +127,6 @@ public interface Network extends Resource {
 	 * @see #setSubnetworkName(String)
 	 * @see appengine.AppenginePackage#getNetwork_SubnetworkName()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Network!subnetworkName'"
 	 * @generated
 	 */
 	String getSubnetworkName();

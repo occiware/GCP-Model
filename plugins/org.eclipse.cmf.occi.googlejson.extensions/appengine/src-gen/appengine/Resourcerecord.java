@@ -48,7 +48,6 @@ public interface Resourcerecord extends Resource {
 	 * @see #setType(String)
 	 * @see appengine.AppenginePackage#getResourcerecord_Type()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Resourcerecord!type'"
 	 * @generated
 	 */
 	String getType();
@@ -74,7 +73,6 @@ public interface Resourcerecord extends Resource {
 	 * @see #setRrdata(String)
 	 * @see appengine.AppenginePackage#getResourcerecord_Rrdata()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Resourcerecord!rrdata'"
 	 * @generated
 	 */
 	String getRrdata();
@@ -100,7 +98,6 @@ public interface Resourcerecord extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getResourcerecord_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Resourcerecord!name'"
 	 * @generated
 	 */
 	String getName();

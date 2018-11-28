@@ -46,7 +46,6 @@ public interface Manualscaling extends Resource {
 	 * @see #setInstances(Integer)
 	 * @see appengine.AppenginePackage#getManualscaling_Instances()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Manualscaling!instances'"
 	 * @generated
 	 */
 	Integer getInstances();

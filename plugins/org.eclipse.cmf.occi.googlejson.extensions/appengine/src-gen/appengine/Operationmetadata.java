@@ -51,7 +51,6 @@ public interface Operationmetadata extends Resource {
 	 * @see #setUser(String)
 	 * @see appengine.AppenginePackage#getOperationmetadata_User()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadata!user'"
 	 * @generated
 	 */
 	String getUser();
@@ -77,7 +76,6 @@ public interface Operationmetadata extends Resource {
 	 * @see #setTarget(String)
 	 * @see appengine.AppenginePackage#getOperationmetadata_Target()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadata!target'"
 	 * @generated
 	 */
 	String getTarget();
@@ -103,7 +101,6 @@ public interface Operationmetadata extends Resource {
 	 * @see #setMethod(String)
 	 * @see appengine.AppenginePackage#getOperationmetadata_Method()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadata!method'"
 	 * @generated
 	 */
 	String getMethod();
@@ -129,7 +126,6 @@ public interface Operationmetadata extends Resource {
 	 * @see #setEndTime(String)
 	 * @see appengine.AppenginePackage#getOperationmetadata_EndTime()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadata!endTime'"
 	 * @generated
 	 */
 	String getEndTime();
@@ -155,7 +151,6 @@ public interface Operationmetadata extends Resource {
 	 * @see #setOperationType(String)
 	 * @see appengine.AppenginePackage#getOperationmetadata_OperationType()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadata!operationType'"
 	 * @generated
 	 */
 	String getOperationType();
@@ -181,7 +176,6 @@ public interface Operationmetadata extends Resource {
 	 * @see #setInsertTime(String)
 	 * @see appengine.AppenginePackage#getOperationmetadata_InsertTime()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadata!insertTime'"
 	 * @generated
 	 */
 	String getInsertTime();

@@ -234,8 +234,10 @@ public class LocationImpl extends ResourceImpl implements Location {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void list(final Integer pageSize, final String filter, final String appsId, final String pageToken) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Location!list(Integer,String,String,String)
+	public void list(Integer pageSize, String filter, String appsId, String pageToken) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -243,8 +245,10 @@ public class LocationImpl extends ResourceImpl implements Location {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void get(final String locationsId, final String appsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Location!get(String,String)
+	public void get(String locationsId, String appsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

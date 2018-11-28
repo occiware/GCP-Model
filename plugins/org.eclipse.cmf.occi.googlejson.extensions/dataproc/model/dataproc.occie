@@ -32,15 +32,15 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Job" scheme="http://occi/gcpdataproc#" title="A Cloud Dataproc job resource.">
-    <attributes name="yarnApplications" required="true" description="Output-only. The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release." type="//@types.2"/>
+    <attributes name="yarnApplications" required="true" description="Output-only. The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release." type="//@types.5"/>
     <attributes name="driverControlFilesUri" required="true" description="Output-only. If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="labels" required="true" description="Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job." type="//@types.3"/>
+    <attributes name="labels" required="true" description="Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job." type="//@types.6"/>
     <attributes name="driverOutputResourceUri" required="true" description="Output-only. A URI pointing to the location of the stdout of the job's driver program.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="statusHistory" required="true" description="Output-only. The previous job status." type="//@types.2"/>
+    <attributes name="statusHistory" required="true" description="Output-only. The previous job status." type="//@types.5"/>
     <actions name="cancel" scheme="http://occi/gcpdataproc/job/action#" title="Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list or regions/{region}/jobs.get.">
       <attributes name="projectId" required="true" description="Required. The ID of the Google Cloud Platform project that the job belongs to.">
         <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
@@ -125,17 +125,17 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="SparkJob" scheme="http://occi/gcpdataproc#" title="A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.">
-    <attributes name="properties" required="true" description="Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code." type="//@types.3"/>
-    <attributes name="args" required="true" description="Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission." type="//@types.2"/>
-    <attributes name="fileUris" required="true" description="Optional. HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks." type="//@types.2"/>
+    <attributes name="properties" required="true" description="Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code." type="//@types.6"/>
+    <attributes name="args" required="true" description="Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission." type="//@types.5"/>
+    <attributes name="fileUris" required="true" description="Optional. HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks." type="//@types.5"/>
     <attributes name="mainClass" required="true" description="The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="archiveUris" required="true" description="Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip." type="//@types.2"/>
+    <attributes name="archiveUris" required="true" description="Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip." type="//@types.5"/>
     <attributes name="mainJarFileUri" required="true" description="The HCFS URI of the jar file that contains the main class.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="jarFileUris" required="true" description="Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks." type="//@types.2"/>
+    <attributes name="jarFileUris" required="true" description="Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="JobStatus" scheme="http://occi/gcpdataproc#" title="Cloud Dataproc job status.">
@@ -181,21 +181,21 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="HadoopJob" scheme="http://occi/gcpdataproc#" title="A Cloud Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).">
-    <attributes name="fileUris" required="true" description="Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks." type="//@types.2"/>
+    <attributes name="fileUris" required="true" description="Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks." type="//@types.5"/>
     <attributes name="mainClass" required="true" description="The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="archiveUris" required="true" description="Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip." type="//@types.2"/>
+    <attributes name="archiveUris" required="true" description="Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip." type="//@types.5"/>
     <attributes name="mainJarFileUri" required="true" description="The HCFS URI of the jar file containing the main class. Examples:  'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar'  'hdfs:/tmp/test-samples/custom-wordcount.jar'  'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="jarFileUris" required="true" description="Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks." type="//@types.2"/>
-    <attributes name="properties" required="true" description="Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code." type="//@types.3"/>
-    <attributes name="args" required="true" description="Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission." type="//@types.2"/>
+    <attributes name="jarFileUris" required="true" description="Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks." type="//@types.5"/>
+    <attributes name="properties" required="true" description="Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code." type="//@types.6"/>
+    <attributes name="args" required="true" description="Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="QueryList" scheme="http://occi/gcpdataproc#" title="A list of queries to run on a cluster.">
-    <attributes name="queries" required="true" description="Required. The queries to execute. You do not need to terminate a query with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of an Cloud Dataproc API snippet that uses a QueryList to specify a HiveJob:&#xA;&quot;hiveJob&quot;: {&#xA;  &quot;queryList&quot;: {&#xA;    &quot;queries&quot;: [&#xA;      &quot;query1&quot;,&#xA;      &quot;query2&quot;,&#xA;      &quot;query3;query4&quot;,&#xA;    ]&#xA;  }&#xA;}&#xA;" type="//@types.2"/>
+    <attributes name="queries" required="true" description="Required. The queries to execute. You do not need to terminate a query with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of an Cloud Dataproc API snippet that uses a QueryList to specify a HiveJob:&#xA;&quot;hiveJob&quot;: {&#xA;  &quot;queryList&quot;: {&#xA;    &quot;queries&quot;: [&#xA;      &quot;query1&quot;,&#xA;      &quot;query2&quot;,&#xA;      &quot;query3;query4&quot;,&#xA;    ]&#xA;  }&#xA;}&#xA;" type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="YarnApplication" scheme="http://occi/gcpdataproc#" title="A YARN application created by a job. Application information is a subset of &lt;code>org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto&lt;/code>.Beta Feature: This report is available for testing purposes only. It may be changed before final release.">
@@ -229,7 +229,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="ClusterOperationMetadata" scheme="http://occi/gcpdataproc#" title="Metadata describing the operation.">
-    <attributes name="statusHistory" required="true" description="Output-only. The previous operation status." type="//@types.2"/>
+    <attributes name="statusHistory" required="true" description="Output-only. The previous operation status." type="//@types.5"/>
     <attributes name="clusterUuid" required="true" description="Output-only. Cluster UUID for the operation.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -242,8 +242,8 @@
     <attributes name="description" required="true" description="Output-only. Short description of operation.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="warnings" required="true" description="Output-only. Errors encountered during operation execution." type="//@types.2"/>
-    <attributes name="labels" required="true" description="Output-only. Labels associated with the operation" type="//@types.3"/>
+    <attributes name="warnings" required="true" description="Output-only. Errors encountered during operation execution." type="//@types.5"/>
+    <attributes name="labels" required="true" description="Output-only. Labels associated with the operation" type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="QueryListLink" scheme="http://occi/gcpdataproc#" title="A list of queries." source="//@kinds[term='hivejob']" target="//@kinds[term='querylist']">
@@ -256,9 +256,9 @@
     <attributes name="queryFileUri" required="true" description="The HCFS URI of the script that contains Hive queries.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="jarFileUris" required="true" description="Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs." type="//@types.2"/>
-    <attributes name="scriptVariables" required="true" description="Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name=&quot;value&quot;;)." type="//@types.3"/>
-    <attributes name="properties" required="true" description="Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code." type="//@types.3"/>
+    <attributes name="jarFileUris" required="true" description="Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs." type="//@types.5"/>
+    <attributes name="scriptVariables" required="true" description="Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name=&quot;value&quot;;)." type="//@types.6"/>
+    <attributes name="properties" required="true" description="Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Empty" scheme="http://occi/gcpdataproc#" title="A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:&#xA;service Foo {&#xA;  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);&#xA;}&#xA;The JSON representation for Empty is empty JSON object {}.">
@@ -286,7 +286,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="ClusterConfig" scheme="http://occi/gcpdataproc#" title="The cluster config.">
-    <attributes name="initializationActions" required="true" description="Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget):&#xA;ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role)&#xA;if [[ &quot;${ROLE}&quot; == 'Master' ]]; then&#xA;  ... master specific actions ...&#xA;else&#xA;  ... worker specific actions ...&#xA;fi&#xA;" type="//@types.2"/>
+    <attributes name="initializationActions" required="true" description="Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget):&#xA;ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role)&#xA;if [[ &quot;${ROLE}&quot; == 'Master' ]]; then&#xA;  ... master specific actions ...&#xA;else&#xA;  ... worker specific actions ...&#xA;fi&#xA;" type="//@types.5"/>
     <attributes name="configBucket" required="true" description="Optional. A Google Cloud Storage staging bucket used for sharing generated SSH keys and config. If you do not specify a staging bucket, Cloud Dataproc will determine an appropriate Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Google Compute Engine zone where your cluster is deployed, and then it will create and manage this project-level, per-location bucket for you.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -296,12 +296,12 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="PySparkJob" scheme="http://occi/gcpdataproc#" title="A Cloud Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.">
-    <attributes name="archiveUris" required="true" description="Optional. HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip." type="//@types.2"/>
-    <attributes name="jarFileUris" required="true" description="Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks." type="//@types.2"/>
-    <attributes name="properties" required="true" description="Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code." type="//@types.3"/>
-    <attributes name="args" required="true" description="Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission." type="//@types.2"/>
-    <attributes name="fileUris" required="true" description="Optional. HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks." type="//@types.2"/>
-    <attributes name="pythonFileUris" required="true" description="Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip." type="//@types.2"/>
+    <attributes name="archiveUris" required="true" description="Optional. HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip." type="//@types.5"/>
+    <attributes name="jarFileUris" required="true" description="Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks." type="//@types.5"/>
+    <attributes name="properties" required="true" description="Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code." type="//@types.6"/>
+    <attributes name="args" required="true" description="Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission." type="//@types.5"/>
+    <attributes name="fileUris" required="true" description="Optional. HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks." type="//@types.5"/>
+    <attributes name="pythonFileUris" required="true" description="Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip." type="//@types.5"/>
     <attributes name="mainPythonFileUri" required="true" description="Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -311,12 +311,12 @@
     <attributes name="zoneUri" required="true" description="Optional. The zone where the Google Compute Engine cluster will be located. On a create request, it is required in the &quot;global&quot; region. If omitted in a non-global Cloud Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples:&#xA;https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]&#xA;projects/[project_id]/zones/[zone]&#xA;us-central1-f">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="metadata" required="true" description="The Google Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata))." type="//@types.3"/>
+    <attributes name="metadata" required="true" description="The Google Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata))." type="//@types.6"/>
     <attributes name="internalIpOnly" required="true" description="Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="serviceAccountScopes" required="true" description="Optional. The URIs of service account scopes to be included in Google Compute Engine instances. The following base set of scopes is always included:&#xA;https://www.googleapis.com/auth/cloud.useraccounts.readonly&#xA;https://www.googleapis.com/auth/devstorage.read_write&#xA;https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided:&#xA;https://www.googleapis.com/auth/bigquery&#xA;https://www.googleapis.com/auth/bigtable.admin.table&#xA;https://www.googleapis.com/auth/bigtable.data&#xA;https://www.googleapis.com/auth/devstorage.full_control" type="//@types.2"/>
-    <attributes name="tags" required="true" description="The Google Compute Engine tags to add to all instances (see Tagging instances)." type="//@types.2"/>
+    <attributes name="serviceAccountScopes" required="true" description="Optional. The URIs of service account scopes to be included in Google Compute Engine instances. The following base set of scopes is always included:&#xA;https://www.googleapis.com/auth/cloud.useraccounts.readonly&#xA;https://www.googleapis.com/auth/devstorage.read_write&#xA;https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided:&#xA;https://www.googleapis.com/auth/bigquery&#xA;https://www.googleapis.com/auth/bigtable.admin.table&#xA;https://www.googleapis.com/auth/bigtable.data&#xA;https://www.googleapis.com/auth/devstorage.full_control" type="//@types.5"/>
+    <attributes name="tags" required="true" description="The Google Compute Engine tags to add to all instances (see Tagging instances)." type="//@types.5"/>
     <attributes name="serviceAccount" required="true" description="Optional. The service account of the instances. Defaults to the default Google Compute Engine service account. Custom service accounts need permissions equivalent to the folloing IAM roles:&#xA;roles/logging.logWriter&#xA;roles/storage.objectAdmin(see https://cloud.google.com/compute/docs/access/service-accounts#custom_service_accounts for more information). Example: [account_id]@[project_id].iam.gserviceaccount.com">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -329,8 +329,8 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ClusterMetrics" scheme="http://occi/gcpdataproc#" title="Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.">
-    <attributes name="yarnMetrics" required="true" description="The YARN metrics." type="//@types.3"/>
-    <attributes name="hdfsMetrics" required="true" description="The HDFS metrics." type="//@types.3"/>
+    <attributes name="yarnMetrics" required="true" description="The YARN metrics." type="//@types.6"/>
+    <attributes name="hdfsMetrics" required="true" description="The HDFS metrics." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="AcceleratorConfig" scheme="http://occi/gcpdataproc#" title="Specifies the type and number of accelerator cards attached to the instances of an instance group (see GPUs on Compute Engine).">
@@ -343,18 +343,18 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="LoggingConfig" scheme="http://occi/gcpdataproc#" title="The runtime logging config of the job.">
-    <attributes name="driverLogLevels" required="true" description="The per-package log levels for the driver. This may include &quot;root&quot; package name to configure rootLogger. Examples:  'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'" type="//@types.3"/>
+    <attributes name="driverLogLevels" required="true" description="The per-package log levels for the driver. This may include &quot;root&quot; package name to configure rootLogger. Examples:  'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'" type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="StatusLink" scheme="http://occi/gcpdataproc#" title="The error result of the operation in case of failure or cancellation." source="//@kinds[term='operation']" target="//@kinds[term='status']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Operation" scheme="http://occi/gcpdataproc#" title="This resource represents a long-running operation that is the result of a network API call.">
-    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any." type="//@types.3"/>
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any." type="//@types.6"/>
     <attributes name="done" required="true" description="If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="response" required="true" description="The normal response of the operation in case of success. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse." type="//@types.3"/>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse." type="//@types.6"/>
     <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should have the format of operations/some/unique/name.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -411,7 +411,7 @@
     <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="details" required="true" description="A list of messages that carry the error details. There is a common set of message types for APIs to use." type="//@types.2"/>
+    <attributes name="details" required="true" description="A list of messages that carry the error details. There is a common set of message types for APIs to use." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="JobScheduling" scheme="http://occi/gcpdataproc#" title="Job scheduling options.Beta Feature: These options are available for testing purposes only. They may be changed before final release.">
@@ -436,15 +436,15 @@
     <attributes name="machineTypeUri" required="true" description="Optional. The Google Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples:&#xA;https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2&#xA;projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2&#xA;n1-standard-2">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="instanceNames" required="true" description="Optional. The list of instance names. Cloud Dataproc derives the names from cluster_name, num_instances, and the instance group if not set by user (recommended practice is to let Cloud Dataproc derive the name)." type="//@types.2"/>
-    <attributes name="accelerators" required="true" description="Optional. The Google Compute Engine accelerator configuration for these instances.Beta Feature: This feature is still under development. It may be changed before final release." type="//@types.2"/>
+    <attributes name="instanceNames" required="true" description="Optional. The list of instance names. Cloud Dataproc derives the names from cluster_name, num_instances, and the instance group if not set by user (recommended practice is to let Cloud Dataproc derive the name)." type="//@types.5"/>
+    <attributes name="accelerators" required="true" description="Optional. The Google Compute Engine accelerator configuration for these instances.Beta Feature: This feature is still under development. It may be changed before final release." type="//@types.5"/>
     <attributes name="numInstances" required="true" description="Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListJobsResponse" scheme="http://occi/gcpdataproc#" title="A list of jobs in a project.">
-    <attributes name="jobs" required="true" description="Output-only. Jobs list." type="//@types.2"/>
+    <attributes name="jobs" required="true" description="Output-only. Jobs list." type="//@types.5"/>
     <attributes name="nextPageToken" required="true" description="Optional. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent &lt;code>ListJobsRequest&lt;/code>.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -472,9 +472,9 @@
     <attributes name="queryFileUri" required="true" description="The HCFS URI of the script that contains SQL queries.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="scriptVariables" required="true" description="Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name=&quot;value&quot;;)." type="//@types.3"/>
-    <attributes name="jarFileUris" required="true" description="Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH." type="//@types.2"/>
-    <attributes name="properties" required="true" description="Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten." type="//@types.3"/>
+    <attributes name="scriptVariables" required="true" description="Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name=&quot;value&quot;;)." type="//@types.6"/>
+    <attributes name="jarFileUris" required="true" description="Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH." type="//@types.5"/>
+    <attributes name="properties" required="true" description="Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ClusterMetricsLink" scheme="http://occi/gcpdataproc#" title="Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release." source="//@kinds[term='cluster']" target="//@kinds[term='clustermetrics']">
@@ -487,8 +487,8 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Cluster" scheme="http://occi/gcpdataproc#" title="Describes the identifying information, config, and status of a cluster of Google Compute Engine instances.">
-    <attributes name="labels" required="true" description="Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster." type="//@types.3"/>
-    <attributes name="statusHistory" required="true" description="Output-only. The previous cluster status." type="//@types.2"/>
+    <attributes name="labels" required="true" description="Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster." type="//@types.6"/>
+    <attributes name="statusHistory" required="true" description="Output-only. The previous cluster status." type="//@types.5"/>
     <attributes name="clusterName" required="true" description="Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -576,14 +576,14 @@
     <attributes name="nextPageToken" required="true" description="The standard List next-page token.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.2"/>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SoftwareConfig" scheme="http://occi/gcpdataproc#" title="Specifies the selection and config of software inside the cluster.">
     <attributes name="imageVersion" required="true" description="Optional. The version of software inside the cluster. It must match the regular expression [0-9]+\.[0-9]+. If unspecified, it defaults to the latest version (see Cloud Dataproc Versioning).">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="properties" required="true" description="Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, such as core:fs.defaultFS. The following are supported prefixes and their mappings:&#xA;capacity-scheduler: capacity-scheduler.xml&#xA;core: core-site.xml&#xA;distcp: distcp-default.xml&#xA;hdfs: hdfs-site.xml&#xA;hive: hive-site.xml&#xA;mapred: mapred-site.xml&#xA;pig: pig.properties&#xA;spark: spark-defaults.conf&#xA;yarn: yarn-site.xmlFor more information, see Cluster properties." type="//@types.3"/>
+    <attributes name="properties" required="true" description="Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, such as core:fs.defaultFS. The following are supported prefixes and their mappings:&#xA;capacity-scheduler: capacity-scheduler.xml&#xA;core: core-site.xml&#xA;distcp: distcp-default.xml&#xA;hdfs: hdfs-site.xml&#xA;hive: hive-site.xml&#xA;mapred: mapred-site.xml&#xA;pig: pig.properties&#xA;spark: spark-defaults.conf&#xA;yarn: yarn-site.xmlFor more information, see Cluster properties." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="JobPlacement" scheme="http://occi/gcpdataproc#" title="Cloud Dataproc job config.">
@@ -623,27 +623,27 @@
     <attributes name="queryFileUri" required="true" description="The HCFS URI of the script that contains the Pig queries.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="jarFileUris" required="true" description="Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs." type="//@types.2"/>
-    <attributes name="scriptVariables" required="true" description="Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value])." type="//@types.3"/>
-    <attributes name="properties" required="true" description="Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code." type="//@types.3"/>
+    <attributes name="jarFileUris" required="true" description="Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs." type="//@types.5"/>
+    <attributes name="scriptVariables" required="true" description="Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value])." type="//@types.6"/>
+    <attributes name="properties" required="true" description="Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListClustersResponse" scheme="http://occi/gcpdataproc#" title="The list of all clusters in a project.">
-    <attributes name="clusters" required="true" description="Output-only. The clusters in the project." type="//@types.2"/>
+    <attributes name="clusters" required="true" description="Output-only. The clusters in the project." type="//@types.5"/>
     <attributes name="nextPageToken" required="true" description="Output-only. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListClustersRequest.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:EnumerationType" name="State" documentation="Output-only. A state message specifying the overall job state.">
     <literals name="STATE_UNSPECIFIED" documentation="The job state is unknown."/>
     <literals name="PENDING" documentation="The job is pending; it has been submitted, but is not yet running."/>

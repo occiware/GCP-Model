@@ -47,7 +47,6 @@ public interface Zipinfo extends Resource {
 	 * @see #setSourceUrl(String)
 	 * @see appengine.AppenginePackage#getZipinfo_SourceUrl()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Zipinfo!sourceUrl'"
 	 * @generated
 	 */
 	String getSourceUrl();
@@ -73,7 +72,6 @@ public interface Zipinfo extends Resource {
 	 * @see #setFilesCount(Integer)
 	 * @see appengine.AppenginePackage#getZipinfo_FilesCount()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Zipinfo!filesCount'"
 	 * @generated
 	 */
 	Integer getFilesCount();

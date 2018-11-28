@@ -20,7 +20,7 @@
     <attributes name="usageUnitDescription" required="true" description="The unit of usage in human readable form.&#xA;Example: &quot;gibi byte&quot;.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="tieredRates" required="true" description="The list of tiered rates for this pricing. The total cost is computed by&#xA;applying each of the tiered rates on usage. This repeated list is sorted&#xA;by ascending order of start_usage_amount." type="//@types.2"/>
+    <attributes name="tieredRates" required="true" description="The list of tiered rates for this pricing. The total cost is computed by&#xA;applying each of the tiered rates on usage. This repeated list is sorted&#xA;by ascending order of start_usage_amount." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="CategoryLink" scheme="http://occi/gcpcloudbilling#" title="The category hierarchy of this SKU, purely for organizational purpose." source="//@kinds[term='sku']" target="//@kinds[term='category']">
@@ -30,11 +30,11 @@
     <attributes name="description" required="true" description="A human readable description of the SKU, has a maximum length of 256&#xA;characters.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="serviceRegions" required="true" description="List of service regions this SKU is offered at.&#xA;Example: &quot;asia-east1&quot;&#xA;Service regions can be found at https://cloud.google.com/about/locations/" type="//@types.2"/>
+    <attributes name="serviceRegions" required="true" description="List of service regions this SKU is offered at.&#xA;Example: &quot;asia-east1&quot;&#xA;Service regions can be found at https://cloud.google.com/about/locations/" type="//@types.5"/>
     <attributes name="serviceProviderName" required="true" description="Identifies the service provider.&#xA;This is 'Google' for first party services in Google Cloud Platform.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="pricingInfo" required="true" description="A timeline of pricing info for this SKU in chronological order." type="//@types.2"/>
+    <attributes name="pricingInfo" required="true" description="A timeline of pricing info for this SKU in chronological order." type="//@types.5"/>
     <attributes name="skuId" required="true" description="The identifier for the SKU.&#xA;Example: &quot;AA95-CD31-42FE&quot;">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -106,14 +106,14 @@
     <attributes name="nextPageToken" required="true" description="A token to retrieve the next page of results. To retrieve the next page,&#xA;call `ListBillingAccounts` again with the `page_token` field set to this&#xA;value. This field is empty if there are no more results to retrieve.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="billingAccounts" required="true" description="A list of billing accounts." type="//@types.2"/>
+    <attributes name="billingAccounts" required="true" description="A list of billing accounts." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListSkusResponse" scheme="http://occi/gcpcloudbilling#" title="Response message for `ListSkus`.">
     <attributes name="nextPageToken" required="true" description="A token to retrieve the next page of results. To retrieve the next page,&#xA;call `ListSkus` again with the `page_token` field set to this&#xA;value. This field is empty if there are no more results to retrieve.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="skus" required="true" description="The list of public SKUs of the given service." type="//@types.2"/>
+    <attributes name="skus" required="true" description="The list of public SKUs of the given service." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Service" scheme="http://occi/gcpcloudbilling#" title="Encapsulates a single service in Google Cloud Platform.">
@@ -164,7 +164,7 @@
     <attributes name="nextPageToken" required="true" description="A token to retrieve the next page of results. To retrieve the next page,&#xA;call `ListProjectBillingInfo` again with the `page_token` field set to this&#xA;value. This field is empty if there are no more results to retrieve.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="projectBillingInfo" required="true" description="A list of `ProjectBillingInfo` resources representing the projects&#xA;associated with the billing account." type="//@types.2"/>
+    <attributes name="projectBillingInfo" required="true" description="A list of `ProjectBillingInfo` resources representing the projects&#xA;associated with the billing account." type="//@types.5"/>
     <actions name="list" scheme="http://occi/gcpcloudbilling/listprojectbillinginforesponse/action#" title="Lists the projects associated with a billing account. The current&#xA;authenticated user must be an [owner of the billing&#xA;account](https://support.google.com/cloud/answer/4430947).">
       <attributes name="pageSize" required="true" description="Requested page size. The maximum page size is 100; this is also the&#xA;default.">
         <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
@@ -182,7 +182,7 @@
     <attributes name="nextPageToken" required="true" description="A token to retrieve the next page of results. To retrieve the next page,&#xA;call `ListServices` again with the `page_token` field set to this&#xA;value. This field is empty if there are no more results to retrieve.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="services" required="true" description="A list of services." type="//@types.2"/>
+    <attributes name="services" required="true" description="A list of services." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="BillingAccount" scheme="http://occi/gcpcloudbilling#" title="A billing account in [Google Cloud&#xA;Console](https://console.cloud.google.com/). You can assign a billing account&#xA;to one or more projects.">
@@ -226,14 +226,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:EnumerationType" name="Aggregationinterval" documentation="">
     <literals name="AGGREGATION_INTERVAL_UNSPECIFIED" documentation=""/>
     <literals name="DAILY" documentation=""/>

@@ -48,7 +48,6 @@ public interface Urldispatchrule extends Resource {
 	 * @see #setDomain(String)
 	 * @see appengine.AppenginePackage#getUrldispatchrule_Domain()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Urldispatchrule!domain'"
 	 * @generated
 	 */
 	String getDomain();
@@ -74,7 +73,6 @@ public interface Urldispatchrule extends Resource {
 	 * @see #setService(String)
 	 * @see appengine.AppenginePackage#getUrldispatchrule_Service()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Urldispatchrule!service'"
 	 * @generated
 	 */
 	String getService();
@@ -100,7 +98,6 @@ public interface Urldispatchrule extends Resource {
 	 * @see #setPath(String)
 	 * @see appengine.AppenginePackage#getUrldispatchrule_Path()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Urldispatchrule!path'"
 	 * @generated
 	 */
 	String getPath();

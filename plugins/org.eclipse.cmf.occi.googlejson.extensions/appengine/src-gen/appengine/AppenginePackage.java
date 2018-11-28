@@ -36,6 +36,8 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see appengine.AppengineFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
+ *        annotation="http://www.eclipse.org/OCL/Import occi='http://schemas.ogf.org/occi/core/ecore'"
  * @generated
  */
 public interface AppenginePackage extends EPackage {
@@ -1141,31 +1143,13 @@ public interface AppenginePackage extends EPackage {
 	int TRAFFICSPLITLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRAFFICSPLITLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRAFFICSPLITLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Trafficsplitlink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRAFFICSPLITLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int TRAFFICSPLITLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.ServiceImpl <em>Service</em>}' class.
@@ -3041,31 +3025,13 @@ public interface AppenginePackage extends EPackage {
 	int FEATURESETTINGSLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURESETTINGSLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURESETTINGSLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Featuresettingslink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURESETTINGSLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int FEATURESETTINGSLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.IdentityawareproxylinkImpl <em>Identityawareproxylink</em>}' class.
@@ -3222,31 +3188,13 @@ public interface AppenginePackage extends EPackage {
 	int IDENTITYAWAREPROXYLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTITYAWAREPROXYLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTITYAWAREPROXYLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Identityawareproxylink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IDENTITYAWAREPROXYLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int IDENTITYAWAREPROXYLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.ApplicationImpl <em>Application</em>}' class.
@@ -5772,31 +5720,13 @@ public interface AppenginePackage extends EPackage {
 	int AUTOMATICSCALINGLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AUTOMATICSCALINGLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AUTOMATICSCALINGLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Automaticscalinglink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AUTOMATICSCALINGLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int AUTOMATICSCALINGLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.HealthchecklinkImpl <em>Healthchecklink</em>}' class.
@@ -5953,31 +5883,13 @@ public interface AppenginePackage extends EPackage {
 	int HEALTHCHECKLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HEALTHCHECKLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HEALTHCHECKLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Healthchecklink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HEALTHCHECKLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int HEALTHCHECKLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.ReadinesschecklinkImpl <em>Readinesschecklink</em>}' class.
@@ -6134,31 +6046,13 @@ public interface AppenginePackage extends EPackage {
 	int READINESSCHECKLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int READINESSCHECKLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int READINESSCHECKLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Readinesschecklink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int READINESSCHECKLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int READINESSCHECKLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.ManualscalinglinkImpl <em>Manualscalinglink</em>}' class.
@@ -6315,31 +6209,13 @@ public interface AppenginePackage extends EPackage {
 	int MANUALSCALINGLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MANUALSCALINGLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MANUALSCALINGLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Manualscalinglink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MANUALSCALINGLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int MANUALSCALINGLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.ApiconfighandlerlinkImpl <em>Apiconfighandlerlink</em>}' class.
@@ -6496,31 +6372,13 @@ public interface AppenginePackage extends EPackage {
 	int APICONFIGHANDLERLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APICONFIGHANDLERLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APICONFIGHANDLERLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Apiconfighandlerlink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APICONFIGHANDLERLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int APICONFIGHANDLERLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.EndpointsapiservicelinkImpl <em>Endpointsapiservicelink</em>}' class.
@@ -6677,31 +6535,13 @@ public interface AppenginePackage extends EPackage {
 	int ENDPOINTSAPISERVICELINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENDPOINTSAPISERVICELINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENDPOINTSAPISERVICELINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Endpointsapiservicelink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDPOINTSAPISERVICELINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int ENDPOINTSAPISERVICELINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.DeploymentlinkImpl <em>Deploymentlink</em>}' class.
@@ -6858,31 +6698,13 @@ public interface AppenginePackage extends EPackage {
 	int DEPLOYMENTLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENTLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENTLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Deploymentlink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOYMENTLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int DEPLOYMENTLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.ResourceslinkImpl <em>Resourceslink</em>}' class.
@@ -7039,31 +6861,13 @@ public interface AppenginePackage extends EPackage {
 	int RESOURCESLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCESLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCESLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Resourceslink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCESLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int RESOURCESLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.BasicscalinglinkImpl <em>Basicscalinglink</em>}' class.
@@ -7220,31 +7024,13 @@ public interface AppenginePackage extends EPackage {
 	int BASICSCALINGLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASICSCALINGLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASICSCALINGLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Basicscalinglink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BASICSCALINGLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int BASICSCALINGLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.LivenesschecklinkImpl <em>Livenesschecklink</em>}' class.
@@ -7401,31 +7187,13 @@ public interface AppenginePackage extends EPackage {
 	int LIVENESSCHECKLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIVENESSCHECKLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIVENESSCHECKLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Livenesschecklink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIVENESSCHECKLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int LIVENESSCHECKLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.NetworklinkImpl <em>Networklink</em>}' class.
@@ -7582,31 +7350,13 @@ public interface AppenginePackage extends EPackage {
 	int NETWORKLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NETWORKLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NETWORKLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Networklink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORKLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int NETWORKLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.VersionImpl <em>Version</em>}' class.
@@ -10106,31 +9856,13 @@ public interface AppenginePackage extends EPackage {
 	int ZIPINFOLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZIPINFOLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ZIPINFOLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Zipinfolink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ZIPINFOLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int ZIPINFOLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.ContainerinfolinkImpl <em>Containerinfolink</em>}' class.
@@ -10287,31 +10019,13 @@ public interface AppenginePackage extends EPackage {
 	int CONTAINERINFOLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINERINFOLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINERINFOLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Containerinfolink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINERINFOLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int CONTAINERINFOLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.DeploymentImpl <em>Deployment</em>}' class.
@@ -12378,31 +12092,13 @@ public interface AppenginePackage extends EPackage {
 	int SSLSETTINGSLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SSLSETTINGSLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SSLSETTINGSLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Sslsettingslink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SSLSETTINGSLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int SSLSETTINGSLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.DomainmappingImpl <em>Domainmapping</em>}' class.
@@ -12776,31 +12472,13 @@ public interface AppenginePackage extends EPackage {
 	int REQUESTUTILIZATIONLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REQUESTUTILIZATIONLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REQUESTUTILIZATIONLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Requestutilizationlink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUESTUTILIZATIONLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int REQUESTUTILIZATIONLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.NetworkutilizationlinkImpl <em>Networkutilizationlink</em>}' class.
@@ -12957,31 +12635,13 @@ public interface AppenginePackage extends EPackage {
 	int NETWORKUTILIZATIONLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NETWORKUTILIZATIONLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NETWORKUTILIZATIONLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Networkutilizationlink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORKUTILIZATIONLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int NETWORKUTILIZATIONLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.CpuutilizationlinkImpl <em>Cpuutilizationlink</em>}' class.
@@ -13138,31 +12798,13 @@ public interface AppenginePackage extends EPackage {
 	int CPUUTILIZATIONLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CPUUTILIZATIONLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CPUUTILIZATIONLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Cpuutilizationlink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CPUUTILIZATIONLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int CPUUTILIZATIONLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.DiskutilizationlinkImpl <em>Diskutilizationlink</em>}' class.
@@ -13319,31 +12961,13 @@ public interface AppenginePackage extends EPackage {
 	int DISKUTILIZATIONLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISKUTILIZATIONLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISKUTILIZATIONLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Diskutilizationlink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISKUTILIZATIONLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int DISKUTILIZATIONLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.AutomaticscalingImpl <em>Automaticscaling</em>}' class.
@@ -13898,31 +13522,13 @@ public interface AppenginePackage extends EPackage {
 	int CERTIFICATERAWDATALINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CERTIFICATERAWDATALINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CERTIFICATERAWDATALINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Certificaterawdatalink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CERTIFICATERAWDATALINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int CERTIFICATERAWDATALINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.AuthorizedcertificateImpl <em>Authorizedcertificate</em>}' class.
@@ -15192,31 +14798,13 @@ public interface AppenginePackage extends EPackage {
 	int APIENDPOINTHANDLERLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APIENDPOINTHANDLERLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APIENDPOINTHANDLERLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Apiendpointhandlerlink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APIENDPOINTHANDLERLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int APIENDPOINTHANDLERLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.StaticfileshandlerlinkImpl <em>Staticfileshandlerlink</em>}' class.
@@ -15373,31 +14961,13 @@ public interface AppenginePackage extends EPackage {
 	int STATICFILESHANDLERLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATICFILESHANDLERLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATICFILESHANDLERLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Staticfileshandlerlink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATICFILESHANDLERLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int STATICFILESHANDLERLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.ScripthandlerlinkImpl <em>Scripthandlerlink</em>}' class.
@@ -15554,31 +15124,13 @@ public interface AppenginePackage extends EPackage {
 	int SCRIPTHANDLERLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCRIPTHANDLERLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCRIPTHANDLERLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Scripthandlerlink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCRIPTHANDLERLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int SCRIPTHANDLERLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.UrlmapImpl <em>Urlmap</em>}' class.
@@ -16106,31 +15658,13 @@ public interface AppenginePackage extends EPackage {
 	int STATUSLINK___LINK_SOURCE_INVARIANT__KIND_KIND = OCCIPackage.LINK___LINK_SOURCE_INVARIANT__KIND_KIND;
 
 	/**
-	 * The operation id for the '<em>Source Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATUSLINK___SOURCE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATUSLINK___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>Statuslink</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATUSLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 2;
+	int STATUSLINK_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link appengine.impl.OperationImpl <em>Operation</em>}' class.
@@ -17259,6 +16793,16 @@ public interface AppenginePackage extends EPackage {
 	int API_CONFIG_HANDLER_LOGIN = 104;
 
 	/**
+	 * The meta object id for the '<em>float</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Float
+	 * @see appengine.impl.AppenginePackageImpl#getfloat()
+	 * @generated
+	 */
+	int FLOAT = 105;
+
+	/**
 	 * The meta object id for the '<em>byte</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17266,7 +16810,7 @@ public interface AppenginePackage extends EPackage {
 	 * @see appengine.impl.AppenginePackageImpl#getbyte()
 	 * @generated
 	 */
-	int BYTE = 105;
+	int BYTE = 106;
 
 	/**
 	 * The meta object id for the '<em>double</em>' data type.
@@ -17276,27 +16820,17 @@ public interface AppenginePackage extends EPackage {
 	 * @see appengine.impl.AppenginePackageImpl#getdouble()
 	 * @generated
 	 */
-	int DOUBLE = 106;
+	int DOUBLE = 107;
 
 	/**
-	 * The meta object id for the '<em>float</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.Float
-	 * @see appengine.impl.AppenginePackageImpl#getfloat()
-	 * @generated
-	 */
-	int FLOAT = 107;
-
-	/**
-	 * The meta object id for the '<em>any</em>' data type.
+	 * The meta object id for the '<em>object</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.lang.Object
-	 * @see appengine.impl.AppenginePackageImpl#getany()
+	 * @see appengine.impl.AppenginePackageImpl#getobject()
 	 * @generated
 	 */
-	int ANY = 108;
+	int OBJECT = 108;
 
 	/**
 	 * The meta object id for the '<em>long</em>' data type.
@@ -17309,16 +16843,6 @@ public interface AppenginePackage extends EPackage {
 	int LONG = 109;
 
 	/**
-	 * The meta object id for the '<em>short</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.Short
-	 * @see appengine.impl.AppenginePackageImpl#getshort()
-	 * @generated
-	 */
-	int SHORT = 110;
-
-	/**
 	 * The meta object id for the '<em>map</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17326,17 +16850,27 @@ public interface AppenginePackage extends EPackage {
 	 * @see appengine.impl.AppenginePackageImpl#getmap()
 	 * @generated
 	 */
-	int MAP = 111;
+	int MAP = 110;
 
 	/**
-	 * The meta object id for the '<em>object</em>' data type.
+	 * The meta object id for the '<em>any</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.lang.Object
-	 * @see appengine.impl.AppenginePackageImpl#getobject()
+	 * @see appengine.impl.AppenginePackageImpl#getany()
 	 * @generated
 	 */
-	int OBJECT = 112;
+	int ANY = 111;
+
+	/**
+	 * The meta object id for the '<em>short</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Short
+	 * @see appengine.impl.AppenginePackageImpl#getshort()
+	 * @generated
+	 */
+	int SHORT = 112;
 
 
 	/**
@@ -17551,26 +17085,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTrafficsplitlink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Trafficsplitlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Trafficsplitlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTrafficsplitlink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Trafficsplitlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Trafficsplitlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTrafficsplitlink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Service <em>Service</em>}'.
@@ -18070,26 +17584,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getFeaturesettingslink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Featuresettingslink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Featuresettingslink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getFeaturesettingslink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Featuresettingslink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Featuresettingslink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getFeaturesettingslink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Identityawareproxylink <em>Identityawareproxylink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18098,26 +17592,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getIdentityawareproxylink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Identityawareproxylink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Identityawareproxylink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getIdentityawareproxylink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Identityawareproxylink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Identityawareproxylink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getIdentityawareproxylink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Application <em>Application</em>}'.
@@ -19055,26 +18529,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getAutomaticscalinglink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Automaticscalinglink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Automaticscalinglink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getAutomaticscalinglink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Automaticscalinglink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Automaticscalinglink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getAutomaticscalinglink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Healthchecklink <em>Healthchecklink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19083,26 +18537,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHealthchecklink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Healthchecklink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Healthchecklink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getHealthchecklink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Healthchecklink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Healthchecklink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getHealthchecklink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Readinesschecklink <em>Readinesschecklink</em>}'.
@@ -19115,26 +18549,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getReadinesschecklink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Readinesschecklink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Readinesschecklink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getReadinesschecklink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Readinesschecklink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Readinesschecklink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getReadinesschecklink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Manualscalinglink <em>Manualscalinglink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19143,26 +18557,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getManualscalinglink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Manualscalinglink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Manualscalinglink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getManualscalinglink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Manualscalinglink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Manualscalinglink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getManualscalinglink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Apiconfighandlerlink <em>Apiconfighandlerlink</em>}'.
@@ -19175,26 +18569,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getApiconfighandlerlink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Apiconfighandlerlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Apiconfighandlerlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getApiconfighandlerlink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Apiconfighandlerlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Apiconfighandlerlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getApiconfighandlerlink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Endpointsapiservicelink <em>Endpointsapiservicelink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19203,26 +18577,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEndpointsapiservicelink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Endpointsapiservicelink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Endpointsapiservicelink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getEndpointsapiservicelink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Endpointsapiservicelink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Endpointsapiservicelink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getEndpointsapiservicelink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Deploymentlink <em>Deploymentlink</em>}'.
@@ -19235,26 +18589,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getDeploymentlink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Deploymentlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Deploymentlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getDeploymentlink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Deploymentlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Deploymentlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getDeploymentlink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Resourceslink <em>Resourceslink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19263,26 +18597,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getResourceslink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Resourceslink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Resourceslink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getResourceslink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Resourceslink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Resourceslink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getResourceslink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Basicscalinglink <em>Basicscalinglink</em>}'.
@@ -19295,26 +18609,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getBasicscalinglink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Basicscalinglink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Basicscalinglink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getBasicscalinglink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Basicscalinglink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Basicscalinglink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getBasicscalinglink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Livenesschecklink <em>Livenesschecklink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19325,26 +18619,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getLivenesschecklink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Livenesschecklink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Livenesschecklink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getLivenesschecklink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Livenesschecklink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Livenesschecklink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getLivenesschecklink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Networklink <em>Networklink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19353,26 +18627,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getNetworklink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Networklink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Networklink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getNetworklink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Networklink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Networklink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getNetworklink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Version <em>Version</em>}'.
@@ -20104,26 +19358,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getZipinfolink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Zipinfolink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Zipinfolink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getZipinfolink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Zipinfolink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Zipinfolink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getZipinfolink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Containerinfolink <em>Containerinfolink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20132,26 +19366,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getContainerinfolink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Containerinfolink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Containerinfolink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getContainerinfolink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Containerinfolink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Containerinfolink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getContainerinfolink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Deployment <em>Deployment</em>}'.
@@ -20538,26 +19752,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getSslsettingslink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Sslsettingslink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Sslsettingslink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getSslsettingslink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Sslsettingslink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Sslsettingslink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getSslsettingslink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Domainmapping <em>Domainmapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20650,26 +19844,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getRequestutilizationlink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Requestutilizationlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Requestutilizationlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getRequestutilizationlink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Requestutilizationlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Requestutilizationlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getRequestutilizationlink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Networkutilizationlink <em>Networkutilizationlink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20678,26 +19852,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getNetworkutilizationlink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Networkutilizationlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Networkutilizationlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getNetworkutilizationlink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Networkutilizationlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Networkutilizationlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getNetworkutilizationlink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Cpuutilizationlink <em>Cpuutilizationlink</em>}'.
@@ -20710,26 +19864,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getCpuutilizationlink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Cpuutilizationlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Cpuutilizationlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getCpuutilizationlink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Cpuutilizationlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Cpuutilizationlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getCpuutilizationlink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Diskutilizationlink <em>Diskutilizationlink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20738,26 +19872,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDiskutilizationlink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Diskutilizationlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Diskutilizationlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getDiskutilizationlink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Diskutilizationlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Diskutilizationlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getDiskutilizationlink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Automaticscaling <em>Automaticscaling</em>}'.
@@ -20898,26 +20012,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCertificaterawdatalink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Certificaterawdatalink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Certificaterawdatalink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getCertificaterawdatalink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Certificaterawdatalink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Certificaterawdatalink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getCertificaterawdatalink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Authorizedcertificate <em>Authorizedcertificate</em>}'.
@@ -21216,26 +20310,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getApiendpointhandlerlink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Apiendpointhandlerlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Apiendpointhandlerlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getApiendpointhandlerlink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Apiendpointhandlerlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Apiendpointhandlerlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getApiendpointhandlerlink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Staticfileshandlerlink <em>Staticfileshandlerlink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21246,26 +20320,6 @@ public interface AppenginePackage extends EPackage {
 	EClass getStaticfileshandlerlink();
 
 	/**
-	 * Returns the meta object for the '{@link appengine.Staticfileshandlerlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Staticfileshandlerlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getStaticfileshandlerlink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Staticfileshandlerlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Staticfileshandlerlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getStaticfileshandlerlink__TargetConstraint__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link appengine.Scripthandlerlink <em>Scripthandlerlink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21274,26 +20328,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getScripthandlerlink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Scripthandlerlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Scripthandlerlink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getScripthandlerlink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Scripthandlerlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Scripthandlerlink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getScripthandlerlink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Urlmap <em>Urlmap</em>}'.
@@ -21401,26 +20435,6 @@ public interface AppenginePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getStatuslink();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Statuslink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Source Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Source Constraint</em>' operation.
-	 * @see appengine.Statuslink#sourceConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getStatuslink__SourceConstraint__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link appengine.Statuslink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see appengine.Statuslink#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getStatuslink__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link appengine.Operation <em>Operation</em>}'.
@@ -21875,6 +20889,17 @@ public interface AppenginePackage extends EPackage {
 	EEnum getApiConfigHandlerLogin();
 
 	/**
+	 * Returns the meta object for data type '{@link java.lang.Float <em>float</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>float</em>'.
+	 * @see java.lang.Float
+	 * @model instanceClass="java.lang.Float"
+	 * @generated
+	 */
+	EDataType getfloat();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Byte <em>byte</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21897,26 +20922,15 @@ public interface AppenginePackage extends EPackage {
 	EDataType getdouble();
 
 	/**
-	 * Returns the meta object for data type '{@link java.lang.Float <em>float</em>}'.
+	 * Returns the meta object for data type '{@link java.lang.Object <em>object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>float</em>'.
-	 * @see java.lang.Float
-	 * @model instanceClass="java.lang.Float"
-	 * @generated
-	 */
-	EDataType getfloat();
-
-	/**
-	 * Returns the meta object for data type '{@link java.lang.Object <em>any</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>any</em>'.
+	 * @return the meta object for data type '<em>object</em>'.
 	 * @see java.lang.Object
 	 * @model instanceClass="java.lang.Object"
 	 * @generated
 	 */
-	EDataType getany();
+	EDataType getobject();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.Long <em>long</em>}'.
@@ -21930,17 +20944,6 @@ public interface AppenginePackage extends EPackage {
 	EDataType getlong();
 
 	/**
-	 * Returns the meta object for data type '{@link java.lang.Short <em>short</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>short</em>'.
-	 * @see java.lang.Short
-	 * @model instanceClass="java.lang.Short"
-	 * @generated
-	 */
-	EDataType getshort();
-
-	/**
 	 * Returns the meta object for data type '{@link java.util.Map <em>map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21952,15 +20955,26 @@ public interface AppenginePackage extends EPackage {
 	EDataType getmap();
 
 	/**
-	 * Returns the meta object for data type '{@link java.lang.Object <em>object</em>}'.
+	 * Returns the meta object for data type '{@link java.lang.Object <em>any</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>object</em>'.
+	 * @return the meta object for data type '<em>any</em>'.
 	 * @see java.lang.Object
 	 * @model instanceClass="java.lang.Object"
 	 * @generated
 	 */
-	EDataType getobject();
+	EDataType getany();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.Short <em>short</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>short</em>'.
+	 * @see java.lang.Short
+	 * @model instanceClass="java.lang.Short"
+	 * @generated
+	 */
+	EDataType getshort();
 
 	/**
 	 * Returns the factory that creates the instances of the model.

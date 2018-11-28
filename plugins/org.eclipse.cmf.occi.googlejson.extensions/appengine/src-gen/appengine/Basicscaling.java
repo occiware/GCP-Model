@@ -47,7 +47,6 @@ public interface Basicscaling extends Resource {
 	 * @see #setMaxInstances(Integer)
 	 * @see appengine.AppenginePackage#getBasicscaling_MaxInstances()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Basicscaling!maxInstances'"
 	 * @generated
 	 */
 	Integer getMaxInstances();
@@ -73,7 +72,6 @@ public interface Basicscaling extends Resource {
 	 * @see #setIdleTimeout(String)
 	 * @see appengine.AppenginePackage#getBasicscaling_IdleTimeout()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Basicscaling!idleTimeout'"
 	 * @generated
 	 */
 	String getIdleTimeout();

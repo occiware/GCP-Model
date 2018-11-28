@@ -47,7 +47,6 @@ public interface Listingressrulesresponse extends Resource {
 	 * @see #setNextPageToken(String)
 	 * @see appengine.AppenginePackage#getListingressrulesresponse_NextPageToken()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listingressrulesresponse!nextPageToken'"
 	 * @generated
 	 */
 	String getNextPageToken();
@@ -73,7 +72,6 @@ public interface Listingressrulesresponse extends Resource {
 	 * @see #setIngressRules(array)
 	 * @see appengine.AppenginePackage#getListingressrulesresponse_IngressRules()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listingressrulesresponse!ingressRules'"
 	 * @generated
 	 */
 	array getIngressRules();

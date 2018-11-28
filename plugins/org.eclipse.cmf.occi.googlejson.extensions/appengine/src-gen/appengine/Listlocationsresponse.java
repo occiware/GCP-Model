@@ -47,7 +47,6 @@ public interface Listlocationsresponse extends Resource {
 	 * @see #setNextPageToken(String)
 	 * @see appengine.AppenginePackage#getListlocationsresponse_NextPageToken()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listlocationsresponse!nextPageToken'"
 	 * @generated
 	 */
 	String getNextPageToken();
@@ -73,7 +72,6 @@ public interface Listlocationsresponse extends Resource {
 	 * @see #setLocations(array)
 	 * @see appengine.AppenginePackage#getListlocationsresponse_Locations()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listlocationsresponse!locations'"
 	 * @generated
 	 */
 	array getLocations();

@@ -55,7 +55,6 @@ public interface Status extends Resource {
 	 * @see #setDetails(array)
 	 * @see appengine.AppenginePackage#getStatus_Details()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Status!details'"
 	 * @generated
 	 */
 	array getDetails();
@@ -81,7 +80,6 @@ public interface Status extends Resource {
 	 * @see #setCode(Integer)
 	 * @see appengine.AppenginePackage#getStatus_Code()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Status!code'"
 	 * @generated
 	 */
 	Integer getCode();
@@ -107,7 +105,6 @@ public interface Status extends Resource {
 	 * @see #setMessage(String)
 	 * @see appengine.AppenginePackage#getStatus_Message()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Status!message'"
 	 * @generated
 	 */
 	String getMessage();

@@ -499,8 +499,10 @@ public class ApplicationImpl extends ResourceImpl implements Application {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void repair(final String appsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!repair(String)
+	public void repair(String appsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -508,8 +510,10 @@ public class ApplicationImpl extends ResourceImpl implements Application {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void get(final String appsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!get(String)
+	public void get(String appsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -517,8 +521,10 @@ public class ApplicationImpl extends ResourceImpl implements Application {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void patch(final String updateMask, final String appsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!patch(String,String)
+	public void patch(String updateMask, String appsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -527,7 +533,9 @@ public class ApplicationImpl extends ResourceImpl implements Application {
 	 * @generated
 	 */
 	public void create() {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Application!create()
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

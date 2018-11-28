@@ -48,7 +48,6 @@ public interface Volume extends Resource {
 	 * @see #setVolumeType(String)
 	 * @see appengine.AppenginePackage#getVolume_VolumeType()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Volume!volumeType'"
 	 * @generated
 	 */
 	String getVolumeType();
@@ -74,7 +73,6 @@ public interface Volume extends Resource {
 	 * @see #setSizeGb(Integer)
 	 * @see appengine.AppenginePackage#getVolume_SizeGb()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Volume!sizeGb'"
 	 * @generated
 	 */
 	Integer getSizeGb();
@@ -100,7 +98,6 @@ public interface Volume extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getVolume_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Volume!name'"
 	 * @generated
 	 */
 	String getName();

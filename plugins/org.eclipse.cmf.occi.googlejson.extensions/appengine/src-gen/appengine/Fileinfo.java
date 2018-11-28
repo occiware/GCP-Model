@@ -48,7 +48,6 @@ public interface Fileinfo extends Resource {
 	 * @see #setSourceUrl(String)
 	 * @see appengine.AppenginePackage#getFileinfo_SourceUrl()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Fileinfo!sourceUrl'"
 	 * @generated
 	 */
 	String getSourceUrl();
@@ -74,7 +73,6 @@ public interface Fileinfo extends Resource {
 	 * @see #setSha1Sum(String)
 	 * @see appengine.AppenginePackage#getFileinfo_Sha1Sum()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Fileinfo!sha1Sum'"
 	 * @generated
 	 */
 	String getSha1Sum();
@@ -100,7 +98,6 @@ public interface Fileinfo extends Resource {
 	 * @see #setMimeType(String)
 	 * @see appengine.AppenginePackage#getFileinfo_MimeType()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Fileinfo!mimeType'"
 	 * @generated
 	 */
 	String getMimeType();

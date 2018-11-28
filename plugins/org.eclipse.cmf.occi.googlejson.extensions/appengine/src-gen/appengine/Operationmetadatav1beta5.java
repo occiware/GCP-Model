@@ -50,7 +50,6 @@ public interface Operationmetadatav1beta5 extends Resource {
 	 * @see #setInsertTime(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1beta5_InsertTime()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1beta5!insertTime'"
 	 * @generated
 	 */
 	String getInsertTime();
@@ -76,7 +75,6 @@ public interface Operationmetadatav1beta5 extends Resource {
 	 * @see #setEndTime(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1beta5_EndTime()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1beta5!endTime'"
 	 * @generated
 	 */
 	String getEndTime();
@@ -102,7 +100,6 @@ public interface Operationmetadatav1beta5 extends Resource {
 	 * @see #setUser(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1beta5_User()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1beta5!user'"
 	 * @generated
 	 */
 	String getUser();
@@ -128,7 +125,6 @@ public interface Operationmetadatav1beta5 extends Resource {
 	 * @see #setTarget(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1beta5_Target()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1beta5!target'"
 	 * @generated
 	 */
 	String getTarget();
@@ -154,7 +150,6 @@ public interface Operationmetadatav1beta5 extends Resource {
 	 * @see #setMethod(String)
 	 * @see appengine.AppenginePackage#getOperationmetadatav1beta5_Method()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Operationmetadatav1beta5!method'"
 	 * @generated
 	 */
 	String getMethod();

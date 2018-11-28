@@ -47,7 +47,6 @@ public interface Listinstancesresponse extends Resource {
 	 * @see #setInstances(array)
 	 * @see appengine.AppenginePackage#getListinstancesresponse_Instances()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listinstancesresponse!instances'"
 	 * @generated
 	 */
 	array getInstances();
@@ -73,7 +72,6 @@ public interface Listinstancesresponse extends Resource {
 	 * @see #setNextPageToken(String)
 	 * @see appengine.AppenginePackage#getListinstancesresponse_NextPageToken()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listinstancesresponse!nextPageToken'"
 	 * @generated
 	 */
 	String getNextPageToken();

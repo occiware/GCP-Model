@@ -163,8 +163,10 @@ public class DomainmappingImpl extends ResourceImpl implements Domainmapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void delete(final String appsId, final String domainMappingsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!delete(String,String)
+	public void delete(String appsId, String domainMappingsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -172,8 +174,10 @@ public class DomainmappingImpl extends ResourceImpl implements Domainmapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void list(final String appsId, final String pageToken, final Integer pageSize) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!list(String,String,Integer)
+	public void list(String appsId, String pageToken, Integer pageSize) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -181,8 +185,10 @@ public class DomainmappingImpl extends ResourceImpl implements Domainmapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void get(final String appsId, final String domainMappingsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!get(String,String)
+	public void get(String appsId, String domainMappingsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -190,8 +196,10 @@ public class DomainmappingImpl extends ResourceImpl implements Domainmapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void patch(final String updateMask, final String appsId, final String domainMappingsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!patch(String,String,String)
+	public void patch(String updateMask, String appsId, String domainMappingsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -199,8 +207,10 @@ public class DomainmappingImpl extends ResourceImpl implements Domainmapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void create(final String appsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Domainmapping!create(String)
+	public void create(String appsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

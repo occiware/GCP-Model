@@ -47,7 +47,6 @@ public interface Listoperationsresponse extends Resource {
 	 * @see #setNextPageToken(String)
 	 * @see appengine.AppenginePackage#getListoperationsresponse_NextPageToken()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listoperationsresponse!nextPageToken'"
 	 * @generated
 	 */
 	String getNextPageToken();
@@ -73,7 +72,6 @@ public interface Listoperationsresponse extends Resource {
 	 * @see #setOperations(array)
 	 * @see appengine.AppenginePackage#getListoperationsresponse_Operations()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Listoperationsresponse!operations'"
 	 * @generated
 	 */
 	array getOperations();

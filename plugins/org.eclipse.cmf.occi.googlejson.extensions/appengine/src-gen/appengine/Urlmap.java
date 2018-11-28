@@ -50,7 +50,6 @@ public interface Urlmap extends Resource {
 	 * @see #setRedirectHttpResponseCode(String)
 	 * @see appengine.AppenginePackage#getUrlmap_RedirectHttpResponseCode()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Urlmap!redirectHttpResponseCode'"
 	 * @generated
 	 */
 	String getRedirectHttpResponseCode();
@@ -76,7 +75,6 @@ public interface Urlmap extends Resource {
 	 * @see #setSecurityLevel(String)
 	 * @see appengine.AppenginePackage#getUrlmap_SecurityLevel()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Urlmap!securityLevel'"
 	 * @generated
 	 */
 	String getSecurityLevel();
@@ -102,7 +100,6 @@ public interface Urlmap extends Resource {
 	 * @see #setAuthFailAction(String)
 	 * @see appengine.AppenginePackage#getUrlmap_AuthFailAction()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Urlmap!authFailAction'"
 	 * @generated
 	 */
 	String getAuthFailAction();
@@ -128,7 +125,6 @@ public interface Urlmap extends Resource {
 	 * @see #setUrlRegex(String)
 	 * @see appengine.AppenginePackage#getUrlmap_UrlRegex()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Urlmap!urlRegex'"
 	 * @generated
 	 */
 	String getUrlRegex();
@@ -154,7 +150,6 @@ public interface Urlmap extends Resource {
 	 * @see #setLogin(String)
 	 * @see appengine.AppenginePackage#getUrlmap_Login()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Urlmap!login'"
 	 * @generated
 	 */
 	String getLogin();

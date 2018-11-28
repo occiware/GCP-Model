@@ -46,7 +46,6 @@ public interface Apiendpointhandler extends Resource {
 	 * @see #setScriptPath(String)
 	 * @see appengine.AppenginePackage#getApiendpointhandler_ScriptPath()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Apiendpointhandler!scriptPath'"
 	 * @generated
 	 */
 	String getScriptPath();

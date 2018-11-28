@@ -232,8 +232,10 @@ public class FirewallruleImpl extends ResourceImpl implements Firewallrule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void get(final String appsId, final String ingressRulesId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!get(String,String)
+	public void get(String appsId, String ingressRulesId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -241,8 +243,10 @@ public class FirewallruleImpl extends ResourceImpl implements Firewallrule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void patch(final String updateMask, final String appsId, final String ingressRulesId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!patch(String,String,String)
+	public void patch(String updateMask, String appsId, String ingressRulesId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -250,8 +254,10 @@ public class FirewallruleImpl extends ResourceImpl implements Firewallrule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void batchupdate(final String appsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!batchupdate(String)
+	public void batchupdate(String appsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -259,8 +265,10 @@ public class FirewallruleImpl extends ResourceImpl implements Firewallrule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void delete(final String appsId, final String ingressRulesId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!delete(String,String)
+	public void delete(String appsId, String ingressRulesId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -268,8 +276,10 @@ public class FirewallruleImpl extends ResourceImpl implements Firewallrule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void list(final Integer pageSize, final String matchingAddress, final String appsId, final String pageToken) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!list(Integer,String,String,String)
+	public void list(Integer pageSize, String matchingAddress, String appsId, String pageToken) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -277,8 +287,10 @@ public class FirewallruleImpl extends ResourceImpl implements Firewallrule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void create(final String appsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!create(String)
+	public void create(String appsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

@@ -51,7 +51,6 @@ public interface Location extends Resource {
 	 * @see #setMetadata(Map)
 	 * @see appengine.AppenginePackage#getLocation_Metadata()
 	 * @model dataType="appengine.map" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Location!metadata'"
 	 * @generated
 	 */
 	Map getMetadata();
@@ -79,7 +78,6 @@ public interface Location extends Resource {
 	 * @see #setLabels(Map)
 	 * @see appengine.AppenginePackage#getLocation_Labels()
 	 * @model dataType="appengine.map" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Location!labels'"
 	 * @generated
 	 */
 	Map getLabels();
@@ -105,7 +103,6 @@ public interface Location extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getLocation_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Location!name'"
 	 * @generated
 	 */
 	String getName();
@@ -131,7 +128,6 @@ public interface Location extends Resource {
 	 * @see #setLocationId(String)
 	 * @see appengine.AppenginePackage#getLocation_LocationId()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Location!locationId'"
 	 * @generated
 	 */
 	String getLocationId();
@@ -157,7 +153,6 @@ public interface Location extends Resource {
 	 * @param pageToken The standard list page token.
 	 * <!-- end-model-doc -->
 	 * @model pageSizeDataType="org.eclipse.cmf.occi.core.Integer" pageSizeRequired="true" filterDataType="org.eclipse.cmf.occi.core.String" filterRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" pageTokenDataType="org.eclipse.cmf.occi.core.String" pageTokenRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Location!list(Integer,String,String,String)'"
 	 * @generated
 	 */
 	void list(Integer pageSize, String filter, String appsId, String pageToken);
@@ -171,7 +166,6 @@ public interface Location extends Resource {
 	 * @param appsId Part of `name`. Resource name for the location.
 	 * <!-- end-model-doc -->
 	 * @model locationsIdDataType="org.eclipse.cmf.occi.core.String" locationsIdRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Location!get(String,String)'"
 	 * @generated
 	 */
 	void get(String locationsId, String appsId);

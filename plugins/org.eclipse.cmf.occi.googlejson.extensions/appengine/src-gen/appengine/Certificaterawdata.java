@@ -47,7 +47,6 @@ public interface Certificaterawdata extends Resource {
 	 * @see #setPublicCertificate(String)
 	 * @see appengine.AppenginePackage#getCertificaterawdata_PublicCertificate()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Certificaterawdata!publicCertificate'"
 	 * @generated
 	 */
 	String getPublicCertificate();
@@ -73,7 +72,6 @@ public interface Certificaterawdata extends Resource {
 	 * @see #setPrivateKey(String)
 	 * @see appengine.AppenginePackage#getCertificaterawdata_PrivateKey()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Certificaterawdata!privateKey'"
 	 * @generated
 	 */
 	String getPrivateKey();

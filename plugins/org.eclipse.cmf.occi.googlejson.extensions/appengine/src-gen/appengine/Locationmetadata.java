@@ -47,7 +47,6 @@ public interface Locationmetadata extends Resource {
 	 * @see #setFlexibleEnvironmentAvailable(boolean)
 	 * @see appengine.AppenginePackage#getLocationmetadata_FlexibleEnvironmentAvailable()
 	 * @model dataType="org.eclipse.cmf.occi.core.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Locationmetadata!flexibleEnvironmentAvailable'"
 	 * @generated
 	 */
 	boolean isFlexibleEnvironmentAvailable();
@@ -73,7 +72,6 @@ public interface Locationmetadata extends Resource {
 	 * @see #setStandardEnvironmentAvailable(boolean)
 	 * @see appengine.AppenginePackage#getLocationmetadata_StandardEnvironmentAvailable()
 	 * @model dataType="org.eclipse.cmf.occi.core.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Locationmetadata!standardEnvironmentAvailable'"
 	 * @generated
 	 */
 	boolean isStandardEnvironmentAvailable();

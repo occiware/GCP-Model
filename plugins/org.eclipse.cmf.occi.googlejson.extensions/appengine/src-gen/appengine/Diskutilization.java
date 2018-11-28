@@ -49,7 +49,6 @@ public interface Diskutilization extends Resource {
 	 * @see #setTargetWriteBytesPerSecond(Integer)
 	 * @see appengine.AppenginePackage#getDiskutilization_TargetWriteBytesPerSecond()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Diskutilization!targetWriteBytesPerSecond'"
 	 * @generated
 	 */
 	Integer getTargetWriteBytesPerSecond();
@@ -75,7 +74,6 @@ public interface Diskutilization extends Resource {
 	 * @see #setTargetReadBytesPerSecond(Integer)
 	 * @see appengine.AppenginePackage#getDiskutilization_TargetReadBytesPerSecond()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Diskutilization!targetReadBytesPerSecond'"
 	 * @generated
 	 */
 	Integer getTargetReadBytesPerSecond();
@@ -101,7 +99,6 @@ public interface Diskutilization extends Resource {
 	 * @see #setTargetReadOpsPerSecond(Integer)
 	 * @see appengine.AppenginePackage#getDiskutilization_TargetReadOpsPerSecond()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Diskutilization!targetReadOpsPerSecond'"
 	 * @generated
 	 */
 	Integer getTargetReadOpsPerSecond();
@@ -127,7 +124,6 @@ public interface Diskutilization extends Resource {
 	 * @see #setTargetWriteOpsPerSecond(Integer)
 	 * @see appengine.AppenginePackage#getDiskutilization_TargetWriteOpsPerSecond()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Diskutilization!targetWriteOpsPerSecond'"
 	 * @generated
 	 */
 	Integer getTargetWriteOpsPerSecond();

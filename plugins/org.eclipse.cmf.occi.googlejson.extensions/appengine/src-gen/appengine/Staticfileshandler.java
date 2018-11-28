@@ -54,7 +54,6 @@ public interface Staticfileshandler extends Resource {
 	 * @see #setApplicationReadable(boolean)
 	 * @see appengine.AppenginePackage#getStaticfileshandler_ApplicationReadable()
 	 * @model dataType="org.eclipse.cmf.occi.core.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Staticfileshandler!applicationReadable'"
 	 * @generated
 	 */
 	boolean isApplicationReadable();
@@ -80,7 +79,6 @@ public interface Staticfileshandler extends Resource {
 	 * @see #setHttpHeaders(Map)
 	 * @see appengine.AppenginePackage#getStaticfileshandler_HttpHeaders()
 	 * @model dataType="appengine.map" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Staticfileshandler!httpHeaders'"
 	 * @generated
 	 */
 	Map getHttpHeaders();
@@ -106,7 +104,6 @@ public interface Staticfileshandler extends Resource {
 	 * @see #setUploadPathRegex(String)
 	 * @see appengine.AppenginePackage#getStaticfileshandler_UploadPathRegex()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Staticfileshandler!uploadPathRegex'"
 	 * @generated
 	 */
 	String getUploadPathRegex();
@@ -132,7 +129,6 @@ public interface Staticfileshandler extends Resource {
 	 * @see #setPath(String)
 	 * @see appengine.AppenginePackage#getStaticfileshandler_Path()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Staticfileshandler!path'"
 	 * @generated
 	 */
 	String getPath();
@@ -158,7 +154,6 @@ public interface Staticfileshandler extends Resource {
 	 * @see #setMimeType(String)
 	 * @see appengine.AppenginePackage#getStaticfileshandler_MimeType()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Staticfileshandler!mimeType'"
 	 * @generated
 	 */
 	String getMimeType();
@@ -184,7 +179,6 @@ public interface Staticfileshandler extends Resource {
 	 * @see #setRequireMatchingFile(boolean)
 	 * @see appengine.AppenginePackage#getStaticfileshandler_RequireMatchingFile()
 	 * @model dataType="org.eclipse.cmf.occi.core.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Staticfileshandler!requireMatchingFile'"
 	 * @generated
 	 */
 	boolean isRequireMatchingFile();
@@ -210,7 +204,6 @@ public interface Staticfileshandler extends Resource {
 	 * @see #setExpiration(String)
 	 * @see appengine.AppenginePackage#getStaticfileshandler_Expiration()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Staticfileshandler!expiration'"
 	 * @generated
 	 */
 	String getExpiration();

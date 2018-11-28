@@ -52,7 +52,6 @@ public interface Readinesscheck extends Resource {
 	 * @see #setPath(String)
 	 * @see appengine.AppenginePackage#getReadinesscheck_Path()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Readinesscheck!path'"
 	 * @generated
 	 */
 	String getPath();
@@ -78,7 +77,6 @@ public interface Readinesscheck extends Resource {
 	 * @see #setHost(String)
 	 * @see appengine.AppenginePackage#getReadinesscheck_Host()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Readinesscheck!host'"
 	 * @generated
 	 */
 	String getHost();
@@ -104,7 +102,6 @@ public interface Readinesscheck extends Resource {
 	 * @see #setSuccessThreshold(Integer)
 	 * @see appengine.AppenginePackage#getReadinesscheck_SuccessThreshold()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Readinesscheck!successThreshold'"
 	 * @generated
 	 */
 	Integer getSuccessThreshold();
@@ -130,7 +127,6 @@ public interface Readinesscheck extends Resource {
 	 * @see #setCheckInterval(String)
 	 * @see appengine.AppenginePackage#getReadinesscheck_CheckInterval()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Readinesscheck!checkInterval'"
 	 * @generated
 	 */
 	String getCheckInterval();
@@ -156,7 +152,6 @@ public interface Readinesscheck extends Resource {
 	 * @see #setFailureThreshold(Integer)
 	 * @see appengine.AppenginePackage#getReadinesscheck_FailureThreshold()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Readinesscheck!failureThreshold'"
 	 * @generated
 	 */
 	Integer getFailureThreshold();
@@ -182,7 +177,6 @@ public interface Readinesscheck extends Resource {
 	 * @see #setTimeout(String)
 	 * @see appengine.AppenginePackage#getReadinesscheck_Timeout()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Readinesscheck!timeout'"
 	 * @generated
 	 */
 	String getTimeout();
@@ -208,7 +202,6 @@ public interface Readinesscheck extends Resource {
 	 * @see #setAppStartTimeout(String)
 	 * @see appengine.AppenginePackage#getReadinesscheck_AppStartTimeout()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Readinesscheck!appStartTimeout'"
 	 * @generated
 	 */
 	String getAppStartTimeout();

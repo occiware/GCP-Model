@@ -106,8 +106,10 @@ public class ServiceImpl extends ResourceImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void delete(final String appsId, final String servicesId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Service!delete(String,String)
+	public void delete(String appsId, String servicesId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -115,8 +117,10 @@ public class ServiceImpl extends ResourceImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void list(final String appsId, final String pageToken, final Integer pageSize) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Service!list(String,String,Integer)
+	public void list(String appsId, String pageToken, Integer pageSize) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -124,8 +128,10 @@ public class ServiceImpl extends ResourceImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void get(final String servicesId, final String appsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Service!get(String,String)
+	public void get(String servicesId, String appsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -133,8 +139,10 @@ public class ServiceImpl extends ResourceImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void patch(final String updateMask, final String servicesId, final String appsId, final boolean migrateTraffic) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Service!patch(String,String,String,Boolean)
+	public void patch(String updateMask, String servicesId, String appsId, boolean migrateTraffic) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

@@ -2,30 +2,30 @@
 <occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="storage" scheme="http://occi/gcpstorage#" description="Stores and retrieves potentially large, immutable data objects.">
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <kinds name="Bucket" scheme="http://occi/gcpstorage#" title="A bucket.">
-    <attributes name="acl" required="true" description="Access controls on the bucket." type="//@types.2"/>
-    <attributes name="billing" required="true" description="The bucket's billing configuration." type="//@types.8"/>
-    <attributes name="cors" required="true" description="The bucket's Cross-Origin Resource Sharing (CORS) configuration." type="//@types.2"/>
-    <attributes name="defaultObjectAcl" required="true" description="Default access controls to apply to new objects when no ACL is provided." type="//@types.2"/>
-    <attributes name="encryption" required="true" description="Encryption configuration used by default for newly inserted objects, when no encryption config is specified." type="//@types.8"/>
+    <attributes name="acl" required="true" description="Access controls on the bucket." type="//@types.5"/>
+    <attributes name="billing" required="true" description="The bucket's billing configuration." type="//@types.3"/>
+    <attributes name="cors" required="true" description="The bucket's Cross-Origin Resource Sharing (CORS) configuration." type="//@types.5"/>
+    <attributes name="defaultObjectAcl" required="true" description="Default access controls to apply to new objects when no ACL is provided." type="//@types.5"/>
+    <attributes name="encryption" required="true" description="Encryption configuration used by default for newly inserted objects, when no encryption config is specified." type="//@types.3"/>
     <attributes name="etag" required="true" description="HTTP 1.1 Entity tag for the bucket.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="kindGCP" required="true" description="The kind of item this is. For buckets, this is always storage#bucket.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="labels" required="true" description="User-provided labels, in key/value pairs." type="//@types.3"/>
-    <attributes name="lifecycle" required="true" description="The bucket's lifecycle configuration. See lifecycle management for more information." type="//@types.8"/>
+    <attributes name="labels" required="true" description="User-provided labels, in key/value pairs." type="//@types.6"/>
+    <attributes name="lifecycle" required="true" description="The bucket's lifecycle configuration. See lifecycle management for more information." type="//@types.3"/>
     <attributes name="locationGCP" required="true" description="The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="logging" required="true" description="The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs." type="//@types.8"/>
+    <attributes name="logging" required="true" description="The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs." type="//@types.3"/>
     <attributes name="metageneration" required="true" description="The metadata generation of this bucket.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="name" required="true" description="The name of the bucket.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="owner" required="true" description="The owner of the bucket. This is always the project team's owner group." type="//@types.8"/>
+    <attributes name="owner" required="true" description="The owner of the bucket. This is always the project team's owner group." type="//@types.3"/>
     <attributes name="projectNumber" required="true" description="The project number of the project the bucket belongs to.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -41,8 +41,8 @@
     <attributes name="updated" required="true" description="The modification time of the bucket in RFC 3339 format.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="versioning" required="true" description="The bucket's versioning configuration." type="//@types.8"/>
-    <attributes name="website" required="true" description="The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information." type="//@types.8"/>
+    <attributes name="versioning" required="true" description="The bucket's versioning configuration." type="//@types.3"/>
+    <attributes name="website" required="true" description="The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information." type="//@types.3"/>
     <actions name="delete" scheme="http://occi/gcpstorage/bucket/action#" title="Permanently deletes an empty bucket.">
       <attributes name="bucket" required="true" description="Name of a bucket.">
         <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
@@ -208,7 +208,7 @@
     <attributes name="kindGCP" required="true" description="The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="projectTeam" required="true" description="The project team associated with the entity, if any." type="//@types.8"/>
+    <attributes name="projectTeam" required="true" description="The project team associated with the entity, if any." type="//@types.3"/>
     <attributes name="role" required="true" description="The access permission for the entity.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -278,14 +278,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="BucketAccessControls" scheme="http://occi/gcpstorage#" title="An access-control list.">
-    <attributes name="items" required="true" description="The list of items." type="//@types.2"/>
+    <attributes name="items" required="true" description="The list of items." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="The kind of item this is. For lists of bucket access control entries, this is always storage#bucketAccessControls.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Buckets" scheme="http://occi/gcpstorage#" title="A list of buckets.">
-    <attributes name="items" required="true" description="The list of items." type="//@types.2"/>
+    <attributes name="items" required="true" description="The list of items." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="The kind of item this is. For lists of buckets, this is always storage#buckets.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -304,7 +304,7 @@
     <attributes name="kindGCP" required="true" description="Identifies this as a notification channel used to watch for changes to a resource. Value: the fixed string &quot;api#channel&quot;.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="params" required="true" description="Additional parameters controlling delivery channel behavior. Optional." type="//@types.3"/>
+    <attributes name="params" required="true" description="Additional parameters controlling delivery channel behavior. Optional." type="//@types.6"/>
     <attributes name="payload" required="true" description="A Boolean value to indicate whether payload is wanted. Optional.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -330,15 +330,15 @@
     <attributes name="kindGCP" required="true" description="The kind of item this is.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="sourceObjects" required="true" description="The list of source objects that will be concatenated into a single object." type="//@types.2"/>
+    <attributes name="sourceObjects" required="true" description="The list of source objects that will be concatenated into a single object." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Notification" scheme="http://occi/gcpstorage#" title="A subscription to receive Google PubSub notifications.">
-    <attributes name="custom.attributes" required="true" description="An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription." type="//@types.3"/>
+    <attributes name="custom.attributes" required="true" description="An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription." type="//@types.6"/>
     <attributes name="etag" required="true" description="HTTP 1.1 Entity tag for this subscription notification.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="event.types" required="true" description="If present, only send notifications about listed event types. If empty, sent notifications for all event types." type="//@types.2"/>
+    <attributes name="event.types" required="true" description="If present, only send notifications about listed event types. If empty, sent notifications for all event types." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="The kind of item this is. For notifications, this is always storage#notification.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -395,14 +395,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Notifications" scheme="http://occi/gcpstorage#" title="A list of notification subscriptions.">
-    <attributes name="items" required="true" description="The list of items." type="//@types.2"/>
+    <attributes name="items" required="true" description="The list of items." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="The kind of item this is. For lists of notifications, this is always storage#notifications.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Object" scheme="http://occi/gcpstorage#" title="An object.">
-    <attributes name="acl" required="true" description="Access controls on the object." type="//@types.2"/>
+    <attributes name="acl" required="true" description="Access controls on the object." type="//@types.5"/>
     <attributes name="bucket" required="true" description="The name of the bucket containing this object.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -427,7 +427,7 @@
     <attributes name="crc32c" required="true" description="CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="customerEncryption" required="true" description="Metadata of customer-supplied encryption key, if the object is encrypted by such a key." type="//@types.8"/>
+    <attributes name="customerEncryption" required="true" description="Metadata of customer-supplied encryption key, if the object is encrypted by such a key." type="//@types.3"/>
     <attributes name="etag" required="true" description="HTTP 1.1 Entity tag for the object.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -446,14 +446,14 @@
     <attributes name="mediaLink" required="true" description="Media download link.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="metadata" required="true" description="User-provided metadata, in key/value pairs." type="//@types.3"/>
+    <attributes name="metadata" required="true" description="User-provided metadata, in key/value pairs." type="//@types.6"/>
     <attributes name="metageneration" required="true" description="The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="name" required="true" description="The name of the object. Required if not specified by URL parameter.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="owner" required="true" description="The owner of the object. This will always be the uploader of the object." type="//@types.8"/>
+    <attributes name="owner" required="true" description="The owner of the object. This will always be the uploader of the object." type="//@types.3"/>
     <attributes name="selfLink" required="true" description="The link to this object.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -888,7 +888,7 @@
     <attributes name="object" required="true" description="The name of the object, if applied to an object.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="projectTeam" required="true" description="The project team associated with the entity, if any." type="//@types.8"/>
+    <attributes name="projectTeam" required="true" description="The project team associated with the entity, if any." type="//@types.3"/>
     <attributes name="role" required="true" description="The access permission for the entity.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -994,25 +994,25 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ObjectAccessControls" scheme="http://occi/gcpstorage#" title="An access-control list.">
-    <attributes name="items" required="true" description="The list of items." type="//@types.2"/>
+    <attributes name="items" required="true" description="The list of items." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="The kind of item this is. For lists of object access control entries, this is always storage#objectAccessControls.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Objects" scheme="http://occi/gcpstorage#" title="A list of objects.">
-    <attributes name="items" required="true" description="The list of items." type="//@types.2"/>
+    <attributes name="items" required="true" description="The list of items." type="//@types.5"/>
     <attributes name="kindGCP" required="true" description="The kind of item this is. For lists of objects, this is always storage#objects.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="nextPageToken" required="true" description="The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="prefixes" required="true" description="The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter." type="//@types.2"/>
+    <attributes name="prefixes" required="true" description="The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Policy" scheme="http://occi/gcpstorage#" title="A bucket/object IAM policy.">
-    <attributes name="bindings" required="true" description="An association between a role, which comes with a set of permissions, and members who may assume that role." type="//@types.2"/>
+    <attributes name="bindings" required="true" description="An association between a role, which comes with a set of permissions, and members who may assume that role." type="//@types.5"/>
     <attributes name="etag" required="true" description="HTTP 1.1  Entity tag for the policy.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -1058,18 +1058,18 @@
     <attributes name="kindGCP" required="true" description="The kind of item this is.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="permissions" required="true" description="The permissions held by the caller. Permissions are always of the format storage.resource.capability, where resource is one of buckets or objects. The supported permissions are as follows:  &#xA;- storage.buckets.delete &#xe2;&#x20ac;&#x201d; Delete bucket.  &#xA;- storage.buckets.get &#xe2;&#x20ac;&#x201d; Read bucket metadata.  &#xA;- storage.buckets.getIamPolicy &#xe2;&#x20ac;&#x201d; Read bucket IAM policy.  &#xA;- storage.buckets.create &#xe2;&#x20ac;&#x201d; Create bucket.  &#xA;- storage.buckets.list &#xe2;&#x20ac;&#x201d; List buckets.  &#xA;- storage.buckets.setIamPolicy &#xe2;&#x20ac;&#x201d; Update bucket IAM policy.  &#xA;- storage.buckets.update &#xe2;&#x20ac;&#x201d; Update bucket metadata.  &#xA;- storage.objects.delete &#xe2;&#x20ac;&#x201d; Delete object.  &#xA;- storage.objects.get &#xe2;&#x20ac;&#x201d; Read object data and metadata.  &#xA;- storage.objects.getIamPolicy &#xe2;&#x20ac;&#x201d; Read object IAM policy.  &#xA;- storage.objects.create &#xe2;&#x20ac;&#x201d; Create object.  &#xA;- storage.objects.list &#xe2;&#x20ac;&#x201d; List objects.  &#xA;- storage.objects.setIamPolicy &#xe2;&#x20ac;&#x201d; Update object IAM policy.  &#xA;- storage.objects.update &#xe2;&#x20ac;&#x201d; Update object metadata." type="//@types.2"/>
+    <attributes name="permissions" required="true" description="The permissions held by the caller. Permissions are always of the format storage.resource.capability, where resource is one of buckets or objects. The supported permissions are as follows:  &#xA;- storage.buckets.delete &#xe2;&#x20ac;&#x201d; Delete bucket.  &#xA;- storage.buckets.get &#xe2;&#x20ac;&#x201d; Read bucket metadata.  &#xA;- storage.buckets.getIamPolicy &#xe2;&#x20ac;&#x201d; Read bucket IAM policy.  &#xA;- storage.buckets.create &#xe2;&#x20ac;&#x201d; Create bucket.  &#xA;- storage.buckets.list &#xe2;&#x20ac;&#x201d; List buckets.  &#xA;- storage.buckets.setIamPolicy &#xe2;&#x20ac;&#x201d; Update bucket IAM policy.  &#xA;- storage.buckets.update &#xe2;&#x20ac;&#x201d; Update bucket metadata.  &#xA;- storage.objects.delete &#xe2;&#x20ac;&#x201d; Delete object.  &#xA;- storage.objects.get &#xe2;&#x20ac;&#x201d; Read object data and metadata.  &#xA;- storage.objects.getIamPolicy &#xe2;&#x20ac;&#x201d; Read object IAM policy.  &#xA;- storage.objects.create &#xe2;&#x20ac;&#x201d; Create object.  &#xA;- storage.objects.list &#xe2;&#x20ac;&#x201d; List objects.  &#xA;- storage.objects.setIamPolicy &#xe2;&#x20ac;&#x201d; Update object IAM policy.  &#xA;- storage.objects.update &#xe2;&#x20ac;&#x201d; Update object metadata." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:EnumerationType" name="Projection" documentation="Set of properties to return. Defaults to noAcl.">
     <literals name="full" documentation="Include all properties."/>
     <literals name="noAcl" documentation="Omit owner, acl and defaultObjectAcl properties."/>

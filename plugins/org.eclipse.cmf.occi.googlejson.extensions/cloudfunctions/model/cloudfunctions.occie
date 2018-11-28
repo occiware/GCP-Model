@@ -14,7 +14,7 @@
     <attributes name="versionId" required="true" description="Version id of the function created or updated by an API call.&#xA;This field is only pupulated for Create and Update operations.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="request" required="true" description="The original request that started the operation." type="//@types.3"/>
+    <attributes name="request" required="true" description="The original request that started the operation." type="//@types.6"/>
     <attributes name="type" required="true" description="Type of operation.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -30,11 +30,11 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Operation" scheme="http://occi/gcpcloudfunctions#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
-    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.3"/>
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.6"/>
     <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.3"/>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.6"/>
     <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -63,7 +63,7 @@
     <attributes name="versionId" required="true" description="Version id of the function created or updated by an API call.&#xA;This field is only pupulated for Create and Update operations.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="request" required="true" description="The original request that started the operation." type="//@types.3"/>
+    <attributes name="request" required="true" description="The original request that started the operation." type="//@types.6"/>
     <attributes name="type" required="true" description="Type of operation.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -79,7 +79,7 @@
     <attributes name="message" required="true" description="A developer-facing error message, which should be in English. Any&#xA;user-facing error message should be localized and sent in the&#xA;google.rpc.Status.details field, or localized by the client.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.2"/>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="SourceRepository" scheme="http://occi/gcpcloudfunctions#" title="Describes SourceRepository, used to represent parameters related to&#xA;source repository where a function is hosted.">
@@ -116,7 +116,7 @@
     <attributes name="entryPoint" required="true" description="The name of the function (as defined in source code) that will be&#xA;executed. Defaults to the resource name suffix, if not specified. For&#xA;backward compatibility, if function with given name is not found, then the&#xA;system will try to use function named &quot;function&quot;.&#xA;For Node.js this is name of a function exported by the module specified&#xA;in `source_location`.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="labels" required="true" description="Labels associated with this Cloud Function." type="//@types.3"/>
+    <attributes name="labels" required="true" description="Labels associated with this Cloud Function." type="//@types.6"/>
     <attributes name="updateTime" required="true" description="Output only. The last update timestamp of a Cloud Function.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -153,8 +153,8 @@
     <attributes name="locationId" required="true" description="The canonical id for this location. For example: `&quot;us-east1&quot;`.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="metadata" required="true" description="Service-specific metadata. For example the available capacity at the given&#xA;location." type="//@types.3"/>
-    <attributes name="labels" required="true" description="Cross-service attributes for the location. For example&#xA;&#xA;    {&quot;cloud.googleapis.com/region&quot;: &quot;us-east1&quot;}" type="//@types.3"/>
+    <attributes name="metadata" required="true" description="Service-specific metadata. For example the available capacity at the given&#xA;location." type="//@types.6"/>
+    <attributes name="labels" required="true" description="Cross-service attributes for the location. For example&#xA;&#xA;    {&quot;cloud.googleapis.com/region&quot;: &quot;us-east1&quot;}" type="//@types.6"/>
     <attributes name="name" required="true" description="Resource name for the location, which may vary between implementations.&#xA;For example: `&quot;projects/example-project/locations/us-east1&quot;`">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -176,7 +176,7 @@
     <attributes name="nextPageToken" required="true" description="The standard List next-page token.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.2"/>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="GenerateUploadUrlResponse" scheme="http://occi/gcpcloudfunctions#" title="Response of `GenerateSourceUploadUrl` method.">
@@ -186,7 +186,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListFunctionsResponse" scheme="http://occi/gcpcloudfunctions#" title="Response for the `ListFunctions` method.">
-    <attributes name="functions" required="true" description="The functions that match the request." type="//@types.2"/>
+    <attributes name="functions" required="true" description="The functions that match the request." type="//@types.5"/>
     <attributes name="nextPageToken" required="true" description="If not empty, indicates that there may be more functions that match&#xA;the request; this value should be passed in a new&#xA;google.cloud.functions.v1.ListFunctionsRequest&#xA;to get more functions.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -205,7 +205,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListLocationsResponse" scheme="http://occi/gcpcloudfunctions#" title="The response message for Locations.ListLocations.">
-    <attributes name="locations" required="true" description="A list of locations that matches the specified filter in the request." type="//@types.2"/>
+    <attributes name="locations" required="true" description="A list of locations that matches the specified filter in the request." type="//@types.5"/>
     <attributes name="nextPageToken" required="true" description="The standard List next-page token.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -227,14 +227,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:EnumerationType" name="Type" documentation="Type of operation.">
     <literals name="OPERATION_UNSPECIFIED" documentation="Unknown operation type."/>
     <literals name="CREATE_FUNCTION" documentation="Triggered by CreateFunction call"/>

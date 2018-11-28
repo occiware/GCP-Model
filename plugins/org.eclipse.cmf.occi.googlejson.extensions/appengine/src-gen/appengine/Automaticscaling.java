@@ -53,7 +53,6 @@ public interface Automaticscaling extends Resource {
 	 * @see #setMinPendingLatency(String)
 	 * @see appengine.AppenginePackage#getAutomaticscaling_MinPendingLatency()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Automaticscaling!minPendingLatency'"
 	 * @generated
 	 */
 	String getMinPendingLatency();
@@ -79,7 +78,6 @@ public interface Automaticscaling extends Resource {
 	 * @see #setMaxIdleInstances(Integer)
 	 * @see appengine.AppenginePackage#getAutomaticscaling_MaxIdleInstances()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Automaticscaling!maxIdleInstances'"
 	 * @generated
 	 */
 	Integer getMaxIdleInstances();
@@ -105,7 +103,6 @@ public interface Automaticscaling extends Resource {
 	 * @see #setMinIdleInstances(Integer)
 	 * @see appengine.AppenginePackage#getAutomaticscaling_MinIdleInstances()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Automaticscaling!minIdleInstances'"
 	 * @generated
 	 */
 	Integer getMinIdleInstances();
@@ -131,7 +128,6 @@ public interface Automaticscaling extends Resource {
 	 * @see #setMaxTotalInstances(Integer)
 	 * @see appengine.AppenginePackage#getAutomaticscaling_MaxTotalInstances()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Automaticscaling!maxTotalInstances'"
 	 * @generated
 	 */
 	Integer getMaxTotalInstances();
@@ -157,7 +153,6 @@ public interface Automaticscaling extends Resource {
 	 * @see #setMinTotalInstances(Integer)
 	 * @see appengine.AppenginePackage#getAutomaticscaling_MinTotalInstances()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Automaticscaling!minTotalInstances'"
 	 * @generated
 	 */
 	Integer getMinTotalInstances();
@@ -183,7 +178,6 @@ public interface Automaticscaling extends Resource {
 	 * @see #setMaxConcurrentRequests(Integer)
 	 * @see appengine.AppenginePackage#getAutomaticscaling_MaxConcurrentRequests()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Automaticscaling!maxConcurrentRequests'"
 	 * @generated
 	 */
 	Integer getMaxConcurrentRequests();
@@ -209,7 +203,6 @@ public interface Automaticscaling extends Resource {
 	 * @see #setCoolDownPeriod(String)
 	 * @see appengine.AppenginePackage#getAutomaticscaling_CoolDownPeriod()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Automaticscaling!coolDownPeriod'"
 	 * @generated
 	 */
 	String getCoolDownPeriod();
@@ -235,7 +228,6 @@ public interface Automaticscaling extends Resource {
 	 * @see #setMaxPendingLatency(String)
 	 * @see appengine.AppenginePackage#getAutomaticscaling_MaxPendingLatency()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Automaticscaling!maxPendingLatency'"
 	 * @generated
 	 */
 	String getMaxPendingLatency();

@@ -50,7 +50,6 @@ public interface Apiconfighandler extends Resource {
 	 * @see #setSecurityLevel(String)
 	 * @see appengine.AppenginePackage#getApiconfighandler_SecurityLevel()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Apiconfighandler!securityLevel'"
 	 * @generated
 	 */
 	String getSecurityLevel();
@@ -76,7 +75,6 @@ public interface Apiconfighandler extends Resource {
 	 * @see #setAuthFailAction(String)
 	 * @see appengine.AppenginePackage#getApiconfighandler_AuthFailAction()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Apiconfighandler!authFailAction'"
 	 * @generated
 	 */
 	String getAuthFailAction();
@@ -102,7 +100,6 @@ public interface Apiconfighandler extends Resource {
 	 * @see #setScript(String)
 	 * @see appengine.AppenginePackage#getApiconfighandler_Script()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Apiconfighandler!script'"
 	 * @generated
 	 */
 	String getScript();
@@ -128,7 +125,6 @@ public interface Apiconfighandler extends Resource {
 	 * @see #setLogin(String)
 	 * @see appengine.AppenginePackage#getApiconfighandler_Login()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Apiconfighandler!login'"
 	 * @generated
 	 */
 	String getLogin();
@@ -154,7 +150,6 @@ public interface Apiconfighandler extends Resource {
 	 * @see #setUrl(String)
 	 * @see appengine.AppenginePackage#getApiconfighandler_Url()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Apiconfighandler!url'"
 	 * @generated
 	 */
 	String getUrl();

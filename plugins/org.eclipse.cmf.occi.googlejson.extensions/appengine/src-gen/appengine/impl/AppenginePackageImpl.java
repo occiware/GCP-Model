@@ -12,23 +12,122 @@
  */
 package appengine.impl;
 
+import appengine.Action;
+import appengine.ApiConfigHandlerAuthfailaction;
+import appengine.ApiConfigHandlerLogin;
+import appengine.ApiConfigHandlerSecuritylevel;
+import appengine.Apiconfighandler;
+import appengine.Apiconfighandlerlink;
+import appengine.Apiendpointhandler;
+import appengine.Apiendpointhandlerlink;
 import appengine.AppengineFactory;
 import appengine.AppenginePackage;
+import appengine.Application;
+import appengine.Authfailaction;
+import appengine.Authorizedcertificate;
+import appengine.Authorizeddomain;
+import appengine.Automaticscaling;
+import appengine.Automaticscalinglink;
+import appengine.Availability;
+import appengine.Basicscaling;
+import appengine.Basicscalinglink;
+import appengine.Batchupdateingressrulesrequest;
+import appengine.Batchupdateingressrulesresponse;
+import appengine.Certificaterawdata;
+import appengine.Certificaterawdatalink;
+import appengine.Containerinfo;
+import appengine.Containerinfolink;
+import appengine.Cpuutilization;
+import appengine.Cpuutilizationlink;
+import appengine.Debuginstancerequest;
+import appengine.Deployment;
+import appengine.Deploymentlink;
+import appengine.Diskutilization;
+import appengine.Diskutilizationlink;
+import appengine.Domainmapping;
+import appengine.Empty;
+import appengine.Endpointsapiservice;
+import appengine.Endpointsapiservicelink;
+import appengine.Errorcode;
+import appengine.Errorhandler;
+import appengine.Featuresettings;
+import appengine.Featuresettingslink;
+import appengine.Fileinfo;
+import appengine.Firewallrule;
+import appengine.Healthcheck;
+import appengine.Healthchecklink;
+import appengine.Identityawareproxy;
+import appengine.Identityawareproxylink;
+import appengine.Instance;
+import appengine.Library;
+import appengine.Listauthorizedcertificatesresponse;
+import appengine.Listauthorizeddomainsresponse;
+import appengine.Listdomainmappingsresponse;
+import appengine.Listingressrulesresponse;
+import appengine.Listinstancesresponse;
+import appengine.Listlocationsresponse;
+import appengine.Listoperationsresponse;
+import appengine.Listservicesresponse;
+import appengine.Listversionsresponse;
+import appengine.Livenesscheck;
+import appengine.Livenesschecklink;
+import appengine.Location;
+import appengine.Locationmetadata;
+import appengine.Login;
+import appengine.Manualscaling;
+import appengine.Manualscalinglink;
+import appengine.Network;
+import appengine.Networklink;
+import appengine.Networkutilization;
+import appengine.Networkutilizationlink;
+import appengine.Operation;
+import appengine.Operationmetadata;
+import appengine.Operationmetadataexperimental;
+import appengine.Operationmetadatav1;
+import appengine.Operationmetadatav1alpha;
+import appengine.Operationmetadatav1beta;
+import appengine.Operationmetadatav1beta5;
+import appengine.Readinesscheck;
+import appengine.Readinesschecklink;
+import appengine.Redirecthttpresponsecode;
+import appengine.Repairapplicationrequest;
+import appengine.Requestutilization;
+import appengine.Requestutilizationlink;
+import appengine.Resourcerecord;
+import appengine.Resources;
+import appengine.Resourceslink;
+import appengine.Scripthandler;
+import appengine.Scripthandlerlink;
+import appengine.Securitylevel;
+import appengine.Service;
+import appengine.Servingstatus;
+import appengine.Shardby;
+import appengine.Sslsettings;
+import appengine.Sslsettingslink;
+import appengine.Staticfileshandler;
+import appengine.Staticfileshandlerlink;
+import appengine.Status;
+import appengine.Statuslink;
+import appengine.Trafficsplit;
+import appengine.Trafficsplitlink;
+import appengine.Type;
+import appengine.Urldispatchrule;
+import appengine.Urlmap;
+import appengine.Version;
+import appengine.VersionServingstatus;
+import appengine.Volume;
+import appengine.Zipinfo;
+import appengine.Zipinfolink;
+import appengine.array;
 
 import appengine.util.AppengineValidator;
 
-import java.io.IOException;
-
-import java.net.URL;
+import java.util.Map;
 
 import org.eclipse.cmf.occi.core.OCCIPackage;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.common.util.WrappedException;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
@@ -38,10 +137,6 @@ import org.eclipse.emf.ecore.EValidator;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.eclipse.emf.ecore.resource.Resource;
-
-import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -49,13 +144,6 @@ import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
  * @generated
  */
 public class AppenginePackageImpl extends EPackageImpl implements AppenginePackage {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected String packageFilename = "appengine.ecore";
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -796,6 +884,13 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType floatEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType byteEDataType = null;
 
 	/**
@@ -810,14 +905,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType floatEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType anyEDataType = null;
+	private EDataType objectEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -831,13 +919,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType shortEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EDataType mapEDataType = null;
 
 	/**
@@ -845,7 +926,14 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType objectEDataType = null;
+	private EDataType anyEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType shortEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -881,6 +969,8 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
+	 * @see #createPackageContents()
+	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static AppenginePackage init() {
@@ -894,11 +984,11 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 		// Initialize simple dependencies
 		OCCIPackage.eINSTANCE.eClass();
 
-		// Load packages
-		theAppenginePackage.loadPackage();
+		// Create package meta-data objects
+		theAppenginePackage.createPackageContents();
 
-		// Fix loaded packages
-		theAppenginePackage.fixPackageContents();
+		// Initialize created meta-data
+		theAppenginePackage.initializePackageContents();
 
 		// Register package validator
 		EValidator.Registry.INSTANCE.put
@@ -924,9 +1014,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getarray() {
-		if (arrayEClass == null) {
-			arrayEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(5);
-		}
 		return arrayEClass;
 	}
 
@@ -936,7 +1023,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getarray_Values() {
-        return (EAttribute)getarray().getEStructuralFeatures().get(0);
+		return (EAttribute)arrayEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -945,9 +1032,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getCpuutilization() {
-		if (cpuutilizationEClass == null) {
-			cpuutilizationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(23);
-		}
 		return cpuutilizationEClass;
 	}
 
@@ -957,7 +1041,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getCpuutilization_AggregationWindowLength() {
-        return (EAttribute)getCpuutilization().getEStructuralFeatures().get(0);
+		return (EAttribute)cpuutilizationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -966,7 +1050,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getCpuutilization_TargetUtilization() {
-        return (EAttribute)getCpuutilization().getEStructuralFeatures().get(1);
+		return (EAttribute)cpuutilizationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -975,9 +1059,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getStatus() {
-		if (statusEClass == null) {
-			statusEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(24);
-		}
 		return statusEClass;
 	}
 
@@ -987,7 +1068,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getStatus_Details() {
-        return (EReference)getStatus().getEStructuralFeatures().get(0);
+		return (EReference)statusEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -996,7 +1077,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getStatus_Code() {
-        return (EAttribute)getStatus().getEStructuralFeatures().get(1);
+		return (EAttribute)statusEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1005,7 +1086,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getStatus_Message() {
-        return (EAttribute)getStatus().getEStructuralFeatures().get(2);
+		return (EAttribute)statusEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1014,9 +1095,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getIdentityawareproxy() {
-		if (identityawareproxyEClass == null) {
-			identityawareproxyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(25);
-		}
 		return identityawareproxyEClass;
 	}
 
@@ -1026,7 +1104,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getIdentityawareproxy_Oauth2ClientSecret() {
-        return (EAttribute)getIdentityawareproxy().getEStructuralFeatures().get(0);
+		return (EAttribute)identityawareproxyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1035,7 +1113,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getIdentityawareproxy_Oauth2ClientId() {
-        return (EAttribute)getIdentityawareproxy().getEStructuralFeatures().get(1);
+		return (EAttribute)identityawareproxyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1044,7 +1122,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getIdentityawareproxy_Oauth2ClientSecretSha256() {
-        return (EAttribute)getIdentityawareproxy().getEStructuralFeatures().get(2);
+		return (EAttribute)identityawareproxyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1053,7 +1131,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getIdentityawareproxy_Enabled() {
-        return (EAttribute)getIdentityawareproxy().getEStructuralFeatures().get(3);
+		return (EAttribute)identityawareproxyEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1062,9 +1140,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getManualscaling() {
-		if (manualscalingEClass == null) {
-			manualscalingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(26);
-		}
 		return manualscalingEClass;
 	}
 
@@ -1074,7 +1149,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getManualscaling_Instances() {
-        return (EAttribute)getManualscaling().getEStructuralFeatures().get(0);
+		return (EAttribute)manualscalingEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1083,9 +1158,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getLocationmetadata() {
-		if (locationmetadataEClass == null) {
-			locationmetadataEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(27);
-		}
 		return locationmetadataEClass;
 	}
 
@@ -1095,7 +1167,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLocationmetadata_FlexibleEnvironmentAvailable() {
-        return (EAttribute)getLocationmetadata().getEStructuralFeatures().get(0);
+		return (EAttribute)locationmetadataEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1104,7 +1176,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLocationmetadata_StandardEnvironmentAvailable() {
-        return (EAttribute)getLocationmetadata().getEStructuralFeatures().get(1);
+		return (EAttribute)locationmetadataEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1113,9 +1185,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getTrafficsplitlink() {
-		if (trafficsplitlinkEClass == null) {
-			trafficsplitlinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(28);
-		}
 		return trafficsplitlinkEClass;
 	}
 
@@ -1124,28 +1193,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTrafficsplitlink__SourceConstraint__DiagnosticChain_Map() {
-        return getTrafficsplitlink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getTrafficsplitlink__TargetConstraint__DiagnosticChain_Map() {
-        return getTrafficsplitlink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getService() {
-		if (serviceEClass == null) {
-			serviceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(29);
-		}
 		return serviceEClass;
 	}
 
@@ -1155,7 +1203,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getService_Name() {
-        return (EAttribute)getService().getEStructuralFeatures().get(0);
+		return (EAttribute)serviceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1164,7 +1212,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getService__Delete__String_String() {
-        return getService().getEOperations().get(0);
+		return serviceEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1173,7 +1221,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getService__List__String_String_Integer() {
-        return getService().getEOperations().get(1);
+		return serviceEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -1182,7 +1230,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getService__Get__String_String() {
-        return getService().getEOperations().get(2);
+		return serviceEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -1191,7 +1239,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getService__Patch__String_String_String_boolean() {
-        return getService().getEOperations().get(3);
+		return serviceEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -1200,9 +1248,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getListoperationsresponse() {
-		if (listoperationsresponseEClass == null) {
-			listoperationsresponseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(30);
-		}
 		return listoperationsresponseEClass;
 	}
 
@@ -1212,7 +1257,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getListoperationsresponse_NextPageToken() {
-        return (EAttribute)getListoperationsresponse().getEStructuralFeatures().get(0);
+		return (EAttribute)listoperationsresponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1221,7 +1266,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getListoperationsresponse_Operations() {
-        return (EReference)getListoperationsresponse().getEStructuralFeatures().get(1);
+		return (EReference)listoperationsresponseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1230,9 +1275,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getOperationmetadata() {
-		if (operationmetadataEClass == null) {
-			operationmetadataEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(31);
-		}
 		return operationmetadataEClass;
 	}
 
@@ -1242,7 +1284,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadata_User() {
-        return (EAttribute)getOperationmetadata().getEStructuralFeatures().get(0);
+		return (EAttribute)operationmetadataEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1251,7 +1293,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadata_Target() {
-        return (EAttribute)getOperationmetadata().getEStructuralFeatures().get(1);
+		return (EAttribute)operationmetadataEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1260,7 +1302,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadata_Method() {
-        return (EAttribute)getOperationmetadata().getEStructuralFeatures().get(2);
+		return (EAttribute)operationmetadataEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1269,7 +1311,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadata_EndTime() {
-        return (EAttribute)getOperationmetadata().getEStructuralFeatures().get(3);
+		return (EAttribute)operationmetadataEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1278,7 +1320,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadata_OperationType() {
-        return (EAttribute)getOperationmetadata().getEStructuralFeatures().get(4);
+		return (EAttribute)operationmetadataEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1287,7 +1329,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadata_InsertTime() {
-        return (EAttribute)getOperationmetadata().getEStructuralFeatures().get(5);
+		return (EAttribute)operationmetadataEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1296,9 +1338,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getFirewallrule() {
-		if (firewallruleEClass == null) {
-			firewallruleEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(32);
-		}
 		return firewallruleEClass;
 	}
 
@@ -1308,7 +1347,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getFirewallrule_SourceRange() {
-        return (EAttribute)getFirewallrule().getEStructuralFeatures().get(0);
+		return (EAttribute)firewallruleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1317,7 +1356,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getFirewallrule_Priority() {
-        return (EAttribute)getFirewallrule().getEStructuralFeatures().get(1);
+		return (EAttribute)firewallruleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1326,7 +1365,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getFirewallrule_Action() {
-        return (EAttribute)getFirewallrule().getEStructuralFeatures().get(2);
+		return (EAttribute)firewallruleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1335,7 +1374,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getFirewallrule_Description() {
-        return (EAttribute)getFirewallrule().getEStructuralFeatures().get(3);
+		return (EAttribute)firewallruleEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1344,7 +1383,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getFirewallrule__Get__String_String() {
-        return getFirewallrule().getEOperations().get(0);
+		return firewallruleEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1353,7 +1392,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getFirewallrule__Patch__String_String_String() {
-        return getFirewallrule().getEOperations().get(1);
+		return firewallruleEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -1362,7 +1401,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getFirewallrule__Batchupdate__String() {
-        return getFirewallrule().getEOperations().get(2);
+		return firewallruleEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -1371,7 +1410,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getFirewallrule__Delete__String_String() {
-        return getFirewallrule().getEOperations().get(3);
+		return firewallruleEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -1380,7 +1419,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getFirewallrule__List__Integer_String_String_String() {
-        return getFirewallrule().getEOperations().get(4);
+		return firewallruleEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -1389,7 +1428,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getFirewallrule__Create__String() {
-        return getFirewallrule().getEOperations().get(5);
+		return firewallruleEClass.getEOperations().get(5);
 	}
 
 	/**
@@ -1398,9 +1437,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getListauthorizedcertificatesresponse() {
-		if (listauthorizedcertificatesresponseEClass == null) {
-			listauthorizedcertificatesresponseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(33);
-		}
 		return listauthorizedcertificatesresponseEClass;
 	}
 
@@ -1410,7 +1446,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getListauthorizedcertificatesresponse_Certificates() {
-        return (EReference)getListauthorizedcertificatesresponse().getEStructuralFeatures().get(0);
+		return (EReference)listauthorizedcertificatesresponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1419,7 +1455,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getListauthorizedcertificatesresponse_NextPageToken() {
-        return (EAttribute)getListauthorizedcertificatesresponse().getEStructuralFeatures().get(1);
+		return (EAttribute)listauthorizedcertificatesresponseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1428,9 +1464,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getFeaturesettings() {
-		if (featuresettingsEClass == null) {
-			featuresettingsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(34);
-		}
 		return featuresettingsEClass;
 	}
 
@@ -1440,7 +1473,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getFeaturesettings_SplitHealthChecks() {
-        return (EAttribute)getFeaturesettings().getEStructuralFeatures().get(0);
+		return (EAttribute)featuresettingsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1449,9 +1482,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getErrorhandler() {
-		if (errorhandlerEClass == null) {
-			errorhandlerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(35);
-		}
 		return errorhandlerEClass;
 	}
 
@@ -1461,7 +1491,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getErrorhandler_ErrorCode() {
-        return (EAttribute)getErrorhandler().getEStructuralFeatures().get(0);
+		return (EAttribute)errorhandlerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1470,7 +1500,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getErrorhandler_MimeType() {
-        return (EAttribute)getErrorhandler().getEStructuralFeatures().get(1);
+		return (EAttribute)errorhandlerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1479,7 +1509,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getErrorhandler_StaticFile() {
-        return (EAttribute)getErrorhandler().getEStructuralFeatures().get(2);
+		return (EAttribute)errorhandlerEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1488,9 +1518,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getSslsettings() {
-		if (sslsettingsEClass == null) {
-			sslsettingsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(36);
-		}
 		return sslsettingsEClass;
 	}
 
@@ -1500,7 +1527,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getSslsettings_CertificateId() {
-        return (EAttribute)getSslsettings().getEStructuralFeatures().get(0);
+		return (EAttribute)sslsettingsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1509,9 +1536,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getOperationmetadatav1() {
-		if (operationmetadatav1EClass == null) {
-			operationmetadatav1EClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(37);
-		}
 		return operationmetadatav1EClass;
 	}
 
@@ -1521,7 +1545,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getOperationmetadatav1_Warning() {
-        return (EReference)getOperationmetadatav1().getEStructuralFeatures().get(0);
+		return (EReference)operationmetadatav1EClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1530,7 +1554,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1_InsertTime() {
-        return (EAttribute)getOperationmetadatav1().getEStructuralFeatures().get(1);
+		return (EAttribute)operationmetadatav1EClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1539,7 +1563,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1_Target() {
-        return (EAttribute)getOperationmetadatav1().getEStructuralFeatures().get(2);
+		return (EAttribute)operationmetadatav1EClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1548,7 +1572,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1_User() {
-        return (EAttribute)getOperationmetadatav1().getEStructuralFeatures().get(3);
+		return (EAttribute)operationmetadatav1EClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1557,7 +1581,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1_EphemeralMessage() {
-        return (EAttribute)getOperationmetadatav1().getEStructuralFeatures().get(4);
+		return (EAttribute)operationmetadatav1EClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1566,7 +1590,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1_Method() {
-        return (EAttribute)getOperationmetadatav1().getEStructuralFeatures().get(5);
+		return (EAttribute)operationmetadatav1EClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1575,7 +1599,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1_EndTime() {
-        return (EAttribute)getOperationmetadatav1().getEStructuralFeatures().get(6);
+		return (EAttribute)operationmetadatav1EClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1584,9 +1608,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getFeaturesettingslink() {
-		if (featuresettingslinkEClass == null) {
-			featuresettingslinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(38);
-		}
 		return featuresettingslinkEClass;
 	}
 
@@ -1595,28 +1616,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getFeaturesettingslink__SourceConstraint__DiagnosticChain_Map() {
-        return getFeaturesettingslink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getFeaturesettingslink__TargetConstraint__DiagnosticChain_Map() {
-        return getFeaturesettingslink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getIdentityawareproxylink() {
-		if (identityawareproxylinkEClass == null) {
-			identityawareproxylinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(39);
-		}
 		return identityawareproxylinkEClass;
 	}
 
@@ -1625,28 +1625,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getIdentityawareproxylink__SourceConstraint__DiagnosticChain_Map() {
-        return getIdentityawareproxylink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getIdentityawareproxylink__TargetConstraint__DiagnosticChain_Map() {
-        return getIdentityawareproxylink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getApplication() {
-		if (applicationEClass == null) {
-			applicationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(40);
-		}
 		return applicationEClass;
 	}
 
@@ -1656,7 +1635,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getApplication_DispatchRules() {
-        return (EReference)getApplication().getEStructuralFeatures().get(0);
+		return (EReference)applicationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1665,7 +1644,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApplication_GcrDomain() {
-        return (EAttribute)getApplication().getEStructuralFeatures().get(1);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1674,7 +1653,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApplication_Name() {
-        return (EAttribute)getApplication().getEStructuralFeatures().get(2);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1683,7 +1662,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApplication_DefaultCookieExpiration() {
-        return (EAttribute)getApplication().getEStructuralFeatures().get(3);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1692,7 +1671,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApplication_LocationId() {
-        return (EAttribute)getApplication().getEStructuralFeatures().get(4);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1701,7 +1680,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApplication_ServingStatus() {
-        return (EAttribute)getApplication().getEStructuralFeatures().get(5);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1710,7 +1689,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApplication_DefaultHostname() {
-        return (EAttribute)getApplication().getEStructuralFeatures().get(6);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1719,7 +1698,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApplication_AuthDomain() {
-        return (EAttribute)getApplication().getEStructuralFeatures().get(7);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1728,7 +1707,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApplication_CodeBucket() {
-        return (EAttribute)getApplication().getEStructuralFeatures().get(8);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1737,7 +1716,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApplication_DefaultBucket() {
-        return (EAttribute)getApplication().getEStructuralFeatures().get(9);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1746,7 +1725,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getApplication__Repair__String() {
-        return getApplication().getEOperations().get(0);
+		return applicationEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1755,7 +1734,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getApplication__Get__String() {
-        return getApplication().getEOperations().get(1);
+		return applicationEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -1764,7 +1743,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getApplication__Patch__String_String() {
-        return getApplication().getEOperations().get(2);
+		return applicationEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -1773,7 +1752,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getApplication__Create() {
-        return getApplication().getEOperations().get(3);
+		return applicationEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -1782,9 +1761,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getNetwork() {
-		if (networkEClass == null) {
-			networkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(41);
-		}
 		return networkEClass;
 	}
 
@@ -1794,7 +1770,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getNetwork_Name() {
-        return (EAttribute)getNetwork().getEStructuralFeatures().get(0);
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1803,7 +1779,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getNetwork_ForwardedPorts() {
-        return (EReference)getNetwork().getEStructuralFeatures().get(1);
+		return (EReference)networkEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1812,7 +1788,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getNetwork_InstanceTag() {
-        return (EAttribute)getNetwork().getEStructuralFeatures().get(2);
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1821,7 +1797,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getNetwork_SubnetworkName() {
-        return (EAttribute)getNetwork().getEStructuralFeatures().get(3);
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1830,9 +1806,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getInstance() {
-		if (instanceEClass == null) {
-			instanceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(42);
-		}
 		return instanceEClass;
 	}
 
@@ -1842,7 +1815,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_AverageLatency() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(0);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1851,7 +1824,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_MemoryUsage() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(1);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1860,7 +1833,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_VmIp() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(2);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1869,7 +1842,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_Availability() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(3);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1878,7 +1851,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_VmStatus() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(4);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1887,7 +1860,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_Errors() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(5);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1896,7 +1869,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_StartTime() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(6);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1905,7 +1878,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_VmDebugEnabled() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(7);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1914,7 +1887,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_Requests() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(8);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1923,7 +1896,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_AppEngineRelease() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(9);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1932,7 +1905,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_VmName() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(10);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -1941,7 +1914,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_Qps() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(11);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1950,7 +1923,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_VmId() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(12);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -1959,7 +1932,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_VmZoneName() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(13);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -1968,7 +1941,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getInstance_Name() {
-        return (EAttribute)getInstance().getEStructuralFeatures().get(14);
+		return (EAttribute)instanceEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -1977,7 +1950,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getInstance__List__String_String_String_Integer_String() {
-        return getInstance().getEOperations().get(0);
+		return instanceEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1986,7 +1959,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getInstance__Get__String_String_String_String() {
-        return getInstance().getEOperations().get(1);
+		return instanceEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -1995,7 +1968,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getInstance__Debug__String_String_String_String() {
-        return getInstance().getEOperations().get(2);
+		return instanceEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -2004,7 +1977,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getInstance__Delete__String_String_String_String() {
-        return getInstance().getEOperations().get(3);
+		return instanceEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -2013,9 +1986,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getLivenesscheck() {
-		if (livenesscheckEClass == null) {
-			livenesscheckEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(43);
-		}
 		return livenesscheckEClass;
 	}
 
@@ -2025,7 +1995,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLivenesscheck_FailureThreshold() {
-        return (EAttribute)getLivenesscheck().getEStructuralFeatures().get(0);
+		return (EAttribute)livenesscheckEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2034,7 +2004,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLivenesscheck_Timeout() {
-        return (EAttribute)getLivenesscheck().getEStructuralFeatures().get(1);
+		return (EAttribute)livenesscheckEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2043,7 +2013,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLivenesscheck_InitialDelay() {
-        return (EAttribute)getLivenesscheck().getEStructuralFeatures().get(2);
+		return (EAttribute)livenesscheckEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2052,7 +2022,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLivenesscheck_Path() {
-        return (EAttribute)getLivenesscheck().getEStructuralFeatures().get(3);
+		return (EAttribute)livenesscheckEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2061,7 +2031,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLivenesscheck_Host() {
-        return (EAttribute)getLivenesscheck().getEStructuralFeatures().get(4);
+		return (EAttribute)livenesscheckEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2070,7 +2040,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLivenesscheck_SuccessThreshold() {
-        return (EAttribute)getLivenesscheck().getEStructuralFeatures().get(5);
+		return (EAttribute)livenesscheckEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2079,7 +2049,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLivenesscheck_CheckInterval() {
-        return (EAttribute)getLivenesscheck().getEStructuralFeatures().get(6);
+		return (EAttribute)livenesscheckEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2088,9 +2058,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getBatchupdateingressrulesrequest() {
-		if (batchupdateingressrulesrequestEClass == null) {
-			batchupdateingressrulesrequestEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(44);
-		}
 		return batchupdateingressrulesrequestEClass;
 	}
 
@@ -2100,7 +2067,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getBatchupdateingressrulesrequest_IngressRules() {
-        return (EReference)getBatchupdateingressrulesrequest().getEStructuralFeatures().get(0);
+		return (EReference)batchupdateingressrulesrequestEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2109,9 +2076,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getNetworkutilization() {
-		if (networkutilizationEClass == null) {
-			networkutilizationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(45);
-		}
 		return networkutilizationEClass;
 	}
 
@@ -2121,7 +2085,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getNetworkutilization_TargetSentPacketsPerSecond() {
-        return (EAttribute)getNetworkutilization().getEStructuralFeatures().get(0);
+		return (EAttribute)networkutilizationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2130,7 +2094,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getNetworkutilization_TargetReceivedBytesPerSecond() {
-        return (EAttribute)getNetworkutilization().getEStructuralFeatures().get(1);
+		return (EAttribute)networkutilizationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2139,7 +2103,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getNetworkutilization_TargetReceivedPacketsPerSecond() {
-        return (EAttribute)getNetworkutilization().getEStructuralFeatures().get(2);
+		return (EAttribute)networkutilizationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2148,7 +2112,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getNetworkutilization_TargetSentBytesPerSecond() {
-        return (EAttribute)getNetworkutilization().getEStructuralFeatures().get(3);
+		return (EAttribute)networkutilizationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2157,9 +2121,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getLocation() {
-		if (locationEClass == null) {
-			locationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(46);
-		}
 		return locationEClass;
 	}
 
@@ -2169,7 +2130,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLocation_Metadata() {
-        return (EAttribute)getLocation().getEStructuralFeatures().get(0);
+		return (EAttribute)locationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2178,7 +2139,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLocation_Labels() {
-        return (EAttribute)getLocation().getEStructuralFeatures().get(1);
+		return (EAttribute)locationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2187,7 +2148,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLocation_Name() {
-        return (EAttribute)getLocation().getEStructuralFeatures().get(2);
+		return (EAttribute)locationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2196,7 +2157,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLocation_LocationId() {
-        return (EAttribute)getLocation().getEStructuralFeatures().get(3);
+		return (EAttribute)locationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2205,7 +2166,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getLocation__List__Integer_String_String_String() {
-        return getLocation().getEOperations().get(0);
+		return locationEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -2214,7 +2175,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getLocation__Get__String_String() {
-        return getLocation().getEOperations().get(1);
+		return locationEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -2223,9 +2184,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getHealthcheck() {
-		if (healthcheckEClass == null) {
-			healthcheckEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(47);
-		}
 		return healthcheckEClass;
 	}
 
@@ -2235,7 +2193,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getHealthcheck_Timeout() {
-        return (EAttribute)getHealthcheck().getEStructuralFeatures().get(0);
+		return (EAttribute)healthcheckEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2244,7 +2202,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getHealthcheck_UnhealthyThreshold() {
-        return (EAttribute)getHealthcheck().getEStructuralFeatures().get(1);
+		return (EAttribute)healthcheckEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2253,7 +2211,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getHealthcheck_DisableHealthCheck() {
-        return (EAttribute)getHealthcheck().getEStructuralFeatures().get(2);
+		return (EAttribute)healthcheckEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2262,7 +2220,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getHealthcheck_Host() {
-        return (EAttribute)getHealthcheck().getEStructuralFeatures().get(3);
+		return (EAttribute)healthcheckEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2271,7 +2229,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getHealthcheck_HealthyThreshold() {
-        return (EAttribute)getHealthcheck().getEStructuralFeatures().get(4);
+		return (EAttribute)healthcheckEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2280,7 +2238,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getHealthcheck_RestartThreshold() {
-        return (EAttribute)getHealthcheck().getEStructuralFeatures().get(5);
+		return (EAttribute)healthcheckEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2289,7 +2247,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getHealthcheck_CheckInterval() {
-        return (EAttribute)getHealthcheck().getEStructuralFeatures().get(6);
+		return (EAttribute)healthcheckEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2298,9 +2256,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getReadinesscheck() {
-		if (readinesscheckEClass == null) {
-			readinesscheckEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(48);
-		}
 		return readinesscheckEClass;
 	}
 
@@ -2310,7 +2265,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getReadinesscheck_Path() {
-        return (EAttribute)getReadinesscheck().getEStructuralFeatures().get(0);
+		return (EAttribute)readinesscheckEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2319,7 +2274,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getReadinesscheck_Host() {
-        return (EAttribute)getReadinesscheck().getEStructuralFeatures().get(1);
+		return (EAttribute)readinesscheckEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2328,7 +2283,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getReadinesscheck_SuccessThreshold() {
-        return (EAttribute)getReadinesscheck().getEStructuralFeatures().get(2);
+		return (EAttribute)readinesscheckEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2337,7 +2292,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getReadinesscheck_CheckInterval() {
-        return (EAttribute)getReadinesscheck().getEStructuralFeatures().get(3);
+		return (EAttribute)readinesscheckEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2346,7 +2301,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getReadinesscheck_FailureThreshold() {
-        return (EAttribute)getReadinesscheck().getEStructuralFeatures().get(4);
+		return (EAttribute)readinesscheckEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2355,7 +2310,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getReadinesscheck_Timeout() {
-        return (EAttribute)getReadinesscheck().getEStructuralFeatures().get(5);
+		return (EAttribute)readinesscheckEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2364,7 +2319,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getReadinesscheck_AppStartTimeout() {
-        return (EAttribute)getReadinesscheck().getEStructuralFeatures().get(6);
+		return (EAttribute)readinesscheckEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2373,9 +2328,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getDebuginstancerequest() {
-		if (debuginstancerequestEClass == null) {
-			debuginstancerequestEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(49);
-		}
 		return debuginstancerequestEClass;
 	}
 
@@ -2385,7 +2337,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getDebuginstancerequest_SshKey() {
-        return (EAttribute)getDebuginstancerequest().getEStructuralFeatures().get(0);
+		return (EAttribute)debuginstancerequestEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2394,9 +2346,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getOperationmetadatav1beta5() {
-		if (operationmetadatav1beta5EClass == null) {
-			operationmetadatav1beta5EClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(50);
-		}
 		return operationmetadatav1beta5EClass;
 	}
 
@@ -2406,7 +2355,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta5_InsertTime() {
-        return (EAttribute)getOperationmetadatav1beta5().getEStructuralFeatures().get(0);
+		return (EAttribute)operationmetadatav1beta5EClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2415,7 +2364,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta5_EndTime() {
-        return (EAttribute)getOperationmetadatav1beta5().getEStructuralFeatures().get(1);
+		return (EAttribute)operationmetadatav1beta5EClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2424,7 +2373,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta5_User() {
-        return (EAttribute)getOperationmetadatav1beta5().getEStructuralFeatures().get(2);
+		return (EAttribute)operationmetadatav1beta5EClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2433,7 +2382,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta5_Target() {
-        return (EAttribute)getOperationmetadatav1beta5().getEStructuralFeatures().get(3);
+		return (EAttribute)operationmetadatav1beta5EClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2442,7 +2391,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta5_Method() {
-        return (EAttribute)getOperationmetadatav1beta5().getEStructuralFeatures().get(4);
+		return (EAttribute)operationmetadatav1beta5EClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2451,9 +2400,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getAutomaticscalinglink() {
-		if (automaticscalinglinkEClass == null) {
-			automaticscalinglinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(51);
-		}
 		return automaticscalinglinkEClass;
 	}
 
@@ -2462,28 +2408,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getAutomaticscalinglink__SourceConstraint__DiagnosticChain_Map() {
-        return getAutomaticscalinglink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAutomaticscalinglink__TargetConstraint__DiagnosticChain_Map() {
-        return getAutomaticscalinglink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getHealthchecklink() {
-		if (healthchecklinkEClass == null) {
-			healthchecklinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(52);
-		}
 		return healthchecklinkEClass;
 	}
 
@@ -2492,28 +2417,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getHealthchecklink__SourceConstraint__DiagnosticChain_Map() {
-        return getHealthchecklink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getHealthchecklink__TargetConstraint__DiagnosticChain_Map() {
-        return getHealthchecklink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getReadinesschecklink() {
-		if (readinesschecklinkEClass == null) {
-			readinesschecklinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(53);
-		}
 		return readinesschecklinkEClass;
 	}
 
@@ -2522,28 +2426,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getReadinesschecklink__SourceConstraint__DiagnosticChain_Map() {
-        return getReadinesschecklink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReadinesschecklink__TargetConstraint__DiagnosticChain_Map() {
-        return getReadinesschecklink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getManualscalinglink() {
-		if (manualscalinglinkEClass == null) {
-			manualscalinglinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(54);
-		}
 		return manualscalinglinkEClass;
 	}
 
@@ -2552,28 +2435,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getManualscalinglink__SourceConstraint__DiagnosticChain_Map() {
-        return getManualscalinglink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getManualscalinglink__TargetConstraint__DiagnosticChain_Map() {
-        return getManualscalinglink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getApiconfighandlerlink() {
-		if (apiconfighandlerlinkEClass == null) {
-			apiconfighandlerlinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(55);
-		}
 		return apiconfighandlerlinkEClass;
 	}
 
@@ -2582,28 +2444,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getApiconfighandlerlink__SourceConstraint__DiagnosticChain_Map() {
-        return getApiconfighandlerlink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getApiconfighandlerlink__TargetConstraint__DiagnosticChain_Map() {
-        return getApiconfighandlerlink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getEndpointsapiservicelink() {
-		if (endpointsapiservicelinkEClass == null) {
-			endpointsapiservicelinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(56);
-		}
 		return endpointsapiservicelinkEClass;
 	}
 
@@ -2612,28 +2453,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEndpointsapiservicelink__SourceConstraint__DiagnosticChain_Map() {
-        return getEndpointsapiservicelink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getEndpointsapiservicelink__TargetConstraint__DiagnosticChain_Map() {
-        return getEndpointsapiservicelink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDeploymentlink() {
-		if (deploymentlinkEClass == null) {
-			deploymentlinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(57);
-		}
 		return deploymentlinkEClass;
 	}
 
@@ -2642,28 +2462,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDeploymentlink__SourceConstraint__DiagnosticChain_Map() {
-        return getDeploymentlink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getDeploymentlink__TargetConstraint__DiagnosticChain_Map() {
-        return getDeploymentlink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getResourceslink() {
-		if (resourceslinkEClass == null) {
-			resourceslinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(58);
-		}
 		return resourceslinkEClass;
 	}
 
@@ -2672,28 +2471,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getResourceslink__SourceConstraint__DiagnosticChain_Map() {
-        return getResourceslink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getResourceslink__TargetConstraint__DiagnosticChain_Map() {
-        return getResourceslink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getBasicscalinglink() {
-		if (basicscalinglinkEClass == null) {
-			basicscalinglinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(59);
-		}
 		return basicscalinglinkEClass;
 	}
 
@@ -2702,28 +2480,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getBasicscalinglink__SourceConstraint__DiagnosticChain_Map() {
-        return getBasicscalinglink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getBasicscalinglink__TargetConstraint__DiagnosticChain_Map() {
-        return getBasicscalinglink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getLivenesschecklink() {
-		if (livenesschecklinkEClass == null) {
-			livenesschecklinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(60);
-		}
 		return livenesschecklinkEClass;
 	}
 
@@ -2732,28 +2489,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getLivenesschecklink__SourceConstraint__DiagnosticChain_Map() {
-        return getLivenesschecklink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getLivenesschecklink__TargetConstraint__DiagnosticChain_Map() {
-        return getLivenesschecklink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getNetworklink() {
-		if (networklinkEClass == null) {
-			networklinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(61);
-		}
 		return networklinkEClass;
 	}
 
@@ -2762,28 +2498,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getNetworklink__SourceConstraint__DiagnosticChain_Map() {
-        return getNetworklink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getNetworklink__TargetConstraint__DiagnosticChain_Map() {
-        return getNetworklink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getVersion() {
-		if (versionEClass == null) {
-			versionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(62);
-		}
 		return versionEClass;
 	}
 
@@ -2793,7 +2508,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_Env() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(0);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2802,7 +2517,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getVersion_Handlers() {
-        return (EReference)getVersion().getEStructuralFeatures().get(1);
+		return (EReference)versionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2811,7 +2526,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_DiskUsageBytes() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(2);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2820,7 +2535,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_Threadsafe() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(3);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2829,7 +2544,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_Name() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(4);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2838,7 +2553,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_Vm() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(5);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2847,7 +2562,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_VersionUrl() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(6);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2856,7 +2571,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_InstanceClass() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(7);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -2865,7 +2580,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_ServingStatus() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(8);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -2874,7 +2589,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_RuntimeApiVersion() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(9);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -2883,7 +2598,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_CreateTime() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(10);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -2892,7 +2607,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getVersion_InboundServices() {
-        return (EReference)getVersion().getEStructuralFeatures().get(11);
+		return (EReference)versionEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -2901,7 +2616,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getVersion_ErrorHandlers() {
-        return (EReference)getVersion().getEStructuralFeatures().get(12);
+		return (EReference)versionEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -2910,7 +2625,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_DefaultExpiration() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(13);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -2919,7 +2634,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getVersion_Libraries() {
-        return (EReference)getVersion().getEStructuralFeatures().get(14);
+		return (EReference)versionEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -2928,7 +2643,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_NobuildFilesRegex() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(15);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -2937,7 +2652,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_Runtime() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(16);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -2946,7 +2661,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_CreatedBy() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(17);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -2955,7 +2670,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_EnvVariables() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(18);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -2964,7 +2679,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVersion_BetaSettings() {
-        return (EAttribute)getVersion().getEStructuralFeatures().get(19);
+		return (EAttribute)versionEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -2973,7 +2688,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getVersion__Delete__String_String_String() {
-        return getVersion().getEOperations().get(0);
+		return versionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -2982,7 +2697,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getVersion__List__Integer_String_String_String_String() {
-        return getVersion().getEOperations().get(1);
+		return versionEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -2991,7 +2706,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getVersion__Get__String_String_String_String() {
-        return getVersion().getEOperations().get(2);
+		return versionEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -3000,7 +2715,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getVersion__Patch__String_String_String_String() {
-        return getVersion().getEOperations().get(3);
+		return versionEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -3009,7 +2724,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getVersion__Create__String_String() {
-        return getVersion().getEOperations().get(4);
+		return versionEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -3018,9 +2733,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getRepairapplicationrequest() {
-		if (repairapplicationrequestEClass == null) {
-			repairapplicationrequestEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(63);
-		}
 		return repairapplicationrequestEClass;
 	}
 
@@ -3030,9 +2742,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getCertificaterawdata() {
-		if (certificaterawdataEClass == null) {
-			certificaterawdataEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(64);
-		}
 		return certificaterawdataEClass;
 	}
 
@@ -3042,7 +2751,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getCertificaterawdata_PublicCertificate() {
-        return (EAttribute)getCertificaterawdata().getEStructuralFeatures().get(0);
+		return (EAttribute)certificaterawdataEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3051,7 +2760,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getCertificaterawdata_PrivateKey() {
-        return (EAttribute)getCertificaterawdata().getEStructuralFeatures().get(1);
+		return (EAttribute)certificaterawdataEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3060,9 +2769,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getFileinfo() {
-		if (fileinfoEClass == null) {
-			fileinfoEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(65);
-		}
 		return fileinfoEClass;
 	}
 
@@ -3072,7 +2778,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getFileinfo_SourceUrl() {
-        return (EAttribute)getFileinfo().getEStructuralFeatures().get(0);
+		return (EAttribute)fileinfoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3081,7 +2787,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getFileinfo_Sha1Sum() {
-        return (EAttribute)getFileinfo().getEStructuralFeatures().get(1);
+		return (EAttribute)fileinfoEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3090,7 +2796,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getFileinfo_MimeType() {
-        return (EAttribute)getFileinfo().getEStructuralFeatures().get(2);
+		return (EAttribute)fileinfoEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3099,9 +2805,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getScripthandler() {
-		if (scripthandlerEClass == null) {
-			scripthandlerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(66);
-		}
 		return scripthandlerEClass;
 	}
 
@@ -3111,7 +2814,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getScripthandler_ScriptPath() {
-        return (EAttribute)getScripthandler().getEStructuralFeatures().get(0);
+		return (EAttribute)scripthandlerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3120,9 +2823,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getOperationmetadataexperimental() {
-		if (operationmetadataexperimentalEClass == null) {
-			operationmetadataexperimentalEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(67);
-		}
 		return operationmetadataexperimentalEClass;
 	}
 
@@ -3132,7 +2832,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadataexperimental_User() {
-        return (EAttribute)getOperationmetadataexperimental().getEStructuralFeatures().get(0);
+		return (EAttribute)operationmetadataexperimentalEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3141,7 +2841,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadataexperimental_Target() {
-        return (EAttribute)getOperationmetadataexperimental().getEStructuralFeatures().get(1);
+		return (EAttribute)operationmetadataexperimentalEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3150,7 +2850,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadataexperimental_Method() {
-        return (EAttribute)getOperationmetadataexperimental().getEStructuralFeatures().get(2);
+		return (EAttribute)operationmetadataexperimentalEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3159,7 +2859,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadataexperimental_InsertTime() {
-        return (EAttribute)getOperationmetadataexperimental().getEStructuralFeatures().get(3);
+		return (EAttribute)operationmetadataexperimentalEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -3168,7 +2868,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadataexperimental_EndTime() {
-        return (EAttribute)getOperationmetadataexperimental().getEStructuralFeatures().get(4);
+		return (EAttribute)operationmetadataexperimentalEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -3177,9 +2877,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getAuthorizeddomain() {
-		if (authorizeddomainEClass == null) {
-			authorizeddomainEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(68);
-		}
 		return authorizeddomainEClass;
 	}
 
@@ -3189,7 +2886,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAuthorizeddomain_Name() {
-        return (EAttribute)getAuthorizeddomain().getEStructuralFeatures().get(0);
+		return (EAttribute)authorizeddomainEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3198,7 +2895,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getAuthorizeddomain__List__String_String_Integer() {
-        return getAuthorizeddomain().getEOperations().get(0);
+		return authorizeddomainEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -3207,9 +2904,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getTrafficsplit() {
-		if (trafficsplitEClass == null) {
-			trafficsplitEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(69);
-		}
 		return trafficsplitEClass;
 	}
 
@@ -3219,7 +2913,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getTrafficsplit_ShardBy() {
-        return (EAttribute)getTrafficsplit().getEStructuralFeatures().get(0);
+		return (EAttribute)trafficsplitEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3228,7 +2922,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getTrafficsplit_Allocations() {
-        return (EAttribute)getTrafficsplit().getEStructuralFeatures().get(1);
+		return (EAttribute)trafficsplitEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3237,9 +2931,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getOperationmetadatav1beta() {
-		if (operationmetadatav1betaEClass == null) {
-			operationmetadatav1betaEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(70);
-		}
 		return operationmetadatav1betaEClass;
 	}
 
@@ -3249,7 +2940,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta_User() {
-        return (EAttribute)getOperationmetadatav1beta().getEStructuralFeatures().get(0);
+		return (EAttribute)operationmetadatav1betaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3258,7 +2949,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta_Target() {
-        return (EAttribute)getOperationmetadatav1beta().getEStructuralFeatures().get(1);
+		return (EAttribute)operationmetadatav1betaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3267,7 +2958,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta_EphemeralMessage() {
-        return (EAttribute)getOperationmetadatav1beta().getEStructuralFeatures().get(2);
+		return (EAttribute)operationmetadatav1betaEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3276,7 +2967,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta_Method() {
-        return (EAttribute)getOperationmetadatav1beta().getEStructuralFeatures().get(3);
+		return (EAttribute)operationmetadatav1betaEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -3285,7 +2976,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta_EndTime() {
-        return (EAttribute)getOperationmetadatav1beta().getEStructuralFeatures().get(4);
+		return (EAttribute)operationmetadatav1betaEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -3294,7 +2985,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getOperationmetadatav1beta_Warning() {
-        return (EReference)getOperationmetadatav1beta().getEStructuralFeatures().get(5);
+		return (EReference)operationmetadatav1betaEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -3303,7 +2994,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1beta_InsertTime() {
-        return (EAttribute)getOperationmetadatav1beta().getEStructuralFeatures().get(6);
+		return (EAttribute)operationmetadatav1betaEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -3312,9 +3003,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getListservicesresponse() {
-		if (listservicesresponseEClass == null) {
-			listservicesresponseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(71);
-		}
 		return listservicesresponseEClass;
 	}
 
@@ -3324,7 +3012,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getListservicesresponse_Services() {
-        return (EReference)getListservicesresponse().getEStructuralFeatures().get(0);
+		return (EReference)listservicesresponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3333,7 +3021,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getListservicesresponse_NextPageToken() {
-        return (EAttribute)getListservicesresponse().getEStructuralFeatures().get(1);
+		return (EAttribute)listservicesresponseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3342,9 +3030,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getListingressrulesresponse() {
-		if (listingressrulesresponseEClass == null) {
-			listingressrulesresponseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(72);
-		}
 		return listingressrulesresponseEClass;
 	}
 
@@ -3354,7 +3039,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getListingressrulesresponse_NextPageToken() {
-        return (EAttribute)getListingressrulesresponse().getEStructuralFeatures().get(0);
+		return (EAttribute)listingressrulesresponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3363,7 +3048,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getListingressrulesresponse_IngressRules() {
-        return (EReference)getListingressrulesresponse().getEStructuralFeatures().get(1);
+		return (EReference)listingressrulesresponseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3372,9 +3057,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getResources() {
-		if (resourcesEClass == null) {
-			resourcesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(73);
-		}
 		return resourcesEClass;
 	}
 
@@ -3384,7 +3066,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getResources_Volumes() {
-        return (EReference)getResources().getEStructuralFeatures().get(0);
+		return (EReference)resourcesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3393,7 +3075,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getResources_DiskGb() {
-        return (EAttribute)getResources().getEStructuralFeatures().get(1);
+		return (EAttribute)resourcesEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3402,7 +3084,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getResources_Cpu() {
-        return (EAttribute)getResources().getEStructuralFeatures().get(2);
+		return (EAttribute)resourcesEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3411,7 +3093,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getResources_MemoryGb() {
-        return (EAttribute)getResources().getEStructuralFeatures().get(3);
+		return (EAttribute)resourcesEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -3420,9 +3102,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getZipinfolink() {
-		if (zipinfolinkEClass == null) {
-			zipinfolinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(74);
-		}
 		return zipinfolinkEClass;
 	}
 
@@ -3431,28 +3110,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getZipinfolink__SourceConstraint__DiagnosticChain_Map() {
-        return getZipinfolink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getZipinfolink__TargetConstraint__DiagnosticChain_Map() {
-        return getZipinfolink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getContainerinfolink() {
-		if (containerinfolinkEClass == null) {
-			containerinfolinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(75);
-		}
 		return containerinfolinkEClass;
 	}
 
@@ -3461,28 +3119,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContainerinfolink__SourceConstraint__DiagnosticChain_Map() {
-        return getContainerinfolink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getContainerinfolink__TargetConstraint__DiagnosticChain_Map() {
-        return getContainerinfolink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDeployment() {
-		if (deploymentEClass == null) {
-			deploymentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(76);
-		}
 		return deploymentEClass;
 	}
 
@@ -3492,7 +3129,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getDeployment_Files() {
-        return (EAttribute)getDeployment().getEStructuralFeatures().get(0);
+		return (EAttribute)deploymentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3501,9 +3138,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getBatchupdateingressrulesresponse() {
-		if (batchupdateingressrulesresponseEClass == null) {
-			batchupdateingressrulesresponseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(77);
-		}
 		return batchupdateingressrulesresponseEClass;
 	}
 
@@ -3513,7 +3147,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getBatchupdateingressrulesresponse_IngressRules() {
-        return (EReference)getBatchupdateingressrulesresponse().getEStructuralFeatures().get(0);
+		return (EReference)batchupdateingressrulesresponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3522,9 +3156,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getVolume() {
-		if (volumeEClass == null) {
-			volumeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(78);
-		}
 		return volumeEClass;
 	}
 
@@ -3534,7 +3165,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVolume_VolumeType() {
-        return (EAttribute)getVolume().getEStructuralFeatures().get(0);
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3543,7 +3174,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVolume_SizeGb() {
-        return (EAttribute)getVolume().getEStructuralFeatures().get(1);
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3552,7 +3183,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getVolume_Name() {
-        return (EAttribute)getVolume().getEStructuralFeatures().get(2);
+		return (EAttribute)volumeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3561,9 +3192,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getListinstancesresponse() {
-		if (listinstancesresponseEClass == null) {
-			listinstancesresponseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(79);
-		}
 		return listinstancesresponseEClass;
 	}
 
@@ -3573,7 +3201,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getListinstancesresponse_Instances() {
-        return (EReference)getListinstancesresponse().getEStructuralFeatures().get(0);
+		return (EReference)listinstancesresponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3582,7 +3210,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getListinstancesresponse_NextPageToken() {
-        return (EAttribute)getListinstancesresponse().getEStructuralFeatures().get(1);
+		return (EAttribute)listinstancesresponseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3591,9 +3219,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getListdomainmappingsresponse() {
-		if (listdomainmappingsresponseEClass == null) {
-			listdomainmappingsresponseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(80);
-		}
 		return listdomainmappingsresponseEClass;
 	}
 
@@ -3603,7 +3228,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getListdomainmappingsresponse_NextPageToken() {
-        return (EAttribute)getListdomainmappingsresponse().getEStructuralFeatures().get(0);
+		return (EAttribute)listdomainmappingsresponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3612,7 +3237,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getListdomainmappingsresponse_DomainMappings() {
-        return (EReference)getListdomainmappingsresponse().getEStructuralFeatures().get(1);
+		return (EReference)listdomainmappingsresponseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3621,9 +3246,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getOperationmetadatav1alpha() {
-		if (operationmetadatav1alphaEClass == null) {
-			operationmetadatav1alphaEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(81);
-		}
 		return operationmetadatav1alphaEClass;
 	}
 
@@ -3633,7 +3255,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1alpha_EndTime() {
-        return (EAttribute)getOperationmetadatav1alpha().getEStructuralFeatures().get(0);
+		return (EAttribute)operationmetadatav1alphaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3642,7 +3264,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getOperationmetadatav1alpha_Warning() {
-        return (EReference)getOperationmetadatav1alpha().getEStructuralFeatures().get(1);
+		return (EReference)operationmetadatav1alphaEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3651,7 +3273,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1alpha_InsertTime() {
-        return (EAttribute)getOperationmetadatav1alpha().getEStructuralFeatures().get(2);
+		return (EAttribute)operationmetadatav1alphaEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3660,7 +3282,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1alpha_User() {
-        return (EAttribute)getOperationmetadatav1alpha().getEStructuralFeatures().get(3);
+		return (EAttribute)operationmetadatav1alphaEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -3669,7 +3291,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1alpha_Target() {
-        return (EAttribute)getOperationmetadatav1alpha().getEStructuralFeatures().get(4);
+		return (EAttribute)operationmetadatav1alphaEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -3678,7 +3300,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1alpha_EphemeralMessage() {
-        return (EAttribute)getOperationmetadatav1alpha().getEStructuralFeatures().get(5);
+		return (EAttribute)operationmetadatav1alphaEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -3687,7 +3309,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperationmetadatav1alpha_Method() {
-        return (EAttribute)getOperationmetadatav1alpha().getEStructuralFeatures().get(6);
+		return (EAttribute)operationmetadatav1alphaEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -3696,9 +3318,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getUrldispatchrule() {
-		if (urldispatchruleEClass == null) {
-			urldispatchruleEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(82);
-		}
 		return urldispatchruleEClass;
 	}
 
@@ -3708,7 +3327,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getUrldispatchrule_Domain() {
-        return (EAttribute)getUrldispatchrule().getEStructuralFeatures().get(0);
+		return (EAttribute)urldispatchruleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3717,7 +3336,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getUrldispatchrule_Service() {
-        return (EAttribute)getUrldispatchrule().getEStructuralFeatures().get(1);
+		return (EAttribute)urldispatchruleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3726,7 +3345,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getUrldispatchrule_Path() {
-        return (EAttribute)getUrldispatchrule().getEStructuralFeatures().get(2);
+		return (EAttribute)urldispatchruleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3735,9 +3354,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getListversionsresponse() {
-		if (listversionsresponseEClass == null) {
-			listversionsresponseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(83);
-		}
 		return listversionsresponseEClass;
 	}
 
@@ -3747,7 +3363,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getListversionsresponse_NextPageToken() {
-        return (EAttribute)getListversionsresponse().getEStructuralFeatures().get(0);
+		return (EAttribute)listversionsresponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3756,7 +3372,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getListversionsresponse_Versions() {
-        return (EReference)getListversionsresponse().getEStructuralFeatures().get(1);
+		return (EReference)listversionsresponseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3765,9 +3381,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getListauthorizeddomainsresponse() {
-		if (listauthorizeddomainsresponseEClass == null) {
-			listauthorizeddomainsresponseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(84);
-		}
 		return listauthorizeddomainsresponseEClass;
 	}
 
@@ -3777,7 +3390,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getListauthorizeddomainsresponse_Domains() {
-        return (EReference)getListauthorizeddomainsresponse().getEStructuralFeatures().get(0);
+		return (EReference)listauthorizeddomainsresponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3786,7 +3399,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getListauthorizeddomainsresponse_NextPageToken() {
-        return (EAttribute)getListauthorizeddomainsresponse().getEStructuralFeatures().get(1);
+		return (EAttribute)listauthorizeddomainsresponseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3795,9 +3408,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getEmpty() {
-		if (emptyEClass == null) {
-			emptyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(85);
-		}
 		return emptyEClass;
 	}
 
@@ -3807,9 +3417,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getApiendpointhandler() {
-		if (apiendpointhandlerEClass == null) {
-			apiendpointhandlerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(86);
-		}
 		return apiendpointhandlerEClass;
 	}
 
@@ -3819,7 +3426,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApiendpointhandler_ScriptPath() {
-        return (EAttribute)getApiendpointhandler().getEStructuralFeatures().get(0);
+		return (EAttribute)apiendpointhandlerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3828,9 +3435,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getSslsettingslink() {
-		if (sslsettingslinkEClass == null) {
-			sslsettingslinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(87);
-		}
 		return sslsettingslinkEClass;
 	}
 
@@ -3839,28 +3443,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getSslsettingslink__SourceConstraint__DiagnosticChain_Map() {
-        return getSslsettingslink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getSslsettingslink__TargetConstraint__DiagnosticChain_Map() {
-        return getSslsettingslink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDomainmapping() {
-		if (domainmappingEClass == null) {
-			domainmappingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(88);
-		}
 		return domainmappingEClass;
 	}
 
@@ -3870,7 +3453,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getDomainmapping_ResourceRecords() {
-        return (EReference)getDomainmapping().getEStructuralFeatures().get(0);
+		return (EReference)domainmappingEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3879,7 +3462,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getDomainmapping_Name() {
-        return (EAttribute)getDomainmapping().getEStructuralFeatures().get(1);
+		return (EAttribute)domainmappingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3888,7 +3471,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getDomainmapping__Delete__String_String() {
-        return getDomainmapping().getEOperations().get(0);
+		return domainmappingEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -3897,7 +3480,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getDomainmapping__List__String_String_Integer() {
-        return getDomainmapping().getEOperations().get(1);
+		return domainmappingEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -3906,7 +3489,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getDomainmapping__Get__String_String() {
-        return getDomainmapping().getEOperations().get(2);
+		return domainmappingEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -3915,7 +3498,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getDomainmapping__Patch__String_String_String() {
-        return getDomainmapping().getEOperations().get(3);
+		return domainmappingEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -3924,7 +3507,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getDomainmapping__Create__String() {
-        return getDomainmapping().getEOperations().get(4);
+		return domainmappingEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -3933,9 +3516,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getRequestutilizationlink() {
-		if (requestutilizationlinkEClass == null) {
-			requestutilizationlinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(89);
-		}
 		return requestutilizationlinkEClass;
 	}
 
@@ -3944,28 +3524,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getRequestutilizationlink__SourceConstraint__DiagnosticChain_Map() {
-        return getRequestutilizationlink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getRequestutilizationlink__TargetConstraint__DiagnosticChain_Map() {
-        return getRequestutilizationlink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getNetworkutilizationlink() {
-		if (networkutilizationlinkEClass == null) {
-			networkutilizationlinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(90);
-		}
 		return networkutilizationlinkEClass;
 	}
 
@@ -3974,28 +3533,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getNetworkutilizationlink__SourceConstraint__DiagnosticChain_Map() {
-        return getNetworkutilizationlink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getNetworkutilizationlink__TargetConstraint__DiagnosticChain_Map() {
-        return getNetworkutilizationlink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getCpuutilizationlink() {
-		if (cpuutilizationlinkEClass == null) {
-			cpuutilizationlinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(91);
-		}
 		return cpuutilizationlinkEClass;
 	}
 
@@ -4004,28 +3542,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getCpuutilizationlink__SourceConstraint__DiagnosticChain_Map() {
-        return getCpuutilizationlink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getCpuutilizationlink__TargetConstraint__DiagnosticChain_Map() {
-        return getCpuutilizationlink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDiskutilizationlink() {
-		if (diskutilizationlinkEClass == null) {
-			diskutilizationlinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(92);
-		}
 		return diskutilizationlinkEClass;
 	}
 
@@ -4034,28 +3551,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiskutilizationlink__SourceConstraint__DiagnosticChain_Map() {
-        return getDiskutilizationlink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getDiskutilizationlink__TargetConstraint__DiagnosticChain_Map() {
-        return getDiskutilizationlink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAutomaticscaling() {
-		if (automaticscalingEClass == null) {
-			automaticscalingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(93);
-		}
 		return automaticscalingEClass;
 	}
 
@@ -4065,7 +3561,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAutomaticscaling_MinPendingLatency() {
-        return (EAttribute)getAutomaticscaling().getEStructuralFeatures().get(0);
+		return (EAttribute)automaticscalingEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4074,7 +3570,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAutomaticscaling_MaxIdleInstances() {
-        return (EAttribute)getAutomaticscaling().getEStructuralFeatures().get(1);
+		return (EAttribute)automaticscalingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4083,7 +3579,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAutomaticscaling_MinIdleInstances() {
-        return (EAttribute)getAutomaticscaling().getEStructuralFeatures().get(2);
+		return (EAttribute)automaticscalingEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -4092,7 +3588,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAutomaticscaling_MaxTotalInstances() {
-        return (EAttribute)getAutomaticscaling().getEStructuralFeatures().get(3);
+		return (EAttribute)automaticscalingEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -4101,7 +3597,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAutomaticscaling_MinTotalInstances() {
-        return (EAttribute)getAutomaticscaling().getEStructuralFeatures().get(4);
+		return (EAttribute)automaticscalingEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -4110,7 +3606,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAutomaticscaling_MaxConcurrentRequests() {
-        return (EAttribute)getAutomaticscaling().getEStructuralFeatures().get(5);
+		return (EAttribute)automaticscalingEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -4119,7 +3615,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAutomaticscaling_CoolDownPeriod() {
-        return (EAttribute)getAutomaticscaling().getEStructuralFeatures().get(6);
+		return (EAttribute)automaticscalingEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -4128,7 +3624,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAutomaticscaling_MaxPendingLatency() {
-        return (EAttribute)getAutomaticscaling().getEStructuralFeatures().get(7);
+		return (EAttribute)automaticscalingEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -4137,9 +3633,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getZipinfo() {
-		if (zipinfoEClass == null) {
-			zipinfoEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(94);
-		}
 		return zipinfoEClass;
 	}
 
@@ -4149,7 +3642,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getZipinfo_SourceUrl() {
-        return (EAttribute)getZipinfo().getEStructuralFeatures().get(0);
+		return (EAttribute)zipinfoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4158,7 +3651,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getZipinfo_FilesCount() {
-        return (EAttribute)getZipinfo().getEStructuralFeatures().get(1);
+		return (EAttribute)zipinfoEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4167,9 +3660,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getCertificaterawdatalink() {
-		if (certificaterawdatalinkEClass == null) {
-			certificaterawdatalinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(95);
-		}
 		return certificaterawdatalinkEClass;
 	}
 
@@ -4178,28 +3668,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getCertificaterawdatalink__SourceConstraint__DiagnosticChain_Map() {
-        return getCertificaterawdatalink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getCertificaterawdatalink__TargetConstraint__DiagnosticChain_Map() {
-        return getCertificaterawdatalink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAuthorizedcertificate() {
-		if (authorizedcertificateEClass == null) {
-			authorizedcertificateEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(96);
-		}
 		return authorizedcertificateEClass;
 	}
 
@@ -4209,7 +3678,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAuthorizedcertificate_DomainMappingsCount() {
-        return (EAttribute)getAuthorizedcertificate().getEStructuralFeatures().get(0);
+		return (EAttribute)authorizedcertificateEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4218,7 +3687,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getAuthorizedcertificate_DomainNames() {
-        return (EReference)getAuthorizedcertificate().getEStructuralFeatures().get(1);
+		return (EReference)authorizedcertificateEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4227,7 +3696,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAuthorizedcertificate_DisplayName() {
-        return (EAttribute)getAuthorizedcertificate().getEStructuralFeatures().get(2);
+		return (EAttribute)authorizedcertificateEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -4236,7 +3705,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getAuthorizedcertificate_VisibleDomainMappings() {
-        return (EReference)getAuthorizedcertificate().getEStructuralFeatures().get(3);
+		return (EReference)authorizedcertificateEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -4245,7 +3714,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAuthorizedcertificate_ExpireTime() {
-        return (EAttribute)getAuthorizedcertificate().getEStructuralFeatures().get(4);
+		return (EAttribute)authorizedcertificateEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -4254,7 +3723,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getAuthorizedcertificate_Name() {
-        return (EAttribute)getAuthorizedcertificate().getEStructuralFeatures().get(5);
+		return (EAttribute)authorizedcertificateEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -4263,7 +3732,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getAuthorizedcertificate__Delete__String_String() {
-        return getAuthorizedcertificate().getEOperations().get(0);
+		return authorizedcertificateEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4272,7 +3741,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getAuthorizedcertificate__List__String_String_Integer_String() {
-        return getAuthorizedcertificate().getEOperations().get(1);
+		return authorizedcertificateEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -4281,7 +3750,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getAuthorizedcertificate__Get__String_String_String() {
-        return getAuthorizedcertificate().getEOperations().get(2);
+		return authorizedcertificateEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -4290,7 +3759,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getAuthorizedcertificate__Patch__String_String_String() {
-        return getAuthorizedcertificate().getEOperations().get(3);
+		return authorizedcertificateEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -4299,7 +3768,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getAuthorizedcertificate__Create__String() {
-        return getAuthorizedcertificate().getEOperations().get(4);
+		return authorizedcertificateEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -4308,9 +3777,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getResourcerecord() {
-		if (resourcerecordEClass == null) {
-			resourcerecordEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(97);
-		}
 		return resourcerecordEClass;
 	}
 
@@ -4320,7 +3786,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getResourcerecord_Type() {
-        return (EAttribute)getResourcerecord().getEStructuralFeatures().get(0);
+		return (EAttribute)resourcerecordEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4329,7 +3795,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getResourcerecord_Rrdata() {
-        return (EAttribute)getResourcerecord().getEStructuralFeatures().get(1);
+		return (EAttribute)resourcerecordEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4338,7 +3804,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getResourcerecord_Name() {
-        return (EAttribute)getResourcerecord().getEStructuralFeatures().get(2);
+		return (EAttribute)resourcerecordEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -4347,9 +3813,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getLibrary() {
-		if (libraryEClass == null) {
-			libraryEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(98);
-		}
 		return libraryEClass;
 	}
 
@@ -4359,7 +3822,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLibrary_Version() {
-        return (EAttribute)getLibrary().getEStructuralFeatures().get(0);
+		return (EAttribute)libraryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4368,7 +3831,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getLibrary_Name() {
-        return (EAttribute)getLibrary().getEStructuralFeatures().get(1);
+		return (EAttribute)libraryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4377,9 +3840,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getListlocationsresponse() {
-		if (listlocationsresponseEClass == null) {
-			listlocationsresponseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(99);
-		}
 		return listlocationsresponseEClass;
 	}
 
@@ -4389,7 +3849,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getListlocationsresponse_NextPageToken() {
-        return (EAttribute)getListlocationsresponse().getEStructuralFeatures().get(0);
+		return (EAttribute)listlocationsresponseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4398,7 +3858,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EReference getListlocationsresponse_Locations() {
-        return (EReference)getListlocationsresponse().getEStructuralFeatures().get(1);
+		return (EReference)listlocationsresponseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4407,9 +3867,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getContainerinfo() {
-		if (containerinfoEClass == null) {
-			containerinfoEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(100);
-		}
 		return containerinfoEClass;
 	}
 
@@ -4419,7 +3876,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getContainerinfo_Image() {
-        return (EAttribute)getContainerinfo().getEStructuralFeatures().get(0);
+		return (EAttribute)containerinfoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4428,9 +3885,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getRequestutilization() {
-		if (requestutilizationEClass == null) {
-			requestutilizationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(101);
-		}
 		return requestutilizationEClass;
 	}
 
@@ -4440,7 +3894,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getRequestutilization_TargetRequestCountPerSecond() {
-        return (EAttribute)getRequestutilization().getEStructuralFeatures().get(0);
+		return (EAttribute)requestutilizationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4449,7 +3903,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getRequestutilization_TargetConcurrentRequests() {
-        return (EAttribute)getRequestutilization().getEStructuralFeatures().get(1);
+		return (EAttribute)requestutilizationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4458,9 +3912,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getApiendpointhandlerlink() {
-		if (apiendpointhandlerlinkEClass == null) {
-			apiendpointhandlerlinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(102);
-		}
 		return apiendpointhandlerlinkEClass;
 	}
 
@@ -4469,28 +3920,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getApiendpointhandlerlink__SourceConstraint__DiagnosticChain_Map() {
-        return getApiendpointhandlerlink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getApiendpointhandlerlink__TargetConstraint__DiagnosticChain_Map() {
-        return getApiendpointhandlerlink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getStaticfileshandlerlink() {
-		if (staticfileshandlerlinkEClass == null) {
-			staticfileshandlerlinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(103);
-		}
 		return staticfileshandlerlinkEClass;
 	}
 
@@ -4499,28 +3929,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getStaticfileshandlerlink__SourceConstraint__DiagnosticChain_Map() {
-        return getStaticfileshandlerlink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStaticfileshandlerlink__TargetConstraint__DiagnosticChain_Map() {
-        return getStaticfileshandlerlink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getScripthandlerlink() {
-		if (scripthandlerlinkEClass == null) {
-			scripthandlerlinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(104);
-		}
 		return scripthandlerlinkEClass;
 	}
 
@@ -4529,28 +3938,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getScripthandlerlink__SourceConstraint__DiagnosticChain_Map() {
-        return getScripthandlerlink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getScripthandlerlink__TargetConstraint__DiagnosticChain_Map() {
-        return getScripthandlerlink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getUrlmap() {
-		if (urlmapEClass == null) {
-			urlmapEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(105);
-		}
 		return urlmapEClass;
 	}
 
@@ -4560,7 +3948,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getUrlmap_RedirectHttpResponseCode() {
-        return (EAttribute)getUrlmap().getEStructuralFeatures().get(0);
+		return (EAttribute)urlmapEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4569,7 +3957,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getUrlmap_SecurityLevel() {
-        return (EAttribute)getUrlmap().getEStructuralFeatures().get(1);
+		return (EAttribute)urlmapEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4578,7 +3966,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getUrlmap_AuthFailAction() {
-        return (EAttribute)getUrlmap().getEStructuralFeatures().get(2);
+		return (EAttribute)urlmapEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -4587,7 +3975,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getUrlmap_UrlRegex() {
-        return (EAttribute)getUrlmap().getEStructuralFeatures().get(3);
+		return (EAttribute)urlmapEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -4596,7 +3984,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getUrlmap_Login() {
-        return (EAttribute)getUrlmap().getEStructuralFeatures().get(4);
+		return (EAttribute)urlmapEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -4605,9 +3993,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getEndpointsapiservice() {
-		if (endpointsapiserviceEClass == null) {
-			endpointsapiserviceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(106);
-		}
 		return endpointsapiserviceEClass;
 	}
 
@@ -4617,7 +4002,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getEndpointsapiservice_Name() {
-        return (EAttribute)getEndpointsapiservice().getEStructuralFeatures().get(0);
+		return (EAttribute)endpointsapiserviceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4626,7 +4011,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getEndpointsapiservice_ConfigId() {
-        return (EAttribute)getEndpointsapiservice().getEStructuralFeatures().get(1);
+		return (EAttribute)endpointsapiserviceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4635,9 +4020,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getStatuslink() {
-		if (statuslinkEClass == null) {
-			statuslinkEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(107);
-		}
 		return statuslinkEClass;
 	}
 
@@ -4646,28 +4028,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getStatuslink__SourceConstraint__DiagnosticChain_Map() {
-        return getStatuslink().getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStatuslink__TargetConstraint__DiagnosticChain_Map() {
-        return getStatuslink().getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getOperation() {
-		if (operationEClass == null) {
-			operationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(108);
-		}
 		return operationEClass;
 	}
 
@@ -4677,7 +4038,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperation_Response() {
-        return (EAttribute)getOperation().getEStructuralFeatures().get(0);
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4686,7 +4047,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperation_Name() {
-        return (EAttribute)getOperation().getEStructuralFeatures().get(1);
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4695,7 +4056,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperation_Metadata() {
-        return (EAttribute)getOperation().getEStructuralFeatures().get(2);
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -4704,7 +4065,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getOperation_Done() {
-        return (EAttribute)getOperation().getEStructuralFeatures().get(3);
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -4713,7 +4074,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getOperation__List__String_String_String_Integer() {
-        return getOperation().getEOperations().get(0);
+		return operationEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4722,7 +4083,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EOperation getOperation__Get__String_String() {
-        return getOperation().getEOperations().get(1);
+		return operationEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -4731,9 +4092,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getApiconfighandler() {
-		if (apiconfighandlerEClass == null) {
-			apiconfighandlerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(109);
-		}
 		return apiconfighandlerEClass;
 	}
 
@@ -4743,7 +4101,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApiconfighandler_SecurityLevel() {
-        return (EAttribute)getApiconfighandler().getEStructuralFeatures().get(0);
+		return (EAttribute)apiconfighandlerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4752,7 +4110,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApiconfighandler_AuthFailAction() {
-        return (EAttribute)getApiconfighandler().getEStructuralFeatures().get(1);
+		return (EAttribute)apiconfighandlerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4761,7 +4119,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApiconfighandler_Script() {
-        return (EAttribute)getApiconfighandler().getEStructuralFeatures().get(2);
+		return (EAttribute)apiconfighandlerEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -4770,7 +4128,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApiconfighandler_Login() {
-        return (EAttribute)getApiconfighandler().getEStructuralFeatures().get(3);
+		return (EAttribute)apiconfighandlerEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -4779,7 +4137,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getApiconfighandler_Url() {
-        return (EAttribute)getApiconfighandler().getEStructuralFeatures().get(4);
+		return (EAttribute)apiconfighandlerEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -4788,9 +4146,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getStaticfileshandler() {
-		if (staticfileshandlerEClass == null) {
-			staticfileshandlerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(110);
-		}
 		return staticfileshandlerEClass;
 	}
 
@@ -4800,7 +4155,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getStaticfileshandler_ApplicationReadable() {
-        return (EAttribute)getStaticfileshandler().getEStructuralFeatures().get(0);
+		return (EAttribute)staticfileshandlerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4809,7 +4164,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getStaticfileshandler_HttpHeaders() {
-        return (EAttribute)getStaticfileshandler().getEStructuralFeatures().get(1);
+		return (EAttribute)staticfileshandlerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4818,7 +4173,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getStaticfileshandler_UploadPathRegex() {
-        return (EAttribute)getStaticfileshandler().getEStructuralFeatures().get(2);
+		return (EAttribute)staticfileshandlerEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -4827,7 +4182,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getStaticfileshandler_Path() {
-        return (EAttribute)getStaticfileshandler().getEStructuralFeatures().get(3);
+		return (EAttribute)staticfileshandlerEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -4836,7 +4191,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getStaticfileshandler_MimeType() {
-        return (EAttribute)getStaticfileshandler().getEStructuralFeatures().get(4);
+		return (EAttribute)staticfileshandlerEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -4845,7 +4200,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getStaticfileshandler_RequireMatchingFile() {
-        return (EAttribute)getStaticfileshandler().getEStructuralFeatures().get(5);
+		return (EAttribute)staticfileshandlerEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -4854,7 +4209,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getStaticfileshandler_Expiration() {
-        return (EAttribute)getStaticfileshandler().getEStructuralFeatures().get(6);
+		return (EAttribute)staticfileshandlerEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -4863,9 +4218,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getBasicscaling() {
-		if (basicscalingEClass == null) {
-			basicscalingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(111);
-		}
 		return basicscalingEClass;
 	}
 
@@ -4875,7 +4227,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getBasicscaling_MaxInstances() {
-        return (EAttribute)getBasicscaling().getEStructuralFeatures().get(0);
+		return (EAttribute)basicscalingEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4884,7 +4236,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getBasicscaling_IdleTimeout() {
-        return (EAttribute)getBasicscaling().getEStructuralFeatures().get(1);
+		return (EAttribute)basicscalingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4893,9 +4245,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EClass getDiskutilization() {
-		if (diskutilizationEClass == null) {
-			diskutilizationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(112);
-		}
 		return diskutilizationEClass;
 	}
 
@@ -4905,7 +4254,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getDiskutilization_TargetWriteBytesPerSecond() {
-        return (EAttribute)getDiskutilization().getEStructuralFeatures().get(0);
+		return (EAttribute)diskutilizationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4914,7 +4263,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getDiskutilization_TargetReadBytesPerSecond() {
-        return (EAttribute)getDiskutilization().getEStructuralFeatures().get(1);
+		return (EAttribute)diskutilizationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4923,7 +4272,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getDiskutilization_TargetReadOpsPerSecond() {
-        return (EAttribute)getDiskutilization().getEStructuralFeatures().get(2);
+		return (EAttribute)diskutilizationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -4932,7 +4281,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EAttribute getDiskutilization_TargetWriteOpsPerSecond() {
-        return (EAttribute)getDiskutilization().getEStructuralFeatures().get(3);
+		return (EAttribute)diskutilizationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -4941,9 +4290,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getAction() {
-		if (actionEEnum == null) {
-			actionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(9);
-		}
 		return actionEEnum;
 	}
 
@@ -4953,9 +4299,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getErrorcode() {
-		if (errorcodeEEnum == null) {
-			errorcodeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(10);
-		}
 		return errorcodeEEnum;
 	}
 
@@ -4965,9 +4308,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getServingstatus() {
-		if (servingstatusEEnum == null) {
-			servingstatusEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(11);
-		}
 		return servingstatusEEnum;
 	}
 
@@ -4977,9 +4317,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getAvailability() {
-		if (availabilityEEnum == null) {
-			availabilityEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(12);
-		}
 		return availabilityEEnum;
 	}
 
@@ -4989,9 +4326,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getVersionServingstatus() {
-		if (versionServingstatusEEnum == null) {
-			versionServingstatusEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(13);
-		}
 		return versionServingstatusEEnum;
 	}
 
@@ -5001,9 +4335,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getShardby() {
-		if (shardbyEEnum == null) {
-			shardbyEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(14);
-		}
 		return shardbyEEnum;
 	}
 
@@ -5013,9 +4344,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getType() {
-		if (typeEEnum == null) {
-			typeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(15);
-		}
 		return typeEEnum;
 	}
 
@@ -5025,9 +4353,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getRedirecthttpresponsecode() {
-		if (redirecthttpresponsecodeEEnum == null) {
-			redirecthttpresponsecodeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(16);
-		}
 		return redirecthttpresponsecodeEEnum;
 	}
 
@@ -5037,9 +4362,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getSecuritylevel() {
-		if (securitylevelEEnum == null) {
-			securitylevelEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(17);
-		}
 		return securitylevelEEnum;
 	}
 
@@ -5049,9 +4371,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getAuthfailaction() {
-		if (authfailactionEEnum == null) {
-			authfailactionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(18);
-		}
 		return authfailactionEEnum;
 	}
 
@@ -5061,9 +4380,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getLogin() {
-		if (loginEEnum == null) {
-			loginEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(19);
-		}
 		return loginEEnum;
 	}
 
@@ -5073,9 +4389,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getApiConfigHandlerSecuritylevel() {
-		if (apiConfigHandlerSecuritylevelEEnum == null) {
-			apiConfigHandlerSecuritylevelEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(20);
-		}
 		return apiConfigHandlerSecuritylevelEEnum;
 	}
 
@@ -5085,9 +4398,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getApiConfigHandlerAuthfailaction() {
-		if (apiConfigHandlerAuthfailactionEEnum == null) {
-			apiConfigHandlerAuthfailactionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(21);
-		}
 		return apiConfigHandlerAuthfailactionEEnum;
 	}
 
@@ -5097,9 +4407,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EEnum getApiConfigHandlerLogin() {
-		if (apiConfigHandlerLoginEEnum == null) {
-			apiConfigHandlerLoginEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(22);
-		}
 		return apiConfigHandlerLoginEEnum;
 	}
 
@@ -5108,10 +4415,16 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getfloat() {
+		return floatEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getbyte() {
-		if (byteEDataType == null) {
-			byteEDataType = (EDataType)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(0);
-		}
 		return byteEDataType;
 	}
 
@@ -5121,9 +4434,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EDataType getdouble() {
-		if (doubleEDataType == null) {
-			doubleEDataType = (EDataType)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(1);
-		}
 		return doubleEDataType;
 	}
 
@@ -5132,23 +4442,8 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getfloat() {
-		if (floatEDataType == null) {
-			floatEDataType = (EDataType)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(2);
-		}
-		return floatEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getany() {
-		if (anyEDataType == null) {
-			anyEDataType = (EDataType)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(3);
-		}
-		return anyEDataType;
+	public EDataType getobject() {
+		return objectEDataType;
 	}
 
 	/**
@@ -5157,9 +4452,6 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * @generated
 	 */
 	public EDataType getlong() {
-		if (longEDataType == null) {
-			longEDataType = (EDataType)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(4);
-		}
 		return longEDataType;
 	}
 
@@ -5168,22 +4460,7 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getshort() {
-		if (shortEDataType == null) {
-			shortEDataType = (EDataType)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(6);
-		}
-		return shortEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EDataType getmap() {
-		if (mapEDataType == null) {
-			mapEDataType = (EDataType)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(7);
-		}
 		return mapEDataType;
 	}
 
@@ -5192,11 +4469,17 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getobject() {
-		if (objectEDataType == null) {
-			objectEDataType = (EDataType)EPackage.Registry.INSTANCE.getEPackage(AppenginePackage.eNS_URI).getEClassifiers().get(8);
-		}
-		return objectEDataType;
+	public EDataType getany() {
+		return anyEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getshort() {
+		return shortEDataType;
 	}
 
 	/**
@@ -5213,66 +4496,1706 @@ public class AppenginePackageImpl extends EPackageImpl implements AppenginePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private boolean isLoaded = false;
+	private boolean isCreated = false;
 
 	/**
-	 * Laods the package and any sub-packages from their serialized form.
+	 * Creates the meta-model objects for the package.  This method is
+	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void loadPackage() {
-		if (isLoaded) return;
-		isLoaded = true;
+	public void createPackageContents() {
+		if (isCreated) return;
+		isCreated = true;
 
-		URL url = getClass().getResource(packageFilename);
-		if (url == null) {
-			throw new RuntimeException("Missing serialized package: " + packageFilename);
-		}
-		URI uri = URI.createURI(url.toString());
-		Resource resource = new EcoreResourceFactoryImpl().createResource(uri);
-		try {
-			resource.load(null);
-		}
-		catch (IOException exception) {
-			throw new WrappedException(exception);
-		}
-		initializeFromLoadedEPackage(this, (EPackage)resource.getContents().get(0));
+		// Create classes and their features
+		arrayEClass = createEClass(ARRAY);
+		createEAttribute(arrayEClass, ARRAY__VALUES);
+
+		cpuutilizationEClass = createEClass(CPUUTILIZATION);
+		createEAttribute(cpuutilizationEClass, CPUUTILIZATION__AGGREGATION_WINDOW_LENGTH);
+		createEAttribute(cpuutilizationEClass, CPUUTILIZATION__TARGET_UTILIZATION);
+
+		statusEClass = createEClass(STATUS);
+		createEReference(statusEClass, STATUS__DETAILS);
+		createEAttribute(statusEClass, STATUS__CODE);
+		createEAttribute(statusEClass, STATUS__MESSAGE);
+
+		identityawareproxyEClass = createEClass(IDENTITYAWAREPROXY);
+		createEAttribute(identityawareproxyEClass, IDENTITYAWAREPROXY__OAUTH2_CLIENT_SECRET);
+		createEAttribute(identityawareproxyEClass, IDENTITYAWAREPROXY__OAUTH2_CLIENT_ID);
+		createEAttribute(identityawareproxyEClass, IDENTITYAWAREPROXY__OAUTH2_CLIENT_SECRET_SHA256);
+		createEAttribute(identityawareproxyEClass, IDENTITYAWAREPROXY__ENABLED);
+
+		manualscalingEClass = createEClass(MANUALSCALING);
+		createEAttribute(manualscalingEClass, MANUALSCALING__INSTANCES);
+
+		locationmetadataEClass = createEClass(LOCATIONMETADATA);
+		createEAttribute(locationmetadataEClass, LOCATIONMETADATA__FLEXIBLE_ENVIRONMENT_AVAILABLE);
+		createEAttribute(locationmetadataEClass, LOCATIONMETADATA__STANDARD_ENVIRONMENT_AVAILABLE);
+
+		trafficsplitlinkEClass = createEClass(TRAFFICSPLITLINK);
+
+		serviceEClass = createEClass(SERVICE);
+		createEAttribute(serviceEClass, SERVICE__NAME);
+		createEOperation(serviceEClass, SERVICE___DELETE__STRING_STRING);
+		createEOperation(serviceEClass, SERVICE___LIST__STRING_STRING_INTEGER);
+		createEOperation(serviceEClass, SERVICE___GET__STRING_STRING);
+		createEOperation(serviceEClass, SERVICE___PATCH__STRING_STRING_STRING_BOOLEAN);
+
+		listoperationsresponseEClass = createEClass(LISTOPERATIONSRESPONSE);
+		createEAttribute(listoperationsresponseEClass, LISTOPERATIONSRESPONSE__NEXT_PAGE_TOKEN);
+		createEReference(listoperationsresponseEClass, LISTOPERATIONSRESPONSE__OPERATIONS);
+
+		operationmetadataEClass = createEClass(OPERATIONMETADATA);
+		createEAttribute(operationmetadataEClass, OPERATIONMETADATA__USER);
+		createEAttribute(operationmetadataEClass, OPERATIONMETADATA__TARGET);
+		createEAttribute(operationmetadataEClass, OPERATIONMETADATA__METHOD);
+		createEAttribute(operationmetadataEClass, OPERATIONMETADATA__END_TIME);
+		createEAttribute(operationmetadataEClass, OPERATIONMETADATA__OPERATION_TYPE);
+		createEAttribute(operationmetadataEClass, OPERATIONMETADATA__INSERT_TIME);
+
+		firewallruleEClass = createEClass(FIREWALLRULE);
+		createEAttribute(firewallruleEClass, FIREWALLRULE__SOURCE_RANGE);
+		createEAttribute(firewallruleEClass, FIREWALLRULE__PRIORITY);
+		createEAttribute(firewallruleEClass, FIREWALLRULE__ACTION);
+		createEAttribute(firewallruleEClass, FIREWALLRULE__DESCRIPTION);
+		createEOperation(firewallruleEClass, FIREWALLRULE___GET__STRING_STRING);
+		createEOperation(firewallruleEClass, FIREWALLRULE___PATCH__STRING_STRING_STRING);
+		createEOperation(firewallruleEClass, FIREWALLRULE___BATCHUPDATE__STRING);
+		createEOperation(firewallruleEClass, FIREWALLRULE___DELETE__STRING_STRING);
+		createEOperation(firewallruleEClass, FIREWALLRULE___LIST__INTEGER_STRING_STRING_STRING);
+		createEOperation(firewallruleEClass, FIREWALLRULE___CREATE__STRING);
+
+		listauthorizedcertificatesresponseEClass = createEClass(LISTAUTHORIZEDCERTIFICATESRESPONSE);
+		createEReference(listauthorizedcertificatesresponseEClass, LISTAUTHORIZEDCERTIFICATESRESPONSE__CERTIFICATES);
+		createEAttribute(listauthorizedcertificatesresponseEClass, LISTAUTHORIZEDCERTIFICATESRESPONSE__NEXT_PAGE_TOKEN);
+
+		featuresettingsEClass = createEClass(FEATURESETTINGS);
+		createEAttribute(featuresettingsEClass, FEATURESETTINGS__SPLIT_HEALTH_CHECKS);
+
+		errorhandlerEClass = createEClass(ERRORHANDLER);
+		createEAttribute(errorhandlerEClass, ERRORHANDLER__ERROR_CODE);
+		createEAttribute(errorhandlerEClass, ERRORHANDLER__MIME_TYPE);
+		createEAttribute(errorhandlerEClass, ERRORHANDLER__STATIC_FILE);
+
+		sslsettingsEClass = createEClass(SSLSETTINGS);
+		createEAttribute(sslsettingsEClass, SSLSETTINGS__CERTIFICATE_ID);
+
+		operationmetadatav1EClass = createEClass(OPERATIONMETADATAV1);
+		createEReference(operationmetadatav1EClass, OPERATIONMETADATAV1__WARNING);
+		createEAttribute(operationmetadatav1EClass, OPERATIONMETADATAV1__INSERT_TIME);
+		createEAttribute(operationmetadatav1EClass, OPERATIONMETADATAV1__TARGET);
+		createEAttribute(operationmetadatav1EClass, OPERATIONMETADATAV1__USER);
+		createEAttribute(operationmetadatav1EClass, OPERATIONMETADATAV1__EPHEMERAL_MESSAGE);
+		createEAttribute(operationmetadatav1EClass, OPERATIONMETADATAV1__METHOD);
+		createEAttribute(operationmetadatav1EClass, OPERATIONMETADATAV1__END_TIME);
+
+		featuresettingslinkEClass = createEClass(FEATURESETTINGSLINK);
+
+		identityawareproxylinkEClass = createEClass(IDENTITYAWAREPROXYLINK);
+
+		applicationEClass = createEClass(APPLICATION);
+		createEReference(applicationEClass, APPLICATION__DISPATCH_RULES);
+		createEAttribute(applicationEClass, APPLICATION__GCR_DOMAIN);
+		createEAttribute(applicationEClass, APPLICATION__NAME);
+		createEAttribute(applicationEClass, APPLICATION__DEFAULT_COOKIE_EXPIRATION);
+		createEAttribute(applicationEClass, APPLICATION__LOCATION_ID);
+		createEAttribute(applicationEClass, APPLICATION__SERVING_STATUS);
+		createEAttribute(applicationEClass, APPLICATION__DEFAULT_HOSTNAME);
+		createEAttribute(applicationEClass, APPLICATION__AUTH_DOMAIN);
+		createEAttribute(applicationEClass, APPLICATION__CODE_BUCKET);
+		createEAttribute(applicationEClass, APPLICATION__DEFAULT_BUCKET);
+		createEOperation(applicationEClass, APPLICATION___REPAIR__STRING);
+		createEOperation(applicationEClass, APPLICATION___GET__STRING);
+		createEOperation(applicationEClass, APPLICATION___PATCH__STRING_STRING);
+		createEOperation(applicationEClass, APPLICATION___CREATE);
+
+		networkEClass = createEClass(NETWORK);
+		createEAttribute(networkEClass, NETWORK__NAME);
+		createEReference(networkEClass, NETWORK__FORWARDED_PORTS);
+		createEAttribute(networkEClass, NETWORK__INSTANCE_TAG);
+		createEAttribute(networkEClass, NETWORK__SUBNETWORK_NAME);
+
+		instanceEClass = createEClass(INSTANCE);
+		createEAttribute(instanceEClass, INSTANCE__AVERAGE_LATENCY);
+		createEAttribute(instanceEClass, INSTANCE__MEMORY_USAGE);
+		createEAttribute(instanceEClass, INSTANCE__VM_IP);
+		createEAttribute(instanceEClass, INSTANCE__AVAILABILITY);
+		createEAttribute(instanceEClass, INSTANCE__VM_STATUS);
+		createEAttribute(instanceEClass, INSTANCE__ERRORS);
+		createEAttribute(instanceEClass, INSTANCE__START_TIME);
+		createEAttribute(instanceEClass, INSTANCE__VM_DEBUG_ENABLED);
+		createEAttribute(instanceEClass, INSTANCE__REQUESTS);
+		createEAttribute(instanceEClass, INSTANCE__APP_ENGINE_RELEASE);
+		createEAttribute(instanceEClass, INSTANCE__VM_NAME);
+		createEAttribute(instanceEClass, INSTANCE__QPS);
+		createEAttribute(instanceEClass, INSTANCE__VM_ID);
+		createEAttribute(instanceEClass, INSTANCE__VM_ZONE_NAME);
+		createEAttribute(instanceEClass, INSTANCE__NAME);
+		createEOperation(instanceEClass, INSTANCE___LIST__STRING_STRING_STRING_INTEGER_STRING);
+		createEOperation(instanceEClass, INSTANCE___GET__STRING_STRING_STRING_STRING);
+		createEOperation(instanceEClass, INSTANCE___DEBUG__STRING_STRING_STRING_STRING);
+		createEOperation(instanceEClass, INSTANCE___DELETE__STRING_STRING_STRING_STRING);
+
+		livenesscheckEClass = createEClass(LIVENESSCHECK);
+		createEAttribute(livenesscheckEClass, LIVENESSCHECK__FAILURE_THRESHOLD);
+		createEAttribute(livenesscheckEClass, LIVENESSCHECK__TIMEOUT);
+		createEAttribute(livenesscheckEClass, LIVENESSCHECK__INITIAL_DELAY);
+		createEAttribute(livenesscheckEClass, LIVENESSCHECK__PATH);
+		createEAttribute(livenesscheckEClass, LIVENESSCHECK__HOST);
+		createEAttribute(livenesscheckEClass, LIVENESSCHECK__SUCCESS_THRESHOLD);
+		createEAttribute(livenesscheckEClass, LIVENESSCHECK__CHECK_INTERVAL);
+
+		batchupdateingressrulesrequestEClass = createEClass(BATCHUPDATEINGRESSRULESREQUEST);
+		createEReference(batchupdateingressrulesrequestEClass, BATCHUPDATEINGRESSRULESREQUEST__INGRESS_RULES);
+
+		networkutilizationEClass = createEClass(NETWORKUTILIZATION);
+		createEAttribute(networkutilizationEClass, NETWORKUTILIZATION__TARGET_SENT_PACKETS_PER_SECOND);
+		createEAttribute(networkutilizationEClass, NETWORKUTILIZATION__TARGET_RECEIVED_BYTES_PER_SECOND);
+		createEAttribute(networkutilizationEClass, NETWORKUTILIZATION__TARGET_RECEIVED_PACKETS_PER_SECOND);
+		createEAttribute(networkutilizationEClass, NETWORKUTILIZATION__TARGET_SENT_BYTES_PER_SECOND);
+
+		locationEClass = createEClass(LOCATION);
+		createEAttribute(locationEClass, LOCATION__METADATA);
+		createEAttribute(locationEClass, LOCATION__LABELS);
+		createEAttribute(locationEClass, LOCATION__NAME);
+		createEAttribute(locationEClass, LOCATION__LOCATION_ID);
+		createEOperation(locationEClass, LOCATION___LIST__INTEGER_STRING_STRING_STRING);
+		createEOperation(locationEClass, LOCATION___GET__STRING_STRING);
+
+		healthcheckEClass = createEClass(HEALTHCHECK);
+		createEAttribute(healthcheckEClass, HEALTHCHECK__TIMEOUT);
+		createEAttribute(healthcheckEClass, HEALTHCHECK__UNHEALTHY_THRESHOLD);
+		createEAttribute(healthcheckEClass, HEALTHCHECK__DISABLE_HEALTH_CHECK);
+		createEAttribute(healthcheckEClass, HEALTHCHECK__HOST);
+		createEAttribute(healthcheckEClass, HEALTHCHECK__HEALTHY_THRESHOLD);
+		createEAttribute(healthcheckEClass, HEALTHCHECK__RESTART_THRESHOLD);
+		createEAttribute(healthcheckEClass, HEALTHCHECK__CHECK_INTERVAL);
+
+		readinesscheckEClass = createEClass(READINESSCHECK);
+		createEAttribute(readinesscheckEClass, READINESSCHECK__PATH);
+		createEAttribute(readinesscheckEClass, READINESSCHECK__HOST);
+		createEAttribute(readinesscheckEClass, READINESSCHECK__SUCCESS_THRESHOLD);
+		createEAttribute(readinesscheckEClass, READINESSCHECK__CHECK_INTERVAL);
+		createEAttribute(readinesscheckEClass, READINESSCHECK__FAILURE_THRESHOLD);
+		createEAttribute(readinesscheckEClass, READINESSCHECK__TIMEOUT);
+		createEAttribute(readinesscheckEClass, READINESSCHECK__APP_START_TIMEOUT);
+
+		debuginstancerequestEClass = createEClass(DEBUGINSTANCEREQUEST);
+		createEAttribute(debuginstancerequestEClass, DEBUGINSTANCEREQUEST__SSH_KEY);
+
+		operationmetadatav1beta5EClass = createEClass(OPERATIONMETADATAV1BETA5);
+		createEAttribute(operationmetadatav1beta5EClass, OPERATIONMETADATAV1BETA5__INSERT_TIME);
+		createEAttribute(operationmetadatav1beta5EClass, OPERATIONMETADATAV1BETA5__END_TIME);
+		createEAttribute(operationmetadatav1beta5EClass, OPERATIONMETADATAV1BETA5__USER);
+		createEAttribute(operationmetadatav1beta5EClass, OPERATIONMETADATAV1BETA5__TARGET);
+		createEAttribute(operationmetadatav1beta5EClass, OPERATIONMETADATAV1BETA5__METHOD);
+
+		automaticscalinglinkEClass = createEClass(AUTOMATICSCALINGLINK);
+
+		healthchecklinkEClass = createEClass(HEALTHCHECKLINK);
+
+		readinesschecklinkEClass = createEClass(READINESSCHECKLINK);
+
+		manualscalinglinkEClass = createEClass(MANUALSCALINGLINK);
+
+		apiconfighandlerlinkEClass = createEClass(APICONFIGHANDLERLINK);
+
+		endpointsapiservicelinkEClass = createEClass(ENDPOINTSAPISERVICELINK);
+
+		deploymentlinkEClass = createEClass(DEPLOYMENTLINK);
+
+		resourceslinkEClass = createEClass(RESOURCESLINK);
+
+		basicscalinglinkEClass = createEClass(BASICSCALINGLINK);
+
+		livenesschecklinkEClass = createEClass(LIVENESSCHECKLINK);
+
+		networklinkEClass = createEClass(NETWORKLINK);
+
+		versionEClass = createEClass(VERSION);
+		createEAttribute(versionEClass, VERSION__ENV);
+		createEReference(versionEClass, VERSION__HANDLERS);
+		createEAttribute(versionEClass, VERSION__DISK_USAGE_BYTES);
+		createEAttribute(versionEClass, VERSION__THREADSAFE);
+		createEAttribute(versionEClass, VERSION__NAME);
+		createEAttribute(versionEClass, VERSION__VM);
+		createEAttribute(versionEClass, VERSION__VERSION_URL);
+		createEAttribute(versionEClass, VERSION__INSTANCE_CLASS);
+		createEAttribute(versionEClass, VERSION__SERVING_STATUS);
+		createEAttribute(versionEClass, VERSION__RUNTIME_API_VERSION);
+		createEAttribute(versionEClass, VERSION__CREATE_TIME);
+		createEReference(versionEClass, VERSION__INBOUND_SERVICES);
+		createEReference(versionEClass, VERSION__ERROR_HANDLERS);
+		createEAttribute(versionEClass, VERSION__DEFAULT_EXPIRATION);
+		createEReference(versionEClass, VERSION__LIBRARIES);
+		createEAttribute(versionEClass, VERSION__NOBUILD_FILES_REGEX);
+		createEAttribute(versionEClass, VERSION__RUNTIME);
+		createEAttribute(versionEClass, VERSION__CREATED_BY);
+		createEAttribute(versionEClass, VERSION__ENV_VARIABLES);
+		createEAttribute(versionEClass, VERSION__BETA_SETTINGS);
+		createEOperation(versionEClass, VERSION___DELETE__STRING_STRING_STRING);
+		createEOperation(versionEClass, VERSION___LIST__INTEGER_STRING_STRING_STRING_STRING);
+		createEOperation(versionEClass, VERSION___GET__STRING_STRING_STRING_STRING);
+		createEOperation(versionEClass, VERSION___PATCH__STRING_STRING_STRING_STRING);
+		createEOperation(versionEClass, VERSION___CREATE__STRING_STRING);
+
+		repairapplicationrequestEClass = createEClass(REPAIRAPPLICATIONREQUEST);
+
+		certificaterawdataEClass = createEClass(CERTIFICATERAWDATA);
+		createEAttribute(certificaterawdataEClass, CERTIFICATERAWDATA__PUBLIC_CERTIFICATE);
+		createEAttribute(certificaterawdataEClass, CERTIFICATERAWDATA__PRIVATE_KEY);
+
+		fileinfoEClass = createEClass(FILEINFO);
+		createEAttribute(fileinfoEClass, FILEINFO__SOURCE_URL);
+		createEAttribute(fileinfoEClass, FILEINFO__SHA1_SUM);
+		createEAttribute(fileinfoEClass, FILEINFO__MIME_TYPE);
+
+		scripthandlerEClass = createEClass(SCRIPTHANDLER);
+		createEAttribute(scripthandlerEClass, SCRIPTHANDLER__SCRIPT_PATH);
+
+		operationmetadataexperimentalEClass = createEClass(OPERATIONMETADATAEXPERIMENTAL);
+		createEAttribute(operationmetadataexperimentalEClass, OPERATIONMETADATAEXPERIMENTAL__USER);
+		createEAttribute(operationmetadataexperimentalEClass, OPERATIONMETADATAEXPERIMENTAL__TARGET);
+		createEAttribute(operationmetadataexperimentalEClass, OPERATIONMETADATAEXPERIMENTAL__METHOD);
+		createEAttribute(operationmetadataexperimentalEClass, OPERATIONMETADATAEXPERIMENTAL__INSERT_TIME);
+		createEAttribute(operationmetadataexperimentalEClass, OPERATIONMETADATAEXPERIMENTAL__END_TIME);
+
+		authorizeddomainEClass = createEClass(AUTHORIZEDDOMAIN);
+		createEAttribute(authorizeddomainEClass, AUTHORIZEDDOMAIN__NAME);
+		createEOperation(authorizeddomainEClass, AUTHORIZEDDOMAIN___LIST__STRING_STRING_INTEGER);
+
+		trafficsplitEClass = createEClass(TRAFFICSPLIT);
+		createEAttribute(trafficsplitEClass, TRAFFICSPLIT__SHARD_BY);
+		createEAttribute(trafficsplitEClass, TRAFFICSPLIT__ALLOCATIONS);
+
+		operationmetadatav1betaEClass = createEClass(OPERATIONMETADATAV1BETA);
+		createEAttribute(operationmetadatav1betaEClass, OPERATIONMETADATAV1BETA__USER);
+		createEAttribute(operationmetadatav1betaEClass, OPERATIONMETADATAV1BETA__TARGET);
+		createEAttribute(operationmetadatav1betaEClass, OPERATIONMETADATAV1BETA__EPHEMERAL_MESSAGE);
+		createEAttribute(operationmetadatav1betaEClass, OPERATIONMETADATAV1BETA__METHOD);
+		createEAttribute(operationmetadatav1betaEClass, OPERATIONMETADATAV1BETA__END_TIME);
+		createEReference(operationmetadatav1betaEClass, OPERATIONMETADATAV1BETA__WARNING);
+		createEAttribute(operationmetadatav1betaEClass, OPERATIONMETADATAV1BETA__INSERT_TIME);
+
+		listservicesresponseEClass = createEClass(LISTSERVICESRESPONSE);
+		createEReference(listservicesresponseEClass, LISTSERVICESRESPONSE__SERVICES);
+		createEAttribute(listservicesresponseEClass, LISTSERVICESRESPONSE__NEXT_PAGE_TOKEN);
+
+		listingressrulesresponseEClass = createEClass(LISTINGRESSRULESRESPONSE);
+		createEAttribute(listingressrulesresponseEClass, LISTINGRESSRULESRESPONSE__NEXT_PAGE_TOKEN);
+		createEReference(listingressrulesresponseEClass, LISTINGRESSRULESRESPONSE__INGRESS_RULES);
+
+		resourcesEClass = createEClass(RESOURCES);
+		createEReference(resourcesEClass, RESOURCES__VOLUMES);
+		createEAttribute(resourcesEClass, RESOURCES__DISK_GB);
+		createEAttribute(resourcesEClass, RESOURCES__CPU);
+		createEAttribute(resourcesEClass, RESOURCES__MEMORY_GB);
+
+		zipinfolinkEClass = createEClass(ZIPINFOLINK);
+
+		containerinfolinkEClass = createEClass(CONTAINERINFOLINK);
+
+		deploymentEClass = createEClass(DEPLOYMENT);
+		createEAttribute(deploymentEClass, DEPLOYMENT__FILES);
+
+		batchupdateingressrulesresponseEClass = createEClass(BATCHUPDATEINGRESSRULESRESPONSE);
+		createEReference(batchupdateingressrulesresponseEClass, BATCHUPDATEINGRESSRULESRESPONSE__INGRESS_RULES);
+
+		volumeEClass = createEClass(VOLUME);
+		createEAttribute(volumeEClass, VOLUME__VOLUME_TYPE);
+		createEAttribute(volumeEClass, VOLUME__SIZE_GB);
+		createEAttribute(volumeEClass, VOLUME__NAME);
+
+		listinstancesresponseEClass = createEClass(LISTINSTANCESRESPONSE);
+		createEReference(listinstancesresponseEClass, LISTINSTANCESRESPONSE__INSTANCES);
+		createEAttribute(listinstancesresponseEClass, LISTINSTANCESRESPONSE__NEXT_PAGE_TOKEN);
+
+		listdomainmappingsresponseEClass = createEClass(LISTDOMAINMAPPINGSRESPONSE);
+		createEAttribute(listdomainmappingsresponseEClass, LISTDOMAINMAPPINGSRESPONSE__NEXT_PAGE_TOKEN);
+		createEReference(listdomainmappingsresponseEClass, LISTDOMAINMAPPINGSRESPONSE__DOMAIN_MAPPINGS);
+
+		operationmetadatav1alphaEClass = createEClass(OPERATIONMETADATAV1ALPHA);
+		createEAttribute(operationmetadatav1alphaEClass, OPERATIONMETADATAV1ALPHA__END_TIME);
+		createEReference(operationmetadatav1alphaEClass, OPERATIONMETADATAV1ALPHA__WARNING);
+		createEAttribute(operationmetadatav1alphaEClass, OPERATIONMETADATAV1ALPHA__INSERT_TIME);
+		createEAttribute(operationmetadatav1alphaEClass, OPERATIONMETADATAV1ALPHA__USER);
+		createEAttribute(operationmetadatav1alphaEClass, OPERATIONMETADATAV1ALPHA__TARGET);
+		createEAttribute(operationmetadatav1alphaEClass, OPERATIONMETADATAV1ALPHA__EPHEMERAL_MESSAGE);
+		createEAttribute(operationmetadatav1alphaEClass, OPERATIONMETADATAV1ALPHA__METHOD);
+
+		urldispatchruleEClass = createEClass(URLDISPATCHRULE);
+		createEAttribute(urldispatchruleEClass, URLDISPATCHRULE__DOMAIN);
+		createEAttribute(urldispatchruleEClass, URLDISPATCHRULE__SERVICE);
+		createEAttribute(urldispatchruleEClass, URLDISPATCHRULE__PATH);
+
+		listversionsresponseEClass = createEClass(LISTVERSIONSRESPONSE);
+		createEAttribute(listversionsresponseEClass, LISTVERSIONSRESPONSE__NEXT_PAGE_TOKEN);
+		createEReference(listversionsresponseEClass, LISTVERSIONSRESPONSE__VERSIONS);
+
+		listauthorizeddomainsresponseEClass = createEClass(LISTAUTHORIZEDDOMAINSRESPONSE);
+		createEReference(listauthorizeddomainsresponseEClass, LISTAUTHORIZEDDOMAINSRESPONSE__DOMAINS);
+		createEAttribute(listauthorizeddomainsresponseEClass, LISTAUTHORIZEDDOMAINSRESPONSE__NEXT_PAGE_TOKEN);
+
+		emptyEClass = createEClass(EMPTY);
+
+		apiendpointhandlerEClass = createEClass(APIENDPOINTHANDLER);
+		createEAttribute(apiendpointhandlerEClass, APIENDPOINTHANDLER__SCRIPT_PATH);
+
+		sslsettingslinkEClass = createEClass(SSLSETTINGSLINK);
+
+		domainmappingEClass = createEClass(DOMAINMAPPING);
+		createEReference(domainmappingEClass, DOMAINMAPPING__RESOURCE_RECORDS);
+		createEAttribute(domainmappingEClass, DOMAINMAPPING__NAME);
+		createEOperation(domainmappingEClass, DOMAINMAPPING___DELETE__STRING_STRING);
+		createEOperation(domainmappingEClass, DOMAINMAPPING___LIST__STRING_STRING_INTEGER);
+		createEOperation(domainmappingEClass, DOMAINMAPPING___GET__STRING_STRING);
+		createEOperation(domainmappingEClass, DOMAINMAPPING___PATCH__STRING_STRING_STRING);
+		createEOperation(domainmappingEClass, DOMAINMAPPING___CREATE__STRING);
+
+		requestutilizationlinkEClass = createEClass(REQUESTUTILIZATIONLINK);
+
+		networkutilizationlinkEClass = createEClass(NETWORKUTILIZATIONLINK);
+
+		cpuutilizationlinkEClass = createEClass(CPUUTILIZATIONLINK);
+
+		diskutilizationlinkEClass = createEClass(DISKUTILIZATIONLINK);
+
+		automaticscalingEClass = createEClass(AUTOMATICSCALING);
+		createEAttribute(automaticscalingEClass, AUTOMATICSCALING__MIN_PENDING_LATENCY);
+		createEAttribute(automaticscalingEClass, AUTOMATICSCALING__MAX_IDLE_INSTANCES);
+		createEAttribute(automaticscalingEClass, AUTOMATICSCALING__MIN_IDLE_INSTANCES);
+		createEAttribute(automaticscalingEClass, AUTOMATICSCALING__MAX_TOTAL_INSTANCES);
+		createEAttribute(automaticscalingEClass, AUTOMATICSCALING__MIN_TOTAL_INSTANCES);
+		createEAttribute(automaticscalingEClass, AUTOMATICSCALING__MAX_CONCURRENT_REQUESTS);
+		createEAttribute(automaticscalingEClass, AUTOMATICSCALING__COOL_DOWN_PERIOD);
+		createEAttribute(automaticscalingEClass, AUTOMATICSCALING__MAX_PENDING_LATENCY);
+
+		zipinfoEClass = createEClass(ZIPINFO);
+		createEAttribute(zipinfoEClass, ZIPINFO__SOURCE_URL);
+		createEAttribute(zipinfoEClass, ZIPINFO__FILES_COUNT);
+
+		certificaterawdatalinkEClass = createEClass(CERTIFICATERAWDATALINK);
+
+		authorizedcertificateEClass = createEClass(AUTHORIZEDCERTIFICATE);
+		createEAttribute(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE__DOMAIN_MAPPINGS_COUNT);
+		createEReference(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE__DOMAIN_NAMES);
+		createEAttribute(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE__DISPLAY_NAME);
+		createEReference(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE__VISIBLE_DOMAIN_MAPPINGS);
+		createEAttribute(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE__EXPIRE_TIME);
+		createEAttribute(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE__NAME);
+		createEOperation(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE___DELETE__STRING_STRING);
+		createEOperation(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE___LIST__STRING_STRING_INTEGER_STRING);
+		createEOperation(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE___GET__STRING_STRING_STRING);
+		createEOperation(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE___PATCH__STRING_STRING_STRING);
+		createEOperation(authorizedcertificateEClass, AUTHORIZEDCERTIFICATE___CREATE__STRING);
+
+		resourcerecordEClass = createEClass(RESOURCERECORD);
+		createEAttribute(resourcerecordEClass, RESOURCERECORD__TYPE);
+		createEAttribute(resourcerecordEClass, RESOURCERECORD__RRDATA);
+		createEAttribute(resourcerecordEClass, RESOURCERECORD__NAME);
+
+		libraryEClass = createEClass(LIBRARY);
+		createEAttribute(libraryEClass, LIBRARY__VERSION);
+		createEAttribute(libraryEClass, LIBRARY__NAME);
+
+		listlocationsresponseEClass = createEClass(LISTLOCATIONSRESPONSE);
+		createEAttribute(listlocationsresponseEClass, LISTLOCATIONSRESPONSE__NEXT_PAGE_TOKEN);
+		createEReference(listlocationsresponseEClass, LISTLOCATIONSRESPONSE__LOCATIONS);
+
+		containerinfoEClass = createEClass(CONTAINERINFO);
+		createEAttribute(containerinfoEClass, CONTAINERINFO__IMAGE);
+
+		requestutilizationEClass = createEClass(REQUESTUTILIZATION);
+		createEAttribute(requestutilizationEClass, REQUESTUTILIZATION__TARGET_REQUEST_COUNT_PER_SECOND);
+		createEAttribute(requestutilizationEClass, REQUESTUTILIZATION__TARGET_CONCURRENT_REQUESTS);
+
+		apiendpointhandlerlinkEClass = createEClass(APIENDPOINTHANDLERLINK);
+
+		staticfileshandlerlinkEClass = createEClass(STATICFILESHANDLERLINK);
+
+		scripthandlerlinkEClass = createEClass(SCRIPTHANDLERLINK);
+
+		urlmapEClass = createEClass(URLMAP);
+		createEAttribute(urlmapEClass, URLMAP__REDIRECT_HTTP_RESPONSE_CODE);
+		createEAttribute(urlmapEClass, URLMAP__SECURITY_LEVEL);
+		createEAttribute(urlmapEClass, URLMAP__AUTH_FAIL_ACTION);
+		createEAttribute(urlmapEClass, URLMAP__URL_REGEX);
+		createEAttribute(urlmapEClass, URLMAP__LOGIN);
+
+		endpointsapiserviceEClass = createEClass(ENDPOINTSAPISERVICE);
+		createEAttribute(endpointsapiserviceEClass, ENDPOINTSAPISERVICE__NAME);
+		createEAttribute(endpointsapiserviceEClass, ENDPOINTSAPISERVICE__CONFIG_ID);
+
+		statuslinkEClass = createEClass(STATUSLINK);
+
+		operationEClass = createEClass(OPERATION);
+		createEAttribute(operationEClass, OPERATION__RESPONSE);
+		createEAttribute(operationEClass, OPERATION__NAME);
+		createEAttribute(operationEClass, OPERATION__METADATA);
+		createEAttribute(operationEClass, OPERATION__DONE);
+		createEOperation(operationEClass, OPERATION___LIST__STRING_STRING_STRING_INTEGER);
+		createEOperation(operationEClass, OPERATION___GET__STRING_STRING);
+
+		apiconfighandlerEClass = createEClass(APICONFIGHANDLER);
+		createEAttribute(apiconfighandlerEClass, APICONFIGHANDLER__SECURITY_LEVEL);
+		createEAttribute(apiconfighandlerEClass, APICONFIGHANDLER__AUTH_FAIL_ACTION);
+		createEAttribute(apiconfighandlerEClass, APICONFIGHANDLER__SCRIPT);
+		createEAttribute(apiconfighandlerEClass, APICONFIGHANDLER__LOGIN);
+		createEAttribute(apiconfighandlerEClass, APICONFIGHANDLER__URL);
+
+		staticfileshandlerEClass = createEClass(STATICFILESHANDLER);
+		createEAttribute(staticfileshandlerEClass, STATICFILESHANDLER__APPLICATION_READABLE);
+		createEAttribute(staticfileshandlerEClass, STATICFILESHANDLER__HTTP_HEADERS);
+		createEAttribute(staticfileshandlerEClass, STATICFILESHANDLER__UPLOAD_PATH_REGEX);
+		createEAttribute(staticfileshandlerEClass, STATICFILESHANDLER__PATH);
+		createEAttribute(staticfileshandlerEClass, STATICFILESHANDLER__MIME_TYPE);
+		createEAttribute(staticfileshandlerEClass, STATICFILESHANDLER__REQUIRE_MATCHING_FILE);
+		createEAttribute(staticfileshandlerEClass, STATICFILESHANDLER__EXPIRATION);
+
+		basicscalingEClass = createEClass(BASICSCALING);
+		createEAttribute(basicscalingEClass, BASICSCALING__MAX_INSTANCES);
+		createEAttribute(basicscalingEClass, BASICSCALING__IDLE_TIMEOUT);
+
+		diskutilizationEClass = createEClass(DISKUTILIZATION);
+		createEAttribute(diskutilizationEClass, DISKUTILIZATION__TARGET_WRITE_BYTES_PER_SECOND);
+		createEAttribute(diskutilizationEClass, DISKUTILIZATION__TARGET_READ_BYTES_PER_SECOND);
+		createEAttribute(diskutilizationEClass, DISKUTILIZATION__TARGET_READ_OPS_PER_SECOND);
+		createEAttribute(diskutilizationEClass, DISKUTILIZATION__TARGET_WRITE_OPS_PER_SECOND);
+
+		// Create enums
+		actionEEnum = createEEnum(ACTION);
+		errorcodeEEnum = createEEnum(ERRORCODE);
+		servingstatusEEnum = createEEnum(SERVINGSTATUS);
+		availabilityEEnum = createEEnum(AVAILABILITY);
+		versionServingstatusEEnum = createEEnum(VERSION_SERVINGSTATUS);
+		shardbyEEnum = createEEnum(SHARDBY);
+		typeEEnum = createEEnum(TYPE);
+		redirecthttpresponsecodeEEnum = createEEnum(REDIRECTHTTPRESPONSECODE);
+		securitylevelEEnum = createEEnum(SECURITYLEVEL);
+		authfailactionEEnum = createEEnum(AUTHFAILACTION);
+		loginEEnum = createEEnum(LOGIN);
+		apiConfigHandlerSecuritylevelEEnum = createEEnum(API_CONFIG_HANDLER_SECURITYLEVEL);
+		apiConfigHandlerAuthfailactionEEnum = createEEnum(API_CONFIG_HANDLER_AUTHFAILACTION);
+		apiConfigHandlerLoginEEnum = createEEnum(API_CONFIG_HANDLER_LOGIN);
+
+		// Create data types
+		floatEDataType = createEDataType(FLOAT);
+		byteEDataType = createEDataType(BYTE);
+		doubleEDataType = createEDataType(DOUBLE);
+		objectEDataType = createEDataType(OBJECT);
+		longEDataType = createEDataType(LONG);
+		mapEDataType = createEDataType(MAP);
+		anyEDataType = createEDataType(ANY);
+		shortEDataType = createEDataType(SHORT);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private boolean isInitialized = false;
+
+	/**
+	 * Complete the initialization of the package and its meta-model.  This
+	 * method is guarded to have no affect on any invocation but its first.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void initializePackageContents() {
+		if (isInitialized) return;
+		isInitialized = true;
+
+		// Initialize package
+		setName(eNAME);
+		setNsPrefix(eNS_PREFIX);
+		setNsURI(eNS_URI);
+
+		// Obtain other dependent packages
+		OCCIPackage theOCCIPackage = (OCCIPackage)EPackage.Registry.INSTANCE.getEPackage(OCCIPackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
+
+		// Add supertypes to classes
+		cpuutilizationEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		statusEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		identityawareproxyEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		manualscalingEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		locationmetadataEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		trafficsplitlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		serviceEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		listoperationsresponseEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		operationmetadataEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		firewallruleEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		listauthorizedcertificatesresponseEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		featuresettingsEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		errorhandlerEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		sslsettingsEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		operationmetadatav1EClass.getESuperTypes().add(theOCCIPackage.getResource());
+		featuresettingslinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		identityawareproxylinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		applicationEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		networkEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		instanceEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		livenesscheckEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		batchupdateingressrulesrequestEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		networkutilizationEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		locationEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		healthcheckEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		readinesscheckEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		debuginstancerequestEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		operationmetadatav1beta5EClass.getESuperTypes().add(theOCCIPackage.getResource());
+		automaticscalinglinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		healthchecklinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		readinesschecklinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		manualscalinglinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		apiconfighandlerlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		endpointsapiservicelinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		deploymentlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		resourceslinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		basicscalinglinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		livenesschecklinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		networklinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		versionEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		repairapplicationrequestEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		certificaterawdataEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		fileinfoEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		scripthandlerEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		operationmetadataexperimentalEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		authorizeddomainEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		trafficsplitEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		operationmetadatav1betaEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		listservicesresponseEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		listingressrulesresponseEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		resourcesEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		zipinfolinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		containerinfolinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		deploymentEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		batchupdateingressrulesresponseEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		volumeEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		listinstancesresponseEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		listdomainmappingsresponseEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		operationmetadatav1alphaEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		urldispatchruleEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		listversionsresponseEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		listauthorizeddomainsresponseEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		emptyEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		apiendpointhandlerEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		sslsettingslinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		domainmappingEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		requestutilizationlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		networkutilizationlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		cpuutilizationlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		diskutilizationlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		automaticscalingEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		zipinfoEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		certificaterawdatalinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		authorizedcertificateEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		resourcerecordEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		libraryEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		listlocationsresponseEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		containerinfoEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		requestutilizationEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		apiendpointhandlerlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		staticfileshandlerlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		scripthandlerlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		urlmapEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		endpointsapiserviceEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		statuslinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		operationEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		apiconfighandlerEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		staticfileshandlerEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		basicscalingEClass.getESuperTypes().add(theOCCIPackage.getResource());
+		diskutilizationEClass.getESuperTypes().add(theOCCIPackage.getResource());
+
+		// Initialize classes, features, and operations; add parameters
+		initEClass(arrayEClass, array.class, "array", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getarray_Values(), this.getobject(), "values", null, 0, -1, array.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(cpuutilizationEClass, Cpuutilization.class, "Cpuutilization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCpuutilization_AggregationWindowLength(), theOCCIPackage.getString(), "aggregationWindowLength", null, 1, 1, Cpuutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCpuutilization_TargetUtilization(), theOCCIPackage.getInteger(), "targetUtilization", null, 1, 1, Cpuutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(statusEClass, Status.class, "Status", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStatus_Details(), this.getarray(), null, "details", null, 1, 1, Status.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStatus_Code(), theOCCIPackage.getInteger(), "code", null, 1, 1, Status.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStatus_Message(), theOCCIPackage.getString(), "message", null, 1, 1, Status.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(identityawareproxyEClass, Identityawareproxy.class, "Identityawareproxy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIdentityawareproxy_Oauth2ClientSecret(), theOCCIPackage.getString(), "oauth2ClientSecret", null, 1, 1, Identityawareproxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentityawareproxy_Oauth2ClientId(), theOCCIPackage.getString(), "oauth2ClientId", null, 1, 1, Identityawareproxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentityawareproxy_Oauth2ClientSecretSha256(), theOCCIPackage.getString(), "oauth2ClientSecretSha256", null, 1, 1, Identityawareproxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentityawareproxy_Enabled(), theOCCIPackage.getBoolean(), "enabled", null, 1, 1, Identityawareproxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(manualscalingEClass, Manualscaling.class, "Manualscaling", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getManualscaling_Instances(), theOCCIPackage.getInteger(), "instances", null, 1, 1, Manualscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(locationmetadataEClass, Locationmetadata.class, "Locationmetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLocationmetadata_FlexibleEnvironmentAvailable(), theOCCIPackage.getBoolean(), "flexibleEnvironmentAvailable", null, 1, 1, Locationmetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLocationmetadata_StandardEnvironmentAvailable(), theOCCIPackage.getBoolean(), "standardEnvironmentAvailable", null, 1, 1, Locationmetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(trafficsplitlinkEClass, Trafficsplitlink.class, "Trafficsplitlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getService_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		EOperation op = initEOperation(getService__Delete__String_String(), null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getService__List__String_String_Integer(), null, "list", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "pageToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getInteger(), "pageSize", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getService__Get__String_String(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getService__Patch__String_String_String_boolean(), null, "patch", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "updateMask", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getBoolean(), "migrateTraffic", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(listoperationsresponseEClass, Listoperationsresponse.class, "Listoperationsresponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getListoperationsresponse_NextPageToken(), theOCCIPackage.getString(), "nextPageToken", null, 1, 1, Listoperationsresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getListoperationsresponse_Operations(), this.getarray(), null, "operations", null, 1, 1, Listoperationsresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operationmetadataEClass, Operationmetadata.class, "Operationmetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOperationmetadata_User(), theOCCIPackage.getString(), "user", null, 1, 1, Operationmetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadata_Target(), theOCCIPackage.getString(), "target", null, 1, 1, Operationmetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadata_Method(), theOCCIPackage.getString(), "method", null, 1, 1, Operationmetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadata_EndTime(), theOCCIPackage.getString(), "endTime", null, 1, 1, Operationmetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadata_OperationType(), theOCCIPackage.getString(), "operationType", null, 1, 1, Operationmetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadata_InsertTime(), theOCCIPackage.getString(), "insertTime", null, 1, 1, Operationmetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(firewallruleEClass, Firewallrule.class, "Firewallrule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFirewallrule_SourceRange(), theOCCIPackage.getString(), "sourceRange", null, 1, 1, Firewallrule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFirewallrule_Priority(), theOCCIPackage.getInteger(), "priority", null, 1, 1, Firewallrule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFirewallrule_Action(), theOCCIPackage.getString(), "action", null, 1, 1, Firewallrule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFirewallrule_Description(), theOCCIPackage.getString(), "description", null, 1, 1, Firewallrule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getFirewallrule__Get__String_String(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "ingressRulesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getFirewallrule__Patch__String_String_String(), null, "patch", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "updateMask", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "ingressRulesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getFirewallrule__Batchupdate__String(), null, "batchupdate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getFirewallrule__Delete__String_String(), null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "ingressRulesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getFirewallrule__List__Integer_String_String_String(), null, "list", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getInteger(), "pageSize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "matchingAddress", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "pageToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getFirewallrule__Create__String(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(listauthorizedcertificatesresponseEClass, Listauthorizedcertificatesresponse.class, "Listauthorizedcertificatesresponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getListauthorizedcertificatesresponse_Certificates(), this.getarray(), null, "certificates", null, 1, 1, Listauthorizedcertificatesresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getListauthorizedcertificatesresponse_NextPageToken(), theOCCIPackage.getString(), "nextPageToken", null, 1, 1, Listauthorizedcertificatesresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(featuresettingsEClass, Featuresettings.class, "Featuresettings", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFeaturesettings_SplitHealthChecks(), theOCCIPackage.getBoolean(), "splitHealthChecks", null, 1, 1, Featuresettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(errorhandlerEClass, Errorhandler.class, "Errorhandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getErrorhandler_ErrorCode(), theOCCIPackage.getString(), "errorCode", null, 1, 1, Errorhandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getErrorhandler_MimeType(), theOCCIPackage.getString(), "mimeType", null, 1, 1, Errorhandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getErrorhandler_StaticFile(), theOCCIPackage.getString(), "staticFile", null, 1, 1, Errorhandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(sslsettingsEClass, Sslsettings.class, "Sslsettings", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSslsettings_CertificateId(), theOCCIPackage.getString(), "certificateId", null, 1, 1, Sslsettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operationmetadatav1EClass, Operationmetadatav1.class, "Operationmetadatav1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperationmetadatav1_Warning(), this.getarray(), null, "warning", null, 1, 1, Operationmetadatav1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1_InsertTime(), theOCCIPackage.getString(), "insertTime", null, 1, 1, Operationmetadatav1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1_Target(), theOCCIPackage.getString(), "target", null, 1, 1, Operationmetadatav1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1_User(), theOCCIPackage.getString(), "user", null, 1, 1, Operationmetadatav1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1_EphemeralMessage(), theOCCIPackage.getString(), "ephemeralMessage", null, 1, 1, Operationmetadatav1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1_Method(), theOCCIPackage.getString(), "method", null, 1, 1, Operationmetadatav1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1_EndTime(), theOCCIPackage.getString(), "endTime", null, 1, 1, Operationmetadatav1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(featuresettingslinkEClass, Featuresettingslink.class, "Featuresettingslink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(identityawareproxylinkEClass, Identityawareproxylink.class, "Identityawareproxylink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getApplication_DispatchRules(), this.getarray(), null, "dispatchRules", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_GcrDomain(), theOCCIPackage.getString(), "gcrDomain", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_DefaultCookieExpiration(), theOCCIPackage.getString(), "defaultCookieExpiration", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_LocationId(), theOCCIPackage.getString(), "locationId", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_ServingStatus(), theOCCIPackage.getString(), "servingStatus", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_DefaultHostname(), theOCCIPackage.getString(), "defaultHostname", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_AuthDomain(), theOCCIPackage.getString(), "authDomain", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_CodeBucket(), theOCCIPackage.getString(), "codeBucket", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_DefaultBucket(), theOCCIPackage.getString(), "defaultBucket", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getApplication__Repair__String(), null, "repair", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getApplication__Get__String(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getApplication__Patch__String_String(), null, "patch", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "updateMask", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getApplication__Create(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNetwork_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNetwork_ForwardedPorts(), this.getarray(), null, "forwardedPorts", null, 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_InstanceTag(), theOCCIPackage.getString(), "instanceTag", null, 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_SubnetworkName(), theOCCIPackage.getString(), "subnetworkName", null, 1, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(instanceEClass, Instance.class, "Instance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInstance_AverageLatency(), theOCCIPackage.getInteger(), "averageLatency", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_MemoryUsage(), theOCCIPackage.getString(), "memoryUsage", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_VmIp(), theOCCIPackage.getString(), "vmIp", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_Availability(), theOCCIPackage.getString(), "availability", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_VmStatus(), theOCCIPackage.getString(), "vmStatus", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_Errors(), theOCCIPackage.getInteger(), "errors", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_StartTime(), theOCCIPackage.getString(), "startTime", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_VmDebugEnabled(), theOCCIPackage.getBoolean(), "vmDebugEnabled", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_Requests(), theOCCIPackage.getInteger(), "requests", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_AppEngineRelease(), theOCCIPackage.getString(), "appEngineRelease", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_VmName(), theOCCIPackage.getString(), "vmName", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_Qps(), theOCCIPackage.getInteger(), "qps", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_VmId(), theOCCIPackage.getString(), "vmId", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_VmZoneName(), theOCCIPackage.getString(), "vmZoneName", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstance_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getInstance__List__String_String_String_Integer_String(), null, "list", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "pageToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getInteger(), "pageSize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "versionsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInstance__Get__String_String_String_String(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "instancesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "versionsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInstance__Debug__String_String_String_String(), null, "debug", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "instancesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "versionsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInstance__Delete__String_String_String_String(), null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "instancesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "versionsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(livenesscheckEClass, Livenesscheck.class, "Livenesscheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLivenesscheck_FailureThreshold(), theOCCIPackage.getInteger(), "failureThreshold", null, 1, 1, Livenesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLivenesscheck_Timeout(), theOCCIPackage.getString(), "timeout", null, 1, 1, Livenesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLivenesscheck_InitialDelay(), theOCCIPackage.getString(), "initialDelay", null, 1, 1, Livenesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLivenesscheck_Path(), theOCCIPackage.getString(), "path", null, 1, 1, Livenesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLivenesscheck_Host(), theOCCIPackage.getString(), "host", null, 1, 1, Livenesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLivenesscheck_SuccessThreshold(), theOCCIPackage.getInteger(), "successThreshold", null, 1, 1, Livenesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLivenesscheck_CheckInterval(), theOCCIPackage.getString(), "checkInterval", null, 1, 1, Livenesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(batchupdateingressrulesrequestEClass, Batchupdateingressrulesrequest.class, "Batchupdateingressrulesrequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBatchupdateingressrulesrequest_IngressRules(), this.getarray(), null, "ingressRules", null, 1, 1, Batchupdateingressrulesrequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(networkutilizationEClass, Networkutilization.class, "Networkutilization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNetworkutilization_TargetSentPacketsPerSecond(), theOCCIPackage.getInteger(), "targetSentPacketsPerSecond", null, 1, 1, Networkutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetworkutilization_TargetReceivedBytesPerSecond(), theOCCIPackage.getInteger(), "targetReceivedBytesPerSecond", null, 1, 1, Networkutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetworkutilization_TargetReceivedPacketsPerSecond(), theOCCIPackage.getInteger(), "targetReceivedPacketsPerSecond", null, 1, 1, Networkutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetworkutilization_TargetSentBytesPerSecond(), theOCCIPackage.getInteger(), "targetSentBytesPerSecond", null, 1, 1, Networkutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(locationEClass, Location.class, "Location", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLocation_Metadata(), this.getmap(), "metadata", null, 1, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLocation_Labels(), this.getmap(), "labels", null, 1, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLocation_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLocation_LocationId(), theOCCIPackage.getString(), "locationId", null, 1, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getLocation__List__Integer_String_String_String(), null, "list", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getInteger(), "pageSize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "filter", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "pageToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getLocation__Get__String_String(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "locationsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(healthcheckEClass, Healthcheck.class, "Healthcheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHealthcheck_Timeout(), theOCCIPackage.getString(), "timeout", null, 1, 1, Healthcheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHealthcheck_UnhealthyThreshold(), theOCCIPackage.getInteger(), "unhealthyThreshold", null, 1, 1, Healthcheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHealthcheck_DisableHealthCheck(), theOCCIPackage.getBoolean(), "disableHealthCheck", null, 1, 1, Healthcheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHealthcheck_Host(), theOCCIPackage.getString(), "host", null, 1, 1, Healthcheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHealthcheck_HealthyThreshold(), theOCCIPackage.getInteger(), "healthyThreshold", null, 1, 1, Healthcheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHealthcheck_RestartThreshold(), theOCCIPackage.getInteger(), "restartThreshold", null, 1, 1, Healthcheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHealthcheck_CheckInterval(), theOCCIPackage.getString(), "checkInterval", null, 1, 1, Healthcheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(readinesscheckEClass, Readinesscheck.class, "Readinesscheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReadinesscheck_Path(), theOCCIPackage.getString(), "path", null, 1, 1, Readinesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReadinesscheck_Host(), theOCCIPackage.getString(), "host", null, 1, 1, Readinesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReadinesscheck_SuccessThreshold(), theOCCIPackage.getInteger(), "successThreshold", null, 1, 1, Readinesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReadinesscheck_CheckInterval(), theOCCIPackage.getString(), "checkInterval", null, 1, 1, Readinesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReadinesscheck_FailureThreshold(), theOCCIPackage.getInteger(), "failureThreshold", null, 1, 1, Readinesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReadinesscheck_Timeout(), theOCCIPackage.getString(), "timeout", null, 1, 1, Readinesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReadinesscheck_AppStartTimeout(), theOCCIPackage.getString(), "appStartTimeout", null, 1, 1, Readinesscheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(debuginstancerequestEClass, Debuginstancerequest.class, "Debuginstancerequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDebuginstancerequest_SshKey(), theOCCIPackage.getString(), "sshKey", null, 1, 1, Debuginstancerequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operationmetadatav1beta5EClass, Operationmetadatav1beta5.class, "Operationmetadatav1beta5", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOperationmetadatav1beta5_InsertTime(), theOCCIPackage.getString(), "insertTime", null, 1, 1, Operationmetadatav1beta5.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1beta5_EndTime(), theOCCIPackage.getString(), "endTime", null, 1, 1, Operationmetadatav1beta5.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1beta5_User(), theOCCIPackage.getString(), "user", null, 1, 1, Operationmetadatav1beta5.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1beta5_Target(), theOCCIPackage.getString(), "target", null, 1, 1, Operationmetadatav1beta5.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1beta5_Method(), theOCCIPackage.getString(), "method", null, 1, 1, Operationmetadatav1beta5.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(automaticscalinglinkEClass, Automaticscalinglink.class, "Automaticscalinglink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(healthchecklinkEClass, Healthchecklink.class, "Healthchecklink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(readinesschecklinkEClass, Readinesschecklink.class, "Readinesschecklink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(manualscalinglinkEClass, Manualscalinglink.class, "Manualscalinglink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(apiconfighandlerlinkEClass, Apiconfighandlerlink.class, "Apiconfighandlerlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(endpointsapiservicelinkEClass, Endpointsapiservicelink.class, "Endpointsapiservicelink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(deploymentlinkEClass, Deploymentlink.class, "Deploymentlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(resourceslinkEClass, Resourceslink.class, "Resourceslink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(basicscalinglinkEClass, Basicscalinglink.class, "Basicscalinglink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(livenesschecklinkEClass, Livenesschecklink.class, "Livenesschecklink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(networklinkEClass, Networklink.class, "Networklink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(versionEClass, Version.class, "Version", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVersion_Env(), theOCCIPackage.getString(), "env", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVersion_Handlers(), this.getarray(), null, "handlers", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_DiskUsageBytes(), theOCCIPackage.getString(), "diskUsageBytes", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_Threadsafe(), theOCCIPackage.getBoolean(), "threadsafe", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_Vm(), theOCCIPackage.getBoolean(), "vm", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_VersionUrl(), theOCCIPackage.getString(), "versionUrl", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_InstanceClass(), theOCCIPackage.getString(), "instanceClass", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_ServingStatus(), theOCCIPackage.getString(), "servingStatus", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_RuntimeApiVersion(), theOCCIPackage.getString(), "runtimeApiVersion", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_CreateTime(), theOCCIPackage.getString(), "createTime", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVersion_InboundServices(), this.getarray(), null, "inboundServices", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVersion_ErrorHandlers(), this.getarray(), null, "errorHandlers", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_DefaultExpiration(), theOCCIPackage.getString(), "defaultExpiration", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVersion_Libraries(), this.getarray(), null, "libraries", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_NobuildFilesRegex(), theOCCIPackage.getString(), "nobuildFilesRegex", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_Runtime(), theOCCIPackage.getString(), "runtime", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_CreatedBy(), theOCCIPackage.getString(), "createdBy", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_EnvVariables(), this.getmap(), "envVariables", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVersion_BetaSettings(), this.getmap(), "betaSettings", null, 1, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getVersion__Delete__String_String_String(), null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "versionsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getVersion__List__Integer_String_String_String_String(), null, "list", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getInteger(), "pageSize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "view", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "pageToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getVersion__Get__String_String_String_String(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "versionsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "view", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getVersion__Patch__String_String_String_String(), null, "patch", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "updateMask", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "versionsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getVersion__Create__String_String(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "servicesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(repairapplicationrequestEClass, Repairapplicationrequest.class, "Repairapplicationrequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(certificaterawdataEClass, Certificaterawdata.class, "Certificaterawdata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCertificaterawdata_PublicCertificate(), theOCCIPackage.getString(), "publicCertificate", null, 1, 1, Certificaterawdata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCertificaterawdata_PrivateKey(), theOCCIPackage.getString(), "privateKey", null, 1, 1, Certificaterawdata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(fileinfoEClass, Fileinfo.class, "Fileinfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFileinfo_SourceUrl(), theOCCIPackage.getString(), "sourceUrl", null, 1, 1, Fileinfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFileinfo_Sha1Sum(), theOCCIPackage.getString(), "sha1Sum", null, 1, 1, Fileinfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFileinfo_MimeType(), theOCCIPackage.getString(), "mimeType", null, 1, 1, Fileinfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(scripthandlerEClass, Scripthandler.class, "Scripthandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getScripthandler_ScriptPath(), theOCCIPackage.getString(), "scriptPath", null, 1, 1, Scripthandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operationmetadataexperimentalEClass, Operationmetadataexperimental.class, "Operationmetadataexperimental", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOperationmetadataexperimental_User(), theOCCIPackage.getString(), "user", null, 1, 1, Operationmetadataexperimental.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadataexperimental_Target(), theOCCIPackage.getString(), "target", null, 1, 1, Operationmetadataexperimental.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadataexperimental_Method(), theOCCIPackage.getString(), "method", null, 1, 1, Operationmetadataexperimental.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadataexperimental_InsertTime(), theOCCIPackage.getString(), "insertTime", null, 1, 1, Operationmetadataexperimental.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadataexperimental_EndTime(), theOCCIPackage.getString(), "endTime", null, 1, 1, Operationmetadataexperimental.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(authorizeddomainEClass, Authorizeddomain.class, "Authorizeddomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAuthorizeddomain_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Authorizeddomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getAuthorizeddomain__List__String_String_Integer(), null, "list", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "pageToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getInteger(), "pageSize", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(trafficsplitEClass, Trafficsplit.class, "Trafficsplit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTrafficsplit_ShardBy(), theOCCIPackage.getString(), "shardBy", null, 1, 1, Trafficsplit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrafficsplit_Allocations(), this.getmap(), "allocations", null, 1, 1, Trafficsplit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operationmetadatav1betaEClass, Operationmetadatav1beta.class, "Operationmetadatav1beta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOperationmetadatav1beta_User(), theOCCIPackage.getString(), "user", null, 1, 1, Operationmetadatav1beta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1beta_Target(), theOCCIPackage.getString(), "target", null, 1, 1, Operationmetadatav1beta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1beta_EphemeralMessage(), theOCCIPackage.getString(), "ephemeralMessage", null, 1, 1, Operationmetadatav1beta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1beta_Method(), theOCCIPackage.getString(), "method", null, 1, 1, Operationmetadatav1beta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1beta_EndTime(), theOCCIPackage.getString(), "endTime", null, 1, 1, Operationmetadatav1beta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperationmetadatav1beta_Warning(), this.getarray(), null, "warning", null, 1, 1, Operationmetadatav1beta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1beta_InsertTime(), theOCCIPackage.getString(), "insertTime", null, 1, 1, Operationmetadatav1beta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listservicesresponseEClass, Listservicesresponse.class, "Listservicesresponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getListservicesresponse_Services(), this.getarray(), null, "services", null, 1, 1, Listservicesresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getListservicesresponse_NextPageToken(), theOCCIPackage.getString(), "nextPageToken", null, 1, 1, Listservicesresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listingressrulesresponseEClass, Listingressrulesresponse.class, "Listingressrulesresponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getListingressrulesresponse_NextPageToken(), theOCCIPackage.getString(), "nextPageToken", null, 1, 1, Listingressrulesresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getListingressrulesresponse_IngressRules(), this.getarray(), null, "ingressRules", null, 1, 1, Listingressrulesresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(resourcesEClass, Resources.class, "Resources", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getResources_Volumes(), this.getarray(), null, "volumes", null, 1, 1, Resources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResources_DiskGb(), theOCCIPackage.getInteger(), "diskGb", null, 1, 1, Resources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResources_Cpu(), theOCCIPackage.getInteger(), "cpu", null, 1, 1, Resources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResources_MemoryGb(), theOCCIPackage.getInteger(), "memoryGb", null, 1, 1, Resources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(zipinfolinkEClass, Zipinfolink.class, "Zipinfolink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(containerinfolinkEClass, Containerinfolink.class, "Containerinfolink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(deploymentEClass, Deployment.class, "Deployment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDeployment_Files(), this.getobject(), "files", null, 1, 1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(batchupdateingressrulesresponseEClass, Batchupdateingressrulesresponse.class, "Batchupdateingressrulesresponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBatchupdateingressrulesresponse_IngressRules(), this.getarray(), null, "ingressRules", null, 1, 1, Batchupdateingressrulesresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(volumeEClass, Volume.class, "Volume", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVolume_VolumeType(), theOCCIPackage.getString(), "volumeType", null, 1, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVolume_SizeGb(), theOCCIPackage.getInteger(), "sizeGb", null, 1, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVolume_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listinstancesresponseEClass, Listinstancesresponse.class, "Listinstancesresponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getListinstancesresponse_Instances(), this.getarray(), null, "instances", null, 1, 1, Listinstancesresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getListinstancesresponse_NextPageToken(), theOCCIPackage.getString(), "nextPageToken", null, 1, 1, Listinstancesresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listdomainmappingsresponseEClass, Listdomainmappingsresponse.class, "Listdomainmappingsresponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getListdomainmappingsresponse_NextPageToken(), theOCCIPackage.getString(), "nextPageToken", null, 1, 1, Listdomainmappingsresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getListdomainmappingsresponse_DomainMappings(), this.getarray(), null, "domainMappings", null, 1, 1, Listdomainmappingsresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operationmetadatav1alphaEClass, Operationmetadatav1alpha.class, "Operationmetadatav1alpha", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOperationmetadatav1alpha_EndTime(), theOCCIPackage.getString(), "endTime", null, 1, 1, Operationmetadatav1alpha.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperationmetadatav1alpha_Warning(), this.getarray(), null, "warning", null, 1, 1, Operationmetadatav1alpha.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1alpha_InsertTime(), theOCCIPackage.getString(), "insertTime", null, 1, 1, Operationmetadatav1alpha.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1alpha_User(), theOCCIPackage.getString(), "user", null, 1, 1, Operationmetadatav1alpha.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1alpha_Target(), theOCCIPackage.getString(), "target", null, 1, 1, Operationmetadatav1alpha.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1alpha_EphemeralMessage(), theOCCIPackage.getString(), "ephemeralMessage", null, 1, 1, Operationmetadatav1alpha.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationmetadatav1alpha_Method(), theOCCIPackage.getString(), "method", null, 1, 1, Operationmetadatav1alpha.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(urldispatchruleEClass, Urldispatchrule.class, "Urldispatchrule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUrldispatchrule_Domain(), theOCCIPackage.getString(), "domain", null, 1, 1, Urldispatchrule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUrldispatchrule_Service(), theOCCIPackage.getString(), "service", null, 1, 1, Urldispatchrule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUrldispatchrule_Path(), theOCCIPackage.getString(), "path", null, 1, 1, Urldispatchrule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listversionsresponseEClass, Listversionsresponse.class, "Listversionsresponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getListversionsresponse_NextPageToken(), theOCCIPackage.getString(), "nextPageToken", null, 1, 1, Listversionsresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getListversionsresponse_Versions(), this.getarray(), null, "versions", null, 1, 1, Listversionsresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listauthorizeddomainsresponseEClass, Listauthorizeddomainsresponse.class, "Listauthorizeddomainsresponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getListauthorizeddomainsresponse_Domains(), this.getarray(), null, "domains", null, 1, 1, Listauthorizeddomainsresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getListauthorizeddomainsresponse_NextPageToken(), theOCCIPackage.getString(), "nextPageToken", null, 1, 1, Listauthorizeddomainsresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(emptyEClass, Empty.class, "Empty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(apiendpointhandlerEClass, Apiendpointhandler.class, "Apiendpointhandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getApiendpointhandler_ScriptPath(), theOCCIPackage.getString(), "scriptPath", null, 1, 1, Apiendpointhandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(sslsettingslinkEClass, Sslsettingslink.class, "Sslsettingslink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(domainmappingEClass, Domainmapping.class, "Domainmapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDomainmapping_ResourceRecords(), this.getarray(), null, "resourceRecords", null, 1, 1, Domainmapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomainmapping_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Domainmapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getDomainmapping__Delete__String_String(), null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "domainMappingsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDomainmapping__List__String_String_Integer(), null, "list", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "pageToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getInteger(), "pageSize", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDomainmapping__Get__String_String(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "domainMappingsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDomainmapping__Patch__String_String_String(), null, "patch", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "updateMask", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "domainMappingsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDomainmapping__Create__String(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(requestutilizationlinkEClass, Requestutilizationlink.class, "Requestutilizationlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(networkutilizationlinkEClass, Networkutilizationlink.class, "Networkutilizationlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(cpuutilizationlinkEClass, Cpuutilizationlink.class, "Cpuutilizationlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(diskutilizationlinkEClass, Diskutilizationlink.class, "Diskutilizationlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(automaticscalingEClass, Automaticscaling.class, "Automaticscaling", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAutomaticscaling_MinPendingLatency(), theOCCIPackage.getString(), "minPendingLatency", null, 1, 1, Automaticscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAutomaticscaling_MaxIdleInstances(), theOCCIPackage.getInteger(), "maxIdleInstances", null, 1, 1, Automaticscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAutomaticscaling_MinIdleInstances(), theOCCIPackage.getInteger(), "minIdleInstances", null, 1, 1, Automaticscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAutomaticscaling_MaxTotalInstances(), theOCCIPackage.getInteger(), "maxTotalInstances", null, 1, 1, Automaticscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAutomaticscaling_MinTotalInstances(), theOCCIPackage.getInteger(), "minTotalInstances", null, 1, 1, Automaticscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAutomaticscaling_MaxConcurrentRequests(), theOCCIPackage.getInteger(), "maxConcurrentRequests", null, 1, 1, Automaticscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAutomaticscaling_CoolDownPeriod(), theOCCIPackage.getString(), "coolDownPeriod", null, 1, 1, Automaticscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAutomaticscaling_MaxPendingLatency(), theOCCIPackage.getString(), "maxPendingLatency", null, 1, 1, Automaticscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(zipinfoEClass, Zipinfo.class, "Zipinfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getZipinfo_SourceUrl(), theOCCIPackage.getString(), "sourceUrl", null, 1, 1, Zipinfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getZipinfo_FilesCount(), theOCCIPackage.getInteger(), "filesCount", null, 1, 1, Zipinfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(certificaterawdatalinkEClass, Certificaterawdatalink.class, "Certificaterawdatalink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(authorizedcertificateEClass, Authorizedcertificate.class, "Authorizedcertificate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAuthorizedcertificate_DomainMappingsCount(), theOCCIPackage.getInteger(), "domainMappingsCount", null, 1, 1, Authorizedcertificate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAuthorizedcertificate_DomainNames(), this.getarray(), null, "domainNames", null, 1, 1, Authorizedcertificate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAuthorizedcertificate_DisplayName(), theOCCIPackage.getString(), "displayName", null, 1, 1, Authorizedcertificate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAuthorizedcertificate_VisibleDomainMappings(), this.getarray(), null, "visibleDomainMappings", null, 1, 1, Authorizedcertificate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAuthorizedcertificate_ExpireTime(), theOCCIPackage.getString(), "expireTime", null, 1, 1, Authorizedcertificate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAuthorizedcertificate_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Authorizedcertificate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getAuthorizedcertificate__Delete__String_String(), null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "authorizedCertificatesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getAuthorizedcertificate__List__String_String_Integer_String(), null, "list", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "pageToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getInteger(), "pageSize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "view", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getAuthorizedcertificate__Get__String_String_String(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "view", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "authorizedCertificatesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getAuthorizedcertificate__Patch__String_String_String(), null, "patch", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "authorizedCertificatesId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "updateMask", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getAuthorizedcertificate__Create__String(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(resourcerecordEClass, Resourcerecord.class, "Resourcerecord", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getResourcerecord_Type(), theOCCIPackage.getString(), "type", null, 1, 1, Resourcerecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResourcerecord_Rrdata(), theOCCIPackage.getString(), "rrdata", null, 1, 1, Resourcerecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResourcerecord_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Resourcerecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(libraryEClass, Library.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLibrary_Version(), theOCCIPackage.getString(), "version", null, 1, 1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLibrary_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listlocationsresponseEClass, Listlocationsresponse.class, "Listlocationsresponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getListlocationsresponse_NextPageToken(), theOCCIPackage.getString(), "nextPageToken", null, 1, 1, Listlocationsresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getListlocationsresponse_Locations(), this.getarray(), null, "locations", null, 1, 1, Listlocationsresponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(containerinfoEClass, Containerinfo.class, "Containerinfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContainerinfo_Image(), theOCCIPackage.getString(), "image", null, 1, 1, Containerinfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(requestutilizationEClass, Requestutilization.class, "Requestutilization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRequestutilization_TargetRequestCountPerSecond(), theOCCIPackage.getInteger(), "targetRequestCountPerSecond", null, 1, 1, Requestutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRequestutilization_TargetConcurrentRequests(), theOCCIPackage.getInteger(), "targetConcurrentRequests", null, 1, 1, Requestutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(apiendpointhandlerlinkEClass, Apiendpointhandlerlink.class, "Apiendpointhandlerlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(staticfileshandlerlinkEClass, Staticfileshandlerlink.class, "Staticfileshandlerlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(scripthandlerlinkEClass, Scripthandlerlink.class, "Scripthandlerlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(urlmapEClass, Urlmap.class, "Urlmap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUrlmap_RedirectHttpResponseCode(), theOCCIPackage.getString(), "redirectHttpResponseCode", null, 1, 1, Urlmap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUrlmap_SecurityLevel(), theOCCIPackage.getString(), "securityLevel", null, 1, 1, Urlmap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUrlmap_AuthFailAction(), theOCCIPackage.getString(), "authFailAction", null, 1, 1, Urlmap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUrlmap_UrlRegex(), theOCCIPackage.getString(), "urlRegex", null, 1, 1, Urlmap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUrlmap_Login(), theOCCIPackage.getString(), "login", null, 1, 1, Urlmap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(endpointsapiserviceEClass, Endpointsapiservice.class, "Endpointsapiservice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEndpointsapiservice_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Endpointsapiservice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEndpointsapiservice_ConfigId(), theOCCIPackage.getString(), "configId", null, 1, 1, Endpointsapiservice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(statuslinkEClass, Statuslink.class, "Statuslink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOperation_Response(), this.getmap(), "response", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperation_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperation_Metadata(), this.getmap(), "metadata", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperation_Done(), theOCCIPackage.getBoolean(), "done", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getOperation__List__String_String_String_Integer(), null, "list", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "filter", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "pageToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getInteger(), "pageSize", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getOperation__Get__String_String(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "appsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "operationsId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(apiconfighandlerEClass, Apiconfighandler.class, "Apiconfighandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getApiconfighandler_SecurityLevel(), theOCCIPackage.getString(), "securityLevel", null, 1, 1, Apiconfighandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApiconfighandler_AuthFailAction(), theOCCIPackage.getString(), "authFailAction", null, 1, 1, Apiconfighandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApiconfighandler_Script(), theOCCIPackage.getString(), "script", null, 1, 1, Apiconfighandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApiconfighandler_Login(), theOCCIPackage.getString(), "login", null, 1, 1, Apiconfighandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApiconfighandler_Url(), theOCCIPackage.getString(), "url", null, 1, 1, Apiconfighandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(staticfileshandlerEClass, Staticfileshandler.class, "Staticfileshandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStaticfileshandler_ApplicationReadable(), theOCCIPackage.getBoolean(), "applicationReadable", null, 1, 1, Staticfileshandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStaticfileshandler_HttpHeaders(), this.getmap(), "httpHeaders", null, 1, 1, Staticfileshandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStaticfileshandler_UploadPathRegex(), theOCCIPackage.getString(), "uploadPathRegex", null, 1, 1, Staticfileshandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStaticfileshandler_Path(), theOCCIPackage.getString(), "path", null, 1, 1, Staticfileshandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStaticfileshandler_MimeType(), theOCCIPackage.getString(), "mimeType", null, 1, 1, Staticfileshandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStaticfileshandler_RequireMatchingFile(), theOCCIPackage.getBoolean(), "requireMatchingFile", null, 1, 1, Staticfileshandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStaticfileshandler_Expiration(), theOCCIPackage.getString(), "expiration", null, 1, 1, Staticfileshandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(basicscalingEClass, Basicscaling.class, "Basicscaling", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBasicscaling_MaxInstances(), theOCCIPackage.getInteger(), "maxInstances", null, 1, 1, Basicscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBasicscaling_IdleTimeout(), theOCCIPackage.getString(), "idleTimeout", null, 1, 1, Basicscaling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(diskutilizationEClass, Diskutilization.class, "Diskutilization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiskutilization_TargetWriteBytesPerSecond(), theOCCIPackage.getInteger(), "targetWriteBytesPerSecond", null, 1, 1, Diskutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDiskutilization_TargetReadBytesPerSecond(), theOCCIPackage.getInteger(), "targetReadBytesPerSecond", null, 1, 1, Diskutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDiskutilization_TargetReadOpsPerSecond(), theOCCIPackage.getInteger(), "targetReadOpsPerSecond", null, 1, 1, Diskutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDiskutilization_TargetWriteOpsPerSecond(), theOCCIPackage.getInteger(), "targetWriteOpsPerSecond", null, 1, 1, Diskutilization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(actionEEnum, Action.class, "Action");
+		addEEnumLiteral(actionEEnum, Action.UNSPECIFIED_ACTION);
+		addEEnumLiteral(actionEEnum, Action.ALLOW);
+		addEEnumLiteral(actionEEnum, Action.DENY);
+
+		initEEnum(errorcodeEEnum, Errorcode.class, "Errorcode");
+		addEEnumLiteral(errorcodeEEnum, Errorcode.ERROR_CODE_UNSPECIFIED);
+		addEEnumLiteral(errorcodeEEnum, Errorcode.ERROR_CODE_DEFAULT);
+		addEEnumLiteral(errorcodeEEnum, Errorcode.ERROR_CODE_OVER_QUOTA);
+		addEEnumLiteral(errorcodeEEnum, Errorcode.ERROR_CODE_DOS_API_DENIAL);
+		addEEnumLiteral(errorcodeEEnum, Errorcode.ERROR_CODE_TIMEOUT);
+
+		initEEnum(servingstatusEEnum, Servingstatus.class, "Servingstatus");
+		addEEnumLiteral(servingstatusEEnum, Servingstatus.UNSPECIFIED);
+		addEEnumLiteral(servingstatusEEnum, Servingstatus.SERVING);
+		addEEnumLiteral(servingstatusEEnum, Servingstatus.USER_DISABLED);
+		addEEnumLiteral(servingstatusEEnum, Servingstatus.SYSTEM_DISABLED);
+
+		initEEnum(availabilityEEnum, Availability.class, "Availability");
+		addEEnumLiteral(availabilityEEnum, Availability.UNSPECIFIED);
+		addEEnumLiteral(availabilityEEnum, Availability.RESIDENT);
+		addEEnumLiteral(availabilityEEnum, Availability.DYNAMIC);
+
+		initEEnum(versionServingstatusEEnum, VersionServingstatus.class, "VersionServingstatus");
+		addEEnumLiteral(versionServingstatusEEnum, VersionServingstatus.SERVING_STATUS_UNSPECIFIED);
+		addEEnumLiteral(versionServingstatusEEnum, VersionServingstatus.SERVING);
+		addEEnumLiteral(versionServingstatusEEnum, VersionServingstatus.STOPPED);
+
+		initEEnum(shardbyEEnum, Shardby.class, "Shardby");
+		addEEnumLiteral(shardbyEEnum, Shardby.UNSPECIFIED);
+		addEEnumLiteral(shardbyEEnum, Shardby.COOKIE);
+		addEEnumLiteral(shardbyEEnum, Shardby.IP);
+		addEEnumLiteral(shardbyEEnum, Shardby.RANDOM);
+
+		initEEnum(typeEEnum, Type.class, "Type");
+		addEEnumLiteral(typeEEnum, Type.RECORD_TYPE_UNSPECIFIED);
+		addEEnumLiteral(typeEEnum, Type.A);
+		addEEnumLiteral(typeEEnum, Type.AAAA);
+		addEEnumLiteral(typeEEnum, Type.CNAME);
+
+		initEEnum(redirecthttpresponsecodeEEnum, Redirecthttpresponsecode.class, "Redirecthttpresponsecode");
+		addEEnumLiteral(redirecthttpresponsecodeEEnum, Redirecthttpresponsecode.REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED);
+		addEEnumLiteral(redirecthttpresponsecodeEEnum, Redirecthttpresponsecode.REDIRECT_HTTP_RESPONSE_CODE_301);
+		addEEnumLiteral(redirecthttpresponsecodeEEnum, Redirecthttpresponsecode.REDIRECT_HTTP_RESPONSE_CODE_302);
+		addEEnumLiteral(redirecthttpresponsecodeEEnum, Redirecthttpresponsecode.REDIRECT_HTTP_RESPONSE_CODE_303);
+		addEEnumLiteral(redirecthttpresponsecodeEEnum, Redirecthttpresponsecode.REDIRECT_HTTP_RESPONSE_CODE_307);
+
+		initEEnum(securitylevelEEnum, Securitylevel.class, "Securitylevel");
+		addEEnumLiteral(securitylevelEEnum, Securitylevel.SECURE_UNSPECIFIED);
+		addEEnumLiteral(securitylevelEEnum, Securitylevel.SECURE_DEFAULT);
+		addEEnumLiteral(securitylevelEEnum, Securitylevel.SECURE_NEVER);
+		addEEnumLiteral(securitylevelEEnum, Securitylevel.SECURE_OPTIONAL);
+		addEEnumLiteral(securitylevelEEnum, Securitylevel.SECURE_ALWAYS);
+
+		initEEnum(authfailactionEEnum, Authfailaction.class, "Authfailaction");
+		addEEnumLiteral(authfailactionEEnum, Authfailaction.AUTH_FAIL_ACTION_UNSPECIFIED);
+		addEEnumLiteral(authfailactionEEnum, Authfailaction.AUTH_FAIL_ACTION_REDIRECT);
+		addEEnumLiteral(authfailactionEEnum, Authfailaction.AUTH_FAIL_ACTION_UNAUTHORIZED);
+
+		initEEnum(loginEEnum, Login.class, "Login");
+		addEEnumLiteral(loginEEnum, Login.LOGIN_UNSPECIFIED);
+		addEEnumLiteral(loginEEnum, Login.LOGIN_OPTIONAL);
+		addEEnumLiteral(loginEEnum, Login.LOGIN_ADMIN);
+		addEEnumLiteral(loginEEnum, Login.LOGIN_REQUIRED);
+
+		initEEnum(apiConfigHandlerSecuritylevelEEnum, ApiConfigHandlerSecuritylevel.class, "ApiConfigHandlerSecuritylevel");
+		addEEnumLiteral(apiConfigHandlerSecuritylevelEEnum, ApiConfigHandlerSecuritylevel.SECURE_UNSPECIFIED);
+		addEEnumLiteral(apiConfigHandlerSecuritylevelEEnum, ApiConfigHandlerSecuritylevel.SECURE_DEFAULT);
+		addEEnumLiteral(apiConfigHandlerSecuritylevelEEnum, ApiConfigHandlerSecuritylevel.SECURE_NEVER);
+		addEEnumLiteral(apiConfigHandlerSecuritylevelEEnum, ApiConfigHandlerSecuritylevel.SECURE_OPTIONAL);
+		addEEnumLiteral(apiConfigHandlerSecuritylevelEEnum, ApiConfigHandlerSecuritylevel.SECURE_ALWAYS);
+
+		initEEnum(apiConfigHandlerAuthfailactionEEnum, ApiConfigHandlerAuthfailaction.class, "ApiConfigHandlerAuthfailaction");
+		addEEnumLiteral(apiConfigHandlerAuthfailactionEEnum, ApiConfigHandlerAuthfailaction.AUTH_FAIL_ACTION_UNSPECIFIED);
+		addEEnumLiteral(apiConfigHandlerAuthfailactionEEnum, ApiConfigHandlerAuthfailaction.AUTH_FAIL_ACTION_REDIRECT);
+		addEEnumLiteral(apiConfigHandlerAuthfailactionEEnum, ApiConfigHandlerAuthfailaction.AUTH_FAIL_ACTION_UNAUTHORIZED);
+
+		initEEnum(apiConfigHandlerLoginEEnum, ApiConfigHandlerLogin.class, "ApiConfigHandlerLogin");
+		addEEnumLiteral(apiConfigHandlerLoginEEnum, ApiConfigHandlerLogin.LOGIN_UNSPECIFIED);
+		addEEnumLiteral(apiConfigHandlerLoginEEnum, ApiConfigHandlerLogin.LOGIN_OPTIONAL);
+		addEEnumLiteral(apiConfigHandlerLoginEEnum, ApiConfigHandlerLogin.LOGIN_ADMIN);
+		addEEnumLiteral(apiConfigHandlerLoginEEnum, ApiConfigHandlerLogin.LOGIN_REQUIRED);
+
+		// Initialize data types
+		initEDataType(floatEDataType, Float.class, "float", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(byteEDataType, Byte.class, "byte", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(doubleEDataType, Double.class, "double", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(objectEDataType, Object.class, "object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(longEDataType, Long.class, "long", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(mapEDataType, Map.class, "map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(anyEDataType, Object.class, "any", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(shortEDataType, Short.class, "short", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+
+		// Create resource
 		createResource(eNS_URI);
-	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private boolean isFixed = false;
-
-	/**
-	 * Fixes up the loaded package, to make it appear as if it had been programmatically built.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void fixPackageContents() {
-		if (isFixed) return;
-		isFixed = true;
-		fixEClassifiers();
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/OCL/Import
+		createImportAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
 	}
 
 	/**
-	 * Sets the instance class on the given classifier.
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected void fixInstanceClass(EClassifier eClassifier) {
-		if (eClassifier.getInstanceClassName() == null) {
-			eClassifier.setInstanceClassName("appengine." + eClassifier.getName());
-			setGeneratedClassName(eClassifier);
-		}
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+		   });	
+		addAnnotation
+		  (trafficsplitlinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (featuresettingslinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (identityawareproxylinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (automaticscalinglinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (healthchecklinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (readinesschecklinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (manualscalinglinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (apiconfighandlerlinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (endpointsapiservicelinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (deploymentlinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (resourceslinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (basicscalinglinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (livenesschecklinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (networklinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (zipinfolinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (containerinfolinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (sslsettingslinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (requestutilizationlinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (networkutilizationlinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (cpuutilizationlinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (diskutilizationlinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (certificaterawdatalinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (apiendpointhandlerlinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (staticfileshandlerlinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (scripthandlerlinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });	
+		addAnnotation
+		  (statuslinkEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "sourceConstraint targetConstraint"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createImportAnnotations() {
+		String source = "http://www.eclipse.org/OCL/Import";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "occi", "http://schemas.ogf.org/occi/core/ecore"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";	
+		addAnnotation
+		  (trafficsplitlinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Service)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Trafficsplit)"
+		   });	
+		addAnnotation
+		  (featuresettingslinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Application)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Featuresettings)"
+		   });	
+		addAnnotation
+		  (identityawareproxylinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Application)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Identityawareproxy)"
+		   });	
+		addAnnotation
+		  (automaticscalinglinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Automaticscaling)"
+		   });	
+		addAnnotation
+		  (healthchecklinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Healthcheck)"
+		   });	
+		addAnnotation
+		  (readinesschecklinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Readinesscheck)"
+		   });	
+		addAnnotation
+		  (manualscalinglinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Manualscaling)"
+		   });	
+		addAnnotation
+		  (apiconfighandlerlinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Apiconfighandler)"
+		   });	
+		addAnnotation
+		  (endpointsapiservicelinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Endpointsapiservice)"
+		   });	
+		addAnnotation
+		  (deploymentlinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Deployment)"
+		   });	
+		addAnnotation
+		  (resourceslinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Resources)"
+		   });	
+		addAnnotation
+		  (basicscalinglinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Basicscaling)"
+		   });	
+		addAnnotation
+		  (livenesschecklinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Livenesscheck)"
+		   });	
+		addAnnotation
+		  (networklinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Version)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Network)"
+		   });	
+		addAnnotation
+		  (zipinfolinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Deployment)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Zipinfo)"
+		   });	
+		addAnnotation
+		  (containerinfolinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Deployment)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Containerinfo)"
+		   });	
+		addAnnotation
+		  (sslsettingslinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Domainmapping)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Sslsettings)"
+		   });	
+		addAnnotation
+		  (requestutilizationlinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Automaticscaling)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Requestutilization)"
+		   });	
+		addAnnotation
+		  (networkutilizationlinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Automaticscaling)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Networkutilization)"
+		   });	
+		addAnnotation
+		  (cpuutilizationlinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Automaticscaling)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Cpuutilization)"
+		   });	
+		addAnnotation
+		  (diskutilizationlinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Automaticscaling)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Diskutilization)"
+		   });	
+		addAnnotation
+		  (certificaterawdatalinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Authorizedcertificate)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Certificaterawdata)"
+		   });	
+		addAnnotation
+		  (apiendpointhandlerlinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Urlmap)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Apiendpointhandler)"
+		   });	
+		addAnnotation
+		  (staticfileshandlerlinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Urlmap)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Staticfileshandler)"
+		   });	
+		addAnnotation
+		  (scripthandlerlinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Urlmap)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Scripthandler)"
+		   });	
+		addAnnotation
+		  (statuslinkEClass, 
+		   source, 
+		   new String[] {
+			 "sourceConstraint", "self.source.oclIsKindOf(appengine::Operation)",
+			 "targetConstraint", "self.target.oclIsKindOf(appengine::Status)"
+		   });
 	}
 
 } //AppenginePackageImpl

@@ -52,7 +52,6 @@ public interface Livenesscheck extends Resource {
 	 * @see #setFailureThreshold(Integer)
 	 * @see appengine.AppenginePackage#getLivenesscheck_FailureThreshold()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Livenesscheck!failureThreshold'"
 	 * @generated
 	 */
 	Integer getFailureThreshold();
@@ -78,7 +77,6 @@ public interface Livenesscheck extends Resource {
 	 * @see #setTimeout(String)
 	 * @see appengine.AppenginePackage#getLivenesscheck_Timeout()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Livenesscheck!timeout'"
 	 * @generated
 	 */
 	String getTimeout();
@@ -104,7 +102,6 @@ public interface Livenesscheck extends Resource {
 	 * @see #setInitialDelay(String)
 	 * @see appengine.AppenginePackage#getLivenesscheck_InitialDelay()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Livenesscheck!initialDelay'"
 	 * @generated
 	 */
 	String getInitialDelay();
@@ -130,7 +127,6 @@ public interface Livenesscheck extends Resource {
 	 * @see #setPath(String)
 	 * @see appengine.AppenginePackage#getLivenesscheck_Path()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Livenesscheck!path'"
 	 * @generated
 	 */
 	String getPath();
@@ -156,7 +152,6 @@ public interface Livenesscheck extends Resource {
 	 * @see #setHost(String)
 	 * @see appengine.AppenginePackage#getLivenesscheck_Host()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Livenesscheck!host'"
 	 * @generated
 	 */
 	String getHost();
@@ -182,7 +177,6 @@ public interface Livenesscheck extends Resource {
 	 * @see #setSuccessThreshold(Integer)
 	 * @see appengine.AppenginePackage#getLivenesscheck_SuccessThreshold()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Livenesscheck!successThreshold'"
 	 * @generated
 	 */
 	Integer getSuccessThreshold();
@@ -208,7 +202,6 @@ public interface Livenesscheck extends Resource {
 	 * @see #setCheckInterval(String)
 	 * @see appengine.AppenginePackage#getLivenesscheck_CheckInterval()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Livenesscheck!checkInterval'"
 	 * @generated
 	 */
 	String getCheckInterval();

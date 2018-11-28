@@ -46,7 +46,6 @@ public interface Authorizeddomain extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getAuthorizeddomain_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizeddomain!name'"
 	 * @generated
 	 */
 	String getName();
@@ -71,7 +70,6 @@ public interface Authorizeddomain extends Resource {
 	 * @param pageSize Maximum results to return per page.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" pageTokenDataType="org.eclipse.cmf.occi.core.String" pageTokenRequired="true" pageSizeDataType="org.eclipse.cmf.occi.core.Integer" pageSizeRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizeddomain!list(String,String,Integer)'"
 	 * @generated
 	 */
 	void list(String appsId, String pageToken, Integer pageSize);

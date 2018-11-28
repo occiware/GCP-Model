@@ -52,7 +52,6 @@ public interface Healthcheck extends Resource {
 	 * @see #setTimeout(String)
 	 * @see appengine.AppenginePackage#getHealthcheck_Timeout()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Healthcheck!timeout'"
 	 * @generated
 	 */
 	String getTimeout();
@@ -78,7 +77,6 @@ public interface Healthcheck extends Resource {
 	 * @see #setUnhealthyThreshold(Integer)
 	 * @see appengine.AppenginePackage#getHealthcheck_UnhealthyThreshold()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Healthcheck!unhealthyThreshold'"
 	 * @generated
 	 */
 	Integer getUnhealthyThreshold();
@@ -104,7 +102,6 @@ public interface Healthcheck extends Resource {
 	 * @see #setDisableHealthCheck(boolean)
 	 * @see appengine.AppenginePackage#getHealthcheck_DisableHealthCheck()
 	 * @model dataType="org.eclipse.cmf.occi.core.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Healthcheck!disableHealthCheck'"
 	 * @generated
 	 */
 	boolean isDisableHealthCheck();
@@ -130,7 +127,6 @@ public interface Healthcheck extends Resource {
 	 * @see #setHost(String)
 	 * @see appengine.AppenginePackage#getHealthcheck_Host()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Healthcheck!host'"
 	 * @generated
 	 */
 	String getHost();
@@ -156,7 +152,6 @@ public interface Healthcheck extends Resource {
 	 * @see #setHealthyThreshold(Integer)
 	 * @see appengine.AppenginePackage#getHealthcheck_HealthyThreshold()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Healthcheck!healthyThreshold'"
 	 * @generated
 	 */
 	Integer getHealthyThreshold();
@@ -182,7 +177,6 @@ public interface Healthcheck extends Resource {
 	 * @see #setRestartThreshold(Integer)
 	 * @see appengine.AppenginePackage#getHealthcheck_RestartThreshold()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Healthcheck!restartThreshold'"
 	 * @generated
 	 */
 	Integer getRestartThreshold();
@@ -208,7 +202,6 @@ public interface Healthcheck extends Resource {
 	 * @see #setCheckInterval(String)
 	 * @see appengine.AppenginePackage#getHealthcheck_CheckInterval()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Healthcheck!checkInterval'"
 	 * @generated
 	 */
 	String getCheckInterval();

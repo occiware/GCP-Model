@@ -51,7 +51,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @see #setDomainMappingsCount(Integer)
 	 * @see appengine.AppenginePackage#getAuthorizedcertificate_DomainMappingsCount()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!domainMappingsCount'"
 	 * @generated
 	 */
 	Integer getDomainMappingsCount();
@@ -77,7 +76,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @see #setDomainNames(array)
 	 * @see appengine.AppenginePackage#getAuthorizedcertificate_DomainNames()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!domainNames'"
 	 * @generated
 	 */
 	array getDomainNames();
@@ -103,7 +101,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @see #setDisplayName(String)
 	 * @see appengine.AppenginePackage#getAuthorizedcertificate_DisplayName()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!displayName'"
 	 * @generated
 	 */
 	String getDisplayName();
@@ -129,7 +126,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @see #setVisibleDomainMappings(array)
 	 * @see appengine.AppenginePackage#getAuthorizedcertificate_VisibleDomainMappings()
 	 * @model containment="true" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!visibleDomainMappings'"
 	 * @generated
 	 */
 	array getVisibleDomainMappings();
@@ -155,7 +151,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @see #setExpireTime(String)
 	 * @see appengine.AppenginePackage#getAuthorizedcertificate_ExpireTime()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!expireTime'"
 	 * @generated
 	 */
 	String getExpireTime();
@@ -181,7 +176,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @see #setName(String)
 	 * @see appengine.AppenginePackage#getAuthorizedcertificate_Name()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!name'"
 	 * @generated
 	 */
 	String getName();
@@ -205,7 +199,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @param appsId Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
 	 * <!-- end-model-doc -->
 	 * @model authorizedCertificatesIdDataType="org.eclipse.cmf.occi.core.String" authorizedCertificatesIdRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!delete(String,String)'"
 	 * @generated
 	 */
 	void delete(String authorizedCertificatesId, String appsId);
@@ -221,7 +214,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @param view Controls the set of fields returned in the LIST response.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" pageTokenDataType="org.eclipse.cmf.occi.core.String" pageTokenRequired="true" pageSizeDataType="org.eclipse.cmf.occi.core.Integer" pageSizeRequired="true" viewDataType="org.eclipse.cmf.occi.core.String" viewRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!list(String,String,Integer,String)'"
 	 * @generated
 	 */
 	void list(String appsId, String pageToken, Integer pageSize, String view);
@@ -236,7 +228,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @param authorizedCertificatesId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" viewDataType="org.eclipse.cmf.occi.core.String" viewRequired="true" authorizedCertificatesIdDataType="org.eclipse.cmf.occi.core.String" authorizedCertificatesIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!get(String,String,String)'"
 	 * @generated
 	 */
 	void get(String appsId, String view, String authorizedCertificatesId);
@@ -251,7 +242,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @param appsId Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
 	 * <!-- end-model-doc -->
 	 * @model authorizedCertificatesIdDataType="org.eclipse.cmf.occi.core.String" authorizedCertificatesIdRequired="true" updateMaskDataType="org.eclipse.cmf.occi.core.String" updateMaskRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!patch(String,String,String)'"
 	 * @generated
 	 */
 	void patch(String authorizedCertificatesId, String updateMask, String appsId);
@@ -264,7 +254,6 @@ public interface Authorizedcertificate extends Resource {
 	 * @param appsId Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Authorizedcertificate!create(String)'"
 	 * @generated
 	 */
 	void create(String appsId);

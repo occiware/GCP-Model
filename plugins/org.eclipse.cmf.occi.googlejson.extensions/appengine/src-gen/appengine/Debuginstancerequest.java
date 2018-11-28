@@ -48,7 +48,6 @@ public interface Debuginstancerequest extends Resource {
 	 * @see #setSshKey(String)
 	 * @see appengine.AppenginePackage#getDebuginstancerequest_SshKey()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Debuginstancerequest!sshKey'"
 	 * @generated
 	 */
 	String getSshKey();

@@ -11,7 +11,7 @@
     <attributes name="name" required="true" description="Data source resource name.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="scopes" required="true" description="Api auth scopes for which refresh token needs to be obtained. Only valid&#xA;when `client_id` is specified. Ignored otherwise. These are scopes needed&#xA;by a data source to prepare data and ingest them into BigQuery,&#xA;e.g., https://www.googleapis.com/auth/bigquery" type="//@types.2"/>
+    <attributes name="scopes" required="true" description="Api auth scopes for which refresh token needs to be obtained. Only valid&#xA;when `client_id` is specified. Ignored otherwise. These are scopes needed&#xA;by a data source to prepare data and ingest them into BigQuery,&#xA;e.g., https://www.googleapis.com/auth/bigquery" type="//@types.5"/>
     <attributes name="minimumScheduleInterval" required="true" description="The minimum interval between two consecutive scheduled runs.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -33,7 +33,7 @@
     <attributes name="dataRefreshType" required="true" description="Specifies whether the data source supports automatic data refresh for the&#xA;past few days, and how it's supported.&#xA;For some data sources, data might not be complete until a few days later,&#xA;so it's useful to refresh data automatically.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="parameters" required="true" description="Data source parameters." type="//@types.2"/>
+    <attributes name="parameters" required="true" description="Data source parameters." type="//@types.5"/>
     <attributes name="helpUrl" required="true" description="Url for the help document for this data source.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -88,14 +88,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Location" scheme="http://occi/gcpbigquerydatatransfer#" title="A resource that represents Google Cloud Platform location.">
-    <attributes name="labels" required="true" description="Cross-service attributes for the location. For example&#xA;&#xA;    {&quot;cloud.googleapis.com/region&quot;: &quot;us-east1&quot;}" type="//@types.3"/>
+    <attributes name="labels" required="true" description="Cross-service attributes for the location. For example&#xA;&#xA;    {&quot;cloud.googleapis.com/region&quot;: &quot;us-east1&quot;}" type="//@types.6"/>
     <attributes name="name" required="true" description="Resource name for the location, which may vary between implementations.&#xA;For example: `&quot;projects/example-project/locations/us-east1&quot;`">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <attributes name="locationId" required="true" description="The canonical id for this location. For example: `&quot;us-east1&quot;`.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="metadata" required="true" description="Service-specific metadata. For example the available capacity at the given&#xA;location." type="//@types.3"/>
+    <attributes name="metadata" required="true" description="Service-specific metadata. For example the available capacity at the given&#xA;location." type="//@types.6"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="TransferConfig" scheme="http://occi/gcpbigquerydatatransfer#" title="Represents a data transfer configuration. A transfer configuration&#xA;contains all metadata needed to perform a data transfer. For example,&#xA;`destination_dataset_id` specifies where data should be stored.&#xA;When a new transfer configuration is created, the specified&#xA;`destination_dataset_id` is created when needed and shared with the&#xA;appropriate data source service account.">
@@ -114,7 +114,7 @@
     <attributes name="name" required="true" description="The resource name of the transfer config.&#xA;Transfer config names have the form&#xA;`projects/{project_id}/transferConfigs/{config_id}`.&#xA;Where `config_id` is usually a uuid, even though it is not&#xA;guaranteed or required. The name is ignored when creating a transfer&#xA;config.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="params" required="true" description="Data transfer specific parameters." type="//@types.3"/>
+    <attributes name="params" required="true" description="Data transfer specific parameters." type="//@types.6"/>
     <attributes name="datasetRegion" required="true" description="Output only. Region in which BigQuery dataset is located.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -199,7 +199,7 @@
     <attributes name="name" required="true" description="The resource name of the transfer run.&#xA;Transfer run names have the form&#xA;`projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.&#xA;The name is ignored when creating a transfer run.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="params" required="true" description="Data transfer specific parameters." type="//@types.3"/>
+    <attributes name="params" required="true" description="Data transfer specific parameters." type="//@types.6"/>
     <attributes name="endTime" required="true" description="Output only. Time when transfer run ended.&#xA;Parameter ignored by server for input requests.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -236,14 +236,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ScheduleTransferRunsResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="A response to schedule transfer runs for a time range.">
-    <attributes name="runs" required="true" description="The transfer runs that were scheduled." type="//@types.2"/>
+    <attributes name="runs" required="true" description="The transfer runs that were scheduled." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListTransferLogsResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="The returned list transfer run messages.">
     <attributes name="nextPageToken" required="true" description="Output only. The next-pagination token. For multiple-page list results,&#xA;this token can be used as the&#xA;`GetTransferRunLogRequest.page_token`&#xA;to request the next page of list results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="transferMessages" required="true" description="Output only. The stored pipeline transfer messages." type="//@types.2"/>
+    <attributes name="transferMessages" required="true" description="Output only. The stored pipeline transfer messages." type="//@types.5"/>
     <actions name="list" scheme="http://occi/gcpbigquerydatatransfer/listtransferlogsresponse/action#" title="Returns user facing log messages for the data transfer run.">
       <attributes name="pageToken" required="true" description="Pagination token, which can be used to request a specific page&#xA;of `ListTransferLogsRequest` list results. For multiple-page&#xA;results, `ListTransferLogsResponse` outputs&#xA;a `next_page` token, which can be used as the&#xA;`page_token` value to request the next page of list results.">
         <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
@@ -276,7 +276,7 @@
     <attributes name="nextPageToken" required="true" description="Output only. The next-pagination token. For multiple-page list results,&#xA;this token can be used as the&#xA;`ListDataSourcesRequest.page_token`&#xA;to request the next page of list results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="dataSources" required="true" description="List of supported data sources and their transfer settings." type="//@types.2"/>
+    <attributes name="dataSources" required="true" description="List of supported data sources and their transfer settings." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="DataSourceParameter" scheme="http://occi/gcpbigquerydatatransfer#" title="Represents a data source parameter with validation rules, so that&#xA;parameters can be rendered in the UI. These parameters are given to us by&#xA;supported data sources, and include all needed information for rendering&#xA;and validation.&#xA;Thus, whoever uses this api can decide to generate either generic ui,&#xA;or custom data source specific forms.">
@@ -289,7 +289,7 @@
     <attributes name="validationDescription" required="true" description="Description of the requirements for this field, in case the user input does&#xA;not fulfill the regex pattern or min/max values.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="fields" required="true" description="When parameter is a record, describes child fields." type="//@types.2"/>
+    <attributes name="fields" required="true" description="When parameter is a record, describes child fields." type="//@types.5"/>
     <attributes name="maxValue" required="true" description="For integer and double values specifies maxminum allowed value.">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
@@ -302,7 +302,7 @@
     <attributes name="description" required="true" description="Parameter description.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="allowedValues" required="true" description="All possible values for the parameter." type="//@types.2"/>
+    <attributes name="allowedValues" required="true" description="All possible values for the parameter." type="//@types.5"/>
     <attributes name="validationHelpUrl" required="true" description="URL to a help document to further explain the naming requirements.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -324,7 +324,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListTransferRunsResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="The returned list of pipelines in the project.">
-    <attributes name="transferRuns" required="true" description="Output only. The stored pipeline transfer runs." type="//@types.2"/>
+    <attributes name="transferRuns" required="true" description="Output only. The stored pipeline transfer runs." type="//@types.5"/>
     <attributes name="nextPageToken" required="true" description="Output only. The next-pagination token. For multiple-page list results,&#xA;this token can be used as the&#xA;`ListTransferRunsRequest.page_token`&#xA;to request the next page of list results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -358,7 +358,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListLocationsResponse" scheme="http://occi/gcpbigquerydatatransfer#" title="The response message for Locations.ListLocations.">
-    <attributes name="locations" required="true" description="A list of locations that matches the specified filter in the request." type="//@types.2"/>
+    <attributes name="locations" required="true" description="A list of locations that matches the specified filter in the request." type="//@types.5"/>
     <attributes name="nextPageToken" required="true" description="The standard List next-page token.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -368,18 +368,18 @@
     <attributes name="nextPageToken" required="true" description="Output only. The next-pagination token. For multiple-page list results,&#xA;this token can be used as the&#xA;`ListTransferConfigsRequest.page_token`&#xA;to request the next page of list results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="transferConfigs" required="true" description="Output only. The stored pipeline transfer configurations." type="//@types.2"/>
+    <attributes name="transferConfigs" required="true" description="Output only. The stored pipeline transfer configurations." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:EnumerationType" name="Authorizationtype" documentation="Indicates the type of authorization.">
     <literals name="AUTHORIZATION_TYPE_UNSPECIFIED" documentation="Type unspecified."/>
     <literals name="AUTHORIZATION_CODE" documentation="Use OAuth 2 authorization codes that can be exchanged&#xA;for a refresh token on the backend."/>

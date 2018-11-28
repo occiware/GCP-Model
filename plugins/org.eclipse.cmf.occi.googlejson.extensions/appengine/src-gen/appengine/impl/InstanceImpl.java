@@ -694,8 +694,10 @@ public class InstanceImpl extends ResourceImpl implements Instance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void list(final String servicesId, final String appsId, final String pageToken, final Integer pageSize, final String versionsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!list(String,String,String,Integer,String)
+	public void list(String servicesId, String appsId, String pageToken, Integer pageSize, String versionsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -703,8 +705,10 @@ public class InstanceImpl extends ResourceImpl implements Instance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void get(final String servicesId, final String appsId, final String instancesId, final String versionsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!get(String,String,String,String)
+	public void get(String servicesId, String appsId, String instancesId, String versionsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -712,8 +716,10 @@ public class InstanceImpl extends ResourceImpl implements Instance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void debug(final String servicesId, final String appsId, final String instancesId, final String versionsId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!debug(String,String,String,String)
+	public void debug(String servicesId, String appsId, String instancesId, String versionsId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -721,8 +727,10 @@ public class InstanceImpl extends ResourceImpl implements Instance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void delete(final String appsId, final String instancesId, final String versionsId, final String servicesId) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Instance!delete(String,String,String,String)
+	public void delete(String appsId, String instancesId, String versionsId, String servicesId) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

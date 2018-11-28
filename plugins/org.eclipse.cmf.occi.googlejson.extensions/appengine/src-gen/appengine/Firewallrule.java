@@ -49,7 +49,6 @@ public interface Firewallrule extends Resource {
 	 * @see #setSourceRange(String)
 	 * @see appengine.AppenginePackage#getFirewallrule_SourceRange()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!sourceRange'"
 	 * @generated
 	 */
 	String getSourceRange();
@@ -75,7 +74,6 @@ public interface Firewallrule extends Resource {
 	 * @see #setPriority(Integer)
 	 * @see appengine.AppenginePackage#getFirewallrule_Priority()
 	 * @model dataType="org.eclipse.cmf.occi.core.Integer" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!priority'"
 	 * @generated
 	 */
 	Integer getPriority();
@@ -101,7 +99,6 @@ public interface Firewallrule extends Resource {
 	 * @see #setAction(String)
 	 * @see appengine.AppenginePackage#getFirewallrule_Action()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!action'"
 	 * @generated
 	 */
 	String getAction();
@@ -127,7 +124,6 @@ public interface Firewallrule extends Resource {
 	 * @see #setDescription(String)
 	 * @see appengine.AppenginePackage#getFirewallrule_Description()
 	 * @model dataType="org.eclipse.cmf.occi.core.String" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!description'"
 	 * @generated
 	 */
 	String getDescription();
@@ -151,7 +147,6 @@ public interface Firewallrule extends Resource {
 	 * @param ingressRulesId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" ingressRulesIdDataType="org.eclipse.cmf.occi.core.String" ingressRulesIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!get(String,String)'"
 	 * @generated
 	 */
 	void get(String appsId, String ingressRulesId);
@@ -166,7 +161,6 @@ public interface Firewallrule extends Resource {
 	 * @param ingressRulesId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model updateMaskDataType="org.eclipse.cmf.occi.core.String" updateMaskRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" ingressRulesIdDataType="org.eclipse.cmf.occi.core.String" ingressRulesIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!patch(String,String,String)'"
 	 * @generated
 	 */
 	void patch(String updateMask, String appsId, String ingressRulesId);
@@ -179,7 +173,6 @@ public interface Firewallrule extends Resource {
 	 * @param appsId Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/firewall/ingressRules.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!batchupdate(String)'"
 	 * @generated
 	 */
 	void batchupdate(String appsId);
@@ -193,7 +186,6 @@ public interface Firewallrule extends Resource {
 	 * @param ingressRulesId Part of `name`. See documentation of `appsId`.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" ingressRulesIdDataType="org.eclipse.cmf.occi.core.String" ingressRulesIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!delete(String,String)'"
 	 * @generated
 	 */
 	void delete(String appsId, String ingressRulesId);
@@ -209,7 +201,6 @@ public interface Firewallrule extends Resource {
 	 * @param pageToken Continuation token for fetching the next page of results.
 	 * <!-- end-model-doc -->
 	 * @model pageSizeDataType="org.eclipse.cmf.occi.core.Integer" pageSizeRequired="true" matchingAddressDataType="org.eclipse.cmf.occi.core.String" matchingAddressRequired="true" appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true" pageTokenDataType="org.eclipse.cmf.occi.core.String" pageTokenRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!list(Integer,String,String,String)'"
 	 * @generated
 	 */
 	void list(Integer pageSize, String matchingAddress, String appsId, String pageToken);
@@ -222,7 +213,6 @@ public interface Firewallrule extends Resource {
 	 * @param appsId Part of `parent`. Name of the parent Firewall collection in which to create a new rule. Example: apps/myapp/firewall/ingressRules.
 	 * <!-- end-model-doc -->
 	 * @model appsIdDataType="org.eclipse.cmf.occi.core.String" appsIdRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Firewallrule!create(String)'"
 	 * @generated
 	 */
 	void create(String appsId);

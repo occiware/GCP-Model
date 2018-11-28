@@ -20,7 +20,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="CreateTableRequest" scheme="http://occi/gcpbigtableadmin#" title="Request message for&#xA;google.bigtable.admin.v2.BigtableTableAdmin.CreateTable">
-    <attributes name="initialSplits" required="true" description="The optional list of row keys that will be used to initially split the&#xA;table into several tablets (tablets are similar to HBase regions).&#xA;Given two split keys, `s1` and `s2`, three tablets will be created,&#xA;spanning the key ranges: `[, s1), [s1, s2), [s2, )`.&#xA;&#xA;Example:&#xA;&#xA;* Row keys := `[&quot;a&quot;, &quot;apple&quot;, &quot;custom&quot;, &quot;customer_1&quot;, &quot;customer_2&quot;,`&#xA;               `&quot;other&quot;, &quot;zz&quot;]`&#xA;* initial_split_keys := `[&quot;apple&quot;, &quot;customer_1&quot;, &quot;customer_2&quot;, &quot;other&quot;]`&#xA;* Key assignment:&#xA;    - Tablet 1 `[, apple)                => {&quot;a&quot;}.`&#xA;    - Tablet 2 `[apple, customer_1)      => {&quot;apple&quot;, &quot;custom&quot;}.`&#xA;    - Tablet 3 `[customer_1, customer_2) => {&quot;customer_1&quot;}.`&#xA;    - Tablet 4 `[customer_2, other)      => {&quot;customer_2&quot;}.`&#xA;    - Tablet 5 `[other, )                => {&quot;other&quot;, &quot;zz&quot;}.`" type="//@types.2"/>
+    <attributes name="initialSplits" required="true" description="The optional list of row keys that will be used to initially split the&#xA;table into several tablets (tablets are similar to HBase regions).&#xA;Given two split keys, `s1` and `s2`, three tablets will be created,&#xA;spanning the key ranges: `[, s1), [s1, s2), [s2, )`.&#xA;&#xA;Example:&#xA;&#xA;* Row keys := `[&quot;a&quot;, &quot;apple&quot;, &quot;custom&quot;, &quot;customer_1&quot;, &quot;customer_2&quot;,`&#xA;               `&quot;other&quot;, &quot;zz&quot;]`&#xA;* initial_split_keys := `[&quot;apple&quot;, &quot;customer_1&quot;, &quot;customer_2&quot;, &quot;other&quot;]`&#xA;* Key assignment:&#xA;    - Tablet 1 `[, apple)                => {&quot;a&quot;}.`&#xA;    - Tablet 2 `[apple, customer_1)      => {&quot;apple&quot;, &quot;custom&quot;}.`&#xA;    - Tablet 3 `[customer_1, customer_2) => {&quot;customer_1&quot;}.`&#xA;    - Tablet 4 `[customer_2, other)      => {&quot;customer_2&quot;}.`&#xA;    - Tablet 5 `[other, )                => {&quot;other&quot;, &quot;zz&quot;}.`" type="//@types.5"/>
     <attributes name="tableId" required="true" description="The name by which the new table should be referred to within the parent&#xA;instance, e.g., `foobar` rather than `&lt;parent>/tables/foobar`.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -48,14 +48,14 @@
     <attributes name="instanceId" required="true" description="The ID to be used when referring to the new instance within its project,&#xA;e.g., just `myinstance` rather than&#xA;`projects/myproject/instances/myinstance`.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="clusters" required="true" description="The clusters to be created within the instance, mapped by desired&#xA;cluster ID, e.g., just `mycluster` rather than&#xA;`projects/myproject/instances/myinstance/clusters/mycluster`.&#xA;Fields marked `OutputOnly` must be left blank.&#xA;Currently exactly one cluster must be specified." type="//@types.8"/>
+    <attributes name="clusters" required="true" description="The clusters to be created within the instance, mapped by desired&#xA;cluster ID, e.g., just `mycluster` rather than&#xA;`projects/myproject/instances/myinstance/clusters/mycluster`.&#xA;Fields marked `OutputOnly` must be left blank.&#xA;Currently exactly one cluster must be specified." type="//@types.3"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Table" scheme="http://occi/gcpbigtableadmin#" title="A collection of user data indexed by row, column, and timestamp.&#xA;Each table is served using the resources of its parent cluster.">
     <attributes name="granularity" required="true" description="(`CreationOnly`)&#xA;The granularity (e.g. `MILLIS`, `MICROS`) at which timestamps are stored in&#xA;this table. Timestamps not matching the granularity will be rejected.&#xA;If unspecified at creation time, the value will be set to `MILLIS`.&#xA;Views: `SCHEMA_VIEW`, `FULL`">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="columnFamilies" required="true" description="(`CreationOnly`)&#xA;The column families configured for this table, mapped by column family ID.&#xA;Views: `SCHEMA_VIEW`, `FULL`" type="//@types.8"/>
+    <attributes name="columnFamilies" required="true" description="(`CreationOnly`)&#xA;The column families configured for this table, mapped by column family ID.&#xA;Views: `SCHEMA_VIEW`, `FULL`" type="//@types.3"/>
     <attributes name="name" required="true" description="(`OutputOnly`)&#xA;The unique name of the table. Values are of the form&#xA;`projects/&lt;project>/instances/&lt;instance>/tables/_a-zA-Z0-9*`.&#xA;Views: `NAME_ONLY`, `SCHEMA_VIEW`, `FULL`">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -101,7 +101,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Intersection" scheme="http://occi/gcpbigtableadmin#" title="A GcRule which deletes cells matching all of the given rules.">
-    <attributes name="rules" required="true" description="Only delete cells which would be deleted by every element of `rules`." type="//@types.2"/>
+    <attributes name="rules" required="true" description="Only delete cells which would be deleted by every element of `rules`." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Split" scheme="http://occi/gcpbigtableadmin#" title="An initial split point for a newly created table.">
@@ -111,7 +111,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Union" scheme="http://occi/gcpbigtableadmin#" title="A GcRule which deletes cells matching any of the given rules.">
-    <attributes name="rules" required="true" description="Delete cells which would be deleted by any element of `rules`." type="//@types.2"/>
+    <attributes name="rules" required="true" description="Delete cells which would be deleted by any element of `rules`." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="CreateInstanceRequestLink" scheme="http://occi/gcpbigtableadmin#" title="The request that prompted the initiation of this CreateInstance operation." source="//@kinds[term='createinstancemetadata']" target="//@kinds[term='createinstancerequest']">
@@ -130,11 +130,11 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Operation" scheme="http://occi/gcpbigtableadmin#" title="This resource represents a long-running operation that is the result of a&#xA;network API call.">
-    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.3"/>
+    <attributes name="response" required="true" description="The normal response of the operation in case of success.  If the original&#xA;method returns no data on success, such as `Delete`, the response is&#xA;`google.protobuf.Empty`.  If the original method is standard&#xA;`Get`/`Create`/`Update`, the response should be the resource.  For other&#xA;methods, the response should have the type `XxxResponse`, where `Xxx`&#xA;is the original method name.  For example, if the original method name&#xA;is `TakeSnapshot()`, the inferred response type is&#xA;`TakeSnapshotResponse`." type="//@types.6"/>
     <attributes name="name" required="true" description="The server-assigned name, which is only unique within the same service that&#xA;originally returns it. If you use the default HTTP mapping, the&#xA;`name` should have the format of `operations/some/unique/name`.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.3"/>
+    <attributes name="metadata" required="true" description="Service-specific metadata associated with the operation.  It typically&#xA;contains progress information and common metadata such as create time.&#xA;Some services might not provide such metadata.  Any method that returns a&#xA;long-running operation should document the metadata type, if any." type="//@types.6"/>
     <attributes name="done" required="true" description="If the value is `false`, it means the operation is still in progress.&#xA;If `true`, the operation is completed, and either `error` or `response` is&#xA;available.">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
@@ -188,7 +188,7 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="Status" scheme="http://occi/gcpbigtableadmin#" title="The `Status` type defines a logical error model that is suitable for different&#xA;programming environments, including REST APIs and RPC APIs. It is used by&#xA;[gRPC](https://github.com/grpc). The error model is designed to be:&#xA;&#xA;- Simple to use and understand for most users&#xA;- Flexible enough to meet unexpected needs&#xA;&#xA;# Overview&#xA;&#xA;The `Status` message contains three pieces of data: error code, error message,&#xA;and error details. The error code should be an enum value of&#xA;google.rpc.Code, but it may accept additional error codes if needed.  The&#xA;error message should be a developer-facing English message that helps&#xA;developers *understand* and *resolve* the error. If a localized user-facing&#xA;error message is needed, put the localized message in the error details or&#xA;localize it in the client. The optional error details may contain arbitrary&#xA;information about the error. There is a predefined set of error detail types&#xA;in the package `google.rpc` that can be used for common error conditions.&#xA;&#xA;# Language mapping&#xA;&#xA;The `Status` message is the logical representation of the error model, but it&#xA;is not necessarily the actual wire format. When the `Status` message is&#xA;exposed in different client libraries and different wire protocols, it can be&#xA;mapped differently. For example, it will likely be mapped to some exceptions&#xA;in Java, but more likely mapped to some error codes in C.&#xA;&#xA;# Other uses&#xA;&#xA;The error model and the `Status` message can be used in a variety of&#xA;environments, either with or without APIs, to provide a&#xA;consistent developer experience across different environments.&#xA;&#xA;Example uses of this error model include:&#xA;&#xA;- Partial errors. If a service needs to return partial errors to the client,&#xA;    it may embed the `Status` in the normal response to indicate the partial&#xA;    errors.&#xA;&#xA;- Workflow errors. A typical workflow has multiple steps. Each step may&#xA;    have a `Status` message for error reporting.&#xA;&#xA;- Batch operations. If a client uses batch request and batch response, the&#xA;    `Status` message should be used directly inside batch response, one for&#xA;    each error sub-response.&#xA;&#xA;- Asynchronous operations. If an API call embeds asynchronous operation&#xA;    results in its response, the status of those operations should be&#xA;    represented directly using the `Status` message.&#xA;&#xA;- Logging. If some API errors are stored in logs, the message `Status` could&#xA;    be used directly after any stripping needed for security/privacy reasons.">
-    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.2"/>
+    <attributes name="details" required="true" description="A list of messages that carry the error details.  There is a common set of&#xA;message types for APIs to use." type="//@types.5"/>
     <attributes name="code" required="true" description="The status code, which should be an enum value of google.rpc.Code.">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
@@ -250,11 +250,11 @@
     <attributes name="nextPageToken" required="true" description="The standard List next-page token.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.2"/>
+    <attributes name="operations" required="true" description="A list of operations that matches the specified filter in the request." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ModifyColumnFamiliesRequest" scheme="http://occi/gcpbigtableadmin#" title="Request message for&#xA;google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies">
-    <attributes name="modifications" required="true" description="Modifications to be atomically applied to the specified table's families.&#xA;Entries are applied in order, meaning that earlier modifications can be&#xA;masked by later ones (in the case of repeated updates to the same family,&#xA;for example)." type="//@types.2"/>
+    <attributes name="modifications" required="true" description="Modifications to be atomically applied to the specified table's families.&#xA;Entries are applied in order, meaning that earlier modifications can be&#xA;masked by later ones (in the case of repeated updates to the same family,&#xA;for example)." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="IntersectionLink" scheme="http://occi/gcpbigtableadmin#" title="Delete cells that would be deleted by every nested rule." source="//@kinds[term='gcrule']" target="//@kinds[term='intersection']">
@@ -276,16 +276,16 @@
     <attributes name="nextPageToken" required="true" description="Set if not all clusters could be returned in a single response.&#xA;Pass this value to `page_token` in another request to get the next&#xA;page of results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="failedLocations" required="true" description="Locations from which Cluster information could not be retrieved,&#xA;due to an outage or some other transient condition.&#xA;Clusters from these locations may be missing from `clusters`,&#xA;or may only have partial information returned." type="//@types.2"/>
-    <attributes name="clusters" required="true" description="The list of requested clusters." type="//@types.2"/>
+    <attributes name="failedLocations" required="true" description="Locations from which Cluster information could not be retrieved,&#xA;due to an outage or some other transient condition.&#xA;Clusters from these locations may be missing from `clusters`,&#xA;or may only have partial information returned." type="//@types.5"/>
+    <attributes name="clusters" required="true" description="The list of requested clusters." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ListInstancesResponse" scheme="http://occi/gcpbigtableadmin#" title="Response message for BigtableInstanceAdmin.ListInstances.">
-    <attributes name="instances" required="true" description="The list of requested instances." type="//@types.2"/>
+    <attributes name="instances" required="true" description="The list of requested instances." type="//@types.5"/>
     <attributes name="nextPageToken" required="true" description="Set if not all instances could be returned in a single response.&#xA;Pass this value to `page_token` in another request to get the next&#xA;page of results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="failedLocations" required="true" description="Locations from which Instance information could not be retrieved,&#xA;due to an outage or some other transient condition.&#xA;Instances whose Clusters are all in one of the failed locations&#xA;may be missing from `instances`, and Instances with at least one&#xA;Cluster in a failed location may only have partial information returned." type="//@types.2"/>
+    <attributes name="failedLocations" required="true" description="Locations from which Instance information could not be retrieved,&#xA;due to an outage or some other transient condition.&#xA;Instances whose Clusters are all in one of the failed locations&#xA;may be missing from `instances`, and Instances with at least one&#xA;Cluster in a failed location may only have partial information returned." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="DropRowRangeRequest" scheme="http://occi/gcpbigtableadmin#" title="Request message for&#xA;google.bigtable.admin.v2.BigtableTableAdmin.DropRowRange">
@@ -344,7 +344,7 @@
     <attributes name="nextPageToken" required="true" description="Set if not all tables could be returned in a single response.&#xA;Pass this value to `page_token` in another request to get the next&#xA;page of results.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="tables" required="true" description="The tables present in the requested instance." type="//@types.2"/>
+    <attributes name="tables" required="true" description="The tables present in the requested instance." type="//@types.5"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="ColumnFamilyLink" scheme="http://occi/gcpbigtableadmin#" title="Update an existing column family to the specified schema, or fail&#xA;if no column family exists with the given ID." source="//@kinds[term='modification']" target="//@kinds[term='columnfamily']">
@@ -360,14 +360,14 @@
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <types xsi:type="occi:NumericType" name="float" type="Float"/>
-  <types xsi:type="occi:NumericType" name="long" type="Long"/>
-  <types xsi:type="occi:ArrayType" name="array" type="//@types.8"/>
-  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:NumericType" name="byte"/>
   <types xsi:type="occi:NumericType" name="double" type="Double"/>
+  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
+  <types xsi:type="occi:NumericType" name="long" type="Long"/>
+  <types xsi:type="occi:ArrayType" name="array" type="//@types.3"/>
+  <types xsi:type="occi:EObjectType" name="map" instanceClassName="java.util.Map"/>
   <types xsi:type="occi:EObjectType" name="any" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:NumericType" name="short" type="Short"/>
-  <types xsi:type="occi:EObjectType" name="object" instanceClassName="java.lang.Object"/>
   <types xsi:type="occi:EnumerationType" name="Granularity" documentation="(`CreationOnly`)&#xA;The granularity (e.g. `MILLIS`, `MICROS`) at which timestamps are stored in&#xA;this table. Timestamps not matching the granularity will be rejected.&#xA;If unspecified at creation time, the value will be set to `MILLIS`.&#xA;Views: `SCHEMA_VIEW`, `FULL`">
     <literals name="TIMESTAMP_GRANULARITY_UNSPECIFIED" documentation="The user did not specify a granularity. Should not be returned.&#xA;When specified during table creation, MILLIS will be used."/>
     <literals name="MILLIS" documentation="The table keeps data versioned at a granularity of 1ms."/>

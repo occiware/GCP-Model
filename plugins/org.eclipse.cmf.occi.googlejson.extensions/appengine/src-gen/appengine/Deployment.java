@@ -46,7 +46,6 @@ public interface Deployment extends Resource {
 	 * @see #setFiles(Object)
 	 * @see appengine.AppenginePackage#getDeployment_Files()
 	 * @model dataType="appengine.object" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occi/gcpappengine/ecore!Deployment!files'"
 	 * @generated
 	 */
 	Object getFiles();
