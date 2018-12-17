@@ -257,7 +257,6 @@ public class GCPAttributeReader {
 			break;
 		case 1: // enum
 			String enumstr = enumString.toString();
-			System.out.println("Construct enumstr: " + enumString + " ; lalala ;  " + currentAttributeName);
 			String[] enumsLiterals = enumstr.toString().split(System.getProperty("line.separator"));
 			String[] enumAsArray = enumsLiterals[0].split("" + separator);
 			typeModel = complexDatatypes.get(enumAsArray[1] + "Enum");
@@ -371,9 +370,13 @@ public class GCPAttributeReader {
 
 		switch (j) {
 		case 0: // "string":
-			typeModel = currentAttributeDescription.contains("Email address of") ? // If in the description there is the tag, we consider this string as an email.  
-					typeModelEmail : typeModelString;
-			typeModel.setName("String");
+			// If in the description there is the tag, we consider this string as an email.
+			if (currentAttributeDescription.toLowerCase().contains("email address of ")) {
+				typeModel = typeModelEmail;
+			} else {
+				typeModel = typeModelString;	
+			}
+			//typeModel.setName("String");
 			break;
 		case 1: // "boolean":
 			typeModel = typeModelBoolean;
@@ -428,7 +431,7 @@ public class GCPAttributeReader {
 		// https://cloud.google.com/bigquery/docs/reference/rest/v2/tables
 		if (currentAttributeType.contains("#")) {
 			typeModel = typeModelString;
-			typeModel.setName("String");
+			//typeModel.setName("String");
 		}
 		return typeModel;
 	}

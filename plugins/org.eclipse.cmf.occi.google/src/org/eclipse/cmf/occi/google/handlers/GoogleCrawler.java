@@ -18,8 +18,14 @@ import org.jsoup.nodes.Document;
 public class GoogleCrawler extends AbstractHandler {
 
 	// TODO must be configured
-	public static final String PATH_TO_ROOT_HTML = 
-			"";
+	public static final String  PATH_TO_ROOT_PROJECT = "";
+	
+	public static final String OUTPUT_PATH = PATH_TO_ROOT_PROJECT + "/GCP-model/plugins/org.eclipse.cmf.occi.google/models/GCP.occie";
+	
+	public static final String SCHEME = "file:" + OUTPUT_PATH + "#";
+	
+	public static final String PATH_TO_ROOT_HTML = "GCP-model/plugins/org.eclipse.cmf.occi.google/snapshot-GCP/";
+	
 	private static final String ROOT_HTML_FILE = 
 			"Supported Resource Types    Cloud Deployment Manager Documentation    Google Cloud Platform.html";
 	

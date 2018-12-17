@@ -42,7 +42,8 @@ import org.jsoup.select.Elements;
 
 public class GCPCrawler {
 	
-	public static final String OUTPUT_PATH = "";
+
+	
 	public static final char separator = ';';
 	public static final String noneToken = "None";
 	private Resource resource;
@@ -54,6 +55,8 @@ public class GCPCrawler {
 	public final static StringType typeModelString = OCCIFactory.eINSTANCE.createStringType();
 	public final static StringType typeModelEmail = OCCIFactory.eINSTANCE.createStringType();
 	static {
+		typeModelEmail.setName("Email");
+		typeModelEmail.setDocumentation("a string that reprensents an email.");
 		typeModelEmail.setPattern("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$");
 	}
 	public final static EObjectType typeModelDatetime = OCCIFactory.eINSTANCE.createEObjectType();
@@ -71,6 +74,9 @@ public class GCPCrawler {
 	public final static Map<String, DataType> complexDatatypes = new HashMap<>();
 
 	static {
+		
+		typeModelString.setName("String");
+		
 		typeModelDatetime.setName("DateTime");
 
 		typeModelMap.setName("Map");
@@ -102,7 +108,7 @@ public class GCPCrawler {
 
 		// Définir la ressource (le modèle)
 		URI modelURI = URI.createURI(
-				new File(OUTPUT_PATH).toURI().toString()
+				new File(GoogleCrawler.OUTPUT_PATH).toURI().toString()
 				);
 		resource = resSet.createResource(modelURI);
 
@@ -111,7 +117,7 @@ public class GCPCrawler {
 		// Créer un élément extension
 		extension = OCCIFactory.eINSTANCE.createExtension();
 		extension.setDescription("Mon extension GCP");
-		extension.setScheme("http://gcp/occi#");
+		extension.setScheme(GoogleCrawler.SCHEME);
 		extension.setName("GCP");
 		resource.getContents().add(extension);
 
@@ -323,6 +329,7 @@ public class GCPCrawler {
 						descr += extension.getKinds().get(index).getName() + " ";
 					}
 					abstractKind.setTitle(descr);
+					abstractKind.setScheme(GoogleCrawler.SCHEME);
 					extension.getKinds().add(abstractKind);
 					
 					if (!nbAttributePerKind.containsKey(abstractKind)) {
@@ -470,7 +477,7 @@ public class GCPCrawler {
 				action.append(actioncsv(kind, currentActionName, currentActionDescription));
 
 				Action ac = OCCIFactory.eINSTANCE.createAction();
-				ac.setScheme("http://gcp/occi/" + currentActionName + "#");
+				ac.setScheme(GoogleCrawler.SCHEME);
 				ac.setName(currentActionName);
 				ac.setTitle(currentActionDescription);
 				actionsModel.add(ac);
@@ -541,7 +548,7 @@ public class GCPCrawler {
 
 			if (k == null) {
 				k = OCCIFactory.eINSTANCE.createKind();
-				k.setScheme(extension.getScheme());
+				k.setScheme(GoogleCrawler.SCHEME);
 				k.setName(kind.replace(".", ""));
 				k.setParent(resourceKind);
 				extension.getKinds().add(k);
