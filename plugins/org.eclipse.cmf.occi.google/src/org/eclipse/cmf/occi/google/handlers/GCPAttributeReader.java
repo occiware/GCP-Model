@@ -25,14 +25,17 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class GCPAttributeReader {
+	
+	private static Document currentKindDoc;
 
 	public static StringBuilder readAttributes(final Document kindDoc, final String kind, final String filter,
 			StringBuilder enumStr, List<Attribute> attributesModel, List<EnumerationType> enumsModel) {
 		StringBuilder attribute = new StringBuilder();
+		currentKindDoc = kindDoc;
 		Elements attributesFilters = kindDoc.select(filter);
 		for (Element attributeElt : attributesFilters) {
 			List<Element> rows = attributeElt.select("tr");
-			for (int j = 0; j < rows.size(); j++) { // could start at 1 becaue
+			for (int j = 0; j < rows.size(); j++) { // could start at 1 because
 													// the 1st row is the header
 													// of the table
 				// for (Element attributeRow : attributeElt.select("tr")) {
@@ -44,7 +47,6 @@ public class GCPAttributeReader {
 					String currentAttributeType = "";
 					Element attributeName = attributeInfos.get(0);
 					Element attributeType = attributeInfos.get(1).select("code").get(0);
-
 					// To parse the description in case of only 2 <tds>
 					// and a sequence of <p>
 					currentAttributeName = attributeName.text();
@@ -53,8 +55,16 @@ public class GCPAttributeReader {
 							+ currentAttributeType + ", Description:" + currentAttributeDescription);
 					attribute.append(attributecsv(kind, currentAttributeName, currentAttributeType,
 							currentAttributeDescription));
-					StringBuilder enumString = readEnums(currentAttributeType, attributeType, kind);
-					enumStr.append(enumString);
+					StringBuilder enumString;
+					if (currentAttributeType.startsWith("enum")) {
+						enumString = readEnums(kindDoc, currentAttributeType, attributeType, kind);
+						if (enumString.toString().isEmpty()) {
+							throw new RuntimeException("Should not be empty !");
+						}
+						enumStr.append(enumString);
+					} else {
+						enumString = new StringBuilder();
+					}
 
 					// parameter url to know where to go in case of object(
 					DataType typeModel = buildType(kindDoc.baseUri(), currentAttributeName, currentAttributeDescription,
@@ -66,6 +76,12 @@ public class GCPAttributeReader {
 							RecordType recordType = OCCIFactory.eINSTANCE.createRecordType();
 							recordType.setName(currentAttributeName + "Record");
 							((ArrayType) typeModel).setType(recordType);
+							if (!extension.getTypes().contains(recordType)) {
+								extension.getTypes().add(recordType);
+							}
+							if (!extension.getTypes().contains(typeModel)) {
+								extension.getTypes().add(typeModel);
+							}
 						}
 					}
 
@@ -91,9 +107,13 @@ public class GCPAttributeReader {
 							extension.getTypes().add(typeOfArray);
 							at.setType(typeOfArray);
 						}
-					} else if (typeModel != null) {
-						if (!extension.getTypes().contains(typeModel))
+						if (!extension.getTypes().contains(typeModel)) {
 							extension.getTypes().add(typeModel);
+						}
+					} else if (typeModel != null) {
+						if (!extension.getTypes().contains(typeModel)) {
+							extension.getTypes().add(typeModel);
+						}
 						at.setType(typeModel);
 					}
 					// add to the main list of attributes kind.
@@ -101,7 +121,7 @@ public class GCPAttributeReader {
 						throw new RuntimeException("typeModel == null " + currentAttributeType + " " + kind);
 					}
 					//if (!"RecordField".equals(typeModel.getDocumentation()))
-						attributesModel.add(at);
+					attributesModel.add(at);
 				}
 			}
 		}
@@ -187,7 +207,7 @@ public class GCPAttributeReader {
 
 	private static DataType getType(String baseUrl, String currentAttributeName, String currentAttributeDescription,
 			String currentAttributeType, StringBuilder enumString) {
-		DataType typeModel = switchOnBasic(currentAttributeType);
+		DataType typeModel = switchOnBasic(currentAttributeType, currentAttributeDescription);
 		if (typeModel != null) {
 			return typeModel;
 		} else {
@@ -214,15 +234,7 @@ public class GCPAttributeReader {
 			extension.getKinds().add(kindModel);
 			String url = baseUrl + "#" + currentAttributeType;
 			String filter = "table*[id=" + currentAttributeType + ".FIELDS-table]";
-			Document RegisteredKindDocument = null;
-			while (RegisteredKindDocument == null) {
-				try {
-					RegisteredKindDocument = Jsoup.connect(url).get();
-				} catch (IOException e) {
-					RegisteredKindDocument = null;
-				}
-			}
-			GCPCrawler.readResourcePage(RegisteredKindDocument, currentAttributeType, enumString, url, filter);
+			GCPCrawler.readResourcePage(currentKindDoc, currentAttributeType, enumString, url, filter);
 		}
 	}
 
@@ -245,6 +257,7 @@ public class GCPAttributeReader {
 			break;
 		case 1: // enum
 			String enumstr = enumString.toString();
+			System.out.println("Construct enumstr: " + enumString + " ; lalala ;  " + currentAttributeName);
 			String[] enumsLiterals = enumstr.toString().split(System.getProperty("line.separator"));
 			String[] enumAsArray = enumsLiterals[0].split("" + separator);
 			typeModel = complexDatatypes.get(enumAsArray[1] + "Enum");
@@ -300,7 +313,7 @@ public class GCPAttributeReader {
 	 * @param kind
 	 * @return
 	 */
-	private static StringBuilder readEnums(final String currentAttributeType, final Element attributeType,
+	private static StringBuilder readEnums(Document doc, final String currentAttributeType, final Element attributeType,
 			final String kind) {
 		StringBuilder enumTypes = new StringBuilder();
 		if (currentAttributeType.contains("enum")) {
@@ -309,24 +322,25 @@ public class GCPAttributeReader {
 				if (enumType.length() < 4)
 					throw new RuntimeException("enum < 4");
 				// enumType = doc.baseUri() + enumType.substring(1);
-				else if (!enumType.substring(0, 4).equals("http"))
-					throw new RuntimeException("!enumType.substring(0, 4).equals(\"http\")");
+				//else if (!enumType.substring(0, 4).equals("http"))
+				//	throw new RuntimeException("!enumType.substring(0, 4).equals(\"http\")"); TODO no need to check if this a link to another HTML page.
+				// TODO we use now the snapshot, and the link to the definition of the Enum is now a local anchor
 				// enumType = doc.baseUri() + enumType.substring(1);
-				Document doc3 = null;
-				while (doc3 == null) {
-					try {
-						doc3 = Jsoup.connect(enumType).get();
-					} catch (IOException e) {
-						doc3 = null;
-					}
-				}
 				// To get the list of all literals from enumType
 				String selectedAttributeType = currentAttributeType.substring("enum(".length(),
 						currentAttributeType.length() - 1);
 
-				Element table = doc3.getElementById(selectedAttributeType + ".ENUM_VALUES-table");
+				if (!enumType.startsWith("#")) { // it is not a local anchor, we must connect to a new page...
+					try {
+						doc = Jsoup.parse(new File(GoogleCrawler.PATH_TO_ROOT_HTML + enumType.split("#")[0] + ".html"), "UTF-8");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				Element table = doc.getElementById(selectedAttributeType + ".ENUM_VALUES-table");
 				if (table == null) {
-					for (Element element : doc3.getAllElements()) {
+					for (Element element : doc.getAllElements()) {
 						if (element.id().endsWith(selectedAttributeType + ".ENUM_VALUES-table")) {
 							table = element;
 						}
@@ -344,7 +358,7 @@ public class GCPAttributeReader {
 		return enumTypes;
 	}
 
-	private static DataType switchOnBasic(String currentAttributeType) {
+	private static DataType switchOnBasic(String currentAttributeType, String currentAttributeDescription) {
 		DataType typeModel = null;
 
 		String[] basicType = new String[] { "string", "boolean", "integer", "unsigned integer", "number", "float",
@@ -357,7 +371,8 @@ public class GCPAttributeReader {
 
 		switch (j) {
 		case 0: // "string":
-			typeModel = typeModelString;
+			typeModel = currentAttributeDescription.contains("Email address of") ? // If in the description there is the tag, we consider this string as an email.  
+					typeModelEmail : typeModelString;
 			typeModel.setName("String");
 			break;
 		case 1: // "boolean":
@@ -422,9 +437,18 @@ public class GCPAttributeReader {
 		DataType typeModel = complexDatatypes.get(currentAttributeName);
 		if (typeModel == null) {
 			typeModel = OCCIFactory.eINSTANCE.createRecordType();
-			typeModel.setName(currentAttributeName + "Record");
+			String nameOfNewRecordType = (currentAttributeName.endsWith("[]") ?
+							currentAttributeName.replace("[]", "") : 
+							currentAttributeName) + "Record";
+			typeModel.setName(nameOfNewRecordType);
 			typeModel.setDocumentation(currentAttributeDescription);
-			complexDatatypes.put(currentAttributeName + "Record", typeModel);
+			complexDatatypes.put(nameOfNewRecordType, typeModel);
+			if (currentAttributeName.equals("access[]Record")) {
+				System.exit(-1);
+			}
+			if (!extension.getTypes().contains(typeModel)) {
+				extension.getTypes().add(typeModel);
+			}
 		}
 		return typeModel;
 
@@ -432,7 +456,7 @@ public class GCPAttributeReader {
 
 	private static void switchOnModifiers(Attribute at, String currentAttributeDescription) {
 		String[] requiredCases = { "[Optional]", "An optional", "[Required]", "default value is", "default is",
-				"default and only option is", "This is always", "Always" };
+				"default and only option is", "This is always", "Always"};
 		int j;
 		for (j = 0; j < requiredCases.length; j++)
 			if (currentAttributeDescription.contains(requiredCases[j]))
@@ -492,7 +516,6 @@ public class GCPAttributeReader {
 				at.setDefault(defaultMatcher6.group(1));
 				at.setMutable(false);
 			}
-			break;
 		}
 	}
 
@@ -522,3 +545,4 @@ public class GCPAttributeReader {
 	}
 
 }
+;

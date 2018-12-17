@@ -1,5 +1,6 @@
 package org.eclipse.cmf.occi.google.handlers;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -16,23 +17,30 @@ import org.jsoup.nodes.Document;
  */
 public class GoogleCrawler extends AbstractHandler {
 
+	// TODO must be configured
+	public static final String PATH_TO_ROOT_HTML = 
+			"";
+	private static final String ROOT_HTML_FILE = 
+			"Supported Resource Types    Cloud Deployment Manager Documentation    Google Cloud Platform.html";
+	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		GCPCrawler cr = new GCPCrawler();
 		try {
+			
 			Document doc = Jsoup
-					.connect("https://cloud.google.com/deployment-manager/docs/configuration/supported-resource-types")
-					.get();
+					.parse(new File(PATH_TO_ROOT_HTML + ROOT_HTML_FILE), "UTF-8");
+					//.get();
 			GCPCrawler.crawler(doc);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
-		cr.saveOCCIResource();
+			cr.saveOCCIResource();
 		} catch (Exception e) {
-					e.printStackTrace();
-	}
+			e.printStackTrace();
+		}
 		return null;
 	}
 

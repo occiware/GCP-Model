@@ -1,5 +1,6 @@
 package org.eclipse.cmf.occi.google.handlers;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import java.util.Set;
 
 import org.eclipse.cmf.occi.core.Action;
@@ -39,6 +41,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class GCPCrawler {
+	
+	public static final String OUTPUT_PATH = "";
 	public static final char separator = ';';
 	public static final String noneToken = "None";
 	private Resource resource;
@@ -48,6 +52,10 @@ public class GCPCrawler {
 	public static Kind linkKind;
 	// type emf ecore.
 	public final static StringType typeModelString = OCCIFactory.eINSTANCE.createStringType();
+	public final static StringType typeModelEmail = OCCIFactory.eINSTANCE.createStringType();
+	static {
+		typeModelEmail.setPattern("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$");
+	}
 	public final static EObjectType typeModelDatetime = OCCIFactory.eINSTANCE.createEObjectType();
 	public final static EObjectType typeModelMap = OCCIFactory.eINSTANCE.createEObjectType();
 	public final static EObjectType typeModelUrl = OCCIFactory.eINSTANCE.createEObjectType();
@@ -93,7 +101,9 @@ public class GCPCrawler {
 		ResourceSet resSet = new ResourceSetImpl();
 
 		// Définir la ressource (le modèle)
-		URI modelURI = URI.createURI("file:/C:/Users/schallit/runtime-EclipseApplication31072017/models/GCP.occie");
+		URI modelURI = URI.createURI(
+				new File(OUTPUT_PATH).toURI().toString()
+				);
 		resource = resSet.createResource(modelURI);
 
 		// La fabrique pour fabriquer les éléments de SimplePDL
@@ -144,6 +154,7 @@ public class GCPCrawler {
 		for (int indexOfResource = 0; indexOfResource <  resources.size() ; indexOfResource++) {
 			Element resource = resources.get(indexOfResource);
 			String kind = resourcesNames.get(indexOfResource).text();
+			System.out.println("Read now Resource: " + kind);
 			readResource(kind, resource, doc);
 		}
 		
@@ -371,30 +382,20 @@ public class GCPCrawler {
 		StringBuilder esb = new StringBuilder();
 
 		String res = resource.attr("href");
-		if (res.length() > 0 && !res.contains("https://cloud.google.com/deployment-manager/docs/")) {
-			if (res.length() < 4)
-				res = kindsDoc.baseUri() + res.substring(1);
-			else if (!res.substring(0, 4).equals("http"))
-				res = kindsDoc.baseUri() + res.substring(1);
-		} else {
-			// Go to the next resource
-			return new StringBuilder();
-		}
-
-		Document kindDoc = null;
-		while (kindDoc == null) {
-			try {
-				kindDoc = Jsoup.connect(res).get();
-			} catch (SocketTimeoutException e) {
-				kindDoc = null;
-			}
-		}
+		System.out.println("Parsing now... " + GoogleCrawler.PATH_TO_ROOT_HTML + res);
+		Document kindDoc = Jsoup.parse(new File(GoogleCrawler.PATH_TO_ROOT_HTML + res), "UTF-8");
+		
 		if (!kindDoc.select("table*[id=properties]").isEmpty())
 			return readResourcePage(kindDoc, kind, esb, res, "table*[id=properties]");
 		else {
+			try {
 			String filter = "table*[id=" + kindDoc.getElementsByTag("h2").get(0).text().substring("Resource:".length())
 					+ ".FIELDS-table]";
 			return readResourcePage(kindDoc, kind, esb, res, filter);
+			} catch (StringIndexOutOfBoundsException e) {
+				e.printStackTrace();
+				return esb;
+			}
 		}
 	}
 
@@ -405,6 +406,7 @@ public class GCPCrawler {
 		List<Action> actionsModel = new LinkedList<Action>();
 		List<EnumerationType> enumsModel = new LinkedList<EnumerationType>();
 
+		System.out.println("Read attributes for: " + kind);
 		GCPAttributeReader.readAttributes(kindDoc, kind, filter, esb, attributesModel, enumsModel);
 
 		// To get all the actions
@@ -412,9 +414,12 @@ public class GCPCrawler {
 		// kindDoc.select("table*[id=Version.FIELDS-table]");
 		Elements actionsFilters1 = kindDoc.select("table*[id=METHODS_SUMMARY-table]");
 
+		System.out.println("Read actions 1 for: " + kind);
 		readActions(kindDoc, kind, "table*[id=METHODS_SUMMARY-table]", actionsModel);
+		System.out.println("Read actions 2 for: " + kind);
 		readActions(kindDoc, kind, "div*[itemprop=articleBody]", actionsModel);
 
+		System.out.println("saving.... " + kind);
 		// save documentation format
 		return saveDocumentationFormat(res, filter, actionsFilters1.isEmpty(), kind, actionsModel, attributesModel,
 				enumsModel);
