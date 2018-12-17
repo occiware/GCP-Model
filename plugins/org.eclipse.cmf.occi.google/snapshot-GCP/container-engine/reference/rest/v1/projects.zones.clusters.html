@@ -453,7 +453,7 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;name&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
-  <span class="str">&quot;description&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;initialNodeCount&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;nodeConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/NodeConfig">NodeConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;masterAuth&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#MasterAuth">MasterAuth</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;loggingService&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;monitoringService&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;network&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;clusterIpv4Cidr&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;addonsConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#AddonsConfig">AddonsConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;subnetwork&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;nodePools&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools#NodePool">NodePool</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;locations&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">string</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;enableKubernetesAlpha&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;resourceLabels&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;labelFingerprint&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;legacyAbac&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#LegacyAbac">LegacyAbac</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;networkPolicy&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#NetworkPolicy">NetworkPolicy</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;ipAllocationPolicy&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#IPAllocationPolicy">IPAllocationPolicy</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;masterAuthorizedNetworksConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#MasterAuthorizedNetworksConfig">MasterAuthorizedNetworksConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;selfLink&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;zone&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;endpoint&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;initialClusterVersion&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;currentMasterVersion&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;currentNodeVersion&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;createTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;status&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#Status">Status</a></code>)</span><span class="pun">,</span> <span class="str">&quot;statusMessage&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;nodeIpv4CidrSize&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;servicesIpv4Cidr&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;instanceGroupUrls&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">string</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;currentNodeCount&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;expireTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre></td> 
+  <span class="str">&quot;description&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;initialNodeCount&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;nodeConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/NodeConfig">NodeConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;masterAuth&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#MasterAuth">MasterAuth</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;loggingService&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;monitoringService&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;network&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;clusterIpv4Cidr&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;addonsConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#AddonsConfig">AddonsConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;subnetwork&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;nodePools&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools#NodePool">NodePool</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;locations&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">string</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;enableKubernetesAlpha&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;resourceLabels&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;labelFingerprint&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;legacyAbac&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#LegacyAbac">LegacyAbac</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;networkPolicy&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#NetworkPolicy">NetworkPolicy</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;ipAllocationPolicy&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#IPAllocationPolicy">IPAllocationPolicy</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;masterAuthorizedNetworksConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#MasterAuthorizedNetworksConfig">MasterAuthorizedNetworksConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;selfLink&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;zone&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;endpoint&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;initialClusterVersion&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;currentMasterVersion&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;currentNodeVersion&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;createTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;status&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#Status">Status</a></code>)</span><span class="pun">,</span> <span class="str">&quot;statusMessage&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;nodeIpv4CidrSize&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;servicesIpv4Cidr&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;instanceGroupUrls&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">string</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;currentNodeCount&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;expireTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -489,7 +489,7 @@
              </tr> 
              <tr id="Cluster.FIELDS.master_auth"> 
               <td><code>masterAuth</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#MasterAuth">MasterAuth</a></code>)</code></p> <p> The authentication information for accessing the master endpoint. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#MasterAuth">MasterAuth</a></code>)</code></p> <p> The authentication information for accessing the master endpoint. </p> </td> 
              </tr> 
              <tr id="Cluster.FIELDS.logging_service"> 
               <td><code>loggingService</code></td> 
@@ -519,7 +519,7 @@
              </tr> 
              <tr id="Cluster.FIELDS.addons_config"> 
               <td><code>addonsConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#AddonsConfig">AddonsConfig</a></code>)</code></p> <p> Configurations for the various addons available to run in the cluster. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#AddonsConfig">AddonsConfig</a></code>)</code></p> <p> Configurations for the various addons available to run in the cluster. </p> </td> 
              </tr> 
              <tr id="Cluster.FIELDS.subnetwork"> 
               <td><code>subnetwork</code></td> 
@@ -547,19 +547,19 @@
              </tr> 
              <tr id="Cluster.FIELDS.legacy_abac"> 
               <td><code>legacyAbac</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#LegacyAbac">LegacyAbac</a></code>)</code></p> <p> Configuration for the legacy ABAC authorization mode. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#LegacyAbac">LegacyAbac</a></code>)</code></p> <p> Configuration for the legacy ABAC authorization mode. </p> </td> 
              </tr> 
              <tr id="Cluster.FIELDS.network_policy"> 
               <td><code>networkPolicy</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#NetworkPolicy">NetworkPolicy</a></code>)</code></p> <p> Configuration options for the NetworkPolicy feature. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#NetworkPolicy">NetworkPolicy</a></code>)</code></p> <p> Configuration options for the NetworkPolicy feature. </p> </td> 
              </tr> 
              <tr id="Cluster.FIELDS.ip_allocation_policy"> 
               <td><code>ipAllocationPolicy</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#IPAllocationPolicy">IPAllocationPolicy</a></code>)</code></p> <p> Configuration for cluster IP allocation. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#IPAllocationPolicy">IPAllocationPolicy</a></code>)</code></p> <p> Configuration for cluster IP allocation. </p> </td> 
              </tr> 
              <tr id="Cluster.FIELDS.master_authorized_networks_config"> 
               <td><code>masterAuthorizedNetworksConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#MasterAuthorizedNetworksConfig">MasterAuthorizedNetworksConfig</a></code>)</code></p> <p> Master authorized networks is a Beta feature. The configuration options for master authorized networks feature. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#MasterAuthorizedNetworksConfig">MasterAuthorizedNetworksConfig</a></code>)</code></p> <p> Master authorized networks is a Beta feature. The configuration options for master authorized networks feature. </p> </td> 
              </tr> 
              <tr id="Cluster.FIELDS.self_link"> 
               <td><code>selfLink</code></td> 
@@ -591,7 +591,7 @@
              </tr> 
              <tr id="Cluster.FIELDS.status"> 
               <td><code>status</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#Status">Status</a></code>)</code></p> <p> [Output only] The current status of this cluster. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#Status">Status</a></code>)</code></p> <p> [Output only] The current status of this cluster. </p> </td> 
              </tr> 
              <tr id="Cluster.FIELDS.status_message"> 
               <td><code>statusMessage</code></td> 
@@ -637,7 +637,7 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;username&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
-  <span class="str">&quot;password&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;clientCertificateConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#ClientCertificateConfig">ClientCertificateConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;clusterCaCertificate&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;clientCertificate&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;clientKey&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></pre></td> 
+  <span class="str">&quot;password&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;clientCertificateConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#ClientCertificateConfig">ClientCertificateConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;clusterCaCertificate&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;clientCertificate&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;clientKey&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -660,7 +660,7 @@
              </tr> 
              <tr id="MasterAuth.FIELDS.client_certificate_config"> 
               <td><code>clientCertificateConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#ClientCertificateConfig">ClientCertificateConfig</a></code>)</code></p> <p> Configuration for client certificate authentication on the cluster. If no configuration is specified, a client certificate is issued. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ClientCertificateConfig">ClientCertificateConfig</a></code>)</code></p> <p> Configuration for client certificate authentication on the cluster. If no configuration is specified, a client certificate is issued. </p> </td> 
              </tr> 
              <tr id="MasterAuth.FIELDS.cluster_ca_certificate"> 
               <td><code>clusterCaCertificate</code></td> 
@@ -731,9 +731,9 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;httpLoadBalancing&quot;<span class="pun">: </span><span class="pun">{</span>
-    <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#HttpLoadBalancing">HttpLoadBalancing</a></code>)</span>
+    <span class="kwd">object(<code><a href="#HttpLoadBalancing">HttpLoadBalancing</a></code>)</span>
   <span class="pun">}</span><span class="pun">,</span>
-  <span class="str">&quot;horizontalPodAutoscaling&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#HorizontalPodAutoscaling">HorizontalPodAutoscaling</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;kubernetesDashboard&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#KubernetesDashboard">KubernetesDashboard</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></pre></td> 
+  <span class="str">&quot;horizontalPodAutoscaling&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#HorizontalPodAutoscaling">HorizontalPodAutoscaling</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;kubernetesDashboard&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#KubernetesDashboard">KubernetesDashboard</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -748,15 +748,15 @@
             <tbody> 
              <tr id="AddonsConfig.FIELDS.http_load_balancing"> 
               <td><code>httpLoadBalancing</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#HttpLoadBalancing">HttpLoadBalancing</a></code>)</code></p> <p> Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#HttpLoadBalancing">HttpLoadBalancing</a></code>)</code></p> <p> Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. </p> </td> 
              </tr> 
              <tr id="AddonsConfig.FIELDS.horizontal_pod_autoscaling"> 
               <td><code>horizontalPodAutoscaling</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#HorizontalPodAutoscaling">HorizontalPodAutoscaling</a></code>)</code></p> <p> Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#HorizontalPodAutoscaling">HorizontalPodAutoscaling</a></code>)</code></p> <p> Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. </p> </td> 
              </tr> 
              <tr id="AddonsConfig.FIELDS.kubernetes_dashboard"> 
               <td><code>kubernetesDashboard</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#KubernetesDashboard">KubernetesDashboard</a></code>)</code></p> <p> Configuration for the Kubernetes Dashboard. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#KubernetesDashboard">KubernetesDashboard</a></code>)</code></p> <p> Configuration for the Kubernetes Dashboard. </p> </td> 
              </tr> 
             </tbody> 
            </table> 
@@ -925,7 +925,7 @@
             <tbody> 
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
-  <span class="str">&quot;provider&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#Provider">Provider</a></code>)</span><span class="pun">,</span>
+  <span class="str">&quot;provider&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#Provider">Provider</a></code>)</span><span class="pun">,</span>
   <span class="str">&quot;enabled&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="pun">}</span></span></span></pre></td> 
              </tr> 
             </tbody> 
@@ -941,7 +941,7 @@
             <tbody> 
              <tr id="NetworkPolicy.FIELDS.provider"> 
               <td><code>provider</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#Provider">Provider</a></code>)</code></p> <p> The selected network policy provider. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#Provider">Provider</a></code>)</code></p> <p> The selected network policy provider. </p> </td> 
              </tr> 
              <tr id="NetworkPolicy.FIELDS.enabled"> 
               <td><code>enabled</code></td> 
@@ -1049,7 +1049,7 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;enabled&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span>
-  <span class="str">&quot;cidrBlocks&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#CidrBlock">CidrBlock</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></pre></td> 
+  <span class="str">&quot;cidrBlocks&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="#CidrBlock">CidrBlock</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -1068,7 +1068,7 @@
              </tr> 
              <tr id="MasterAuthorizedNetworksConfig.FIELDS.cidr_blocks"> 
               <td><code>cidrBlocks[]</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters#CidrBlock">CidrBlock</a></code>)</code></p> <p> cidrBlocks define up to 10 external networks that could access Kubernetes master through HTTPS. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#CidrBlock">CidrBlock</a></code>)</code></p> <p> cidrBlocks define up to 10 external networks that could access Kubernetes master through HTTPS. </p> </td> 
              </tr> 
             </tbody> 
            </table> 

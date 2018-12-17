@@ -635,7 +635,7 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;projectId&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
-  <span class="str">&quot;clusterName&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;config&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterConfig">ClusterConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;labels&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;status&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterStatus">ClusterStatus</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;statusHistory&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterStatus">ClusterStatus</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;clusterUuid&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;metrics&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterMetrics">ClusterMetrics</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></span></pre></td> 
+  <span class="str">&quot;clusterName&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;config&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#ClusterConfig">ClusterConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;labels&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;status&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#ClusterStatus">ClusterStatus</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;statusHistory&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="#ClusterStatus">ClusterStatus</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;clusterUuid&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;metrics&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#ClusterMetrics">ClusterMetrics</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -658,7 +658,7 @@
              </tr> 
              <tr id="Cluster.FIELDS.config"> 
               <td><code>config</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterConfig">ClusterConfig</a></code>)</code></p> <p> Required. The cluster config. Note that Cloud Dataproc may set default values, and values may change when clusters are updated. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ClusterConfig">ClusterConfig</a></code>)</code></p> <p> Required. The cluster config. Note that Cloud Dataproc may set default values, and values may change when clusters are updated. </p> </td> 
              </tr> 
              <tr id="Cluster.FIELDS.labels"> 
               <td><code>labels</code></td> 
@@ -666,11 +666,11 @@
              </tr> 
              <tr id="Cluster.FIELDS.status"> 
               <td><code>status</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterStatus">ClusterStatus</a></code>)</code></p> <p> Output-only. Cluster status. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ClusterStatus">ClusterStatus</a></code>)</code></p> <p> Output-only. Cluster status. </p> </td> 
              </tr> 
              <tr id="Cluster.FIELDS.status_history"> 
               <td><code>statusHistory[]</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterStatus">ClusterStatus</a></code>)</code></p> <p> Output-only. The previous cluster status. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ClusterStatus">ClusterStatus</a></code>)</code></p> <p> Output-only. The previous cluster status. </p> </td> 
              </tr> 
              <tr id="Cluster.FIELDS.cluster_uuid"> 
               <td><code>clusterUuid</code></td> 
@@ -678,7 +678,7 @@
              </tr> 
              <tr id="Cluster.FIELDS.metrics"> 
               <td><code>metrics</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ClusterMetrics">ClusterMetrics</a></code>)</code></p> <p> </p><p>Contains cluster daemon metrics such as HDFS and YARN stats.</p><p><strong>Beta Feature</strong>: This report is available for testing purposes only. It may be changed before final release.</p> <p></p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ClusterMetrics">ClusterMetrics</a></code>)</code></p> <p> </p><p>Contains cluster daemon metrics such as HDFS and YARN stats.</p><p><strong>Beta Feature</strong>: This report is available for testing purposes only. It may be changed before final release.</p> <p></p> </td> 
              </tr> 
             </tbody> 
            </table> 
@@ -700,7 +700,7 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;configBucket&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
-  <span class="str">&quot;gceClusterConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#GceClusterConfig">GceClusterConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;masterConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;workerConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;secondaryWorkerConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;softwareConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#SoftwareConfig">SoftwareConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;initializationActions&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#NodeInitializationAction">NodeInitializationAction</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></pre></td> 
+  <span class="str">&quot;gceClusterConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#GceClusterConfig">GceClusterConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;masterConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#InstanceGroupConfig">InstanceGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;workerConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#InstanceGroupConfig">InstanceGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;secondaryWorkerConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#InstanceGroupConfig">InstanceGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;softwareConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#SoftwareConfig">SoftwareConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;initializationActions&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="#NodeInitializationAction">NodeInitializationAction</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -719,27 +719,27 @@
              </tr> 
              <tr id="ClusterConfig.FIELDS.gce_cluster_config"> 
               <td><code>gceClusterConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#GceClusterConfig">GceClusterConfig</a></code>)</code></p> <p> Required. The shared Google Compute Engine config settings for all instances in a cluster. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#GceClusterConfig">GceClusterConfig</a></code>)</code></p> <p> Required. The shared Google Compute Engine config settings for all instances in a cluster. </p> </td> 
              </tr> 
              <tr id="ClusterConfig.FIELDS.master_config"> 
               <td><code>masterConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</code></p> <p> Optional. The Google Compute Engine config settings for the master instance in a cluster. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#InstanceGroupConfig">InstanceGroupConfig</a></code>)</code></p> <p> Optional. The Google Compute Engine config settings for the master instance in a cluster. </p> </td> 
              </tr> 
              <tr id="ClusterConfig.FIELDS.worker_config"> 
               <td><code>workerConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</code></p> <p> Optional. The Google Compute Engine config settings for worker instances in a cluster. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#InstanceGroupConfig">InstanceGroupConfig</a></code>)</code></p> <p> Optional. The Google Compute Engine config settings for worker instances in a cluster. </p> </td> 
              </tr> 
              <tr id="ClusterConfig.FIELDS.secondary_worker_config"> 
               <td><code>secondaryWorkerConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#InstanceGroupConfig">InstanceGroupConfig</a></code>)</code></p> <p> Optional. The Google Compute Engine config settings for additional worker instances in a cluster. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#InstanceGroupConfig">InstanceGroupConfig</a></code>)</code></p> <p> Optional. The Google Compute Engine config settings for additional worker instances in a cluster. </p> </td> 
              </tr> 
              <tr id="ClusterConfig.FIELDS.software_config"> 
               <td><code>softwareConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#SoftwareConfig">SoftwareConfig</a></code>)</code></p> <p> Optional. The config settings for software inside the cluster. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#SoftwareConfig">SoftwareConfig</a></code>)</code></p> <p> Optional. The config settings for software inside the cluster. </p> </td> 
              </tr> 
              <tr id="ClusterConfig.FIELDS.initialization_actions"> 
               <td><code>initializationActions[]</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#NodeInitializationAction">NodeInitializationAction</a></code>)</code></p> <p> </p><p>Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's <code>role</code> metadata to run an executable on a master or worker node, as shown below using <code>curl</code> (you can also use <code>wget</code>):</p> <pre><code>ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role)
+              <td> <p><code class="apitype">object(<code><a href="#NodeInitializationAction">NodeInitializationAction</a></code>)</code></p> <p> </p><p>Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's <code>role</code> metadata to run an executable on a master or worker node, as shown below using <code>curl</code> (you can also use <code>wget</code>):</p> <pre><code>ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role)
 if [[ &quot;${ROLE}&quot; == 'Master' ]]; then
   ... master specific actions ...
 else
@@ -862,7 +862,7 @@ fi
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;numInstances&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span>
-  <span class="str">&quot;instanceNames&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">string</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;imageUri&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;machineTypeUri&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;diskConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#DiskConfig">DiskConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;isPreemptible&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;managedGroupConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ManagedGroupConfig">ManagedGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;accelerators&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#AcceleratorConfig">AcceleratorConfig</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></pre></td> 
+  <span class="str">&quot;instanceNames&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">string</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;imageUri&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;machineTypeUri&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;diskConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#DiskConfig">DiskConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;isPreemptible&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;managedGroupConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#ManagedGroupConfig">ManagedGroupConfig</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;accelerators&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="#AcceleratorConfig">AcceleratorConfig</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -898,7 +898,7 @@ fi
              </tr> 
              <tr id="InstanceGroupConfig.FIELDS.disk_config"> 
               <td><code>diskConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#DiskConfig">DiskConfig</a></code>)</code></p> <p> Optional. Disk option config settings. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#DiskConfig">DiskConfig</a></code>)</code></p> <p> Optional. Disk option config settings. </p> </td> 
              </tr> 
              <tr id="InstanceGroupConfig.FIELDS.is_preemptible"> 
               <td><code>isPreemptible</code></td> 
@@ -906,11 +906,11 @@ fi
              </tr> 
              <tr id="InstanceGroupConfig.FIELDS.managed_group_config"> 
               <td><code>managedGroupConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#ManagedGroupConfig">ManagedGroupConfig</a></code>)</code></p> <p> Output-only. The config for Google Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ManagedGroupConfig">ManagedGroupConfig</a></code>)</code></p> <p> Output-only. The config for Google Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups. </p> </td> 
              </tr> 
              <tr id="InstanceGroupConfig.FIELDS.accelerators"> 
               <td><code>accelerators[]</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#AcceleratorConfig">AcceleratorConfig</a></code>)</code></p> <p> </p><p>Optional. The Google Compute Engine accelerator configuration for these instances.</p><p><strong>Beta Feature</strong>: This feature is still under development. It may be changed before final release.</p> <p></p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#AcceleratorConfig">AcceleratorConfig</a></code>)</code></p> <p> </p><p>Optional. The Google Compute Engine accelerator configuration for these instances.</p><p><strong>Beta Feature</strong>: This feature is still under development. It may be changed before final release.</p> <p></p> </td> 
              </tr> 
             </tbody> 
            </table> 
@@ -1147,8 +1147,8 @@ fi
             <tbody> 
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
-  <span class="str">&quot;state&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#State">State</a></code>)</span><span class="pun">,</span>
-  <span class="str">&quot;detail&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;stateStartTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;substate&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#Substate">Substate</a></code>)</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></pre></td> 
+  <span class="str">&quot;state&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#State">State</a></code>)</span><span class="pun">,</span>
+  <span class="str">&quot;detail&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;stateStartTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;substate&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#Substate">Substate</a></code>)</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -1163,7 +1163,7 @@ fi
             <tbody> 
              <tr id="ClusterStatus.FIELDS.state"> 
               <td><code>state</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#State">State</a></code>)</code></p> <p> Output-only. The cluster's state. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#State">State</a></code>)</code></p> <p> Output-only. The cluster's state. </p> </td> 
              </tr> 
              <tr id="ClusterStatus.FIELDS.detail"> 
               <td><code>detail</code></td> 
@@ -1175,7 +1175,7 @@ fi
              </tr> 
              <tr id="ClusterStatus.FIELDS.substate"> 
               <td><code>substate</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters#Substate">Substate</a></code>)</code></p> <p> Output-only. Additional state information that includes status reported by the agent. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#Substate">Substate</a></code>)</code></p> <p> Output-only. Additional state information that includes status reported by the agent. </p> </td> 
              </tr> 
             </tbody> 
            </table> 

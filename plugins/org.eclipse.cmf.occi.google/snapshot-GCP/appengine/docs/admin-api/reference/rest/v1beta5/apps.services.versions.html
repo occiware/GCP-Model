@@ -878,7 +878,7 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;name&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
-  <span class="str">&quot;id&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;inboundServices&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#InboundServiceType">InboundServiceType</a></code>)</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;instanceClass&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;network&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Network">Network</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;resources&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Resources">Resources</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;runtime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;threadsafe&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;vm&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;betaSettings&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;env&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;servingStatus&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ServingStatus">ServingStatus</a></code>)</span><span class="pun">,</span> <span class="str">&quot;deployer&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;creationTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;diskUsageBytes&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;ignoreBinaryVerification&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;overrideBinaryAuthorization&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;handlers&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#UrlMap">UrlMap</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;errorHandlers&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ErrorHandler">ErrorHandler</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;libraries&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Library">Library</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;apiConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ApiConfigHandler">ApiConfigHandler</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;envVariables&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;defaultExpiration&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;healthCheck&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#HealthCheck">HealthCheck</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;nobuildFilesRegex&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;deployment&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Deployment">Deployment</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;endpointsApiService&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#EndpointsApiService">EndpointsApiService</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="com">// Union field <code>scaling</code> can be only one of the following:</span> <span class="str">&quot;automaticScaling&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#AutomaticScaling">AutomaticScaling</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;basicScaling&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#BasicScaling">BasicScaling</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;manualScaling&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ManualScaling">ManualScaling</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="com">// End of list of possible types for union field <code>scaling</code>.</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre></td> 
+  <span class="str">&quot;id&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;inboundServices&quot;<span class="pun">: </span><span class="pun">[</span> <span class="kwd">enum(<code><a href="#InboundServiceType">InboundServiceType</a></code>)</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;instanceClass&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;network&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#Network">Network</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;resources&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#Resources">Resources</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;runtime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;threadsafe&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;vm&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;betaSettings&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;env&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;servingStatus&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#ServingStatus">ServingStatus</a></code>)</span><span class="pun">,</span> <span class="str">&quot;deployer&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;creationTime&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;diskUsageBytes&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;ignoreBinaryVerification&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;overrideBinaryAuthorization&quot;<span class="pun">: </span><span class="kwd">boolean</span><span class="pun">,</span> <span class="str">&quot;handlers&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="#UrlMap">UrlMap</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;errorHandlers&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="#ErrorHandler">ErrorHandler</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;libraries&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="#Library">Library</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="str">&quot;apiConfig&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#ApiConfigHandler">ApiConfigHandler</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;envVariables&quot;<span class="pun">: </span><span class="pun">{</span> <span class="str">string<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;defaultExpiration&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;healthCheck&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#HealthCheck">HealthCheck</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;nobuildFilesRegex&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;deployment&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#Deployment">Deployment</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;endpointsApiService&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#EndpointsApiService">EndpointsApiService</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="com">// Union field <code>scaling</code> can be only one of the following:</span> <span class="str">&quot;automaticScaling&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#AutomaticScaling">AutomaticScaling</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;basicScaling&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#BasicScaling">BasicScaling</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;manualScaling&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#ManualScaling">ManualScaling</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="com">// End of list of possible types for union field <code>scaling</code>.</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -901,7 +901,7 @@
              </tr> 
              <tr id="Version.FIELDS.inbound_services"> 
               <td><code>inboundServices[]</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#InboundServiceType">InboundServiceType</a></code>)</code></p> <p> Before an application can receive email or XMPP messages, the application must be configured to enable the service. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#InboundServiceType">InboundServiceType</a></code>)</code></p> <p> Before an application can receive email or XMPP messages, the application must be configured to enable the service. </p> </td> 
              </tr> 
              <tr id="Version.FIELDS.instance_class"> 
               <td><code>instanceClass</code></td> 
@@ -913,11 +913,11 @@
              </tr> 
              <tr id="Version.FIELDS.network"> 
               <td><code>network</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Network">Network</a></code>)</code></p> <p> Extra network settings. Only applicable for VM runtimes. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#Network">Network</a></code>)</code></p> <p> Extra network settings. Only applicable for VM runtimes. </p> </td> 
              </tr> 
              <tr id="Version.FIELDS.resources"> 
               <td><code>resources</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Resources">Resources</a></code>)</code></p> <p> Machine resources for this version. Only applicable for VM runtimes. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#Resources">Resources</a></code>)</code></p> <p> Machine resources for this version. Only applicable for VM runtimes. </p> </td> 
              </tr> 
              <tr id="Version.FIELDS.runtime"> 
               <td><code>runtime</code></td> 
@@ -941,7 +941,7 @@
              </tr> 
              <tr id="Version.FIELDS.serving_status"> 
               <td><code>servingStatus</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ServingStatus">ServingStatus</a></code>)</code></p> <p> </p><p>Current serving status of this version. Only the versions with a <code>SERVING</code> status create instances and can be billed.</p><p><code>SERVING_STATUS_UNSPECIFIED</code> is an invalid value. Defaults to <code>SERVING</code>.</p> <p></p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#ServingStatus">ServingStatus</a></code>)</code></p> <p> </p><p>Current serving status of this version. Only the versions with a <code>SERVING</code> status create instances and can be billed.</p><p><code>SERVING_STATUS_UNSPECIFIED</code> is an invalid value. Defaults to <code>SERVING</code>.</p> <p></p> </td> 
              </tr> 
              <tr id="Version.FIELDS.deployer"> 
               <td><code>deployer</code></td> 
@@ -965,19 +965,19 @@
              </tr> 
              <tr id="Version.FIELDS.handlers"> 
               <td><code>handlers[]</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#UrlMap">UrlMap</a></code>)</code></p> <p> </p><p>An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#UrlMap">UrlMap</a></code>)</code></p> <p> </p><p>An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
              </tr> 
              <tr id="Version.FIELDS.error_handlers"> 
               <td><code>errorHandlers[]</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ErrorHandler">ErrorHandler</a></code>)</code></p> <p> </p><p>Custom static error pages. Limited to 10KB per page.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ErrorHandler">ErrorHandler</a></code>)</code></p> <p> </p><p>Custom static error pages. Limited to 10KB per page.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
              </tr> 
              <tr id="Version.FIELDS.libraries"> 
               <td><code>libraries[]</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Library">Library</a></code>)</code></p> <p> </p><p>Configuration for third-party Python runtime libraries required by the application.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#Library">Library</a></code>)</code></p> <p> </p><p>Configuration for third-party Python runtime libraries required by the application.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
              </tr> 
              <tr id="Version.FIELDS.api_config"> 
               <td><code>apiConfig</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ApiConfigHandler">ApiConfigHandler</a></code>)</code></p> <p> </p><p>Serving configuration for <a href="https://cloud.google.com/appengine/docs/python/endpoints/">Google Cloud Endpoints</a>.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ApiConfigHandler">ApiConfigHandler</a></code>)</code></p> <p> </p><p>Serving configuration for <a href="https://cloud.google.com/appengine/docs/python/endpoints/">Google Cloud Endpoints</a>.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
              </tr> 
              <tr id="Version.FIELDS.env_variables"> 
               <td><code>envVariables</code></td> 
@@ -989,7 +989,7 @@
              </tr> 
              <tr id="Version.FIELDS.health_check"> 
               <td><code>healthCheck</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#HealthCheck">HealthCheck</a></code>)</code></p> <p> </p><p>Configures health checking for VM instances. Unhealthy instances are be stopped and replaced with new instances. Only applicable for VM runtimes.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#HealthCheck">HealthCheck</a></code>)</code></p> <p> </p><p>Configures health checking for VM instances. Unhealthy instances are be stopped and replaced with new instances. Only applicable for VM runtimes.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
              </tr> 
              <tr id="Version.FIELDS.nobuild_files_regex"> 
               <td><code>nobuildFilesRegex</code></td> 
@@ -997,26 +997,26 @@
              </tr> 
              <tr id="Version.FIELDS.deployment"> 
               <td><code>deployment</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Deployment">Deployment</a></code>)</code></p> <p> </p><p>Code and application artifacts that make up this version.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#Deployment">Deployment</a></code>)</code></p> <p> </p><p>Code and application artifacts that make up this version.</p><p>Only returned in <code>GET</code> requests if <code>view=FULL</code> is set.</p> <p></p> </td> 
              </tr> 
              <tr id="Version.FIELDS.endpoints_api_service"> 
               <td><code>endpointsApiService</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#EndpointsApiService">EndpointsApiService</a></code>)</code></p> <p> </p><p>Cloud Endpoints configuration.</p><p>If endpointsApiService is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.</p> <p></p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#EndpointsApiService">EndpointsApiService</a></code>)</code></p> <p> </p><p>Cloud Endpoints configuration.</p><p>If endpointsApiService is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.</p> <p></p> </td> 
              </tr> 
              <tr id="Version.FIELDS.oneof_scaling" class="alt"> 
               <td colspan="3"><p>Union field <code>scaling</code>. Controls how instances are created.</p><p>Defaults to <code>AutomaticScaling</code>. <code>scaling</code> can be only one of the following:</p></td> 
              </tr> 
              <tr id="Version.FIELDS.automatic_scaling"> 
               <td><code>automaticScaling</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#AutomaticScaling">AutomaticScaling</a></code>)</code></p> <p> Automatic scaling is based on request rate, response latencies, and other application metrics. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#AutomaticScaling">AutomaticScaling</a></code>)</code></p> <p> Automatic scaling is based on request rate, response latencies, and other application metrics. </p> </td> 
              </tr> 
              <tr id="Version.FIELDS.basic_scaling"> 
               <td><code>basicScaling</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#BasicScaling">BasicScaling</a></code>)</code></p> <p> A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#BasicScaling">BasicScaling</a></code>)</code></p> <p> A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity. </p> </td> 
              </tr> 
              <tr id="Version.FIELDS.manual_scaling"> 
               <td><code>manualScaling</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ManualScaling">ManualScaling</a></code>)</code></p> <p> A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ManualScaling">ManualScaling</a></code>)</code></p> <p> A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. </p> </td> 
              </tr> 
             </tbody> 
            </table> 
@@ -1038,7 +1038,7 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;coolDownPeriod&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
-  <span class="str">&quot;cpuUtilization&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#CpuUtilization">CpuUtilization</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;maxConcurrentRequests&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;maxIdleInstances&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;maxTotalInstances&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;maxPendingLatency&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;minIdleInstances&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;minTotalInstances&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;minPendingLatency&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;requestUtilization&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#RequestUtilization">RequestUtilization</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;diskUtilization&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#DiskUtilization">DiskUtilization</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;networkUtilization&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#NetworkUtilization">NetworkUtilization</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></span></pre></td> 
+  <span class="str">&quot;cpuUtilization&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#CpuUtilization">CpuUtilization</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;maxConcurrentRequests&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;maxIdleInstances&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;maxTotalInstances&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;maxPendingLatency&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;minIdleInstances&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;minTotalInstances&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;minPendingLatency&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;requestUtilization&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#RequestUtilization">RequestUtilization</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;diskUtilization&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#DiskUtilization">DiskUtilization</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;networkUtilization&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#NetworkUtilization">NetworkUtilization</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -1057,7 +1057,7 @@
              </tr> 
              <tr id="AutomaticScaling.FIELDS.cpu_utilization"> 
               <td><code>cpuUtilization</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#CpuUtilization">CpuUtilization</a></code>)</code></p> <p> Target scaling by CPU usage. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#CpuUtilization">CpuUtilization</a></code>)</code></p> <p> Target scaling by CPU usage. </p> </td> 
              </tr> 
              <tr id="AutomaticScaling.FIELDS.max_concurrent_requests"> 
               <td><code>maxConcurrentRequests</code></td> 
@@ -1089,15 +1089,15 @@
              </tr> 
              <tr id="AutomaticScaling.FIELDS.request_utilization"> 
               <td><code>requestUtilization</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#RequestUtilization">RequestUtilization</a></code>)</code></p> <p> Target scaling by request utilization. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#RequestUtilization">RequestUtilization</a></code>)</code></p> <p> Target scaling by request utilization. </p> </td> 
              </tr> 
              <tr id="AutomaticScaling.FIELDS.disk_utilization"> 
               <td><code>diskUtilization</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#DiskUtilization">DiskUtilization</a></code>)</code></p> <p> Target scaling by disk usage. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#DiskUtilization">DiskUtilization</a></code>)</code></p> <p> Target scaling by disk usage. </p> </td> 
              </tr> 
              <tr id="AutomaticScaling.FIELDS.network_utilization"> 
               <td><code>networkUtilization</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#NetworkUtilization">NetworkUtilization</a></code>)</code></p> <p> Target scaling by network usage. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#NetworkUtilization">NetworkUtilization</a></code>)</code></p> <p> Target scaling by network usage. </p> </td> 
              </tr> 
             </tbody> 
            </table> 
@@ -1490,7 +1490,7 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;cpu&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span>
-  <span class="str">&quot;diskGb&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;memoryGb&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;volumes&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Volume">Volume</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></pre></td> 
+  <span class="str">&quot;diskGb&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;memoryGb&quot;<span class="pun">: </span><span class="kwd">number</span><span class="pun">,</span> <span class="str">&quot;volumes&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="#Volume">Volume</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -1517,7 +1517,7 @@
              </tr> 
              <tr id="Resources.FIELDS.volumes"> 
               <td><code>volumes[]</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Volume">Volume</a></code>)</code></p> <p> Volumes mounted within the app container. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#Volume">Volume</a></code>)</code></p> <p> Volumes mounted within the app container. </p> </td> 
              </tr> 
             </tbody> 
            </table> 
@@ -1613,7 +1613,7 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;urlRegex&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span>
-  <span class="str">&quot;securityLevel&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#SecurityLevel">SecurityLevel</a></code>)</span><span class="pun">,</span> <span class="str">&quot;login&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#LoginRequirement">LoginRequirement</a></code>)</span><span class="pun">,</span> <span class="str">&quot;authFailAction&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#AuthFailAction">AuthFailAction</a></code>)</span><span class="pun">,</span> <span class="str">&quot;redirectHttpResponseCode&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#RedirectHttpResponseCode">RedirectHttpResponseCode</a></code>)</span><span class="pun">,</span> <span class="com">// Union field <code>handler_type</code> can be only one of the following:</span> <span class="str">&quot;staticFiles&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#StaticFilesHandler">StaticFilesHandler</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;script&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ScriptHandler">ScriptHandler</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;apiEndpoint&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ApiEndpointHandler">ApiEndpointHandler</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="com">// End of list of possible types for union field <code>handler_type</code>.</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></pre></td> 
+  <span class="str">&quot;securityLevel&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#SecurityLevel">SecurityLevel</a></code>)</span><span class="pun">,</span> <span class="str">&quot;login&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#LoginRequirement">LoginRequirement</a></code>)</span><span class="pun">,</span> <span class="str">&quot;authFailAction&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#AuthFailAction">AuthFailAction</a></code>)</span><span class="pun">,</span> <span class="str">&quot;redirectHttpResponseCode&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#RedirectHttpResponseCode">RedirectHttpResponseCode</a></code>)</span><span class="pun">,</span> <span class="com">// Union field <code>handler_type</code> can be only one of the following:</span> <span class="str">&quot;staticFiles&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#StaticFilesHandler">StaticFilesHandler</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;script&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#ScriptHandler">ScriptHandler</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;apiEndpoint&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#ApiEndpointHandler">ApiEndpointHandler</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="com">// End of list of possible types for union field <code>handler_type</code>.</span> <span class="pun">}</span></span></span></span></span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -1632,34 +1632,34 @@
              </tr> 
              <tr id="UrlMap.FIELDS.security_level"> 
               <td><code>securityLevel</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#SecurityLevel">SecurityLevel</a></code>)</code></p> <p> Security (HTTPS) enforcement for this URL. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#SecurityLevel">SecurityLevel</a></code>)</code></p> <p> Security (HTTPS) enforcement for this URL. </p> </td> 
              </tr> 
              <tr id="UrlMap.FIELDS.login"> 
               <td><code>login</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#LoginRequirement">LoginRequirement</a></code>)</code></p> <p> Level of login required to access this resource. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#LoginRequirement">LoginRequirement</a></code>)</code></p> <p> Level of login required to access this resource. </p> </td> 
              </tr> 
              <tr id="UrlMap.FIELDS.auth_fail_action"> 
               <td><code>authFailAction</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#AuthFailAction">AuthFailAction</a></code>)</code></p> <p> Action to take when users access resources that require authentication. Defaults to <code>redirect</code>. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#AuthFailAction">AuthFailAction</a></code>)</code></p> <p> Action to take when users access resources that require authentication. Defaults to <code>redirect</code>. </p> </td> 
              </tr> 
              <tr id="UrlMap.FIELDS.redirect_http_response_code"> 
               <td><code>redirectHttpResponseCode</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#RedirectHttpResponseCode">RedirectHttpResponseCode</a></code>)</code></p> <p> <code>30x</code> code to use when performing redirects for the <code>secure</code> field. Defaults to <code>302</code>. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#RedirectHttpResponseCode">RedirectHttpResponseCode</a></code>)</code></p> <p> <code>30x</code> code to use when performing redirects for the <code>secure</code> field. Defaults to <code>302</code>. </p> </td> 
              </tr> 
              <tr id="UrlMap.FIELDS.oneof_handler_type" class="alt"> 
               <td colspan="3">Union field <code>handler_type</code>. Type of handler for this URL pattern. <code>handler_type</code> can be only one of the following:</td> 
              </tr> 
              <tr id="UrlMap.FIELDS.static_files"> 
               <td><code>staticFiles</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#StaticFilesHandler">StaticFilesHandler</a></code>)</code></p> <p> Returns the contents of a file, such as an image, as the response. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#StaticFilesHandler">StaticFilesHandler</a></code>)</code></p> <p> Returns the contents of a file, such as an image, as the response. </p> </td> 
              </tr> 
              <tr id="UrlMap.FIELDS.script"> 
               <td><code>script</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ScriptHandler">ScriptHandler</a></code>)</code></p> <p> Executes a script to handle the request that matches this URL pattern. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ScriptHandler">ScriptHandler</a></code>)</code></p> <p> Executes a script to handle the request that matches this URL pattern. </p> </td> 
              </tr> 
              <tr id="UrlMap.FIELDS.api_endpoint"> 
               <td><code>apiEndpoint</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ApiEndpointHandler">ApiEndpointHandler</a></code>)</code></p> <p> Uses API Endpoints to handle requests. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ApiEndpointHandler">ApiEndpointHandler</a></code>)</code></p> <p> Uses API Endpoints to handle requests. </p> </td> 
              </tr> 
             </tbody> 
            </table> 
@@ -1951,7 +1951,7 @@
             <tbody> 
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
-  <span class="str">&quot;errorCode&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ErrorCode">ErrorCode</a></code>)</span><span class="pun">,</span>
+  <span class="str">&quot;errorCode&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#ErrorCode">ErrorCode</a></code>)</span><span class="pun">,</span>
   <span class="str">&quot;staticFile&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;mimeType&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
@@ -1967,7 +1967,7 @@
             <tbody> 
              <tr id="ErrorHandler.FIELDS.error_code"> 
               <td><code>errorCode</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ErrorCode">ErrorCode</a></code>)</code></p> <p> Error condition this handler applies to. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#ErrorCode">ErrorCode</a></code>)</code></p> <p> Error condition this handler applies to. </p> </td> 
              </tr> 
              <tr id="ErrorHandler.FIELDS.static_file"> 
               <td><code>staticFile</code></td> 
@@ -2074,8 +2074,8 @@
             <tbody> 
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
-  <span class="str">&quot;authFailAction&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#AuthFailAction">AuthFailAction</a></code>)</span><span class="pun">,</span>
-  <span class="str">&quot;login&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#LoginRequirement">LoginRequirement</a></code>)</span><span class="pun">,</span> <span class="str">&quot;script&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;securityLevel&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#SecurityLevel">SecurityLevel</a></code>)</span><span class="pun">,</span> <span class="str">&quot;url&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></pre></td> 
+  <span class="str">&quot;authFailAction&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#AuthFailAction">AuthFailAction</a></code>)</span><span class="pun">,</span>
+  <span class="str">&quot;login&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#LoginRequirement">LoginRequirement</a></code>)</span><span class="pun">,</span> <span class="str">&quot;script&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="str">&quot;securityLevel&quot;<span class="pun">: </span><span class="kwd">enum(<code><a href="#SecurityLevel">SecurityLevel</a></code>)</span><span class="pun">,</span> <span class="str">&quot;url&quot;<span class="pun">: </span><span class="kwd">string</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -2090,11 +2090,11 @@
             <tbody> 
              <tr id="ApiConfigHandler.FIELDS.auth_fail_action"> 
               <td><code>authFailAction</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#AuthFailAction">AuthFailAction</a></code>)</code></p> <p> Action to take when users access resources that require authentication. Defaults to <code>redirect</code>. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#AuthFailAction">AuthFailAction</a></code>)</code></p> <p> Action to take when users access resources that require authentication. Defaults to <code>redirect</code>. </p> </td> 
              </tr> 
              <tr id="ApiConfigHandler.FIELDS.login"> 
               <td><code>login</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#LoginRequirement">LoginRequirement</a></code>)</code></p> <p> Level of login required to access this resource. Defaults to <code>optional</code>. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#LoginRequirement">LoginRequirement</a></code>)</code></p> <p> Level of login required to access this resource. Defaults to <code>optional</code>. </p> </td> 
              </tr> 
              <tr id="ApiConfigHandler.FIELDS.script"> 
               <td><code>script</code></td> 
@@ -2102,7 +2102,7 @@
              </tr> 
              <tr id="ApiConfigHandler.FIELDS.security_level"> 
               <td><code>securityLevel</code></td> 
-              <td> <p><code class="apitype">enum(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#SecurityLevel">SecurityLevel</a></code>)</code></p> <p> Security (HTTPS) enforcement for this URL. </p> </td> 
+              <td> <p><code class="apitype">enum(<code><a href="#SecurityLevel">SecurityLevel</a></code>)</code></p> <p> Security (HTTPS) enforcement for this URL. </p> </td> 
              </tr> 
              <tr id="ApiConfigHandler.FIELDS.url"> 
               <td><code>url</code></td> 
@@ -2189,7 +2189,7 @@
              <tr> 
               <td style="margin:0px;padding:0px;"><pre style="border: 0px;margin: 0px;"><span class="pun">{</span>
   <span class="str">&quot;files&quot;<span class="pun">: </span><span class="pun">{</span>
-    <span class="str">string<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code>FileInfo</code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;container&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ContainerInfo">ContainerInfo</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;sourceReferences&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#SourceReference">SourceReference</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></pre></td> 
+    <span class="str">string<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code>FileInfo</code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="kwd">...</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;container&quot;<span class="pun">: </span><span class="pun">{</span> <span class="kwd">object(<code><a href="#ContainerInfo">ContainerInfo</a></code>)</span> <span class="pun">}</span><span class="pun">,</span> <span class="str">&quot;sourceReferences&quot;<span class="pun">: </span><span class="pun">[</span> <span class="pun">{</span> <span class="kwd">object(<code><a href="#SourceReference">SourceReference</a></code>)</span> <span class="pun">}</span> <span class="pun">]</span><span class="pun">,</span> <span class="pun">}</span></span></span></span></span></pre></td> 
              </tr> 
             </tbody> 
            </table> 
@@ -2208,11 +2208,11 @@
              </tr> 
              <tr id="Deployment.FIELDS.container"> 
               <td><code>container</code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#ContainerInfo">ContainerInfo</a></code>)</code></p> <p> The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#ContainerInfo">ContainerInfo</a></code>)</code></p> <p> The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment. </p> </td> 
              </tr> 
              <tr id="Deployment.FIELDS.source_references"> 
               <td><code>sourceReferences[]<br /><b>(deprecated)</b></code></td> 
-              <td> <p><code class="apitype">object(<code><a href="https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#SourceReference">SourceReference</a></code>)</code></p> <p> Origin of the source code for this deployment. There can be more than one source reference per version if source code is distributed among multiple repositories. </p> </td> 
+              <td> <p><code class="apitype">object(<code><a href="#SourceReference">SourceReference</a></code>)</code></p> <p> Origin of the source code for this deployment. There can be more than one source reference per version if source code is distributed among multiple repositories. </p> </td> 
              </tr> 
             </tbody> 
            </table> 
