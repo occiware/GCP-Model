@@ -6,3 +6,17 @@ Therefore, this paper introduces **GCP Model**, an inferred formal model-driven 
 We also evaluate the uniformity, conciseness, consistency and comprehensiveness of GCP documentation and we deduce quantitative results that validate the preciseness of our model.
 
 ![GCP-Extension-diagram-with-abstraction](GCP-Extension-diagram-with-abstraction.jpg)
+
+## Install
+
+First download the project with:
+
+```sh
+git clone https://github.com/occiware/GCP-Model.git
+```
+
+Second, download Stanford parser [here](https://nlp.stanford.edu/software/stanford-parser-full-2018-10-17.zip).
+
+Unzip the downloaded archive and put it in the following place: `GCP-Model/plugins/org.eclipse.cmf.occi.google/stanford-parser-full-2018-10-17/stanford-parser-full-2018-10-17/`
+
+Finally, you will have to configure the constant `PATH_TO_ROOT_PROJECT` in `org.eclipse.cmf.occi.google.handlers.GoogleCrawler` to point to the folder that contains the project.
