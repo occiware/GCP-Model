@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_Onb5cKEKEeeUhOM7eiazVQ" selectedViews="_O79X8KEKEeeUhOM7eiazVQ _O8Q58KEKEeeUhOM7eiazVQ _O8Q58aEKEeeUhOM7eiazVQ _O8j04KEKEeeUhOM7eiazVQ" version="12.0.0.201704271200">
+  <viewpoint:DAnalysis xmi:id="_Onb5cKEKEeeUhOM7eiazVQ" selectedViews="_O79X8KEKEeeUhOM7eiazVQ _O8Q58KEKEeeUhOM7eiazVQ _O8Q58aEKEeeUhOM7eiazVQ _O8j04KEKEeeUhOM7eiazVQ" version="13.0.0.201804031646">
     <semanticResources>OCCI.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
+    <semanticResources>models/GCP.occie</semanticResources>
+    <semanticResources>http://schemas.ogf.org/occi/core</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_O79X8KEKEeeUhOM7eiazVQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_Q_y38KEKEeeUhOM7eiazVQ" name="occi class diagram" repPath="#_Q_puAKEKEeeUhOM7eiazVQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_Q_y38KEKEeeUhOM7eiazVQ" name="occi class diagram" repPath="#_ZahVUAIKEem7TPqC8_Flig">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="OCCI.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -20,7 +22,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Generation']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_Q_puAKEKEeeUhOM7eiazVQ" name="occi class diagram">
+  <diagram:DSemanticDiagram xmi:id="_Q_puAKEKEeeUhOM7eiazVQ" name="occi class diagram" uid="_ZahVUAIKEem7TPqC8_Flig">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Q_puAaEKEeeUhOM7eiazVQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_Q_puAqEKEeeUhOM7eiazVQ">
         <computedStyleDescriptions xmi:type="style:BundledImageDescription" xmi:id="_detPsaEKEeeUhOM7eiazVQ" labelExpression="service:render" labelAlignment="LEFT" tooltipExpression="service:renderTooltip" sizeComputationExpression="1">

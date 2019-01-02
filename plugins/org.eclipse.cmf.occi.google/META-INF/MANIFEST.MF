@@ -9,4 +9,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.cmf.occi.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: gson-2.2.4.jar,
- .
+ .,
+ stanford-parser-full-2018-10-17/stanford-parser-full-2018-10-17/ejml-0.23.jar,
+ stanford-parser-full-2018-10-17/stanford-parser-full-2018-10-17/slf4j-api.jar,
+ stanford-parser-full-2018-10-17/stanford-parser-full-2018-10-17/stanford-parser-3.9.2-models.jar,
+ stanford-parser-full-2018-10-17/stanford-parser-full-2018-10-17/stanford-parser.jar
