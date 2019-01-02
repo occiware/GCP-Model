@@ -4,7 +4,9 @@ import static org.eclipse.cmf.occi.google.handlers.GCPCrawler.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,10 +17,13 @@ import org.eclipse.cmf.occi.core.DataType;
 import org.eclipse.cmf.occi.core.EnumerationLiteral;
 import org.eclipse.cmf.occi.core.EnumerationType;
 import org.eclipse.cmf.occi.core.Kind;
+import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.NumericTypeEnum;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.RecordField;
 import org.eclipse.cmf.occi.core.RecordType;
+import org.eclipse.cmf.occi.google.handlers.syntacticparsingtree.LinkDefinition;
+import org.eclipse.cmf.occi.google.handlers.syntacticparsingtree.SyntacticParserTree;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,7 +32,7 @@ import org.jsoup.select.Elements;
 public class GCPAttributeReader {
 	
 	private static Document currentKindDoc;
-
+	
 	public static StringBuilder readAttributes(final Document kindDoc, final String kind, final String filter,
 			StringBuilder enumStr, List<Attribute> attributesModel, List<EnumerationType> enumsModel) {
 		StringBuilder attribute = new StringBuilder();
@@ -65,10 +70,34 @@ public class GCPAttributeReader {
 					} else {
 						enumString = new StringBuilder();
 					}
+					
+					
+					DataType typeModel = null;
+					// construct a LINK
+					if (currentAttributeDescription.toUpperCase().contains("URL")) {
+						LinkDefinition link = SyntacticParserTree.run(currentAttributeDescription);
+						if (link != null) {
+							Kind kindModel = OCCIFactory.eINSTANCE.createKind();
+							kindModel.setName(currentAttributeType.replace(".", ""));
+							kindModel.setScheme(extension.getScheme());
+							kindModel.setParent(linkKind);
+							Link newLink = OCCIFactory.eINSTANCE.createLink();
+							newLink.setKind(kindModel);
+							newLink.setTitle(currentAttributeDescription);
+							GoogleCrawler.linkDefinitionPerLink.put(link, newLink);
+							extension.getKinds().add(kindModel);
+							typeModel = OCCIFactory.eINSTANCE.createEObjectType();
+							typeModel.setName(currentAttributeType);
+							typeModel.setDocumentation(currentAttributeDescription);
+						} else {
+							GoogleCrawler.rejected.add(currentAttributeName+":"+currentAttributeDescription);
+						}
+					}
 
 					// parameter url to know where to go in case of object(
-					DataType typeModel = buildType(kindDoc.baseUri(), currentAttributeName, currentAttributeDescription,
-							currentAttributeType, enumString);
+					if (typeModel == null) {
+						typeModel = buildType(kindDoc.baseUri(),currentAttributeName,currentAttributeDescription,currentAttributeType,enumString);
+					}
 
 					if (typeModel instanceof ArrayType && j + 1 < rows.size()) {
 						String nextName = rows.get(j + 1).select("td").get(0).text();

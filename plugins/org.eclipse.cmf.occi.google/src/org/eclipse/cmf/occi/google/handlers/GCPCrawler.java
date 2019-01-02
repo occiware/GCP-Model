@@ -24,12 +24,14 @@ import org.eclipse.cmf.occi.core.EObjectType;
 import org.eclipse.cmf.occi.core.EnumerationType;
 import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.Kind;
+import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.NumericType;
 import org.eclipse.cmf.occi.core.NumericTypeEnum;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.RecordType;
 import org.eclipse.cmf.occi.core.StringType;
 import org.eclipse.cmf.occi.core.util.OcciHelper;
+import org.eclipse.cmf.occi.google.handlers.syntacticparsingtree.LinkDefinition;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -41,8 +43,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class GCPCrawler {
-	
-
 	
 	public static final char separator = ';';
 	public static final String noneToken = "None";
@@ -109,7 +109,7 @@ public class GCPCrawler {
 		// Définir la ressource (le modèle)
 		URI modelURI = URI.createURI(
 				new File(GoogleCrawler.OUTPUT_PATH).toURI().toString()
-				);
+		);
 		resource = resSet.createResource(modelURI);
 
 		// La fabrique pour fabriquer les éléments de SimplePDL
@@ -572,6 +572,10 @@ public class GCPCrawler {
 				k.getActions().add(action);
 			}
 			
+			// use now link definitions, if any
+			GoogleCrawler.linkDefinitionPerLink.keySet()
+				.forEach(key -> GCPCrawler.configureLink(key, GoogleCrawler.linkDefinitionPerLink.get(key)));
+			
 			if (!nbAttributePerKind.containsKey(k)) {
 				nbAttributePerKind.put(k, attributes.size());
 			}
@@ -581,6 +585,10 @@ public class GCPCrawler {
 			return resourcecsv(kind, attributeFormat + "_" + actionFormat);
 		}
 		return new StringBuilder();
+	}
+	
+	public static void configureLink(LinkDefinition definition, Link link) {
+		
 	}
 	
 	private static Map<Kind, Integer> nbAttributePerKind = new HashMap<>();
